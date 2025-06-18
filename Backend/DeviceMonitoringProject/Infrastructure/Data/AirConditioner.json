@@ -1,0 +1,127 @@
+{
+  "FileName": "AirConditioner.json",
+  "Name": "Air Conditioner",
+  "Type": "Smart Appliance",
+  "Status": "Online",
+  "MacId": "98:5F:D3:4B:22:AC",
+  "Connectivity": "Medium",
+  "staticProperties": {
+    "Hardware Specifications": {
+      "AC Type": "Split Inverter",
+      "Cooling Capacity": "1.5 Ton",
+      "Power Consumption": "1500W",
+      "Energy Rating": "5 Star",
+      "Refrigerant Type": "R32",
+      "Compressor Type": "Variable Speed Rotary",
+      "Voltage Requirements": {
+        "Operating Voltage": "220V - 240V",
+        "Frequency": "50 Hz"
+      },
+      "Supported Modes": "Cool, Fan, Dry, Auto, Sleep"
+    },
+    "Manufacturer Details": {
+      "Brand": "Daikin",
+      "Model": "FTKF50TV16U",
+      "Serial Number": "DAK2345XYZ987",
+      "Manufacture Date": "2022-02-17",
+      "Installation Date": "2022-03-01",
+      "Location": "Living Room - Wall Mount",
+      "Warranty": {
+        "Status": "Active",
+        "Expiry": "2025-03-01"
+      }
+    },
+    "Connectivity & Configuration": {
+      "Wi-Fi Enabled": true,
+      "Bluetooth Enabled": false,
+      "IR Remote Supported": true,
+      "Smart App Integration": [
+        "Google Home",
+        "Daikin SmartApp"
+      ],
+      "MAC Address": "98:5F:D3:4B:22:AC",
+      "Hostname": "ac-livingroom"
+    },
+    "User Preferences": {
+      "Default Temperature": "24°C",
+      "Eco Mode Default": true,
+      "Timer Settings": {
+        "Default Timer": "8 hours",
+        "Auto Off Enabled": true
+      }
+    }
+  },
+  "dynamicProperties": {
+    "Current Status": {
+      "Power State": "On",
+      "Mode": "Cool",
+      "Set Temperature": "24°C",
+      "Current Room Temperature": "28.7°C",
+      "Fan Speed": "High",
+      "Swing Mode": {
+        "Vertical Swing": "Auto",
+        "Horizontal Swing": "Auto"
+      },
+      "Humidity Level": "61%",
+      "Sleep Mode": false
+    },
+    "Sensor Data": {
+      "Temperature Sensors": [
+        {
+          "Sensor ID": "TS001",
+          "Location": "Indoor Unit",
+          "Reading": "28.3°C"
+        },
+        {
+          "Sensor ID": "TS002",
+          "Location": "Outdoor Unit",
+          "Reading": "34.9°C"
+        }
+      ],
+      "Humidity Sensor": {
+        "Sensor ID": "HS001",
+        "Reading": "61%"
+      }
+    },
+    "Power Consumption Stats": {
+      "Today": "2.6 kWh",
+      "This Week": "14.7 kWh",
+      "This Month": "63.0 kWh",
+      "Power Saving Mode": "Enabled",
+      "Last Reset": "2025-06-01"
+    },
+    "Network Activity": {
+      "IP Address": "192.168.1.67",
+      "Signal Strength": "-74 dBm",
+      "Last Connected": "2025-06-18 18:09",
+      "Control Access": [
+        {
+          "User": "kiran.j",
+          "Device": "Google Home",
+          "Access Time": "2025-06-04 07:15"
+        },
+        {
+          "User": "manual_remote",
+          "Device": "IR Controller",
+          "Access Time": "2025-06-03 22:50"
+        }
+      ]
+    },
+    "Service Logs": {
+      "Filter Status": "Needs Cleaning",
+      "Service History": [
+        {
+          "Date": "2024-12-12",
+          "Technician": "CoolCare Services",
+          "Work Done": "Gas Top-up"
+        },
+        {
+          "Date": "2023-09-18",
+          "Technician": "ACFix",
+          "Work Done": "Annual Maintenance"
+        }
+      ],
+      "Next Scheduled Maintenance": "2025-07-15"
+    }
+  }
+}

@@ -1,0 +1,266 @@
+{
+  "FileName": "NAS.json",
+  "Name": "NAS Server",
+  "Type": "Server",
+  "Status": "Offline",
+  "MacId": "00:1B:44:11:3A:B7",
+  "Connectivity": "Medium",
+  "staticProperties": {
+    "Hardware Information": {
+      "Operating System": "Synology DSM 7.2",
+      "CPU": {
+        "Model": "Intel Celeron J4125",
+        "Cores": 4,
+        "Base Frequency": "2.0 GHz",
+        "Architecture": "x86_64"
+      },
+      "RAM": {
+        "Total Installed": "8 GB",
+        "Slots": [
+          {
+            "Slot": "A1",
+            "Size": "4 GB",
+            "Type": "DDR4",
+            "Status": "Occupied"
+          },
+          {
+            "Slot": "A2",
+            "Size": "4 GB",
+            "Type": "DDR4",
+            "Status": "Occupied"
+          }
+        ]
+      },
+      "Storage Bays": 4,
+      "Drives": [
+        {
+          "Bay": 1,
+          "Type": "HDD",
+          "Capacity": "4 TB",
+          "Brand": "Seagate",
+          "Status": "Healthy"
+        },
+        {
+          "Bay": 2,
+          "Type": "HDD",
+          "Capacity": "4 TB",
+          "Brand": "Seagate",
+          "Status": "Healthy"
+        },
+        {
+          "Bay": 3,
+          "Type": "HDD",
+          "Capacity": "4 TB",
+          "Brand": "WD",
+          "Status": "Healthy"
+        },
+        {
+          "Bay": 4,
+          "Type": "HDD",
+          "Capacity": "4 TB",
+          "Brand": "WD",
+          "Status": "Healthy"
+        }
+      ],
+      "Ethernet Ports": 2,
+      "Power Supply": "450W External Adapter"
+    },
+    "Manufacturer Details": {
+      "Brand": "Synology",
+      "Model Number": "DS920+",
+      "Serial Number": "SN1234567890",
+      "Purchase Info": {
+        "Purchase Date": "2023-05-15",
+        "Warranty Expiry": "2026-05-15",
+        "Vendor": "Amazon Business"
+      },
+      "Physical Location": "Server Room - Rack 3"
+    },
+    "Network Configuration": {
+      "Hostname": "nas-office",
+      "MAC Addresses": {
+        "Port 1": "00:1B:44:11:3A:B7",
+        "Port 2": "00:1B:44:11:3A:B8"
+      },
+      "Access Protocols": [
+        "SMB",
+        "NFS",
+        "FTP",
+        "SFTP"
+      ],
+      "Firewall": {
+        "Enabled": true,
+        "Blocked Ports": [
+          23,
+          3389,
+          21
+        ]
+      },
+      "SSH Access": true
+    },
+    "Users & Access": {
+      "Admins": [
+        "admin",
+        "it_admin"
+      ],
+      "User Groups": [
+        {
+          "Group": "Developers",
+          "Permissions": [
+            "Read",
+            "Write",
+            "Execute"
+          ]
+        },
+        {
+          "Group": "Interns",
+          "Permissions": [
+            "Read"
+          ]
+        }
+      ]
+    }
+  },
+  "dynamicProperties": {
+    "System Health": {
+      "CPU Usage": {
+        "Load Percentage": 47,
+        "Core Usage": [
+          {
+            "Core": 0,
+            "Usage": "49%"
+          },
+          {
+            "Core": 1,
+            "Usage": "37%"
+          },
+          {
+            "Core": 2,
+            "Usage": "57%"
+          },
+          {
+            "Core": 3,
+            "Usage": "56%"
+          }
+        ]
+      },
+      "RAM Usage": {
+        "Used": "5.6 GB",
+        "Free": "2.4 GB",
+        "Swap Used": "0.3 GB"
+      },
+      "System Temperature": {
+        "CPU": "51.2°C",
+        "System Board": "40.8°C",
+        "Drive Bays": [
+          {
+            "Bay": 1,
+            "Temp": "37.1°C"
+          },
+          {
+            "Bay": 2,
+            "Temp": "36.7°C"
+          },
+          {
+            "Bay": 3,
+            "Temp": "38.3°C"
+          },
+          {
+            "Bay": 4,
+            "Temp": "38.8°C"
+          }
+        ]
+      },
+      "System Load Average": {
+        "1m": "1.11",
+        "5m": "1.84",
+        "15m": "1.25"
+      },
+      "Uptime": "55 days, 6 hours"
+    },
+    "Network Activity": {
+      "Primary IP": "192.168.1.43",
+      "Interfaces": [
+        {
+          "Name": "eth0",
+          "Status": "Active",
+          "Throughput": {
+            "Upload": "93 Mbps",
+            "Download": "105 Mbps"
+          },
+          "Data Transferred": {
+            "Sent": "1.3 TB",
+            "Received": "2.8 TB"
+          }
+        },
+        {
+          "Name": "eth1",
+          "Status": "Idle",
+          "Throughput": {
+            "Upload": "0 Mbps",
+            "Download": "0 Mbps"
+          },
+          "Data Transferred": {
+            "Sent": "N/A",
+            "Received": "N/A"
+          }
+        }
+      ],
+      "Connected Clients": [
+        {
+          "IP": "192.168.1.102",
+          "Hostname": "laptop-prem",
+          "Last Access": "2025-06-18 17:24"
+        },
+        {
+          "IP": "192.168.1.115",
+          "Hostname": "mobile-kiran",
+          "Last Access": "2025-06-18 17:32"
+        }
+      ]
+    },
+    "Service Status": {
+      "Running Services": [
+        "SMB",
+        "Docker",
+        "Cloud Sync",
+        "Time Machine"
+      ],
+      "Service Health": {
+        "Docker": "Healthy",
+        "Cloud Sync": "Healthy",
+        "Time Machine": "Healthy"
+      },
+      "Disk Health": {
+        "Status": "Healthy",
+        "Last Checked": "2025-06-15",
+        "SMART Reports": [
+          {
+            "Bay": 1,
+            "Health": "Good",
+            "Reallocated Sectors": 0
+          },
+          {
+            "Bay": 2,
+            "Health": "Good",
+            "Reallocated Sectors": 0
+          }
+        ]
+      },
+      "Fan Status": {
+        "Fan 1": {
+          "Speed": "1233 RPM",
+          "Status": "Normal"
+        },
+        "Fan 2": {
+          "Speed": "1133 RPM",
+          "Status": "Normal"
+        }
+      },
+      "Last Backup": {
+        "Status": "Success",
+        "Timestamp": "2025-06-17 23:15"
+      }
+    }
+  }
+}

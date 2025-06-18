@@ -1,0 +1,150 @@
+{
+  "FileName": "Mobile.json",
+  "Name": "Mobile",
+  "Type": "Personal Device",
+  "Status": "Online",
+  "MacId": "F0:9F:C2:12:34:56",
+  "Connectivity": "Low",
+  "staticProperties": {
+    "Device Specifications": {
+      "Operating System": {
+        "Name": "Android",
+        "Version": "14"
+      },
+      "Model": {
+        "Brand": "Google",
+        "Model Name": "Pixel 7 Pro",
+        "Release Year": 2022
+      },
+      "Processor": {
+        "Name": "Google Tensor G2",
+        "Cores": 8,
+        "Max Clock Speed": "2.85 GHz"
+      },
+      "Memory & Storage": {
+        "RAM": "12 GB",
+        "Internal Storage": "256 GB",
+        "Expandable Storage": false
+      },
+      "Display": {
+        "Size": "6.7 inch",
+        "Type": "AMOLED",
+        "Refresh Rate": "120 Hz"
+      },
+      "Battery Capacity": "5000 mAh",
+      "Charging": {
+        "Wired": "30W Fast Charging",
+        "Wireless": "23W Wireless Charging"
+      }
+    },
+    "Network & SIM": {
+      "SIM Slots": 2,
+      "5G Support": true,
+      "eSIM Enabled": true,
+      "Wi-Fi Standards": [
+        "802.11ax",
+        "802.11ac",
+        "802.11n"
+      ],
+      "Bluetooth Version": "5.2"
+    },
+    "Security & Access": {
+      "Biometric Methods": [
+        "Face Unlock",
+        "Fingerprint (Under Display)"
+      ],
+      "Encryption": "Full Disk Encryption Enabled",
+      "Bootloader Unlocked": false
+    },
+    "Installed Apps": [
+      "WhatsApp",
+      "Gmail",
+      "Spotify",
+      "Google Photos",
+      "YouTube",
+      "Slack"
+    ],
+    "Owner Details": {
+      "User Name": "John Doe",
+      "Registered Email": "john.doe@gmail.com",
+      "Location": "Home Office"
+    }
+  },
+  "dynamicProperties": {
+    "Device Health": {
+      "Battery Status": {
+        "Level": "39%",
+        "Charging State": "Charging",
+        "Temperature": "33.2°C",
+        "Health": "Good"
+      },
+      "CPU Usage": "27%",
+      "RAM Usage": {
+        "Used": "4.7 GB",
+        "Free": "7.3 GB"
+      },
+      "Storage Usage": {
+        "Used": "137 GB",
+        "Free": "119 GB"
+      },
+      "Device Temperature": {
+        "CPU": "45.1°C",
+        "Battery": "33.2°C"
+      },
+      "Uptime": "1 days, 17 hours"
+    },
+    "Network Activity": {
+      "Current Network": {
+        "Connection Type": "Wi-Fi",
+        "SSID": "Home_5G",
+        "IP Address": "192.168.1.156",
+        "Signal Strength": "-59 dBm",
+        "MAC Address": "F0:9F:C2:12:34:56"
+      },
+      "Data Usage": {
+        "Today": {
+          "Download": "0.9 GB",
+          "Upload": "437 MB"
+        },
+        "Monthly": {
+          "Download": "38.0 GB",
+          "Upload": "6.0 GB"
+        }
+      },
+      "Connected Apps": [
+        {
+          "appName": "Spotify",
+          "dataUsage": "Streaming (275 MB today)"
+        },
+        {
+          "appName": "WhatsApp",
+          "dataUsage": "Video call (142 MB today)"
+        }
+      ]
+    },
+    "App Activity": {
+      "Active Apps": [
+        {
+          "name": "YouTube",
+          "status": "Foreground",
+          "screenTimeToday": "1 hr 35 min"
+        },
+        {
+          "name": "Gmail",
+          "status": "Background",
+          "notifications": 1
+        }
+      ],
+      "Battery Usage by Apps": [
+        {
+          "appName": "YouTube",
+          "usagePercent": "6%"
+        },
+        {
+          "appName": "Google Maps",
+          "usagePercent": "4%"
+        }
+      ]
+    }
+  }
+}

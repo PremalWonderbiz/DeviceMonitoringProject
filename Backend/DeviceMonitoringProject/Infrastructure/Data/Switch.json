@@ -1,0 +1,190 @@
+{
+  "FileName": "Switch.json",
+  "Name": "Network Switch",
+  "Type": "Networking Device",
+  "Status": "Online",
+  "MacId": "D4:6D:6D:88:11:22",
+  "Connectivity": "Low",
+  "staticProperties": {
+    "Hardware Info": {
+      "Model": "Cisco Catalyst 2960-X",
+      "Switch Type": "Managed Layer 2",
+      "Total Ports": 24,
+      "Uplink Ports": 4,
+      "Power Supply": {
+        "Type": "Internal",
+        "Redundant": false,
+        "Power Rating": "370W"
+      },
+      "Form Factor": "1U Rack-Mountable",
+      "Fan Type": "Dual Internal Cooling Fans"
+    },
+    "Manufacturer Details": {
+      "Brand": "Cisco",
+      "Serial Number": "FGL1234ABCD",
+      "Purchase Date": "2022-08-12",
+      "Warranty": {
+        "Status": "Active",
+        "Expires On": "2025-08-12"
+      },
+      "Location": "Server Room - Rack 1"
+    },
+    "Port Configuration": [
+      {
+        "Port": "Gig1/0/1",
+        "Speed": "1 Gbps",
+        "Type": "RJ45",
+        "Default VLAN": 10,
+        "PoE": true
+      },
+      {
+        "Port": "Gig1/0/2",
+        "Speed": "1 Gbps",
+        "Type": "RJ45",
+        "Default VLAN": 20,
+        "PoE": false
+      },
+      {
+        "Port": "Gig1/0/3",
+        "Speed": "1 Gbps",
+        "Type": "RJ45",
+        "Default VLAN": 30,
+        "PoE": true
+      }
+    ],
+    "Network Configuration": {
+      "Hostname": "core-switch",
+      "Management IP": "192.168.0.2",
+      "Subnet Mask": "255.255.255.0",
+      "Default Gateway": "192.168.0.1"
+    }
+  },
+  "dynamicProperties": {
+    "Port Status": [
+      {
+        "Port": "Gig1/0/1",
+        "Link Status": "Down",
+        "Connected Device": null,
+        "Current Throughput": "0 Mbps"
+      },
+      {
+        "Port": "Gig1/0/2",
+        "Link Status": "Up",
+        "Connected Device": "Firewall",
+        "Current Throughput": "546 Mbps"
+      },
+      {
+        "Port": "Gig1/0/3",
+        "Link Status": "Up",
+        "Connected Device": "NAS Server",
+        "Current Throughput": "830 Mbps"
+      }
+    ],
+    "System Health": {
+      "CPU Usage": "22%",
+      "RAM Usage": "1.7 GB / 2 GB",
+      "Temperature": "49°C",
+      "Fan Status": "Operational"
+    },
+    "Traffic Statistics": {
+      "Total Data Sent": "6.72 TB",
+      "Total Data Received": "9.37 TB",
+      "Packet Errors": {
+        "Inbound": 14,
+        "Outbound": 9
+      },
+      "Broadcast Storms Detected": false
+    },
+    "VLANs & Routing": {
+      "Active VLANs": [
+        10,
+        20,
+        30,
+        99,
+        40
+      ],
+      "Routing Table": [
+        {
+          "Destination": "192.168.10.0",
+          "Gateway": "192.168.0.1",
+          "Interface": "VLAN 10",
+          "Metric": 1
+        },
+        {
+          "Destination": "192.168.20.0",
+          "Gateway": "192.168.0.1",
+          "Interface": "VLAN 20",
+          "Metric": 1
+        }
+      ]
+    },
+    "Security & Logs": {
+      "Port Security Enabled": true,
+      "MAC Address Filtering": {
+        "Mode": "Static",
+        "Whitelisted MACs": [
+          "00:1B:44:11:3A:B7",
+          "3C:71:BF:12:34:56"
+        ]
+      },
+      "Login Attempts": [
+        {
+          "User": "guest",
+          "IP": "192.168.0.52",
+          "Time": "2025-06-18T18:07:06",
+          "Success": true
+        },
+        {
+          "User": "admin",
+          "IP": "192.168.0.60",
+          "Time": "2025-06-18T18:07:57",
+          "Success": false
+        },
+        {
+          "User": "admin",
+          "IP": "192.168.0.18",
+          "Time": "2025-06-18T18:08:27",
+          "Success": true
+        },
+        {
+          "User": "guest",
+          "IP": "192.168.0.12",
+          "Time": "2025-06-18T18:09:28",
+          "Success": true
+        },
+        {
+          "User": "admin",
+          "IP": "192.168.0.33",
+          "Time": "2025-06-18T18:09:59",
+          "Success": true
+        }
+      ],
+      "Recent Logs": [
+        {
+          "Timestamp": "2025-06-18T18:07:46",
+          "Event": "Interface Gig1/0/1 Security violation detected"
+        },
+        {
+          "Timestamp": "2025-06-18T18:08:07",
+          "Event": "Interface Gig1/0/3 Security violation detected"
+        },
+        {
+          "Timestamp": "2025-06-18T18:08:17",
+          "Event": "Interface Gig1/0/2 went UP"
+        },
+        {
+          "Timestamp": "2025-06-18T18:08:37",
+          "Event": "Interface Gig1/0/3 went DOWN"
+        },
+        {
+          "Timestamp": "2025-06-18T18:08:48",
+          "Event": "Interface Gig1/0/4 Security violation detected"
+        },
+        {
+          "Timestamp": "2025-06-18T18:09:38",
+          "Event": "Interface Gig1/0/2 Security violation detected"
+        }
+      ]
+    }
+  }
+}

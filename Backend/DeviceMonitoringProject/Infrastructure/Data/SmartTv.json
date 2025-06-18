@@ -1,0 +1,142 @@
+{
+  "FileName": "SmartTv.json",
+  "Name": "Smart TV",
+  "Type": "Entertainment Device",
+  "Status": "Offline",
+  "MacId": "B8:27:EB:45:9A:CB",
+  "Connectivity": "Medium",
+  "staticProperties": {
+    "Display & Hardware": {
+      "Screen Size": "55 inches",
+      "Display Type": "OLED",
+      "Resolution": "4K UHD (3840 x 2160)",
+      "HDR Support": [
+        "HDR10+",
+        "Dolby Vision"
+      ],
+      "Refresh Rate": "120Hz",
+      "Speakers": {
+        "Speaker Channels": "2.1",
+        "Output Power": "40W"
+      },
+      "Ports Available": [
+        {
+          "Type": "HDMI",
+          "Count": 4
+        },
+        {
+          "Type": "USB",
+          "Count": 2
+        },
+        {
+          "Type": "Ethernet",
+          "Count": 1
+        },
+        {
+          "Type": "Optical Audio Out",
+          "Count": 1
+        }
+      ]
+    },
+    "Manufacturer Details": {
+      "Brand": "Sony",
+      "Model": "Bravia XR A80L",
+      "Serial Number": "SONYTV12345A80L",
+      "Manufacture Date": "2023-06-20",
+      "Purchase Date": "2023-07-05",
+      "Location": "Living Room",
+      "Warranty": {
+        "Status": "Active",
+        "Expires On": "2026-07-05"
+      }
+    },
+    "OS & Software": {
+      "Operating System": "Google TV",
+      "OS Version": "12.0",
+      "Voice Assistant Support": [
+        "Google Assistant",
+        "Alexa"
+      ],
+      "Pre-installed Apps": [
+        "YouTube",
+        "Netflix",
+        "Prime Video",
+        "Disney+ Hotstar",
+        "Spotify"
+      ],
+      "Remote Control Type": {
+        "Physical Remote": true,
+        "Mobile App Support": true,
+        "Voice Control": true
+      }
+    },
+    "Network Configuration": {
+      "Wi-Fi Enabled": true,
+      "Ethernet Support": true,
+      "MAC Address": "B8:27:EB:45:9A:CB",
+      "Hostname": "sony-bravia-tv"
+    }
+  },
+  "dynamicProperties": {
+    "Current Usage": {
+      "Power State": "On",
+      "Input Source": "HDMI 2",
+      "Current App": "Netflix",
+      "Volume Level": 62,
+      "Mute": true,
+      "Picture Mode": "Cinema",
+      "Audio Output": "TV Speakers",
+      "Ambient Light Sensor": "Enabled"
+    },
+    "Streaming Activity": {
+      "Watch History (Today)": [
+        {
+          "App": "Netflix",
+          "Title": "The Crown",
+          "Start Time": "2025-06-18T16:39:59",
+          "Duration": "26 min"
+        },
+        {
+          "App": "YouTube",
+          "Title": "Gadget Reviews",
+          "Start Time": "2025-06-18T17:39:59",
+          "Duration": "29 min"
+        }
+      ],
+      "Active App Sessions": [
+        {
+          "App": "Netflix",
+          "Status": "Streaming",
+          "Data Used": "791 MB"
+        }
+      ],
+      "AutoPlay Next Episode": false
+    },
+    "Network Activity": {
+      "IP Address": "192.168.1.40",
+      "Wi-Fi Signal Strength": "-47 dBm",
+      "Connection Type": "Wi-Fi",
+      "Data Usage": {
+        "Today": "3.3 GB",
+        "This Week": "121 GB",
+        "This Month": "451 GB"
+      },
+      "Last Online": "2025-06-18T18:03:59"
+    },
+    "System Status": {
+      "Uptime": "0 hours 52 minutes",
+      "Last Reboot": "2025-06-16T22:09:59",
+      "Software Update Available": false,
+      "Last Software Update": "2025-05-29",
+      "Storage Info": {
+        "Total Storage": "16 GB",
+        "Used": "7.6 GB",
+        "Free": "8.4 GB"
+      },
+      "Temperature": {
+        "Panel": "38°C",
+        "Mainboard": "39°C"
+      }
+    }
+  }
+}

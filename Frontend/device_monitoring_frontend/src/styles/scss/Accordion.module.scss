@@ -1,0 +1,32 @@
+
+.accordion {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  padding-right: 2px;
+}
+
+.tabListHeader{
+    padding-right: 7px;
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+  padding-top: 0;
+}
+
+.open {
+  max-height: 100%; 
+  opacity: 1;
+}
+

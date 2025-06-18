@@ -1,0 +1,140 @@
+{
+  "FileName": "Laptop.json",
+  "Name": "Laptop",
+  "Type": "Personal Device",
+  "Status": "Online",
+  "MacId": "3C:5A:B4:91:22:AC",
+  "Connectivity": "Medium",
+  "staticProperties": {
+    "Hardware Details": {
+      "Operating System": "Windows 11 Pro",
+      "Processor": {
+        "Brand": "Intel",
+        "Model": "Core i7-12700H",
+        "Cores": 14,
+        "Threads": 20,
+        "Base Clock": "2.3 GHz",
+        "Turbo Boost": "4.7 GHz"
+      },
+      "Memory": {
+        "Total RAM": "32 GB",
+        "RAM Type": "DDR5",
+        "Slots Used": "2 of 2"
+      },
+      "Storage": [
+        {
+          "Type": "NVMe SSD",
+          "Capacity": "1 TB",
+          "Slot": "M.2 Slot 1"
+        }
+      ],
+      "Graphics": {
+        "Integrated": "Intel Iris Xe",
+        "Dedicated": {
+          "Model": "NVIDIA RTX 3050 Ti",
+          "VRAM": "4 GB GDDR6"
+        }
+      },
+      "Display": {
+        "Size": "15.6 inch",
+        "Resolution": "3840 x 2400 (4K UHD+)",
+        "Touchscreen": true
+      },
+      "Battery": {
+        "Capacity": "86 Wh",
+        "Removable": false,
+        "Charging Type": "USB-C (130W)"
+      }
+    },
+    "Manufacturer & Ownership": {
+      "Brand": "Dell",
+      "Model Number": "XPS 15 9520",
+      "Serial Number": "DELL-XL-758102",
+      "Warranty Expiry": "2026-09-30",
+      "Purchase Date": "2024-10-01",
+      "Assigned To": {
+        "Employee Name": "Aarav Mehta",
+        "Department": "Engineering",
+        "Work Location": "Pune HQ - Floor 5"
+      }
+    },
+    "Network Interfaces": {
+      "Wi-Fi MAC": "3C:5A:B4:91:22:AC",
+      "Ethernet": {
+        "Supported": false,
+        "Adapter Type": "USB-C to Ethernet (if attached)"
+      },
+      "Bluetooth": {
+        "Version": "5.3",
+        "MAC": "3C:5A:B4:91:22:AD"
+      }
+    },
+    "Ports & Connectivity": [
+      "2 x Thunderbolt 4 (USB-C)",
+      "1 x USB-C 3.2",
+      "1 x SD Card Reader",
+      "1 x 3.5mm Headphone Jack"
+    ]
+  },
+  "dynamicProperties": {
+    "System Status": {
+      "Battery": {
+        "Level": "83%",
+        "Charging Status": "Discharging",
+        "Health": "Good",
+        "Estimated Time Left": "3 hrs 38 mins"
+      },
+      "CPU Load": "43%",
+      "RAM Usage": {
+        "Used": "14.2 GB",
+        "Free": "17.8 GB"
+      },
+      "GPU Usage": {
+        "Integrated": "2%",
+        "Dedicated": "16%"
+      },
+      "Temperature": {
+        "CPU": "54.5°C",
+        "GPU": "54.5°C",
+        "Motherboard": "41.7°C"
+      },
+      "System Uptime": "5 days, 5 hours"
+    },
+    "Network Activity": {
+      "Current Wi-Fi": {
+        "SSID": "Office_Network_5G",
+        "IP Address": "10.0.1.223",
+        "Signal Strength": "-58 dBm",
+        "Data Usage (Today)": {
+          "Download": "1.2 GB",
+          "Upload": "3.1 GB"
+        }
+      },
+      "VPN Status": {
+        "Connected": true,
+        "Provider": "NordLayer",
+        "IP": "172.20.33.32"
+      }
+    },
+    "Application Activity": {
+      "Foreground Apps": [
+        {
+          "App Name": "Visual Studio Code",
+          "CPU": "19%",
+          "Memory": "1.2 GB"
+        },
+        {
+          "App Name": "Slack",
+          "CPU": "2%",
+          "Memory": "0.7 GB"
+        }
+      ],
+      "Background Processes": 85,
+      "Recent Apps Launched": [
+        "Edge Browser",
+        "Spotify",
+        "Zoom"
+      ]
+    }
+  }
+}

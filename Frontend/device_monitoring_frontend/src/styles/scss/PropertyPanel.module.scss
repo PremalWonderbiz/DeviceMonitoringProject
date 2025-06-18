@@ -1,0 +1,97 @@
+.propertyPanelTabContent {
+    max-height: 530px;
+    overflow-y: auto;
+
+    &:global(body)>& {
+        height: 100vh;
+    }
+
+    // Hide scrollbar by default
+    &::-webkit-scrollbar {
+        width: 5px;
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        transition: background-color 0.3s;
+        border-radius: 25px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    // Show thumb on hover
+    &:hover::-webkit-scrollbar-thumb {
+        background-color: rgba(31, 30, 30, 0.3);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: #5e5e5e;
+        ; // darker on hover
+    }
+
+    &:hover::-webkit-scrollbar-track {
+        background-color: #f5f5f5;
+    }
+}
+
+.propertyPanelTitles{
+    font-size: 0.9rem;
+}
+
+@for $i from 1 through 10 {
+  .depth-#{$i} {
+    padding-left: #{0.5 * $i}rem;
+}
+}
+
+//sub data property panel
+.keyValueSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.kvRow {
+  display: grid;
+  grid-template-columns: 50% 50%; // Key column fixed, value fills rest
+  align-items: start;
+  gap: 1rem;
+}
+
+.kvKey {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.kvValue {
+  font-size: 12px;
+  width: 90%;
+}
+
+
+//Tablist component
+.tabListUL {
+    list-style-type: none;
+    display: flex;
+    gap: 1.5rem;
+    font-size: 14px;
+    padding-right: 5px;
+    padding-left: 0.5rem;
+}
+
+.tabListLi{
+    cursor: pointer;
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+    font-weight: normal;
+    color: #333;
+}
+
+.tabListLiActive{
+    border-bottom: 2px solid #007bff;
+    font-weight: 600;
+    color: black
+}

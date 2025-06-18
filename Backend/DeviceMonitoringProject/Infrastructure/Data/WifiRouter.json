@@ -1,0 +1,154 @@
+{
+  "FileName": "WifiRouter.json",
+  "Name": "WiFi Router",
+  "Type": "Networking Device",
+  "Status": "Offline",
+  "MacId": "84:C9:B2:3E:7F:A1",
+  "Connectivity": "Medium",
+  "staticProperties": {
+    "Hardware Information": {
+      "Operating System": "OpenWRT 21.02",
+      "Processor": {
+        "Model": "Qualcomm IPQ4019",
+        "Cores": 4,
+        "Clock Speed": "717 MHz"
+      },
+      "Memory": {
+        "RAM": "512 MB DDR3",
+        "Flash Storage": "128 MB"
+      },
+      "Antennas": 4,
+      "Ethernet Ports": {
+        "WAN": 1,
+        "LAN": 4
+      },
+      "Wireless Standards": [
+        "802.11ac",
+        "802.11n",
+        "802.11a/b/g"
+      ]
+    },
+    "Manufacturer Details": {
+      "Brand": "TP-Link",
+      "Model": "Archer C7",
+      "Serial Number": "TPL-C7-9823456",
+      "Purchase Info": {
+        "Date": "2022-09-12",
+        "Warranty Expiry": "2025-09-12"
+      },
+      "Location": "Server Room - Wall Mounted"
+    },
+    "Access Configuration": {
+      "Admin Users": [
+        {
+          "username": "admin",
+          "accessLevel": "Full"
+        },
+        {
+          "username": "network_ops",
+          "accessLevel": "Restricted"
+        }
+      ],
+      "Access Methods": {
+        "Web UI": true,
+        "SSH": true,
+        "Telnet": false,
+        "API": false
+      },
+      "Firewall": {
+        "Enabled": true,
+        "Rules": [
+          {
+            "rule": "Allow LAN to WAN",
+            "status": "Active"
+          },
+          {
+            "rule": "Block inbound WAN",
+            "status": "Active"
+          }
+        ]
+      }
+    }
+  },
+  "dynamicProperties": {
+    "System Status": {
+      "Uptime": "22 days, 5 hours",
+      "CPU Usage": "27%",
+      "Memory Usage": {
+        "Used": "130.7 MB",
+        "Total": "512 MB"
+      },
+      "Temperature": {
+        "CPU": "58°C",
+        "Board": "44°C"
+      },
+      "System Load Average": [
+        "0.53",
+        "0.42",
+        "0.00"
+      ]
+    },
+    "Network Activity": {
+      "Interfaces": [
+        {
+          "name": "WAN",
+          "ipAddress": "203.0.113.45",
+          "macAddress": "84:C9:B2:3E:7F:A1",
+          "traffic": {
+            "upload": "20 Mbps",
+            "download": "130 Mbps"
+          }
+        },
+        {
+          "name": "LAN1",
+          "ipAddress": "192.168.0.1",
+          "macAddress": "84:C9:B2:3E:7F:A2",
+          "traffic": {
+            "upload": "52 Mbps",
+            "download": "109 Mbps"
+          }
+        }
+      ],
+      "Connected Clients": [
+        {
+          "hostname": "Laptop-Admin",
+          "ip": "192.168.0.101",
+          "mac": "00:1A:2B:3C:4D:5E",
+          "connection": {
+            "type": "Wi-Fi",
+            "band": "5 GHz",
+            "signalStrength": "-50 dBm"
+          }
+        },
+        {
+          "hostname": "Printer",
+          "ip": "192.168.0.105",
+          "mac": "00:1C:2D:3E:4F:6A",
+          "connection": {
+            "type": "Ethernet",
+            "port": "LAN3"
+          }
+        }
+      ],
+      "Total Data Usage": {
+        "Sent": "837.55 GB",
+        "Received": "1.21 TB"
+      }
+    },
+    "Service Health": {
+      "Services Running": [
+        "DHCP",
+        "DNS Resolver",
+        "NAT",
+        "Firewall"
+      ],
+      "Failed Services": [],
+      "Last Reboot Reason": "Manual Reboot (Firmware Upgrade)",
+      "Firmware": {
+        "Current Version": "v3.0.4",
+        "Last Updated": "2025-03-10",
+        "Update Available": false
+      }
+    }
+  }
+}

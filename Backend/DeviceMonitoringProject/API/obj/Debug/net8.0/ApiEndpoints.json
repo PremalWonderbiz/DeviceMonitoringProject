@@ -1,0 +1,49 @@
+[
+  {
+    "ContainingType": "API.Controllers.DevicesController",
+    "Method": "GetMacIdToFileNameMap",
+    "RelativePath": "api/Devices/getMacIdToFileNameMap",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.DevicesController",
+    "Method": "GetPropertyPanelDataForDevice",
+    "RelativePath": "api/Devices/getPropertyPanelData/{devicename}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "devicename",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.DevicesController",
+    "Method": "GetAllDeviceMetadata",
+    "RelativePath": "api/Devices/metadata/{pageNumber}/{pageSize}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

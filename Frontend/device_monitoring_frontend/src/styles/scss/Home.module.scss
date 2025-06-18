@@ -1,0 +1,34 @@
+.homePageNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bodyContainer {
+    display: flex;
+    position: relative;
+}
+
+.pageWrapper {
+    transition: margin-left 0.3s ease;
+    flex: 1 1 auto;
+    min-width: 0;
+
+    &.pushLeft {
+        margin-left: 330px; // match sidebar width
+    }
+
+    &.pushRight {
+        margin-right: 355px; // for right sidebar
+    }
+}
+
+.alarmIconContainer {
+    position: relative;
+
+    .badgeConainer {
+        position: absolute;
+        top: -15px;
+        right: 1px;
+    }
+}

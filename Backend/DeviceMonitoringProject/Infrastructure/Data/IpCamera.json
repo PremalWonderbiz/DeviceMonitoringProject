@@ -1,0 +1,167 @@
+{
+  "FileName": "IpCamera.json",
+  "Name": "IP Camera",
+  "Type": "Surveillance Device",
+  "Status": "Online",
+  "MacId": "3C:71:BF:12:34:56",
+  "Connectivity": "Low",
+  "staticProperties": {
+    "Camera Specifications": {
+      "Resolution": "1920x1080 (Full HD)",
+      "Field of View": "120°",
+      "Lens Type": "2.8mm Fixed Lens",
+      "Zoom Capability": "4x Digital Zoom",
+      "Night Vision": {
+        "Enabled": true,
+        "IR Range": "30 meters",
+        "IR LEDs": 6
+      },
+      "Audio Support": {
+        "Microphone": true,
+        "Speaker": false
+      }
+    },
+    "Manufacturer Details": {
+      "Brand": "Hikvision",
+      "Model": "DS-2CD2043G0-I",
+      "Serial Number": "HKVCAM4567891",
+      "Manufacture Date": "2023-02-18",
+      "Purchase Date": "2023-03-10",
+      "Mounting Location": "Main Gate - Left Wall",
+      "Warranty": {
+        "Status": "Active",
+        "Expires On": "2026-03-10"
+      }
+    },
+    "Storage & Power": {
+      "Storage Type": "MicroSD Card",
+      "Storage Capacity": "128 GB",
+      "Power Supply": "PoE (Power over Ethernet)",
+      "Backup Battery": false
+    },
+    "Network Configuration": {
+      "Supports Wi-Fi": false,
+      "Ethernet MAC Address": "3C:71:BF:12:34:56",
+      "Hostname": "ipcam-frontgate"
+    },
+    "Streaming & Integration": {
+      "Stream Protocols": [
+        "RTSP",
+        "ONVIF",
+        "HTTP"
+      ],
+      "Supports Cloud Backup": true,
+      "Connected to NVR": true,
+      "NVR Channel": 2
+    }
+  },
+  "dynamicProperties": {
+    "Live Stream": {
+      "Streaming Status": "Active",
+      "Current Viewers": 2,
+      "Streaming Bitrate": "1392 Kbps",
+      "Live Snapshot URL": "http://192.168.1.88:8080/snapshot.jpg"
+    },
+    "Motion Detection": {
+      "Motion Detection Enabled": true,
+      "Detection Zones": [
+        {
+          "Zone ID": "Zone A",
+          "Region": "Entrance Walkway",
+          "Sensitivity": "High"
+        },
+        {
+          "Zone ID": "Zone B",
+          "Region": "Gate Door Area",
+          "Sensitivity": "Medium"
+        }
+      ],
+      "Last Motion Detected": {
+        "Timestamp": "2025-06-18T18:09:59",
+        "Zone": "Zone B",
+        "Detected Object": "Animal"
+      },
+      "Motion Events": [
+        {
+          "Time": "2025-06-18T18:09:59",
+          "Zone": "Zone A",
+          "Event Type": "Motion",
+          "Snapshot URL": "http://192.168.1.88/events/20250618_1809.jpg"
+        },
+        {
+          "Time": "2025-06-18T18:09:49",
+          "Zone": "Zone A",
+          "Event Type": "Motion",
+          "Snapshot URL": "http://192.168.1.88/events/20250618_1809.jpg"
+        },
+        {
+          "Time": "2025-06-18T18:09:38",
+          "Zone": "Zone A",
+          "Event Type": "Motion",
+          "Snapshot URL": "http://192.168.1.88/events/20250618_1809.jpg"
+        },
+        {
+          "Time": "2025-06-18T18:09:28",
+          "Zone": "Zone A",
+          "Event Type": "Motion",
+          "Snapshot URL": "http://192.168.1.88/events/20250618_1809.jpg"
+        },
+        {
+          "Time": "2025-06-18T18:09:18",
+          "Zone": "Zone A",
+          "Event Type": "Motion",
+          "Snapshot URL": "http://192.168.1.88/events/20250618_1809.jpg"
+        }
+      ]
+    },
+    "Network Activity": {
+      "IP Address": "192.168.1.88",
+      "Connection Type": "Ethernet",
+      "Data Transferred Today": "1.5 GB",
+      "Packet Loss": "0.10%",
+      "Latency": "13 ms"
+    },
+    "System Status": {
+      "Uptime": "2 days 0 hours",
+      "Last Reboot": "2025-05-28T06:32:10",
+      "Firmware Version": "v5.7.3",
+      "Firmware Update Available": true,
+      "System Temperature": "41.7°C"
+    },
+    "Security": {
+      "Login Attempts": [
+        {
+          "Username": "guest",
+          "Success": false,
+          "IP": "192.168.1.125",
+          "Time": "2025-06-18T18:09:59"
+        },
+        {
+          "Username": "guest",
+          "Success": false,
+          "IP": "192.168.1.155",
+          "Time": "2025-06-18T18:09:49"
+        },
+        {
+          "Username": "guest",
+          "Success": false,
+          "IP": "192.168.1.158",
+          "Time": "2025-06-18T18:09:38"
+        },
+        {
+          "Username": "guest",
+          "Success": false,
+          "IP": "192.168.1.105",
+          "Time": "2025-06-18T18:09:28"
+        },
+        {
+          "Username": "admin",
+          "Success": true,
+          "IP": "192.168.1.136",
+          "Time": "2025-06-18T18:09:18"
+        }
+      ],
+      "Access Logs Enabled": true
+    }
+  }
+}
