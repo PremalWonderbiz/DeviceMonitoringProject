@@ -41,3 +41,24 @@ a {
     color-scheme: dark;
   }
 }
+
+.rs-picker-popup.rs-picker-popup-daterange {
+  z-index: 4000 !important;
+}
+
+.rs-input-group.rs-input-group-inside, .rs-input{
+  background-color: transparent !important;
+}
+
+.rs-input-group{
+  border : 1px solid #27272a !important;
+}
+
+.rs-input-group:focus-within{
+  border-color: #a1a1aa !important;
+  outline : none !important;
+}
+
+.rs-input{
+  color: #959595 !important;
+}

@@ -21,6 +21,15 @@ export const getDevicesTopLevelData = async (pageNo : any, pageSize : any) => {
   }
 };
 
+export const getDevicesNameMacIdList = async () => {
+  try {
+    const response = await axios.get(`${baseURL}/api/Devices/getDevicesNameMacIdList`);
+    return response;
+  } catch (error : any) {
+     handleAxiosError(error);
+  }
+};
+
 export const getMacIdToFileNameMap = async () => {
   try {
     const response = await axios.get(`${baseURL}/api/Devices/getMacIdToFileNameMap`);

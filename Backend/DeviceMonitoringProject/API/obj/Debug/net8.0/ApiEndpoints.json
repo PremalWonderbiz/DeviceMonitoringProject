@@ -1,6 +1,16 @@
 [
   {
     "ContainingType": "API.Controllers.DevicesController",
+    "Method": "GetDevicesNameMacIdList",
+    "RelativePath": "api/Devices/getDevicesNameMacIdList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.DevicesController",
     "Method": "GetMacIdToFileNameMap",
     "RelativePath": "api/Devices/getMacIdToFileNameMap",
     "HttpMethod": "GET",

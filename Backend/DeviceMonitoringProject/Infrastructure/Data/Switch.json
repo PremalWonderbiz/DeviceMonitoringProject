@@ -69,29 +69,29 @@
       },
       {
         "Port": "Gig1/0/2",
-        "Link Status": "Up",
-        "Connected Device": "Firewall",
-        "Current Throughput": "546 Mbps"
+        "Link Status": "Down",
+        "Connected Device": null,
+        "Current Throughput": "0 Mbps"
       },
       {
         "Port": "Gig1/0/3",
         "Link Status": "Up",
-        "Connected Device": "NAS Server",
-        "Current Throughput": "830 Mbps"
+        "Connected Device": "Printer",
+        "Current Throughput": "945 Mbps"
       }
     ],
     "System Health": {
-      "CPU Usage": "22%",
-      "RAM Usage": "1.7 GB / 2 GB",
-      "Temperature": "49°C",
+      "CPU Usage": "72%",
+      "RAM Usage": "1.5 GB / 2 GB",
+      "Temperature": "46°C",
       "Fan Status": "Operational"
     },
     "Traffic Statistics": {
-      "Total Data Sent": "6.72 TB",
-      "Total Data Received": "9.37 TB",
+      "Total Data Sent": "6.55 TB",
+      "Total Data Received": "9.69 TB",
       "Packet Errors": {
         "Inbound": 14,
-        "Outbound": 9
+        "Outbound": 6
       },
       "Broadcast Storms Detected": false
     },
@@ -99,9 +99,7 @@
       "Active VLANs": [
         10,
         20,
-        30,
-        99,
-        40
+        30
       ],
       "Routing Table": [
         {
@@ -129,60 +127,60 @@
       },
       "Login Attempts": [
         {
-          "User": "guest",
-          "IP": "192.168.0.52",
-          "Time": "2025-06-18T18:07:06",
+          "User": "admin",
+          "IP": "192.168.0.70",
+          "Time": "2025-06-20T16:49:44",
           "Success": true
         },
         {
           "User": "admin",
-          "IP": "192.168.0.60",
-          "Time": "2025-06-18T18:07:57",
-          "Success": false
-        },
-        {
-          "User": "admin",
-          "IP": "192.168.0.18",
-          "Time": "2025-06-18T18:08:27",
-          "Success": true
-        },
-        {
-          "User": "guest",
-          "IP": "192.168.0.12",
-          "Time": "2025-06-18T18:09:28",
+          "IP": "192.168.0.43",
+          "Time": "2025-06-20T17:29:45",
           "Success": true
         },
         {
           "User": "admin",
-          "IP": "192.168.0.33",
-          "Time": "2025-06-18T18:09:59",
+          "IP": "192.168.0.91",
+          "Time": "2025-06-20T17:39:53",
+          "Success": true
+        },
+        {
+          "User": "admin",
+          "IP": "192.168.0.90",
+          "Time": "2025-06-23T20:24:30",
+          "Success": true
+        },
+        {
+          "User": "admin",
+          "IP": "192.168.0.17",
+          "Time": "2025-06-24T16:29:31",
           "Success": true
         }
       ],
       "Recent Logs": [
         {
-          "Timestamp": "2025-06-18T18:07:46",
-          "Event": "Interface Gig1/0/1 Security violation detected"
-        },
-        {
-          "Timestamp": "2025-06-18T18:08:07",
-          "Event": "Interface Gig1/0/3 Security violation detected"
-        },
-        {
-          "Timestamp": "2025-06-18T18:08:17",
-          "Event": "Interface Gig1/0/2 went UP"
-        },
-        {
-          "Timestamp": "2025-06-18T18:08:37",
+          "Timestamp": "2025-06-24T14:32:48",
           "Event": "Interface Gig1/0/3 went DOWN"
         },
         {
-          "Timestamp": "2025-06-18T18:08:48",
-          "Event": "Interface Gig1/0/4 Security violation detected"
+          "Timestamp": "2025-06-24T16:08:52",
+          "Event": "Interface Gig1/0/1 PoE fault"
         },
         {
-          "Timestamp": "2025-06-18T18:09:38",
-          "Event": "Interface Gig1/0/2 Security violation detected"
+          "Timestamp": "2025-06-24T16:39:31",
+          "Event": "Interface Gig1/0/1 went UP"
+        },
+        {
+          "Timestamp": "2025-06-24T17:09:32",
+          "Event": "Interface Gig1/0/4 went UP"
+        },
+        {
+          "Timestamp": "2025-06-24T17:29:33",
+          "Event": "Interface Gig1/0/3 Security violation detected"
+        },
+        {
+          "Timestamp": "2025-06-24T17:39:33",
+          "Event": "Interface Gig1/0/4 PoE fault"
         }
       ]
     }

@@ -1,71 +1,109 @@
-"use client"
-
-import {
-  Badge,
-  Combobox,
-  Portal,
-  Wrap,
-  createListCollection,
-} from "@chakra-ui/react"
+import { Badge, CloseButton, Combobox, Portal, Wrap, createListCollection} from "@chakra-ui/react"
 import { useMemo, useState } from "react"
 
-const ComboBox = ({skills, selectedSkills, setSelectedSkills} : any) => {
+const ComboBox = ({ devices, selectedDevices, setSelectedDevices }: any) => {
   const [searchValue, setSearchValue] = useState("")
 
+  // Filter devices based on search input
   const filteredItems = useMemo(
     () =>
-      skills.filter((item : any) =>
-        item.toLowerCase().includes(searchValue.toLowerCase()),
+      devices.filter((item: any) =>
+        item.deviceName.toLowerCase().includes(searchValue.toLowerCase())
       ),
-    [searchValue],
+    [searchValue, devices]
   )
 
+  // Prepare collection for Combobox from filtered list
   const collection = useMemo(
-    () => createListCollection({ items: filteredItems }),
-    [filteredItems],
+    () =>
+      createListCollection({
+        items: filteredItems.map((device: any) => ({
+          value: device.deviceMacId,
+          label: device.deviceName,
+        })),
+      }),
+    [filteredItems]
+  )
+
+  // Convert selected objects to their macIds
+  const selectedMacIds = useMemo(
+    () => selectedDevices.map((d: any) => d.deviceMacId),
+    [selectedDevices]
   )
 
   const handleValueChange = (details: Combobox.ValueChangeDetails) => {
-    setSelectedSkills(details.value)
+    const newSelected = details.value
+      .map((macId: string) => devices.find((d: any) => d.deviceMacId === macId))
+      .filter(Boolean)
+    setSelectedDevices(newSelected)
   }
 
   return (
     <Combobox.Root
       multiple
-      closeOnSelect
       width="320px"
-      value={selectedSkills}
+      value={selectedMacIds}
       collection={collection}
       onValueChange={handleValueChange}
       onInputValueChange={(details) => setSearchValue(details.inputValue)}
     >
       <Wrap gap="2">
-        {selectedSkills.map((skill : any) => (
-          <Badge padding={"0.5rem"} key={skill}>{skill}</Badge>
+        {selectedDevices.map((device: any) => (
+          <Badge
+            key={device.deviceMacId}
+            padding="0.5rem"
+            display="flex"
+            alignItems="center"
+            gap="0.5rem"
+          >
+            {device.deviceName}
+            <CloseButton
+              boxSize="0.7em"
+              cursor="pointer"
+              onClick={(e) => {
+                e.stopPropagation()
+                setSelectedDevices(
+                  selectedDevices.filter(
+                    (d: any) => d.deviceMacId !== device.deviceMacId
+                  )
+                )
+              }}
+            />
+          </Badge>
         ))}
       </Wrap>
 
-      <Combobox.Label>Select Skills</Combobox.Label>
-
       <Combobox.Control>
-        <Combobox.Input placeholder="Select Devices" padding={"0.5rem"}/>
+        <Combobox.Input placeholder="Select Devices" padding="0.5rem" />
         <Combobox.IndicatorGroup>
-          <Combobox.Trigger padding={"0.5rem"}/>
+          <Combobox.Trigger padding="0.5rem" />
         </Combobox.IndicatorGroup>
       </Combobox.Control>
 
       <Portal>
         <Combobox.Positioner>
-          <Combobox.Content backgroundColor={"#181818"} color={"#fff"} padding={"0.5rem 1rem"} zIndex={"popover"}>
+          <Combobox.Content
+            backgroundColor="#181818"
+            color="#fff"
+            padding="0.5rem 1rem"
+            zIndex="popover"
+          >
             <Combobox.ItemGroup>
-              <Combobox.ItemGroupLabel>Skills</Combobox.ItemGroupLabel>
-              {filteredItems.map((item : any) => (
-                <Combobox.Item key={item} item={item}>
-                  {item}
+              <Combobox.ItemGroupLabel>Devices</Combobox.ItemGroupLabel>
+
+              {filteredItems.map((item: any) => (
+                <Combobox.Item
+                  key={item.deviceMacId}
+                  item={item.deviceMacId}
+                >
+                  {item.deviceName}
                   <Combobox.ItemIndicator />
                 </Combobox.Item>
               ))}
-              <Combobox.Empty>No skills found</Combobox.Empty>
+
+              {filteredItems.length === 0 && (
+                <Combobox.Empty>No devices found</Combobox.Empty>
+              )}
             </Combobox.ItemGroup>
           </Combobox.Content>
         </Combobox.Positioner>
@@ -74,4 +112,4 @@ const ComboBox = ({skills, selectedSkills, setSelectedSkills} : any) => {
   )
 }
 
-export default ComboBox;
+export default ComboBox

@@ -1,91 +1,82 @@
 // components/AlarmPanel.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "@/styles/scss/AlarmPanel.module.scss";
 import Badge from '../Badge';
 import Modal from '@/components/chakrauicomponents/Modal';
-import ComboBox from '@/components/chakrauicomponents/ComboBox';
 import Accordion from '../Accordion';
 import { DeviceTags } from './AlarmPanelContent';
+import { acknowledgeAlarm, getAlarmPanelData } from '@/services/alarmservice';
+import { getDevicesNameMacIdList, getDevicesTopLevelData } from '@/services/deviceservice';
+import { formatRelativeTime } from '@/utils/helperfunctions';
 
-interface Alarm {
-  id: number;
-  message: string;
-  time: string;
-  severity: 'Critical' | 'Warning' | 'Information';
-  acknowledged: boolean;
-}
+const priorityMap: any = {
+  Critical: 0,
+  Warning: 1,
+  Information: 2,
+};
 
-const skills = [
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Node.js",
-  "GraphQL",
-  "PostgreSQL",
-]
 
-export const alarms: Alarm[] = [
-  {
-    id: 1,
-    message: 'Mobile Device Failed',
-    time: '20 minutes ago',
-    severity: 'Critical',
-    acknowledged: false,
-  },
-  {
-    id: 2,
-    message: 'Mobile device disconnected',
-    time: '20 minutes ago',
-    severity: 'Warning',
-    acknowledged: false,
-  },
-  {
-    id: 3,
-    message: 'NAC device restarted',
-    time: '20 minutes ago',
-    severity: 'Information',
-    acknowledged: false,
-  },
-  {
-    id: 4,
-    message: 'Mobile device disconnected',
-    time: '20 minutes ago',
-    severity: 'Warning',
-    acknowledged: true,
-  },
-  {
-    id: 5,
-    message: 'Mobile device disconnected',
-    time: '20 minutes ago',
-    severity: 'Warning',
-    acknowledged: true,
-  },
-  {
-    id: 6,
-    message: 'Mobile device disconnected',
-    time: '20 minutes ago',
-    severity: 'Warning',
-    acknowledged: true,
-  }
-];
-
-const AlarmPanel = () => {
-  const unacknowledged = alarms.filter(a => !a.acknowledged);
-  const acknowledged = alarms.filter(a => a.acknowledged);
-  const [selectedSkills, setSelectedSkills] = useState<string[]>([])
-  const [tags, setTags] = useState<string[]>(['Device 1', 'Device 2', 'Device 3', 'Device 4', 'Device 5', 'Device 6']);
+const AlarmPanel = ({ selectedDevices,setSelectedDevices } : any) => {
+  const [unacknowledgedAlarms, setUnacknowledgedAlarms] = useState<any[]>([]);
+  const [acknowledgedAlarms, setAcknowledgedAlarms] = useState<any[]>([]);
+  const [devices, setDevices] = useState<any[]>([]);
+  const [dateRange, setDateRange] = useState<[Date, Date] | null>(null);
 
   const handleRemoveTag = (index: number) => {
-    setTags(prev => prev.filter((_, i) => i !== index));
+    setSelectedDevices((prev : any) => prev.filter((_ : any, i: any) => i !== index));
   };
 
   const [expandedId, setExpandedId] = React.useState<number | null>(null);
 
-  const severityColors: Record<Alarm['severity'], { bg: string; color: string }> = {
+  const severityColors: Record<string, { bg: string; color: string }> = {
     Critical: { bg: 'criticalAlarm', color: 'light' },
     Warning: { bg: 'warningAlarm', color: 'dark' },
     Information: { bg: 'infoAlarm', color: 'light' },
   };
+
+  const fetchData = async (selectedDevices: any[], dateRange: any) => {    
+    const response = await getAlarmPanelData({ "devices": selectedDevices || [], "filterDateRange": dateRange || [] });
+    if (!response)
+      console.log("Network response was not ok");
+
+    if (response && response.data) {
+      filterAndSortAlarms(response.data);
+    }
+  };
+
+  useEffect(() => {
+    const fetchDevicesData = async () => {
+      const response = await getDevicesNameMacIdList();
+      if (!response)
+        console.log("Network response was not ok");
+
+      if (response && response.data) {
+        setDevices(response.data);
+      }
+    };
+
+    fetchData(selectedDevices.map((s: any) => s.deviceMacId), dateRange);
+    fetchDevicesData();
+  }, []);
+
+  useEffect(() => {
+    fetchData(selectedDevices.map((s: any) => s.deviceMacId), dateRange);
+  }, [selectedDevices, dateRange]);
+
+  function filterAndSortAlarms(data: any) {
+    setAcknowledgedAlarms(sortAlarmsDataBySeverity(data.filter((alarm: any) => alarm.isAcknowledged)));
+    setUnacknowledgedAlarms(sortAlarmsDataBySeverity(data.filter((alarm: any) => !alarm.isAcknowledged)));
+  }
+
+  function sortAlarmsDataBySeverity(alarms: any) {
+    return alarms.sort((a: any, b: any) => {
+      const severityDiff = priorityMap[a.severity] - priorityMap[b.severity];
+      if (severityDiff !== 0) return severityDiff;
+
+      // If same severity, sort by date (newest first)
+      return new Date(b.raisedAt).getTime() - new Date(a.raisedAt).getTime();
+    });
+  }
 
   function ExpandAlarmCard(id: number) {
     setExpandedId((prev) => {
@@ -96,39 +87,50 @@ const AlarmPanel = () => {
     })
   }
 
+  const acknowledgeAlarmData = async (alarmId: any) => {
+    const response = await acknowledgeAlarm(alarmId);
+    if (!response)
+      console.log("Network response was not ok");
+
+    if (response && response.data) {
+      const ackAlarm = unacknowledgedAlarms.find((a: any) => a.id == alarmId);
+      setUnacknowledgedAlarms((prev: any) => prev.filter((a: any) => a.id != alarmId));
+      const ackAlarms = [ackAlarm, ...acknowledgedAlarms];
+      setAcknowledgedAlarms(sortAlarmsDataBySeverity(ackAlarms));
+    }
+  }
+
   return (
     <div className={styles.panel}>
       <div className={styles.header}>
         <h2>Alarms
           <span className={styles.count}>
-            <Badge label={alarms.length.toString()} bgColor="neutral" textColor="dark" />
+            <Badge label={(unacknowledgedAlarms.length + acknowledgedAlarms.length).toString()} bgColor="neutral" textColor="dark" />
           </span>
         </h2>
-        <Modal title={"Alarm Panel Filters"} triggerButton={<button className={styles.filterBtn}>Apply Filters</button>}>
-          <ComboBox skills={skills} selectedSkills={selectedSkills} setSelectedSkills={setSelectedSkills} />
-        </Modal>
+        <Modal setDateRange={setDateRange} title={"Alarm Panel Filters"} triggerButton={<button className={styles.filterBtn}>Apply Filters</button>} devices={devices} selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices} />
       </div>
 
-      <div className={`${styles.filters} ${tags.length == 0 ? styles.zeroFilters : ''}`}>
-        <DeviceTags tags={tags} removeTag={handleRemoveTag} />
+      <div className={`${styles.filters} ${selectedDevices.length == 0 ? styles.zeroFilters : ''}`}>
+        <DeviceTags tags={selectedDevices} removeTag={handleRemoveTag} />
       </div>
 
       <div className={styles.section}>
-        <Accordion 
+        <Accordion
           title={<h3 className={styles.alarmPanelTitles}>Unacknowledged <span className={styles.sectionCount}>
-            <Badge label={unacknowledged.length.toString()} bgColor="neutral" textColor="dark" />
-            </span></h3>} defaultOpen={true} bgColor='white'>
-          <div>
-            {unacknowledged.map(alarm => {
+            <Badge label={unacknowledgedAlarms.length.toString()} bgColor="neutral" textColor="dark" />
+          </span></h3>} defaultOpen={true} bgColor='white'>
+          <div className={`${styles.alarmsAccordionSection} ${selectedDevices.length == 0 ? styles.alarmsAccordionSectionHeight : null}`}>
+            {unacknowledgedAlarms.map(alarm => {
               const isExpanded = expandedId === alarm.id;
 
               return (
                 <div className={`${styles.alarmCard} ${styles.unacknowledged} ${isExpanded ? styles.expanded : ''}`} key={alarm.id} onClick={() => ExpandAlarmCard(alarm.id)} >
                   <div>
                     <p className={styles.message}>{alarm.message}</p>
-                    <span className={styles.time}>{alarm.time}</span>
+                    <span className={styles.time}>{formatRelativeTime(alarm.raisedAt)}</span>
                     <div className={`${styles.expandedContent} ${isExpanded ? styles.show : ''}`} >
-                      <button onClick={(event: any) => { event.stopPropagation() }} className={styles.ackBtn}>Acknowledge</button>
+                      <button onClick={(event: any) => { event.stopPropagation(); acknowledgeAlarmData(alarm.id); }} className={styles.ackBtn}>Acknowledge</button>
                     </div>
                   </div>
                   <div className={styles.rightSide}>
@@ -144,16 +146,16 @@ const AlarmPanel = () => {
       <div className={styles.section}>
         <Accordion
           title={<h3 className={styles.alarmPanelTitles}>Acknowledged <span className={styles.sectionCount}>
-            <Badge label={acknowledged.length.toString()} bgColor="neutral" textColor="dark" />
+            <Badge label={acknowledgedAlarms.length.toString()} bgColor="neutral" textColor="dark" />
           </span></h3>} defaultOpen={true} bgColor='white'
         >
-          <div>
-            {acknowledged.map(alarm => {
+          <div className={`${styles.alarmsAccordionSection} ${selectedDevices.length == 0 ? styles.alarmsAccordionSectionHeight : null}`}>
+            {acknowledgedAlarms.map(alarm => {
               return (
                 <div className={`${styles.alarmCard}`} key={alarm.id}>
                   <div>
                     <p className={styles.message}>{alarm.message}</p>
-                    <span className={styles.time}>{alarm.time}</span>
+                    <span className={styles.time}>{formatRelativeTime(alarm.raisedAt)}</span>
                   </div>
                   <div className={styles.rightSide}>
                     <Badge label={alarm.severity} bgColor={severityColors[alarm.severity].bg} textColor={severityColors[alarm.severity].color} />

@@ -32,7 +32,7 @@ namespace Infrastructure.Services
                 _logger.LogInformation("DeviceTopDataBgService Current time: {time}", DateTimeOffset.Now);
                 await _deviceService.GenerateAndSendLiveUpdatesDevicesData();
 
-                await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken); // Wait for 10 seconds
+                await Task.Delay(TimeSpan.FromSeconds(600), stoppingToken); // Wait for 10 seconds
             }
 
             _logger.LogInformation("DeviceTopDataBgService is stopping.");

@@ -42,6 +42,14 @@ namespace API.Controllers
                 data = formattedData
             });
         }
+        
+        [HttpGet("getDevicesNameMacIdList")]
+        public async Task<IActionResult> GetDevicesNameMacIdList()
+        {
+            var data = await _deviceService.GetDevicesNameMacIdList();
+
+            return Ok(data);
+        }
 
         [HttpGet("getMacIdToFileNameMap")]
         public async Task<IActionResult> GetMacIdToFileNameMap()

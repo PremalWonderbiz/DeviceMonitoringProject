@@ -39,6 +39,18 @@
         }
       }
     },
+    "/api/Devices/getDevicesNameMacIdList": {
+      "get": {
+        "tags": [
+          "Devices"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Devices/getMacIdToFileNameMap": {
       "get": {
         "tags": [

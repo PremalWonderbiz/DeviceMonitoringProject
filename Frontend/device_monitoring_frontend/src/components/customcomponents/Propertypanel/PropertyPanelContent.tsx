@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Accordion from "../Accordion";
 import styles from "@/styles/scss/PropertyPanel.module.scss";
+import Badge from "../Badge";
+import { getLatestAlarmForDevice } from "@/services/alarmservice";
+import { formatRelativeTime } from "@/utils/helperfunctions";
 
 export const StaticTabContent = React.memo(({ staticProps }: { staticProps: any }) => {
     console.log("Rendering StaticTabContent with staticProps:", staticProps);
@@ -20,10 +23,47 @@ export const StaticTabContent = React.memo(({ staticProps }: { staticProps: any 
     );
 });
 
-export const HealthTabContent = React.memo(({ dynamicProps }: { dynamicProps: any }) => {
+export const HealthTabContent = React.memo(({ deviceName, setIsAlarmPanelOpen, setSelectedDevices, deviceMacId, dynamicProps }: any) => {
     console.log("Rendering DynamicTabContent with staticProps:", dynamicProps);
+    const [alarm, setAlarm] = useState<any>(null);
+    const [totalAlarmsForDevice, setTotalAlarmsForDevice] = useState<any>(0);
+
+    useEffect(() => {
+        const fetchLatestAlarmData = async () => {
+            const response = await getLatestAlarmForDevice(deviceMacId);
+            if (!response)
+                console.log("Network response was not ok");
+
+            if (response && response.data) {
+                setAlarm(response.data.alarm);
+                setTotalAlarmsForDevice(response.data.totalAlarms);
+            }else{
+                setAlarm(null);
+                setTotalAlarmsForDevice(0);
+            }
+        };
+
+        fetchLatestAlarmData();
+    }, [deviceMacId]);
+
     return (
         <div className={`${styles.propertyPanelTabContent}`}>
+            {alarm &&(<div className={`${styles.alarmCard}`}>
+                <div>
+                    <p className={styles.message}>{alarm.message}</p>
+                    <span className={styles.time}>{formatRelativeTime(alarm.raisedAt)}</span>
+                    <div className={``} >
+                        <button onClick={(event: any) => {
+                            event.stopPropagation(); 
+                            setIsAlarmPanelOpen(true);
+                            setSelectedDevices([{deviceMacId : deviceMacId, deviceName : deviceName}]);  
+                            }} className={styles.viewBtn}>
+                            View related alarms 
+                            <span className="ml-2"><Badge label={totalAlarmsForDevice} bgColor="neutral" textColor="dark" /></span>
+                        </button>
+                    </div>
+                </div>
+            </div>)}
             {Object.entries(dynamicProps).map(([key, value]: any) => {
                 if (typeof value === "object" && value !== null)
                     return renderObject(key, value);
@@ -37,14 +77,14 @@ export const HealthTabContent = React.memo(({ dynamicProps }: { dynamicProps: an
         </div>
     );
 }, (prevProps, nextProps) => {
-    return prevProps.dynamicProps === nextProps.dynamicProps;
+    return (prevProps.dynamicProps === nextProps.dynamicProps);
 });
 
 
 export const renderKeyValueSection = (key: any, value: any, depth: any) => {
-    if (typeof value === "boolean") 
+    if (typeof value === "boolean")
         value = value ? "Yes" : "No";
-    
+
     return (
         <div className={styles.kvRow}>
             <span className={`${styles.kvKey} ${styles[`depth-${depth}`]}`}>{key}</span>

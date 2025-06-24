@@ -2,9 +2,9 @@
   "FileName": "Laptop.json",
   "Name": "Laptop",
   "Type": "Personal Device",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "3C:5A:B4:91:22:AC",
-  "Connectivity": "Medium",
+  "Connectivity": "High",
   "staticProperties": {
     "Hardware Details": {
       "Operating System": "Windows 11 Pro",
@@ -79,61 +79,61 @@
   "dynamicProperties": {
     "System Status": {
       "Battery": {
-        "Level": "83%",
-        "Charging Status": "Discharging",
-        "Health": "Good",
-        "Estimated Time Left": "3 hrs 38 mins"
+        "Level": "37%",
+        "Charging Status": "Charging",
+        "Health": "Needs Attention",
+        "Estimated Time Left": "1 hrs 38 mins"
       },
-      "CPU Load": "43%",
+      "CPU Load": "35%",
       "RAM Usage": {
-        "Used": "14.2 GB",
-        "Free": "17.8 GB"
+        "Used": "9.0 GB",
+        "Free": "23.0 GB"
       },
       "GPU Usage": {
-        "Integrated": "2%",
-        "Dedicated": "16%"
+        "Integrated": "3%",
+        "Dedicated": "8%"
       },
       "Temperature": {
-        "CPU": "54.5°C",
-        "GPU": "54.5°C",
-        "Motherboard": "41.7°C"
+        "CPU": "58.0°C",
+        "GPU": "46.9°C",
+        "Motherboard": "43.3°C"
       },
-      "System Uptime": "5 days, 5 hours"
+      "System Uptime": "4 days, 3 hours"
     },
     "Network Activity": {
       "Current Wi-Fi": {
         "SSID": "Office_Network_5G",
-        "IP Address": "10.0.1.223",
-        "Signal Strength": "-58 dBm",
+        "IP Address": "10.0.1.50",
+        "Signal Strength": "-45 dBm",
         "Data Usage (Today)": {
-          "Download": "1.2 GB",
-          "Upload": "3.1 GB"
+          "Download": "4.5 GB",
+          "Upload": "4.9 GB"
         }
       },
       "VPN Status": {
         "Connected": true,
         "Provider": "NordLayer",
-        "IP": "172.20.33.32"
+        "IP": "172.20.35.250"
       }
     },
     "Application Activity": {
       "Foreground Apps": [
         {
           "App Name": "Visual Studio Code",
-          "CPU": "19%",
-          "Memory": "1.2 GB"
+          "CPU": "14%",
+          "Memory": "1.3 GB"
         },
         {
           "App Name": "Slack",
-          "CPU": "2%",
+          "CPU": "4%",
           "Memory": "0.7 GB"
         }
       ],
-      "Background Processes": 85,
+      "Background Processes": 61,
       "Recent Apps Launched": [
-        "Edge Browser",
-        "Spotify",
-        "Zoom"
+        "Postman",
+        "Figma",
+        "Jira"
       ]
     }
   }

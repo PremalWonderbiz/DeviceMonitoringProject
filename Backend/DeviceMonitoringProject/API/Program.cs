@@ -1,3 +1,4 @@
+using API.Middleware;
 using Application.Dtos;
 using Application.Interfaces;
 using Infrastructure.Helpers;
@@ -20,6 +21,11 @@ builder.Services.AddSignalR();
 builder.Services.AddHostedService<DeviceLiveDataBgService>();
 builder.Services.AddTransient<IDeviceService, DeviceService>();
 builder.Services.AddTransient<IDynamicDataHelper, DynamicDataHelper>();
+builder.Services.AddTransient<IAlarmEvaluationService, AlarmEvaluationService>();
+builder.Services.AddHttpClient<IAlarmEvaluationService, AlarmEvaluationService>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7154"); // later configure it in appsettings
+});
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy",
@@ -38,6 +44,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 

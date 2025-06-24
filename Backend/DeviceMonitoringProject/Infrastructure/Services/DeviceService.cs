@@ -21,14 +21,16 @@ namespace Infrastructure.Services
         private readonly IHubContext<DeviceHub> _hubContext;
         private readonly IDynamicDataHelper _dynamicDataHelper;
         private readonly string _dataDirectory;
+        private readonly IAlarmEvaluationService _alarmEvaluationService;
 
-        public DeviceService(IOptions<DeviceServiceOptions> options,ILogger<DeviceService> logger, IHubContext<DeviceHub> hubContext, IDynamicDataHelper dynamicDataHelper)
+        public DeviceService(IOptions<DeviceServiceOptions> options, ILogger<DeviceService> logger, IHubContext<DeviceHub> hubContext, IDynamicDataHelper dynamicDataHelper, IAlarmEvaluationService alarmEvaluationService)
         {
             _logger = logger;
             _hubContext = hubContext;
             _dynamicDataHelper = dynamicDataHelper;
             _dataDirectory = options.Value.DataDirectory;
             devices = GetAllDeviceMetadata();
+            _alarmEvaluationService = alarmEvaluationService;
         }
 
         public List<DeviceMetadata> GetAllDeviceMetadata()
@@ -173,6 +175,14 @@ namespace Infrastructure.Services
                     string jsonText = File.ReadAllText(file);
                     JsonNode rootNode = JsonNode.Parse(jsonText)!;
 
+                    var previousDto = new LiveDeviceDataDto
+                    {
+                        DeviceMacId = device.MacId,
+                        Status = rootNode["Status"]?.GetValue<string>() ?? "Unknown",
+                        Connectivity = rootNode["Connectivity"]?.GetValue<string>() ?? "Unknown",
+                        DynamicProperties = JsonDocument.Parse(rootNode["dynamicProperties"]!.ToJsonString()).RootElement
+                    };
+
                     if (selectedDevices.Any(d => d.MacId == device.MacId))
                     {
                         rootNode["Status"] = device.Status;
@@ -237,6 +247,16 @@ namespace Infrastructure.Services
                         _logger.LogError(ex, "Error writing updated JSON to file {file}", file);
                     }
 
+                    var updatedDto = new LiveDeviceDataDto
+                    {
+                        DeviceMacId = device.MacId,
+                        Status = rootNode["Status"]?.GetValue<string>() ?? "Unknown",
+                        Connectivity = rootNode["Connectivity"]?.GetValue<string>() ?? "Unknown",
+                        DynamicProperties = JsonDocument.Parse(rootNode["dynamicProperties"]!.ToJsonString()).RootElement
+                    };
+
+                    //await _alarmEvaluationService.EvaluateAsync(previousDto, updatedDto);
+
                     // Read structured payload (uses updated file)
                     var detailPayload = await GetPropertyPanelDataForDevice(device.FileName);
 
@@ -294,5 +314,15 @@ namespace Infrastructure.Services
             return conns[random.Next(conns.Length)];
         }
 
+        public async Task<List<DevicesNameMacIdDto>> GetDevicesNameMacIdList()
+        {
+            var devices = GetAllDeviceMetadata().Select(d => new DevicesNameMacIdDto
+            {
+                DeviceName = d.Name,
+                DeviceMacId = d.MacId
+            }).ToList();
+
+            return devices;
+        }
     }
 }

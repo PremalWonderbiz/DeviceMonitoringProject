@@ -2,9 +2,9 @@
   "FileName": "WifiRouter.json",
   "Name": "WiFi Router",
   "Type": "Networking Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "84:C9:B2:3E:7F:A1",
-  "Connectivity": "Medium",
+  "Connectivity": "Low",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "OpenWRT 21.02",
@@ -73,19 +73,19 @@
   "dynamicProperties": {
     "System Status": {
       "Uptime": "22 days, 5 hours",
-      "CPU Usage": "27%",
+      "CPU Usage": "19%",
       "Memory Usage": {
-        "Used": "130.7 MB",
+        "Used": "226.8 MB",
         "Total": "512 MB"
       },
       "Temperature": {
-        "CPU": "58°C",
-        "Board": "44°C"
+        "CPU": "56°C",
+        "Board": "42°C"
       },
       "System Load Average": [
-        "0.53",
-        "0.42",
-        "0.00"
+        "0.61",
+        "0.24",
+        "0.38"
       ]
     },
     "Network Activity": {
@@ -95,8 +95,8 @@
           "ipAddress": "203.0.113.45",
           "macAddress": "84:C9:B2:3E:7F:A1",
           "traffic": {
-            "upload": "20 Mbps",
-            "download": "130 Mbps"
+            "upload": "45 Mbps",
+            "download": "90 Mbps"
           }
         },
         {
@@ -104,8 +104,8 @@
           "ipAddress": "192.168.0.1",
           "macAddress": "84:C9:B2:3E:7F:A2",
           "traffic": {
-            "upload": "52 Mbps",
-            "download": "109 Mbps"
+            "upload": "31 Mbps",
+            "download": "134 Mbps"
           }
         }
       ],
@@ -117,7 +117,7 @@
           "connection": {
             "type": "Wi-Fi",
             "band": "5 GHz",
-            "signalStrength": "-50 dBm"
+            "signalStrength": "-68 dBm"
           }
         },
         {
@@ -131,8 +131,8 @@
         }
       ],
       "Total Data Usage": {
-        "Sent": "837.55 GB",
-        "Received": "1.21 TB"
+        "Sent": "837.90 GB",
+        "Received": "1.20 TB"
       }
     },
     "Service Health": {

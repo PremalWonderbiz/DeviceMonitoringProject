@@ -14,5 +14,7 @@ namespace Application.Interfaces
         public Task<DeviceDetails> GetPropertyPanelDataForDevice(string deviceFileName);
 
         public Task<bool> GenerateAndSendLiveUpdatesDevicesData();
+
+        public Task<List<DevicesNameMacIdDto>> GetDevicesNameMacIdList();
     }
 }

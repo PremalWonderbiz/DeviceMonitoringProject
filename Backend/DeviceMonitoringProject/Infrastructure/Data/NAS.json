@@ -2,9 +2,9 @@
   "FileName": "NAS.json",
   "Name": "NAS Server",
   "Type": "Server",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "00:1B:44:11:3A:B7",
-  "Connectivity": "Medium",
+  "Connectivity": "Low",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "Synology DSM 7.2",
@@ -124,85 +124,85 @@
   "dynamicProperties": {
     "System Health": {
       "CPU Usage": {
-        "Load Percentage": 47,
+        "Load Percentage": 27,
         "Core Usage": [
           {
             "Core": 0,
-            "Usage": "49%"
+            "Usage": "52%"
           },
           {
             "Core": 1,
-            "Usage": "37%"
+            "Usage": "35%"
           },
           {
             "Core": 2,
-            "Usage": "57%"
+            "Usage": "47%"
           },
           {
             "Core": 3,
-            "Usage": "56%"
+            "Usage": "63%"
           }
         ]
       },
       "RAM Usage": {
-        "Used": "5.6 GB",
-        "Free": "2.4 GB",
-        "Swap Used": "0.3 GB"
+        "Used": "4.9 GB",
+        "Free": "3.1 GB",
+        "Swap Used": "0.9 GB"
       },
       "System Temperature": {
-        "CPU": "51.2°C",
-        "System Board": "40.8°C",
+        "CPU": "54.7°C",
+        "System Board": "41.6°C",
         "Drive Bays": [
           {
             "Bay": 1,
-            "Temp": "37.1°C"
+            "Temp": "38.9°C"
           },
           {
             "Bay": 2,
-            "Temp": "36.7°C"
+            "Temp": "37.3°C"
           },
           {
             "Bay": 3,
-            "Temp": "38.3°C"
+            "Temp": "38.1°C"
           },
           {
             "Bay": 4,
-            "Temp": "38.8°C"
+            "Temp": "38.6°C"
           }
         ]
       },
       "System Load Average": {
-        "1m": "1.11",
-        "5m": "1.84",
-        "15m": "1.25"
+        "1m": "1.22",
+        "5m": "1.27",
+        "15m": "1.44"
       },
-      "Uptime": "55 days, 6 hours"
+      "Uptime": "53 days, 20 hours"
     },
     "Network Activity": {
-      "Primary IP": "192.168.1.43",
+      "Primary IP": "192.168.1.45",
       "Interfaces": [
         {
           "Name": "eth0",
           "Status": "Active",
           "Throughput": {
-            "Upload": "93 Mbps",
-            "Download": "105 Mbps"
+            "Upload": "76 Mbps",
+            "Download": "135 Mbps"
           },
           "Data Transferred": {
-            "Sent": "1.3 TB",
-            "Received": "2.8 TB"
+            "Sent": "1.2 TB",
+            "Received": "2.6 TB"
           }
         },
         {
           "Name": "eth1",
-          "Status": "Idle",
+          "Status": "Active",
           "Throughput": {
-            "Upload": "0 Mbps",
-            "Download": "0 Mbps"
+            "Upload": "6 Mbps",
+            "Download": "1 Mbps"
           },
           "Data Transferred": {
-            "Sent": "N/A",
-            "Received": "N/A"
+            "Sent": "0.22 TB",
+            "Received": "0.94 TB"
           }
         }
       ],
@@ -210,12 +210,12 @@
         {
           "IP": "192.168.1.102",
           "Hostname": "laptop-prem",
-          "Last Access": "2025-06-18 17:24"
+          "Last Access": "2025-06-24 17:31"
         },
         {
           "IP": "192.168.1.115",
           "Hostname": "mobile-kiran",
-          "Last Access": "2025-06-18 17:32"
+          "Last Access": "2025-06-24 16:28"
         }
       ]
     },
@@ -233,7 +233,7 @@
       },
       "Disk Health": {
         "Status": "Healthy",
-        "Last Checked": "2025-06-15",
+        "Last Checked": "2025-06-20",
         "SMART Reports": [
           {
             "Bay": 1,
@@ -243,23 +243,23 @@
           {
             "Bay": 2,
             "Health": "Good",
-            "Reallocated Sectors": 0
+            "Reallocated Sectors": 1
           }
         ]
       },
       "Fan Status": {
         "Fan 1": {
-          "Speed": "1233 RPM",
+          "Speed": "1104 RPM",
           "Status": "Normal"
         },
         "Fan 2": {
-          "Speed": "1133 RPM",
+          "Speed": "1278 RPM",
           "Status": "Normal"
         }
       },
       "Last Backup": {
         "Status": "Success",
-        "Timestamp": "2025-06-17 23:15"
+        "Timestamp": "2025-06-23 23:15"
       }
     }
   }

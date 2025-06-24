@@ -9,6 +9,9 @@ import { useDevicesTopDataSocket } from "@/utils/customhooks/useDevicesTopDataSo
 import { BellRing } from "lucide-react";
 import { getDevicesTopLevelData, getMacIdToFileNameMap } from "@/services/deviceservice";
 import styles from "@/styles/scss/Home.module.scss";
+import PopOver from "@/components/chakrauicomponents/PopOver";
+import { AlarmPopUp } from "@/components/customcomponents/AlarmPanel/AlarmPanelContent";
+import { getLatestAlarms } from "@/services/alarmservice";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +35,25 @@ export default function Home() {
   const [currentDeviceId, setCurrentDeviceId] = useState<string | null>(null);
   const [currentDeviceFileName, setCurrentDeviceFileName] = useState<string | null>(null);
   const [isAlarmPanelOpen, setIsAlarmPanelOpen] = useState<boolean>(false);
+  const [isAlarmPopOverOpen, setIsAlarmPopOverOpen] = useState<boolean>(false);
+  const [latestAlarms, setLatestAlarms] = useState<any[]>([]);
+  const [totalAlarms, setTotalAlarms] = useState<any>(0);
+  const [selectedDevices, setSelectedDevices] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchLatestAlarmData = async () => {
+      const response = await getLatestAlarms();
+      if (!response)
+        console.log("Network response was not ok");
+
+      if (response && response.data) {
+        setLatestAlarms(response.data.alarms);
+        setTotalAlarms(response.data.totalAlarms);
+      }
+    };
+
+    fetchLatestAlarmData();
+  }, []);
 
   // Handle incoming SignalR updates
   const handleUpdate = useCallback((msg: string) => {
@@ -67,11 +89,11 @@ export default function Home() {
 
 
       if (hasChange) {
-        console.log("🔁 Updating deviceData due to change in status/connectivity", counter);
+        console.log("Updating deviceData due to change in status/connectivity", counter);
         return updatedDevices;
 
       } else {
-        console.log("✅ No change in status/connectivity; skipping update");
+        console.log("No change in status/connectivity; skipping update");
         return prevDevices;
       }
 
@@ -116,19 +138,38 @@ export default function Home() {
   return (
     <div className='m-3'>
       <Sidebar position="left" isOpen={isAlarmPanelOpen} setIsOpen={setIsAlarmPanelOpen} >
-        <AlarmPanel />
+        {isAlarmPanelOpen && <AlarmPanel selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices} />}
       </Sidebar>
 
       <div className={styles.homePageNav}>
         <span className="py-3 px-2">Device Monitoring System</span>
-        <div className={styles.alarmIconContainer}>
-          <BellRing cursor={"pointer"}
-            onClick={(event: any) => {
-              event.stopPropagation(); setIsAlarmPanelOpen((prev) => !prev);
-            }} className="mr-4" size={30} fill='#fbc02d' />
-          <div className={styles.badgeConainer}>
-            <Badge label="3" bgColor="darkgray" textColor="light" />
-          </div>
+        <div
+          className={styles.alarmWrapper}
+          onMouseEnter={() => setIsAlarmPopOverOpen(true)}
+          onMouseLeave={() => setIsAlarmPopOverOpen(false)}
+        >
+          <PopOver
+            isOpen={isAlarmPopOverOpen}
+            triggerContent={
+              <div className={styles.alarmIconContainer}>
+                <BellRing
+                  cursor="pointer"
+                  onClick={(event: any) => {
+                    event.stopPropagation();
+                    setIsAlarmPanelOpen((prev) => !prev);
+                  }}
+                  className="mr-4"
+                  size={30}
+                  fill="#fbc02d"
+                />
+                <div className={styles.badgeConainer}>
+                  <Badge label={totalAlarms} bgColor="darkgray" textColor="light" />
+                </div>
+              </div>
+            }
+          >
+            <AlarmPopUp latestAlarms={latestAlarms} totalAlarms={totalAlarms} setIsAlarmPanelOpen={setIsAlarmPanelOpen} />
+          </PopOver>
         </div>
       </div>
 
@@ -137,7 +178,7 @@ export default function Home() {
           <TableComponent data={deviceData} setIsPropertyPanelOpen={openPropertypanel} />
         </div>
         <Sidebar position="right" isOpen={isPropertyPanelOpen} setIsOpen={setIsPropertyPanelOpen}>
-          {isPropertyPanelOpen && <PropertyPanel activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} currentDeviceFileName={currentDeviceFileName} />}
+          {isPropertyPanelOpen && <PropertyPanel setIsAlarmPanelOpen={setIsAlarmPanelOpen} setSelectedDevices={setSelectedDevices} activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} currentDeviceFileName={currentDeviceFileName} />}
         </Sidebar>
       </div>
     </div>

@@ -1,8 +1,10 @@
+@use './utilities.scss' as *;
+
 // components/AlarmPanel.module.scss
 .panel {
     background: #fff;
     border-radius: 8px;
-    padding: 1.5rem 0;
+    padding: 1.5rem 0 0 0;
     width: 100%;
     max-width: 500px;
     font-family: Arial, sans-serif;
@@ -70,10 +72,54 @@
         }
     }
 
+    .alarmsAccordionSection {
+        max-height: 245px;
+        overflow-y: scroll;
+
+        &:global(body)>& {
+            height: 100vh;
+        }
+
+        // Hide scrollbar by default
+        &::-webkit-scrollbar {
+            width: 5px;
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: transparent;
+            transition: background-color 0.3s;
+            border-radius: 25px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        // Show thumb on hover
+        &:hover::-webkit-scrollbar-thumb {
+            background-color: rgba(31, 30, 30, 0.3);
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: #5e5e5e;
+            ; // darker on hover
+        }
+
+        &:hover::-webkit-scrollbar-track {
+            background-color: #f5f5f5;
+        }
+    }
+
+    .alarmsAccordionSectionHeight {
+        max-height: 280px;
+    }
+
     .alarmCard {
-        padding: 0.5rem 0.82rem;
-        display: flex;
-        justify-content: space-between;
+        padding: 0.5rem 0.3rem 0.5rem 0.82rem;
+        display: grid;
+        grid-template-columns: 63% 35%;
+        gap: 0.5rem;
         align-items: center;
         border-left: 4px solid transparent;
 
@@ -84,10 +130,15 @@
             margin-top: 4px;
         }
 
+        .message {
+            font-size: 0.9rem;
+        }
+
         .rightSide {
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            justify-content: end;
         }
 
         .ackBtn {
@@ -134,5 +185,58 @@
         max-height: 40px;
         opacity: 1;
         padding-top: 0.5rem;
+    }
+}
+
+.alarmPopUpAlarmCard {
+    padding: 0.3rem 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    border-left: 4px solid transparent;
+
+    .time {
+        display: block;
+        font-size: 0.75rem;
+        color: #888;
+        margin-top: 1px;
+    }
+
+    .message {
+        font-size: 0.9rem;
+    }
+}
+
+.viewBtn {
+    float: right;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.8rem;
+    border: none;
+    background: #fff;
+    border: 1px solid #141414;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0rem 0.7rem 0.8rem 0rem;
+}
+
+.viewBtn:hover {
+    background: #f2f2f2;
+}
+
+.alarmPopOverSection {
+    padding: 0.3rem 0.1rem;
+}
+
+.severityDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+@each $name, $color in $colors {
+    .severityDotBg--#{$name} {
+        background-color: $color;
     }
 }
