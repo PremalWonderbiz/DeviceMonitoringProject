@@ -2,9 +2,9 @@
   "FileName": "AirConditioner.json",
   "Name": "Air Conditioner",
   "Type": "Smart Appliance",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "98:5F:D3:4B:22:AC",
-  "Connectivity": "Low",
+  "Connectivity": "Medium",
   "staticProperties": {
     "Hardware Specifications": {
       "AC Type": "Split Inverter",
@@ -56,13 +56,13 @@
       "Power State": "On",
       "Mode": "Cool",
       "Set Temperature": "24°C",
-      "Current Room Temperature": "27.0°C",
-      "Fan Speed": "Medium",
+      "Current Room Temperature": "28.3°C",
+      "Fan Speed": "High",
       "Swing Mode": {
         "Vertical Swing": "Auto",
-        "Horizontal Swing": "Auto"
+        "Horizontal Swing": "Fixed"
       },
-      "Humidity Level": "63%",
+      "Humidity Level": "60%",
       "Sleep Mode": false
     },
     "Sensor Data": {
@@ -70,30 +70,30 @@
         {
           "Sensor ID": "TS001",
           "Location": "Indoor Unit",
-          "Reading": "27.5°C"
+          "Reading": "27.2°C"
         },
         {
           "Sensor ID": "TS002",
           "Location": "Outdoor Unit",
-          "Reading": "33.6°C"
+          "Reading": "33.9°C"
         }
       ],
       "Humidity Sensor": {
         "Sensor ID": "HS001",
-        "Reading": "63%"
+        "Reading": "60%"
       }
     },
     "Power Consumption Stats": {
-      "Today": "2.0 kWh",
+      "Today": "2.1 kWh",
       "This Week": "14.1 kWh",
-      "This Month": "63.7 kWh",
+      "This Month": "63.3 kWh",
       "Power Saving Mode": "Enabled",
       "Last Reset": "2025-06-01"
     },
     "Network Activity": {
       "IP Address": "192.168.1.67",
-      "Signal Strength": "-62 dBm",
-      "Last Connected": "2025-06-25 17:09",
+      "Signal Strength": "-65 dBm",
+      "Last Connected": "2025-06-25 20:53",
       "Control Access": [
         {
           "User": "kiran.j",

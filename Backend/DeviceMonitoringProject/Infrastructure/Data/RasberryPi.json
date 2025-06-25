@@ -60,20 +60,20 @@
   },
   "dynamicProperties": {
     "System Health": {
-      "CPU Usage": "60%",
+      "CPU Usage": "29%",
       "RAM Usage": {
-        "Used": "1.2 GB",
+        "Used": "2.6 GB",
         "Total": "4 GB"
       },
       "System Temperature": {
-        "CPU": "58°C",
-        "Board": "41°C"
+        "CPU": "55°C",
+        "Board": "43°C"
       },
-      "Uptime": "2 days, 0 hours",
+      "Uptime": "5 days, 12 hours",
       "System Load": [
-        0.55,
-        0.54,
-        1.13
+        0.87,
+        1.23,
+        1.43
       ]
     },
     "Network Activity": {
@@ -84,8 +84,8 @@
           "macAddress": "B8:27:EB:45:67:89",
           "connectionType": "Ethernet",
           "traffic": {
-            "upload": "6 Mbps",
-            "download": "35 Mbps"
+            "upload": "9 Mbps",
+            "download": "33 Mbps"
           }
         },
         {
@@ -97,18 +97,18 @@
         }
       ],
       "Total Data Usage": {
-        "Sent": "103.7 GB",
-        "Received": "274.2 GB"
+        "Sent": "95.6 GB",
+        "Received": "257.2 GB"
       },
       "Connected Clients (Media Server)": [
         {
           "deviceName": "Smart TV",
-          "ip": "192.168.1.85",
+          "ip": "192.168.1.81",
           "mediaStream": "HD Movie (5.1 GB transferred)"
         },
         {
           "deviceName": "Mobile Device",
-          "ip": "192.168.1.107",
+          "ip": "192.168.1.105",
           "mediaStream": "Music Stream (Streaming)"
         }
       ]
@@ -123,18 +123,18 @@
         {
           "service": "Kodi",
           "status": "Running",
-          "activeClients": 2
+          "activeClients": 1
         },
         {
           "service": "Pi-hole",
           "status": "Running",
-          "dnsQueriesBlocked": "7,316"
+          "dnsQueriesBlocked": "4,278"
         }
       ],
       "Last Reboot Reason": "Scheduled maintenance",
       "Firmware": {
-        "Current Version": "2025.05.25",
-        "Last Update": "2025-06-25",
+        "Current Version": "2025.10.13",
+        "Last Update": "2025-06-23",
         "Update Available": false
       }
     }

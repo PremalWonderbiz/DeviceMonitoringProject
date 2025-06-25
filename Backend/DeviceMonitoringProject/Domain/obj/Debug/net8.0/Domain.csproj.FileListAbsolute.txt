@@ -9,3 +9,15 @@ C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backe
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\ref\Domain.dll
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Domain\bin\Debug\net8.0\Domain.deps.json
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Domain\bin\Debug\net8.0\Domain.dll
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Domain\bin\Debug\net8.0\Domain.pdb
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\Domain.dll
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\refint\Domain.dll
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\Domain.pdb
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\ref\Domain.dll

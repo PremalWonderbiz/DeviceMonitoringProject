@@ -16,3 +16,21 @@ C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backe
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Application.dll
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Domain.dll
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Application.pdb
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Domain.pdb
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll

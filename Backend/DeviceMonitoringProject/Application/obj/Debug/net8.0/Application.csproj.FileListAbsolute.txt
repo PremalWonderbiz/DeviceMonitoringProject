@@ -14,3 +14,19 @@ C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backe
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Application\obj\Debug\net8.0\Application.pdb
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Application\obj\Debug\net8.0\ref\Application.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Application\obj\Debug\net8.0\Application.sourcelink.json
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\bin\Debug\net8.0\Application.deps.json
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\bin\Debug\net8.0\Application.dll
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\bin\Debug\net8.0\Application.pdb
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\bin\Debug\net8.0\Domain.dll
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\bin\Debug\net8.0\Domain.pdb
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\obj\Debug\net8.0\Application.csproj.AssemblyReference.cache
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\obj\Debug\net8.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\obj\Debug\net8.0\Application.AssemblyInfoInputs.cache
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\obj\Debug\net8.0\Application.AssemblyInfo.cs
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\obj\Debug\net8.0\Application.csproj.CoreCompileInputs.cache
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\obj\Debug\net8.0\Application.sourcelink.json
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\obj\Debug\net8.0\Applicat.44B5EDA2.Up2Date
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\obj\Debug\net8.0\Application.dll
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\obj\Debug\net8.0\refint\Application.dll
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\obj\Debug\net8.0\Application.pdb
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Application\obj\Debug\net8.0\ref\Application.dll

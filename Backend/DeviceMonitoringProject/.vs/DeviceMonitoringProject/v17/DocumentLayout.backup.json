@@ -1,145 +1,145 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\",
+  "WorkspaceRootPath": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\infrastructure\\services\\devicelivedatabgservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\services\\devicelivedatabgservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\infrastructure\\realtime\\devicehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\realtime\\devicehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\infrastructure\\services\\deviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\infrastructure\\services\\deviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\services\\deviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\infrastructure\\data\\printer.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\printer.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\infrastructure\\data\\airconditioner.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\airconditioner.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\application\\interfaces\\ideviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|solutionrelative:application\\interfaces\\ideviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\infrastructure\\data\\laptop.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\laptop.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\infrastructure\\data\\switch.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\switch.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\infrastructure\\data\\ipcamera.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\ipcamera.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\api\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|solutionrelative:api\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\application\\dtos\\devicesnamemaciddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|solutionrelative:application\\dtos\\devicesnamemaciddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\application\\dtos\\devicemetadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|solutionrelative:application\\dtos\\devicemetadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\application\\dtos\\devicemetadatapaginated.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|solutionrelative:application\\dtos\\devicemetadatapaginated.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\infrastructure\\services\\alarmevaluationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\services\\alarmevaluationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|solutionrelative:api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\api\\api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\infrastructure\\services\\devicelivedatabgservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\services\\devicelivedatabgservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\infrastructure\\realtime\\devicehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\realtime\\devicehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\infrastructure\\data\\printer.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\printer.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\infrastructure\\data\\airconditioner.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\airconditioner.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\application\\interfaces\\ideviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|solutionrelative:application\\interfaces\\ideviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\infrastructure\\data\\laptop.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\laptop.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\infrastructure\\data\\switch.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\switch.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\infrastructure\\data\\ipcamera.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\ipcamera.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\api\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|solutionrelative:api\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\application\\dtos\\devicesnamemaciddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|solutionrelative:application\\dtos\\devicesnamemaciddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\application\\dtos\\devicemetadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|solutionrelative:application\\dtos\\devicemetadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\application\\dtos\\devicemetadatapaginated.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|solutionrelative:application\\dtos\\devicemetadatapaginated.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\infrastructure\\services\\alarmevaluationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\services\\alarmevaluationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\api\\api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|solutionrelative:api\\api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\infrastructure\\data\\nas.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\infrastructure\\data\\nas.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\nas.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\infrastructure\\data\\mobile.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\infrastructure\\data\\mobile.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\mobile.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\application\\dtos\\alarmevaluationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\application\\dtos\\alarmevaluationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|solutionrelative:application\\dtos\\alarmevaluationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\application\\interfaces\\ialarmevaluationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\application\\interfaces\\ialarmevaluationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|solutionrelative:application\\interfaces\\ialarmevaluationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\application\\dtos\\deviceserviceoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\application\\dtos\\deviceserviceoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|solutionrelative:application\\dtos\\deviceserviceoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\application\\dtos\\livedevicedatadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\application\\dtos\\livedevicedatadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|solutionrelative:application\\dtos\\livedevicedatadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\infrastructure\\data\\wifirouter.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\infrastructure\\data\\wifirouter.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\wifirouter.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\infrastructure\\data\\smarttv.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\infrastructure\\data\\smarttv.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\smarttv.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\infrastructure\\data\\rasberrypi.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\infrastructure\\data\\rasberrypi.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\rasberrypi.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\infrastructure\\helpers\\dynamicdatahelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\infrastructure\\helpers\\dynamicdatahelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E3F93296-33F5-42F4-AA63-44D2B6D5C37A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\helpers\\dynamicdatahelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\api\\middleware\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\api\\middleware\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|solutionrelative:api\\middleware\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E1BAA5C8-96D8-4D01-B3D5-479AEE48EF99}|Common\\Common.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\common\\helper classes\\customexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E1BAA5C8-96D8-4D01-B3D5-479AEE48EF99}|Common\\Common.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\common\\helper classes\\customexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E1BAA5C8-96D8-4D01-B3D5-479AEE48EF99}|Common\\Common.csproj|solutionrelative:common\\helper classes\\customexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{346D76A6-5579-42C5-AC24-2AE59F39B5DD}|API\\API.csproj|solutionrelative:api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404}|Domain\\Domain.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\domain\\entities\\devicedetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404}|Domain\\Domain.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\domain\\entities\\devicedetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\devicedetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\application\\interfaces\\idynamicdatahelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\application\\interfaces\\idynamicdatahelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|solutionrelative:application\\interfaces\\idynamicdatahelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\application\\dtos\\devicetopleveldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\application\\dtos\\devicetopleveldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|solutionrelative:application\\dtos\\devicetopleveldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404}|Domain\\Domain.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404}|Domain\\Domain.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404}|Domain\\Domain.csproj|solutionrelative:domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\devicemonitoringproject\\application\\dtos\\devicetoplevellivedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|d:\\study\\device monitoring project\\devicemonitoringproject\\backend\\devicemonitoringproject\\application\\dtos\\devicetoplevellivedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6E1E7959-4D04-46AF-9CA7-3A45D5528C49}|Application\\Application.csproj|solutionrelative:application\\dtos\\devicetoplevellivedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -150,45 +150,27 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\Program.cs",
-              "RelativeDocumentMoniker": "API\\Program.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\Program.cs",
-              "RelativeToolTip": "API\\Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T09:12:47.119Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "AirConditioner.json",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\AirConditioner.json",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\AirConditioner.json",
               "RelativeDocumentMoniker": "Infrastructure\\Data\\AirConditioner.json",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\AirConditioner.json",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\AirConditioner.json",
               "RelativeToolTip": "Infrastructure\\Data\\AirConditioner.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-18T11:29:05.291Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-18T11:29:05.291Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "AlarmEvaluationService.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\AlarmEvaluationService.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\AlarmEvaluationService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Services\\AlarmEvaluationService.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\AlarmEvaluationService.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\AlarmEvaluationService.cs",
               "RelativeToolTip": "Infrastructure\\Services\\AlarmEvaluationService.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAA+wCcAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -196,50 +178,49 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "DeviceService.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\DeviceService.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\DeviceService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Services\\DeviceService.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\DeviceService.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\DeviceService.cs",
               "RelativeToolTip": "Infrastructure\\Services\\DeviceService.cs",
-              "ViewState": "AgIAABABAAAAAAAAAAAswB0BAAANAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAkwCUAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-18T09:29:44.312Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Printer.json",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Printer.json",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Printer.json",
               "RelativeDocumentMoniker": "Infrastructure\\Data\\Printer.json",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Printer.json",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Printer.json",
               "RelativeToolTip": "Infrastructure\\Data\\Printer.json",
               "ViewState": "AgIAAGgAAAAAAAAAAAAowH0AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-19T11:29:24.052Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-19T11:29:24.052Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "DeviceLiveDataBgService.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\DeviceLiveDataBgService.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\DeviceLiveDataBgService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Services\\DeviceLiveDataBgService.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\DeviceLiveDataBgService.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\DeviceLiveDataBgService.cs",
               "RelativeToolTip": "Infrastructure\\Services\\DeviceLiveDataBgService.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwCMAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAzwCEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-18T09:29:26.216Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Switch.json",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Switch.json",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Switch.json",
               "RelativeDocumentMoniker": "Infrastructure\\Data\\Switch.json",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Switch.json",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Switch.json",
               "RelativeToolTip": "Infrastructure\\Data\\Switch.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -247,36 +228,49 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "DeviceHub.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\RealTime\\DeviceHub.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\RealTime\\DeviceHub.cs",
               "RelativeDocumentMoniker": "Infrastructure\\RealTime\\DeviceHub.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\RealTime\\DeviceHub.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\RealTime\\DeviceHub.cs",
               "RelativeToolTip": "Infrastructure\\RealTime\\DeviceHub.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T09:27:53.008Z",
+              "WhenOpened": "2025-06-18T09:27:53.008Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\appsettings.json",
+              "RelativeDocumentMoniker": "API\\appsettings.json",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\appsettings.json",
+              "RelativeToolTip": "API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAACMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-18T11:04:19.666Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\appsettings.json",
-              "RelativeDocumentMoniker": "API\\appsettings.json",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\appsettings.json",
-              "RelativeToolTip": "API\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-18T11:04:19.666Z"
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\Program.cs",
+              "RelativeDocumentMoniker": "API\\Program.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\Program.cs",
+              "RelativeToolTip": "API\\Program.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T09:12:47.119Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "IpCamera.json",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\IpCamera.json",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\IpCamera.json",
               "RelativeDocumentMoniker": "Infrastructure\\Data\\IpCamera.json",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\IpCamera.json",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\IpCamera.json",
               "RelativeToolTip": "Infrastructure\\Data\\IpCamera.json",
               "ViewState": "AgIAAJUAAAAAAAAAAAAtwKEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -284,24 +278,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Laptop.json",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Laptop.json",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Laptop.json",
               "RelativeDocumentMoniker": "Infrastructure\\Data\\Laptop.json",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Laptop.json",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Laptop.json",
               "RelativeToolTip": "Infrastructure\\Data\\Laptop.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-19T11:13:39.824Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-19T11:13:39.824Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "DeviceController.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\Controllers\\DeviceController.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\Controllers\\DeviceController.cs",
               "RelativeDocumentMoniker": "API\\Controllers\\DeviceController.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\Controllers\\DeviceController.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\Controllers\\DeviceController.cs",
               "RelativeToolTip": "API\\Controllers\\DeviceController.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAQwAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -309,24 +302,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "IDeviceService.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IDeviceService.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IDeviceService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\IDeviceService.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IDeviceService.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IDeviceService.cs",
               "RelativeToolTip": "Application\\Interfaces\\IDeviceService.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAApwAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T09:56:50.123Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-18T09:56:50.123Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "DeviceMetadata.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceMetadata.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceMetadata.cs",
               "RelativeDocumentMoniker": "Application\\Dtos\\DeviceMetadata.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceMetadata.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceMetadata.cs",
               "RelativeToolTip": "Application\\Dtos\\DeviceMetadata.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -336,9 +328,9 @@
               "$type": "Document",
               "DocumentIndex": 16,
               "Title": "API.csproj",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\API.csproj",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\API.csproj",
               "RelativeDocumentMoniker": "API\\API.csproj",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\API.csproj",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\API.csproj",
               "RelativeToolTip": "API\\API.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -346,11 +338,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "DevicesNameMacIdDto.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DevicesNameMacIdDto.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DevicesNameMacIdDto.cs",
               "RelativeDocumentMoniker": "Application\\Dtos\\DevicesNameMacIdDto.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DevicesNameMacIdDto.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DevicesNameMacIdDto.cs",
               "RelativeToolTip": "Application\\Dtos\\DevicesNameMacIdDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -360,9 +352,9 @@
               "$type": "Document",
               "DocumentIndex": 18,
               "Title": "Mobile.json",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Mobile.json",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Mobile.json",
               "RelativeDocumentMoniker": "Infrastructure\\Data\\Mobile.json",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Mobile.json",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Mobile.json",
               "RelativeToolTip": "Infrastructure\\Data\\Mobile.json",
               "ViewState": "AgIAADYAAAAAAAAAAAAAAEIAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -372,9 +364,9 @@
               "$type": "Document",
               "DocumentIndex": 20,
               "Title": "IAlarmEvaluationService.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IAlarmEvaluationService.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IAlarmEvaluationService.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\IAlarmEvaluationService.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IAlarmEvaluationService.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IAlarmEvaluationService.cs",
               "RelativeToolTip": "Application\\Interfaces\\IAlarmEvaluationService.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAWwAsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -382,11 +374,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "DeviceMetadataPaginated.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceMetadataPaginated.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceMetadataPaginated.cs",
               "RelativeDocumentMoniker": "Application\\Dtos\\DeviceMetadataPaginated.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceMetadataPaginated.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceMetadataPaginated.cs",
               "RelativeToolTip": "Application\\Dtos\\DeviceMetadataPaginated.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -396,9 +388,9 @@
               "$type": "Document",
               "DocumentIndex": 21,
               "Title": "DeviceServiceOptions.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceServiceOptions.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceServiceOptions.cs",
               "RelativeDocumentMoniker": "Application\\Dtos\\DeviceServiceOptions.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceServiceOptions.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceServiceOptions.cs",
               "RelativeToolTip": "Application\\Dtos\\DeviceServiceOptions.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -408,9 +400,9 @@
               "$type": "Document",
               "DocumentIndex": 17,
               "Title": "NAS.json",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\NAS.json",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\NAS.json",
               "RelativeDocumentMoniker": "Infrastructure\\Data\\NAS.json",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\NAS.json",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\NAS.json",
               "RelativeToolTip": "Infrastructure\\Data\\NAS.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -420,9 +412,9 @@
               "$type": "Document",
               "DocumentIndex": 22,
               "Title": "LiveDeviceDataDto.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\LiveDeviceDataDto.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\LiveDeviceDataDto.cs",
               "RelativeDocumentMoniker": "Application\\Dtos\\LiveDeviceDataDto.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\LiveDeviceDataDto.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\LiveDeviceDataDto.cs",
               "RelativeToolTip": "Application\\Dtos\\LiveDeviceDataDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -432,9 +424,9 @@
               "$type": "Document",
               "DocumentIndex": 19,
               "Title": "AlarmEvaluationRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\AlarmEvaluationRequest.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\AlarmEvaluationRequest.cs",
               "RelativeDocumentMoniker": "Application\\Dtos\\AlarmEvaluationRequest.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\AlarmEvaluationRequest.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\AlarmEvaluationRequest.cs",
               "RelativeToolTip": "Application\\Dtos\\AlarmEvaluationRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -444,9 +436,9 @@
               "$type": "Document",
               "DocumentIndex": 25,
               "Title": "RasberryPi.json",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\RasberryPi.json",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\RasberryPi.json",
               "RelativeDocumentMoniker": "Infrastructure\\Data\\RasberryPi.json",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\RasberryPi.json",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\RasberryPi.json",
               "RelativeToolTip": "Infrastructure\\Data\\RasberryPi.json",
               "ViewState": "AgIAAG8AAAAAAAAAAAAowH4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -456,9 +448,9 @@
               "$type": "Document",
               "DocumentIndex": 24,
               "Title": "SmartTv.json",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\SmartTv.json",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\SmartTv.json",
               "RelativeDocumentMoniker": "Infrastructure\\Data\\SmartTv.json",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\SmartTv.json",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\SmartTv.json",
               "RelativeToolTip": "Infrastructure\\Data\\SmartTv.json",
               "ViewState": "AgIAAG4AAAAAAAAAAAAowIEAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -468,9 +460,9 @@
               "$type": "Document",
               "DocumentIndex": 23,
               "Title": "WifiRouter.json",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\WifiRouter.json",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\WifiRouter.json",
               "RelativeDocumentMoniker": "Infrastructure\\Data\\WifiRouter.json",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\WifiRouter.json",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\WifiRouter.json",
               "RelativeToolTip": "Infrastructure\\Data\\WifiRouter.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAJAAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -480,9 +472,9 @@
               "$type": "Document",
               "DocumentIndex": 28,
               "Title": "CustomException.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Common\\Helper Classes\\CustomException.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Common\\Helper Classes\\CustomException.cs",
               "RelativeDocumentMoniker": "Common\\Helper Classes\\CustomException.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Common\\Helper Classes\\CustomException.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Common\\Helper Classes\\CustomException.cs",
               "RelativeToolTip": "Common\\Helper Classes\\CustomException.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -492,9 +484,9 @@
               "$type": "Document",
               "DocumentIndex": 27,
               "Title": "ExceptionMiddleware.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\Middleware\\ExceptionMiddleware.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\Middleware\\ExceptionMiddleware.cs",
               "RelativeDocumentMoniker": "API\\Middleware\\ExceptionMiddleware.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\Middleware\\ExceptionMiddleware.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\Middleware\\ExceptionMiddleware.cs",
               "RelativeToolTip": "API\\Middleware\\ExceptionMiddleware.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -504,9 +496,9 @@
               "$type": "Document",
               "DocumentIndex": 26,
               "Title": "DynamicDataHelper.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Helpers\\DynamicDataHelper.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Helpers\\DynamicDataHelper.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Helpers\\DynamicDataHelper.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Helpers\\DynamicDataHelper.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Helpers\\DynamicDataHelper.cs",
               "RelativeToolTip": "Infrastructure\\Helpers\\DynamicDataHelper.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -516,9 +508,9 @@
               "$type": "Document",
               "DocumentIndex": 30,
               "Title": "DeviceDetails.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\Entities\\DeviceDetails.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Domain\\Entities\\DeviceDetails.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\DeviceDetails.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\Entities\\DeviceDetails.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Domain\\Entities\\DeviceDetails.cs",
               "RelativeToolTip": "Domain\\Entities\\DeviceDetails.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -528,9 +520,9 @@
               "$type": "Document",
               "DocumentIndex": 29,
               "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\Properties\\launchSettings.json",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "API\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\Properties\\launchSettings.json",
               "RelativeToolTip": "API\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -540,9 +532,9 @@
               "$type": "Document",
               "DocumentIndex": 31,
               "Title": "IDynamicDataHelper.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IDynamicDataHelper.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IDynamicDataHelper.cs",
               "RelativeDocumentMoniker": "Application\\Interfaces\\IDynamicDataHelper.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IDynamicDataHelper.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IDynamicDataHelper.cs",
               "RelativeToolTip": "Application\\Interfaces\\IDynamicDataHelper.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAuwAsAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -552,9 +544,9 @@
               "$type": "Document",
               "DocumentIndex": 32,
               "Title": "DeviceTopLevelData.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceTopLevelData.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceTopLevelData.cs",
               "RelativeDocumentMoniker": "Application\\Dtos\\DeviceTopLevelData.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceTopLevelData.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceTopLevelData.cs",
               "RelativeToolTip": "Application\\Dtos\\DeviceTopLevelData.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -564,9 +556,9 @@
               "$type": "Document",
               "DocumentIndex": 33,
               "Title": "Domain.csproj",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj",
               "RelativeDocumentMoniker": "Domain\\Domain.csproj",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj",
               "RelativeToolTip": "Domain\\Domain.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -576,9 +568,9 @@
               "$type": "Document",
               "DocumentIndex": 34,
               "Title": "DeviceTopLevelLiveData.cs",
-              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceTopLevelLiveData.cs",
+              "DocumentMoniker": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceTopLevelLiveData.cs",
               "RelativeDocumentMoniker": "Application\\Dtos\\DeviceTopLevelLiveData.cs",
-              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceTopLevelLiveData.cs",
+              "ToolTip": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceTopLevelLiveData.cs",
               "RelativeToolTip": "Application\\Dtos\\DeviceTopLevelLiveData.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

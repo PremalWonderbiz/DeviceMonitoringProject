@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {useReactTable, getCoreRowModel, getSortedRowModel, flexRender, ColumnDef, SortingState,} from "@tanstack/react-table";
 import styles from "@/styles/scss/Table.module.scss";
 import TableRow from "./TableRow";
@@ -6,7 +6,7 @@ import { ArrowDown, ArrowUp } from "lucide-react";
 import Pagination from "../Pagination";
 import { capitalizeFirstLetter } from "@/utils/helperfunctions";
 
-const TableComponent = ({ data, setIsPropertyPanelOpen }: any) => {
+const TableComponent = ({ currentPage, setCurrentPage, totalPages, pageSize, setPageSize, data, setIsPropertyPanelOpen }: any) => {
   if (!data || data.length === 0) 
     return <p className="px-2">No data available.</p>;
   
@@ -62,7 +62,7 @@ const TableComponent = ({ data, setIsPropertyPanelOpen }: any) => {
           {table.getRowModel().rows.map((row) => (<TableRow key={row.id} row={row} setIsPropertyPanelOpen={setIsPropertyPanelOpen}/>))}
         </tbody>
       </table>
-      <Pagination currentPage={1} totalPages={3} pageSize={10} pageSizeOptions={[5, 10, 20, 50]}/>
+      <Pagination setPageSize={setPageSize} currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} pageSize={pageSize} pageSizeOptions={[3, 5, 7, 10]}/>
     </div>
   );
 };
