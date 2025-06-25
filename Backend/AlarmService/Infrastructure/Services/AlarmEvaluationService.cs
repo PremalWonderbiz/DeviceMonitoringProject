@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Application.Dtos;
 using Application.Interface;
 using Common.Helper_Classes;
 using Domain.Entities;
+using Domain.Interface;
 using Infrastructure.Migrations;
 using Infrastructure.Persistence;
+using Infrastructure.RealTime;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Services
@@ -16,10 +21,14 @@ namespace Infrastructure.Services
     public class AlarmEvaluationService : IAlarmEvaluationService
     {
         private readonly AlarmDbContext _dbContext;
+        private readonly IHubContext<AlertHub> _hubContext;
+        private readonly IAlarmService _alarmService;
 
-        public AlarmEvaluationService(AlarmDbContext dbContext)
+        public AlarmEvaluationService(AlarmDbContext dbContext, IHubContext<AlertHub> hubContext, IAlarmService alarmService)
         {
             _dbContext = dbContext;
+            _hubContext = hubContext;
+            _alarmService = alarmService;
         }
 
         public async Task<List<Alarm>> EvaluateAsync(LiveDeviceDataDto currentData, LiveDeviceDataDto previousData)
@@ -62,6 +71,31 @@ namespace Infrastructure.Services
             {
                 _dbContext.Alarms.AddRange(triggeredAlarms);
                 await _dbContext.SaveChangesAsync();
+
+                var mainPageUpdates = await _alarmService.GetLatestFiveAlarms();
+                var serializedData = JsonSerializer.Serialize(mainPageUpdates, new JsonSerializerOptions
+                {
+                    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                    WriteIndented = true,
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                });
+                await _hubContext.Clients.All.SendAsync("ReceiveMainPageUpdates", serializedData);
+
+                var alarmPanelUpdates = await _alarmService.GetAlarms(new AlarmFilter());
+                await _hubContext.Clients.Group($"AlarmPanelGroup").SendAsync("ReceiveAlarmPanelUpdates", JsonSerializer.Serialize(alarmPanelUpdates, new JsonSerializerOptions
+                {
+                    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    WriteIndented = true
+                }));
+                
+                var propertyPanelAlarm = await _alarmService.GetLatestAlarmForDevice(currentData.DeviceMacId);
+                await _hubContext.Clients.Group($"Alarm-{currentData.DeviceMacId}").SendAsync("ReceivePropertyPanelAlarmUpdates", JsonSerializer.Serialize(propertyPanelAlarm, new JsonSerializerOptions
+                {
+                    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    WriteIndented = true
+                }));
             }
 
             return triggeredAlarms;

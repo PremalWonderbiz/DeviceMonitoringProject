@@ -1,5 +1,5 @@
 // components/AlarmPanel.tsx
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styles from "@/styles/scss/AlarmPanel.module.scss";
 import Badge from '../Badge';
 import Modal from '@/components/chakrauicomponents/Modal';
@@ -8,6 +8,7 @@ import { DeviceTags } from './AlarmPanelContent';
 import { acknowledgeAlarm, getAlarmPanelData } from '@/services/alarmservice';
 import { getDevicesNameMacIdList, getDevicesTopLevelData } from '@/services/deviceservice';
 import { formatRelativeTime } from '@/utils/helperfunctions';
+import { useDeviceAlertSocket } from '@/utils/customhooks/useDeviceAlertSocket';
 
 const priorityMap: any = {
   Critical: 0,
@@ -15,15 +16,26 @@ const priorityMap: any = {
   Information: 2,
 };
 
-
-const AlarmPanel = ({ selectedDevices,setSelectedDevices } : any) => {
+const AlarmPanel = ({ selectedDevicePropertyPanel, setSelectedDevicePropertyPanel }: any) => {
   const [unacknowledgedAlarms, setUnacknowledgedAlarms] = useState<any[]>([]);
   const [acknowledgedAlarms, setAcknowledgedAlarms] = useState<any[]>([]);
   const [devices, setDevices] = useState<any[]>([]);
   const [dateRange, setDateRange] = useState<[Date, Date] | null>(null);
+  const [selectedDevices, setSelectedDevices] = useState<string[]>([]);
+  const [shouldConnectSignalR, setShouldConnectSignalR] = useState<boolean>(true);
+
+  const handleAlertUpdates = useCallback((msg: string) => {
+    const incomingUpdates = JSON.parse(msg);
+    if (incomingUpdates) {
+      filterAndSortAlarms(incomingUpdates);
+    }
+  }, []);
+  
+  // SignalR connection for alarm panel data  
+  useDeviceAlertSocket("sampleDeviceId", handleAlertUpdates, "ReceiveAlarmPanelUpdates", shouldConnectSignalR);
 
   const handleRemoveTag = (index: number) => {
-    setSelectedDevices((prev : any) => prev.filter((_ : any, i: any) => i !== index));
+    setSelectedDevices((prev: any) => prev.filter((_: any, i: any) => i !== index));
   };
 
   const [expandedId, setExpandedId] = React.useState<number | null>(null);
@@ -34,7 +46,7 @@ const AlarmPanel = ({ selectedDevices,setSelectedDevices } : any) => {
     Information: { bg: 'infoAlarm', color: 'light' },
   };
 
-  const fetchData = async (selectedDevices: any[], dateRange: any) => {    
+  const fetchData = async (selectedDevices: any[], dateRange: any) => {
     const response = await getAlarmPanelData({ "devices": selectedDevices || [], "filterDateRange": dateRange || [] });
     if (!response)
       console.log("Network response was not ok");
@@ -61,7 +73,16 @@ const AlarmPanel = ({ selectedDevices,setSelectedDevices } : any) => {
 
   useEffect(() => {
     fetchData(selectedDevices.map((s: any) => s.deviceMacId), dateRange);
+    (selectedDevices.length == 0 && dateRange == null) ? setShouldConnectSignalR(true) : setShouldConnectSignalR(false); 
+
   }, [selectedDevices, dateRange]);
+
+  useEffect(() => {
+    if (selectedDevicePropertyPanel) {
+      setSelectedDevices([selectedDevicePropertyPanel]);
+      setSelectedDevicePropertyPanel(null);
+    }
+  }, [selectedDevicePropertyPanel]);
 
   function filterAndSortAlarms(data: any) {
     setAcknowledgedAlarms(sortAlarmsDataBySeverity(data.filter((alarm: any) => alarm.isAcknowledged)));

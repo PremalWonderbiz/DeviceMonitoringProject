@@ -7,7 +7,7 @@ import { getPropertyPanelData } from "@/services/deviceservice";
 import styles from "@/styles/scss/PropertyPanel.module.scss";
 
 
-const PropertyPanel = ({ setIsAlarmPanelOpen, setSelectedDevices, currentDeviceId, currentDeviceFileName, activeTab, setActiveTab }: any) => {
+const PropertyPanel = ({ setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, currentDeviceId, currentDeviceFileName, activeTab, setActiveTab }: any) => {
     const [PropertyPanelData, setPropertyPanelData] = useState<any>(null);
 
     const handleUpdate = useCallback((msg: any) => {
@@ -47,7 +47,7 @@ const PropertyPanel = ({ setIsAlarmPanelOpen, setSelectedDevices, currentDeviceI
                     <Accordion isTabList={true} title={<TabList activeTab={activeTab} setActiveTab={setActiveTab} />} defaultOpen={true} bgColor=''>
                         {(activeTab === "Static Tab" && PropertyPanelData.staticProperties) ?
                             <StaticTabContent staticProps={PropertyPanelData.staticProperties} />
-                            : <HealthTabContent deviceName={PropertyPanelData.name} setSelectedDevices={setSelectedDevices} setIsAlarmPanelOpen={setIsAlarmPanelOpen} deviceMacId={PropertyPanelData.macId} dynamicProps={PropertyPanelData.dynamicProperties} />}
+                            : <HealthTabContent deviceName={PropertyPanelData.name} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} setIsAlarmPanelOpen={setIsAlarmPanelOpen} deviceMacId={PropertyPanelData.macId} dynamicProps={PropertyPanelData.dynamicProperties} />}
                     </Accordion>
                 </div>
             </>

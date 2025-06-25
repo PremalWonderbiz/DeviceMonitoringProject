@@ -12,6 +12,7 @@ import styles from "@/styles/scss/Home.module.scss";
 import PopOver from "@/components/chakrauicomponents/PopOver";
 import { AlarmPopUp } from "@/components/customcomponents/AlarmPanel/AlarmPanelContent";
 import { getLatestAlarms } from "@/services/alarmservice";
+import { useDeviceAlertSocket } from "@/utils/customhooks/useDeviceAlertSocket";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,7 +39,7 @@ export default function Home() {
   const [isAlarmPopOverOpen, setIsAlarmPopOverOpen] = useState<boolean>(false);
   const [latestAlarms, setLatestAlarms] = useState<any[]>([]);
   const [totalAlarms, setTotalAlarms] = useState<any>(0);
-  const [selectedDevices, setSelectedDevices] = useState<string[]>([]);
+  const [selectedDevicePropertyPanel, setSelectedDevicePropertyPanel] = useState<any>(null);
 
   useEffect(() => {
     const fetchLatestAlarmData = async () => {
@@ -58,7 +59,7 @@ export default function Home() {
   // Handle incoming SignalR updates
   const handleUpdate = useCallback((msg: string) => {
     const incomingDevices = JSON.parse(msg); // Format: [{ MacId, Status, Connectivity }]
-
+    
     setDeviceData((prevDevices) => {
 
       let hasChange = false;
@@ -100,8 +101,18 @@ export default function Home() {
     });
   }, []);
 
-  // SignalR connection
+  const handleAlertUpdates = useCallback((msg : string) => {
+    const incomingUpdates = JSON.parse(msg);
+    
+    setLatestAlarms(incomingUpdates.alarms);
+    setTotalAlarms(incomingUpdates.totalAlarms);
+  }, []);
+
+  // SignalR connection for devices top level data
   useDevicesTopDataSocket(handleUpdate);
+
+  //signalR for alarms data
+  useDeviceAlertSocket("sampleDeviceId",handleAlertUpdates,"ReceiveMainPageUpdates");
 
   // Initial data fetch
   useEffect(() => {
@@ -138,7 +149,7 @@ export default function Home() {
   return (
     <div className='m-3'>
       <Sidebar position="left" isOpen={isAlarmPanelOpen} setIsOpen={setIsAlarmPanelOpen} >
-        {isAlarmPanelOpen && <AlarmPanel selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices} />}
+        {isAlarmPanelOpen && <AlarmPanel setSelectedDevicePropertyPanel = {setSelectedDevicePropertyPanel} selectedDevicePropertyPanel = {selectedDevicePropertyPanel}/>}
       </Sidebar>
 
       <div className={styles.homePageNav}>
@@ -148,7 +159,7 @@ export default function Home() {
           onMouseEnter={() => setIsAlarmPopOverOpen(true)}
           onMouseLeave={() => setIsAlarmPopOverOpen(false)}
         >
-          <PopOver
+         <PopOver
             isOpen={isAlarmPopOverOpen}
             triggerContent={
               <div className={styles.alarmIconContainer}>
@@ -168,8 +179,9 @@ export default function Home() {
               </div>
             }
           >
-            <AlarmPopUp latestAlarms={latestAlarms} totalAlarms={totalAlarms} setIsAlarmPanelOpen={setIsAlarmPanelOpen} />
+             {(latestAlarms && latestAlarms.length > 0) && (<AlarmPopUp latestAlarms={latestAlarms} totalAlarms={totalAlarms} setIsAlarmPanelOpen={setIsAlarmPanelOpen} />)}
           </PopOver>
+          
         </div>
       </div>
 
@@ -178,7 +190,7 @@ export default function Home() {
           <TableComponent data={deviceData} setIsPropertyPanelOpen={openPropertypanel} />
         </div>
         <Sidebar position="right" isOpen={isPropertyPanelOpen} setIsOpen={setIsPropertyPanelOpen}>
-          {isPropertyPanelOpen && <PropertyPanel setIsAlarmPanelOpen={setIsAlarmPanelOpen} setSelectedDevices={setSelectedDevices} activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} currentDeviceFileName={currentDeviceFileName} />}
+          {isPropertyPanelOpen && <PropertyPanel setIsAlarmPanelOpen={setIsAlarmPanelOpen} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} currentDeviceFileName={currentDeviceFileName} />}
         </Sidebar>
       </div>
     </div>

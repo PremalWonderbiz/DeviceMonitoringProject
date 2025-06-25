@@ -6,8 +6,6 @@ import { formatRelativeTime } from "@/utils/helperfunctions";
 
 
 export const DeviceTags = ({ tags, removeTag }: any) => {
-  console.log(tags);
-
   return (
     <HStack paddingLeft={"0.3rem"} gap={"0.5rem"} wrap={"wrap"}>
       {tags.map((tag: any, index: any) => (

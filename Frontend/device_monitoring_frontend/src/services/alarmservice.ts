@@ -2,7 +2,7 @@ import { handleAxiosError } from "@/utils/helperfunctions";
 import { alarmServiceBaseURL } from "@/utils/helpervariables";
 import axios from "axios";
 
-export const getAlarmPanelData = async (alarmsFilters: any) => {
+export const getAlarmPanelData = async (alarmsFilters: any) => {  
   try {    
     const response = await axios.post(`${alarmServiceBaseURL}/api/Alarms/getAlarms`, alarmsFilters);
     return response;

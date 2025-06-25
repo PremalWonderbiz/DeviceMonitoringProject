@@ -15,12 +15,14 @@ export function useDeviceDetailSocket(deviceId: string, onDetailUpdate: (data: a
     };
 
     const setup = async () => {
-      conn = await getSignalRConnection();
+      conn = await getSignalRConnection("devicehub","https://localhost:7127/devicehub");
       if (!conn) {
         console.warn("SignalR connection not available");
         return;
       }
 
+      console.log("SignalR connection obtained");
+      console.log(`Subscribing to 'DeviceDetailsUpdate'`);
       try {
         await conn.invoke("JoinDeviceGroup", deviceId);
       } catch (err) {

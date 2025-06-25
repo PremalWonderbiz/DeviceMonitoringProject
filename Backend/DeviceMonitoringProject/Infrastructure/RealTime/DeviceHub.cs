@@ -24,10 +24,5 @@ namespace Infrastructure.RealTime
         {
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, $"device-{deviceId}");
         }
-
-        public async Task BroadCastDeviceUpdate(string deviceId, object data)
-        {
-            await Clients.Group($"DeviceUpdate-{deviceId}").SendAsync($"DeviceUpdate-{deviceId}", data);
-        }
     }
 }

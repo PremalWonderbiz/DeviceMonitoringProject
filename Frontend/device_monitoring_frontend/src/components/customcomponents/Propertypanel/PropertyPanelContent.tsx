@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Accordion from "../Accordion";
 import styles from "@/styles/scss/PropertyPanel.module.scss";
 import Badge from "../Badge";
 import { getLatestAlarmForDevice } from "@/services/alarmservice";
 import { formatRelativeTime } from "@/utils/helperfunctions";
+import { useDeviceAlertSocket } from "@/utils/customhooks/useDeviceAlertSocket";
 
 export const StaticTabContent = React.memo(({ staticProps }: { staticProps: any }) => {
-    console.log("Rendering StaticTabContent with staticProps:", staticProps);
     return (
         <div className={`${styles.propertyPanelTabContent}`}>
             {Object.entries(staticProps).map(([key, value]: any) => {
@@ -23,10 +23,23 @@ export const StaticTabContent = React.memo(({ staticProps }: { staticProps: any 
     );
 });
 
-export const HealthTabContent = React.memo(({ deviceName, setIsAlarmPanelOpen, setSelectedDevices, deviceMacId, dynamicProps }: any) => {
-    console.log("Rendering DynamicTabContent with staticProps:", dynamicProps);
+export const HealthTabContent = React.memo(({ deviceName, setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, deviceMacId, dynamicProps }: any) => {
     const [alarm, setAlarm] = useState<any>(null);
     const [totalAlarmsForDevice, setTotalAlarmsForDevice] = useState<any>(0);
+
+    const handleAlertUpdates = ((msg: string) => {
+        const incomingUpdates = JSON.parse(msg);
+        if (incomingUpdates) {
+            setAlarm(incomingUpdates.alarm);
+            setTotalAlarmsForDevice(incomingUpdates.totalAlarms);
+        } else {
+            setAlarm(null);
+            setTotalAlarmsForDevice(0);
+        }
+    });
+
+    // SignalR connection for property panel alarm
+    useDeviceAlertSocket(deviceMacId, handleAlertUpdates, "ReceivePropertyPanelAlarmUpdates");
 
     useEffect(() => {
         const fetchLatestAlarmData = async () => {
@@ -37,7 +50,7 @@ export const HealthTabContent = React.memo(({ deviceName, setIsAlarmPanelOpen, s
             if (response && response.data) {
                 setAlarm(response.data.alarm);
                 setTotalAlarmsForDevice(response.data.totalAlarms);
-            }else{
+            } else {
                 setAlarm(null);
                 setTotalAlarmsForDevice(0);
             }
@@ -48,17 +61,17 @@ export const HealthTabContent = React.memo(({ deviceName, setIsAlarmPanelOpen, s
 
     return (
         <div className={`${styles.propertyPanelTabContent}`}>
-            {alarm &&(<div className={`${styles.alarmCard}`}>
+            {alarm && (<div className={`${styles.alarmCard}`}>
                 <div>
                     <p className={styles.message}>{alarm.message}</p>
                     <span className={styles.time}>{formatRelativeTime(alarm.raisedAt)}</span>
                     <div className={``} >
                         <button onClick={(event: any) => {
-                            event.stopPropagation(); 
+                            event.stopPropagation();
                             setIsAlarmPanelOpen(true);
-                            setSelectedDevices([{deviceMacId : deviceMacId, deviceName : deviceName}]);  
-                            }} className={styles.viewBtn}>
-                            View related alarms 
+                            setSelectedDevicePropertyPanel({ deviceMacId: deviceMacId, deviceName: deviceName });
+                        }} className={styles.viewBtn}>
+                            View related alarms
                             <span className="ml-2"><Badge label={totalAlarmsForDevice} bgColor="neutral" textColor="dark" /></span>
                         </button>
                     </div>

@@ -51,6 +51,6 @@ app.MapControllers();
 
 app.UseCors("CorsPolicy");
 
-app.MapHub<DeviceHub>("/devicehub");
+app.MapHub<AlertHub>("/alerthub");
 
 app.Run();

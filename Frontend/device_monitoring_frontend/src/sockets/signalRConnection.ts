@@ -1,26 +1,26 @@
 import * as signalR from "@microsoft/signalr";
 
-let connection: signalR.HubConnection | null = null;
+const connections: Record<string, signalR.HubConnection> = {};
 
-async function startConnection(retryCount = 0) {
-  if (!connection) return;
+async function startConnection(connection: signalR.HubConnection, hubName: string) {
   try {
     await connection.start();
-    console.log("SignalR connected.");
+    console.log(`SignalR connected to ${hubName}.`);
   } catch (err) {
-    console.warn("SignalR connection failed:", err);
+    console.warn(`SignalR connection to ${hubName} failed:`, err);
   }
 }
 
-export async function getSignalRConnection(): Promise<signalR.HubConnection> {
-  if (!connection) {
-    connection = new signalR.HubConnectionBuilder()
-      .withUrl("https://localhost:7127/devicehub")
+export async function getSignalRConnection(hubName: string, url: string): Promise<signalR.HubConnection> {
+  if (!connections[hubName]) {
+    const connection = new signalR.HubConnectionBuilder()
+      .withUrl(url)
       .withAutomaticReconnect()
       .build();
 
-    await startConnection();
+    connections[hubName] = connection;
+    await startConnection(connection, hubName);
   }
 
-  return connection;
+  return connections[hubName];
 }
