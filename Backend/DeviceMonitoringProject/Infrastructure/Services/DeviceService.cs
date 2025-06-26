@@ -104,7 +104,7 @@ namespace Infrastructure.Services
             {
                 TotalCount = totalCount,
                 DeviceMetadata = paginated
-            }; ;
+            }; 
         }
 
         public Dictionary<string, string> GetMacIdToFileNameMap()
@@ -323,6 +323,51 @@ namespace Infrastructure.Services
             }).ToList();
 
             return devices;
+        }
+
+        public DeviceMetadataPaginated GetSearchedDeviceMetadataPaginated(int pageNumber = 1, int pageSize = 10, string input = "")
+        {
+            var deviceFiles = Directory.GetFiles(_dataDirectory, "*.json");
+
+            var metadataList = new List<DeviceMetadata>();
+
+            foreach (var file in deviceFiles)
+            {
+                try
+                {
+                    using var jsonStream = System.IO.File.OpenRead(file);
+
+                    var metadata = JsonSerializer.Deserialize<DeviceMetadata>(
+                        jsonStream,
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                    if (metadata != null)
+                    {
+                        metadata.FileName = Path.GetFileName(file);
+                        metadataList.Add(metadata);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error parsing file {file}: {ex.Message}");
+                }
+            }
+
+            int totalCount = metadataList.Count;
+            
+            if(!input.Equals("") && input != null)
+                metadataList = metadataList.Where(device => device.Name.ToLower().Contains(input.ToLower())).ToList();
+
+            var paginated = metadataList
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            return new DeviceMetadataPaginated()
+            {
+                TotalCount = totalCount,
+                DeviceMetadata = paginated
+            }; 
         }
     }
 }

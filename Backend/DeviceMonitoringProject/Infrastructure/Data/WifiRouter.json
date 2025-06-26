@@ -2,7 +2,7 @@
   "FileName": "WifiRouter.json",
   "Name": "WiFi Router",
   "Type": "Networking Device",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "84:C9:B2:3E:7F:A1",
   "Connectivity": "High",
   "staticProperties": {
@@ -73,9 +73,9 @@
   "dynamicProperties": {
     "System Status": {
       "Uptime": "22 days, 5 hours",
-      "CPU Usage": "41%",
+      "CPU Usage": "25%",
       "Memory Usage": {
-        "Used": "279.4 MB",
+        "Used": "124.5 MB",
         "Total": "512 MB"
       },
       "Temperature": {
@@ -83,9 +83,9 @@
         "Board": "45°C"
       },
       "System Load Average": [
-        "1.14",
-        "0.02",
-        "0.11"
+        "0.93",
+        "0.25",
+        "0.48"
       ]
     },
     "Network Activity": {
@@ -95,8 +95,8 @@
           "ipAddress": "203.0.113.45",
           "macAddress": "84:C9:B2:3E:7F:A1",
           "traffic": {
-            "upload": "25 Mbps",
-            "download": "73 Mbps"
+            "upload": "8 Mbps",
+            "download": "115 Mbps"
           }
         },
         {
@@ -104,8 +104,8 @@
           "ipAddress": "192.168.0.1",
           "macAddress": "84:C9:B2:3E:7F:A2",
           "traffic": {
-            "upload": "34 Mbps",
-            "download": "37 Mbps"
+            "upload": "49 Mbps",
+            "download": "133 Mbps"
           }
         }
       ],
@@ -117,7 +117,7 @@
           "connection": {
             "type": "Wi-Fi",
             "band": "5 GHz",
-            "signalStrength": "-50 dBm"
+            "signalStrength": "-51 dBm"
           }
         },
         {
@@ -131,7 +131,7 @@
         }
       ],
       "Total Data Usage": {
-        "Sent": "838.56 GB",
+        "Sent": "835.11 GB",
         "Received": "1.20 TB"
       }
     },

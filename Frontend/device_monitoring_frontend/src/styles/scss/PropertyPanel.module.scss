@@ -1,5 +1,5 @@
 .propertyPanelTabContent {
-    max-height: 530px;
+    max-height: 500px;
     overflow-y: auto;
 
     &:global(body)>& {
@@ -37,38 +37,52 @@
     }
 }
 
-.propertyPanelTitles{
+.propertyPanelTitles {
     font-size: 0.9rem;
 }
 
-@for $i from 1 through 10 {
-  .depth-#{$i} {
-    padding-left: #{0.5 * $i}rem;
+.propertyPanelHeadingContainer{
+    display: flex;
+    flex-direction: column;
+
+    .deviceSubTitle{
+        color: #444444;
+        font-size: 0.9rem;
+    }
+
+    .deviceTitle{
+        font-size: 1.25rem;
+    }
 }
+
+@for $i from 1 through 10 {
+    .depth-#{$i} {
+        padding-left: #{0.5 * $i}rem;
+    }
 }
 
 //sub data property panel
 .keyValueSection {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
 }
 
 .kvRow {
-  display: grid;
-  grid-template-columns: 50% 50%; // Key column fixed, value fills rest
-  align-items: start;
-  gap: 1rem;
+    display: grid;
+    grid-template-columns: 50% 50%; // Key column fixed, value fills rest
+    align-items: start;
+    gap: 1rem;
 }
 
 .kvKey {
-  font-weight: 500;
-  font-size: 12px;
+    font-weight: 500;
+    font-size: 12px;
 }
 
 .kvValue {
-  font-size: 12px;
-  width: 90%;
+    font-size: 12px;
+    width: 90%;
 }
 
 
@@ -82,7 +96,7 @@
     padding-left: 0.5rem;
 }
 
-.tabListLi{
+.tabListLi {
     cursor: pointer;
     padding: 4px 0;
     border-bottom: 2px solid transparent;
@@ -90,7 +104,7 @@
     color: #333;
 }
 
-.tabListLiActive{
+.tabListLiActive {
     border-bottom: 2px solid #007bff;
     font-weight: 600;
     color: black
@@ -99,35 +113,35 @@
 
 
 //alarm card in health tab
- .alarmCard {
-        padding: 0.5rem 0.5rem;
-        align-items: center;
-        
+.alarmCard {
+    padding: 0.5rem 0.5rem;
+    align-items: center;
 
-        .time {
-            display: block;
-            font-size: 0.75rem;
-            color: #888;
-            margin-top: 2px;
-        }
 
-        .message {
-            font-size: 0.9rem;
-        }
-
-        .viewBtn {
-            margin-top: 0.3rem;
-            padding: 0.2rem 0.6rem;
-            font-size: 0.8rem;
-            border: none;
-            background: transparent;
-            border: 1px solid #141414;
-            color: black;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .viewBtn:hover {
-            background: #ededed;
-        }
+    .time {
+        display: block;
+        font-size: 0.75rem;
+        color: #888;
+        margin-top: 2px;
     }
+
+    .message {
+        font-size: 0.9rem;
+    }
+
+    .viewBtn {
+        margin-top: 0.3rem;
+        padding: 0.2rem 0.6rem;
+        font-size: 0.8rem;
+        border: none;
+        background: transparent;
+        border: 1px solid #141414;
+        color: black;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .viewBtn:hover {
+        background: #ededed;
+    }
+}

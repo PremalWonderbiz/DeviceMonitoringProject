@@ -9,6 +9,8 @@ namespace Application.Interfaces
 
         public DeviceMetadataPaginated GetAllDeviceMetadataPaginated(int pageNumber = 1, int pageSize = 10);
 
+        public DeviceMetadataPaginated GetSearchedDeviceMetadataPaginated(int pageNumber = 1, int pageSize = 10, string input="");
+
         public Dictionary<string, string> GetMacIdToFileNameMap();
 
         public Task<DeviceDetails> GetPropertyPanelDataForDevice(string deviceFileName);

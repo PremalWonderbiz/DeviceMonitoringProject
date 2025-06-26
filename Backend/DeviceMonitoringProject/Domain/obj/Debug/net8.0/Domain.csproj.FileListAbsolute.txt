@@ -21,3 +21,4 @@ D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitor
 D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\refint\Domain.dll
 D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\Domain.pdb
 D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\ref\Domain.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Domain\obj\Debug\net8.0\Domain.sourcelink.json

@@ -6,11 +6,11 @@ import TableComponent from "@/components/customcomponents/Table/TableComponent";
 import AlarmPanel from "@/components/customcomponents/AlarmPanel/AlarmPanel";
 import { useCallback, useEffect, useState } from "react";
 import { useDevicesTopDataSocket } from "@/utils/customhooks/useDevicesTopDataSocket";
-import { BellRing } from "lucide-react";
-import { getDevicesTopLevelData, getMacIdToFileNameMap } from "@/services/deviceservice";
+import { BellRing, RefreshCcw, RefreshCw, UserPen } from "lucide-react";
+import { getDevicesTopLevelData, getMacIdToFileNameMap, getSearchedDeviceMetadataPaginated } from "@/services/deviceservice";
 import styles from "@/styles/scss/Home.module.scss";
 import PopOver from "@/components/chakrauicomponents/PopOver";
-import { AlarmPopUp } from "@/components/customcomponents/AlarmPanel/AlarmPanelContent";
+import { AlarmPopUp, ProfilePopUp } from "@/components/customcomponents/AlarmPanel/AlarmPanelContent";
 import { getLatestAlarms } from "@/services/alarmservice";
 import { useDeviceAlertSocket } from "@/utils/customhooks/useDeviceAlertSocket";
 
@@ -34,18 +34,21 @@ export default function Home() {
   const [currentDeviceFileName, setCurrentDeviceFileName] = useState<string | null>(null);
   const [isAlarmPanelOpen, setIsAlarmPanelOpen] = useState<boolean>(false);
   const [isAlarmPopOverOpen, setIsAlarmPopOverOpen] = useState<boolean>(false);
+  const [isProfilePopOverOpen, setIsProfilePopOverOpen] = useState<boolean>(false);
   const [latestAlarms, setLatestAlarms] = useState<any[]>([]);
   const [totalAlarms, setTotalAlarms] = useState<any>(0);
   const [selectedDevicePropertyPanel, setSelectedDevicePropertyPanel] = useState<any>(null);
   const [totalCount, setTotalCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(3);
+  const [pageSize, setPageSize] = useState(10);
   const [totalPages, setTotalPages] = useState(0);
+  const [refreshDeviceDataKey, setRefreshDeviceDataKey] = useState(0);
+  const [searchInput, setSearchInput] = useState<any>(null);
 
   useEffect(() => {
     setTotalPages(Math.ceil(totalCount / pageSize));
     setCurrentPage(1);
-  }, [pageSize,totalCount]);
+  }, [pageSize, totalCount]);
 
   useEffect(() => {
     const fetchLatestAlarmData = async () => {
@@ -147,7 +150,27 @@ export default function Home() {
     };
 
     fetchDevicesData();
-  },[pageSize, currentPage]);
+  }, [pageSize, currentPage, refreshDeviceDataKey]);
+
+  useEffect(() => {
+    if (searchInput == "") {
+      setRefreshDeviceDataKey(prev => prev + 1);
+    }
+    else if (searchInput != null) {
+      const fetchSearchedDevicesData = setTimeout(async () => {
+        const response = await getSearchedDeviceMetadataPaginated(currentPage, pageSize, searchInput);
+        if (!response)
+          console.log("Network response was not ok");
+
+        if (response && response.data) {
+          setDeviceData(response.data.data);
+          setTotalCount(response.data.totalCount);
+        }
+      }, 1000)
+
+      return () => clearTimeout(fetchSearchedDevicesData)
+    }
+  }, [searchInput]);
 
   const openPropertypanel = (deviceId: string) => {
     setActiveTab(initialTabState); // Reset to default tab
@@ -157,31 +180,17 @@ export default function Home() {
   }
 
   return (
-    <div className='m-3'>
-      <Sidebar position="left" isOpen={isAlarmPanelOpen} setIsOpen={setIsAlarmPanelOpen} >
-        {isAlarmPanelOpen && <AlarmPanel setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} selectedDevicePropertyPanel={selectedDevicePropertyPanel} />}
-      </Sidebar>
-
-      <div className={styles.homePageNav}>
-        <span className="py-3 px-2">Device Monitoring System</span>
-        <div
-          className={styles.alarmWrapper}
-          onMouseEnter={() => setIsAlarmPopOverOpen(true)}
-          onMouseLeave={() => setIsAlarmPopOverOpen(false)}
-        >
-          <PopOver
-            isOpen={isAlarmPopOverOpen}
+    <div>
+      <div className={styles.upperNav}>
+        <div onMouseEnter={() => setIsAlarmPopOverOpen(true)} onMouseLeave={() => setIsAlarmPopOverOpen(false)}>
+          <PopOver isOpen={isAlarmPopOverOpen}
             triggerContent={
               <div className={styles.alarmIconContainer}>
-                <BellRing
-                  cursor="pointer"
+                <BellRing cursor="pointer" size={30} fill="#fbc02d"
                   onClick={(event: any) => {
                     event.stopPropagation();
                     setIsAlarmPanelOpen((prev) => !prev);
                   }}
-                  className="mr-4"
-                  size={30}
-                  fill="#fbc02d"
                 />
                 <div className={styles.badgeConainer}>
                   <Badge label={totalAlarms} bgColor="darkgray" textColor="light" />
@@ -191,17 +200,41 @@ export default function Home() {
           >
             {(latestAlarms && latestAlarms.length > 0) && (<AlarmPopUp latestAlarms={latestAlarms} totalAlarms={totalAlarms} setIsAlarmPanelOpen={setIsAlarmPanelOpen} />)}
           </PopOver>
-
+        </div>
+        <div onMouseEnter={() => setIsProfilePopOverOpen(true)} onMouseLeave={() => setIsProfilePopOverOpen(false)}>
+          <PopOver isOpen={isProfilePopOverOpen}
+            triggerContent={
+              <div className={styles.alarmIconContainer}>
+                <UserPen cursor="pointer" size={30} fill="#000" />
+              </div>
+            }
+          >
+            <ProfilePopUp />
+          </PopOver>
         </div>
       </div>
 
-      <div className={styles.bodyContainer}>
-        <div className={`${styles.pageWrapper} ${isPropertyPanelOpen ? styles.pushRight : ''}`}>
-          <TableComponent totalPages={totalPages} pageSize={pageSize} setPageSize={setPageSize} setCurrentPage={setCurrentPage} currentPage={currentPage} data={deviceData} setIsPropertyPanelOpen={openPropertypanel} />
-        </div>
-        <Sidebar position="right" isOpen={isPropertyPanelOpen} setIsOpen={setIsPropertyPanelOpen}>
-          {isPropertyPanelOpen && <PropertyPanel setIsAlarmPanelOpen={setIsAlarmPanelOpen} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} currentDeviceFileName={currentDeviceFileName} />}
+      <div className='m-3'>
+        <Sidebar position="left" isOpen={isAlarmPanelOpen} setIsOpen={setIsAlarmPanelOpen} >
+          {isAlarmPanelOpen && <AlarmPanel setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} selectedDevicePropertyPanel={selectedDevicePropertyPanel} />}
         </Sidebar>
+
+        <div>
+          <span className={`py-3 px-1 ${styles.mainPageTitle}`}>Welcome back, Premal Kadam</span>
+          <div className={`py-2 px-2 ${styles.subNav}`}>
+            <input onChange={(event: any) => { setSearchInput(event.target.value) }} className={styles.mainPageSearchInput} type="search" placeholder="Search..." />
+            <RefreshCw className={styles.deviceRefreshIcon} onClick={() => { setRefreshDeviceDataKey(prev => prev + 1) }} strokeWidth={"2.5px"} size={"30px"} cursor={"pointer"} />
+          </div>
+        </div>
+
+        <div className={styles.bodyContainer}>
+          <div className={`${styles.pageWrapper} ${isPropertyPanelOpen ? styles.pushRight : ''}`}>
+            <TableComponent totalPages={totalPages} pageSize={pageSize} setPageSize={setPageSize} setCurrentPage={setCurrentPage} currentPage={currentPage} data={deviceData} setIsPropertyPanelOpen={openPropertypanel} />
+          </div>
+          <Sidebar position="right" isOpen={isPropertyPanelOpen} setIsOpen={setIsPropertyPanelOpen}>
+            {isPropertyPanelOpen && <PropertyPanel setIsAlarmPanelOpen={setIsAlarmPanelOpen} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} currentDeviceFileName={currentDeviceFileName} />}
+          </Sidebar>
+        </div>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ type SidebarProps = {
 const Sidebar = ({position = "left", children, isOpen = false, setIsOpen = (isOpen: boolean) => { }}: SidebarProps) => {
   return (
     <div className={`${styles.sidebar} ${styles[position]} ${isOpen ? styles.open : ""}`}>
-      <button className={styles.closeButton} onClick={() => setIsOpen(!isOpen)}><X size={28} /></button><br />
+      <button className={styles.closeButton} onClick={() => setIsOpen(!isOpen)}><X size={28} /></button>
       {children}
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {
   Button,
   CloseButton,
@@ -8,12 +8,13 @@ import {
 import ComboBox from "./ComboBox"
 import { DateRangePicker } from "rsuite"
 
-const Modal = ({ setDateRange, triggerButton, title, devices, selectedDevices, setSelectedDevices }: any) => {
+const Modal = ({ dateRange, setDateRange, triggerButton, title, devices, selectedDevices, setSelectedDevices }: any) => {
   const [tempSelectedDevices, setTempSelectedDevices] = useState<any[]>([])
   const [tempDateRange, setTempDateRange] = useState<[Date, Date] | null>(null);
   const [isOpen, setIsOpen] = useState(false)
 
   const handleOpen = () => {
+    setTempDateRange(dateRange);
     setTempSelectedDevices(selectedDevices)
     setIsOpen(true)
   }

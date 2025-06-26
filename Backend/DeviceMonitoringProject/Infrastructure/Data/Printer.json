@@ -2,9 +2,9 @@
   "FileName": "Printer.json",
   "Name": "Printer",
   "Type": "Peripheral Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "F8:16:54:AA:34:12",
-  "Connectivity": "Low",
+  "Connectivity": "Medium",
   "staticProperties": {
     "Hardware Specifications": {
       "Printer Type": "Laser",
@@ -92,8 +92,8 @@
     "Consumables": {
       "Toner Level": "26%",
       "Drum Status": "Normal",
-      "Fuser Unit Life": "-327%",
-      "Maintenance Kit Life": "-143%",
+      "Fuser Unit Life": "-334%",
+      "Maintenance Kit Life": "-146%",
       "Paper Tray Status": {
         "Tray 1": "Loaded (33 sheets)",
         "Tray 2": "Loaded (180 sheets)"
@@ -103,8 +103,8 @@
       "IP Address": "192.168.10.58",
       "Subnet": "255.255.255.0",
       "Gateway": "192.168.10.1",
-      "Upload Speed": "1.3 Mbps",
-      "Download Speed": "2.6 Mbps",
+      "Upload Speed": "1.1 Mbps",
+      "Download Speed": "2.8 Mbps",
       "Connected Clients": [
         "kavita.s",
         "kavita.s",
@@ -115,10 +115,10 @@
     },
     "System Health": {
       "Temperature": {
-        "Internal Sensor": "44.7°C",
-        "Ambient": "30.3°C"
+        "Internal Sensor": "45.8°C",
+        "Ambient": "30.7°C"
       },
-      "Uptime": "340 days, 20 hours",
+      "Uptime": "344 days, 19 hours",
       "Error Logs": [
         "Paper jam detected in Tray 1 at 2025-06-13 19:40",
         "Paper jam detected in Tray 2 at 2025-06-13 19:43",
@@ -147,7 +147,11 @@
         "Paper jam detected in Tray 1 at 2025-06-25 20:43",
         "Paper jam detected in Tray 1 at 2025-06-25 20:45",
         "Paper jam detected in Tray 2 at 2025-06-25 20:47",
-        "Paper jam detected in Tray 1 at 2025-06-25 20:52"
+        "Paper jam detected in Tray 1 at 2025-06-25 20:52",
+        "Paper jam detected in Tray 2 at 2025-06-26 10:26",
+        "Paper jam detected in Tray 1 at 2025-06-26 10:32",
+        "Paper jam detected in Tray 1 at 2025-06-26 10:33",
+        "Paper jam detected in Tray 1 at 2025-06-26 10:59"
       ],
       "Firmware Version": "2025.2.13",
       "Last Restart": "2025-05-25 16:30"

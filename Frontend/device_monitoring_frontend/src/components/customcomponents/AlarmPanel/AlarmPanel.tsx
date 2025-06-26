@@ -4,11 +4,12 @@ import styles from "@/styles/scss/AlarmPanel.module.scss";
 import Badge from '../Badge';
 import Modal from '@/components/chakrauicomponents/Modal';
 import Accordion from '../Accordion';
-import { DeviceTags } from './AlarmPanelContent';
+import { CustomTag, DeviceTags } from './AlarmPanelContent';
 import { acknowledgeAlarm, getAlarmPanelData } from '@/services/alarmservice';
 import { getDevicesNameMacIdList, getDevicesTopLevelData } from '@/services/deviceservice';
 import { formatRelativeTime } from '@/utils/helperfunctions';
 import { useDeviceAlertSocket } from '@/utils/customhooks/useDeviceAlertSocket';
+import { Funnel } from 'lucide-react';
 
 const priorityMap: any = {
   Critical: 0,
@@ -30,7 +31,7 @@ const AlarmPanel = ({ selectedDevicePropertyPanel, setSelectedDevicePropertyPane
       filterAndSortAlarms(incomingUpdates);
     }
   }, []);
-  
+
   // SignalR connection for alarm panel data  
   useDeviceAlertSocket("sampleDeviceId", handleAlertUpdates, "ReceiveAlarmPanelUpdates", shouldConnectSignalR);
 
@@ -73,7 +74,7 @@ const AlarmPanel = ({ selectedDevicePropertyPanel, setSelectedDevicePropertyPane
 
   useEffect(() => {
     fetchData(selectedDevices.map((s: any) => s.deviceMacId), dateRange);
-    (selectedDevices.length == 0 && dateRange == null) ? setShouldConnectSignalR(true) : setShouldConnectSignalR(false); 
+    (selectedDevices.length == 0 && dateRange == null) ? setShouldConnectSignalR(true) : setShouldConnectSignalR(false);
 
   }, [selectedDevices, dateRange]);
 
@@ -129,11 +130,12 @@ const AlarmPanel = ({ selectedDevicePropertyPanel, setSelectedDevicePropertyPane
             <Badge label={(unacknowledgedAlarms.length + acknowledgedAlarms.length).toString()} bgColor="neutral" textColor="dark" />
           </span>
         </h2>
-        <Modal setDateRange={setDateRange} title={"Alarm Panel Filters"} triggerButton={<button className={styles.filterBtn}>Apply Filters</button>} devices={devices} selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices} />
+        <Modal dateRange={dateRange} setDateRange={setDateRange} title={"Alarm Panel Filters"} triggerButton={<Funnel cursor={"pointer"} />} devices={devices} selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices} />
       </div>
 
-      <div className={`${styles.filters} ${selectedDevices.length == 0 ? styles.zeroFilters : ''}`}>
-        <DeviceTags tags={selectedDevices} removeTag={handleRemoveTag} />
+      <div className={`${styles.filters} ${(selectedDevices.length == 0 && dateRange == null) ? styles.zeroFilters : ''}`}>
+        {dateRange && <CustomTag tag={`${dateRange[0].toLocaleDateString()} ~ ${dateRange[1].toLocaleDateString()}`} index={0} removeTag={() => {setDateRange(null)}} />}
+        {selectedDevices.length > 0 && <DeviceTags tags={selectedDevices} removeTag={handleRemoveTag} />}
       </div>
 
       <div className={styles.section}>
@@ -141,7 +143,8 @@ const AlarmPanel = ({ selectedDevicePropertyPanel, setSelectedDevicePropertyPane
           title={<h3 className={styles.alarmPanelTitles}>Unacknowledged <span className={styles.sectionCount}>
             <Badge label={unacknowledgedAlarms.length.toString()} bgColor="neutral" textColor="dark" />
           </span></h3>} defaultOpen={true} bgColor='white'>
-          <div className={`${styles.alarmsAccordionSection} ${selectedDevices.length == 0 ? styles.alarmsAccordionSectionHeight : null}`}>
+
+          <div className={`${styles.alarmsAccordionSection} ${(selectedDevices.length == 0 && dateRange == null) ? styles.alarmsAccordionSectionHeight : null}`}>
             {unacknowledgedAlarms.map(alarm => {
               const isExpanded = expandedId === alarm.id;
 

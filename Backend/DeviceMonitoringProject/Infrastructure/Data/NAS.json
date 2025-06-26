@@ -124,85 +124,85 @@
   "dynamicProperties": {
     "System Health": {
       "CPU Usage": {
-        "Load Percentage": 49,
+        "Load Percentage": 37,
         "Core Usage": [
           {
             "Core": 0,
-            "Usage": "48%"
+            "Usage": "58%"
           },
           {
             "Core": 1,
-            "Usage": "38%"
+            "Usage": "39%"
           },
           {
             "Core": 2,
-            "Usage": "69%"
+            "Usage": "35%"
           },
           {
             "Core": 3,
-            "Usage": "48%"
+            "Usage": "57%"
           }
         ]
       },
       "RAM Usage": {
-        "Used": "4.8 GB",
-        "Free": "3.2 GB",
-        "Swap Used": "0.4 GB"
+        "Used": "4.5 GB",
+        "Free": "3.5 GB",
+        "Swap Used": "0.6 GB"
       },
       "System Temperature": {
-        "CPU": "50.3°C",
-        "System Board": "41.4°C",
+        "CPU": "52.8°C",
+        "System Board": "41.6°C",
         "Drive Bays": [
           {
             "Bay": 1,
-            "Temp": "36.8°C"
+            "Temp": "38.5°C"
           },
           {
             "Bay": 2,
-            "Temp": "36.2°C"
+            "Temp": "37.1°C"
           },
           {
             "Bay": 3,
-            "Temp": "36.5°C"
+            "Temp": "37.8°C"
           },
           {
             "Bay": 4,
-            "Temp": "37.1°C"
+            "Temp": "36.4°C"
           }
         ]
       },
       "System Load Average": {
         "1m": "1.16",
-        "5m": "1.70",
-        "15m": "0.72"
+        "5m": "1.25",
+        "15m": "0.73"
       },
-      "Uptime": "58 days, 5 hours"
+      "Uptime": "51 days, 15 hours"
     },
     "Network Activity": {
-      "Primary IP": "192.168.1.57",
+      "Primary IP": "192.168.1.47",
       "Interfaces": [
         {
           "Name": "eth0",
           "Status": "Active",
           "Throughput": {
-            "Upload": "89 Mbps",
-            "Download": "111 Mbps"
+            "Upload": "71 Mbps",
+            "Download": "147 Mbps"
           },
           "Data Transferred": {
-            "Sent": "1.1 TB",
-            "Received": "3.0 TB"
+            "Sent": "1.2 TB",
+            "Received": "2.8 TB"
           }
         },
         {
           "Name": "eth1",
-          "Status": "Active",
+          "Status": "Idle",
           "Throughput": {
-            "Upload": "9 Mbps",
-            "Download": "2 Mbps"
+            "Upload": "0 Mbps",
+            "Download": "0 Mbps"
           },
           "Data Transferred": {
-            "Sent": "0.63 TB",
-            "Received": "0.83 TB"
+            "Sent": "N/A",
+            "Received": "N/A"
           }
         }
       ],
@@ -210,12 +210,12 @@
         {
           "IP": "192.168.1.102",
           "Hostname": "laptop-prem",
-          "Last Access": "2025-06-25 20:21"
+          "Last Access": "2025-06-26 10:19"
         },
         {
           "IP": "192.168.1.115",
           "Hostname": "mobile-kiran",
-          "Last Access": "2025-06-25 20:33"
+          "Last Access": "2025-06-26 10:34"
         }
       ]
     },
@@ -233,7 +233,7 @@
       },
       "Disk Health": {
         "Status": "Healthy",
-        "Last Checked": "2025-06-24",
+        "Last Checked": "2025-06-23",
         "SMART Reports": [
           {
             "Bay": 1,
@@ -243,23 +243,23 @@
           {
             "Bay": 2,
             "Health": "Good",
-            "Reallocated Sectors": 0
+            "Reallocated Sectors": 1
           }
         ]
       },
       "Fan Status": {
         "Fan 1": {
-          "Speed": "1225 RPM",
+          "Speed": "1260 RPM",
           "Status": "Normal"
         },
         "Fan 2": {
-          "Speed": "1214 RPM",
+          "Speed": "1237 RPM",
           "Status": "Normal"
         }
       },
       "Last Backup": {
         "Status": "Success",
-        "Timestamp": "2025-06-24 23:15"
+        "Timestamp": "2025-06-25 23:15"
       }
     }
   }

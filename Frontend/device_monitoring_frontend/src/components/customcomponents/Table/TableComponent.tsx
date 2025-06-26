@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import {useReactTable, getCoreRowModel, getSortedRowModel, flexRender, ColumnDef, SortingState,} from "@tanstack/react-table";
+import { useReactTable, getCoreRowModel, getSortedRowModel, flexRender, ColumnDef, SortingState, } from "@tanstack/react-table";
 import styles from "@/styles/scss/Table.module.scss";
 import TableRow from "./TableRow";
 import { ArrowDown, ArrowUp } from "lucide-react";
@@ -7,13 +7,13 @@ import Pagination from "../Pagination";
 import { capitalizeFirstLetter } from "@/utils/helperfunctions";
 
 const TableComponent = ({ currentPage, setCurrentPage, totalPages, pageSize, setPageSize, data, setIsPropertyPanelOpen }: any) => {
-  if (!data || data.length === 0) 
+  if (!data || data.length === 0)
     return <p className="px-2">No data available.</p>;
-  
+
   const [sorting, setSorting] = useState<SortingState>([]);
 
   // Columns definition
-  const columns = useMemo<ColumnDef<any, any>[]>(() => {    
+  const columns = useMemo<ColumnDef<any, any>[]>(() => {
     return Object.keys(data[0]).map((key) => ({
       accessorKey: key,
       header: () => capitalizeFirstLetter(key),
@@ -27,7 +27,7 @@ const TableComponent = ({ currentPage, setCurrentPage, totalPages, pageSize, set
     data,
     columns,
     state: {
-      sorting, 
+      sorting,
     },
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
@@ -35,35 +35,43 @@ const TableComponent = ({ currentPage, setCurrentPage, totalPages, pageSize, set
   });
 
   return (
+    <>
     <div className={styles.tableWrapper}>
-      <table className={styles.table}>
-        <thead>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id} className={styles.row}>
-              {headerGroup.headers.map((header) => {
-                const isSortable = header.column.getCanSort();
-                const sortDir = header.column.getIsSorted(); // false | 'asc' | 'desc'
-                return (
-                  <th key={header.id}
-                    className={styles.header}
-                    onClick={isSortable ? header.column.getToggleSortingHandler() : undefined}
-                  >
-                    <div className={styles.sortIcon}>
-                      {flexRender(header.column.columnDef.header, header.getContext())}
-                      {isSortable && (sortDir === "asc" ? (<ArrowUp size={16} />) : sortDir === "desc" ? (<ArrowDown size={16} />) : null)}
-                    </div>
-                  </th>
-                );
-              })}
-            </tr>
-          ))}
-        </thead>  
-        <tbody>
-          {table.getRowModel().rows.map((row) => (<TableRow key={row.id} row={row} setIsPropertyPanelOpen={setIsPropertyPanelOpen}/>))}
-        </tbody>
-      </table>
-      <Pagination setPageSize={setPageSize} currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} pageSize={pageSize} pageSizeOptions={[3, 5, 7, 10]}/>
+      <div className={styles.tableHeader}>
+        <table className={styles.table}>
+          <thead>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id} className={styles.row}>
+                {headerGroup.headers.map((header) => {
+                  const isSortable = header.column.getCanSort();
+                  const sortDir = header.column.getIsSorted(); // false | 'asc' | 'desc'
+                  return (
+                    <th key={header.id}
+                      className={styles.header}
+                      onClick={isSortable ? header.column.getToggleSortingHandler() : undefined}
+                    >
+                      <div className={styles.sortIcon}>
+                        {flexRender(header.column.columnDef.header, header.getContext())}
+                        {isSortable && (sortDir === "asc" ? (<ArrowUp size={16} />) : sortDir === "desc" ? (<ArrowDown size={16} />) : null)}
+                      </div>
+                    </th>
+                  );
+                })}
+              </tr>
+            ))}
+          </thead>
+        </table>
+      </div>
+      <div className={styles.tableBody}>
+        <table className={styles.table}>
+          <tbody>
+            {table.getRowModel().rows.map((row) => (<TableRow key={row.id} row={row} setIsPropertyPanelOpen={setIsPropertyPanelOpen} />))}
+          </tbody>
+        </table>
+      </div>
     </div>
+      <Pagination setPageSize={setPageSize} currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} pageSize={pageSize} pageSizeOptions={[3, 5, 7, 10]} />
+      </>
   );
 };
 

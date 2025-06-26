@@ -43,6 +43,27 @@ namespace API.Controllers
             });
         }
         
+        [HttpGet("search/metadata/{pageNumber}/{pageSize}/{input}")]
+        public IActionResult GetSearchedDeviceMetadataPaginated(int pageNumber = 1, int pageSize = 10, string input="")
+        {
+            var data = _deviceService.GetSearchedDeviceMetadataPaginated(pageNumber, pageSize, input);
+
+            var formattedData = data.DeviceMetadata.Select(m => new DeviceTopLevelData
+            {
+                Name = m.Name,
+                Type = m.Type,
+                Status = m.Status,
+                MacId = m.MacId,
+                Connectivity = m.Connectivity
+            }).ToList();
+
+            return Ok(new
+            {
+                totalCount = data.TotalCount,
+                data = formattedData
+            });
+        }
+        
         [HttpGet("getDevicesNameMacIdList")]
         public async Task<IActionResult> GetDevicesNameMacIdList()
         {

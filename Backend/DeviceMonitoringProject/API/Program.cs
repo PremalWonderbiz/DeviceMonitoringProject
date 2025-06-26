@@ -18,7 +18,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSignalR();
-builder.Services.AddHostedService<DeviceLiveDataBgService>();
+//builder.Services.AddHostedService<DeviceLiveDataBgService>();
 builder.Services.AddTransient<IDeviceService, DeviceService>();
 builder.Services.AddTransient<IDynamicDataHelper, DynamicDataHelper>();
 builder.Services.AddTransient<IAlarmEvaluationService, AlarmEvaluationService>();
