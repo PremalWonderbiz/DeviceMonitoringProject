@@ -6,7 +6,7 @@ import TableComponent from "@/components/customcomponents/Table/TableComponent";
 import AlarmPanel from "@/components/customcomponents/AlarmPanel/AlarmPanel";
 import { useCallback, useEffect, useState } from "react";
 import { useDevicesTopDataSocket } from "@/utils/customhooks/useDevicesTopDataSocket";
-import { BellRing, RefreshCcw, RefreshCw, UserPen } from "lucide-react";
+import { BellRing, RefreshCw, Repeat, UserPen } from "lucide-react";
 import { getDevicesTopLevelData, getMacIdToFileNameMap, getSearchedDeviceMetadataPaginated } from "@/services/deviceservice";
 import styles from "@/styles/scss/Home.module.scss";
 import PopOver from "@/components/chakrauicomponents/PopOver";
@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function Home() {
+export default function Home() {  
   const [deviceData, setDeviceData] = useState<any[]>([]);
   const [deviceFileNames, setDeviceFileNames] = useState<any>();
   const initialTabState = "Health Tab"; // Default active tab
@@ -44,6 +44,7 @@ export default function Home() {
   const [totalPages, setTotalPages] = useState(0);
   const [refreshDeviceDataKey, setRefreshDeviceDataKey] = useState(0);
   const [searchInput, setSearchInput] = useState<any>(null);
+  const [updatedFieldsMap, setUpdatedFieldsMap] = useState<{ [macId: string]: string[] } | null>(null);
 
   useEffect(() => {
     setTotalPages(Math.ceil(totalCount / pageSize));
@@ -73,19 +74,29 @@ export default function Home() {
 
       let hasChange = false;
       let counter = 0;
+      const changedFieldMap: { [macId: string]: string[] } = {};
+
 
       const updatedDevices = prevDevices.map((existingDevice) => {
         const incomingDevice = incomingDevices.find(
           (d: any) => d.MacId === existingDevice.macId
         );
 
-        if (
-          incomingDevice &&
-          (incomingDevice.Status !== existingDevice.status ||
-            incomingDevice.Connectivity !== existingDevice.connectivity)
-        ) {
-          counter++;
+        if (!incomingDevice) return existingDevice;
+
+        const changedFields: string[] = [];
+
+        if (incomingDevice.Status !== existingDevice.status) {
+          changedFields.push("status");
+        }
+        if (incomingDevice.Connectivity !== existingDevice.connectivity) {
+          changedFields.push("connectivity");
+        }
+
+        if (changedFields.length > 0) {
           hasChange = true;
+          counter++;
+          changedFieldMap[existingDevice.macId] = changedFields;
 
           return {
             ...existingDevice,
@@ -100,6 +111,7 @@ export default function Home() {
 
       if (hasChange) {
         console.log("Updating deviceData due to change in status/connectivity", counter);
+        setUpdatedFieldsMap(changedFieldMap);
         return updatedDevices;
 
       } else {
@@ -153,7 +165,7 @@ export default function Home() {
   }, [pageSize, currentPage, refreshDeviceDataKey]);
 
   useEffect(() => {
-    if (searchInput == "") {
+    if (searchInput == "") {      
       setRefreshDeviceDataKey(prev => prev + 1);
     }
     else if (searchInput != null) {
@@ -186,7 +198,7 @@ export default function Home() {
           <PopOver isOpen={isAlarmPopOverOpen}
             triggerContent={
               <div className={styles.alarmIconContainer}>
-                <BellRing cursor="pointer" size={30} fill="#fbc02d"
+                <BellRing cursor="pointer" size={25} fill="#fbc02d"
                   onClick={(event: any) => {
                     event.stopPropagation();
                     setIsAlarmPanelOpen((prev) => !prev);
@@ -205,7 +217,7 @@ export default function Home() {
           <PopOver isOpen={isProfilePopOverOpen}
             triggerContent={
               <div className={styles.alarmIconContainer}>
-                <UserPen cursor="pointer" size={30} fill="#000" />
+                <UserPen cursor="pointer" size={25} fill="#000" />
               </div>
             }
           >
@@ -220,16 +232,16 @@ export default function Home() {
         </Sidebar>
 
         <div>
-          <span className={`py-3 px-1 ${styles.mainPageTitle}`}>Welcome back, Premal Kadam</span>
-          <div className={`py-2 px-2 ${styles.subNav}`}>
+          <span className={`py-3 ${styles.mainPageTitle}`}>Welcome back, Premal Kadam</span>
+          <div className={`py-2 pr-4 ${styles.subNav}`}>
             <input onChange={(event: any) => { setSearchInput(event.target.value) }} className={styles.mainPageSearchInput} type="search" placeholder="Search..." />
-            <RefreshCw className={styles.deviceRefreshIcon} onClick={() => { setRefreshDeviceDataKey(prev => prev + 1) }} strokeWidth={"2.5px"} size={"30px"} cursor={"pointer"} />
+            <Repeat className={styles.deviceRefreshIcon} onClick={() => { setRefreshDeviceDataKey(prev => prev + 1) }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
           </div>
         </div>
 
         <div className={styles.bodyContainer}>
           <div className={`${styles.pageWrapper} ${isPropertyPanelOpen ? styles.pushRight : ''}`}>
-            <TableComponent totalPages={totalPages} pageSize={pageSize} setPageSize={setPageSize} setCurrentPage={setCurrentPage} currentPage={currentPage} data={deviceData} setIsPropertyPanelOpen={openPropertypanel} />
+            <TableComponent refreshDeviceDataKey={refreshDeviceDataKey} updatedFieldsMap={updatedFieldsMap} totalPages={totalPages} pageSize={pageSize} setPageSize={setPageSize} setCurrentPage={setCurrentPage} currentPage={currentPage} data={deviceData} setIsPropertyPanelOpen={openPropertypanel} />
           </div>
           <Sidebar position="right" isOpen={isPropertyPanelOpen} setIsOpen={setIsPropertyPanelOpen}>
             {isPropertyPanelOpen && <PropertyPanel setIsAlarmPanelOpen={setIsAlarmPanelOpen} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} currentDeviceFileName={currentDeviceFileName} />}

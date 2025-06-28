@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Application.Interfaces;
 using Infrastructure.RealTime;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -13,14 +14,13 @@ namespace Infrastructure.Services
 {
     public class DeviceLiveDataBgService : BackgroundService
     {
-
-        private readonly IDeviceService _deviceService;
         private readonly ILogger<DeviceLiveDataBgService> _logger;
+        private readonly IServiceScopeFactory _scopeFactory;
 
-        public DeviceLiveDataBgService(ILogger<DeviceLiveDataBgService> logger, IDeviceService deviceService, IHubContext<DeviceHub> hubContext)
+        public DeviceLiveDataBgService(IServiceScopeFactory scopeFactory, ILogger<DeviceLiveDataBgService> logger, IHubContext<DeviceHub> hubContext)
         {
             _logger = logger;
-            _deviceService = deviceService;
+            _scopeFactory = scopeFactory;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -29,10 +29,15 @@ namespace Infrastructure.Services
 
             while (!stoppingToken.IsCancellationRequested)
             {
-                _logger.LogInformation("DeviceTopDataBgService Current time: {time}", DateTimeOffset.Now);
-                await _deviceService.GenerateAndSendLiveUpdatesDevicesData();
+                using (var scope = _scopeFactory.CreateScope())
+                {
+                    var deviceService = scope.ServiceProvider.GetRequiredService<IDeviceService>();
 
-                await Task.Delay(TimeSpan.FromSeconds(30), stoppingToken); // Wait for 10 seconds
+                    _logger.LogInformation("DeviceTopDataBgService Current time: {time}", DateTimeOffset.Now);
+                    await deviceService.GenerateAndSendLiveUpdatesDevicesData();
+                }
+
+                await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken); // Wait for 10 seconds
             }
 
             _logger.LogInformation("DeviceTopDataBgService is stopping.");

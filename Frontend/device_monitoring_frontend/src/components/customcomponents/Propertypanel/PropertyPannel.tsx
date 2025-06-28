@@ -5,7 +5,6 @@ import TabList from "./TabList";
 import { HealthTabContent, StaticTabContent } from "./PropertyPanelContent";
 import { getPropertyPanelData } from "@/services/deviceservice";
 import styles from "@/styles/scss/PropertyPanel.module.scss";
-import { Heading, HeadingGroup, Text } from "rsuite";
 
 
 const PropertyPanel = ({ setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, currentDeviceId, currentDeviceFileName, activeTab, setActiveTab }: any) => {

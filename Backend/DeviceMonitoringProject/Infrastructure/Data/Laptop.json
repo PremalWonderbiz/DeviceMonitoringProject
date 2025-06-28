@@ -79,61 +79,61 @@
   "dynamicProperties": {
     "System Status": {
       "Battery": {
-        "Level": "15%",
+        "Level": "30%",
         "Charging Status": "Charging",
         "Health": "Good",
-        "Estimated Time Left": "1 hrs 50 mins"
+        "Estimated Time Left": "1 hrs 6 mins"
       },
-      "CPU Load": "64%",
+      "CPU Load": "23%",
       "RAM Usage": {
-        "Used": "12.5 GB",
-        "Free": "19.5 GB"
+        "Used": "10.0 GB",
+        "Free": "22.0 GB"
       },
       "GPU Usage": {
-        "Integrated": "2%",
-        "Dedicated": "22%"
+        "Integrated": "4%",
+        "Dedicated": "2%"
       },
       "Temperature": {
-        "CPU": "57.5°C",
-        "GPU": "47.8°C",
-        "Motherboard": "44.9°C"
+        "CPU": "50.5°C",
+        "GPU": "45.1°C",
+        "Motherboard": "41.9°C"
       },
-      "System Uptime": "1 days, 15 hours"
+      "System Uptime": "1 days, 6 hours"
     },
     "Network Activity": {
       "Current Wi-Fi": {
         "SSID": "Office_Network_5G",
-        "IP Address": "10.0.1.112",
-        "Signal Strength": "-56 dBm",
+        "IP Address": "10.0.1.53",
+        "Signal Strength": "-61 dBm",
         "Data Usage (Today)": {
-          "Download": "2.8 GB",
-          "Upload": "2.1 GB"
+          "Download": "1.7 GB",
+          "Upload": "4.3 GB"
         }
       },
       "VPN Status": {
-        "Connected": true,
+        "Connected": false,
         "Provider": "NordLayer",
-        "IP": "172.20.47.205"
+        "IP": "172.20.23.189"
       }
     },
     "Application Activity": {
       "Foreground Apps": [
         {
           "App Name": "Visual Studio Code",
-          "CPU": "14%",
-          "Memory": "1.4 GB"
+          "CPU": "5%",
+          "Memory": "1.1 GB"
         },
         {
           "App Name": "Slack",
-          "CPU": "5%",
-          "Memory": "0.6 GB"
+          "CPU": "2%",
+          "Memory": "0.7 GB"
         }
       ],
-      "Background Processes": 99,
+      "Background Processes": 70,
       "Recent Apps Launched": [
-        "Edge Browser",
-        "Jira",
-        "Zoom"
+        "Postman",
+        "Zoom",
+        "Spotify"
       ]
     }
   }

@@ -19,7 +19,12 @@
     padding: 8px;
     min-width: 180px;
     height: 50px;
-    word-wrap: break-word;
+    word-wrap: break-word;  
+    transition: background-color 0.8s ease
+}
+
+.highlightedCell{
+    background-color: #f3f19f;
 }
 
 .row:nth-child(even) {

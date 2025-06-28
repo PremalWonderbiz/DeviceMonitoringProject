@@ -4,12 +4,12 @@
 .panel {
     background: #fff;
     border-radius: 8px;
-    padding: 1.5rem 0 0 0;
+    padding: 0.5rem 0 0 0;
     width: 100%;
     max-width: 500px;
     font-family: Arial, sans-serif;
 
-    .alarmsContainer{
+    .alarmsContainer {
         height: 100vh;
     }
 
@@ -245,7 +245,42 @@
     }
 }
 
-.profilePopUpTitle{
+
+//Profile pop up
+
+.profilePopOverSection {
+    padding: 0.5rem;
+}
+
+.profilePopUpTitle {
     font-weight: bold;
     font-size: 1rem;
+}
+
+.profilePopUpSubTitle {
+    color: #535353;
+    font-size: 0.9rem;
+}
+
+.profileActionListLi {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.logoutBtn {
+    padding: 0.2rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    background: transparent;
+    border: 1px solid #141414;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.logoutBtn:hover {
+    background: #ededed;
 }

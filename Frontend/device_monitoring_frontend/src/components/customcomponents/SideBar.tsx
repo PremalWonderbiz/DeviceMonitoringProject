@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import styles from "@/styles/scss/Sidebar.module.scss";
-import { X } from "lucide-react";
+import { ChevronLeft, ChevronRight, RectangleVertical, X } from "lucide-react";
 
 type SidebarProps = {
   position?: "left" | "right";
@@ -12,7 +12,9 @@ type SidebarProps = {
 const Sidebar = ({position = "left", children, isOpen = false, setIsOpen = (isOpen: boolean) => { }}: SidebarProps) => {
   return (
     <div className={`${styles.sidebar} ${styles[position]} ${isOpen ? styles.open : ""}`}>
-      <button className={styles.closeButton} onClick={() => setIsOpen(!isOpen)}><X size={28} /></button>
+      {position=="left" ? 
+      isOpen ? <button className={styles.closeButton} onClick={() => setIsOpen(false)}><X size={28} /></button> : <div onClick={() => setIsOpen(true)} className={`${styles.closeIcon}`} /> :
+      <button className={styles.closeButton} onClick={() => setIsOpen(!isOpen)}><X size={28} /></button>}
       {children}
     </div>
   );

@@ -4,7 +4,7 @@
   "Type": "Personal Device",
   "Status": "Offline",
   "MacId": "F0:9F:C2:12:34:56",
-  "Connectivity": "High",
+  "Connectivity": "Low",
   "staticProperties": {
     "Device Specifications": {
       "Operating System": {
@@ -73,52 +73,52 @@
   "dynamicProperties": {
     "Device Health": {
       "Battery Status": {
-        "Level": "94%",
+        "Level": "71%",
         "Charging State": "Not Charging",
-        "Temperature": "33.1°C",
-        "Health": "Good"
+        "Temperature": "33.5°C",
+        "Health": "Degraded"
       },
-      "CPU Usage": "42%",
+      "CPU Usage": "25%",
       "RAM Usage": {
-        "Used": "4.2 GB",
-        "Free": "7.8 GB"
+        "Used": "8.0 GB",
+        "Free": "4.0 GB"
       },
       "Storage Usage": {
-        "Used": "131 GB",
-        "Free": "125 GB"
+        "Used": "138 GB",
+        "Free": "118 GB"
       },
       "Device Temperature": {
-        "CPU": "47.0°C",
-        "Battery": "33.1°C"
+        "CPU": "43.4°C",
+        "Battery": "33.5°C"
       },
-      "Uptime": "1 days, 9 hours"
+      "Uptime": "0 days, 17 hours"
     },
     "Network Activity": {
       "Current Network": {
         "Connection Type": "Wi-Fi",
         "SSID": "Home_5G",
-        "IP Address": "192.168.1.125",
+        "IP Address": "192.168.1.114",
         "Signal Strength": "-54 dBm",
         "MAC Address": "F0:9F:C2:12:34:56"
       },
       "Data Usage": {
         "Today": {
-          "Download": "1.7 GB",
-          "Upload": "258 MB"
+          "Download": "1.5 GB",
+          "Upload": "480 MB"
         },
         "Monthly": {
-          "Download": "41.1 GB",
-          "Upload": "5.2 GB"
+          "Download": "43.0 GB",
+          "Upload": "8.8 GB"
         }
       },
       "Connected Apps": [
         {
           "appName": "Spotify",
-          "dataUsage": "Streaming (213 MB today)"
+          "dataUsage": "Streaming (223 MB today)"
         },
         {
           "appName": "WhatsApp",
-          "dataUsage": "Video call (177 MB today)"
+          "dataUsage": "Video call (154 MB today)"
         }
       ]
     },
@@ -127,22 +127,22 @@
         {
           "name": "YouTube",
           "status": "Foreground",
-          "screenTimeToday": "1 hr 30 min"
+          "screenTimeToday": "1 hr 25 min"
         },
         {
           "name": "Gmail",
           "status": "Background",
-          "notifications": 3
+          "notifications": 4
         }
       ],
       "Battery Usage by Apps": [
         {
           "appName": "YouTube",
-          "usagePercent": "13%"
+          "usagePercent": "14%"
         },
         {
           "appName": "Google Maps",
-          "usagePercent": "5%"
+          "usagePercent": "7%"
         }
       ]
     }

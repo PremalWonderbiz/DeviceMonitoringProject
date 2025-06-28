@@ -255,7 +255,7 @@ namespace Infrastructure.Services
                         DynamicProperties = JsonDocument.Parse(rootNode["dynamicProperties"]!.ToJsonString()).RootElement
                     };
 
-                    await _alarmEvaluationService.EvaluateAsync(previousDto, updatedDto);
+                    //await _alarmEvaluationService.EvaluateAsync(previousDto, updatedDto);
 
                     // Read structured payload (uses updated file)
                     var detailPayload = await GetPropertyPanelDataForDevice(device.FileName);

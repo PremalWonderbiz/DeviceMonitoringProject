@@ -6,10 +6,10 @@ import { ArrowDown, ArrowUp } from "lucide-react";
 import Pagination from "../Pagination";
 import { capitalizeFirstLetter } from "@/utils/helperfunctions";
 
-const TableComponent = ({ currentPage, setCurrentPage, totalPages, pageSize, setPageSize, data, setIsPropertyPanelOpen }: any) => {
+const TableComponent = ({refreshDeviceDataKey, updatedFieldsMap, currentPage, setCurrentPage, totalPages, pageSize, setPageSize, data, setIsPropertyPanelOpen }: any) => {
   if (!data || data.length === 0)
     return <p className="px-2">No data available.</p>;
-
+  
   const [sorting, setSorting] = useState<SortingState>([]);
 
   // Columns definition
@@ -65,7 +65,7 @@ const TableComponent = ({ currentPage, setCurrentPage, totalPages, pageSize, set
       <div className={styles.tableBody}>
         <table className={styles.table}>
           <tbody>
-            {table.getRowModel().rows.map((row) => (<TableRow key={row.id} row={row} setIsPropertyPanelOpen={setIsPropertyPanelOpen} />))}
+            {table.getRowModel().rows.map((row) => (<TableRow refreshDeviceDataKey={refreshDeviceDataKey} updatedFieldsMap={updatedFieldsMap} key={row.id} row={row} setIsPropertyPanelOpen={setIsPropertyPanelOpen} />))}
           </tbody>
         </table>
       </div>
