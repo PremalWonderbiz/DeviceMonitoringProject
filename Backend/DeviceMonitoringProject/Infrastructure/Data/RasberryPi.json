@@ -4,7 +4,7 @@
   "Type": "Microcomputer",
   "Status": "Online",
   "MacId": "B8:27:EB:45:67:89",
-  "Connectivity": "Low",
+  "Connectivity": "Medium",
   "staticProperties": {
     "Hardware Information": {
       "Model": "Raspberry Pi 4 Model B",
@@ -60,31 +60,31 @@
   },
   "dynamicProperties": {
     "System Health": {
-      "CPU Usage": "53%",
+      "CPU Usage": "26%",
       "RAM Usage": {
-        "Used": "2 GB",
+        "Used": "2.7 GB",
         "Total": "4 GB"
       },
       "System Temperature": {
-        "CPU": "62°C",
-        "Board": "47°C"
+        "CPU": "56°C",
+        "Board": "48°C"
       },
-      "Uptime": "7 days, 0 hours",
+      "Uptime": "9 days, 3 hours",
       "System Load": [
-        0.03,
-        0.38,
-        0.89
+        0.27,
+        0.71,
+        0.87
       ]
     },
     "Network Activity": {
       "Interfaces": [
         {
           "name": "eth0",
-          "ipAddress": "192.168.1.37",
+          "ipAddress": "192.168.1.32",
           "macAddress": "B8:27:EB:45:67:89",
           "connectionType": "Ethernet",
           "traffic": {
-            "upload": "9 Mbps",
+            "upload": "6 Mbps",
             "download": "26 Mbps"
           }
         },
@@ -97,19 +97,14 @@
         }
       ],
       "Total Data Usage": {
-        "Sent": "97.8 GB",
-        "Received": "264.2 GB"
+        "Sent": "106.5 GB",
+        "Received": "269.3 GB"
       },
       "Connected Clients (Media Server)": [
         {
           "deviceName": "Smart TV",
-          "ip": "192.168.1.88",
+          "ip": "192.168.1.87",
           "mediaStream": "HD Movie (5.1 GB transferred)"
-        },
-        {
-          "deviceName": "Mobile Device",
-          "ip": "192.168.1.105",
-          "mediaStream": "Music Stream (Streaming)"
         }
       ]
     },
@@ -123,18 +118,18 @@
         {
           "service": "Kodi",
           "status": "Running",
-          "activeClients": 1
+          "activeClients": 3
         },
         {
           "service": "Pi-hole",
           "status": "Running",
-          "dnsQueriesBlocked": "8,098"
+          "dnsQueriesBlocked": "4,281"
         }
       ],
       "Last Reboot Reason": "Scheduled maintenance",
       "Firmware": {
-        "Current Version": "2025.11.02",
-        "Last Update": "2025-06-22",
+        "Current Version": "2025.11.12",
+        "Last Update": "2025-06-24",
         "Update Available": false
       }
     }

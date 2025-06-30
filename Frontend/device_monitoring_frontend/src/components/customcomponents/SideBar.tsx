@@ -13,7 +13,7 @@ const Sidebar = ({position = "left", children, isOpen = false, setIsOpen = (isOp
   return (
     <div className={`${styles.sidebar} ${styles[position]} ${isOpen ? styles.open : ""}`}>
       {position=="left" ? 
-      isOpen ? <button className={styles.closeButton} onClick={() => setIsOpen(false)}><X size={28} /></button> : <div onClick={() => setIsOpen(true)} className={`${styles.closeIcon}`} /> :
+      isOpen ? <button className={styles.closeButton} onClick={() => setIsOpen(false)}><X size={28} /></button> : <div onClick={() => setIsOpen(true)} className={`${styles.closeIcon}`} > <ChevronRight/> </div> :
       <button className={styles.closeButton} onClick={() => setIsOpen(!isOpen)}><X size={28} /></button>}
       {children}
     </div>

@@ -4,7 +4,7 @@
   "Type": "Smart Appliance",
   "Status": "Offline",
   "MacId": "98:5F:D3:4B:22:AC",
-  "Connectivity": "Medium",
+  "Connectivity": "High",
   "staticProperties": {
     "Hardware Specifications": {
       "AC Type": "Split Inverter",
@@ -56,13 +56,13 @@
       "Power State": "On",
       "Mode": "Cool",
       "Set Temperature": "24°C",
-      "Current Room Temperature": "28.9°C",
-      "Fan Speed": "High",
+      "Current Room Temperature": "27.3°C",
+      "Fan Speed": "Medium",
       "Swing Mode": {
         "Vertical Swing": "Auto",
         "Horizontal Swing": "Fixed"
       },
-      "Humidity Level": "61%",
+      "Humidity Level": "64%",
       "Sleep Mode": false
     },
     "Sensor Data": {
@@ -70,30 +70,30 @@
         {
           "Sensor ID": "TS001",
           "Location": "Indoor Unit",
-          "Reading": "27.2°C"
+          "Reading": "28.3°C"
         },
         {
           "Sensor ID": "TS002",
           "Location": "Outdoor Unit",
-          "Reading": "34.5°C"
+          "Reading": "34.9°C"
         }
       ],
       "Humidity Sensor": {
         "Sensor ID": "HS001",
-        "Reading": "61%"
+        "Reading": "64%"
       }
     },
     "Power Consumption Stats": {
       "Today": "2.0 kWh",
-      "This Week": "14.8 kWh",
-      "This Month": "63.6 kWh",
+      "This Week": "14.9 kWh",
+      "This Month": "63.2 kWh",
       "Power Saving Mode": "Enabled",
       "Last Reset": "2025-06-01"
     },
     "Network Activity": {
       "IP Address": "192.168.1.67",
-      "Signal Strength": "-75 dBm",
-      "Last Connected": "2025-06-27 16:57",
+      "Signal Strength": "-79 dBm",
+      "Last Connected": "2025-06-30 17:09",
       "Control Access": [
         {
           "User": "kiran.j",

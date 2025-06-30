@@ -7,6 +7,18 @@ namespace Infrastructure.Helpers
     public class DynamicDataHelper : IDynamicDataHelper
     {
         private readonly Random random = new();
+        private readonly string[] statuses = { "Online", "Offline" };
+        private readonly string[] conns = { "Low", "Medium", "High" };
+
+        string IDynamicDataHelper.GetRandomStatus()
+        {
+            return statuses[random.Next(statuses.Length)];
+        }
+
+        string IDynamicDataHelper.GetRandomConnectivity()
+        {
+            return conns[random.Next(conns.Length)];
+        }
 
         void IDynamicDataHelper.UpdateRoomAcDynamic(JsonNode dynamicNode)
         {
@@ -80,7 +92,7 @@ namespace Infrastructure.Helpers
             var systemStatus = dynamicNode["System Status"];
 
             var battery = systemStatus["Battery"];
-            int batteryLevel = random.Next(10, 100);
+            int batteryLevel = random.Next(10, 20);
             battery["Level"] = $"{batteryLevel}%";
             battery["Charging Status"] = batteryLevel < 40 && random.Next(2) == 0 ? "Charging" : "Discharging";
             battery["Health"] = random.Next(10) < 8 ? "Good" : "Needs Attention";

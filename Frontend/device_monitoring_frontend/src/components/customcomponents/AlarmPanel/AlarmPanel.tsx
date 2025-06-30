@@ -68,14 +68,14 @@ const AlarmPanel = ({ selectedDevicePropertyPanel, setSelectedDevicePropertyPane
       }
     };
 
-    fetchData(selectedDevices.map((s: any) => s.deviceMacId), dateRange);
     fetchDevicesData();
   }, []);
 
   useEffect(() => {
+    if (!selectedDevicePropertyPanel) {
     fetchData(selectedDevices.map((s: any) => s.deviceMacId), dateRange);
     (selectedDevices.length == 0 && dateRange == null) ? setShouldConnectSignalR(true) : setShouldConnectSignalR(false);
-
+    }
   }, [selectedDevices, dateRange]);
 
   useEffect(() => {
@@ -133,11 +133,11 @@ const AlarmPanel = ({ selectedDevicePropertyPanel, setSelectedDevicePropertyPane
         <Modal dateRange={dateRange} setDateRange={setDateRange} title={"Alarm Panel Filters"} triggerButton={<Funnel cursor={"pointer"} />} devices={devices} selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices} />
       </div>
 
+      {dateRange && <div className={styles.dateFilters}><CustomTag tag={`${dateRange[0].toLocaleDateString()} ~ ${dateRange[1].toLocaleDateString()}`} index={0} removeTag={() => {setDateRange(null)}} /> </div>}
       <div className={`${styles.filters} ${(selectedDevices.length == 0 && dateRange == null) ? styles.zeroFilters : ''}`}>
-        {dateRange && <CustomTag tag={`${dateRange[0].toLocaleDateString()} ~ ${dateRange[1].toLocaleDateString()}`} index={0} removeTag={() => {setDateRange(null)}} />}
         {selectedDevices.length > 0 && <DeviceTags tags={selectedDevices} removeTag={handleRemoveTag} />}
       </div>
-
+    
       <div className={styles.section}>
         <Accordion
           title={<h3 className={styles.alarmPanelTitles}>Unacknowledged <span className={styles.sectionCount}>

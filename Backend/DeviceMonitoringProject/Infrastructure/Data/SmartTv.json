@@ -4,7 +4,7 @@
   "Type": "Entertainment Device",
   "Status": "Offline",
   "MacId": "B8:27:EB:45:9A:CB",
-  "Connectivity": "Medium",
+  "Connectivity": "Low",
   "staticProperties": {
     "Display & Hardware": {
       "Screen Size": "55 inches",
@@ -81,55 +81,55 @@
     "Current Usage": {
       "Power State": "On",
       "Input Source": "HDMI 2",
-      "Current App": "Disney+ Hotstar",
-      "Volume Level": 40,
+      "Current App": "YouTube",
+      "Volume Level": 18,
       "Mute": false,
       "Picture Mode": "Vivid",
       "Audio Output": "TV Speakers",
-      "Ambient Light Sensor": "Enabled"
+      "Ambient Light Sensor": "Disabled"
     },
     "Streaming Activity": {
       "Watch History (Today)": [
         {
           "App": "Netflix",
           "Title": "The Crown",
-          "Start Time": "2025-06-27T15:27:48",
-          "Duration": "46 min"
+          "Start Time": "2025-06-30T15:39:07",
+          "Duration": "28 min"
         }
       ],
       "Active App Sessions": [
         {
-          "App": "Disney+ Hotstar",
+          "App": "YouTube",
           "Status": "Streaming",
-          "Data Used": "863 MB"
+          "Data Used": "579 MB"
         }
       ],
       "AutoPlay Next Episode": false
     },
     "Network Activity": {
-      "IP Address": "192.168.1.42",
-      "Wi-Fi Signal Strength": "-61 dBm",
+      "IP Address": "192.168.1.41",
+      "Wi-Fi Signal Strength": "-58 dBm",
       "Connection Type": "Wi-Fi",
       "Data Usage": {
-        "Today": "1.6 GB",
-        "This Week": "141 GB",
-        "This Month": "481 GB"
+        "Today": "1.2 GB",
+        "This Week": "101 GB",
+        "This Month": "531 GB"
       },
-      "Last Online": "2025-06-27T16:49:48"
+      "Last Online": "2025-06-30T17:03:07"
     },
     "System Status": {
-      "Uptime": "14 hours 49 minutes",
-      "Last Reboot": "2025-06-26T15:57:48",
+      "Uptime": "16 hours 50 minutes",
+      "Last Reboot": "2025-06-29T21:09:07",
       "Software Update Available": false,
       "Last Software Update": "2025-05-31",
       "Storage Info": {
         "Total Storage": "16 GB",
-        "Used": "9.1 GB",
-        "Free": "6.9 GB"
+        "Used": "6.4 GB",
+        "Free": "9.6 GB"
       },
       "Temperature": {
-        "Panel": "41°C",
-        "Mainboard": "44°C"
+        "Panel": "42°C",
+        "Mainboard": "43°C"
       }
     }
   }

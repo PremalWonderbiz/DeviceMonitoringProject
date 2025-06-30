@@ -65,33 +65,33 @@
         "Port": "Gig1/0/1",
         "Link Status": "Up",
         "Connected Device": "Core Router",
-        "Current Throughput": "682 Mbps"
+        "Current Throughput": "304 Mbps"
       },
       {
         "Port": "Gig1/0/2",
-        "Link Status": "Down",
-        "Connected Device": null,
-        "Current Throughput": "0 Mbps"
+        "Link Status": "Up",
+        "Connected Device": "Firewall",
+        "Current Throughput": "931 Mbps"
       },
       {
         "Port": "Gig1/0/3",
-        "Link Status": "Down",
-        "Connected Device": null,
-        "Current Throughput": "0 Mbps"
+        "Link Status": "Up",
+        "Connected Device": "Firewall",
+        "Current Throughput": "814 Mbps"
       }
     ],
     "System Health": {
-      "CPU Usage": "28%",
-      "RAM Usage": "1 GB / 2 GB",
-      "Temperature": "49°C",
+      "CPU Usage": "78%",
+      "RAM Usage": "1.3 GB / 2 GB",
+      "Temperature": "50°C",
       "Fan Status": "Operational"
     },
     "Traffic Statistics": {
-      "Total Data Sent": "6.58 TB",
-      "Total Data Received": "9.58 TB",
+      "Total Data Sent": "6.76 TB",
+      "Total Data Received": "9.75 TB",
       "Packet Errors": {
-        "Inbound": 3,
-        "Outbound": 4
+        "Inbound": 2,
+        "Outbound": 8
       },
       "Broadcast Storms Detected": false
     },
@@ -99,7 +99,9 @@
       "Active VLANs": [
         10,
         20,
-        30
+        30,
+        99,
+        40
       ],
       "Routing Table": [
         {
@@ -128,59 +130,59 @@
       "Login Attempts": [
         {
           "User": "admin",
-          "IP": "192.168.0.13",
-          "Time": "2025-06-27T16:54:54",
+          "IP": "192.168.0.69",
+          "Time": "2025-06-30T17:05:05",
+          "Success": false
+        },
+        {
+          "User": "admin",
+          "IP": "192.168.0.46",
+          "Time": "2025-06-30T17:06:36",
           "Success": true
         },
         {
           "User": "admin",
-          "IP": "192.168.0.98",
-          "Time": "2025-06-27T16:55:45",
+          "IP": "192.168.0.88",
+          "Time": "2025-06-30T17:07:36",
           "Success": true
         },
         {
           "User": "admin",
-          "IP": "192.168.0.31",
-          "Time": "2025-06-27T16:56:26",
+          "IP": "192.168.0.82",
+          "Time": "2025-06-30T17:08:06",
           "Success": true
         },
         {
-          "User": "admin",
-          "IP": "192.168.0.50",
-          "Time": "2025-06-27T16:56:47",
-          "Success": true
-        },
-        {
-          "User": "admin",
-          "IP": "192.168.0.20",
-          "Time": "2025-06-27T16:57:28",
-          "Success": true
+          "User": "guest",
+          "IP": "192.168.0.92",
+          "Time": "2025-06-30T17:08:36",
+          "Success": false
         }
       ],
       "Recent Logs": [
         {
-          "Timestamp": "2025-06-27T16:55:14",
-          "Event": "Interface Gig1/0/3 Security violation detected"
+          "Timestamp": "2025-06-30T17:04:04",
+          "Event": "Interface Gig1/0/3 went DOWN"
         },
         {
-          "Timestamp": "2025-06-27T16:56:16",
-          "Event": "Interface Gig1/0/2 went UP"
+          "Timestamp": "2025-06-30T17:04:35",
+          "Event": "Interface Gig1/0/2 Security violation detected"
         },
         {
-          "Timestamp": "2025-06-27T16:56:26",
-          "Event": "Interface Gig1/0/2 went UP"
+          "Timestamp": "2025-06-30T17:05:05",
+          "Event": "Interface Gig1/0/3 went DOWN"
         },
         {
-          "Timestamp": "2025-06-27T16:56:36",
-          "Event": "Interface Gig1/0/2 PoE fault"
+          "Timestamp": "2025-06-30T17:06:05",
+          "Event": "Interface Gig1/0/4 PoE fault"
         },
         {
-          "Timestamp": "2025-06-27T16:57:07",
-          "Event": "Interface Gig1/0/1 went UP"
+          "Timestamp": "2025-06-30T17:07:06",
+          "Event": "Interface Gig1/0/2 Security violation detected"
         },
         {
-          "Timestamp": "2025-06-27T16:57:28",
-          "Event": "Interface Gig1/0/3 Security violation detected"
+          "Timestamp": "2025-06-30T17:07:36",
+          "Event": "Interface Gig1/0/3 went UP"
         }
       ]
     }

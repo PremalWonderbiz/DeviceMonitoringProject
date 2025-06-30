@@ -1,8 +1,9 @@
 import { getSignalRConnection } from "@/sockets/signalRConnection";
 import { useEffect } from "react";
 
-export function useDeviceDetailSocket(deviceId: string, onDetailUpdate: (data: any) => void) {
+export function useDeviceDetailSocket(deviceId: string, onDetailUpdate: (data: any) => void, shouldConnectSignalR : boolean = true) {
    useEffect(() => {
+    if (!shouldConnectSignalR) return;
     if (!deviceId) return;
 
     let isSubscribed = true;
@@ -43,5 +44,5 @@ export function useDeviceDetailSocket(deviceId: string, onDetailUpdate: (data: a
         conn.invoke("LeaveDeviceGroup", deviceId).catch(console.error);
       }
     };
-  }, [deviceId]);
+  }, [deviceId, shouldConnectSignalR]);
 }

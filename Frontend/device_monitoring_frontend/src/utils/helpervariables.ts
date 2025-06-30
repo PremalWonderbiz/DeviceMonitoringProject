@@ -85,3 +85,7 @@ export const sampleTableData = [
     "Salary": 53000
   }
 ];
+
+export const severities = [
+  "Critical", "Warning", "Information"
+]

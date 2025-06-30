@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using Application.Interfaces;
 using Microsoft.Extensions.Options;
+using Infrastructure.Helpers;
 
 namespace Infrastructure.Services
 {
@@ -16,27 +17,26 @@ namespace Infrastructure.Services
         private List<DeviceMetadata> devices;
         private readonly Random random = new();
         private readonly ILogger<DeviceService> _logger;
-        private readonly string[] statuses = { "Online", "Offline" };
-        private readonly string[] conns = { "Low", "Medium", "High" };
         private readonly IHubContext<DeviceHub> _hubContext;
         private readonly IDynamicDataHelper _dynamicDataHelper;
+        private readonly IDeviceServiceHelper _deviceServiceHelper;
         private readonly string _dataDirectory;
         private readonly IAlarmEvaluationService _alarmEvaluationService;
 
-        public DeviceService(IOptions<DeviceServiceOptions> options, ILogger<DeviceService> logger, IHubContext<DeviceHub> hubContext, IDynamicDataHelper dynamicDataHelper, IAlarmEvaluationService alarmEvaluationService)
+        public DeviceService(IDeviceServiceHelper deviceServiceHelper, IOptions<DeviceServiceOptions> options, ILogger<DeviceService> logger, IHubContext<DeviceHub> hubContext, IDynamicDataHelper dynamicDataHelper, IAlarmEvaluationService alarmEvaluationService)
         {
             _logger = logger;
             _hubContext = hubContext;
             _dynamicDataHelper = dynamicDataHelper;
             _dataDirectory = options.Value.DataDirectory;
-            devices = GetAllDeviceMetadata();
+            devices = ReadAllDeviceMetadataFiles();
             _alarmEvaluationService = alarmEvaluationService;
+            _deviceServiceHelper = deviceServiceHelper;
         }
 
-        public List<DeviceMetadata> GetAllDeviceMetadata()
+        private List<DeviceMetadata> ReadAllDeviceMetadataFiles()
         {
             var deviceFiles = Directory.GetFiles(_dataDirectory, "*.json");
-
             var metadataList = new List<DeviceMetadata>();
 
             foreach (var file in deviceFiles)
@@ -44,7 +44,6 @@ namespace Infrastructure.Services
                 try
                 {
                     using var jsonStream = System.IO.File.OpenRead(file);
-
                     var metadata = JsonSerializer.Deserialize<DeviceMetadata>(
                         jsonStream,
                         new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
@@ -60,77 +59,31 @@ namespace Infrastructure.Services
                     Console.WriteLine($"Error parsing file {file}: {ex.Message}");
                 }
             }
-
 
             return metadataList;
         }
 
         public DeviceMetadataPaginated GetAllDeviceMetadataPaginated(int pageNumber = 1, int pageSize = 10)
         {
-            var deviceFiles = Directory.GetFiles(_dataDirectory, "*.json");
-
-            var metadataList = new List<DeviceMetadata>();
-
-            foreach (var file in deviceFiles)
-            {
-                try
-                {
-                    using var jsonStream = System.IO.File.OpenRead(file);
-
-                    var metadata = JsonSerializer.Deserialize<DeviceMetadata>(
-                        jsonStream,
-                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                    if (metadata != null)
-                    {
-                        metadata.FileName = Path.GetFileName(file);
-                        metadataList.Add(metadata);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error parsing file {file}: {ex.Message}");
-                }
-            }
-
-            int totalCount = metadataList.Count;
-
-            var paginated = metadataList
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
+            var metadataList = ReadAllDeviceMetadataFiles();
 
             return new DeviceMetadataPaginated()
             {
-                TotalCount = totalCount,
-                DeviceMetadata = paginated
-            }; 
+                TotalCount = metadataList.Count,
+                DeviceMetadata = metadataList
+                                .Skip((pageNumber - 1) * pageSize)
+                                .Take(pageSize)
+                                .ToList()
+            };
         }
 
         public Dictionary<string, string> GetMacIdToFileNameMap()
         {
-            var deviceFiles = Directory.GetFiles(_dataDirectory, "*.json");
-            var macIdToFileMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-
-            foreach (var file in deviceFiles)
+            var macIdToFileMap = ReadAllDeviceMetadataFiles().Select(d => new 
             {
-                try
-                {
-                    using var jsonStream = File.OpenRead(file);
-                    var metadata = JsonSerializer.Deserialize<DeviceMetadata>(
-                        jsonStream,
-                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                    if (metadata != null && !string.IsNullOrEmpty(metadata.MacId))
-                    {
-                        macIdToFileMap[metadata.MacId] = Path.GetFileName(file);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error parsing file {file}: {ex.Message}");
-                }
-            }
+                DeviceFileName = d.FileName,
+                DeviceMacId = d.MacId
+            }).ToDictionary(d => d.DeviceMacId, d => d.DeviceFileName, StringComparer.OrdinalIgnoreCase);
 
             return macIdToFileMap;
         }
@@ -153,111 +106,35 @@ namespace Infrastructure.Services
 
         public async Task<bool> GenerateAndSendLiveUpdatesDevicesData()
         {
-            //Pick 6 random devices for top-level updates
-            var selectedDevices = devices.OrderBy(_ => random.Next()).Take(6).ToList();
-
-            //Update top-level fields for selected devices
-            foreach (var device in selectedDevices)
-            {
-                device.Status = GetRandomStatus();
-                device.Connectivity = GetRandomConnectivity();
-            }
+            var selectedDevices = devices.OrderBy(_ => random.Next()).Take(6).ToHashSet();
 
             var updatedDeviceDetails = new List<(string MacId, string EventName, object DetailPayload)>();
 
-            // Step 3: Apply updates to file and prepare updates for all devices
             foreach (var device in devices)
             {
                 string file = Path.Combine(_dataDirectory, device.FileName);
 
                 try
                 {
-                    string jsonText = File.ReadAllText(file);
-                    JsonNode rootNode = JsonNode.Parse(jsonText)!;
-
-                    var previousDto = new LiveDeviceDataDto
-                    {
-                        DeviceMacId = device.MacId,
-                        Status = rootNode["Status"]?.GetValue<string>() ?? "Unknown",
-                        Connectivity = rootNode["Connectivity"]?.GetValue<string>() ?? "Unknown",
-                        DynamicProperties = JsonDocument.Parse(rootNode["dynamicProperties"]!.ToJsonString()).RootElement
-                    };
+                    var rootNode = JsonNode.Parse(await File.ReadAllTextAsync(file))!;
+                    var previousDto = _deviceServiceHelper.ExtractLiveDataDto(device, rootNode);
 
                     if (selectedDevices.Any(d => d.MacId == device.MacId))
                     {
+                        device.Status = _dynamicDataHelper.GetRandomStatus();
+                        device.Connectivity = _dynamicDataHelper.GetRandomConnectivity();
                         rootNode["Status"] = device.Status;
                         rootNode["Connectivity"] = device.Connectivity;
                     }
 
-                    JsonNode? dynamicPropsNode = rootNode["dynamicProperties"];
-                    if (dynamicPropsNode != null)
-                    {
-                        switch (device.Name)
-                        {
-                            case "IP Camera":
-                                _dynamicDataHelper.UpdateIpCameraDynamic(dynamicPropsNode);
-                                break;
-                            case "Air Conditioner":
-                                _dynamicDataHelper.UpdateRoomAcDynamic(dynamicPropsNode);
-                                break;
-                            case "Network Switch":
-                                _dynamicDataHelper.UpdateSwitchDynamic(dynamicPropsNode);
-                                break;
-                            case "Printer":
-                                _dynamicDataHelper.UpdatePrinterDynamic(dynamicPropsNode);
-                                break;
-                            case "Raspberry Pi":
-                                _dynamicDataHelper.UpdateRaspberryPiDynamic(dynamicPropsNode);
-                                break;
-                            case "Mobile":
-                                _dynamicDataHelper.UpdateMobileDynamic(dynamicPropsNode);
-                                break;
-                            case "NAS Server":
-                                _dynamicDataHelper.UpdateNasDynamic(dynamicPropsNode);
-                                break;
-                            case "Laptop":
-                                _dynamicDataHelper.UpdateLaptopDynamic(dynamicPropsNode);
-                                break;
-                            case "WiFi Router":
-                                _dynamicDataHelper.UpdateWifiRouterDynamic(dynamicPropsNode);
-                                break;
-                            case "Smart TV":
-                                _dynamicDataHelper.UpdateSmartTvDynamic(dynamicPropsNode);
-                                break;
-                            default:
-                                _logger.LogWarning("No dynamic update logic for device type: {DeviceType}", device.Name);
-                                break;
-                        }
-                    }
+                    _deviceServiceHelper.UpdateDynamicProperties(device.Name, rootNode["dynamicProperties"]);
 
-                    // Write updated data back to json file
-                    try
-                    {
-                        string safeJson = JsonNode.Parse(rootNode.ToJsonString())!
-                            .ToJsonString(new JsonSerializerOptions
-                            {
-                                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                                WriteIndented = true
-                            });
+                    await _deviceServiceHelper.WriteJsonFileAsync(file, rootNode);
 
-                        File.WriteAllText(file, safeJson);
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.LogError(ex, "Error writing updated JSON to file {file}", file);
-                    }
-
-                    var updatedDto = new LiveDeviceDataDto
-                    {
-                        DeviceMacId = device.MacId,
-                        Status = rootNode["Status"]?.GetValue<string>() ?? "Unknown",
-                        Connectivity = rootNode["Connectivity"]?.GetValue<string>() ?? "Unknown",
-                        DynamicProperties = JsonDocument.Parse(rootNode["dynamicProperties"]!.ToJsonString()).RootElement
-                    };
+                    var updatedDto = _deviceServiceHelper.ExtractLiveDataDto(device, rootNode);
 
                     //await _alarmEvaluationService.EvaluateAsync(previousDto, updatedDto);
 
-                    // Read structured payload (uses updated file)
                     var detailPayload = await GetPropertyPanelDataForDevice(device.FileName);
 
                     updatedDeviceDetails.Add((
@@ -268,55 +145,19 @@ namespace Infrastructure.Services
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, "Error processing file {file}", file);
+                    _logger.LogError(ex, "Error processing device file {file}", file);
                 }
             }
 
-            // Broadcast per-device updates
-            foreach (var update in updatedDeviceDetails)
-            {
-                var serializedDetail = JsonSerializer.Serialize(update.DetailPayload, new JsonSerializerOptions
-                {
-                    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                    WriteIndented = true
-                });
-
-                await _hubContext.Clients.Group($"device-{update.MacId}")
-                    .SendAsync(update.EventName, serializedDetail);
-            }
-
-            // Broadcast top-level data updates
-            var topLevelLiveData = devices.Select(d => new DevicesTopLevelLiveData
-            {
-                Status = d.Status,
-                MacId = d.MacId,
-                Connectivity = d.Connectivity
-            }).ToList();
-
-            var serializedSummary = JsonSerializer.Serialize(topLevelLiveData, new JsonSerializerOptions
-            {
-                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                WriteIndented = true
-            });
-
-            await _hubContext.Clients.All.SendAsync("ReceiveUpdate", serializedSummary);
+            await _deviceServiceHelper.BroadcastDeviceDetailUpdates(updatedDeviceDetails);
+            await _deviceServiceHelper.BroadcastTopLevelSummary(devices);
 
             return true;
         }
 
-        private string GetRandomStatus()
-        {
-            return statuses[random.Next(statuses.Length)];
-        }
-
-        private string GetRandomConnectivity()
-        {
-            return conns[random.Next(conns.Length)];
-        }
-
         public async Task<List<DevicesNameMacIdDto>> GetDevicesNameMacIdList()
         {
-            var devices = GetAllDeviceMetadata().Select(d => new DevicesNameMacIdDto
+            var devices = ReadAllDeviceMetadataFiles().Select(d => new DevicesNameMacIdDto
             {
                 DeviceName = d.Name,
                 DeviceMacId = d.MacId
@@ -327,46 +168,18 @@ namespace Infrastructure.Services
 
         public DeviceMetadataPaginated GetSearchedDeviceMetadataPaginated(int pageNumber = 1, int pageSize = 10, string input = "")
         {
-            var deviceFiles = Directory.GetFiles(_dataDirectory, "*.json");
-
-            var metadataList = new List<DeviceMetadata>();
-
-            foreach (var file in deviceFiles)
-            {
-                try
-                {
-                    using var jsonStream = System.IO.File.OpenRead(file);
-
-                    var metadata = JsonSerializer.Deserialize<DeviceMetadata>(
-                        jsonStream,
-                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                    if (metadata != null)
-                    {
-                        metadata.FileName = Path.GetFileName(file);
-                        metadataList.Add(metadata);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error parsing file {file}: {ex.Message}");
-                }
-            }
-
-            int totalCount = metadataList.Count;
+            var metadataList = ReadAllDeviceMetadataFiles();
             
-            if(!input.Equals("") && input != null)
-                metadataList = metadataList.Where(device => device.Name.ToLower().Contains(input.ToLower())).ToList();
-
-            var paginated = metadataList
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
+            if(!input.Equals("") && input is not null)
+                metadataList = metadataList.Where(device => device.Name?.Contains(input, StringComparison.OrdinalIgnoreCase) == true).ToList();
 
             return new DeviceMetadataPaginated()
             {
-                TotalCount = totalCount,
-                DeviceMetadata = paginated
+                TotalCount = metadataList.Count,
+                DeviceMetadata = metadataList
+                                .Skip((pageNumber - 1) * pageSize)
+                                .Take(pageSize)
+                                .ToList()
             }; 
         }
     }

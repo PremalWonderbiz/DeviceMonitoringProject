@@ -73,6 +73,7 @@
     grid-template-columns: 50% 50%; // Key column fixed, value fills rest
     align-items: start;
     gap: 1rem;
+    transition: background-color 0.6s ease-in-out;
 }
 
 .kvKey {
@@ -144,4 +145,8 @@
     .viewBtn:hover {
         background: #ededed;
     }
+}
+
+.highlight {
+  background-color: #f3f19f;
 }

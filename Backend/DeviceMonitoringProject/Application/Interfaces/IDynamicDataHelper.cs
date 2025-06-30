@@ -9,6 +9,8 @@ namespace Application.Interfaces
 {
     public interface IDynamicDataHelper
     {
+        string GetRandomStatus();
+        string GetRandomConnectivity();
         void UpdateRoomAcDynamic(JsonNode dynamicNode);
         void UpdateIpCameraDynamic(JsonNode dynamicNode);
         void UpdateLaptopDynamic(JsonNode dynamicNode);

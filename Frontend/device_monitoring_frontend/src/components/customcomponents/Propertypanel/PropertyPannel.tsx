@@ -1,27 +1,54 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Accordion from "../Accordion";
 import { useDeviceDetailSocket } from "@/utils/customhooks/useDeviceDetailSocket";
 import TabList from "./TabList";
 import { HealthTabContent, StaticTabContent } from "./PropertyPanelContent";
 import { getPropertyPanelData } from "@/services/deviceservice";
 import styles from "@/styles/scss/PropertyPanel.module.scss";
+import { getChangedPaths } from "@/utils/deepDiff";
 
 
 const PropertyPanel = ({ setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, currentDeviceId, currentDeviceFileName, activeTab, setActiveTab }: any) => {
     const [PropertyPanelData, setPropertyPanelData] = useState<any>(null);
+    const [highlightedPaths, setHighlightedPaths] = useState<string[]>([]);
+    const highlightTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const [shouldConnectSignalR, setShouldConnectSignalR] = useState<boolean>(true);
+    
 
     const handleUpdate = useCallback((msg: any) => {
         const incomingDevicesDetails = JSON.parse(msg);
+        const newDynamicProps = incomingDevicesDetails.DynamicProperties;
+
         setPropertyPanelData((prev: any) => {
             if (!prev) return prev;
+
+            const changed = getChangedPaths(prev.dynamicProperties, newDynamicProps);
+            setHighlightedPaths(changed);
+
+            if (highlightTimeoutRef.current) {
+                clearTimeout(highlightTimeoutRef.current);
+            }
+
+            highlightTimeoutRef.current = setTimeout(() => {
+                setHighlightedPaths([]);
+            }, 3000);
+
             return {
                 ...prev,
-                dynamicProperties: incomingDevicesDetails.DynamicProperties
+                dynamicProperties: newDynamicProps
             };
         });
     }, []);
 
-    useDeviceDetailSocket(currentDeviceId, handleUpdate);
+    useEffect(() => {
+        return () => {
+            if (highlightTimeoutRef.current) {
+                clearTimeout(highlightTimeoutRef.current);
+            }
+        };
+    }, []);
+
+    useDeviceDetailSocket(currentDeviceId, handleUpdate, shouldConnectSignalR);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -36,6 +63,11 @@ const PropertyPanel = ({ setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, cu
         fetchData();
     }, [currentDeviceId]);
 
+    const changeActiveTab = (tab : any) => {
+        tab === "Static Tab" ? setShouldConnectSignalR(false) : setShouldConnectSignalR(true);
+        setActiveTab(tab);
+    }
+
     function renderPropertyPanelData(data: any) {
         if (!data || Object.keys(data).length === 0)
             return <p>No data available.</p>;
@@ -43,15 +75,15 @@ const PropertyPanel = ({ setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, cu
         return (
             <div className="pt-2">
                 {/* <span className={`pl-2`}>{PropertyPanelData.name} : {PropertyPanelData.type}</span><br /> */}
-                 <div className={`pl-2 ${styles.propertyPanelHeadingContainer}`}>
+                <div className={`pl-2 ${styles.propertyPanelHeadingContainer}`}>
                     <span className={styles.deviceTitle}>{PropertyPanelData.name}</span>
                     <span className={styles.deviceSubTitle}>{PropertyPanelData.type}</span>
                 </div>
                 <div className="mt-2">
-                    <Accordion isTabList={true} title={<TabList activeTab={activeTab} setActiveTab={setActiveTab} />} defaultOpen={true} bgColor=''>
+                    <Accordion isTabList={true} title={<TabList activeTab={activeTab} setActiveTab={changeActiveTab} />} defaultOpen={true} bgColor=''>
                         {(activeTab === "Static Tab" && PropertyPanelData.staticProperties) ?
                             <StaticTabContent staticProps={PropertyPanelData.staticProperties} />
-                            : <HealthTabContent deviceName={PropertyPanelData.name} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} setIsAlarmPanelOpen={setIsAlarmPanelOpen} deviceMacId={PropertyPanelData.macId} dynamicProps={PropertyPanelData.dynamicProperties} />}
+                            : <HealthTabContent highlightedPaths={highlightedPaths} deviceName={PropertyPanelData.name} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} setIsAlarmPanelOpen={setIsAlarmPanelOpen} deviceMacId={PropertyPanelData.macId} dynamicProps={PropertyPanelData.dynamicProperties} />}
                     </Accordion>
                 </div>
             </div>

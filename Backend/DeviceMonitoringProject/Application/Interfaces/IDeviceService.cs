@@ -5,8 +5,6 @@ namespace Application.Interfaces
 {
     public interface IDeviceService
     {
-        public List<DeviceMetadata> GetAllDeviceMetadata();
-
         public DeviceMetadataPaginated GetAllDeviceMetadataPaginated(int pageNumber = 1, int pageSize = 10);
 
         public DeviceMetadataPaginated GetSearchedDeviceMetadataPaginated(int pageNumber = 1, int pageSize = 10, string input="");

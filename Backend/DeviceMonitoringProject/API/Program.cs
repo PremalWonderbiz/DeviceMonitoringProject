@@ -21,6 +21,7 @@ builder.Services.AddSignalR();
 builder.Services.AddHostedService<DeviceLiveDataBgService>();
 builder.Services.AddScoped<IDeviceService, DeviceService>();
 builder.Services.AddScoped<IDynamicDataHelper, DynamicDataHelper>();
+builder.Services.AddScoped<IDeviceServiceHelper, DeviceServiceHelper>();
 builder.Services.AddScoped<IAlarmEvaluationService, AlarmEvaluationService>();
 builder.Services.AddHttpClient<IAlarmEvaluationService, AlarmEvaluationService>(client =>
 {
