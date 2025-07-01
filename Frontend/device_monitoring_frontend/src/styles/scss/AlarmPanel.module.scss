@@ -85,7 +85,7 @@
     }
 
     .alarmsAccordionSection {
-        max-height: 245px;
+        max-height: 230px;
         overflow-y: scroll;
 
         &:global(body)>& {
@@ -124,7 +124,11 @@
     }
 
     .alarmsAccordionSectionHeight {
-        max-height: 290px;
+        max-height: 250px;
+    }
+
+    .alarmsAccordionSectionHeightWithSelectedDevices {
+        max-height: 200px;
     }
 
     .alarmCard {
@@ -291,4 +295,12 @@
 
 .logoutBtn:hover {
     background: #ededed;
+}
+
+.selectFilters{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 0.7rem 0 0.7rem;
+    width: 100%;
 }

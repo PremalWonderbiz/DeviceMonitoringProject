@@ -37,7 +37,7 @@ namespace Infrastructure.Services
                     await deviceService.GenerateAndSendLiveUpdatesDevicesData();
                 }
 
-                await Task.Delay(TimeSpan.FromSeconds(30), stoppingToken); // Wait for 10 seconds
+                await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken); 
             }
 
             _logger.LogInformation("DeviceTopDataBgService is stopping.");

@@ -30,7 +30,6 @@ namespace Infrastructure.Services
             var currentFlat = JsonFlattener.FlattenDeviceData(currentData);
             var previousFlat = JsonFlattener.FlattenDeviceData(previousData);
 
-            // Fetch rules for device
             var rules = await _dbContext.AlarmRules
                 .Where(r => r.DeviceMacId == currentData.DeviceMacId)
                 .ToListAsync();

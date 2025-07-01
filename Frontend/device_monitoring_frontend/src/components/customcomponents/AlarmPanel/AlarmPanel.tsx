@@ -4,12 +4,15 @@ import styles from "@/styles/scss/AlarmPanel.module.scss";
 import Badge from '../Badge';
 import Modal from '@/components/chakrauicomponents/Modal';
 import Accordion from '../Accordion';
-import { CustomTag, DeviceTags } from './AlarmPanelContent';
+import { CustomTag } from './AlarmPanelContent';
 import { acknowledgeAlarm, getAlarmPanelData } from '@/services/alarmservice';
-import { getDevicesNameMacIdList, getDevicesTopLevelData } from '@/services/deviceservice';
 import { formatRelativeTime } from '@/utils/helperfunctions';
 import { useDeviceAlertSocket } from '@/utils/customhooks/useDeviceAlertSocket';
 import { Funnel } from 'lucide-react';
+import ComboBox from '@/components/chakrauicomponents/ComboBox';
+import { DateRangePicker } from 'rsuite';
+import { Badge as ChakraBadge, CloseButton, Wrap } from "@chakra-ui/react";
+
 
 const priorityMap: any = {
   Critical: 0,
@@ -17,7 +20,7 @@ const priorityMap: any = {
   Information: 2,
 };
 
-const AlarmPanel = ({ selectedDevicePropertyPanel, setSelectedDevicePropertyPanel }: any) => {
+const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelectedDevicePropertyPanel }: any) => {
   const [unacknowledgedAlarms, setUnacknowledgedAlarms] = useState<any[]>([]);
   const [acknowledgedAlarms, setAcknowledgedAlarms] = useState<any[]>([]);
   const [devices, setDevices] = useState<any[]>([]);
@@ -58,23 +61,14 @@ const AlarmPanel = ({ selectedDevicePropertyPanel, setSelectedDevicePropertyPane
   };
 
   useEffect(() => {
-    const fetchDevicesData = async () => {
-      const response = await getDevicesNameMacIdList();
-      if (!response)
-        console.log("Network response was not ok");
-
-      if (response && response.data) {
-        setDevices(response.data);
-      }
-    };
-
-    fetchDevicesData();
+    if (devicesNameMacList)
+      setDevices(devicesNameMacList)
   }, []);
 
   useEffect(() => {
     if (!selectedDevicePropertyPanel) {
-    fetchData(selectedDevices.map((s: any) => s.deviceMacId), dateRange);
-    (selectedDevices.length == 0 && dateRange == null) ? setShouldConnectSignalR(true) : setShouldConnectSignalR(false);
+      fetchData(selectedDevices.map((s: any) => s.deviceMacId), dateRange);
+      (selectedDevices.length == 0 && dateRange == null) ? setShouldConnectSignalR(true) : setShouldConnectSignalR(false);
     }
   }, [selectedDevices, dateRange]);
 
@@ -130,21 +124,28 @@ const AlarmPanel = ({ selectedDevicePropertyPanel, setSelectedDevicePropertyPane
             <Badge label={(unacknowledgedAlarms.length + acknowledgedAlarms.length).toString()} bgColor="neutral" textColor="dark" />
           </span>
         </h2>
-        <Modal dateRange={dateRange} setDateRange={setDateRange} title={"Alarm Panel Filters"} triggerButton={<Funnel cursor={"pointer"} />} devices={devices} selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices} />
+        {/* <Modal dateRange={dateRange} setDateRange={setDateRange} title={"Alarm Panel Filters"} triggerButton={<Funnel cursor={"pointer"} />} devices={devices} selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices} /> */}
       </div>
 
-      {dateRange && <div className={styles.dateFilters}><CustomTag tag={`${dateRange[0].toLocaleDateString()} ~ ${dateRange[1].toLocaleDateString()}`} index={0} removeTag={() => {setDateRange(null)}} /> </div>}
-      <div className={`${styles.filters} ${(selectedDevices.length == 0 && dateRange == null) ? styles.zeroFilters : ''}`}>
-        {selectedDevices.length > 0 && <DeviceTags tags={selectedDevices} removeTag={handleRemoveTag} />}
+      <div className={styles.selectFilters}>
+        <ComboBox devices={devices} selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices}/>
+
+        {dateRange && <Wrap gap="2">
+          <ChakraBadge padding="0.25rem 0 0.25rem 0.4rem" display="flex" alignItems="center" gap="0.2rem" fontSize={"0.7rem"}>
+            {`${dateRange[0].toLocaleDateString()} ~ ${dateRange[1].toLocaleDateString()}`}
+            <CloseButton size={"sm"} boxSize="0.1em" cursor="pointer" onClick={(e) => {e.stopPropagation(); setDateRange(null)}}/>
+          </ChakraBadge>
+        </Wrap>}
+        <DateRangePicker value={dateRange} onChange={(value) => { setDateRange(value) }} placeholder="Select Date Range" placement="bottomStart" />
       </div>
-    
+
       <div className={styles.section}>
         <Accordion
           title={<h3 className={styles.alarmPanelTitles}>Unacknowledged <span className={styles.sectionCount}>
             <Badge label={unacknowledgedAlarms.length.toString()} bgColor="neutral" textColor="dark" />
           </span></h3>} defaultOpen={true} bgColor='white'>
 
-          <div className={`${styles.alarmsAccordionSection} ${(selectedDevices.length == 0 && dateRange == null) ? styles.alarmsAccordionSectionHeight : null}`}>
+          <div className={`${styles.alarmsAccordionSection} ${(selectedDevices.length > 0) ? styles.alarmsAccordionSectionHeightWithSelectedDevices : null} ${(selectedDevices.length == 0 && dateRange == null) ? styles.alarmsAccordionSectionHeight : null}`}>
             {unacknowledgedAlarms.map(alarm => {
               const isExpanded = expandedId === alarm.id;
 
@@ -173,7 +174,7 @@ const AlarmPanel = ({ selectedDevicePropertyPanel, setSelectedDevicePropertyPane
             <Badge label={acknowledgedAlarms.length.toString()} bgColor="neutral" textColor="dark" />
           </span></h3>} defaultOpen={true} bgColor='white'
         >
-          <div className={`${styles.alarmsAccordionSection} ${selectedDevices.length == 0 ? styles.alarmsAccordionSectionHeight : null}`}>
+          <div className={`${styles.alarmsAccordionSection} ${(selectedDevices.length > 0) ? styles.alarmsAccordionSectionHeightWithSelectedDevices : null}  ${(selectedDevices.length == 0 && dateRange == null) ? styles.alarmsAccordionSectionHeight : null}`}>
             {acknowledgedAlarms.map(alarm => {
               return (
                 <div className={`${styles.alarmCard}`} key={alarm.id}>

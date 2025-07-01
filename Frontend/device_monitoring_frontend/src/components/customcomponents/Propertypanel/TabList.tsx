@@ -1,7 +1,7 @@
 import styles from "@/styles/scss/PropertyPanel.module.scss";
 
 const TabList = ({ activeTab, setActiveTab }: any) => {
-    const tabs = ["Static Tab", "Health Tab"];
+    const tabs = ["Static", "Health"];
 
     return (
         <ul className={styles.tabListUL}>

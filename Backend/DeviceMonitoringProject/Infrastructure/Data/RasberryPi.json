@@ -2,9 +2,9 @@
   "FileName": "RasberryPi.json",
   "Name": "Raspberry Pi",
   "Type": "Microcomputer",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "B8:27:EB:45:67:89",
-  "Connectivity": "Medium",
+  "Connectivity": "Low",
   "staticProperties": {
     "Hardware Information": {
       "Model": "Raspberry Pi 4 Model B",
@@ -60,20 +60,20 @@
   },
   "dynamicProperties": {
     "System Health": {
-      "CPU Usage": "26%",
+      "CPU Usage": "39%",
       "RAM Usage": {
-        "Used": "2.7 GB",
+        "Used": "1.9 GB",
         "Total": "4 GB"
       },
       "System Temperature": {
-        "CPU": "56°C",
-        "Board": "48°C"
+        "CPU": "59°C",
+        "Board": "41°C"
       },
-      "Uptime": "9 days, 3 hours",
+      "Uptime": "7 days, 5 hours",
       "System Load": [
-        0.27,
-        0.71,
-        0.87
+        0.44,
+        0.38,
+        0.55
       ]
     },
     "Network Activity": {
@@ -85,7 +85,7 @@
           "connectionType": "Ethernet",
           "traffic": {
             "upload": "6 Mbps",
-            "download": "26 Mbps"
+            "download": "21 Mbps"
           }
         },
         {
@@ -97,8 +97,8 @@
         }
       ],
       "Total Data Usage": {
-        "Sent": "106.5 GB",
-        "Received": "269.3 GB"
+        "Sent": "90.8 GB",
+        "Received": "275.7 GB"
       },
       "Connected Clients (Media Server)": [
         {
@@ -118,19 +118,19 @@
         {
           "service": "Kodi",
           "status": "Running",
-          "activeClients": 3
+          "activeClients": 2
         },
         {
           "service": "Pi-hole",
           "status": "Running",
-          "dnsQueriesBlocked": "4,281"
+          "dnsQueriesBlocked": "6,075"
         }
       ],
       "Last Reboot Reason": "Scheduled maintenance",
       "Firmware": {
-        "Current Version": "2025.11.12",
-        "Last Update": "2025-06-24",
-        "Update Available": false
+        "Current Version": "2025.07.09",
+        "Last Update": "2025-06-30",
+        "Update Available": true
       }
     }
   }

@@ -1,9 +1,9 @@
 import { Badge, CloseButton, Combobox, Portal, Wrap, createListCollection} from "@chakra-ui/react"
 import { useMemo, useState } from "react"
 
-const ComboBox = ({ devices, selectedDevices, setSelectedDevices }: any) => {
+const ComboBox = ({ devices, selectedDevices, setSelectedDevices, multiple = true }: any) => {
   const [searchValue, setSearchValue] = useState("")
-
+ 
   // Filter devices based on search input
   const filteredItems = useMemo(
     () =>
@@ -24,7 +24,7 @@ const ComboBox = ({ devices, selectedDevices, setSelectedDevices }: any) => {
       }),
     [filteredItems]
   )
-
+  
   // Convert selected objects to their macIds
   const selectedMacIds = useMemo(
     () => selectedDevices.map((d: any) => d.deviceMacId),
@@ -40,8 +40,8 @@ const ComboBox = ({ devices, selectedDevices, setSelectedDevices }: any) => {
 
   return (
     <Combobox.Root
-      multiple
-      width="320px"
+      multiple={multiple}
+      // width="320px"
       value={selectedMacIds}
       collection={collection}
       onValueChange={handleValueChange}
@@ -51,14 +51,16 @@ const ComboBox = ({ devices, selectedDevices, setSelectedDevices }: any) => {
         {selectedDevices.map((device: any) => (
           <Badge
             key={device.deviceMacId}
-            padding="0.5rem"
+            padding="0.25rem 0 0.25rem 0.4rem"
             display="flex"
             alignItems="center"
-            gap="0.5rem"
+            gap="0.3rem"
+            fontSize={"0.7rem"}
           >
             {device.deviceName}
             <CloseButton
-              boxSize="0.7em"
+              size={"sm"}
+              boxSize="0.1em"
               cursor="pointer"
               onClick={(e) => {
                 e.stopPropagation()
@@ -74,7 +76,7 @@ const ComboBox = ({ devices, selectedDevices, setSelectedDevices }: any) => {
       </Wrap>
 
       <Combobox.Control>
-        <Combobox.Input placeholder="Select Devices" padding="0.5rem" />
+        <Combobox.Input placeholder="Select Devices" padding="0.5rem 0.5rem" />
         <Combobox.IndicatorGroup>
           <Combobox.Trigger padding="0.5rem" />
         </Combobox.IndicatorGroup>

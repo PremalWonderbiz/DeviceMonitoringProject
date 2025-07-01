@@ -6,15 +6,16 @@ import { HealthTabContent, StaticTabContent } from "./PropertyPanelContent";
 import { getPropertyPanelData } from "@/services/deviceservice";
 import styles from "@/styles/scss/PropertyPanel.module.scss";
 import { getChangedPaths } from "@/utils/deepDiff";
+import ComboBox from "@/components/chakrauicomponents/ComboBox";
 
 
-const PropertyPanel = ({ setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, currentDeviceId, currentDeviceFileName, activeTab, setActiveTab }: any) => {
+const PropertyPanel = ({setCurrentDeviceId, setCurrentDeviceFileName, deviceFileNames, devicesNameMacList, setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, currentDeviceId, currentDeviceFileName, activeTab, setActiveTab }: any) => {
     const [PropertyPanelData, setPropertyPanelData] = useState<any>(null);
     const [highlightedPaths, setHighlightedPaths] = useState<string[]>([]);
     const highlightTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const [shouldConnectSignalR, setShouldConnectSignalR] = useState<boolean>(true);
+    const [selectedDevices, setSelectedDevices] = useState<any[]>([]);    
     
-
     const handleUpdate = useCallback((msg: any) => {
         const incomingDevicesDetails = JSON.parse(msg);
         const newDynamicProps = incomingDevicesDetails.DynamicProperties;
@@ -48,29 +49,54 @@ const PropertyPanel = ({ setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, cu
         };
     }, []);
 
+
+    useEffect(() => {
+        if(selectedDevices.length == 1){
+            const deviceId = selectedDevices[0].deviceMacId;
+            setCurrentDeviceId(deviceId);
+            setCurrentDeviceFileName(deviceFileNames[deviceId] || null)
+        }
+    }, [selectedDevices]);
+    
     useDeviceDetailSocket(currentDeviceId, handleUpdate, shouldConnectSignalR);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await getPropertyPanelData(currentDeviceFileName);
-            if (!response)
-                console.log("Network response was not ok");
-
-            if (response && response.data) {
-                setPropertyPanelData(response.data);
-            }
-        };
-        fetchData();
+        if(currentDeviceFileName && currentDeviceId){
+            const fetchData = async () => {
+                const response = await getPropertyPanelData(currentDeviceFileName);
+                if (!response)
+                    console.log("Network response was not ok");
+    
+                if (response && response.data) {
+                    setPropertyPanelData(response.data);
+                }
+            };
+            fetchData();
+        }
     }, [currentDeviceId]);
 
     const changeActiveTab = (tab : any) => {
-        tab === "Static Tab" ? setShouldConnectSignalR(false) : setShouldConnectSignalR(true);
+        tab === "Static" ? setShouldConnectSignalR(false) : setShouldConnectSignalR(true);
         setActiveTab(tab);
+    }
+
+    function renderSelectDeviceDropdown() {
+        return (
+            <div className={styles.selectDeviceDropdown}>
+                <span>Select device </span>
+                <ComboBox
+                  devices={devicesNameMacList}
+                  selectedDevices={selectedDevices}
+                  setSelectedDevices={setSelectedDevices}
+                  multiple = {false}
+                />
+            </div>
+        )
     }
 
     function renderPropertyPanelData(data: any) {
         if (!data || Object.keys(data).length === 0)
-            return <p>No data available.</p>;
+            return renderSelectDeviceDropdown();
 
         return (
             <div className="pt-2">
@@ -81,7 +107,7 @@ const PropertyPanel = ({ setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, cu
                 </div>
                 <div className="mt-2">
                     <Accordion isTabList={true} title={<TabList activeTab={activeTab} setActiveTab={changeActiveTab} />} defaultOpen={true} bgColor=''>
-                        {(activeTab === "Static Tab" && PropertyPanelData.staticProperties) ?
+                        {(activeTab === "Static" && PropertyPanelData.staticProperties) ?
                             <StaticTabContent staticProps={PropertyPanelData.staticProperties} />
                             : <HealthTabContent highlightedPaths={highlightedPaths} deviceName={PropertyPanelData.name} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} setIsAlarmPanelOpen={setIsAlarmPanelOpen} deviceMacId={PropertyPanelData.macId} dynamicProps={PropertyPanelData.dynamicProperties} />}
                     </Accordion>

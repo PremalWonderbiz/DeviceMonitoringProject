@@ -20,11 +20,12 @@
     min-width: 180px;
     height: 50px;
     word-wrap: break-word;  
-    transition: background-color 0.8s ease
+    // transition: background-color 0.8s ease
 }
 
 .highlightedCell{
-    background-color: #f3f19f;
+    // background-color: #f3f19f;
+    font-weight: bold;
 }
 
 .row:nth-child(even) {

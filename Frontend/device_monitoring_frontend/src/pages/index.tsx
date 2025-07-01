@@ -7,12 +7,14 @@ import AlarmPanel from "@/components/customcomponents/AlarmPanel/AlarmPanel";
 import { useCallback, useEffect, useState } from "react";
 import { useDevicesTopDataSocket } from "@/utils/customhooks/useDevicesTopDataSocket";
 import { BellRing, RefreshCw, Repeat, UserPen } from "lucide-react";
-import { getDevicesTopLevelData, getMacIdToFileNameMap, getSearchedDeviceMetadataPaginated } from "@/services/deviceservice";
+import { getDevicesNameMacIdList, getDevicesTopLevelData, getMacIdToFileNameMap, getSearchedDeviceMetadataPaginated } from "@/services/deviceservice";
 import styles from "@/styles/scss/Home.module.scss";
 import PopOver from "@/components/chakrauicomponents/PopOver";
 import { AlarmPopUp, ProfilePopUp } from "@/components/customcomponents/AlarmPanel/AlarmPanelContent";
 import { getLatestAlarms } from "@/services/alarmservice";
 import { useDeviceAlertSocket } from "@/utils/customhooks/useDeviceAlertSocket";
+import { Tooltip } from "@/components/ui/tooltip";
+import { Button } from "@chakra-ui/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,10 +26,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function Home() {  
+export default function Home() {
   const [deviceData, setDeviceData] = useState<any[]>([]);
   const [deviceFileNames, setDeviceFileNames] = useState<any>();
-  const initialTabState = "Health Tab"; // Default active tab
+  const initialTabState = "Health"; // Default active tab
   const [activeTab, setActiveTab] = useState(initialTabState);
   const [isPropertyPanelOpen, setIsPropertyPanelOpen] = useState<boolean>(false);
   const [currentDeviceId, setCurrentDeviceId] = useState<string | null>(null);
@@ -45,6 +47,7 @@ export default function Home() {
   const [refreshDeviceDataKey, setRefreshDeviceDataKey] = useState(0);
   const [searchInput, setSearchInput] = useState<any>(null);
   const [updatedFieldsMap, setUpdatedFieldsMap] = useState<{ [macId: string]: string[] } | null>(null);
+  const [devicesNameMacList, setDevicesNameMacList] = useState<any[] | null>(null);
 
   useEffect(() => {
     setTotalPages(Math.ceil(totalCount / pageSize));
@@ -146,6 +149,18 @@ export default function Home() {
         setDeviceFileNames(response.data);
       }
     };
+
+    const fetchDevicesData = async () => {
+      const response = await getDevicesNameMacIdList();
+      if (!response)
+        console.log("Network response was not ok");
+
+      if (response && response.data) {
+        setDevicesNameMacList(response.data);
+      }
+    };
+
+    fetchDevicesData();
     fetchDevicesFileNames();
   }, []);
 
@@ -165,7 +180,7 @@ export default function Home() {
   }, [pageSize, currentPage, refreshDeviceDataKey]);
 
   useEffect(() => {
-    if (searchInput == "") {      
+    if (searchInput == "") {
       setRefreshDeviceDataKey(prev => prev + 1);
     }
     else if (searchInput != null) {
@@ -189,6 +204,13 @@ export default function Home() {
     setIsPropertyPanelOpen(true);
     setCurrentDeviceFileName(deviceFileNames[deviceId] || null);
     setCurrentDeviceId(deviceId);
+  }
+
+  const closePropertyPanel = () => {
+    setIsPropertyPanelOpen(false);
+    setCurrentDeviceId(null);
+    setSelectedDevicePropertyPanel(null);
+    setCurrentDeviceFileName(null);
   }
 
   return (
@@ -228,14 +250,16 @@ export default function Home() {
 
       <div className='m-3'>
         <Sidebar position="left" isOpen={isAlarmPanelOpen} setIsOpen={setIsAlarmPanelOpen} >
-          {isAlarmPanelOpen && <AlarmPanel setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} selectedDevicePropertyPanel={selectedDevicePropertyPanel} />}
+          {isAlarmPanelOpen && <AlarmPanel devicesNameMacList={devicesNameMacList} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} selectedDevicePropertyPanel={selectedDevicePropertyPanel} />}
         </Sidebar>
 
         <div>
           <span className={`py-3 ${styles.mainPageTitle}`}>Welcome back, Premal Kadam</span>
           <div className={`py-2 pr-4 ${styles.subNav}`}>
             <input onChange={(event: any) => { setSearchInput(event.target.value) }} className={styles.mainPageSearchInput} type="search" placeholder="Search..." />
-            <Repeat className={styles.deviceRefreshIcon} onClick={() => { setRefreshDeviceDataKey(prev => prev + 1) }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
+            <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Manual refresh button</span>}>
+              <Repeat className={styles.deviceRefreshIcon} onClick={() => { setRefreshDeviceDataKey(prev => prev + 1) }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
+            </Tooltip>
           </div>
         </div>
 
@@ -243,8 +267,8 @@ export default function Home() {
           <div className={`${styles.pageWrapper} ${isPropertyPanelOpen ? styles.pushRight : ''}`}>
             <TableComponent refreshDeviceDataKey={refreshDeviceDataKey} updatedFieldsMap={updatedFieldsMap} totalPages={totalPages} pageSize={pageSize} setPageSize={setPageSize} setCurrentPage={setCurrentPage} currentPage={currentPage} data={deviceData} setIsPropertyPanelOpen={openPropertypanel} />
           </div>
-          <Sidebar position="right" isOpen={isPropertyPanelOpen} setIsOpen={setIsPropertyPanelOpen}>
-            {isPropertyPanelOpen && <PropertyPanel setIsAlarmPanelOpen={setIsAlarmPanelOpen} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} currentDeviceFileName={currentDeviceFileName} />}
+          <Sidebar position="right" isOpen={isPropertyPanelOpen} setIsOpen={setIsPropertyPanelOpen} closeSidebar={closePropertyPanel}>
+            {isPropertyPanelOpen && <PropertyPanel deviceFileNames={deviceFileNames} devicesNameMacList={devicesNameMacList} setCurrentDeviceId={setCurrentDeviceId} setCurrentDeviceFileName={setCurrentDeviceFileName} setIsAlarmPanelOpen={setIsAlarmPanelOpen} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} currentDeviceFileName={currentDeviceFileName} />}
           </Sidebar>
         </div>
       </div>

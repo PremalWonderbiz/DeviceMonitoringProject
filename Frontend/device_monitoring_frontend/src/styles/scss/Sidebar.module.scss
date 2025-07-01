@@ -46,20 +46,35 @@
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    right: -20px;
     z-index: 1001;
     width: 50px;
     height: 65px;
     background-color: #ffffff;
     border: 2px solid #4b4b4b;
-    transition: right 0.4s ease;
+    transition: right 0.4s ease, left 0.4s ease;
     display: flex;
-    justify-content: end;
     align-items: center;
     border-radius: 10px;
 }
 
-.closeIcon:hover {
+.rightCloseIcon{
+    right: -20px;
+    justify-content: end;
+}
+
+.rightCloseIcon:hover{
     right: -30px;
+}
+
+.leftCloseIcon{
+    left: -23px;
+    justify-content: start;
+}
+
+.leftCloseIcon:hover{
+    left: -33px;
+}
+
+.closeIcon:hover {  
     border-color: #000;
 }

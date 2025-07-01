@@ -56,13 +56,13 @@
       "Power State": "On",
       "Mode": "Cool",
       "Set Temperature": "24°C",
-      "Current Room Temperature": "27.3°C",
-      "Fan Speed": "Medium",
+      "Current Room Temperature": "28.0°C",
+      "Fan Speed": "Low",
       "Swing Mode": {
         "Vertical Swing": "Auto",
-        "Horizontal Swing": "Fixed"
+        "Horizontal Swing": "Auto"
       },
-      "Humidity Level": "64%",
+      "Humidity Level": "62%",
       "Sleep Mode": false
     },
     "Sensor Data": {
@@ -70,30 +70,30 @@
         {
           "Sensor ID": "TS001",
           "Location": "Indoor Unit",
-          "Reading": "28.3°C"
+          "Reading": "28.6°C"
         },
         {
           "Sensor ID": "TS002",
           "Location": "Outdoor Unit",
-          "Reading": "34.9°C"
+          "Reading": "33.2°C"
         }
       ],
       "Humidity Sensor": {
         "Sensor ID": "HS001",
-        "Reading": "64%"
+        "Reading": "62%"
       }
     },
     "Power Consumption Stats": {
-      "Today": "2.0 kWh",
-      "This Week": "14.9 kWh",
-      "This Month": "63.2 kWh",
+      "Today": "2.6 kWh",
+      "This Week": "14.8 kWh",
+      "This Month": "63.4 kWh",
       "Power Saving Mode": "Enabled",
       "Last Reset": "2025-06-01"
     },
     "Network Activity": {
       "IP Address": "192.168.1.67",
-      "Signal Strength": "-79 dBm",
-      "Last Connected": "2025-06-30 17:09",
+      "Signal Strength": "-62 dBm",
+      "Last Connected": "2025-07-01 17:59",
       "Control Access": [
         {
           "User": "kiran.j",
