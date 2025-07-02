@@ -12,9 +12,20 @@ export const getPropertyPanelData = async (currentDeviceFileName: any) => {
   }
 };
 
-export const getSearchedDeviceMetadataPaginated = async (pageNo : any, pageSize : any, input : any) => {
+export const getSearchedDeviceMetadataPaginated = async (pageNo : any, pageSize : any, input : any, sortingState : any) => {
   try {
-    const response = await axios.get(`${baseURL}/api/Devices/search/metadata/${pageNo}/${pageSize}/${input}`);
+    const requestObject = {pageNumber : pageNo, pageSize : pageSize, sorting : sortingState };
+    const response = await axios.post(`${baseURL}/api/Devices/search/metadata/${input}`, requestObject);
+    return response;
+  } catch (error : any) {
+     handleAxiosError(error);
+  }
+};
+
+export const getDeviceMetadataPaginatedandSorted = async (pageNo : any, pageSize : any, sortingState : any) => {
+  try {
+    const requestObject = {pageNumber : pageNo, pageSize : pageSize, sorting : sortingState };
+    const response = await axios.post(`${baseURL}/api/Devices/metadata`,requestObject);
     return response;
   } catch (error : any) {
      handleAxiosError(error);

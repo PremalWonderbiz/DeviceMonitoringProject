@@ -5,66 +5,12 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Devices/metadata/{pageNumber}/{pageSize}": {
-      "get": {
+    "/api/Devices/search/metadata/{input}": {
+      "post": {
         "tags": [
           "Devices"
         ],
         "parameters": [
-          {
-            "name": "pageNumber",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 1
-            }
-          },
-          {
-            "name": "pageSize",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 10
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Devices/search/metadata/{pageNumber}/{pageSize}/{input}": {
-      "get": {
-        "tags": [
-          "Devices"
-        ],
-        "parameters": [
-          {
-            "name": "pageNumber",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 1
-            }
-          },
-          {
-            "name": "pageSize",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 10
-            }
-          },
           {
             "name": "input",
             "in": "path",
@@ -75,6 +21,56 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceTopLevelSortOptions"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceTopLevelSortOptions"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceTopLevelSortOptions"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Devices/metadata": {
+      "post": {
+        "tags": [
+          "Devices"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceTopLevelSortOptions"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceTopLevelSortOptions"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceTopLevelSortOptions"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -129,5 +125,42 @@
       }
     }
   },
-  "components": { }
+  "components": {
+    "schemas": {
+      "DeviceTopLevelSortOptions": {
+        "type": "object",
+        "properties": {
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sorting": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SortOption"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SortOption": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "desc": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
 }

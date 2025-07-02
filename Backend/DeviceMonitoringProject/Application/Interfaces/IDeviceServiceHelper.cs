@@ -14,11 +14,11 @@ namespace Application.Interfaces
     {
         public LiveDeviceDataDto ExtractLiveDataDto(DeviceMetadata device, JsonNode rootNode);
 
-        public void UpdateDynamicProperties(string deviceType, JsonNode? dynamicProps);
+        public JsonNode UpdateDynamicProperties(string deviceType, JsonNode? dynamicProps);
 
         public Task WriteJsonFileAsync(string path, JsonNode rootNode);
 
-        public Task BroadcastDeviceDetailUpdates(List<(string MacId, string EventName, object DetailPayload)> updates);
+        public Task BroadcastDeviceDetailUpdates(List<(string MacId, string EventName, JsonElement DetailPayload)> updates);
 
         public Task BroadcastTopLevelSummary(List<DeviceMetadata> allDevices);
     }

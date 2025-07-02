@@ -13,11 +13,12 @@ const TableRow = React.memo(
   ({ refreshDeviceDataKey, updatedFieldsMap, row, setIsPropertyPanelOpen }: Props) => {
     const rowData = row.original;
     const macId = rowData.macId;
-
-    const [localUpdatedFields, setLocalUpdatedFields] = useState<string[]>([]);
+    
+    const [localUpdatedFields, setLocalUpdatedFields] = useState<any[]>([]);
 
     useEffect(() => {
       const updatedFields = updatedFieldsMap?.[macId];
+      
       if (updatedFields && updatedFields.length > 0) {
         setLocalUpdatedFields(updatedFields);
 
@@ -26,6 +27,8 @@ const TableRow = React.memo(
         }, 3000);
 
         return () => clearTimeout(timer);
+      }else{
+        setLocalUpdatedFields([])
       }
     }, [updatedFieldsMap?.[macId]]);
 

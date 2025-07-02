@@ -9,21 +9,52 @@ import { getChangedPaths } from "@/utils/deepDiff";
 import ComboBox from "@/components/chakrauicomponents/ComboBox";
 
 
-const PropertyPanel = ({setCurrentDeviceId, setCurrentDeviceFileName, deviceFileNames, devicesNameMacList, setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, currentDeviceId, currentDeviceFileName, activeTab, setActiveTab }: any) => {
+const PropertyPanel = ({ setCurrentDeviceId, setCurrentDeviceFileName, deviceFileNames, devicesNameMacList, setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, currentDeviceId, currentDeviceFileName, activeTab, setActiveTab }: any) => {
     const [PropertyPanelData, setPropertyPanelData] = useState<any>(null);
     const [highlightedPaths, setHighlightedPaths] = useState<string[]>([]);
     const highlightTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const [shouldConnectSignalR, setShouldConnectSignalR] = useState<boolean>(true);
-    const [selectedDevices, setSelectedDevices] = useState<any[]>([]);    
-    
+    const [selectedDevices, setSelectedDevices] = useState<any[]>([]);
+
+    // const handleUpdate = useCallback((msg: any) => {
+    //     const incomingDevicesDetails = JSON.parse(msg);
+    //     // const newDynamicProps = incomingDevicesDetails;
+
+    //     setPropertyPanelData((prev: any) => {
+    //         if (!prev) return prev;
+
+    //         const changed = getChangedPaths(prev.dynamicProperties, incomingDevicesDetails);
+    //         setHighlightedPaths(changed);
+
+    //         if (highlightTimeoutRef.current) {
+    //             clearTimeout(highlightTimeoutRef.current);
+    //         }
+
+    //         highlightTimeoutRef.current = setTimeout(() => {
+    //             setHighlightedPaths([]);
+    //         }, 3000);
+
+    //         return {
+    //             ...prev,
+    //             dynamicProperties: incomingDevicesDetails
+    //         };
+    //     });
+    // }, []);
+
+
+
     const handleUpdate = useCallback((msg: any) => {
         const incomingDevicesDetails = JSON.parse(msg);
-        const newDynamicProps = incomingDevicesDetails.DynamicProperties;
 
         setPropertyPanelData((prev: any) => {
             if (!prev) return prev;
 
-            const changed = getChangedPaths(prev.dynamicProperties, newDynamicProps);
+            const merged = {
+                ...prev,
+                dynamicProperties: deepMerge(prev.dynamicProperties, incomingDevicesDetails)
+            };
+
+            const changed = getChangedPaths(prev.dynamicProperties, incomingDevicesDetails);
             setHighlightedPaths(changed);
 
             if (highlightTimeoutRef.current) {
@@ -34,12 +65,31 @@ const PropertyPanel = ({setCurrentDeviceId, setCurrentDeviceFileName, deviceFile
                 setHighlightedPaths([]);
             }, 3000);
 
-            return {
-                ...prev,
-                dynamicProperties: newDynamicProps
-            };
+            return merged;
         });
     }, []);
+
+
+    function deepMerge(target: any, source: any): any {
+        if (Array.isArray(target) && Array.isArray(source)) {
+            // Merge arrays element-wise
+            return target.map((item, index) => deepMerge(item, source[index] ?? item));
+        }
+
+        if (typeof target === "object" && typeof source === "object") {
+            const result: any = { ...target };
+            for (const key of Object.keys(source)) {
+                if (key in target) {
+                    result[key] = deepMerge(target[key], source[key]);
+                } else {
+                    result[key] = source[key];
+                }
+            }
+            return result;
+        }
+
+        return source; // For primitives and fallback
+    }
 
     useEffect(() => {
         return () => {
@@ -51,22 +101,22 @@ const PropertyPanel = ({setCurrentDeviceId, setCurrentDeviceFileName, deviceFile
 
 
     useEffect(() => {
-        if(selectedDevices.length == 1){
+        if (selectedDevices.length == 1) {
             const deviceId = selectedDevices[0].deviceMacId;
             setCurrentDeviceId(deviceId);
             setCurrentDeviceFileName(deviceFileNames[deviceId] || null)
         }
     }, [selectedDevices]);
-    
+
     useDeviceDetailSocket(currentDeviceId, handleUpdate, shouldConnectSignalR);
 
     useEffect(() => {
-        if(currentDeviceFileName && currentDeviceId){
+        if (currentDeviceFileName && currentDeviceId) {
             const fetchData = async () => {
                 const response = await getPropertyPanelData(currentDeviceFileName);
                 if (!response)
                     console.log("Network response was not ok");
-    
+
                 if (response && response.data) {
                     setPropertyPanelData(response.data);
                 }
@@ -75,7 +125,7 @@ const PropertyPanel = ({setCurrentDeviceId, setCurrentDeviceFileName, deviceFile
         }
     }, [currentDeviceId]);
 
-    const changeActiveTab = (tab : any) => {
+    const changeActiveTab = (tab: any) => {
         tab === "Static" ? setShouldConnectSignalR(false) : setShouldConnectSignalR(true);
         setActiveTab(tab);
     }
@@ -85,10 +135,10 @@ const PropertyPanel = ({setCurrentDeviceId, setCurrentDeviceFileName, deviceFile
             <div className={styles.selectDeviceDropdown}>
                 <span>Select device </span>
                 <ComboBox
-                  devices={devicesNameMacList}
-                  selectedDevices={selectedDevices}
-                  setSelectedDevices={setSelectedDevices}
-                  multiple = {false}
+                    devices={devicesNameMacList}
+                    selectedDevices={selectedDevices}
+                    setSelectedDevices={setSelectedDevices}
+                    multiple={false}
                 />
             </div>
         )

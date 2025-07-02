@@ -104,7 +104,11 @@ export const HealthTabContent = React.memo(
     );
   },
   (prevProps, nextProps) => {
-    return prevProps.dynamicProps === nextProps.dynamicProps;
+    return (
+    prevProps.deviceMacId === nextProps.deviceMacId &&
+    JSON.stringify(prevProps.highlightedPaths) === JSON.stringify(nextProps.highlightedPaths)
+  );
+
   }
 );
 

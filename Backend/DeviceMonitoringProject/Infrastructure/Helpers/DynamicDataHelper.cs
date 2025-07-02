@@ -20,8 +20,10 @@ namespace Infrastructure.Helpers
             return conns[random.Next(conns.Length)];
         }
 
-        void IDynamicDataHelper.UpdateRoomAcDynamic(JsonNode dynamicNode)
+        JsonNode IDynamicDataHelper.UpdateRoomAcDynamic(JsonNode dynamicNode)
         {
+            var original = JsonNode.Parse(dynamicNode.ToJsonString())!;
+
             var currentStatus = dynamicNode["Current Status"];
             currentStatus["Current Room Temperature"] = $"{27 + random.NextDouble() * 2:F1}°C";
             currentStatus["Humidity Level"] = $"{60 + random.Next(5)}%";
@@ -40,10 +42,15 @@ namespace Infrastructure.Helpers
 
             dynamicNode["Network Activity"]["Last Connected"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
             dynamicNode["Network Activity"]["Signal Strength"] = $"{-60 - random.Next(20)} dBm";
+
+            var diff = GetJsonDiff(original, dynamicNode);
+            return diff;
         }
 
-        void IDynamicDataHelper.UpdateIpCameraDynamic(JsonNode dynamicNode)
+        JsonNode IDynamicDataHelper.UpdateIpCameraDynamic(JsonNode dynamicNode)
         {
+            var original = JsonNode.Parse(dynamicNode.ToJsonString())!;
+
             var liveStream = dynamicNode["Live Stream"];
             liveStream["Streaming Status"] = "Active";
             liveStream["Current Viewers"] = random.Next(0, 5); // Simulate viewers between 0-4
@@ -84,10 +91,15 @@ namespace Infrastructure.Helpers
                 ["Time"] = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")
             });
             if (loginAttempts.Count > 5) loginAttempts.RemoveAt(loginAttempts.Count - 1);
+
+            var diff = GetJsonDiff(original, dynamicNode);
+            return diff;
         }
 
-        void IDynamicDataHelper.UpdateLaptopDynamic(JsonNode dynamicNode)
+        JsonNode IDynamicDataHelper.UpdateLaptopDynamic(JsonNode dynamicNode)
         {
+            var original = JsonNode.Parse(dynamicNode.ToJsonString())!;
+
             // ----------- System Status -----------
             var systemStatus = dynamicNode["System Status"];
 
@@ -158,10 +170,15 @@ namespace Infrastructure.Helpers
             {
                 recentApps.Add(app);
             }
+
+            var diff = GetJsonDiff(original, dynamicNode);
+            return diff;
         }
 
-        void IDynamicDataHelper.UpdateMobileDynamic(JsonNode dynamicNode)
+        JsonNode IDynamicDataHelper.UpdateMobileDynamic(JsonNode dynamicNode)
         {
+            var original = JsonNode.Parse(dynamicNode.ToJsonString())!;
+
             // ----------- Device Health -----------
             var health = dynamicNode["Device Health"];
             var battery = health["Battery Status"];
@@ -249,10 +266,15 @@ namespace Infrastructure.Helpers
                 ["appName"] = "Google Maps",
                 ["usagePercent"] = $"{random.Next(3, 10)}%"
             });
+
+            var diff = GetJsonDiff(original, dynamicNode);
+            return diff;
         }
 
-        void IDynamicDataHelper.UpdateNasDynamic(JsonNode dynamicNode)
+        JsonNode IDynamicDataHelper.UpdateNasDynamic(JsonNode dynamicNode)
         {
+            var original = JsonNode.Parse(dynamicNode.ToJsonString())!;
+
             // ----------- System Health -----------
             var sysHealth = dynamicNode["System Health"];
             var cpuUsage = random.Next(15, 65);
@@ -346,10 +368,15 @@ namespace Infrastructure.Helpers
 
             services["Last Backup"]["Status"] = "Success";
             services["Last Backup"]["Timestamp"] = DateTime.Today.AddDays(-1).AddHours(23).AddMinutes(15).ToString("yyyy-MM-dd HH:mm");
+
+            var diff = GetJsonDiff(original, dynamicNode);
+            return diff;
         }
 
-        void IDynamicDataHelper.UpdatePrinterDynamic(JsonNode dynamicNode)
+        JsonNode IDynamicDataHelper.UpdatePrinterDynamic(JsonNode dynamicNode)
         {
+            var original = JsonNode.Parse(dynamicNode.ToJsonString())!;
+
             // ---------- Print Status ----------
             var printStatus = dynamicNode["Print Status"];
             var currentJob = printStatus["Current Job"];
@@ -454,6 +481,9 @@ namespace Infrastructure.Helpers
                 var errors = health["Error Logs"].AsArray();
                 errors.Add($"Paper jam detected in Tray {random.Next(1, 3)} at {DateTime.Now:yyyy-MM-dd HH:mm}");
             }
+
+            var diff = GetJsonDiff(original, dynamicNode);
+            return diff;
         }
 
         int ExtractSheetCount(string status)
@@ -462,8 +492,10 @@ namespace Infrastructure.Helpers
             return match.Success ? int.Parse(match.Groups[1].Value) : 0;
         }
 
-        void IDynamicDataHelper.UpdateRaspberryPiDynamic(JsonNode dynamicNode)
+        JsonNode IDynamicDataHelper.UpdateRaspberryPiDynamic(JsonNode dynamicNode)
         {
+            var original = JsonNode.Parse(dynamicNode.ToJsonString())!;
+
             var systemHealth = dynamicNode["System Health"];
             systemHealth["CPU Usage"] = $"{random.Next(20, 70)}%";
             double usedRam = Math.Round(0.8 + random.NextDouble() * 2.5, 1); // Simulate 0.8 - 3.3 GB
@@ -473,11 +505,11 @@ namespace Infrastructure.Helpers
             systemHealth["System Temperature"]["Board"] = $"{40 + random.Next(10)}°C";
             systemHealth["Uptime"] = $"{random.Next(1, 10)} days, {random.Next(0, 23)} hours";
             systemHealth["System Load"] = new JsonArray
-    {
-        Math.Round(random.NextDouble(), 2),
-        Math.Round(random.NextDouble() + 0.3, 2),
-        Math.Round(random.NextDouble() + 0.5, 2)
-    };
+                                            {
+                                                Math.Round(random.NextDouble(), 2),
+                                                Math.Round(random.NextDouble() + 0.3, 2),
+                                                Math.Round(random.NextDouble() + 0.5, 2)
+                                            };
 
             var network = dynamicNode["Network Activity"];
             var eth = network["Interfaces"][0];
@@ -538,10 +570,15 @@ namespace Infrastructure.Helpers
                 firmware["Last Update"] = DateTime.Now.AddDays(-random.Next(10)).ToString("yyyy-MM-dd");
                 firmware["Current Version"] = $"2025.{random.Next(1, 12):00}.{random.Next(1, 30):00}";
             }
+
+            var diff = GetJsonDiff(original, dynamicNode);
+            return diff;
         }
 
-        void IDynamicDataHelper.UpdateSmartTvDynamic(JsonNode dynamicNode)
+        JsonNode IDynamicDataHelper.UpdateSmartTvDynamic(JsonNode dynamicNode)
         {
+            var original = JsonNode.Parse(dynamicNode.ToJsonString())!;
+
             var usage = dynamicNode["Current Usage"];
             usage["Power State"] = random.Next(10) > 1 ? "On" : "Off"; // Mostly On
             usage["Input Source"] = $"HDMI {random.Next(1, 5)}";
@@ -616,10 +653,15 @@ namespace Infrastructure.Helpers
 
             status["Temperature"]["Panel"] = $"{37 + random.Next(6)}°C";
             status["Temperature"]["Mainboard"] = $"{39 + random.Next(6)}°C";
+
+            var diff = GetJsonDiff(original, dynamicNode);
+            return diff;
         }
 
-        void IDynamicDataHelper.UpdateSwitchDynamic(JsonNode dynamicNode)
+        JsonNode IDynamicDataHelper.UpdateSwitchDynamic(JsonNode dynamicNode)
         {
+            var original = JsonNode.Parse(dynamicNode.ToJsonString())!;
+
             // 1. Port Status Updates
             var ports = dynamicNode["Port Status"].AsArray();
             foreach (var port in ports)
@@ -701,10 +743,15 @@ namespace Infrastructure.Helpers
                 });
                 if (logs.Count > 6) logs.RemoveAt(0);
             }
+
+            var diff = GetJsonDiff(original, dynamicNode);
+            return diff;
         }
 
-        void IDynamicDataHelper.UpdateWifiRouterDynamic(JsonNode dynamicNode)
+        JsonNode IDynamicDataHelper.UpdateWifiRouterDynamic(JsonNode dynamicNode)
         {
+            var original = JsonNode.Parse(dynamicNode.ToJsonString())!;
+
             // 1. System Status
             var system = dynamicNode["System Status"];
             system["CPU Usage"] = $"{random.Next(15, 70)}%";
@@ -767,6 +814,58 @@ namespace Infrastructure.Helpers
 
             // Firmware Update check: rare toggle
             service["Firmware"]["Update Available"] = random.Next(15) == 0;
+
+            var diff = GetJsonDiff(original, dynamicNode);
+            return diff;
+        }
+
+        public static JsonNode? GetJsonDiff(JsonNode? original, JsonNode? updated)
+        {
+            if (original is JsonValue && updated is JsonValue)
+            {
+                return original.ToJsonString() == updated.ToJsonString() ? null : CloneNode(updated);
+            }
+
+            if (original is JsonObject origObj && updated is JsonObject updatedObj)
+            {
+                var diff = new JsonObject();
+
+                foreach (var kvp in updatedObj)
+                {
+                    var origChild = origObj.ContainsKey(kvp.Key) ? origObj[kvp.Key] : null;
+                    var updatedChild = kvp.Value;
+
+                    var childDiff = GetJsonDiff(origChild, updatedChild);
+                    if (childDiff != null)
+                        diff[kvp.Key] = childDiff;
+                }
+
+                return diff.Count > 0 ? diff : null;
+            }
+
+            if (original is JsonArray origArray && updated is JsonArray updatedArray)
+            {
+                var arrayDiff = new JsonArray();
+                bool hasChanges = false;
+
+                for (int i = 0; i < updatedArray.Count; i++)
+                {
+                    var childDiff = GetJsonDiff(origArray[i], updatedArray[i]);
+                    arrayDiff.Add(childDiff);
+                    if (childDiff != null)
+                        hasChanges = true;
+                }
+
+                return hasChanges ? arrayDiff : null;
+            }
+
+            return CloneNode(updated); // Types differ or null mismatch, treat as full change
+        }
+
+        // Safely clone a JsonNode (deep copy, detached from parent)
+        private static JsonNode? CloneNode(JsonNode? node)
+        {
+            return node == null ? null : JsonNode.Parse(node.ToJsonString());
         }
 
     }

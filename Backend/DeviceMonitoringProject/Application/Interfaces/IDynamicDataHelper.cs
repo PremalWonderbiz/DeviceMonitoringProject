@@ -11,15 +11,15 @@ namespace Application.Interfaces
     {
         string GetRandomStatus();
         string GetRandomConnectivity();
-        void UpdateRoomAcDynamic(JsonNode dynamicNode);
-        void UpdateIpCameraDynamic(JsonNode dynamicNode);
-        void UpdateLaptopDynamic(JsonNode dynamicNode);
-        void UpdateMobileDynamic(JsonNode dynamicNode);
-        void UpdateNasDynamic(JsonNode dynamicNode);
-        void UpdatePrinterDynamic(JsonNode dynamicNode);
-        void UpdateRaspberryPiDynamic(JsonNode dynamicNode);
-        void UpdateSmartTvDynamic(JsonNode dynamicNode);
-        void UpdateSwitchDynamic(JsonNode dynamicNode);
-        void UpdateWifiRouterDynamic(JsonNode dynamicNode);
+        JsonNode UpdateRoomAcDynamic(JsonNode dynamicNode);
+        JsonNode UpdateIpCameraDynamic(JsonNode dynamicNode);
+        JsonNode UpdateLaptopDynamic(JsonNode dynamicNode);
+        JsonNode UpdateMobileDynamic(JsonNode dynamicNode);
+        JsonNode UpdateNasDynamic(JsonNode dynamicNode);
+        JsonNode UpdatePrinterDynamic(JsonNode dynamicNode);
+        JsonNode UpdateRaspberryPiDynamic(JsonNode dynamicNode);
+        JsonNode UpdateSmartTvDynamic(JsonNode dynamicNode);
+        JsonNode UpdateSwitchDynamic(JsonNode dynamicNode);
+        JsonNode UpdateWifiRouterDynamic(JsonNode dynamicNode);
     }
 }

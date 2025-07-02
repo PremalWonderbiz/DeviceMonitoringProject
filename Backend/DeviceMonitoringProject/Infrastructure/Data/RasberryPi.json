@@ -4,7 +4,7 @@
   "Type": "Microcomputer",
   "Status": "Offline",
   "MacId": "B8:27:EB:45:67:89",
-  "Connectivity": "Low",
+  "Connectivity": "Medium",
   "staticProperties": {
     "Hardware Information": {
       "Model": "Raspberry Pi 4 Model B",
@@ -60,32 +60,32 @@
   },
   "dynamicProperties": {
     "System Health": {
-      "CPU Usage": "39%",
+      "CPU Usage": "69%",
       "RAM Usage": {
-        "Used": "1.9 GB",
+        "Used": "1.7 GB",
         "Total": "4 GB"
       },
       "System Temperature": {
-        "CPU": "59°C",
-        "Board": "41°C"
+        "CPU": "58°C",
+        "Board": "44°C"
       },
-      "Uptime": "7 days, 5 hours",
+      "Uptime": "4 days, 2 hours",
       "System Load": [
-        0.44,
-        0.38,
-        0.55
+        0.83,
+        0.98,
+        0.51
       ]
     },
     "Network Activity": {
       "Interfaces": [
         {
           "name": "eth0",
-          "ipAddress": "192.168.1.32",
+          "ipAddress": "192.168.1.30",
           "macAddress": "B8:27:EB:45:67:89",
           "connectionType": "Ethernet",
           "traffic": {
-            "upload": "6 Mbps",
-            "download": "21 Mbps"
+            "upload": "4 Mbps",
+            "download": "51 Mbps"
           }
         },
         {
@@ -97,8 +97,8 @@
         }
       ],
       "Total Data Usage": {
-        "Sent": "90.8 GB",
-        "Received": "275.7 GB"
+        "Sent": "101.5 GB",
+        "Received": "278.1 GB"
       },
       "Connected Clients (Media Server)": [
         {
@@ -118,18 +118,18 @@
         {
           "service": "Kodi",
           "status": "Running",
-          "activeClients": 2
+          "activeClients": 3
         },
         {
           "service": "Pi-hole",
           "status": "Running",
-          "dnsQueriesBlocked": "6,075"
+          "dnsQueriesBlocked": "4,724"
         }
       ],
       "Last Reboot Reason": "Scheduled maintenance",
       "Firmware": {
-        "Current Version": "2025.07.09",
-        "Last Update": "2025-06-30",
+        "Current Version": "2025.08.16",
+        "Last Update": "2025-06-28",
         "Update Available": true
       }
     }

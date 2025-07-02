@@ -5,9 +5,11 @@ namespace Application.Interfaces
 {
     public interface IDeviceService
     {
-        public DeviceMetadataPaginated GetAllDeviceMetadataPaginated(int pageNumber = 1, int pageSize = 10);
+        public List<DeviceMetadata> GetAllDeviceMetadataPaginated(List<DeviceMetadata> metadata, int pageNumber = 1, int pageSize = 10);
 
-        public DeviceMetadataPaginated GetSearchedDeviceMetadataPaginated(int pageNumber = 1, int pageSize = 10, string input="");
+        public DeviceMetadataPaginatedandSortedDto GetAllDeviceMetadataPaginatedandSorted(DeviceTopLevelSortOptions sortRequest, List<DeviceMetadata> filteredData = null);
+
+        public DeviceMetadataPaginatedandSortedDto GetSearchedDeviceMetadataPaginated(DeviceTopLevelSortOptions sortRequest, string input="");
 
         public Dictionary<string, string> GetMacIdToFileNameMap();
 

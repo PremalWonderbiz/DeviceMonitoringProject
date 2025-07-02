@@ -40,25 +40,25 @@ namespace Infrastructure.Helpers
             };
         }
 
-        public void UpdateDynamicProperties(string deviceType, JsonNode? dynamicProps)
+        public JsonNode UpdateDynamicProperties(string deviceType, JsonNode? dynamicProps)
         {
-            if (dynamicProps == null) return;
+            if (dynamicProps == null) return null;
 
             switch (deviceType)
             {
-                case "IP Camera": _dynamicDataHelper.UpdateIpCameraDynamic(dynamicProps); break;
-                case "Air Conditioner": _dynamicDataHelper.UpdateRoomAcDynamic(dynamicProps); break;
-                case "Network Switch": _dynamicDataHelper.UpdateSwitchDynamic(dynamicProps); break;
-                case "Printer": _dynamicDataHelper.UpdatePrinterDynamic(dynamicProps); break;
-                case "Raspberry Pi": _dynamicDataHelper.UpdateRaspberryPiDynamic(dynamicProps); break;
-                case "Mobile": _dynamicDataHelper.UpdateMobileDynamic(dynamicProps); break;
-                case "NAS Server": _dynamicDataHelper.UpdateNasDynamic(dynamicProps); break;
-                case "Laptop": _dynamicDataHelper.UpdateLaptopDynamic(dynamicProps); break;
-                case "WiFi Router": _dynamicDataHelper.UpdateWifiRouterDynamic(dynamicProps); break;
-                case "Smart TV": _dynamicDataHelper.UpdateSmartTvDynamic(dynamicProps); break;
+                case "IP Camera": return _dynamicDataHelper.UpdateIpCameraDynamic(dynamicProps); 
+                case "Air Conditioner": return _dynamicDataHelper.UpdateRoomAcDynamic(dynamicProps); 
+                case "Network Switch": return _dynamicDataHelper.UpdateSwitchDynamic(dynamicProps); 
+                case "Printer": return _dynamicDataHelper.UpdatePrinterDynamic(dynamicProps); 
+                case "Raspberry Pi": return _dynamicDataHelper.UpdateRaspberryPiDynamic(dynamicProps); 
+                case "Mobile": return _dynamicDataHelper.UpdateMobileDynamic(dynamicProps);
+                case "NAS Server": return _dynamicDataHelper.UpdateNasDynamic(dynamicProps);
+                case "Laptop": return _dynamicDataHelper.UpdateLaptopDynamic(dynamicProps);
+                case "WiFi Router": return _dynamicDataHelper.UpdateWifiRouterDynamic(dynamicProps); 
+                case "Smart TV": return _dynamicDataHelper.UpdateSmartTvDynamic(dynamicProps); 
                 default:
                     _logger.LogWarning("No dynamic update logic for device type: {DeviceType}", deviceType);
-                    break;
+                    return null;
             }
         }
 
@@ -74,7 +74,7 @@ namespace Infrastructure.Helpers
             await File.WriteAllTextAsync(path, json);
         }
 
-        public async Task BroadcastDeviceDetailUpdates(List<(string MacId, string EventName, object DetailPayload)> updates)
+        public async Task BroadcastDeviceDetailUpdates(List<(string MacId, string EventName, JsonElement DetailPayload)> updates)
         {
             foreach (var (macId, eventName, payload) in updates)
             {

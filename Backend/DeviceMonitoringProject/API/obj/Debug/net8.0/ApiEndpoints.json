@@ -37,20 +37,15 @@
   },
   {
     "ContainingType": "API.Controllers.DevicesController",
-    "Method": "GetAllDeviceMetadata",
-    "RelativePath": "api/Devices/metadata/{pageNumber}/{pageSize}",
-    "HttpMethod": "GET",
+    "Method": "GetDeviceMetadataPaginatedandSorted",
+    "RelativePath": "api/Devices/metadata",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "pageNumber",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "pageSize",
-        "Type": "System.Int32",
+        "Name": "request",
+        "Type": "Application.Dtos.DeviceTopLevelSortOptions",
         "IsRequired": true
       }
     ],
@@ -59,19 +54,14 @@
   {
     "ContainingType": "API.Controllers.DevicesController",
     "Method": "GetSearchedDeviceMetadataPaginated",
-    "RelativePath": "api/Devices/search/metadata/{pageNumber}/{pageSize}/{input}",
-    "HttpMethod": "GET",
+    "RelativePath": "api/Devices/search/metadata/{input}",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "pageNumber",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "pageSize",
-        "Type": "System.Int32",
+        "Name": "options",
+        "Type": "Application.Dtos.DeviceTopLevelSortOptions",
         "IsRequired": true
       },
       {

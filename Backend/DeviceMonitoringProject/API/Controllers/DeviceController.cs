@@ -21,11 +21,11 @@ namespace API.Controllers
             _deviceService = deviceService;
             _hubContext = hubContext;
         }
-
-        [HttpGet("metadata/{pageNumber}/{pageSize}")]
-        public IActionResult GetAllDeviceMetadata(int pageNumber = 1, int pageSize = 10)
+        
+        [HttpPost("search/metadata/{input}")]
+        public IActionResult GetSearchedDeviceMetadataPaginated(DeviceTopLevelSortOptions options, string input="")
         {
-            var data = _deviceService.GetAllDeviceMetadataPaginated(pageNumber, pageSize);
+            var data = _deviceService.GetSearchedDeviceMetadataPaginated(options, input);
 
             var formattedData = data.DeviceMetadata.Select(m => new DeviceTopLevelData
             {
@@ -43,10 +43,10 @@ namespace API.Controllers
             });
         }
         
-        [HttpGet("search/metadata/{pageNumber}/{pageSize}/{input}")]
-        public IActionResult GetSearchedDeviceMetadataPaginated(int pageNumber = 1, int pageSize = 10, string input="")
+        [HttpPost("metadata")]
+        public IActionResult GetDeviceMetadataPaginatedandSorted(DeviceTopLevelSortOptions request)
         {
-            var data = _deviceService.GetSearchedDeviceMetadataPaginated(pageNumber, pageSize, input);
+            var data = _deviceService.GetAllDeviceMetadataPaginatedandSorted(request);
 
             var formattedData = data.DeviceMetadata.Select(m => new DeviceTopLevelData
             {

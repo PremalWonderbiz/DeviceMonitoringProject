@@ -6,11 +6,11 @@ import { ArrowDown, ArrowUp } from "lucide-react";
 import Pagination from "../Pagination";
 import { capitalizeFirstLetter } from "@/utils/helperfunctions";
 
-const TableComponent = ({refreshDeviceDataKey, updatedFieldsMap, currentPage, setCurrentPage, totalPages, pageSize, setPageSize, data, setIsPropertyPanelOpen }: any) => {
+const TableComponent = ({sorting, setSorting, refreshDeviceDataKey, updatedFieldsMap, currentPage, setCurrentPage, totalPages, pageSize, setPageSize, data, setIsPropertyPanelOpen }: any) => {
   if (!data || data.length === 0)
     return <p className="px-2">No data available.</p>;
   
-  const [sorting, setSorting] = useState<SortingState>([]);
+  
 
   // Columns definition
   const columns = useMemo<ColumnDef<any, any>[]>(() => {
@@ -26,6 +26,7 @@ const TableComponent = ({refreshDeviceDataKey, updatedFieldsMap, currentPage, se
   const table = useReactTable({
     data,
     columns,
+    manualSorting : true,
     state: {
       sorting,
     },

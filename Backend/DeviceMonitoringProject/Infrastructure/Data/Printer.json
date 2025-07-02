@@ -2,9 +2,9 @@
   "FileName": "Printer.json",
   "Name": "Printer",
   "Type": "Peripheral Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "F8:16:54:AA:34:12",
-  "Connectivity": "Medium",
+  "Connectivity": "High",
   "staticProperties": {
     "Hardware Specifications": {
       "Printer Type": "Laser",
@@ -92,8 +92,8 @@
     "Consumables": {
       "Toner Level": "26%",
       "Drum Status": "Normal",
-      "Fuser Unit Life": "-597%",
-      "Maintenance Kit Life": "-318%",
+      "Fuser Unit Life": "-701%",
+      "Maintenance Kit Life": "-360%",
       "Paper Tray Status": {
         "Tray 1": "Loaded (33 sheets)",
         "Tray 2": "Loaded (180 sheets)"
@@ -103,8 +103,8 @@
       "IP Address": "192.168.10.58",
       "Subnet": "255.255.255.0",
       "Gateway": "192.168.10.1",
-      "Upload Speed": "0.9 Mbps",
-      "Download Speed": "1.6 Mbps",
+      "Upload Speed": "0.8 Mbps",
+      "Download Speed": "1.4 Mbps",
       "Connected Clients": [
         "kavita.s",
         "kavita.s",
@@ -115,10 +115,10 @@
     },
     "System Health": {
       "Temperature": {
-        "Internal Sensor": "44.2°C",
-        "Ambient": "31.1°C"
+        "Internal Sensor": "43.4°C",
+        "Ambient": "31.6°C"
       },
-      "Uptime": "579 days, 0 hours",
+      "Uptime": "654 days, 7 hours",
       "Error Logs": [
         "Paper jam detected in Tray 1 at 2025-06-13 19:40",
         "Paper jam detected in Tray 2 at 2025-06-13 19:43",
@@ -417,7 +417,35 @@
         "Paper jam detected in Tray 2 at 2025-07-01 17:33",
         "Paper jam detected in Tray 2 at 2025-07-01 17:35",
         "Paper jam detected in Tray 2 at 2025-07-01 17:36",
-        "Paper jam detected in Tray 2 at 2025-07-01 17:58"
+        "Paper jam detected in Tray 2 at 2025-07-01 17:58",
+        "Paper jam detected in Tray 2 at 2025-07-02 09:09",
+        "Paper jam detected in Tray 1 at 2025-07-02 09:09",
+        "Paper jam detected in Tray 1 at 2025-07-02 09:09",
+        "Paper jam detected in Tray 2 at 2025-07-02 09:12",
+        "Paper jam detected in Tray 1 at 2025-07-02 10:12",
+        "Paper jam detected in Tray 1 at 2025-07-02 10:14",
+        "Paper jam detected in Tray 2 at 2025-07-02 10:16",
+        "Paper jam detected in Tray 2 at 2025-07-02 10:49",
+        "Paper jam detected in Tray 2 at 2025-07-02 10:49",
+        "Paper jam detected in Tray 2 at 2025-07-02 11:25",
+        "Paper jam detected in Tray 2 at 2025-07-02 11:29",
+        "Paper jam detected in Tray 2 at 2025-07-02 11:35",
+        "Paper jam detected in Tray 2 at 2025-07-02 11:41",
+        "Paper jam detected in Tray 1 at 2025-07-02 12:06",
+        "Paper jam detected in Tray 1 at 2025-07-02 12:10",
+        "Paper jam detected in Tray 2 at 2025-07-02 12:11",
+        "Paper jam detected in Tray 1 at 2025-07-02 12:13",
+        "Paper jam detected in Tray 2 at 2025-07-02 12:15",
+        "Paper jam detected in Tray 1 at 2025-07-02 12:19",
+        "Paper jam detected in Tray 1 at 2025-07-02 12:21",
+        "Paper jam detected in Tray 2 at 2025-07-02 12:22",
+        "Paper jam detected in Tray 2 at 2025-07-02 12:28",
+        "Paper jam detected in Tray 2 at 2025-07-02 12:29",
+        "Paper jam detected in Tray 2 at 2025-07-02 12:31",
+        "Paper jam detected in Tray 1 at 2025-07-02 12:32",
+        "Paper jam detected in Tray 2 at 2025-07-02 12:34",
+        "Paper jam detected in Tray 1 at 2025-07-02 12:38",
+        "Paper jam detected in Tray 1 at 2025-07-02 12:49"
       ],
       "Firmware Version": "2025.2.13",
       "Last Restart": "2025-05-25 16:30"

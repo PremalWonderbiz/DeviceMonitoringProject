@@ -1,4 +1,3 @@
-// components/KeyValueField.tsx
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/scss/PropertyPanel.module.scss";
 
@@ -14,7 +13,7 @@ const KeyValueField = ({
   depth: number;
   fullPath: string;
   highlightedPaths: string[];
-}) => {
+}) => {  
   const [isHighlighted, setIsHighlighted] = useState(false);
 
   useEffect(() => {
@@ -22,11 +21,11 @@ const KeyValueField = ({
 
     if (isPathHighlighted) {
       setIsHighlighted(true);
-      const timer = setTimeout(() => setIsHighlighted(false), 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [highlightedPaths, fullPath]);
+    }else {
+    setIsHighlighted(false);
+  }
 
+  }, [highlightedPaths, fullPath]);
 
   if (typeof value === "boolean") value = value ? "Yes" : "No";
 
@@ -38,4 +37,14 @@ const KeyValueField = ({
   );
 };
 
-export default KeyValueField;
+function areEqual(prevProps: any, nextProps: any) {
+  const wasHighlighted = prevProps.highlightedPaths.includes(prevProps.fullPath);
+  const isHighlighted = nextProps.highlightedPaths.includes(nextProps.fullPath);
+
+  const valueChanged = prevProps.value !== nextProps.value;
+
+  return !valueChanged && wasHighlighted === isHighlighted;
+}
+
+
+export default React.memo(KeyValueField, areEqual);

@@ -4,10 +4,10 @@ import Sidebar from "@/components/customcomponents/SideBar";
 import PropertyPanel from "@/components/customcomponents/Propertypanel/PropertyPannel";
 import TableComponent from "@/components/customcomponents/Table/TableComponent";
 import AlarmPanel from "@/components/customcomponents/AlarmPanel/AlarmPanel";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useDevicesTopDataSocket } from "@/utils/customhooks/useDevicesTopDataSocket";
 import { BellRing, RefreshCw, Repeat, UserPen } from "lucide-react";
-import { getDevicesNameMacIdList, getDevicesTopLevelData, getMacIdToFileNameMap, getSearchedDeviceMetadataPaginated } from "@/services/deviceservice";
+import { getDeviceMetadataPaginatedandSorted, getDevicesNameMacIdList, getDevicesTopLevelData, getMacIdToFileNameMap, getSearchedDeviceMetadataPaginated } from "@/services/deviceservice";
 import styles from "@/styles/scss/Home.module.scss";
 import PopOver from "@/components/chakrauicomponents/PopOver";
 import { AlarmPopUp, ProfilePopUp } from "@/components/customcomponents/AlarmPanel/AlarmPanelContent";
@@ -15,6 +15,7 @@ import { getLatestAlarms } from "@/services/alarmservice";
 import { useDeviceAlertSocket } from "@/utils/customhooks/useDeviceAlertSocket";
 import { Tooltip } from "@/components/ui/tooltip";
 import { Button } from "@chakra-ui/react";
+import { SortingState } from "@tanstack/react-table";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,7 +48,9 @@ export default function Home() {
   const [refreshDeviceDataKey, setRefreshDeviceDataKey] = useState(0);
   const [searchInput, setSearchInput] = useState<any>(null);
   const [updatedFieldsMap, setUpdatedFieldsMap] = useState<{ [macId: string]: string[] } | null>(null);
+  const highlightTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [devicesNameMacList, setDevicesNameMacList] = useState<any[] | null>(null);
+  const [sorting, setSorting] = useState<SortingState>([]);
 
   useEffect(() => {
     setTotalPages(Math.ceil(totalCount / pageSize));
@@ -72,7 +75,9 @@ export default function Home() {
   // Handle incoming SignalR updates
   const handleUpdate = useCallback((msg: string) => {
     const incomingDevices = JSON.parse(msg); // Format: [{ MacId, Status, Connectivity }]
-
+    setSorting((prev : SortingState) => {
+      return prev.filter(s => s.id != "status" && s.id != "connectivity")
+    })
     setDeviceData((prevDevices) => {
 
       let hasChange = false;
@@ -115,6 +120,14 @@ export default function Home() {
       if (hasChange) {
         console.log("Updating deviceData due to change in status/connectivity", counter);
         setUpdatedFieldsMap(changedFieldMap);
+        if (highlightTimeoutRef.current) {
+          clearTimeout(highlightTimeoutRef.current);
+        }
+
+        highlightTimeoutRef.current = setTimeout(() => {
+          setUpdatedFieldsMap(null);
+        }, 3000);
+
         return updatedDevices;
 
       } else {
@@ -123,6 +136,14 @@ export default function Home() {
       }
 
     });
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (highlightTimeoutRef.current) {
+        clearTimeout(highlightTimeoutRef.current);
+      }
+    };
   }, []);
 
   const handleAlertUpdates = useCallback((msg: string) => {
@@ -165,19 +186,21 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const fetchDevicesData = async () => {
-      const response = await getDevicesTopLevelData(currentPage, pageSize);
-      if (!response)
-        console.log("Network response was not ok");
+    if (searchInput == "" || searchInput == null) {
+      const fetchDevicesData = async () => {
+        const response = await getDeviceMetadataPaginatedandSorted(currentPage, pageSize, sorting);
+        if (!response)
+          console.log("Network response was not ok");
 
-      if (response && response.data) {
-        setDeviceData(response.data.data);
-        setTotalCount(response.data.totalCount);
-      }
-    };
+        if (response && response.data) {
+          setDeviceData(response.data.data);
+          setTotalCount(response.data.totalCount);
+        }
+      };
 
-    fetchDevicesData();
-  }, [pageSize, currentPage, refreshDeviceDataKey]);
+      fetchDevicesData();
+    }
+  }, [pageSize, currentPage, refreshDeviceDataKey, sorting]);
 
   useEffect(() => {
     if (searchInput == "") {
@@ -185,7 +208,7 @@ export default function Home() {
     }
     else if (searchInput != null) {
       const fetchSearchedDevicesData = setTimeout(async () => {
-        const response = await getSearchedDeviceMetadataPaginated(currentPage, pageSize, searchInput);
+        const response = await getSearchedDeviceMetadataPaginated(currentPage, pageSize, searchInput, sorting);
         if (!response)
           console.log("Network response was not ok");
 
@@ -197,7 +220,7 @@ export default function Home() {
 
       return () => clearTimeout(fetchSearchedDevicesData)
     }
-  }, [searchInput]);
+  }, [searchInput, sorting]);
 
   const openPropertypanel = (deviceId: string) => {
     setActiveTab(initialTabState); // Reset to default tab
@@ -265,11 +288,12 @@ export default function Home() {
 
         <div className={styles.bodyContainer}>
           <div className={`${styles.pageWrapper} ${isPropertyPanelOpen ? styles.pushRight : ''}`}>
-            <TableComponent refreshDeviceDataKey={refreshDeviceDataKey} updatedFieldsMap={updatedFieldsMap} totalPages={totalPages} pageSize={pageSize} setPageSize={setPageSize} setCurrentPage={setCurrentPage} currentPage={currentPage} data={deviceData} setIsPropertyPanelOpen={openPropertypanel} />
+            <TableComponent sorting={sorting} setSorting={setSorting} refreshDeviceDataKey={refreshDeviceDataKey} updatedFieldsMap={updatedFieldsMap} totalPages={totalPages} pageSize={pageSize} setPageSize={setPageSize} setCurrentPage={setCurrentPage} currentPage={currentPage} data={deviceData} setIsPropertyPanelOpen={openPropertypanel} />
           </div>
-          <Sidebar position="right" isOpen={isPropertyPanelOpen} setIsOpen={setIsPropertyPanelOpen} closeSidebar={closePropertyPanel}>
-            {isPropertyPanelOpen && <PropertyPanel deviceFileNames={deviceFileNames} devicesNameMacList={devicesNameMacList} setCurrentDeviceId={setCurrentDeviceId} setCurrentDeviceFileName={setCurrentDeviceFileName} setIsAlarmPanelOpen={setIsAlarmPanelOpen} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} currentDeviceFileName={currentDeviceFileName} />}
-          </Sidebar>
+          {(deviceData && deviceData.length > 0) &&
+            <Sidebar position="right" isOpen={isPropertyPanelOpen} setIsOpen={setIsPropertyPanelOpen} closeSidebar={closePropertyPanel}>
+              {isPropertyPanelOpen && <PropertyPanel deviceFileNames={deviceFileNames} devicesNameMacList={devicesNameMacList} setCurrentDeviceId={setCurrentDeviceId} setCurrentDeviceFileName={setCurrentDeviceFileName} setIsAlarmPanelOpen={setIsAlarmPanelOpen} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} currentDeviceFileName={currentDeviceFileName} />}
+            </Sidebar>}
         </div>
       </div>
     </div>
