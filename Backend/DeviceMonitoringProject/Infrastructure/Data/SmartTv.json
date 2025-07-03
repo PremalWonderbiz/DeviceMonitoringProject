@@ -2,9 +2,9 @@
   "FileName": "SmartTv.json",
   "Name": "Smart TV",
   "Type": "Entertainment Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "B8:27:EB:45:9A:CB",
-  "Connectivity": "High",
+  "Connectivity": "Medium",
   "staticProperties": {
     "Display & Hardware": {
       "Screen Size": "55 inches",
@@ -79,10 +79,10 @@
   },
   "dynamicProperties": {
     "Current Usage": {
-      "Power State": "Off",
-      "Input Source": "HDMI 3",
-      "Current App": "Disney+ Hotstar",
-      "Volume Level": 79,
+      "Power State": "On",
+      "Input Source": "HDMI 4",
+      "Current App": "YouTube",
+      "Volume Level": 53,
       "Mute": false,
       "Picture Mode": "Vivid",
       "Audio Output": "TV Speakers",
@@ -93,43 +93,49 @@
         {
           "App": "Netflix",
           "Title": "The Crown",
-          "Start Time": "2025-07-02T16:29:44",
-          "Duration": "25 min"
+          "Start Time": "2025-07-03T16:17:14",
+          "Duration": "47 min"
+        },
+        {
+          "App": "YouTube",
+          "Title": "Gadget Reviews",
+          "Start Time": "2025-07-03T17:17:14",
+          "Duration": "11 min"
         }
       ],
       "Active App Sessions": [
         {
-          "App": "Disney+ Hotstar",
+          "App": "YouTube",
           "Status": "Streaming",
-          "Data Used": "636 MB"
+          "Data Used": "652 MB"
         }
       ],
       "AutoPlay Next Episode": true
     },
     "Network Activity": {
-      "IP Address": "192.168.1.42",
-      "Wi-Fi Signal Strength": "-62 dBm",
+      "IP Address": "192.168.1.49",
+      "Wi-Fi Signal Strength": "-54 dBm",
       "Connection Type": "Wi-Fi",
       "Data Usage": {
-        "Today": "3.0 GB",
-        "This Week": "81 GB",
-        "This Month": "491 GB"
+        "Today": "2.0 GB",
+        "This Week": "101 GB",
+        "This Month": "581 GB"
       },
-      "Last Online": "2025-07-02T17:52:44"
+      "Last Online": "2025-07-03T17:40:14"
     },
     "System Status": {
-      "Uptime": "9 hours 2 minutes",
-      "Last Reboot": "2025-06-30T20:59:44",
+      "Uptime": "21 hours 50 minutes",
+      "Last Reboot": "2025-07-02T12:47:14",
       "Software Update Available": false,
-      "Last Software Update": "2025-06-09",
+      "Last Software Update": "2025-06-04",
       "Storage Info": {
         "Total Storage": "16 GB",
-        "Used": "9.3 GB",
-        "Free": "6.7 GB"
+        "Used": "6.4 GB",
+        "Free": "9.6 GB"
       },
       "Temperature": {
-        "Panel": "41°C",
-        "Mainboard": "40°C"
+        "Panel": "40°C",
+        "Mainboard": "43°C"
       }
     }
   }

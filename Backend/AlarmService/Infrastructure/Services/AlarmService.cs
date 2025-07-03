@@ -161,6 +161,10 @@ namespace Infrastructure.Services
             alarm.IsAcknowledged = true;
             alarm.AcknowledgedAt = DateTime.Now;
 
+            var investigateState = await _context.AlarmStates.SingleOrDefaultAsync(alarm => alarm.Name == "Investigating");
+            alarm.StateId = investigateState?.Id ?? 2; //2 is hardcoded here later will throw exception or handle it here
+            alarm.Comment = "Alarm is in 'Investigating' state currently";
+
             _context.Entry(alarm).State = EntityState.Modified;
 
             try
@@ -172,7 +176,7 @@ namespace Infrastructure.Services
                 throw new CustomException(500, ex.Message);
             }
 
-            return "Alarm acknowledged successfully";
+            return "Alarm moved in investigating state";
         }
 
         public async Task<GetLatestAlarmsDto> GetLatestFiveAlarms()
@@ -225,6 +229,48 @@ namespace Infrastructure.Services
                 TotalAlarms = totalAlarms,
                 Alarm = formattedAlarm
             };
+        }
+
+        public async Task<IEnumerable<GetAlarmStatesDto>> GetAlarmStates()
+        {
+            var states = await _context.AlarmStates.Select(state => new GetAlarmStatesDto
+            {
+                Id= state.Id,
+                Name = state.Name,
+            }).ToListAsync();
+
+            return states;
+        }
+
+        public async Task<string> ResolveAlarm(Guid alarmId, string comment)
+        {
+            var alarm = await _context.Alarms.SingleOrDefaultAsync(alarm => alarm.Id == alarmId);
+            if (alarm is null)
+                throw new CustomException(400, "Alarm not found");
+
+            if(alarm.IsAcknowledged is false)
+            {
+                alarm.IsAcknowledged = true;
+                alarm.AcknowledgedAt = DateTime.Now;
+            }
+
+            var resolvedState = await _context.AlarmStates.SingleOrDefaultAsync(alarm => alarm.Name == "Resolved");
+            alarm.StateId = resolvedState?.Id ?? 3; //3 is hardcoded here later will throw exception or handle it here
+            alarm.Comment = (comment is not null && comment.Length > 0) ? comment : "Manually marked as Resoved";
+            alarm.ResolvedAt = DateTime.Now;
+
+            _context.Entry(alarm).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new CustomException(500, ex.Message);
+            }
+
+            return "Alarm moved in resolved state";
         }
     }
 }

@@ -73,52 +73,52 @@
   "dynamicProperties": {
     "Device Health": {
       "Battery Status": {
-        "Level": "51%",
+        "Level": "70%",
         "Charging State": "Not Charging",
-        "Temperature": "36.8°C",
+        "Temperature": "34.9°C",
         "Health": "Good"
       },
-      "CPU Usage": "72%",
+      "CPU Usage": "23%",
       "RAM Usage": {
-        "Used": "7.6 GB",
-        "Free": "4.4 GB"
+        "Used": "4.5 GB",
+        "Free": "7.5 GB"
       },
       "Storage Usage": {
-        "Used": "143 GB",
-        "Free": "113 GB"
+        "Used": "121 GB",
+        "Free": "135 GB"
       },
       "Device Temperature": {
-        "CPU": "44.5°C",
-        "Battery": "36.8°C"
+        "CPU": "43.2°C",
+        "Battery": "34.9°C"
       },
-      "Uptime": "0 days, 7 hours"
+      "Uptime": "0 days, 14 hours"
     },
     "Network Activity": {
       "Current Network": {
         "Connection Type": "Wi-Fi",
         "SSID": "Home_5G",
-        "IP Address": "192.168.1.141",
-        "Signal Strength": "-46 dBm",
+        "IP Address": "192.168.1.113",
+        "Signal Strength": "-52 dBm",
         "MAC Address": "F0:9F:C2:12:34:56"
       },
       "Data Usage": {
         "Today": {
-          "Download": "1.9 GB",
-          "Upload": "228 MB"
+          "Download": "0.8 GB",
+          "Upload": "338 MB"
         },
         "Monthly": {
-          "Download": "37.6 GB",
-          "Upload": "9.8 GB"
+          "Download": "32.9 GB",
+          "Upload": "9.4 GB"
         }
       },
       "Connected Apps": [
         {
           "appName": "Spotify",
-          "dataUsage": "Streaming (231 MB today)"
+          "dataUsage": "Streaming (233 MB today)"
         },
         {
           "appName": "WhatsApp",
-          "dataUsage": "Video call (154 MB today)"
+          "dataUsage": "Video call (178 MB today)"
         }
       ]
     },
@@ -127,22 +127,22 @@
         {
           "name": "YouTube",
           "status": "Foreground",
-          "screenTimeToday": "0 hr 49 min"
+          "screenTimeToday": "0 hr 15 min"
         },
         {
           "name": "Gmail",
           "status": "Background",
-          "notifications": 5
+          "notifications": 2
         }
       ],
       "Battery Usage by Apps": [
         {
           "appName": "YouTube",
-          "usagePercent": "14%"
+          "usagePercent": "12%"
         },
         {
           "appName": "Google Maps",
-          "usagePercent": "3%"
+          "usagePercent": "7%"
         }
       ]
     }

@@ -1,85 +1,64 @@
-import { useEffect, useState } from "react"
 import {
   Button,
   CloseButton,
   Dialog,
   Portal
 } from "@chakra-ui/react"
-import ComboBox from "./ComboBox"
-import { DateRangePicker } from "rsuite"
 
-const Modal = ({ dateRange, setDateRange, triggerButton, title, devices, selectedDevices, setSelectedDevices }: any) => {
-  const [tempSelectedDevices, setTempSelectedDevices] = useState<any[]>([])
-  const [tempDateRange, setTempDateRange] = useState<[Date, Date] | null>(null);
-  const [isOpen, setIsOpen] = useState(false)
 
-  const handleOpen = () => {
-    setTempDateRange(dateRange);
-    setTempSelectedDevices(selectedDevices)
-    setIsOpen(true)
-  }
+const Modal = ({ containerRef, isOpen, setIsOpen, triggerButton, content, title, footer=true }: any) => {
 
   const handleClose = () => {
     setIsOpen(false)
-  }
-
-  const handleSave = () => {
-    setSelectedDevices(tempSelectedDevices)
-    setDateRange(tempDateRange)
-    handleClose()
   }
 
   return (
     <Dialog.Root
       open={isOpen}
       onOpenChange={({ open }) => setIsOpen(open)}
-      closeOnInteractOutside={false}
       modal={false}
       placement="center"
-      size="md"
+      size="xs"
+      closeOnInteractOutside={false}
+      
     >
       <Dialog.Trigger asChild>
-        <div onClick={handleOpen}>
+        <div>
           {triggerButton ?? <Button variant="outline">Open Modal</Button>}
         </div>
       </Dialog.Trigger>
 
       <Portal>
-        <Dialog.Backdrop>
-          <Dialog.Positioner >
+          <Dialog.Positioner>
             <Dialog.Content
-              padding="1rem 1.5rem"
+              padding="0.5rem 1rem"
               color="#fff"
-              backgroundColor="#181818"
+              backgroundColor="#262626"
+              boxShadow={"none"}
+              width={"250px"}
             >
               <Dialog.Header>
-                <Dialog.Title>{title}</Dialog.Title>
+                <Dialog.Title fontSize={"16px"}>{title}</Dialog.Title>
               </Dialog.Header>
 
-              <Dialog.Body padding="1rem 0">
-                <ComboBox
-                  devices={devices}
-                  selectedDevices={tempSelectedDevices}
-                  setSelectedDevices={setTempSelectedDevices}
-                />
-                <br />
-
-                <DateRangePicker value={tempDateRange} onChange={(value) => {setTempDateRange(value)}} placeholder="Select Date Range" placement="topEnd" />
-
+              <Dialog.Body padding="0.5rem 0">
+                {content}
               </Dialog.Body>
 
-              <Dialog.Footer>
+              {footer && <Dialog.Footer>
                 <Button
-                  padding="0.5rem 1rem"
-                  variant="outline"
+                  padding="0.4rem 1rem"
+                  colorPalette={"gray"}
+                  variant={"surface"}
                   onClick={handleClose}
+                  height={"auto"}
                 >
                   Cancel
                 </Button>
-                <Button padding="0.5rem 1rem" onClick={handleSave}>
+                <Button padding="0.4rem 1rem" height={"auto"} >
                   Save
                 </Button>
-              </Dialog.Footer>
+              </Dialog.Footer>}
 
               {/* Only ONE CloseTrigger — used for CloseButton (X) */}
               <Dialog.CloseTrigger asChild>
@@ -87,8 +66,7 @@ const Modal = ({ dateRange, setDateRange, triggerButton, title, devices, selecte
               </Dialog.CloseTrigger>
             </Dialog.Content>
           </Dialog.Positioner>
-        </Dialog.Backdrop>
-      </Portal>
+       </Portal>
     </Dialog.Root>
   )
 }

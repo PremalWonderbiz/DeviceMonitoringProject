@@ -12,6 +12,7 @@ namespace Infrastructure.Persistence
 
         public DbSet<Alarm> Alarms => Set<Alarm>();
         public DbSet<AlarmRule> AlarmRules { get; set; }
+        public DbSet<AlarmState> AlarmStates => Set<AlarmState>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,6 +23,16 @@ namespace Infrastructure.Persistence
                 entity.Property(e => e.Message).IsRequired();
                 entity.Property(e => e.Severity)
                       .HasConversion<string>(); //store enum as string
+                entity.Property(e => e.ResolvedAt)
+                      .IsRequired(false);
+
+                // State Foreign key
+                entity.HasOne(e => e.State)
+                      .WithMany(s => s.Alarms)
+                      .HasForeignKey(e => e.StateId)
+                      .OnDelete(DeleteBehavior.Restrict); // Prevent cascade delete
+
+                entity.Property(e => e.StateId).IsRequired();
             });
 
             modelBuilder.Entity<AlarmRule>(entity =>

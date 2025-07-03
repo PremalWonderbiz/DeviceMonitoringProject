@@ -37,3 +37,13 @@ export const acknowledgeAlarm = async (alarmId: any) => {
      handleAxiosError(error);
   }
 };
+
+//alarm states
+export const getAlarmStates = async () => {
+  try {
+    const response = await axios.get(`${alarmServiceBaseURL}/api/Alarms/getAlarmStates`);
+    return response;
+  } catch (error : any) {
+     handleAxiosError(error);
+  }
+};

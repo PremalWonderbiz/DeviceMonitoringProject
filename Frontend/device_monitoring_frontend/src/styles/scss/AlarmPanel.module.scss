@@ -61,7 +61,7 @@
         margin: 1rem 0;
         padding: 0 0.5rem;
     }
-    
+
     .dateFilters {
         display: flex;
         flex-wrap: wrap;
@@ -133,10 +133,7 @@
 
     .alarmCard {
         padding: 0.5rem 0.3rem 0.5rem 0.82rem;
-        display: grid;
-        grid-template-columns: 63% 35%;
-        gap: 0.5rem;
-        align-items: center;
+
         border-left: 4px solid transparent;
 
         .time {
@@ -168,9 +165,31 @@
             cursor: pointer;
         }
 
+        .resolveBtn {
+            position: relative;
+        }
+
+        .resolveCommentIcon {
+            position: absolute;
+            right: 5px;
+            top: 2px;
+        }
+
+        .resolveCommentIcon:hover {
+            color: #3b3b3b;
+        }
+
+
         .ackBtn:hover {
             background: #ededed;
         }
+    }
+
+    .alarmCardDiv {
+        display: grid;
+        grid-template-columns: 63% 35%;
+        gap: 0.5rem;
+        align-items: center;
     }
 
     .unacknowledged {
@@ -194,11 +213,13 @@
         padding-top: 0;
 
         display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
         justify-content: flex-start;
     }
 
     .show {
-        max-height: 40px;
+        max-height: 100px;
         opacity: 1;
         padding-top: 0.5rem;
     }
@@ -297,10 +318,19 @@
     background: #ededed;
 }
 
-.selectFilters{
+.selectFilters {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     padding: 0.5rem 0.7rem 0 0.7rem;
+    width: 100%;
+}
+
+.resolveCommentInput {
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid #c1c1c1;
+    color: #e7e7e7;
+    padding: 0.2rem 0.5rem;
     width: 100%;
 }

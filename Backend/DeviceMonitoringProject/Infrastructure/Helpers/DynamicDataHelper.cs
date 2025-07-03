@@ -848,9 +848,13 @@ namespace Infrastructure.Helpers
                 var arrayDiff = new JsonArray();
                 bool hasChanges = false;
 
-                for (int i = 0; i < updatedArray.Count; i++)
+                int maxLength = Math.Max(origArray.Count, updatedArray.Count);
+                for (int i = 0; i < maxLength; i++)
                 {
-                    var childDiff = GetJsonDiff(origArray[i], updatedArray[i]);
+                    JsonNode? origElem = i < origArray.Count ? origArray[i] : null;
+                    JsonNode? updatedElem = i < updatedArray.Count ? updatedArray[i] : null;
+
+                    var childDiff = GetJsonDiff(origElem, updatedElem);
                     arrayDiff.Add(childDiff);
                     if (childDiff != null)
                         hasChanges = true;

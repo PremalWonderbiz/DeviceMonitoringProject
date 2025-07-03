@@ -16,10 +16,15 @@ namespace Domain.Interface
 
         public Task<string> AcknowledgeAlarm(Guid alarmId);
 
+        public Task<string> ResolveAlarm(Guid alarmId, string comment);
+
         public Task<Alarm> PostAlarm(PostAlarmDto alarm);
 
         public Task<string> DeleteAlarm(Guid id);
 
         public Task<GetLatestAlarmsDto> GetLatestFiveAlarms();
+
+        //states
+        public Task<IEnumerable<GetAlarmStatesDto>> GetAlarmStates();
     }
 }

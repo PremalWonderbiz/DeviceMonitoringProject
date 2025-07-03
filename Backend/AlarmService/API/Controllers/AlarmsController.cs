@@ -79,6 +79,14 @@ namespace API.Controllers
 
             return Ok(res);
         }
+        
+        [HttpPut("resolveAlarm/{alarmId}/{comment}")]
+        public async Task<IActionResult> ResolveAlarm(Guid alarmId, string comment)
+        {
+            var res = await _alarmService.ResolveAlarm(alarmId, comment);
+
+            return Ok(res);
+        }
 
         // POST: api/Alarms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -93,7 +101,7 @@ namespace API.Controllers
         // POST: api/Alarms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("testFlattenJson")]
-        public async Task<ActionResult<Alarm>> TesFlattenJsonMethod(AlarmEvaluationRequest req)
+        public async Task<ActionResult<Alarm>> TestFlattenJsonMethod(AlarmEvaluationRequest req)
         {
             var res = await _alarmEvaluationService.EvaluateAsync(req.Current, req.Previous);
 
@@ -106,6 +114,15 @@ namespace API.Controllers
         {
             var res = await _alarmService.DeleteAlarm(id);
             
+            return Ok(res);
+        }
+
+        //get alarm states
+        // GET: api/Alarms
+        [HttpGet("getAlarmStates")]
+        public async Task<ActionResult<IEnumerable<GetAlarmStatesDto>>> GetAlarmStates()
+        {
+            var res = await _alarmService.GetAlarmStates();
             return Ok(res);
         }
     }

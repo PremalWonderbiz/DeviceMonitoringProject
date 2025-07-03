@@ -1,17 +1,18 @@
 // components/AlarmPanel.tsx
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from "@/styles/scss/AlarmPanel.module.scss";
 import Badge from '../Badge';
-import Modal from '@/components/chakrauicomponents/Modal';
 import Accordion from '../Accordion';
-import { CustomTag } from './AlarmPanelContent';
-import { acknowledgeAlarm, getAlarmPanelData } from '@/services/alarmservice';
+import { acknowledgeAlarm, getAlarmPanelData, getAlarmStates } from '@/services/alarmservice';
 import { formatRelativeTime } from '@/utils/helperfunctions';
 import { useDeviceAlertSocket } from '@/utils/customhooks/useDeviceAlertSocket';
-import { Funnel } from 'lucide-react';
 import ComboBox from '@/components/chakrauicomponents/ComboBox';
 import { DateRangePicker } from 'rsuite';
 import { Badge as ChakraBadge, CloseButton, Wrap } from "@chakra-ui/react";
+import { FilePenLine } from 'lucide-react';
+import { Tooltip } from '@/components/chakrauicomponents/Tooltip';
+import Modal from '@/components/chakrauicomponents/Modal';
+import CustomModal from '../CustomModal';
 
 
 const priorityMap: any = {
@@ -27,6 +28,8 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
   const [dateRange, setDateRange] = useState<[Date, Date] | null>(null);
   const [selectedDevices, setSelectedDevices] = useState<string[]>([]);
   const [shouldConnectSignalR, setShouldConnectSignalR] = useState<boolean>(true);
+  const [alarmStates, setAlarmStates] = useState<any[]>([]);
+  const [isResolveCommentModalOpen, setIsResolveCommentModalOpen] = useState(false);
 
   const handleAlertUpdates = useCallback((msg: string) => {
     const incomingUpdates = JSON.parse(msg);
@@ -63,6 +66,20 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
   useEffect(() => {
     if (devicesNameMacList)
       setDevices(devicesNameMacList)
+  }, []);
+
+  useEffect(() => {
+    const fetchAlarmStates = async () => {
+      const response = await getAlarmStates();
+      if (!response)
+        console.log("Network response was not ok");
+
+      if (response && response.data) {
+        setAlarmStates(response.data);
+      }
+    };
+
+    fetchAlarmStates();
   }, []);
 
   useEffect(() => {
@@ -128,12 +145,12 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
       </div>
 
       <div className={styles.selectFilters}>
-        <ComboBox devices={devices} selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices}/>
+        <ComboBox devices={devices} selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices} />
 
         {dateRange && <Wrap gap="2">
           <ChakraBadge padding="0.25rem 0 0.25rem 0.4rem" display="flex" alignItems="center" gap="0.2rem" fontSize={"0.7rem"}>
             {`${dateRange[0].toLocaleDateString()} ~ ${dateRange[1].toLocaleDateString()}`}
-            <CloseButton size={"sm"} boxSize="0.1em" cursor="pointer" onClick={(e) => {e.stopPropagation(); setDateRange(null)}}/>
+            <CloseButton size={"sm"} boxSize="0.1em" cursor="pointer" onClick={(e) => { e.stopPropagation(); setDateRange(null) }} />
           </ChakraBadge>
         </Wrap>}
         <DateRangePicker value={dateRange} onChange={(value) => { setDateRange(value) }} placeholder="Select Date Range" placement="bottomStart" />
@@ -152,14 +169,73 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
               return (
                 <div className={`${styles.alarmCard} ${styles.unacknowledged} ${isExpanded ? styles.expanded : ''}`} key={alarm.id} onClick={() => ExpandAlarmCard(alarm.id)} >
                   <div>
-                    <p className={styles.message}>{alarm.message}</p>
-                    <span className={styles.time}>{formatRelativeTime(alarm.raisedAt)}</span>
-                    <div className={`${styles.expandedContent} ${isExpanded ? styles.show : ''}`} >
-                      <button onClick={(event: any) => { event.stopPropagation(); acknowledgeAlarmData(alarm.id); }} className={styles.ackBtn}>Acknowledge</button>
+                    <div className={`${styles.alarmCardDiv}`}>
+                      <div>
+                        <p className={styles.message}>{alarm.message}</p>
+                        <span className={styles.time}>{formatRelativeTime(alarm.raisedAt)}</span>
+                      </div>
+
+                      <div className={styles.rightSide}>
+                        <Badge label={alarm.severity} bgColor={severityColors[alarm.severity].bg} textColor={severityColors[alarm.severity].color} />
+                      </div>
                     </div>
-                  </div>
-                  <div className={styles.rightSide}>
-                    <Badge label={alarm.severity} bgColor={severityColors[alarm.severity].bg} textColor={severityColors[alarm.severity].color} />
+                    <div className={`${styles.expandedContent} ${isExpanded ? styles.show : ''}`}>
+                      <button
+                        onClick={(event: any) => {
+                          event.stopPropagation();
+                          acknowledgeAlarmData(alarm.id);
+                        }}
+                        className={styles.ackBtn}
+                      >
+                        Mark as Investigating
+                      </button>
+
+                      <button
+                        onClick={(event: any) => {
+                          event.stopPropagation();
+                        }}
+                        className={`${styles.ackBtn} ${styles.resolveBtn}`}
+                      >
+                        Mark as Resolved
+
+                        <CustomModal
+                          title={"Add comment"}
+                          isOpen={isResolveCommentModalOpen}
+                          setIsOpen={setIsResolveCommentModalOpen}
+                          triggerButton={
+                            <Tooltip
+                              openDelay={100}
+                              closeDelay={150}
+                              content={<span className="p-2">Add comment(optional)</span>}
+                            >
+                              <FilePenLine
+                                onClick={(event: any) => {
+                                  event.stopPropagation();
+                                  setIsResolveCommentModalOpen((prev: any) => !prev);
+                                }}
+                                size={20}
+                                className={styles.resolveCommentIcon}
+                              />
+                            </Tooltip>
+                          }
+                          content={
+                            <div>
+                              <input className={styles.resolveCommentInput} type="text" />
+                            </div>
+                          }
+                        />
+                      </button>
+
+                      <button
+                        onClick={(event: any) => {
+                          event.stopPropagation();
+                        }}
+                        className={styles.ackBtn}
+                      >
+                        Ignore
+                      </button>
+                    </div>
+
                   </div>
                 </div>
               );
@@ -178,12 +254,15 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
             {acknowledgedAlarms.map(alarm => {
               return (
                 <div className={`${styles.alarmCard}`} key={alarm.id}>
-                  <div>
-                    <p className={styles.message}>{alarm.message}</p>
-                    <span className={styles.time}>{formatRelativeTime(alarm.raisedAt)}</span>
-                  </div>
-                  <div className={styles.rightSide}>
-                    <Badge label={alarm.severity} bgColor={severityColors[alarm.severity].bg} textColor={severityColors[alarm.severity].color} />
+                  <div className={`${styles.alarmCardDiv}`}>
+                    <div>
+                      <p className={styles.message}>{alarm.message}</p>
+                      <span className={styles.time}>{formatRelativeTime(alarm.raisedAt)}</span>
+                    </div>
+
+                    <div className={styles.rightSide}>
+                      <Badge label={alarm.severity} bgColor={severityColors[alarm.severity].bg} textColor={severityColors[alarm.severity].color} />
+                    </div>
                   </div>
                 </div>
               );

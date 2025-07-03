@@ -63,35 +63,35 @@
     "Port Status": [
       {
         "Port": "Gig1/0/1",
-        "Link Status": "Up",
-        "Connected Device": "Core Router",
-        "Current Throughput": "916 Mbps"
+        "Link Status": "Down",
+        "Connected Device": null,
+        "Current Throughput": "0 Mbps"
       },
       {
         "Port": "Gig1/0/2",
         "Link Status": "Up",
-        "Connected Device": "NAS Server",
-        "Current Throughput": "580 Mbps"
+        "Connected Device": "Firewall",
+        "Current Throughput": "634 Mbps"
       },
       {
         "Port": "Gig1/0/3",
-        "Link Status": "Up",
-        "Connected Device": "Firewall",
-        "Current Throughput": "204 Mbps"
+        "Link Status": "Down",
+        "Connected Device": null,
+        "Current Throughput": "0 Mbps"
       }
     ],
     "System Health": {
-      "CPU Usage": "72%",
-      "RAM Usage": "1.2 GB / 2 GB",
-      "Temperature": "49°C",
+      "CPU Usage": "83%",
+      "RAM Usage": "0.9 GB / 2 GB",
+      "Temperature": "50°C",
       "Fan Status": "Operational"
     },
     "Traffic Statistics": {
-      "Total Data Sent": "6.74 TB",
-      "Total Data Received": "9.31 TB",
+      "Total Data Sent": "6.51 TB",
+      "Total Data Received": "9.42 TB",
       "Packet Errors": {
-        "Inbound": 14,
-        "Outbound": 3
+        "Inbound": 18,
+        "Outbound": 4
       },
       "Broadcast Storms Detected": false
     },
@@ -128,59 +128,59 @@
       "Login Attempts": [
         {
           "User": "admin",
-          "IP": "192.168.0.87",
-          "Time": "2025-07-02T17:56:40",
+          "IP": "192.168.0.35",
+          "Time": "2025-07-03T17:44:41",
           "Success": true
         },
         {
           "User": "admin",
-          "IP": "192.168.0.34",
-          "Time": "2025-07-02T17:57:11",
-          "Success": true
-        },
-        {
-          "User": "guest",
-          "IP": "192.168.0.95",
-          "Time": "2025-07-02T17:58:42",
+          "IP": "192.168.0.32",
+          "Time": "2025-07-03T17:45:12",
           "Success": true
         },
         {
           "User": "admin",
-          "IP": "192.168.0.14",
-          "Time": "2025-07-02T17:59:24",
+          "IP": "192.168.0.93",
+          "Time": "2025-07-03T17:46:03",
+          "Success": false
+        },
+        {
+          "User": "admin",
+          "IP": "192.168.0.33",
+          "Time": "2025-07-03T17:46:23",
           "Success": true
         },
         {
           "User": "admin",
-          "IP": "192.168.0.94",
-          "Time": "2025-07-02T17:59:55",
+          "IP": "192.168.0.83",
+          "Time": "2025-07-03T17:47:14",
           "Success": true
         }
       ],
       "Recent Logs": [
         {
-          "Timestamp": "2025-07-02T17:56:51",
-          "Event": "Interface Gig1/0/2 went UP"
+          "Timestamp": "2025-07-03T17:45:02",
+          "Event": "Interface Gig1/0/1 PoE fault"
         },
         {
-          "Timestamp": "2025-07-02T17:58:52",
-          "Event": "Interface Gig1/0/4 PoE fault"
+          "Timestamp": "2025-07-03T17:45:12",
+          "Event": "Interface Gig1/0/1 PoE fault"
         },
         {
-          "Timestamp": "2025-07-02T17:59:13",
-          "Event": "Interface Gig1/0/1 went UP"
+          "Timestamp": "2025-07-03T17:45:22",
+          "Event": "Interface Gig1/0/3 went DOWN"
         },
         {
-          "Timestamp": "2025-07-02T17:59:44",
-          "Event": "Interface Gig1/0/4 PoE fault"
+          "Timestamp": "2025-07-03T17:45:42",
+          "Event": "Interface Gig1/0/1 PoE fault"
         },
         {
-          "Timestamp": "2025-07-02T17:59:55",
-          "Event": "Interface Gig1/0/1 Security violation detected"
+          "Timestamp": "2025-07-03T17:46:23",
+          "Event": "Interface Gig1/0/1 PoE fault"
         },
         {
-          "Timestamp": "2025-07-02T18:00:05",
-          "Event": "Interface Gig1/0/1 Security violation detected"
+          "Timestamp": "2025-07-03T17:46:54",
+          "Event": "Interface Gig1/0/3 went DOWN"
         }
       ]
     }

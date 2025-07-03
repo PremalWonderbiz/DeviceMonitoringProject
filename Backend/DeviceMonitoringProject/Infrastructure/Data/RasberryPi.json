@@ -60,32 +60,32 @@
   },
   "dynamicProperties": {
     "System Health": {
-      "CPU Usage": "69%",
+      "CPU Usage": "65%",
       "RAM Usage": {
         "Used": "1.7 GB",
         "Total": "4 GB"
       },
       "System Temperature": {
-        "CPU": "58°C",
-        "Board": "44°C"
+        "CPU": "55°C",
+        "Board": "43°C"
       },
-      "Uptime": "4 days, 2 hours",
+      "Uptime": "2 days, 3 hours",
       "System Load": [
         0.83,
-        0.98,
-        0.51
+        0.8,
+        0.86
       ]
     },
     "Network Activity": {
       "Interfaces": [
         {
           "name": "eth0",
-          "ipAddress": "192.168.1.30",
+          "ipAddress": "192.168.1.38",
           "macAddress": "B8:27:EB:45:67:89",
           "connectionType": "Ethernet",
           "traffic": {
-            "upload": "4 Mbps",
-            "download": "51 Mbps"
+            "upload": "3 Mbps",
+            "download": "62 Mbps"
           }
         },
         {
@@ -97,13 +97,13 @@
         }
       ],
       "Total Data Usage": {
-        "Sent": "101.5 GB",
-        "Received": "278.1 GB"
+        "Sent": "104.0 GB",
+        "Received": "278.0 GB"
       },
       "Connected Clients (Media Server)": [
         {
           "deviceName": "Smart TV",
-          "ip": "192.168.1.87",
+          "ip": "192.168.1.84",
           "mediaStream": "HD Movie (5.1 GB transferred)"
         }
       ]
@@ -123,14 +123,14 @@
         {
           "service": "Pi-hole",
           "status": "Running",
-          "dnsQueriesBlocked": "4,724"
+          "dnsQueriesBlocked": "4,312"
         }
       ],
       "Last Reboot Reason": "Scheduled maintenance",
       "Firmware": {
-        "Current Version": "2025.08.16",
-        "Last Update": "2025-06-28",
-        "Update Available": true
+        "Current Version": "2025.03.01",
+        "Last Update": "2025-07-02",
+        "Update Available": false
       }
     }
   }
