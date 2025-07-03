@@ -38,6 +38,16 @@ export const acknowledgeAlarm = async (alarmId: any) => {
   }
 };
 
+export const resolveAlarm = async (alarmId: any, input : string) => {
+  const value = (input && input.length > 0) ? input :  "manual";
+  try {
+    const response = await axios.put(`${alarmServiceBaseURL}/api/Alarms/resolveAlarm/${alarmId}/${value}`);
+    return response;
+  } catch (error : any) {
+     handleAxiosError(error);
+  }
+};
+
 //alarm states
 export const getAlarmStates = async () => {
   try {

@@ -13,9 +13,8 @@ import PopOver from "@/components/chakrauicomponents/PopOver";
 import { AlarmPopUp, ProfilePopUp } from "@/components/customcomponents/AlarmPanel/AlarmPanelContent";
 import { getLatestAlarms } from "@/services/alarmservice";
 import { useDeviceAlertSocket } from "@/utils/customhooks/useDeviceAlertSocket";
-import { Tooltip } from "@/components/ui/tooltip";
-import { Button } from "@chakra-ui/react";
 import { SortingState } from "@tanstack/react-table";
+import { Tooltip } from "@/components/ui/tooltip";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -75,9 +74,13 @@ export default function Home() {
   // Handle incoming SignalR updates
   const handleUpdate = useCallback((msg: string) => {
     const incomingDevices = JSON.parse(msg); // Format: [{ MacId, Status, Connectivity }]
-    setSorting((prev : SortingState) => {
-      return prev.filter(s => s.id != "status" && s.id != "connectivity")
-    })
+    console.log(sorting, sorting.some((s : any) => s.id == "status" || s.id == "connectivity"));
+    
+    if(sorting.some((s : any) => s.id == "status" || s.id == "connectivity")){
+      setSorting((prev : SortingState) => {
+        return prev.filter(s => s.id != "status" && s.id != "connectivity")
+      })
+    }
     setDeviceData((prevDevices) => {
 
       let hasChange = false;
@@ -136,7 +139,7 @@ export default function Home() {
       }
 
     });
-  }, []);
+  }, [sorting]);
 
   useEffect(() => {
     return () => {

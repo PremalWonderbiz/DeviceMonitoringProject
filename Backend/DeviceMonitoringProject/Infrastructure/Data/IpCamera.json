@@ -2,9 +2,9 @@
   "FileName": "IpCamera.json",
   "Name": "IP Camera",
   "Type": "Surveillance Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "3C:71:BF:12:34:56",
-  "Connectivity": "High",
+  "Connectivity": "Low",
   "staticProperties": {
     "Camera Specifications": {
       "Resolution": "1920x1080 (Full HD)",
@@ -58,8 +58,8 @@
   "dynamicProperties": {
     "Live Stream": {
       "Streaming Status": "Active",
-      "Current Viewers": 3,
-      "Streaming Bitrate": "1937 Kbps",
+      "Current Viewers": 4,
+      "Streaming Bitrate": "1207 Kbps",
       "Live Snapshot URL": "http://192.168.1.88:8080/snapshot.jpg"
     },
     "Motion Detection": {
@@ -77,88 +77,88 @@
         }
       ],
       "Last Motion Detected": {
-        "Timestamp": "2025-07-03T17:47:14",
-        "Zone": "Zone A",
-        "Detected Object": "Animal"
+        "Timestamp": "2025-07-03T23:00:27",
+        "Zone": "Zone B",
+        "Detected Object": "Person"
       },
       "Motion Events": [
         {
-          "Time": "2025-07-03T17:47:14",
+          "Time": "2025-07-03T23:00:27",
           "Zone": "Zone A",
           "Event Type": "Motion",
-          "Snapshot URL": "http://192.168.1.88/events/20250703_1747.jpg"
+          "Snapshot URL": "http://192.168.1.88/events/20250703_2300.jpg"
         },
         {
-          "Time": "2025-07-03T17:47:04",
+          "Time": "2025-07-03T23:00:16",
           "Zone": "Zone A",
           "Event Type": "Motion",
-          "Snapshot URL": "http://192.168.1.88/events/20250703_1747.jpg"
+          "Snapshot URL": "http://192.168.1.88/events/20250703_2300.jpg"
         },
         {
-          "Time": "2025-07-03T17:46:53",
+          "Time": "2025-07-03T23:00:06",
           "Zone": "Zone A",
           "Event Type": "Motion",
-          "Snapshot URL": "http://192.168.1.88/events/20250703_1746.jpg"
+          "Snapshot URL": "http://192.168.1.88/events/20250703_2300.jpg"
         },
         {
-          "Time": "2025-07-03T17:46:43",
+          "Time": "2025-07-03T22:59:56",
           "Zone": "Zone A",
           "Event Type": "Motion",
-          "Snapshot URL": "http://192.168.1.88/events/20250703_1746.jpg"
+          "Snapshot URL": "http://192.168.1.88/events/20250703_2259.jpg"
         },
         {
-          "Time": "2025-07-03T17:46:33",
+          "Time": "2025-07-03T22:59:46",
           "Zone": "Zone A",
           "Event Type": "Motion",
-          "Snapshot URL": "http://192.168.1.88/events/20250703_1746.jpg"
+          "Snapshot URL": "http://192.168.1.88/events/20250703_2259.jpg"
         }
       ]
     },
     "Network Activity": {
       "IP Address": "192.168.1.88",
       "Connection Type": "Ethernet",
-      "Data Transferred Today": "0.7 GB",
-      "Packet Loss": "0.02%",
-      "Latency": "15 ms"
+      "Data Transferred Today": "0.6 GB",
+      "Packet Loss": "0.01%",
+      "Latency": "17 ms"
     },
     "System Status": {
-      "Uptime": "9 days 16 hours",
+      "Uptime": "2 days 10 hours",
       "Last Reboot": "2025-05-28T06:32:10",
       "Firmware Version": "v5.7.3",
       "Firmware Update Available": false,
-      "System Temperature": "40.5°C"
+      "System Temperature": "44.4°C"
     },
     "Security": {
       "Login Attempts": [
         {
-          "Username": "guest",
+          "Username": "admin",
           "Success": true,
-          "IP": "192.168.1.242",
-          "Time": "2025-07-03T17:47:14"
-        },
-        {
-          "Username": "guest",
-          "Success": false,
-          "IP": "192.168.1.213",
-          "Time": "2025-07-03T17:47:04"
-        },
-        {
-          "Username": "guest",
-          "Success": true,
-          "IP": "192.168.1.192",
-          "Time": "2025-07-03T17:46:53"
+          "IP": "192.168.1.181",
+          "Time": "2025-07-03T23:00:27"
         },
         {
           "Username": "admin",
+          "Success": false,
+          "IP": "192.168.1.157",
+          "Time": "2025-07-03T23:00:16"
+        },
+        {
+          "Username": "guest",
           "Success": true,
-          "IP": "192.168.1.109",
-          "Time": "2025-07-03T17:46:43"
+          "IP": "192.168.1.220",
+          "Time": "2025-07-03T23:00:06"
+        },
+        {
+          "Username": "admin",
+          "Success": false,
+          "IP": "192.168.1.239",
+          "Time": "2025-07-03T22:59:56"
         },
         {
           "Username": "guest",
           "Success": false,
-          "IP": "192.168.1.254",
-          "Time": "2025-07-03T17:46:33"
+          "IP": "192.168.1.179",
+          "Time": "2025-07-03T22:59:46"
         }
       ],
       "Access Logs Enabled": true

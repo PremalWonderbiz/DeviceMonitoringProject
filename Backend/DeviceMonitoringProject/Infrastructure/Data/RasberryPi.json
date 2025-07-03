@@ -2,9 +2,9 @@
   "FileName": "RasberryPi.json",
   "Name": "Raspberry Pi",
   "Type": "Microcomputer",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "B8:27:EB:45:67:89",
-  "Connectivity": "Medium",
+  "Connectivity": "Low",
   "staticProperties": {
     "Hardware Information": {
       "Model": "Raspberry Pi 4 Model B",
@@ -60,32 +60,32 @@
   },
   "dynamicProperties": {
     "System Health": {
-      "CPU Usage": "65%",
+      "CPU Usage": "24%",
       "RAM Usage": {
-        "Used": "1.7 GB",
+        "Used": "1.8 GB",
         "Total": "4 GB"
       },
       "System Temperature": {
-        "CPU": "55°C",
-        "Board": "43°C"
+        "CPU": "62°C",
+        "Board": "44°C"
       },
-      "Uptime": "2 days, 3 hours",
+      "Uptime": "8 days, 21 hours",
       "System Load": [
-        0.83,
-        0.8,
-        0.86
+        0.78,
+        0.6,
+        1.46
       ]
     },
     "Network Activity": {
       "Interfaces": [
         {
           "name": "eth0",
-          "ipAddress": "192.168.1.38",
+          "ipAddress": "192.168.1.32",
           "macAddress": "B8:27:EB:45:67:89",
           "connectionType": "Ethernet",
           "traffic": {
-            "upload": "3 Mbps",
-            "download": "62 Mbps"
+            "upload": "4 Mbps",
+            "download": "76 Mbps"
           }
         },
         {
@@ -97,14 +97,19 @@
         }
       ],
       "Total Data Usage": {
-        "Sent": "104.0 GB",
-        "Received": "278.0 GB"
+        "Sent": "105.6 GB",
+        "Received": "251.8 GB"
       },
       "Connected Clients (Media Server)": [
         {
           "deviceName": "Smart TV",
-          "ip": "192.168.1.84",
+          "ip": "192.168.1.83",
           "mediaStream": "HD Movie (5.1 GB transferred)"
+        },
+        {
+          "deviceName": "Mobile Device",
+          "ip": "192.168.1.104",
+          "mediaStream": "Music Stream (Streaming)"
         }
       ]
     },
@@ -118,18 +123,18 @@
         {
           "service": "Kodi",
           "status": "Running",
-          "activeClients": 3
+          "activeClients": 1
         },
         {
           "service": "Pi-hole",
           "status": "Running",
-          "dnsQueriesBlocked": "4,312"
+          "dnsQueriesBlocked": "6,941"
         }
       ],
       "Last Reboot Reason": "Scheduled maintenance",
       "Firmware": {
-        "Current Version": "2025.03.01",
-        "Last Update": "2025-07-02",
+        "Current Version": "2025.10.22",
+        "Last Update": "2025-06-24",
         "Update Available": false
       }
     }

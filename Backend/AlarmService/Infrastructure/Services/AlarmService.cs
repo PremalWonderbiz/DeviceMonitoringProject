@@ -256,7 +256,7 @@ namespace Infrastructure.Services
 
             var resolvedState = await _context.AlarmStates.SingleOrDefaultAsync(alarm => alarm.Name == "Resolved");
             alarm.StateId = resolvedState?.Id ?? 3; //3 is hardcoded here later will throw exception or handle it here
-            alarm.Comment = (comment is not null && comment.Length > 0) ? comment : "Manually marked as Resoved";
+            alarm.Comment = (comment != "manual" && comment.Length > 0) ? comment : "Manually marked as Resoved";
             alarm.ResolvedAt = DateTime.Now;
 
             _context.Entry(alarm).State = EntityState.Modified;

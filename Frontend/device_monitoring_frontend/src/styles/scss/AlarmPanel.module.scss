@@ -131,6 +131,10 @@
         max-height: 200px;
     }
 
+    .alarmCardContainer{
+        position: relative;
+    }
+
     .alarmCard {
         padding: 0.5rem 0.3rem 0.5rem 0.82rem;
 
@@ -333,4 +337,5 @@
     color: #e7e7e7;
     padding: 0.2rem 0.5rem;
     width: 100%;
+    font-size: 0.85rem;
 }

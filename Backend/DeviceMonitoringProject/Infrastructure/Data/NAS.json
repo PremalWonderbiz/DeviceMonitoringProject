@@ -2,7 +2,7 @@
   "FileName": "NAS.json",
   "Name": "NAS Server",
   "Type": "Server",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "00:1B:44:11:3A:B7",
   "Connectivity": "High",
   "staticProperties": {
@@ -124,85 +124,85 @@
   "dynamicProperties": {
     "System Health": {
       "CPU Usage": {
-        "Load Percentage": 64,
+        "Load Percentage": 43,
         "Core Usage": [
           {
             "Core": 0,
-            "Usage": "33%"
+            "Usage": "46%"
           },
           {
             "Core": 1,
-            "Usage": "49%"
+            "Usage": "40%"
           },
           {
             "Core": 2,
-            "Usage": "33%"
+            "Usage": "54%"
           },
           {
             "Core": 3,
-            "Usage": "57%"
+            "Usage": "40%"
           }
         ]
       },
       "RAM Usage": {
-        "Used": "6.4 GB",
-        "Free": "1.6 GB",
-        "Swap Used": "0.6 GB"
+        "Used": "5.0 GB",
+        "Free": "3.0 GB",
+        "Swap Used": "0.9 GB"
       },
       "System Temperature": {
-        "CPU": "52.4°C",
-        "System Board": "42.6°C",
+        "CPU": "51.6°C",
+        "System Board": "41.5°C",
         "Drive Bays": [
           {
             "Bay": 1,
-            "Temp": "38.1°C"
+            "Temp": "36.3°C"
           },
           {
             "Bay": 2,
-            "Temp": "36.2°C"
+            "Temp": "38.5°C"
           },
           {
             "Bay": 3,
-            "Temp": "37.8°C"
+            "Temp": "38.2°C"
           },
           {
             "Bay": 4,
-            "Temp": "36.7°C"
+            "Temp": "38.1°C"
           }
         ]
       },
       "System Load Average": {
-        "1m": "1.14",
-        "5m": "1.70",
-        "15m": "1.60"
+        "1m": "1.28",
+        "5m": "1.11",
+        "15m": "1.35"
       },
-      "Uptime": "50 days, 22 hours"
+      "Uptime": "33 days, 11 hours"
     },
     "Network Activity": {
-      "Primary IP": "192.168.1.48",
+      "Primary IP": "192.168.1.43",
       "Interfaces": [
         {
           "Name": "eth0",
           "Status": "Active",
           "Throughput": {
-            "Upload": "76 Mbps",
-            "Download": "139 Mbps"
+            "Upload": "90 Mbps",
+            "Download": "111 Mbps"
           },
           "Data Transferred": {
-            "Sent": "1.0 TB",
-            "Received": "2.6 TB"
+            "Sent": "1.1 TB",
+            "Received": "2.9 TB"
           }
         },
         {
           "Name": "eth1",
-          "Status": "Active",
+          "Status": "Idle",
           "Throughput": {
-            "Upload": "1 Mbps",
-            "Download": "1 Mbps"
+            "Upload": "0 Mbps",
+            "Download": "0 Mbps"
           },
           "Data Transferred": {
-            "Sent": "0.13 TB",
-            "Received": "0.48 TB"
+            "Sent": "N/A",
+            "Received": "N/A"
           }
         }
       ],
@@ -210,12 +210,12 @@
         {
           "IP": "192.168.1.102",
           "Hostname": "laptop-prem",
-          "Last Access": "2025-07-03 17:09"
+          "Last Access": "2025-07-03 22:53"
         },
         {
           "IP": "192.168.1.115",
           "Hostname": "mobile-kiran",
-          "Last Access": "2025-07-03 16:16"
+          "Last Access": "2025-07-03 21:07"
         }
       ]
     },
@@ -243,17 +243,17 @@
           {
             "Bay": 2,
             "Health": "Good",
-            "Reallocated Sectors": 0
+            "Reallocated Sectors": 1
           }
         ]
       },
       "Fan Status": {
         "Fan 1": {
-          "Speed": "1282 RPM",
+          "Speed": "1240 RPM",
           "Status": "Normal"
         },
         "Fan 2": {
-          "Speed": "1295 RPM",
+          "Speed": "1263 RPM",
           "Status": "Normal"
         }
       },

@@ -3,16 +3,13 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from "@/styles/scss/AlarmPanel.module.scss";
 import Badge from '../Badge';
 import Accordion from '../Accordion';
-import { acknowledgeAlarm, getAlarmPanelData, getAlarmStates } from '@/services/alarmservice';
+import { acknowledgeAlarm, getAlarmPanelData, getAlarmStates, resolveAlarm } from '@/services/alarmservice';
 import { formatRelativeTime } from '@/utils/helperfunctions';
 import { useDeviceAlertSocket } from '@/utils/customhooks/useDeviceAlertSocket';
 import ComboBox from '@/components/chakrauicomponents/ComboBox';
 import { DateRangePicker } from 'rsuite';
 import { Badge as ChakraBadge, CloseButton, Wrap } from "@chakra-ui/react";
-import { FilePenLine } from 'lucide-react';
-import { Tooltip } from '@/components/chakrauicomponents/Tooltip';
-import Modal from '@/components/chakrauicomponents/Modal';
-import CustomModal from '../CustomModal';
+import AlarmCard from './AlarmCard';
 
 
 const priorityMap: any = {
@@ -133,6 +130,19 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
     }
   }
 
+  const resolveAlarmData = async (alarmId: any, input : any) => {
+    const response = await resolveAlarm(alarmId,input);
+    if (!response)
+      console.log("Network response was not ok");
+
+    if (response && response.data) {
+      const ackAlarm = unacknowledgedAlarms.find((a: any) => a.id == alarmId);
+      setUnacknowledgedAlarms((prev: any) => prev.filter((a: any) => a.id != alarmId));
+      const ackAlarms = [ackAlarm, ...acknowledgedAlarms];
+      setAcknowledgedAlarms(sortAlarmsDataBySeverity(ackAlarms));
+    }
+  }
+
   return (
     <div className={styles.panel}>
       <div className={styles.header}>
@@ -168,75 +178,9 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
 
               return (
                 <div className={`${styles.alarmCard} ${styles.unacknowledged} ${isExpanded ? styles.expanded : ''}`} key={alarm.id} onClick={() => ExpandAlarmCard(alarm.id)} >
-                  <div>
-                    <div className={`${styles.alarmCardDiv}`}>
-                      <div>
-                        <p className={styles.message}>{alarm.message}</p>
-                        <span className={styles.time}>{formatRelativeTime(alarm.raisedAt)}</span>
-                      </div>
+                  
+                <AlarmCard key={alarm.id} alarm={alarm} acknowledgeAlarm={acknowledgeAlarmData} resolveAlarm ={resolveAlarmData}/>
 
-                      <div className={styles.rightSide}>
-                        <Badge label={alarm.severity} bgColor={severityColors[alarm.severity].bg} textColor={severityColors[alarm.severity].color} />
-                      </div>
-                    </div>
-                    <div className={`${styles.expandedContent} ${isExpanded ? styles.show : ''}`}>
-                      <button
-                        onClick={(event: any) => {
-                          event.stopPropagation();
-                          acknowledgeAlarmData(alarm.id);
-                        }}
-                        className={styles.ackBtn}
-                      >
-                        Mark as Investigating
-                      </button>
-
-                      <button
-                        onClick={(event: any) => {
-                          event.stopPropagation();
-                        }}
-                        className={`${styles.ackBtn} ${styles.resolveBtn}`}
-                      >
-                        Mark as Resolved
-
-                        <CustomModal
-                          title={"Add comment"}
-                          isOpen={isResolveCommentModalOpen}
-                          setIsOpen={setIsResolveCommentModalOpen}
-                          triggerButton={
-                            <Tooltip
-                              openDelay={100}
-                              closeDelay={150}
-                              content={<span className="p-2">Add comment(optional)</span>}
-                            >
-                              <FilePenLine
-                                onClick={(event: any) => {
-                                  event.stopPropagation();
-                                  setIsResolveCommentModalOpen((prev: any) => !prev);
-                                }}
-                                size={20}
-                                className={styles.resolveCommentIcon}
-                              />
-                            </Tooltip>
-                          }
-                          content={
-                            <div>
-                              <input className={styles.resolveCommentInput} type="text" />
-                            </div>
-                          }
-                        />
-                      </button>
-
-                      <button
-                        onClick={(event: any) => {
-                          event.stopPropagation();
-                        }}
-                        className={styles.ackBtn}
-                      >
-                        Ignore
-                      </button>
-                    </div>
-
-                  </div>
                 </div>
               );
             })}
