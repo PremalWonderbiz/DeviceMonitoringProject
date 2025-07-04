@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Domain.Enums;
 
 namespace Domain.Entities
-{
+{   
     public class Alarm
     {
         public Guid Id { get; set; } = Guid.NewGuid();

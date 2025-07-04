@@ -48,6 +48,15 @@ export const resolveAlarm = async (alarmId: any, input : string) => {
   }
 };
 
+export const deleteAlarm = async (alarmId: any) => {
+  try {
+    const response = await axios.delete(`${alarmServiceBaseURL}/api/Alarms/${alarmId}`);
+    return response;
+  } catch (error : any) {
+     handleAxiosError(error);
+  }
+};
+
 //alarm states
 export const getAlarmStates = async () => {
   try {

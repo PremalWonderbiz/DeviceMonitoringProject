@@ -79,61 +79,61 @@
   "dynamicProperties": {
     "System Status": {
       "Battery": {
-        "Level": "12%",
+        "Level": "17%",
         "Charging Status": "Charging",
         "Health": "Good",
-        "Estimated Time Left": "1 hrs 14 mins"
+        "Estimated Time Left": "2 hrs 39 mins"
       },
-      "CPU Load": "6%",
+      "CPU Load": "66%",
       "RAM Usage": {
-        "Used": "13.0 GB",
-        "Free": "19.0 GB"
+        "Used": "9.3 GB",
+        "Free": "22.7 GB"
       },
       "GPU Usage": {
-        "Integrated": "5%",
-        "Dedicated": "16%"
+        "Integrated": "11%",
+        "Dedicated": "4%"
       },
       "Temperature": {
-        "CPU": "54.0°C",
-        "GPU": "46.4°C",
-        "Motherboard": "40.2°C"
+        "CPU": "52.7°C",
+        "GPU": "48.4°C",
+        "Motherboard": "42.8°C"
       },
-      "System Uptime": "4 days, 18 hours"
+      "System Uptime": "4 days, 4 hours"
     },
     "Network Activity": {
       "Current Wi-Fi": {
         "SSID": "Office_Network_5G",
-        "IP Address": "10.0.1.78",
-        "Signal Strength": "-67 dBm",
+        "IP Address": "10.0.1.109",
+        "Signal Strength": "-63 dBm",
         "Data Usage (Today)": {
-          "Download": "2.5 GB",
-          "Upload": "1.7 GB"
+          "Download": "6.5 GB",
+          "Upload": "1.9 GB"
         }
       },
       "VPN Status": {
         "Connected": true,
         "Provider": "NordLayer",
-        "IP": "172.20.30.192"
+        "IP": "172.20.37.77"
       }
     },
     "Application Activity": {
       "Foreground Apps": [
         {
           "App Name": "Visual Studio Code",
-          "CPU": "6%",
-          "Memory": "0.9 GB"
+          "CPU": "16%",
+          "Memory": "1.0 GB"
         },
         {
           "App Name": "Slack",
-          "CPU": "2%",
-          "Memory": "0.7 GB"
+          "CPU": "5%",
+          "Memory": "0.9 GB"
         }
       ],
-      "Background Processes": 81,
+      "Background Processes": 80,
       "Recent Apps Launched": [
-        "Edge Browser",
-        "Spotify",
-        "Postman"
+        "Figma",
+        "Zoom",
+        "Jira"
       ]
     }
   }

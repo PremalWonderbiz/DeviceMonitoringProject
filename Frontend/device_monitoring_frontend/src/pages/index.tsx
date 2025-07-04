@@ -6,7 +6,7 @@ import TableComponent from "@/components/customcomponents/Table/TableComponent";
 import AlarmPanel from "@/components/customcomponents/AlarmPanel/AlarmPanel";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDevicesTopDataSocket } from "@/utils/customhooks/useDevicesTopDataSocket";
-import { BellRing, RefreshCw, Repeat, UserPen } from "lucide-react";
+import { BellRing, ListX, RefreshCw, Repeat, UserPen } from "lucide-react";
 import { getDeviceMetadataPaginatedandSorted, getDevicesNameMacIdList, getDevicesTopLevelData, getMacIdToFileNameMap, getSearchedDeviceMetadataPaginated } from "@/services/deviceservice";
 import styles from "@/styles/scss/Home.module.scss";
 import PopOver from "@/components/chakrauicomponents/PopOver";
@@ -283,9 +283,15 @@ export default function Home() {
           <span className={`py-3 ${styles.mainPageTitle}`}>Welcome back, Premal Kadam</span>
           <div className={`py-2 pr-4 ${styles.subNav}`}>
             <input onChange={(event: any) => { setSearchInput(event.target.value) }} className={styles.mainPageSearchInput} type="search" placeholder="Search..." />
+            <div className={styles.mainPageIcons}>
+              {(sorting && sorting.length > 0) && 
+            <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Clear sorting</span>}>
+              <ListX className={styles.deviceRefreshIcon} onClick={() => { setSorting([]) }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
+            </Tooltip>}
             <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Manual refresh button</span>}>
               <Repeat className={styles.deviceRefreshIcon} onClick={() => { setRefreshDeviceDataKey(prev => prev + 1) }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
             </Tooltip>
+            </div>
           </div>
         </div>
 

@@ -132,19 +132,43 @@
     }
 
     .alarmCardContainer{
+        border-left: 4px solid transparent;
+        padding: 0.8rem 0.3rem 0.8rem 0.82rem;
         position: relative;
     }
 
-    .alarmCard {
-        padding: 0.5rem 0.3rem 0.5rem 0.82rem;
+    .resolvedAlarmCard{
+        background-color: #ececec;
+    }
 
-        border-left: 4px solid transparent;
+    .ackAlarmStateIcon{
+        position: absolute;
+        top: 3px;
+        right: 2px; 
+    }
+
+    .ackAlarmStateInvestigateIcon{
+        fill: #17a2b8;
+    }
+
+    .ackAlarmStateResolveIcon{
+        fill: #28a745;
+    }
+
+    .alarmCard {
 
         .time {
             display: block;
             font-size: 0.75rem;
             color: #888;
             margin-top: 4px;
+        }
+
+        .alarmComment{
+            display: block;
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 2px;
         }
 
         .message {
@@ -166,11 +190,13 @@
             border: 1px solid #141414;
             color: black;
             border-radius: 4px;
+            text-align: start;
             cursor: pointer;
         }
 
         .resolveBtn {
             position: relative;
+            width: 90px;
         }
 
         .resolveCommentIcon {
@@ -196,10 +222,6 @@
         align-items: center;
     }
 
-    .unacknowledged {
-        cursor: pointer;
-    }
-
     .alarmCard:hover {
         background-color: #f3f3f3;
     }
@@ -217,7 +239,6 @@
         padding-top: 0;
 
         display: flex;
-        flex-direction: column;
         gap: 0.3rem;
         justify-content: flex-start;
     }

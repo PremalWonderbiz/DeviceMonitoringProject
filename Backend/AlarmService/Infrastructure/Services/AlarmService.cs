@@ -1,10 +1,14 @@
 ﻿using System.Globalization;
 using System.Security.Claims;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 using Application.Dtos;
 using Common.Helper_Classes;
 using Domain.Entities;
 using Domain.Interface;
 using Infrastructure.Persistence;
+using Infrastructure.RealTime;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -13,15 +17,17 @@ namespace Infrastructure.Services
     public class AlarmService : IAlarmService
     {
         private readonly AlarmDbContext _context;
+        private readonly IHubContext<AlertHub> _hubContext;
 
-        public AlarmService(AlarmDbContext context)
+        public AlarmService(AlarmDbContext context, IHubContext<AlertHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         public async Task<IEnumerable<GetAlarmDto>> GetAlarms(AlarmFilter filter)
         {
-            var alarms = _context.Alarms.AsQueryable();
+            var alarms = _context.Alarms.Include(a => a.State).AsQueryable();
             if (filter.Devices is not null && filter.Devices.Count > 0)
                 alarms = alarms.Where(a => filter.Devices.Contains(a.SourceDeviceMacId));
 
@@ -48,7 +54,9 @@ namespace Infrastructure.Services
                 Message = alarm.Message,
                 RaisedAt = alarm.RaisedAt,
                 Severity = alarm.Severity.ToString(),
-                SourceDeviceMacId = alarm.SourceDeviceMacId
+                SourceDeviceMacId = alarm.SourceDeviceMacId,
+                AlarmState = alarm.State.Name,
+                AlarmComment = alarm.Comment
             }).ToListAsync();
 
             return formattedAlarms;
@@ -123,6 +131,23 @@ namespace Infrastructure.Services
             _context.Alarms.Remove(alarm);
             await _context.SaveChangesAsync();
 
+            var mainPageUpdates = await GetLatestFiveAlarms();
+            var serializedData = JsonSerializer.Serialize(mainPageUpdates, new JsonSerializerOptions
+            {
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                WriteIndented = true,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            });
+            await _hubContext.Clients.All.SendAsync("ReceiveMainPageUpdates", serializedData);
+
+            var propertyPanelAlarm = await GetLatestAlarmForDevice(alarm.SourceDeviceMacId);
+            await _hubContext.Clients.Group($"Alarm-{alarm.SourceDeviceMacId}").SendAsync("ReceivePropertyPanelAlarmUpdates", JsonSerializer.Serialize(propertyPanelAlarm, new JsonSerializerOptions
+            {
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true
+            }));
+
             return "Alarm deleted successfully";
         }
 
@@ -133,7 +158,7 @@ namespace Infrastructure.Services
 
         public async Task<IEnumerable<GetAlarmDto>> GetAlarmsByDeviceId(string id)
         {
-            var alarms = await _context.Alarms.Where(alarm => alarm.SourceDeviceMacId == id).ToListAsync();
+            var alarms = await _context.Alarms.Where(alarm => alarm.SourceDeviceMacId == id).Include(a => a.State).ToListAsync();
 
             var formattedAlarms = new List<GetAlarmDto>();
             alarms.ForEach(alarm => {
@@ -145,7 +170,9 @@ namespace Infrastructure.Services
                     Message = alarm.Message,
                     RaisedAt = alarm.RaisedAt,
                     Severity = alarm.Severity.ToString(),
-                    SourceDeviceMacId = alarm.SourceDeviceMacId
+                    SourceDeviceMacId = alarm.SourceDeviceMacId,
+                    AlarmState = alarm.State.Name,
+                    AlarmComment = alarm.Comment
                 });
             });
 
@@ -181,7 +208,7 @@ namespace Infrastructure.Services
 
         public async Task<GetLatestAlarmsDto> GetLatestFiveAlarms()
         {
-            var alarms = await _context.Alarms.OrderByDescending(a => a.RaisedAt).Take(5).ToListAsync();
+            var alarms = await _context.Alarms.Include(a => a.State).OrderByDescending(a => a.RaisedAt).Take(5).ToListAsync();
             var totalAlarms = await _context.Alarms.CountAsync();
 
             var formattedAlarms = new List<GetAlarmDto>();
@@ -194,7 +221,9 @@ namespace Infrastructure.Services
                     Message = alarm.Message,
                     RaisedAt = alarm.RaisedAt,
                     Severity = alarm.Severity.ToString(),
-                    SourceDeviceMacId = alarm.SourceDeviceMacId
+                    SourceDeviceMacId = alarm.SourceDeviceMacId,
+                    AlarmState = alarm.State.Name,
+                    AlarmComment = alarm.Comment
                 });
             });
 
@@ -207,7 +236,7 @@ namespace Infrastructure.Services
 
         public async Task<GetLatestAlarmForDeviceDto> GetLatestAlarmForDevice(string deviceMacId)
         {
-            var alarms = _context.Alarms.Where(a => a.SourceDeviceMacId == deviceMacId)?.OrderByDescending(a => a.RaisedAt).AsQueryable();
+            var alarms = _context.Alarms.Where(a => a.SourceDeviceMacId == deviceMacId)?.Include(a => a.State).OrderByDescending(a => a.RaisedAt).AsQueryable();
             var totalAlarms = await alarms.CountAsync();
             var alarm = await alarms.FirstOrDefaultAsync();
             if (alarm == null)
@@ -221,7 +250,8 @@ namespace Infrastructure.Services
                 Message = alarm.Message,
                 RaisedAt = alarm.RaisedAt,
                 Severity = alarm.Severity.ToString(),
-                SourceDeviceMacId = alarm.SourceDeviceMacId
+                SourceDeviceMacId = alarm.SourceDeviceMacId,
+                AlarmState = alarm.State.Name
             };
 
             return new GetLatestAlarmForDeviceDto
@@ -242,7 +272,7 @@ namespace Infrastructure.Services
             return states;
         }
 
-        public async Task<string> ResolveAlarm(Guid alarmId, string comment)
+        public async Task<GetAlarmDto> ResolveAlarm(Guid alarmId, string comment)
         {
             var alarm = await _context.Alarms.SingleOrDefaultAsync(alarm => alarm.Id == alarmId);
             if (alarm is null)
@@ -270,7 +300,18 @@ namespace Infrastructure.Services
                 throw new CustomException(500, ex.Message);
             }
 
-            return "Alarm moved in resolved state";
+            return new GetAlarmDto
+            {
+                Id = alarm.Id,
+                AcknowledgedAt = alarm.AcknowledgedAt,
+                IsAcknowledged = alarm.IsAcknowledged,
+                Message = alarm.Message,
+                RaisedAt = alarm.RaisedAt,
+                Severity = alarm.Severity.ToString(),
+                SourceDeviceMacId = alarm.SourceDeviceMacId,
+                AlarmState = alarm.State.Name,
+                AlarmComment = alarm.Comment
+            };
         }
     }
 }

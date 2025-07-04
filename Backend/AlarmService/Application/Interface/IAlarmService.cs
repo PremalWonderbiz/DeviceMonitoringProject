@@ -16,7 +16,7 @@ namespace Domain.Interface
 
         public Task<string> AcknowledgeAlarm(Guid alarmId);
 
-        public Task<string> ResolveAlarm(Guid alarmId, string comment);
+        public Task<GetAlarmDto> ResolveAlarm(Guid alarmId, string comment);
 
         public Task<Alarm> PostAlarm(PostAlarmDto alarm);
 

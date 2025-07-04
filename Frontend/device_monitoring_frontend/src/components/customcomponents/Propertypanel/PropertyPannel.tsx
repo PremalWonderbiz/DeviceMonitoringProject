@@ -45,6 +45,8 @@ const PropertyPanel = ({ setCurrentDeviceId, setCurrentDeviceFileName, deviceFil
 
     const handleUpdate = useCallback((msg: any) => {
         const incomingDevicesDetails = JSON.parse(msg);
+        console.log(incomingDevicesDetails);
+        
 
         setPropertyPanelData((prev: any) => {
             if (!prev) return prev;

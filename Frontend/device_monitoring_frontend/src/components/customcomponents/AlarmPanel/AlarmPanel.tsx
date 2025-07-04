@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from "@/styles/scss/AlarmPanel.module.scss";
 import Badge from '../Badge';
 import Accordion from '../Accordion';
-import { acknowledgeAlarm, getAlarmPanelData, getAlarmStates, resolveAlarm } from '@/services/alarmservice';
+import { acknowledgeAlarm, deleteAlarm, getAlarmPanelData, getAlarmStates, resolveAlarm } from '@/services/alarmservice';
 import { formatRelativeTime } from '@/utils/helperfunctions';
 import { useDeviceAlertSocket } from '@/utils/customhooks/useDeviceAlertSocket';
 import ComboBox from '@/components/chakrauicomponents/ComboBox';
@@ -26,7 +26,8 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
   const [selectedDevices, setSelectedDevices] = useState<string[]>([]);
   const [shouldConnectSignalR, setShouldConnectSignalR] = useState<boolean>(true);
   const [alarmStates, setAlarmStates] = useState<any[]>([]);
-  const [isResolveCommentModalOpen, setIsResolveCommentModalOpen] = useState(false);
+  const [currentExpandedUnackAlarm, setCurrentExpandedUnackAlarm] = useState<string>("");
+  const [currentExpandedAckAlarm, setCurrentExpandedAckAlarm] = useState<string>("");
 
   const handleAlertUpdates = useCallback((msg: string) => {
     const incomingUpdates = JSON.parse(msg);
@@ -37,12 +38,6 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
 
   // SignalR connection for alarm panel data  
   useDeviceAlertSocket("sampleDeviceId", handleAlertUpdates, "ReceiveAlarmPanelUpdates", shouldConnectSignalR);
-
-  const handleRemoveTag = (index: number) => {
-    setSelectedDevices((prev: any) => prev.filter((_: any, i: any) => i !== index));
-  };
-
-  const [expandedId, setExpandedId] = React.useState<number | null>(null);
 
   const severityColors: Record<string, { bg: string; color: string }> = {
     Critical: { bg: 'criticalAlarm', color: 'light' },
@@ -94,7 +89,9 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
   }, [selectedDevicePropertyPanel]);
 
   function filterAndSortAlarms(data: any) {
-    setAcknowledgedAlarms(sortAlarmsDataBySeverity(data.filter((alarm: any) => alarm.isAcknowledged)));
+    const investigatingAlarms = sortAlarmsDataBySeverity(data.filter((alarm: any) => alarm.isAcknowledged && alarm.alarmState == "Investigating"));
+    const resolvedAlarms = sortAlarmsDataBySeverity(data.filter((alarm: any) => alarm.isAcknowledged && alarm.alarmState == "Resolved"));
+    setAcknowledgedAlarms([...investigatingAlarms, ...resolvedAlarms]);
     setUnacknowledgedAlarms(sortAlarmsDataBySeverity(data.filter((alarm: any) => !alarm.isAcknowledged)));
   }
 
@@ -108,15 +105,6 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
     });
   }
 
-  function ExpandAlarmCard(id: number) {
-    setExpandedId((prev) => {
-      if (prev === id) {
-        return null; // Collapse if already expanded
-      }
-      return id; // Expand the clicked card
-    })
-  }
-
   const acknowledgeAlarmData = async (alarmId: any) => {
     const response = await acknowledgeAlarm(alarmId);
     if (!response)
@@ -124,22 +112,85 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
 
     if (response && response.data) {
       const ackAlarm = unacknowledgedAlarms.find((a: any) => a.id == alarmId);
+      ackAlarm.alarmState = "Investigating";
+      ackAlarm.isAcknowledged = true;
       setUnacknowledgedAlarms((prev: any) => prev.filter((a: any) => a.id != alarmId));
       const ackAlarms = [ackAlarm, ...acknowledgedAlarms];
-      setAcknowledgedAlarms(sortAlarmsDataBySeverity(ackAlarms));
+      const investigatingAlarms = sortAlarmsDataBySeverity(ackAlarms.filter((alarm: any) => alarm.isAcknowledged && alarm.alarmState == "Investigating"));
+      const resolvedAlarms = sortAlarmsDataBySeverity(ackAlarms.filter((alarm: any) => alarm.isAcknowledged && alarm.alarmState == "Resolved"));
+      setAcknowledgedAlarms([...investigatingAlarms, ...resolvedAlarms]);
     }
   }
 
-  const resolveAlarmData = async (alarmId: any, input : any) => {
-    const response = await resolveAlarm(alarmId,input);
+  const resolveAlarmData = async (alarmId: any, input: any) => {
+    const response = await resolveAlarm(alarmId, input);
     if (!response)
       console.log("Network response was not ok");
 
     if (response && response.data) {
       const ackAlarm = unacknowledgedAlarms.find((a: any) => a.id == alarmId);
+      ackAlarm.alarmState = response.data.alarmState;
+      ackAlarm.isAcknowledged = response.data.isAcknowledged;
+      ackAlarm.alarmComment = response.data.alarmComment;
       setUnacknowledgedAlarms((prev: any) => prev.filter((a: any) => a.id != alarmId));
       const ackAlarms = [ackAlarm, ...acknowledgedAlarms];
-      setAcknowledgedAlarms(sortAlarmsDataBySeverity(ackAlarms));
+      const investigatingAlarms = sortAlarmsDataBySeverity(ackAlarms.filter((alarm: any) => alarm.isAcknowledged && alarm.alarmState == "Investigating"));
+      const resolvedAlarms = sortAlarmsDataBySeverity(ackAlarms.filter((alarm: any) => alarm.isAcknowledged && alarm.alarmState == "Resolved"));
+      setAcknowledgedAlarms([...investigatingAlarms, ...resolvedAlarms]);
+    }
+  }
+
+  const resolveInvestigatedAlarmData = async (alarmId: any, input: any) => {
+    const response = await resolveAlarm(alarmId, input);
+    if (!response)
+      console.log("Network response was not ok");
+
+    if (response && response.data) {
+      const updatedAlarm = {
+        ...acknowledgedAlarms.find((a: any) => a.id == alarmId),
+        alarmState: response.data.alarmState,
+        isAcknowledged: response.data.isAcknowledged,
+        alarmComment: response.data.alarmComment,
+      };
+
+      const newAckList = acknowledgedAlarms.map((a: any) =>
+        a.id === alarmId ? updatedAlarm : a
+      );
+
+      const investigatingAlarms = sortAlarmsDataBySeverity(newAckList.filter((alarm: any) => alarm.isAcknowledged && alarm.alarmState == "Investigating"));
+      const resolvedAlarms = sortAlarmsDataBySeverity(newAckList.filter((alarm: any) => alarm.isAcknowledged && alarm.alarmState == "Resolved"));
+      setAcknowledgedAlarms([...investigatingAlarms, ...resolvedAlarms]);
+    }
+  }
+
+  const removeunacknowledgedAlarm = async(alarmId : any) => {
+    const response = await deleteAlarm(alarmId);
+    if (!response)
+      console.log("Network response was not ok");
+
+    if (response && response.data) {
+      const newUnackList = unacknowledgedAlarms.filter((a: any) =>
+        a.id != alarmId
+      );
+
+      const unAckalarms = sortAlarmsDataBySeverity(newUnackList);
+      setUnacknowledgedAlarms(unAckalarms);
+    }
+  }
+
+  const removeacknowledgedAlarm = async(alarmId : any) => {
+    const response = await deleteAlarm(alarmId);
+    if (!response)
+      console.log("Network response was not ok");
+
+    if (response && response.data) {
+      const newAckList = acknowledgedAlarms.filter((a: any) =>
+        a.id != alarmId
+      );
+
+      const investigatingAlarms = sortAlarmsDataBySeverity(newAckList.filter((alarm: any) => alarm.isAcknowledged && alarm.alarmState == "Investigating"));
+      const resolvedAlarms = sortAlarmsDataBySeverity(newAckList.filter((alarm: any) => alarm.isAcknowledged && alarm.alarmState == "Resolved"));
+      setAcknowledgedAlarms([...investigatingAlarms, ...resolvedAlarms]);
     }
   }
 
@@ -151,7 +202,6 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
             <Badge label={(unacknowledgedAlarms.length + acknowledgedAlarms.length).toString()} bgColor="neutral" textColor="dark" />
           </span>
         </h2>
-        {/* <Modal dateRange={dateRange} setDateRange={setDateRange} title={"Alarm Panel Filters"} triggerButton={<Funnel cursor={"pointer"} />} devices={devices} selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices} /> */}
       </div>
 
       <div className={styles.selectFilters}>
@@ -174,13 +224,9 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
 
           <div className={`${styles.alarmsAccordionSection} ${(selectedDevices.length > 0) ? styles.alarmsAccordionSectionHeightWithSelectedDevices : null} ${(selectedDevices.length == 0 && dateRange == null) ? styles.alarmsAccordionSectionHeight : null}`}>
             {unacknowledgedAlarms.map(alarm => {
-              const isExpanded = expandedId === alarm.id;
-
               return (
-                <div className={`${styles.alarmCard} ${styles.unacknowledged} ${isExpanded ? styles.expanded : ''}`} key={alarm.id} onClick={() => ExpandAlarmCard(alarm.id)} >
-                  
-                <AlarmCard key={alarm.id} alarm={alarm} acknowledgeAlarm={acknowledgeAlarmData} resolveAlarm ={resolveAlarmData}/>
-
+                <div className={`${styles.alarmCard}`} key={alarm.id} >
+                  <AlarmCard key={alarm.id} removeunacknowledgedAlarm={removeunacknowledgedAlarm} setCurrentExpandedUnackAlarm={setCurrentExpandedUnackAlarm} currentExpandedUnackAlarm={currentExpandedUnackAlarm} alarm={alarm} acknowledgeAlarm={acknowledgeAlarmData} resolveAlarm={resolveAlarmData} />
                 </div>
               );
             })}
@@ -198,16 +244,7 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
             {acknowledgedAlarms.map(alarm => {
               return (
                 <div className={`${styles.alarmCard}`} key={alarm.id}>
-                  <div className={`${styles.alarmCardDiv}`}>
-                    <div>
-                      <p className={styles.message}>{alarm.message}</p>
-                      <span className={styles.time}>{formatRelativeTime(alarm.raisedAt)}</span>
-                    </div>
-
-                    <div className={styles.rightSide}>
-                      <Badge label={alarm.severity} bgColor={severityColors[alarm.severity].bg} textColor={severityColors[alarm.severity].color} />
-                    </div>
-                  </div>
+                  <AlarmCard removeacknowledgedAlarm={removeacknowledgedAlarm} setCurrentExpandedAckAlarm={setCurrentExpandedAckAlarm} currentExpandedAckAlarm={currentExpandedAckAlarm} key={alarm.id} alarm={alarm} acknowledgeAlarm={acknowledgeAlarmData} resolveAlarm={resolveAlarmData} resolveInvestigatedAlarmData={resolveInvestigatedAlarmData} />
                 </div>
               );
             })}

@@ -71,7 +71,7 @@ const TableComponent = ({sorting, setSorting, refreshDeviceDataKey, updatedField
         </table>
       </div>
     </div>
-      <Pagination setPageSize={setPageSize} currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} pageSize={pageSize} pageSizeOptions={[3, 5, 7, 10]} />
+      <Pagination setPageSize={setPageSize} currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} pageSize={pageSize} pageSizeOptions={[5, 10]} />
       </>
   );
 };

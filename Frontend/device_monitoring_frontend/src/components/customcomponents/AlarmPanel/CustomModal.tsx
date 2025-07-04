@@ -7,6 +7,7 @@ const CustomModal = ({
   setIsOpen,
   title,
   footer = true,
+  defaultComment
 }: any) => {
   const [tempAlarmComment, setTempAlarmComment] = useState<string>("");
   const commentTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -77,7 +78,7 @@ const CustomModal = ({
       {/* Body */}
       <div style={{ marginBottom: "0.5rem" }}>
         <div>
-          <input onChange={(event: any) => { changeAlarmComment(event.target.value) }} className={styles.resolveCommentInput} type="text" placeholder="Optional comment" />
+          <input defaultValue={defaultComment} onChange={(event: any) => { changeAlarmComment(event.target.value) }} className={styles.resolveCommentInput} type="text" placeholder="Optional comment" />
         </div>
       </div>
 
