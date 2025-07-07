@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Interfaces;
+using Infrastructure.Cache;
 using Infrastructure.RealTime;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,10 +16,13 @@ namespace Infrastructure.Services
     public class DeviceLiveDataBgService : BackgroundService
     {
         private readonly ILogger<DeviceLiveDataBgService> _logger;
+        private readonly DeviceStateCache _deviceStateCache;
         private readonly IServiceScopeFactory _scopeFactory;
+        private DateTime _lastDynamicUpdateTime = DateTime.Now;
 
-        public DeviceLiveDataBgService(IServiceScopeFactory scopeFactory, ILogger<DeviceLiveDataBgService> logger, IHubContext<DeviceHub> hubContext)
+        public DeviceLiveDataBgService(DeviceStateCache deviceStateCache, IServiceScopeFactory scopeFactory, ILogger<DeviceLiveDataBgService> logger, IHubContext<DeviceHub> hubContext)
         {
+            _deviceStateCache = deviceStateCache;
             _logger = logger;
             _scopeFactory = scopeFactory;
         }
@@ -26,18 +30,25 @@ namespace Infrastructure.Services
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             _logger.LogInformation("DeviceTopDataBgService is starting.");
-
-            while (!stoppingToken.IsCancellationRequested)
+            using (var scope = _scopeFactory.CreateScope())
             {
-                using (var scope = _scopeFactory.CreateScope())
+                var deviceService = scope.ServiceProvider.GetRequiredService<IDeviceService>();
+                var allDevices = deviceService.ReadAllDeviceMetadataFiles();
+                await _deviceStateCache.LoadAsync(allDevices);
+
+                while (!stoppingToken.IsCancellationRequested)
                 {
-                    var deviceService = scope.ServiceProvider.GetRequiredService<IDeviceService>();
+                    await deviceService.SimulateTopLevelChangeForOneDevice();
 
-                    _logger.LogInformation("DeviceTopDataBgService Current time: {time}", DateTimeOffset.Now);
-                    await deviceService.GenerateAndSendLiveUpdatesDevicesData();
+                    if ((DateTime.Now - _lastDynamicUpdateTime).TotalSeconds >= 20)
+                    {
+                        await deviceService.SimulateDynamicPropertiesUpdateForBatch();
+                        _lastDynamicUpdateTime = DateTime.Now;
+                    }
+
+
+                    await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
                 }
-
-                await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken); 
             }
 
             _logger.LogInformation("DeviceTopDataBgService is stopping.");

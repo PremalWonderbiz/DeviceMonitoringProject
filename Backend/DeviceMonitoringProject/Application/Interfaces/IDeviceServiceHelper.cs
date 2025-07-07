@@ -12,7 +12,8 @@ namespace Application.Interfaces
 {
     public interface IDeviceServiceHelper
     {
-        public LiveDeviceDataDto ExtractLiveDataDto(DeviceMetadata device, JsonNode rootNode);
+        public TopLevelDeviceDataDto ExtractTopLevelDto(string macId, JsonNode rootNode);
+        public DynamicDeviceDataDto ExtractDynamicDto(string macId, JsonNode rootNode);
 
         public JsonNode UpdateDynamicProperties(string deviceType, JsonNode? dynamicProps);
 
@@ -20,6 +21,6 @@ namespace Application.Interfaces
 
         public Task BroadcastDeviceDetailUpdates(List<(string MacId, string EventName, JsonElement DetailPayload)> updates);
 
-        public Task BroadcastTopLevelSummary(List<DeviceMetadata> allDevices);
+        public Task BroadcastTopLevelSummary(List<(DeviceMetadata device, List<string> updatedFields)> allDevices);
     }
 }

@@ -17,6 +17,12 @@ namespace Application.Interfaces
 
         public Task<bool> GenerateAndSendLiveUpdatesDevicesData();
 
+        public Task<bool> SimulateDynamicPropertiesUpdateForBatch();
+
+        public Task<bool> SimulateTopLevelChangeForOneDevice();
+
         public Task<List<DevicesNameMacIdDto>> GetDevicesNameMacIdList();
+
+        public List<DeviceMetadata> ReadAllDeviceMetadataFiles();
     }
 }

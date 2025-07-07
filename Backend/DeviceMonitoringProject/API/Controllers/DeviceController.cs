@@ -54,7 +54,8 @@ namespace API.Controllers
                 Type = m.Type,
                 Status = m.Status,
                 MacId = m.MacId,
-                Connectivity = m.Connectivity
+                Connectivity = m.Connectivity,
+                LastUpdated = m.LastUpdated
             }).ToList();
 
             return Ok(new

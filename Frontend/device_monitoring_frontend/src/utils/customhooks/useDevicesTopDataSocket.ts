@@ -1,20 +1,28 @@
 import { getSignalRConnection } from "@/sockets/signalRConnection";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export function useDevicesTopDataSocket(onUpdate: (data: any) => void) {
+  const onUpdateRef = useRef(onUpdate);
+
+  useEffect(() => {
+    onUpdateRef.current = onUpdate;
+  }, [onUpdate]);
+
   useEffect(() => {
     let conn: signalR.HubConnection | null = null;
-    const handler = (data: any) => onUpdate(data);
+
+    const handler = (data: any) => {
+      onUpdateRef.current?.(data);
+    };
 
     const setupConnection = async () => {
-      conn = await getSignalRConnection("devicehub","https://localhost:7127/devicehub");
+      conn = await getSignalRConnection("devicehub", "https://localhost:7127/devicehub");
       if (!conn) {
         console.warn("SignalR connection not available");
         return;
       }
 
-      console.log("SignalR connection obtained");
-      console.log("Subscribing to 'ReceiveUpdate'");
+      console.log("SignalR connected. Subscribing to 'ReceiveUpdate'");
       conn.on("ReceiveUpdate", handler);
     };
 
@@ -22,9 +30,9 @@ export function useDevicesTopDataSocket(onUpdate: (data: any) => void) {
 
     return () => {
       if (conn) {
-        console.log("Cleaning up 'ReceiveUpdate' listener");
+        console.log("Cleaning up SignalR 'ReceiveUpdate' listener");
         conn.off("ReceiveUpdate", handler);
       }
     };
-  }, [onUpdate]);
+  }, []);
 }

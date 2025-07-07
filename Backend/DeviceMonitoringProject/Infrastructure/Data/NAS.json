@@ -2,9 +2,10 @@
   "FileName": "NAS.json",
   "Name": "NAS Server",
   "Type": "Server",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "00:1B:44:11:3A:B7",
   "Connectivity": "Low",
+  "LastUpdated": "2025-07-07T16:55:48.7494930+05:30",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "Synology DSM 7.2",
@@ -124,73 +125,73 @@
   "dynamicProperties": {
     "System Health": {
       "CPU Usage": {
-        "Load Percentage": 20,
+        "Load Percentage": 18,
         "Core Usage": [
           {
             "Core": 0,
-            "Usage": "43%"
+            "Usage": "51%"
           },
           {
             "Core": 1,
-            "Usage": "55%"
+            "Usage": "37%"
           },
           {
             "Core": 2,
-            "Usage": "48%"
+            "Usage": "51%"
           },
           {
             "Core": 3,
-            "Usage": "32%"
+            "Usage": "56%"
           }
         ]
       },
       "RAM Usage": {
-        "Used": "6.2 GB",
-        "Free": "1.8 GB",
-        "Swap Used": "0.8 GB"
+        "Used": "6.3 GB",
+        "Free": "1.7 GB",
+        "Swap Used": "0.6 GB"
       },
       "System Temperature": {
-        "CPU": "50.5°C",
-        "System Board": "40.8°C",
+        "CPU": "50.2°C",
+        "System Board": "42.5°C",
         "Drive Bays": [
           {
             "Bay": 1,
-            "Temp": "37.2°C"
+            "Temp": "36.3°C"
           },
           {
             "Bay": 2,
-            "Temp": "36.5°C"
+            "Temp": "36.2°C"
           },
           {
             "Bay": 3,
-            "Temp": "37.7°C"
+            "Temp": "36.6°C"
           },
           {
             "Bay": 4,
-            "Temp": "37.5°C"
+            "Temp": "37.4°C"
           }
         ]
       },
       "System Load Average": {
-        "1m": "1.14",
-        "5m": "1.55",
-        "15m": "1.56"
+        "1m": "1.77",
+        "5m": "1.18",
+        "15m": "1.05"
       },
-      "Uptime": "25 days, 17 hours"
+      "Uptime": "35 days, 10 hours"
     },
     "Network Activity": {
-      "Primary IP": "192.168.1.51",
+      "Primary IP": "192.168.1.43",
       "Interfaces": [
         {
           "Name": "eth0",
           "Status": "Active",
           "Throughput": {
-            "Upload": "79 Mbps",
-            "Download": "118 Mbps"
+            "Upload": "84 Mbps",
+            "Download": "116 Mbps"
           },
           "Data Transferred": {
             "Sent": "1.1 TB",
-            "Received": "2.5 TB"
+            "Received": "2.9 TB"
           }
         },
         {
@@ -210,12 +211,12 @@
         {
           "IP": "192.168.1.102",
           "Hostname": "laptop-prem",
-          "Last Access": "2025-07-04 17:47"
+          "Last Access": "2025-07-07 16:17"
         },
         {
           "IP": "192.168.1.115",
           "Hostname": "mobile-kiran",
-          "Last Access": "2025-07-04 16:43"
+          "Last Access": "2025-07-07 15:30"
         }
       ]
     },
@@ -233,7 +234,7 @@
       },
       "Disk Health": {
         "Status": "Healthy",
-        "Last Checked": "2025-07-04",
+        "Last Checked": "2025-07-05",
         "SMART Reports": [
           {
             "Bay": 1,
@@ -243,23 +244,23 @@
           {
             "Bay": 2,
             "Health": "Good",
-            "Reallocated Sectors": 0
+            "Reallocated Sectors": 1
           }
         ]
       },
       "Fan Status": {
         "Fan 1": {
-          "Speed": "1245 RPM",
+          "Speed": "1204 RPM",
           "Status": "Normal"
         },
         "Fan 2": {
-          "Speed": "1171 RPM",
+          "Speed": "1266 RPM",
           "Status": "Normal"
         }
       },
       "Last Backup": {
         "Status": "Success",
-        "Timestamp": "2025-07-03 23:15"
+        "Timestamp": "2025-07-06 23:15"
       }
     }
   }

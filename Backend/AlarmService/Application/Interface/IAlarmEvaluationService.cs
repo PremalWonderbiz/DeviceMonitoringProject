@@ -10,7 +10,11 @@ namespace Application.Interface
 {
     public interface IAlarmEvaluationService
     {
-        Task<List<Alarm>> EvaluateAsync(LiveDeviceDataDto currentData, LiveDeviceDataDto previousData);
+        public Task<List<Alarm>> EvaluateTopLevelAsync(TopLevelDeviceDataDto current, TopLevelDeviceDataDto previous);
+
+        public Task<List<Alarm>> EvaluateDynamicAsync(DynamicDeviceDataDto current, DynamicDeviceDataDto previous);
+
+
     }
 
 }

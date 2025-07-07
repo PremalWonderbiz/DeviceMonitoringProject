@@ -517,13 +517,6 @@ namespace Infrastructure.Helpers
             eth["traffic"]["upload"] = $"{random.Next(2, 10)} Mbps";
             eth["traffic"]["download"] = $"{random.Next(20, 80)} Mbps";
 
-            var wlan = network["Interfaces"][1];
-            wlan["ipAddress"] = null; // Still disabled
-            wlan["status"] = "Disabled";
-
-            network["Total Data Usage"]["Sent"] = $"{(90 + random.NextDouble() * 20):F1} GB";
-            network["Total Data Usage"]["Received"] = $"{(250 + random.NextDouble() * 30):F1} GB";
-
             var clients = network["Connected Clients (Media Server)"].AsArray();
             clients.Clear();
             clients.Add(new JsonObject

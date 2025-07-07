@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace Application.Dtos
 {
-    public class AlarmEvaluationRequest
+    public class TopLevelAlarmEvaluationRequest
     {
-        public LiveDeviceDataDto Previous { get; set; } = default!;
-        public LiveDeviceDataDto Current { get; set; } = default!;
+        public string Type { get; set; } = "TopLevel"; // optional, for extensibility
+        public TopLevelDeviceDataDto Previous { get; set; } = default!;
+        public TopLevelDeviceDataDto Current { get; set; } = default!;
     }
+
+    public class DynamicAlarmEvaluationRequest
+    {
+        public string Type { get; set; } = "Dynamic"; // optional, for extensibility
+        public DynamicDeviceDataDto Previous { get; set; } = default!;
+        public DynamicDeviceDataDto Current { get; set; } = default!;
+    }
+
 }

@@ -50,6 +50,9 @@ export default function Home() {
   const highlightTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [devicesNameMacList, setDevicesNameMacList] = useState<any[] | null>(null);
   const [sorting, setSorting] = useState<SortingState>([]);
+  const justRefreshedRef = useRef(false);
+  const pendingHighlightRef = useRef<{ [macId: string]: string[] } | null>(null);
+
 
   useEffect(() => {
     setTotalPages(Math.ceil(totalCount / pageSize));
@@ -73,73 +76,106 @@ export default function Home() {
 
   // Handle incoming SignalR updates
   const handleUpdate = useCallback((msg: string) => {
-    const incomingDevices = JSON.parse(msg); // Format: [{ MacId, Status, Connectivity }]
-    console.log(sorting, sorting.some((s : any) => s.id == "status" || s.id == "connectivity"));
-    
-    if(sorting.some((s : any) => s.id == "status" || s.id == "connectivity")){
-      setSorting((prev : SortingState) => {
-        return prev.filter(s => s.id != "status" && s.id != "connectivity")
-      })
-    }
+    const rawDevices = JSON.parse(msg); 
+    console.log("WebSocket update received", rawDevices);
+
+    const isDefaultOrStatusConnectivitySorting =
+      sorting.length === 0 || sorting.every((s) => s.id === "status" || s.id === "connectivity");
+
     setDeviceData((prevDevices) => {
-
+      let updatedMacIds: string[] = [];
+      let updatedMap: { [macId: string]: string[] } = {};
       let hasChange = false;
-      let counter = 0;
-      const changedFieldMap: { [macId: string]: string[] } = {};
-
 
       const updatedDevices = prevDevices.map((existingDevice) => {
-        const incomingDevice = incomingDevices.find(
-          (d: any) => d.MacId === existingDevice.macId
-        );
-
-        if (!incomingDevice) return existingDevice;
+        const incoming = rawDevices.find((d: any) => d.MacId === existingDevice.macId);
+        if (!incoming) return existingDevice;
 
         const changedFields: string[] = [];
+        const updatedDevice = { ...existingDevice };
 
-        if (incomingDevice.Status !== existingDevice.status) {
+        if ("Status" in incoming && incoming.Status !== existingDevice.status) {
+          updatedDevice.status = incoming.Status;
           changedFields.push("status");
         }
-        if (incomingDevice.Connectivity !== existingDevice.connectivity) {
+
+        if ("Connectivity" in incoming && incoming.Connectivity !== existingDevice.connectivity) {
+          updatedDevice.connectivity = incoming.Connectivity;
           changedFields.push("connectivity");
+        }
+
+        if ("LastUpdated" in incoming) {
+          updatedDevice.lastUpdated = incoming.LastUpdated;
         }
 
         if (changedFields.length > 0) {
           hasChange = true;
-          counter++;
-          changedFieldMap[existingDevice.macId] = changedFields;
-
-          return {
-            ...existingDevice,
-            status: incomingDevice.Status,
-            connectivity: incomingDevice.Connectivity,
-          };
+          updatedMacIds.push(existingDevice.macId);
+          updatedMap[existingDevice.macId] = changedFields;
+          return updatedDevice;
         }
 
         return existingDevice;
       });
 
-
       if (hasChange) {
-        console.log("Updating deviceData due to change in status/connectivity", counter);
-        setUpdatedFieldsMap(changedFieldMap);
-        if (highlightTimeoutRef.current) {
-          clearTimeout(highlightTimeoutRef.current);
+        console.log("Devices updated:", updatedMacIds);
+
+        if (justRefreshedRef.current) {
+          setTimeout(() => {
+            setUpdatedFieldsMap(updatedMap);
+            highlightTimeoutRef.current = setTimeout(() => setUpdatedFieldsMap(null), 3000);
+            justRefreshedRef.current = false;
+          }, 100);
+        } else {
+          setUpdatedFieldsMap(updatedMap);
+          if (highlightTimeoutRef.current) clearTimeout(highlightTimeoutRef.current);
+          highlightTimeoutRef.current = setTimeout(() => setUpdatedFieldsMap(null), 3000);
         }
 
-        highlightTimeoutRef.current = setTimeout(() => {
-          setUpdatedFieldsMap(null);
-        }, 3000);
+        if (isDefaultOrStatusConnectivitySorting) {
+          const updatedSet = new Set(updatedMacIds);
+          const updatedRows = updatedDevices.filter((d) => updatedSet.has(d.macId));
+          const restRows = updatedDevices.filter((d) => !updatedSet.has(d.macId));
+          return [...updatedRows, ...restRows];
+        }
 
         return updatedDevices;
-
-      } else {
-        console.log("No change in status/connectivity; skipping update");
-        return prevDevices;
       }
 
+      // Handle unseen updates (on page 1 with matching MacId not visible)
+      const incomingMacs = new Set(rawDevices.map((d: any) => d.MacId));
+      const currentMacs = new Set(prevDevices.map((d) => d.macId));
+      const unseenUpdates = [...incomingMacs].filter(mac => !currentMacs.has(mac));
+
+      if (unseenUpdates.length > 0 && currentPage === 1 && (searchInput === "" || searchInput == null)) {
+        const unseenMap: { [macId: string]: string[] } = {};
+        rawDevices.forEach((d: any) => {
+          if (!currentMacs.has(d.MacId)) {
+            const fields: string[] = [];
+            if ("Status" in d) fields.push("status");
+            if ("Connectivity" in d) fields.push("connectivity");
+            unseenMap[d.MacId] = fields;
+          }
+        });
+
+        pendingHighlightRef.current = unseenMap;
+        setRefreshDeviceDataKey(prev => prev + 1);
+        justRefreshedRef.current = true;
+      }
+
+      return prevDevices;
     });
-  }, [sorting]);
+
+    if (sorting.some((s: any) => s.id === "status" || s.id === "connectivity")) {
+      setSorting((prev: SortingState) => prev.filter((s) => s.id !== "status" && s.id !== "connectivity"));
+    }
+  }, [sorting, currentPage, searchInput]);
+
+
+
+
+
 
   useEffect(() => {
     return () => {
@@ -189,6 +225,28 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (pendingHighlightRef.current && deviceData.length > 0) {
+      const pendingMap = pendingHighlightRef.current;
+      const macIdsInData = new Set(deviceData.map(d => d.macId));
+
+      const validPendingMap: { [macId: string]: string[] } = {};
+      Object.entries(pendingMap).forEach(([macId, fields]) => {
+        if (macIdsInData.has(macId)) {
+          validPendingMap[macId] = fields;
+        }
+      });
+
+      if (Object.keys(validPendingMap).length > 0) {
+        setUpdatedFieldsMap(validPendingMap);
+        if (highlightTimeoutRef.current) clearTimeout(highlightTimeoutRef.current);
+        highlightTimeoutRef.current = setTimeout(() => setUpdatedFieldsMap(null), 3000);
+      }
+
+      pendingHighlightRef.current = null;
+    }
+  }, [deviceData]);
+
+  useEffect(() => {
     if (searchInput == "" || searchInput == null) {
       const fetchDevicesData = async () => {
         const response = await getDeviceMetadataPaginatedandSorted(currentPage, pageSize, sorting);
@@ -203,11 +261,11 @@ export default function Home() {
 
       fetchDevicesData();
     }
-  }, [pageSize, currentPage, refreshDeviceDataKey, sorting]);
+  }, [pageSize, currentPage, refreshDeviceDataKey, sorting, searchInput]);
 
   useEffect(() => {
     if (searchInput == "") {
-      setRefreshDeviceDataKey(prev => prev + 1);
+      return;
     }
     else if (searchInput != null) {
       const fetchSearchedDevicesData = setTimeout(async () => {
@@ -219,11 +277,11 @@ export default function Home() {
           setDeviceData(response.data.data);
           setTotalCount(response.data.totalCount);
         }
-      }, 1000)
+      }, 500)
 
       return () => clearTimeout(fetchSearchedDevicesData)
     }
-  }, [searchInput, sorting]);
+  }, [searchInput, sorting, pageSize, currentPage, refreshDeviceDataKey]);
 
   const openPropertypanel = (deviceId: string) => {
     setActiveTab(initialTabState); // Reset to default tab
@@ -284,13 +342,13 @@ export default function Home() {
           <div className={`py-2 pr-4 ${styles.subNav}`}>
             <input onChange={(event: any) => { setSearchInput(event.target.value) }} className={styles.mainPageSearchInput} type="search" placeholder="Search..." />
             <div className={styles.mainPageIcons}>
-              {(sorting && sorting.length > 0) && 
-            <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Clear sorting</span>}>
-              <ListX className={styles.deviceRefreshIcon} onClick={() => { setSorting([]) }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
-            </Tooltip>}
-            <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Manual refresh button</span>}>
-              <Repeat className={styles.deviceRefreshIcon} onClick={() => { setRefreshDeviceDataKey(prev => prev + 1) }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
-            </Tooltip>
+              {(sorting && sorting.length > 0) &&
+                <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Clear sorting</span>}>
+                  <ListX className={styles.deviceRefreshIcon} onClick={() => { setSorting([]) }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
+                </Tooltip>}
+              <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Manual refresh button</span>}>
+                <Repeat className={styles.deviceRefreshIcon} onClick={() => { setRefreshDeviceDataKey(prev => prev + 1); justRefreshedRef.current = true; }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
+              </Tooltip>
             </div>
           </div>
         </div>

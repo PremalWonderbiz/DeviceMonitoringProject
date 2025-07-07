@@ -9,6 +9,7 @@ namespace Application.Interfaces
 {
     public interface IAlarmEvaluationService
     {
-        Task EvaluateAsync(LiveDeviceDataDto previous, LiveDeviceDataDto current);
+        Task EvaluateTopAsync(TopLevelDeviceDataDto previous, TopLevelDeviceDataDto current);
+        Task EvaluateDynamicAsync(DynamicDeviceDataDto previous, DynamicDeviceDataDto current);
     }
 }

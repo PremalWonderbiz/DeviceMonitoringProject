@@ -4,7 +4,6 @@ import styles from "@/styles/scss/AlarmPanel.module.scss";
 import Badge from '../Badge';
 import Accordion from '../Accordion';
 import { acknowledgeAlarm, deleteAlarm, getAlarmPanelData, getAlarmStates, resolveAlarm } from '@/services/alarmservice';
-import { formatRelativeTime } from '@/utils/helperfunctions';
 import { useDeviceAlertSocket } from '@/utils/customhooks/useDeviceAlertSocket';
 import ComboBox from '@/components/chakrauicomponents/ComboBox';
 import { DateRangePicker } from 'rsuite';
@@ -25,7 +24,7 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
   const [dateRange, setDateRange] = useState<[Date, Date] | null>(null);
   const [selectedDevices, setSelectedDevices] = useState<string[]>([]);
   const [shouldConnectSignalR, setShouldConnectSignalR] = useState<boolean>(true);
-  const [alarmStates, setAlarmStates] = useState<any[]>([]);
+  // const [alarmStates, setAlarmStates] = useState<any[]>([]);
   const [currentExpandedUnackAlarm, setCurrentExpandedUnackAlarm] = useState<string>("");
   const [currentExpandedAckAlarm, setCurrentExpandedAckAlarm] = useState<string>("");
 
@@ -60,19 +59,19 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
       setDevices(devicesNameMacList)
   }, []);
 
-  useEffect(() => {
-    const fetchAlarmStates = async () => {
-      const response = await getAlarmStates();
-      if (!response)
-        console.log("Network response was not ok");
+  // useEffect(() => {
+  //   const fetchAlarmStates = async () => {
+  //     const response = await getAlarmStates();
+  //     if (!response)
+  //       console.log("Network response was not ok");
 
-      if (response && response.data) {
-        setAlarmStates(response.data);
-      }
-    };
+  //     if (response && response.data) {
+  //       setAlarmStates(response.data);
+  //     }
+  //   };
 
-    fetchAlarmStates();
-  }, []);
+  //   fetchAlarmStates();
+  // }, []);
 
   useEffect(() => {
     if (!selectedDevicePropertyPanel) {

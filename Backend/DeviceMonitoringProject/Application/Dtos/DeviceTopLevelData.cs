@@ -13,5 +13,7 @@ namespace Application.Dtos
         public string Status { get; set; }
         public string MacId { get; set; }
         public string Connectivity { get; set; }
+        public DateTime? LastUpdated { get; set; }
+
     }
 }

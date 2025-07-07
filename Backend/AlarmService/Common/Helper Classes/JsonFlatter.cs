@@ -1,26 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-using Application.Dtos;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Common.Helper_Classes
 {
     public static class JsonFlattener
     {
-        public static Dictionary<string, string> FlattenDeviceData(LiveDeviceDataDto dto)
+        /// <summary>
+        /// Flattens a JsonElement (usually dynamicProperties) into a dictionary.
+        /// Each nested property is represented with a full path key (e.g., dynamicProperties.cpu.usage).
+        /// </summary>
+        public static Dictionary<string, string> FlattenJson(JsonElement element, string prefix = "dynamicProperties")
         {
-            var result = new Dictionary<string, string>
-            {
-                ["Status"] = dto.Status,
-                ["Connectivity"] = dto.Connectivity
-            };
-
-            FlattenJsonElement(dto.DynamicProperties, "dynamicProperties", result);
-
+            var result = new Dictionary<string, string>();
+            FlattenJsonElement(element, prefix, result);
             return result;
         }
 
@@ -54,9 +47,9 @@ namespace Common.Helper_Classes
                     if (element.TryGetInt64(out long l))
                         dict[prefix] = l.ToString();
                     else if (element.TryGetDouble(out double d))
-                        dict[prefix] = d.ToString("G", System.Globalization.CultureInfo.InvariantCulture); // avoid comma in some locales
+                        dict[prefix] = d.ToString("G", System.Globalization.CultureInfo.InvariantCulture);
                     else
-                        dict[prefix] = element.ToString(); 
+                        dict[prefix] = element.ToString();
                     break;
 
                 case JsonValueKind.True:

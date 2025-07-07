@@ -29,16 +29,27 @@ namespace Infrastructure.Helpers
             _hubContext = hubContext;
             _dynamicDataHelper = dynamicDataHelper;
         }
-        public LiveDeviceDataDto ExtractLiveDataDto(DeviceMetadata device, JsonNode rootNode)
+        public TopLevelDeviceDataDto ExtractTopLevelDto(string macId, JsonNode rootNode)
         {
-            return new LiveDeviceDataDto
+            return new TopLevelDeviceDataDto
             {
-                DeviceMacId = device.MacId,
+                DeviceMacId = macId,
                 Status = rootNode["Status"]?.GetValue<string>() ?? "Unknown",
-                Connectivity = rootNode["Connectivity"]?.GetValue<string>() ?? "Unknown",
-                DynamicProperties = JsonDocument.Parse(rootNode["dynamicProperties"]!.ToJsonString()).RootElement
+                Connectivity = rootNode["Connectivity"]?.GetValue<string>() ?? "Unknown"
             };
         }
+
+        public DynamicDeviceDataDto ExtractDynamicDto(string macId, JsonNode rootNode)
+        {
+            return new DynamicDeviceDataDto
+            {
+                DeviceMacId = macId,
+                DynamicProperties = JsonDocument.Parse(
+                    rootNode["dynamicProperties"]!.ToJsonString()
+                ).RootElement
+            };
+        }
+
 
         public JsonNode UpdateDynamicProperties(string deviceType, JsonNode? dynamicProps)
         {
@@ -88,13 +99,26 @@ namespace Infrastructure.Helpers
             }
         }
 
-        public async Task BroadcastTopLevelSummary(List<DeviceMetadata> allDevices)
+        public async Task BroadcastTopLevelSummary(List<(DeviceMetadata device, List<string> updatedFields)> allDevices)
         {
-            var summary = allDevices.Select(d => new DevicesTopLevelLiveData
+            var summary = allDevices.Select(entry =>
             {
-                MacId = d.MacId,
-                Status = d.Status,
-                Connectivity = d.Connectivity
+                var d = entry.device;
+                var updated = entry.updatedFields;
+
+                var obj = new Dictionary<string, object?>
+                            {
+                                { "MacId", d.MacId },
+                                { "LastUpdated", d.LastUpdated }
+                            };
+
+                if (updated.Contains("status"))
+                    obj["Status"] = d.Status;
+
+                if (updated.Contains("connectivity"))
+                    obj["Connectivity"] = d.Connectivity;
+
+                return obj;
             }).ToList();
 
             var json = JsonSerializer.Serialize(summary, new JsonSerializerOptions
@@ -104,7 +128,7 @@ namespace Infrastructure.Helpers
             });
 
             await _hubContext.Clients.All.SendAsync("ReceiveUpdate", json);
-        }
+        }   
 
     }
 }

@@ -4,7 +4,8 @@
   "Type": "Microcomputer",
   "Status": "Online",
   "MacId": "B8:27:EB:45:67:89",
-  "Connectivity": "Low",
+  "Connectivity": "Medium",
+  "LastUpdated": "2025-07-07T16:56:48.8313220+05:30",
   "staticProperties": {
     "Hardware Information": {
       "Model": "Raspberry Pi 4 Model B",
@@ -60,37 +61,37 @@
   },
   "dynamicProperties": {
     "System Health": {
-      "CPU Usage": "37%",
+      "CPU Usage": "31%",
       "RAM Usage": {
-        "Used": "2.7 GB",
+        "Used": "1.6 GB",
         "Total": "4 GB"
       },
       "System Temperature": {
-        "CPU": "59°C",
-        "Board": "46°C"
+        "CPU": "60°C",
+        "Board": "44°C"
       },
-      "Uptime": "7 days, 20 hours",
+      "Uptime": "5 days, 12 hours",
       "System Load": [
-        0.26,
-        1.26,
-        1.24
+        0.57,
+        0.98,
+        0.6
       ]
     },
     "Network Activity": {
       "Interfaces": [
         {
           "name": "eth0",
-          "ipAddress": "192.168.1.34",
+          "ipAddress": "192.168.1.36",
           "macAddress": "B8:27:EB:45:67:89",
           "connectionType": "Ethernet",
           "traffic": {
-            "upload": "7 Mbps",
-            "download": "62 Mbps"
+            "upload": "6 Mbps",
+            "download": "67 Mbps"
           }
         },
         {
           "name": "wlan0",
-          "ipAddress": null,
+          "ipAddress": "192.168.1.35",
           "macAddress": "B8:27:EB:45:67:90",
           "connectionType": "Wi-Fi",
           "status": "Disabled"
@@ -103,7 +104,7 @@
       "Connected Clients (Media Server)": [
         {
           "deviceName": "Smart TV",
-          "ip": "192.168.1.85",
+          "ip": "192.168.1.83",
           "mediaStream": "HD Movie (5.1 GB transferred)"
         }
       ]
@@ -123,14 +124,14 @@
         {
           "service": "Pi-hole",
           "status": "Running",
-          "dnsQueriesBlocked": "4,462"
+          "dnsQueriesBlocked": "6,295"
         }
       ],
       "Last Reboot Reason": "Scheduled maintenance",
       "Firmware": {
-        "Current Version": "2025.09.14",
-        "Last Update": "2025-07-01",
-        "Update Available": true
+        "Current Version": "2025.02.07",
+        "Last Update": "2025-07-05",
+        "Update Available": false
       }
     }
   }

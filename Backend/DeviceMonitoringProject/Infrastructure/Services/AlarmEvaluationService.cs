@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Application.Dtos;
 using Application.Interfaces;
 using Microsoft.Extensions.Logging;
@@ -21,15 +17,33 @@ namespace Infrastructure.Services
             _logger = logger;
         }
 
-        public async Task EvaluateAsync(LiveDeviceDataDto previous, LiveDeviceDataDto current)
+        public async Task EvaluateTopAsync(TopLevelDeviceDataDto previous, TopLevelDeviceDataDto current)
         {
-            var request = new AlarmEvaluationRequest
+            var request = new
             {
+                Type = "TopLevel",
                 Previous = previous,
                 Current = current
             };
 
-            var json = JsonSerializer.Serialize(request, new JsonSerializerOptions
+            await SendEvaluationRequestAsync(request, "api/Alarms/evaluateTop");
+        }
+
+        public async Task EvaluateDynamicAsync(DynamicDeviceDataDto previous, DynamicDeviceDataDto current)
+        {
+            var request = new
+            {
+                Type = "Dynamic",
+                Previous = previous,
+                Current = current
+            };
+
+            await SendEvaluationRequestAsync(request, "api/Alarms/evaluateDynamic");
+        }
+
+        private async Task SendEvaluationRequestAsync<T>(T payload, string endpoint)
+        {
+            var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             });
@@ -38,7 +52,7 @@ namespace Infrastructure.Services
 
             try
             {
-                var response = await _httpClient.PostAsync("api/Alarms/testFlattenJson", content);
+                var response = await _httpClient.PostAsync(endpoint, content);
                 if (!response.IsSuccessStatusCode)
                 {
                     _logger.LogWarning("Alarm service returned non-success status: {StatusCode}", response.StatusCode);

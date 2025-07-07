@@ -97,16 +97,57 @@ namespace API.Controllers
 
             return CreatedAtAction("GetAlarm", new { id = res.Id }, res);
         }
-        
+
         // POST: api/Alarms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost("testFlattenJson")]
-        public async Task<ActionResult<Alarm>> TestFlattenJsonMethod(AlarmEvaluationRequest req)
-        {
-            var res = await _alarmEvaluationService.EvaluateAsync(req.Current, req.Previous);
+        //[HttpPost("testFlattenJson")]
+        //public async Task<ActionResult<Alarm>> TestFlattenJsonMethod(AlarmEvaluationRequest req)
+        //{
+        //    var res = await _alarmEvaluationService.EvaluateAsync(req.Current, req.Previous);
 
-            return Ok("GetAlarm");
+        //    return Ok("GetAlarm");
+        //}
+
+        [HttpPost("evaluateTop")]
+        public async Task<IActionResult> EvaluateTop([FromBody] TopLevelAlarmEvaluationRequest req)
+        {
+            var previous = new TopLevelDeviceDataDto
+            {
+                DeviceMacId = req.Previous.DeviceMacId,
+                Status = req.Previous.Status,
+                Connectivity = req.Previous.Connectivity
+            };
+
+            var current = new TopLevelDeviceDataDto
+            {
+                DeviceMacId = req.Current.DeviceMacId,
+                Status = req.Current.Status,
+                Connectivity = req.Current.Connectivity
+            };
+
+            var result = await _alarmEvaluationService.EvaluateTopLevelAsync(current, previous);
+            return Ok(result);
         }
+
+        [HttpPost("evaluateDynamic")]
+        public async Task<IActionResult> EvaluateDynamic([FromBody] DynamicAlarmEvaluationRequest req)
+        {
+            var previous = new DynamicDeviceDataDto
+            {
+                DeviceMacId = req.Previous.DeviceMacId,
+                DynamicProperties = req.Previous.DynamicProperties
+            };
+
+            var current = new DynamicDeviceDataDto
+            {
+                DeviceMacId = req.Current.DeviceMacId,
+                DynamicProperties = req.Current.DynamicProperties
+            };
+
+            var result = await _alarmEvaluationService.EvaluateDynamicAsync(current, previous);
+            return Ok(result);
+        }
+
 
         // DELETE: api/Alarms/5
         [HttpDelete("{id}")]

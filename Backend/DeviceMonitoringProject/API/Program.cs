@@ -1,9 +1,11 @@
 using API.Middleware;
 using Application.Dtos;
 using Application.Interfaces;
+using Infrastructure.Cache;
 using Infrastructure.Helpers;
 using Infrastructure.RealTime;
 using Infrastructure.Services;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +38,10 @@ builder.Services.AddCors(options =>
             .SetIsOriginAllowed(_ => true)
             .AllowCredentials());
 });
+
+//cache register
+builder.Services.AddSingleton<DeviceStateCache>();
+builder.Services.AddHostedService<DeviceStatePersistenceService>();
 
 var app = builder.Build();
 

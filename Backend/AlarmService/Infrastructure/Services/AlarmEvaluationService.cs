@@ -25,13 +25,35 @@ namespace Infrastructure.Services
             _alarmService = alarmService;
         }
 
-        public async Task<List<Alarm>> EvaluateAsync(LiveDeviceDataDto currentData, LiveDeviceDataDto previousData)
+        public async Task<List<Alarm>> EvaluateTopLevelAsync(TopLevelDeviceDataDto current, TopLevelDeviceDataDto previous)
         {
-            var currentFlat = JsonFlattener.FlattenDeviceData(currentData);
-            var previousFlat = JsonFlattener.FlattenDeviceData(previousData);
+            var currentFlat = new Dictionary<string, string>
+            {
+                ["Status"] = current.Status ?? "Unknown",
+                ["Connectivity"] = current.Connectivity ?? "Unknown"
+            };
 
+            var previousFlat = new Dictionary<string, string>
+            {
+                ["Status"] = previous.Status ?? "Unknown",
+                ["Connectivity"] = previous.Connectivity ?? "Unknown"
+            };
+
+            return await EvaluateRulesAsync(current.DeviceMacId, currentFlat, previousFlat);
+        }
+
+        public async Task<List<Alarm>> EvaluateDynamicAsync(DynamicDeviceDataDto current, DynamicDeviceDataDto previous)
+        {
+            var currentFlat = JsonFlattener.FlattenJson(current.DynamicProperties);
+            var previousFlat = JsonFlattener.FlattenJson(previous.DynamicProperties);
+
+            return await EvaluateRulesAsync(current.DeviceMacId, currentFlat, previousFlat);
+        }
+
+        private async Task<List<Alarm>> EvaluateRulesAsync(string deviceMacId, Dictionary<string, string> currentFlat, Dictionary<string, string> previousFlat)
+        {
             var rules = await _dbContext.AlarmRules
-                .Where(r => r.DeviceMacId == currentData.DeviceMacId)
+                .Where(r => r.DeviceMacId == deviceMacId)
                 .ToListAsync();
 
             var triggeredAlarms = new List<Alarm>();
@@ -47,12 +69,12 @@ namespace Infrastructure.Services
                 if (previousFlat.TryGetValue(rule.FieldPath, out var previousValue) &&
                     previousValue == currentValue)
                 {
-                    continue; 
+                    continue;
                 }
 
                 var alarm = new Alarm
                 {
-                    SourceDeviceMacId = currentData.DeviceMacId,
+                    SourceDeviceMacId = deviceMacId,
                     Message = rule.MessageTemplate.Replace("{value}", currentValue),
                     Severity = rule.Severity
                 };
@@ -75,20 +97,22 @@ namespace Infrastructure.Services
                 await _hubContext.Clients.All.SendAsync("ReceiveMainPageUpdates", serializedData);
 
                 var alarmPanelUpdates = await _alarmService.GetAlarms(new AlarmFilter());
-                await _hubContext.Clients.Group($"AlarmPanelGroup").SendAsync("ReceiveAlarmPanelUpdates", JsonSerializer.Serialize(alarmPanelUpdates, new JsonSerializerOptions
-                {
-                    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                    WriteIndented = true
-                }));
-                
-                var propertyPanelAlarm = await _alarmService.GetLatestAlarmForDevice(currentData.DeviceMacId);
-                await _hubContext.Clients.Group($"Alarm-{currentData.DeviceMacId}").SendAsync("ReceivePropertyPanelAlarmUpdates", JsonSerializer.Serialize(propertyPanelAlarm, new JsonSerializerOptions
-                {
-                    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                    WriteIndented = true
-                }));
+                await _hubContext.Clients.Group("AlarmPanelGroup").SendAsync("ReceiveAlarmPanelUpdates",
+                    JsonSerializer.Serialize(alarmPanelUpdates, new JsonSerializerOptions
+                    {
+                        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                        WriteIndented = true
+                    }));
+
+                var propertyPanelAlarm = await _alarmService.GetLatestAlarmForDevice(deviceMacId);
+                await _hubContext.Clients.Group($"Alarm-{deviceMacId}").SendAsync("ReceivePropertyPanelAlarmUpdates",
+                    JsonSerializer.Serialize(propertyPanelAlarm, new JsonSerializerOptions
+                    {
+                        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                        WriteIndented = true
+                    }));
             }
 
             return triggeredAlarms;
@@ -98,7 +122,6 @@ namespace Infrastructure.Services
         {
             string normalizedOp = op.Trim().ToLowerInvariant();
 
-            // Strip common units/suffixes from values
             string Clean(string val) => val.Trim()
                                            .TrimEnd('%', '°', 'C', 'c')
                                            .Replace("ms", "", StringComparison.OrdinalIgnoreCase)
@@ -111,32 +134,29 @@ namespace Infrastructure.Services
             string cleanedCurrent = Clean(current);
             string cleanedThreshold = Clean(threshold);
 
-            // Try numeric comparison
-            if (double.TryParse(cleanedCurrent, out double currNum) && double.TryParse(cleanedThreshold, out double threshNum))
+            if (double.TryParse(cleanedCurrent, out var currNum) &&
+                double.TryParse(cleanedThreshold, out var threshNum))
             {
-                switch (normalizedOp)
+                return normalizedOp switch
                 {
-                    case "greaterthan": return currNum > threshNum;
-                    case "lessthan": return currNum < threshNum;
-                    case "equals": return currNum == threshNum;
-                    case "notequals": return currNum != threshNum;
-                    case "greaterthanorequal": return currNum >= threshNum;
-                    case "lessthanorequal": return currNum <= threshNum;
-                    default: return false;
-                }
+                    "greaterthan" => currNum > threshNum,
+                    "lessthan" => currNum < threshNum,
+                    "equals" => currNum == threshNum,
+                    "notequals" => currNum != threshNum,
+                    "greaterthanorequal" => currNum >= threshNum,
+                    "lessthanorequal" => currNum <= threshNum,
+                    _ => false
+                };
             }
 
-            // Try Date comparison
             if (normalizedOp == "isdatepast")
             {
                 if (DateTime.TryParse(current, out var dateVal))
-                {
                     return dateVal < DateTime.Now;
-                }
+
                 return false;
             }
 
-            // String comparison
             return normalizedOp switch
             {
                 "equals" => string.Equals(current, threshold, StringComparison.OrdinalIgnoreCase),
