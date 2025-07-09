@@ -85,17 +85,6 @@ namespace Infrastructure.Cache
             }
         }
 
-        public async Task PersistAllAsync(List<DeviceMetadata> devices)
-        {
-            foreach (var device in devices)
-            {
-                if (_deviceMap.TryGetValue(device.MacId, out var state))
-                {
-                    var file = Path.Combine(_dataDirectory, device.FileName);
-                    await File.WriteAllTextAsync(file, state.Root.ToJsonString());
-                }
-            }
-        }
     }
 
 }

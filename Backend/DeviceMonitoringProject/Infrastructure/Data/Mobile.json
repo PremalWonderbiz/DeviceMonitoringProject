@@ -2,10 +2,10 @@
   "FileName": "Mobile.json",
   "Name": "Mobile",
   "Type": "Personal Device",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "F0:9F:C2:12:34:56",
-  "Connectivity": "High",
-  "LastUpdated": "2025-07-07T16:56:08.7705102+05:30",
+  "Connectivity": "Medium",
+  "LastUpdated": "2025-07-09T17:59:04.6315311+05:30",
   "staticProperties": {
     "Device Specifications": {
       "Operating System": {
@@ -74,42 +74,42 @@
   "dynamicProperties": {
     "Device Health": {
       "Battery Status": {
-        "Level": "38%",
-        "Charging State": "Charging",
-        "Temperature": "33.7°C",
+        "Level": "41%",
+        "Charging State": "Not Charging",
+        "Temperature": "36.6°C",
         "Health": "Good"
       },
-      "CPU Usage": "65%",
+      "CPU Usage": "68%",
       "RAM Usage": {
-        "Used": "5.3 GB",
-        "Free": "6.7 GB"
+        "Used": "4.5 GB",
+        "Free": "7.5 GB"
       },
       "Storage Usage": {
-        "Used": "150 GB",
-        "Free": "106 GB"
+        "Used": "141 GB",
+        "Free": "115 GB"
       },
       "Device Temperature": {
-        "CPU": "43.6°C",
-        "Battery": "33.7°C"
+        "CPU": "43.2°C",
+        "Battery": "36.6°C"
       },
-      "Uptime": "2 days, 15 hours"
+      "Uptime": "1 days, 18 hours"
     },
     "Network Activity": {
       "Current Network": {
         "Connection Type": "Wi-Fi",
         "SSID": "Home_5G",
-        "IP Address": "192.168.1.158",
-        "Signal Strength": "-55 dBm",
+        "IP Address": "192.168.1.194",
+        "Signal Strength": "-56 dBm",
         "MAC Address": "F0:9F:C2:12:34:56"
       },
       "Data Usage": {
         "Today": {
-          "Download": "0.8 GB",
-          "Upload": "263 MB"
+          "Download": "1.5 GB",
+          "Upload": "350 MB"
         },
         "Monthly": {
-          "Download": "25.3 GB",
-          "Upload": "5.3 GB"
+          "Download": "44.4 GB",
+          "Upload": "6.2 GB"
         }
       },
       "Connected Apps": [
@@ -119,7 +119,7 @@
         },
         {
           "appName": "WhatsApp",
-          "dataUsage": "Video call (150 MB today)"
+          "dataUsage": "Video call (173 MB today)"
         }
       ]
     },
@@ -128,22 +128,22 @@
         {
           "name": "YouTube",
           "status": "Foreground",
-          "screenTimeToday": "1 hr 30 min"
+          "screenTimeToday": "0 hr 27 min"
         },
         {
           "name": "Gmail",
           "status": "Background",
-          "notifications": 4
+          "notifications": 2
         }
       ],
       "Battery Usage by Apps": [
         {
           "appName": "YouTube",
-          "usagePercent": "14%"
+          "usagePercent": "10%"
         },
         {
           "appName": "Google Maps",
-          "usagePercent": "7%"
+          "usagePercent": "3%"
         }
       ]
     }

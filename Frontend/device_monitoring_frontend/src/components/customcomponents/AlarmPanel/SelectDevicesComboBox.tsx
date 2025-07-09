@@ -1,7 +1,7 @@
 import { Badge, CloseButton, Combobox, Portal, Wrap, createListCollection} from "@chakra-ui/react"
 import { useMemo, useState } from "react"
 
-const ComboBox = ({ devices, selectedDevices, setSelectedDevices, multiple = true }: any) => {
+const SelectDevicesComboBox = ({ devices, selectedDevices, setSelectedDevices, multiple = true }: any) => {
   const [searchValue, setSearchValue] = useState("")
  
   // Filter devices based on search input
@@ -114,4 +114,4 @@ const ComboBox = ({ devices, selectedDevices, setSelectedDevices, multiple = tru
   )
 }
 
-export default ComboBox
+export default SelectDevicesComboBox

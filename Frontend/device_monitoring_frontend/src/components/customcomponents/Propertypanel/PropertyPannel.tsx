@@ -6,7 +6,7 @@ import { HealthTabContent, StaticTabContent } from "./PropertyPanelContent";
 import { getPropertyPanelData } from "@/services/deviceservice";
 import styles from "@/styles/scss/PropertyPanel.module.scss";
 import { getChangedPaths } from "@/utils/deepDiff";
-import ComboBox from "@/components/chakrauicomponents/ComboBox";
+import ComboBox from "@/components/customcomponents/AlarmPanel/SelectDevicesComboBox";
 
 
 const PropertyPanel = ({ setCurrentDeviceId, setCurrentDeviceFileName, deviceFileNames, devicesNameMacList, setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, currentDeviceId, currentDeviceFileName, activeTab, setActiveTab }: any) => {

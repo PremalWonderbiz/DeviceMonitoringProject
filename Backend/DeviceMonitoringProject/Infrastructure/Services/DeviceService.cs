@@ -258,7 +258,7 @@ public class DeviceService : IDeviceService
 
             var currentTop = _deviceServiceHelper.ExtractTopLevelDto(device.MacId, rootNode);
 
-            // await _alarmEvaluationService.EvaluateTopAsync(currentTop, previousTop);
+             //await _alarmEvaluationService.EvaluateTopAsync(currentTop, previousTop);
 
             var updatedDevice = new DeviceMetadata
             {

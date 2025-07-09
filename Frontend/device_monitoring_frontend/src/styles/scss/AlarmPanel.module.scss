@@ -303,6 +303,30 @@
     }
 }
 
+.selectFilters {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 0.7rem 0 0.7rem;
+    width: 100%;
+}
+
+.resolveCommentInput {
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid #c1c1c1;
+    color: #e7e7e7;
+    padding: 0.2rem 0.5rem;
+    width: 100%;
+    font-size: 0.85rem;
+}
+
+.acknowledgedAlarmsFilter{
+    padding: 0.5rem 0.7rem 0 0.7rem;
+    width: 100%;
+}
+
+
 
 //Profile pop up
 
@@ -343,20 +367,3 @@
     background: #ededed;
 }
 
-.selectFilters {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.5rem 0.7rem 0 0.7rem;
-    width: 100%;
-}
-
-.resolveCommentInput {
-    background-color: transparent;
-    border-radius: 5px;
-    border: 1px solid #c1c1c1;
-    color: #e7e7e7;
-    padding: 0.2rem 0.5rem;
-    width: 100%;
-    font-size: 0.85rem;
-}

@@ -52,6 +52,7 @@ export default function Home() {
   const [sorting, setSorting] = useState<SortingState>([]);
   const justRefreshedRef = useRef(false);
   const pendingHighlightRef = useRef<{ [macId: string]: string[] } | null>(null);
+  const searchInputTimeoutRef = useRef<any>(null);
 
 
   useEffect(() => {
@@ -74,9 +75,9 @@ export default function Home() {
     fetchLatestAlarmData();
   }, []);
 
-  // Handle incoming SignalR updates
+  // Handle incoming SignalR updates for devices top level data
   const handleUpdate = useCallback((msg: string) => {
-    const rawDevices = JSON.parse(msg); 
+    const rawDevices = JSON.parse(msg);
     console.log("WebSocket update received", rawDevices);
 
     const isDefaultOrStatusConnectivitySorting =
@@ -120,7 +121,13 @@ export default function Home() {
 
       if (hasChange) {
         console.log("Devices updated:", updatedMacIds);
-
+        // If not on page 1, skip highlight and reordering
+        if (currentPage !== 1) {
+          setRefreshDeviceDataKey(prev => prev + 1);
+          justRefreshedRef.current = true;
+          return prevDevices;
+        }
+        
         if (justRefreshedRef.current) {
           setTimeout(() => {
             setUpdatedFieldsMap(updatedMap);
@@ -141,6 +148,12 @@ export default function Home() {
         }
 
         return updatedDevices;
+      }
+
+      if (currentPage !== 1) {
+          setRefreshDeviceDataKey(prev => prev + 1);
+          justRefreshedRef.current = true;
+          return prevDevices;
       }
 
       // Handle unseen updates (on page 1 with matching MacId not visible)
@@ -171,10 +184,6 @@ export default function Home() {
       setSorting((prev: SortingState) => prev.filter((s) => s.id !== "status" && s.id !== "connectivity"));
     }
   }, [sorting, currentPage, searchInput]);
-
-
-
-
 
 
   useEffect(() => {
@@ -264,11 +273,11 @@ export default function Home() {
   }, [pageSize, currentPage, refreshDeviceDataKey, sorting, searchInput]);
 
   useEffect(() => {
-    if (searchInput == "") {
+    if (searchInput == "" || searchInput == null) {
       return;
     }
     else if (searchInput != null) {
-      const fetchSearchedDevicesData = setTimeout(async () => {
+      const fetchSearchedDevicesData = async () => {
         const response = await getSearchedDeviceMetadataPaginated(currentPage, pageSize, searchInput, sorting);
         if (!response)
           console.log("Network response was not ok");
@@ -277,11 +286,21 @@ export default function Home() {
           setDeviceData(response.data.data);
           setTotalCount(response.data.totalCount);
         }
-      }, 500)
-
-      return () => clearTimeout(fetchSearchedDevicesData)
+      }
+      fetchSearchedDevicesData();
     }
   }, [searchInput, sorting, pageSize, currentPage, refreshDeviceDataKey]);
+
+  const changeSearchInput = (value: string) => {
+    if(value == null || value == "")
+      setSearchInput("");
+    if(searchInputTimeoutRef.current) 
+      clearTimeout(searchInputTimeoutRef.current);
+
+    searchInputTimeoutRef.current = setTimeout(() => {
+      setSearchInput(value);
+    }, 1000);
+  }
 
   const openPropertypanel = (deviceId: string) => {
     setActiveTab(initialTabState); // Reset to default tab
@@ -340,15 +359,16 @@ export default function Home() {
         <div>
           <span className={`py-3 ${styles.mainPageTitle}`}>Welcome back, Premal Kadam</span>
           <div className={`py-2 pr-4 ${styles.subNav}`}>
-            <input onChange={(event: any) => { setSearchInput(event.target.value) }} className={styles.mainPageSearchInput} type="search" placeholder="Search..." />
+            <input onChange={(event: any) => { changeSearchInput(event.target.value) }} className={styles.mainPageSearchInput} type="search" placeholder="Search..." />
             <div className={styles.mainPageIcons}>
               {(sorting && sorting.length > 0) &&
                 <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Clear sorting</span>}>
                   <ListX className={styles.deviceRefreshIcon} onClick={() => { setSorting([]) }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
                 </Tooltip>}
+              {deviceData && deviceData.length > 0 &&
               <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Manual refresh button</span>}>
                 <Repeat className={styles.deviceRefreshIcon} onClick={() => { setRefreshDeviceDataKey(prev => prev + 1); justRefreshedRef.current = true; }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
-              </Tooltip>
+              </Tooltip>}
             </div>
           </div>
         </div>

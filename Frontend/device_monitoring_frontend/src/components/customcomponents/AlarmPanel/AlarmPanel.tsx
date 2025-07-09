@@ -5,7 +5,7 @@ import Badge from '../Badge';
 import Accordion from '../Accordion';
 import { acknowledgeAlarm, deleteAlarm, getAlarmPanelData, getAlarmStates, resolveAlarm } from '@/services/alarmservice';
 import { useDeviceAlertSocket } from '@/utils/customhooks/useDeviceAlertSocket';
-import ComboBox from '@/components/chakrauicomponents/ComboBox';
+import SelectDevicesComboBox from '@/components/customcomponents/AlarmPanel/SelectDevicesComboBox';
 import { DateRangePicker } from 'rsuite';
 import { Badge as ChakraBadge, CloseButton, Wrap } from "@chakra-ui/react";
 import AlarmCard from './AlarmCard';
@@ -162,7 +162,7 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
     }
   }
 
-  const removeunacknowledgedAlarm = async(alarmId : any) => {
+  const removeunacknowledgedAlarm = async (alarmId: any) => {
     const response = await deleteAlarm(alarmId);
     if (!response)
       console.log("Network response was not ok");
@@ -177,7 +177,7 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
     }
   }
 
-  const removeacknowledgedAlarm = async(alarmId : any) => {
+  const removeacknowledgedAlarm = async (alarmId: any) => {
     const response = await deleteAlarm(alarmId);
     if (!response)
       console.log("Network response was not ok");
@@ -204,7 +204,7 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
       </div>
 
       <div className={styles.selectFilters}>
-        <ComboBox devices={devices} selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices} />
+        <SelectDevicesComboBox devices={devices} selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices} />
 
         {dateRange && <Wrap gap="2">
           <ChakraBadge padding="0.25rem 0 0.25rem 0.4rem" display="flex" alignItems="center" gap="0.2rem" fontSize={"0.7rem"}>
