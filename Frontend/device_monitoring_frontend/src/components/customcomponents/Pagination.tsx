@@ -1,13 +1,18 @@
-import React from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useRef, useState } from "react";
+import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from "lucide-react";
 import styles from "@/styles/scss/Pagination.module.scss";
 
-const Pagination = ({currentPage, totalPages, pageSize, pageSizeOptions, setCurrentPage, setPageSize,}: any) => {
+const Pagination = ({ currentPage, totalPages, pageSize, pageSizeOptions, setCurrentPage, setPageSize, }: any) => {
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
+  const selectRef = useRef<HTMLSelectElement>(null);
   const handlePageClick = (page: any) => setCurrentPage(page);
   const handlePrev = () => currentPage > 1 && setCurrentPage(currentPage - 1);
   const handleNext = () => currentPage < totalPages && setCurrentPage(currentPage + 1);
-  const handlePageSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
+
+  const handlePageSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setPageSize(Number(e.target.value));
+    selectRef.current?.blur();
+  }
 
   const renderPageNumbers = () => {
     const pages: (number | string)[] = [];
@@ -32,9 +37,8 @@ const Pagination = ({currentPage, totalPages, pageSize, pageSizeOptions, setCurr
         <button
           key={page}
           onClick={() => handlePageClick(page)}
-          className={`${styles.paginationButton} ${
-            currentPage === page ? styles.activeButton : ""
-          }`}
+          className={`${styles.paginationButton} ${currentPage === page ? styles.activeButton : ""
+            }`}
         >
           {page}
         </button>
@@ -55,13 +59,26 @@ const Pagination = ({currentPage, totalPages, pageSize, pageSizeOptions, setCurr
           <ChevronRight size={16} />
         </button>
 
-        <select value={pageSize} onChange={handlePageSizeChange} className={styles.pageSizeSelector}>
-          {pageSizeOptions.map((size: number) => (
-            <option key={size} value={size}>
-              {size} / page
-            </option>
-          ))}
-        </select>
+        <div className={styles.selectWrapper}>
+          <select
+            ref={selectRef}
+            value={pageSize}
+            onChange={handlePageSizeChange}
+            className={styles.pageSizeSelector}
+            onFocus={() => setIsSelectOpen(true)}
+            onBlur={() => setIsSelectOpen(false)}
+          >
+            {pageSizeOptions.map((size: number) => (
+              <option key={size} value={size}>
+                {size} / page
+              </option>
+            ))}
+          </select>
+
+          <span className={styles.selectIcon}>
+            {isSelectOpen ? <ChevronUp size={18} strokeWidth={"2.5px"} /> : <ChevronDown size={18} strokeWidth={"2.5px"} />}
+          </span>
+        </div>
       </div>
 
       <div className={styles.rightSection}>

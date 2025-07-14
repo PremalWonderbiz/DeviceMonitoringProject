@@ -23,7 +23,14 @@ public class DeviceService : IDeviceService
     private readonly IAlarmEvaluationService _alarmEvaluationService;
     private readonly DeviceStateCache _deviceStateCache;
     private readonly Random _random = new();
-    private List<DeviceMetadata> _devices =>
+    private static readonly Dictionary<string, int> connectivityOrder = new()
+    {
+        { "Low", 1 },
+        { "Medium", 2 },
+        { "High", 3 }
+    };
+
+private List<DeviceMetadata> _devices =>
     _deviceStateCache.GetAllStates()
         .Select(state =>
         {
@@ -153,7 +160,9 @@ public class DeviceService : IDeviceService
             "type" => desc ? data.OrderByDescending(u => u.Type) : data.OrderBy(u => u.Type),
             "status" => desc ? data.OrderByDescending(u => u.Status) : data.OrderBy(u => u.Status),
             "macId" => desc ? data.OrderByDescending(u => u.MacId) : data.OrderBy(u => u.MacId),
-            "connectivity" => desc ? data.OrderByDescending(u => u.Connectivity) : data.OrderBy(u => u.Connectivity),
+            "connectivity" => desc  ? data.OrderByDescending(u => connectivityOrder.ContainsKey(u.Connectivity) ? connectivityOrder[u.Connectivity] : int.MaxValue)
+                                    : data.OrderBy(u => connectivityOrder.ContainsKey(u.Connectivity) ? connectivityOrder[u.Connectivity] : int.MaxValue),
+            "lastUpdated" => desc ? data.OrderByDescending(u => u.LastUpdated) : data.OrderBy(u => u.LastUpdated),
             _ => data.OrderBy(u => u.Name)
         };
     }
@@ -166,7 +175,9 @@ public class DeviceService : IDeviceService
             "type" => desc ? data.ThenByDescending(u => u.Type) : data.ThenBy(u => u.Type),
             "status" => desc ? data.ThenByDescending(u => u.Status) : data.ThenBy(u => u.Status),
             "macId" => desc ? data.ThenByDescending(u => u.MacId) : data.ThenBy(u => u.MacId),
-            "connectivity" => desc ? data.ThenByDescending(u => u.Connectivity) : data.ThenBy(u => u.Connectivity),
+            "connectivity" => desc  ? data.ThenByDescending(u => connectivityOrder.ContainsKey(u.Connectivity) ? connectivityOrder[u.Connectivity] : int.MaxValue)
+                                    : data.ThenBy(u => connectivityOrder.ContainsKey(u.Connectivity) ? connectivityOrder[u.Connectivity] : int.MaxValue),
+            "lastUpdated" => desc ? data.OrderByDescending(u => u.LastUpdated) : data.OrderBy(u => u.LastUpdated),
             _ => data.ThenBy(u => u.Name)
         };
     }
@@ -314,7 +325,6 @@ public class DeviceService : IDeviceService
         await _deviceServiceHelper.BroadcastDeviceDetailUpdates(updatedDeviceDetails);
         return true;
     }
-
 
     public async Task<List<DevicesNameMacIdDto>> GetDevicesNameMacIdList()
     {

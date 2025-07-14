@@ -45,4 +45,21 @@
     font-size: 0.9rem;
     appearance: none;
     color: #fff;
+    appearance: none;
+  padding-right: 2rem;
+}
+
+
+.selectWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.selectIcon {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  pointer-events: none;
+  transform: translateY(-50%);
+  color: #fff;
 }

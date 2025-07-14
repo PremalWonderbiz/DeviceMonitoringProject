@@ -4,8 +4,8 @@
   "Type": "Networking Device",
   "Status": "Online",
   "MacId": "84:C9:B2:3E:7F:A1",
-  "Connectivity": "High",
-  "LastUpdated": "2025-07-09T18:02:45.0133851+05:30",
+  "Connectivity": "Medium",
+  "LastUpdated": "2025-07-14T17:51:44.1444337+05:30",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "OpenWRT 21.02",
@@ -74,19 +74,19 @@
   "dynamicProperties": {
     "System Status": {
       "Uptime": "22 days, 5 hours",
-      "CPU Usage": "54%",
+      "CPU Usage": "53%",
       "Memory Usage": {
-        "Used": "150.7 MB",
+        "Used": "236 MB",
         "Total": "512 MB"
       },
       "Temperature": {
-        "CPU": "59°C",
-        "Board": "43°C"
+        "CPU": "57°C",
+        "Board": "42°C"
       },
       "System Load Average": [
-        "0.94",
-        "0.99",
-        "0.65"
+        "0.78",
+        "0.95",
+        "0.37"
       ]
     },
     "Network Activity": {
@@ -96,8 +96,8 @@
           "ipAddress": "203.0.113.45",
           "macAddress": "84:C9:B2:3E:7F:A1",
           "traffic": {
-            "upload": "50 Mbps",
-            "download": "105 Mbps"
+            "upload": "26 Mbps",
+            "download": "104 Mbps"
           }
         },
         {
@@ -105,8 +105,8 @@
           "ipAddress": "192.168.0.1",
           "macAddress": "84:C9:B2:3E:7F:A2",
           "traffic": {
-            "upload": "28 Mbps",
-            "download": "119 Mbps"
+            "upload": "40 Mbps",
+            "download": "29 Mbps"
           }
         }
       ],
@@ -118,7 +118,7 @@
           "connection": {
             "type": "Wi-Fi",
             "band": "5 GHz",
-            "signalStrength": "-55 dBm"
+            "signalStrength": "-63 dBm"
           }
         },
         {
@@ -132,7 +132,7 @@
         }
       ],
       "Total Data Usage": {
-        "Sent": "836.04 GB",
+        "Sent": "835.45 GB",
         "Received": "1.20 TB"
       }
     },

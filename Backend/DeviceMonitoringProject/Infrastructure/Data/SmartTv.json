@@ -2,10 +2,10 @@
   "FileName": "SmartTv.json",
   "Name": "Smart TV",
   "Type": "Entertainment Device",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "B8:27:EB:45:9A:CB",
   "Connectivity": "High",
-  "LastUpdated": "2025-07-09T18:02:04.9578226+05:30",
+  "LastUpdated": "2025-07-14T17:49:13.9154991+05:30",
   "staticProperties": {
     "Display & Hardware": {
       "Screen Size": "55 inches",
@@ -82,11 +82,11 @@
     "Current Usage": {
       "Power State": "On",
       "Input Source": "HDMI 1",
-      "Current App": "Netflix",
-      "Volume Level": 8,
+      "Current App": "YouTube",
+      "Volume Level": 26,
       "Mute": false,
-      "Picture Mode": "Vivid",
-      "Audio Output": "TV Speakers",
+      "Picture Mode": "Cinema",
+      "Audio Output": "External Speakers",
       "Ambient Light Sensor": "Enabled"
     },
     "Streaming Activity": {
@@ -94,43 +94,43 @@
         {
           "App": "Netflix",
           "Title": "The Crown",
-          "Start Time": "2025-07-09T16:32:55",
-          "Duration": "24 min"
+          "Start Time": "2025-07-14T16:22:54",
+          "Duration": "33 min"
         }
       ],
       "Active App Sessions": [
         {
-          "App": "Netflix",
+          "App": "YouTube",
           "Status": "Streaming",
-          "Data Used": "884 MB"
+          "Data Used": "651 MB"
         }
       ],
       "AutoPlay Next Episode": true
     },
     "Network Activity": {
-      "IP Address": "192.168.1.46",
-      "Wi-Fi Signal Strength": "-50 dBm",
+      "IP Address": "192.168.1.48",
+      "Wi-Fi Signal Strength": "-48 dBm",
       "Connection Type": "Wi-Fi",
       "Data Usage": {
-        "Today": "3.2 GB",
-        "This Week": "101 GB",
-        "This Month": "561 GB"
+        "Today": "3.0 GB",
+        "This Week": "131 GB",
+        "This Month": "541 GB"
       },
-      "Last Online": "2025-07-09T17:58:55"
+      "Last Online": "2025-07-14T17:48:54"
     },
     "System Status": {
-      "Uptime": "22 hours 55 minutes",
-      "Last Reboot": "2025-07-08T01:02:55",
+      "Uptime": "19 hours 41 minutes",
+      "Last Reboot": "2025-07-12T21:52:54",
       "Software Update Available": false,
-      "Last Software Update": "2025-06-02",
+      "Last Software Update": "2025-06-17",
       "Storage Info": {
         "Total Storage": "16 GB",
-        "Used": "8.4 GB",
-        "Free": "7.6 GB"
+        "Used": "8.0 GB",
+        "Free": "8.0 GB"
       },
       "Temperature": {
-        "Panel": "40°C",
-        "Mainboard": "44°C"
+        "Panel": "41°C",
+        "Mainboard": "40°C"
       }
     }
   }

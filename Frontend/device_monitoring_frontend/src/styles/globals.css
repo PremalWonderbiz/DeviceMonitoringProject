@@ -83,7 +83,20 @@ a {
 }
 
 .rs-input{
-  color: #959595 !important;
+  padding: 0.5rem 0.5rem !important ;
+  color: #000 !important;
+}
+
+.rs-input::placeholder{
+  color: #252525 !important;
+}
+
+.rs-picker-caret-icon{
+  color: #000 !important;
+}
+
+.rs-input-group-addon{
+  padding: 0.5rem 0.5rem !important;
 }
 
 

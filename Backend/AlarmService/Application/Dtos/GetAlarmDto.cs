@@ -17,5 +17,7 @@ namespace Application.Dtos
         public DateTime? AcknowledgedAt { get; set; }
         public string AlarmState { get; set; }
         public string AlarmComment { get; set; }
+        public string AcknowledgedFrom { get; set; }
+
     }
 }

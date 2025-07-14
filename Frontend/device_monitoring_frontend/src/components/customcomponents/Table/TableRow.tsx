@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/scss/Table.module.scss";
-import { Row } from "@tanstack/react-table";
+import { flexRender, Row } from "@tanstack/react-table";
 
 type Props = {
   row: Row<any>;
   setIsPropertyPanelOpen: (id: string) => void;
   updatedFieldsMap: { [macId: string]: string[] } | null;
-  refreshDeviceDataKey: any
+  refreshDeviceDataKey: any;
+  currentDeviceId : any;
 };
 
 const TableRow = React.memo(
-  ({ refreshDeviceDataKey, updatedFieldsMap, row, setIsPropertyPanelOpen }: Props) => {
+  ({ currentDeviceId, refreshDeviceDataKey, updatedFieldsMap, row, setIsPropertyPanelOpen }: Props) => {
     const rowData = row.original;
     const macId = rowData.macId;
     
@@ -38,7 +39,7 @@ const TableRow = React.memo(
 
     return (
       <tr
-        className={styles.row}
+        className={`${styles.row} ${currentDeviceId && currentDeviceId == macId ? styles.rowSelected : ""}`}
         key={macId || rowData.id}
         onClick={() => setIsPropertyPanelOpen(macId)}
       >
@@ -50,7 +51,7 @@ const TableRow = React.memo(
             <td
               key={cell.id}
               className={`${styles.cell} ${isUpdated ? styles.highlightedCell : ""}`} >
-              {cell.getValue()}
+              {flexRender(cell.column.columnDef.cell, cell.getContext())}
             </td>
           );
         })}
@@ -64,20 +65,32 @@ function areEqual(prevProps: Props, nextProps: Props) {
   const prevRow = prevProps.row.original;
   const nextRow = nextProps.row.original;
 
-  const sameData =
-    (prevRow.macId === nextRow.macId &&
-      prevRow.status === nextRow.status &&
-      prevRow.connectivity === nextRow.connectivity 
-    );
+  if (prevProps.refreshDeviceDataKey !== nextProps.refreshDeviceDataKey) {
+    return false; // re-render on refresh
+  }
 
-  const prevUpdated = prevProps.updatedFieldsMap?.[prevRow.macId] ?? [];
-  const nextUpdated = nextProps.updatedFieldsMap?.[nextRow.macId] ?? [];
+  if (prevProps.currentDeviceId !== nextProps.currentDeviceId) {
+    return false;
+  }
 
-  const sameUpdates =
-    prevUpdated.length === nextUpdated.length &&
-    prevUpdated.every((field, i) => field === nextUpdated[i]);
+  if (
+    prevRow.macId !== nextRow.macId ||
+    prevRow.status !== nextRow.status ||
+    prevRow.connectivity !== nextRow.connectivity
+  ) {
+    return false;
+  }
 
-  return sameData && sameUpdates;
+  // Compare updatedFieldsMap contents
+  const prevFields = prevProps.updatedFieldsMap?.[prevRow.macId] ?? [];
+  const nextFields = nextProps.updatedFieldsMap?.[nextRow.macId] ?? [];
+
+  if (prevFields.length !== nextFields.length) return false;
+  for (let i = 0; i < prevFields.length; i++) {
+    if (prevFields[i] !== nextFields[i]) return false;
+  }
+
+  return true;
 }
 
 export default TableRow;

@@ -76,7 +76,7 @@ const SelectDevicesComboBox = ({ devices, selectedDevices, setSelectedDevices, m
       </Wrap>
 
       <Combobox.Control>
-        <Combobox.Input placeholder="Select Devices" padding="0.5rem 0.5rem" />
+        <Combobox.Input _placeholder={{ color : "#252525" }} placeholder="Select Devices" padding="0.5rem 0.5rem" />
         <Combobox.IndicatorGroup>
           <Combobox.Trigger padding="0.5rem" />
         </Combobox.IndicatorGroup>
@@ -85,16 +85,18 @@ const SelectDevicesComboBox = ({ devices, selectedDevices, setSelectedDevices, m
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content
-            backgroundColor="#181818"
-            color="#fff"
-            padding="0.5rem 1rem"
+            backgroundColor="#fff"
+            color="#000"
+            padding="0.5rem 0rem"
             zIndex="popover"
           >
             <Combobox.ItemGroup>
-              <Combobox.ItemGroupLabel>Devices</Combobox.ItemGroupLabel>
+              <Combobox.ItemGroupLabel padding={"0rem 1rem"} fontWeight={"bold"}>Devices</Combobox.ItemGroupLabel>
 
               {filteredItems.map((item: any) => (
                 <Combobox.Item
+                  padding={"0.1rem 1rem"}
+                  _hover={{ backgroundColor: "#e6e6e6ff" }}
                   key={item.deviceMacId}
                   item={item.deviceMacId}
                 >

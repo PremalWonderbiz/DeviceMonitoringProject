@@ -72,10 +72,10 @@ namespace API.Controllers
             return Ok(res);
         }
         
-        [HttpPut("acknowledgeAlarm/{alarmId}")]
-        public async Task<IActionResult> AcknowledgeAlarm(Guid alarmId)
+        [HttpPut("investigateAlarm/{alarmId}")]
+        public async Task<IActionResult> InvestigateAlarm(Guid alarmId)
         {
-            var res = await _alarmService.AcknowledgeAlarm(alarmId);
+            var res = await _alarmService.InvestigateAlarm(alarmId);
 
             return Ok(res);
         }
@@ -150,10 +150,10 @@ namespace API.Controllers
 
 
         // DELETE: api/Alarms/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAlarm(Guid id)
+        [HttpDelete("ignoreAlarm/{id}/{comment}")]
+        public async Task<IActionResult> IgnoreAlarm(Guid id, string comment)
         {
-            var res = await _alarmService.DeleteAlarm(id);
+            var res = await _alarmService.IgnoreAlarm(id, comment);
             
             return Ok(res);
         }

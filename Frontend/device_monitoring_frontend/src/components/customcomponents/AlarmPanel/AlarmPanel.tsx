@@ -3,12 +3,14 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from "@/styles/scss/AlarmPanel.module.scss";
 import Badge from '../Badge';
 import Accordion from '../Accordion';
-import { acknowledgeAlarm, deleteAlarm, getAlarmPanelData, getAlarmStates, resolveAlarm } from '@/services/alarmservice';
+import { getAlarmPanelData, ignoreAlarm, investigateAlarm, resolveAlarm } from '@/services/alarmservice';
 import { useDeviceAlertSocket } from '@/utils/customhooks/useDeviceAlertSocket';
 import SelectDevicesComboBox from '@/components/customcomponents/AlarmPanel/SelectDevicesComboBox';
 import { DateRangePicker } from 'rsuite';
 import { Badge as ChakraBadge, CloseButton, Wrap } from "@chakra-ui/react";
 import AlarmCard from './AlarmCard';
+import { Tooltip } from '@/components/ui/tooltip';
+import { ListX } from 'lucide-react';
 
 
 const priorityMap: any = {
@@ -104,8 +106,8 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
     });
   }
 
-  const acknowledgeAlarmData = async (alarmId: any) => {
-    const response = await acknowledgeAlarm(alarmId);
+  const investigateAlarmData = async (alarmId: any) => {
+    const response = await investigateAlarm(alarmId);
     if (!response)
       console.log("Network response was not ok");
 
@@ -113,6 +115,7 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
       const ackAlarm = unacknowledgedAlarms.find((a: any) => a.id == alarmId);
       ackAlarm.alarmState = "Investigating";
       ackAlarm.isAcknowledged = true;
+      ackAlarm.alarmComment = response.data.alarmComment;
       setUnacknowledgedAlarms((prev: any) => prev.filter((a: any) => a.id != alarmId));
       const ackAlarms = [ackAlarm, ...acknowledgedAlarms];
       const investigatingAlarms = sortAlarmsDataBySeverity(ackAlarms.filter((alarm: any) => alarm.isAcknowledged && alarm.alarmState == "Investigating"));
@@ -131,6 +134,7 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
       ackAlarm.alarmState = response.data.alarmState;
       ackAlarm.isAcknowledged = response.data.isAcknowledged;
       ackAlarm.alarmComment = response.data.alarmComment;
+      ackAlarm.acknowledgedFrom = response.data.acknowledgedFrom;
       setUnacknowledgedAlarms((prev: any) => prev.filter((a: any) => a.id != alarmId));
       const ackAlarms = [ackAlarm, ...acknowledgedAlarms];
       const investigatingAlarms = sortAlarmsDataBySeverity(ackAlarms.filter((alarm: any) => alarm.isAcknowledged && alarm.alarmState == "Investigating"));
@@ -150,6 +154,7 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
         alarmState: response.data.alarmState,
         isAcknowledged: response.data.isAcknowledged,
         alarmComment: response.data.alarmComment,
+        acknowledgedFrom: response.data.acknowledgedFrom,
       };
 
       const newAckList = acknowledgedAlarms.map((a: any) =>
@@ -162,8 +167,8 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
     }
   }
 
-  const removeunacknowledgedAlarm = async (alarmId: any) => {
-    const response = await deleteAlarm(alarmId);
+  const removeunacknowledgedAlarm = async (alarmId: any, input:any) => {
+    const response = await ignoreAlarm(alarmId,input);
     if (!response)
       console.log("Network response was not ok");
 
@@ -177,8 +182,8 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
     }
   }
 
-  const removeacknowledgedAlarm = async (alarmId: any) => {
-    const response = await deleteAlarm(alarmId);
+  const removeacknowledgedAlarm = async (alarmId: any, input:any) => {
+    const response = await ignoreAlarm(alarmId,input);
     if (!response)
       console.log("Network response was not ok");
 
@@ -193,62 +198,74 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
     }
   }
 
+  const clearAlarmFilter = () => {
+    setSelectedDevices([]);
+    setDateRange(null);
+  }
+
   return (
     <div className={styles.panel}>
-      <div className={styles.header}>
-        <h2>Alarms
-          <span className={styles.count}>
-            <Badge label={(unacknowledgedAlarms.length + acknowledgedAlarms.length).toString()} bgColor="neutral" textColor="dark" />
-          </span>
-        </h2>
+      <div>
+        <div className={styles.header}>
+          <h2>Alarms
+            <span className={styles.count}>
+              <Badge label={(unacknowledgedAlarms.length + acknowledgedAlarms.length).toString()} bgColor="neutral" textColor="dark" />
+            </span>
+          </h2>
+          {(selectedDevices.length > 0 || dateRange != null) && <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Clear alarm filter</span>}>
+            <ListX className={styles.deviceRefreshIcon} onClick={() => { clearAlarmFilter() }} strokeWidth={"2.5px"} size={23} cursor={"pointer"} />
+          </Tooltip>}
+        </div>
+
+        <div className={styles.selectFilters}>
+          <SelectDevicesComboBox devices={devices} selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices} />
+
+          {dateRange && <Wrap gap="2">
+            <ChakraBadge padding="0.25rem 0 0.25rem 0.4rem" display="flex" alignItems="center" gap="0.2rem" fontSize={"0.7rem"}>
+              {`${dateRange[0].toLocaleDateString()} ~ ${dateRange[1].toLocaleDateString()}`}
+              <CloseButton size={"sm"} boxSize="0.1em" cursor="pointer" onClick={(e) => { e.stopPropagation(); setDateRange(null) }} />
+            </ChakraBadge>
+          </Wrap>}
+          <DateRangePicker value={dateRange} onChange={(value) => { setDateRange(value) }} placeholder="Select Date Range" placement="bottomStart" />
+        </div>
       </div>
 
-      <div className={styles.selectFilters}>
-        <SelectDevicesComboBox devices={devices} selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices} />
+      <div className={`${styles.downContainer}`}>
+        <div className={`${styles.section}`}>
+          <Accordion
+            title={<h3 className={styles.alarmPanelTitles}>Unacknowledged <span className={styles.sectionCount}>
+              <Badge label={unacknowledgedAlarms.length.toString()} bgColor="neutral" textColor="dark" />
+            </span></h3>} defaultOpen={true} bgColor='white'>
 
-        {dateRange && <Wrap gap="2">
-          <ChakraBadge padding="0.25rem 0 0.25rem 0.4rem" display="flex" alignItems="center" gap="0.2rem" fontSize={"0.7rem"}>
-            {`${dateRange[0].toLocaleDateString()} ~ ${dateRange[1].toLocaleDateString()}`}
-            <CloseButton size={"sm"} boxSize="0.1em" cursor="pointer" onClick={(e) => { e.stopPropagation(); setDateRange(null) }} />
-          </ChakraBadge>
-        </Wrap>}
-        <DateRangePicker value={dateRange} onChange={(value) => { setDateRange(value) }} placeholder="Select Date Range" placement="bottomStart" />
-      </div>
+            <div className={`${styles.alarmsAccordionSection} ${(selectedDevices.length > 0) ? styles.alarmsAccordionSectionHeightWithSelectedDevices : null} ${(selectedDevices.length == 0 && dateRange == null) ? styles.alarmsAccordionSectionHeight : null}`}>
+              {unacknowledgedAlarms.map(alarm => {
+                return (
+                  <div className={`${styles.alarmCard}`} key={alarm.id} >
+                    <AlarmCard key={alarm.id} removeunacknowledgedAlarm={removeunacknowledgedAlarm} setCurrentExpandedUnackAlarm={setCurrentExpandedUnackAlarm} currentExpandedUnackAlarm={currentExpandedUnackAlarm} alarm={alarm} investigateAlarm={investigateAlarmData} resolveAlarm={resolveAlarmData} />
+                  </div>
+                );
+              })}
+            </div>
+          </Accordion>
+        </div>
 
-      <div className={styles.section}>
-        <Accordion
-          title={<h3 className={styles.alarmPanelTitles}>Unacknowledged <span className={styles.sectionCount}>
-            <Badge label={unacknowledgedAlarms.length.toString()} bgColor="neutral" textColor="dark" />
-          </span></h3>} defaultOpen={true} bgColor='white'>
-
-          <div className={`${styles.alarmsAccordionSection} ${(selectedDevices.length > 0) ? styles.alarmsAccordionSectionHeightWithSelectedDevices : null} ${(selectedDevices.length == 0 && dateRange == null) ? styles.alarmsAccordionSectionHeight : null}`}>
-            {unacknowledgedAlarms.map(alarm => {
-              return (
-                <div className={`${styles.alarmCard}`} key={alarm.id} >
-                  <AlarmCard key={alarm.id} removeunacknowledgedAlarm={removeunacknowledgedAlarm} setCurrentExpandedUnackAlarm={setCurrentExpandedUnackAlarm} currentExpandedUnackAlarm={currentExpandedUnackAlarm} alarm={alarm} acknowledgeAlarm={acknowledgeAlarmData} resolveAlarm={resolveAlarmData} />
-                </div>
-              );
-            })}
-          </div>
-        </Accordion>
-      </div>
-
-      <div className={styles.section}>
-        <Accordion
-          title={<h3 className={styles.alarmPanelTitles}>Acknowledged <span className={styles.sectionCount}>
-            <Badge label={acknowledgedAlarms.length.toString()} bgColor="neutral" textColor="dark" />
-          </span></h3>} defaultOpen={true} bgColor='white'
-        >
-          <div className={`${styles.alarmsAccordionSection} ${(selectedDevices.length > 0) ? styles.alarmsAccordionSectionHeightWithSelectedDevices : null}  ${(selectedDevices.length == 0 && dateRange == null) ? styles.alarmsAccordionSectionHeight : null}`}>
-            {acknowledgedAlarms.map(alarm => {
-              return (
-                <div className={`${styles.alarmCard}`} key={alarm.id}>
-                  <AlarmCard removeacknowledgedAlarm={removeacknowledgedAlarm} setCurrentExpandedAckAlarm={setCurrentExpandedAckAlarm} currentExpandedAckAlarm={currentExpandedAckAlarm} key={alarm.id} alarm={alarm} acknowledgeAlarm={acknowledgeAlarmData} resolveAlarm={resolveAlarmData} resolveInvestigatedAlarmData={resolveInvestigatedAlarmData} />
-                </div>
-              );
-            })}
-          </div>
-        </Accordion>
+        <div className={styles.section}>
+          <Accordion
+            title={<h3 className={styles.alarmPanelTitles}>Acknowledged <span className={styles.sectionCount}>
+              <Badge label={acknowledgedAlarms.length.toString()} bgColor="neutral" textColor="dark" />
+            </span></h3>} defaultOpen={true} bgColor='white'
+          >
+            <div className={`${styles.alarmsAccordionSection} ${(selectedDevices.length > 0) ? styles.alarmsAccordionSectionHeightWithSelectedDevices : null}  ${(selectedDevices.length == 0 && dateRange == null) ? styles.alarmsAccordionSectionHeight : null}`}>
+              {acknowledgedAlarms.map(alarm => {
+                return (
+                  <div className={`${styles.alarmCard}`} key={alarm.id}>
+                    <AlarmCard removeacknowledgedAlarm={removeacknowledgedAlarm} setCurrentExpandedAckAlarm={setCurrentExpandedAckAlarm} currentExpandedAckAlarm={currentExpandedAckAlarm} key={alarm.id} alarm={alarm} investigateAlarm={investigateAlarmData} resolveAlarm={resolveAlarmData} resolveInvestigatedAlarmData={resolveInvestigatedAlarmData} />
+                  </div>
+                );
+              })}
+            </div>
+          </Accordion>
+        </div>
       </div>
     </div>
   );

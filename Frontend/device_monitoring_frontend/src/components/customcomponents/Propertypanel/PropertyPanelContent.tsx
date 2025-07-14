@@ -1,27 +1,28 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Accordion from "../Accordion";
 import styles from "@/styles/scss/PropertyPanel.module.scss";
 import Badge from "../Badge";
 import { getLatestAlarmForDevice } from "@/services/alarmservice";
-import { formatRelativeTime } from "@/utils/helperfunctions";
+import { formatRelativeTime, getCollapsedAncestorsToHighlight } from "@/utils/helperfunctions";
 import { useDeviceAlertSocket } from "@/utils/customhooks/useDeviceAlertSocket";
 import KeyValueField from "./KeyValueField";
+import { AccordionStateProvider, useAccordionState } from "./AccordionVisibilityContext";
 
 export const StaticTabContent = React.memo(({ staticProps }: { staticProps: any }) => {
-    return (
-        <div className={`${styles.propertyPanelTabContent}`}>
-            {Object.entries(staticProps).map(([key, value]: any) => {
-                if (typeof value === "object" && value !== null)
-                    return renderObject(key, value,1, "", []);
-                else
-                    return (
-                        <div className={styles.keyValueSection} key={key}>
-                            {renderKeyValueSection(key, value, 0, "", [])}
-                        </div>
-                    );
-            })}
-        </div>
-    );
+  return (
+    <div className={`${styles.propertyPanelTabContent}`}>
+      {Object.entries(staticProps).map(([key, value]: any) => {
+        if (typeof value === "object" && value !== null)
+          return renderObject(key, value, 1, "", [], new Set());
+        else
+          return (
+            <div className={styles.keyValueSection} key={key}>
+              {renderKeyValueSection(key, value, 0, "", [])}
+            </div>
+          );
+      })}
+    </div>
+  );
 });
 
 export const HealthTabContent = React.memo(
@@ -35,7 +36,12 @@ export const HealthTabContent = React.memo(
   }: any) => {
     const [alarm, setAlarm] = useState<any>(null);
     const [totalAlarmsForDevice, setTotalAlarmsForDevice] = useState<any>(0);
-    
+    const accordionContext = useAccordionState();
+
+    const collapsedTitlesToHighlight = useMemo(() => {
+      return getCollapsedAncestorsToHighlight(highlightedPaths, accordionContext?.state || {});
+    }, [highlightedPaths, accordionContext?.state]);
+
     const handleAlertUpdates = (msg: string) => {
       const incomingUpdates = JSON.parse(msg);
       if (incomingUpdates) {
@@ -92,7 +98,7 @@ export const HealthTabContent = React.memo(
 
         {Object.entries(dynamicProps).map(([key, value]: any) => {
           if (typeof value === "object" && value !== null)
-            return renderObject(key, value, 1, "", highlightedPaths);
+            return renderObject(key, value, 1, "", highlightedPaths, collapsedTitlesToHighlight);
           else
             return (
               <div className={styles.keyValueSection} key={key}>
@@ -105,9 +111,9 @@ export const HealthTabContent = React.memo(
   },
   (prevProps, nextProps) => {
     return (
-    prevProps.deviceMacId === nextProps.deviceMacId &&
-    JSON.stringify(prevProps.highlightedPaths) === JSON.stringify(nextProps.highlightedPaths)
-  );
+      prevProps.deviceMacId === nextProps.deviceMacId &&
+      JSON.stringify(prevProps.highlightedPaths) === JSON.stringify(nextProps.highlightedPaths)
+    );
 
   }
 );
@@ -118,7 +124,7 @@ export const renderKeyValueSection = (
   depth: number,
   parentPath: string,
   highlightedPaths: string[]
-) => {    
+) => {
   const fullPath = parentPath ? `${parentPath}.${key}` : key;
   return (
     <KeyValueField
@@ -137,21 +143,24 @@ export const renderObject = (
   data: any,
   depth = 1,
   parentPath = "",
-  highlightedPaths: string[]
+  highlightedPaths: string[],
+  collapsedTitlesToHighlight: Set<string>,
 ) => {
+  const fullPath = parentPath ? `${parentPath}.${key}` : key;
+  const shouldHighlightTitle = collapsedTitlesToHighlight.has(fullPath);
+
   if (!data || typeof data !== "object") return null;
 
   if (Array.isArray(data)) {
-    return renderArray(key, data, depth, parentPath, highlightedPaths);
+    return renderArray(key, data, depth, parentPath, highlightedPaths, collapsedTitlesToHighlight);
   }
-
-  const fullPath = parentPath ? `${parentPath}.${key}` : key;
 
   return (
     <Accordion
+      keyPath={fullPath}
       key={fullPath}
       title={
-        <span className={`${styles.propertyPanelTitles} ${styles[`depth-${depth}`]}`}>
+        <span className={`${styles.propertyPanelTitles} ${styles[`depth-${depth}`]} ${shouldHighlightTitle ? styles.highlightedTitle : ""}`}>
           {key}
         </span>
       }
@@ -162,9 +171,9 @@ export const renderObject = (
         {Object.entries(data).map(([childKey, childVal]) => {
           const childPath = `${fullPath}.${childKey}`;
           if (Array.isArray(childVal)) {
-            return renderArray(childKey, childVal, depth + 1, fullPath, highlightedPaths);
+            return renderArray(childKey, childVal, depth + 1, fullPath, highlightedPaths, collapsedTitlesToHighlight);
           } else if (typeof childVal === "object" && childVal !== null) {
-            return renderObject(childKey, childVal, depth + 1, fullPath, highlightedPaths);
+            return renderObject(childKey, childVal, depth + 1, fullPath, highlightedPaths, collapsedTitlesToHighlight);
           } else {
             return renderKeyValueSection(childKey, childVal, depth + 1, fullPath, highlightedPaths);
           }
@@ -179,7 +188,8 @@ export const renderArray = (
   data: any[],
   depth: number,
   parentPath = "",
-  highlightedPaths: string[]
+  highlightedPaths: string[],
+  collapsedTitlesToHighlight: Set<string>
 ) => {
   if (!data || data.length === 0) return null;
 
@@ -187,6 +197,7 @@ export const renderArray = (
 
   return (
     <Accordion
+      keyPath={fullPath}
       key={fullPath}
       title={<span className={`${styles.propertyPanelTitles} ${styles[`depth-${depth}`]}`}>{key}</span>}
       defaultOpen={true}
@@ -199,7 +210,7 @@ export const renderArray = (
           const displayLabel = `${key} ${idx}`;
 
           if (typeof item === "object" && item !== null) {
-            return renderObject(displayLabel, item, depth + 1, itemPath, highlightedPaths);
+            return renderObject(displayLabel, item, depth + 1, itemPath, highlightedPaths, collapsedTitlesToHighlight);
           } else {
             return renderKeyValueSection(displayLabel, item, depth + 1, itemPath, highlightedPaths);
           }

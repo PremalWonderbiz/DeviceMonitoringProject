@@ -7,6 +7,7 @@ import { getPropertyPanelData } from "@/services/deviceservice";
 import styles from "@/styles/scss/PropertyPanel.module.scss";
 import { getChangedPaths } from "@/utils/deepDiff";
 import ComboBox from "@/components/customcomponents/AlarmPanel/SelectDevicesComboBox";
+import { AccordionStateProvider } from "./AccordionVisibilityContext";
 
 
 const PropertyPanel = ({ setCurrentDeviceId, setCurrentDeviceFileName, deviceFileNames, devicesNameMacList, setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, currentDeviceId, currentDeviceFileName, activeTab, setActiveTab }: any) => {
@@ -16,37 +17,8 @@ const PropertyPanel = ({ setCurrentDeviceId, setCurrentDeviceFileName, deviceFil
     const [shouldConnectSignalR, setShouldConnectSignalR] = useState<boolean>(true);
     const [selectedDevices, setSelectedDevices] = useState<any[]>([]);
 
-    // const handleUpdate = useCallback((msg: any) => {
-    //     const incomingDevicesDetails = JSON.parse(msg);
-    //     // const newDynamicProps = incomingDevicesDetails;
-
-    //     setPropertyPanelData((prev: any) => {
-    //         if (!prev) return prev;
-
-    //         const changed = getChangedPaths(prev.dynamicProperties, incomingDevicesDetails);
-    //         setHighlightedPaths(changed);
-
-    //         if (highlightTimeoutRef.current) {
-    //             clearTimeout(highlightTimeoutRef.current);
-    //         }
-
-    //         highlightTimeoutRef.current = setTimeout(() => {
-    //             setHighlightedPaths([]);
-    //         }, 3000);
-
-    //         return {
-    //             ...prev,
-    //             dynamicProperties: incomingDevicesDetails
-    //         };
-    //     });
-    // }, []);
-
-
-
     const handleUpdate = useCallback((msg: any) => {
-        const incomingDevicesDetails = JSON.parse(msg);
-        console.log(incomingDevicesDetails);
-        
+        const incomingDevicesDetails = JSON.parse(msg);        
 
         setPropertyPanelData((prev: any) => {
             if (!prev) return prev;
@@ -158,11 +130,13 @@ const PropertyPanel = ({ setCurrentDeviceId, setCurrentDeviceFileName, deviceFil
                     <span className={styles.deviceSubTitle}>{PropertyPanelData.type}</span>
                 </div>
                 <div className="mt-2">
+                    <AccordionStateProvider>
                     <Accordion isTabList={true} title={<TabList activeTab={activeTab} setActiveTab={changeActiveTab} />} defaultOpen={true} bgColor=''>
                         {(activeTab === "Static" && PropertyPanelData.staticProperties) ?
                             <StaticTabContent staticProps={PropertyPanelData.staticProperties} />
                             : <HealthTabContent highlightedPaths={highlightedPaths} deviceName={PropertyPanelData.name} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} setIsAlarmPanelOpen={setIsAlarmPanelOpen} deviceMacId={PropertyPanelData.macId} dynamicProps={PropertyPanelData.dynamicProperties} />}
                     </Accordion>
+                    </AccordionStateProvider>
                 </div>
             </div>
         );

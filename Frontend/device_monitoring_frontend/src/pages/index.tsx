@@ -15,6 +15,7 @@ import { getLatestAlarms } from "@/services/alarmservice";
 import { useDeviceAlertSocket } from "@/utils/customhooks/useDeviceAlertSocket";
 import { SortingState } from "@tanstack/react-table";
 import { Tooltip } from "@/components/ui/tooltip";
+import { log } from "console";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -80,8 +81,10 @@ export default function Home() {
     const rawDevices = JSON.parse(msg);
     console.log("WebSocket update received", rawDevices);
 
-    const isDefaultOrStatusConnectivitySorting =
-      sorting.length === 0 || sorting.every((s) => s.id === "status" || s.id === "connectivity");
+    const isDefaultSorting =
+      sorting.length === 0;
+    const isSortingOnStatusConnectivityOrLastUpdated =
+      sorting.some((s: any) => s.id === "status" || s.id === "connectivity" || s.id === "lastUpdated");
 
     setDeviceData((prevDevices) => {
       let updatedMacIds: string[] = [];
@@ -105,12 +108,14 @@ export default function Home() {
           changedFields.push("connectivity");
         }
 
+
         if ("LastUpdated" in incoming) {
           updatedDevice.lastUpdated = incoming.LastUpdated;
         }
 
         if (changedFields.length > 0) {
           hasChange = true;
+          changedFields.push("lastUpdated");
           updatedMacIds.push(existingDevice.macId);
           updatedMap[existingDevice.macId] = changedFields;
           return updatedDevice;
@@ -127,7 +132,7 @@ export default function Home() {
           justRefreshedRef.current = true;
           return prevDevices;
         }
-        
+
         if (justRefreshedRef.current) {
           setTimeout(() => {
             setUpdatedFieldsMap(updatedMap);
@@ -140,20 +145,26 @@ export default function Home() {
           highlightTimeoutRef.current = setTimeout(() => setUpdatedFieldsMap(null), 3000);
         }
 
-        if (isDefaultOrStatusConnectivitySorting) {
+        if (isDefaultSorting) {
           const updatedSet = new Set(updatedMacIds);
           const updatedRows = updatedDevices.filter((d) => updatedSet.has(d.macId));
           const restRows = updatedDevices.filter((d) => !updatedSet.has(d.macId));
           return [...updatedRows, ...restRows];
         }
 
+        if (isSortingOnStatusConnectivityOrLastUpdated) {
+          pendingHighlightRef.current = updatedMap;
+          setRefreshDeviceDataKey(prev => prev + 1);
+          justRefreshedRef.current = true;
+        }
+
         return updatedDevices;
       }
 
       if (currentPage !== 1) {
-          setRefreshDeviceDataKey(prev => prev + 1);
-          justRefreshedRef.current = true;
-          return prevDevices;
+        setRefreshDeviceDataKey(prev => prev + 1);
+        justRefreshedRef.current = true;
+        return prevDevices;
       }
 
       // Handle unseen updates (on page 1 with matching MacId not visible)
@@ -168,6 +179,7 @@ export default function Home() {
             const fields: string[] = [];
             if ("Status" in d) fields.push("status");
             if ("Connectivity" in d) fields.push("connectivity");
+            if ("Connectivity" in d || "Status" in d) fields.push("lastUpdated");
             unseenMap[d.MacId] = fields;
           }
         });
@@ -180,9 +192,9 @@ export default function Home() {
       return prevDevices;
     });
 
-    if (sorting.some((s: any) => s.id === "status" || s.id === "connectivity")) {
-      setSorting((prev: SortingState) => prev.filter((s) => s.id !== "status" && s.id !== "connectivity"));
-    }
+    // if (sorting.some((s: any) => s.id === "status" || s.id === "connectivity")) {
+    //   setSorting((prev: SortingState) => prev.filter((s) => s.id !== "status" && s.id !== "connectivity"));
+    // }
   }, [sorting, currentPage, searchInput]);
 
 
@@ -247,13 +259,20 @@ export default function Home() {
 
       if (Object.keys(validPendingMap).length > 0) {
         setUpdatedFieldsMap(validPendingMap);
-        if (highlightTimeoutRef.current) clearTimeout(highlightTimeoutRef.current);
-        highlightTimeoutRef.current = setTimeout(() => setUpdatedFieldsMap(null), 3000);
+
+        if (highlightTimeoutRef.current) {
+          clearTimeout(highlightTimeoutRef.current);
+        }
+
+        highlightTimeoutRef.current = setTimeout(() => {
+          setUpdatedFieldsMap(null);
+        }, 3000);
       }
 
       pendingHighlightRef.current = null;
     }
   }, [deviceData]);
+
 
   useEffect(() => {
     if (searchInput == "" || searchInput == null) {
@@ -292,9 +311,9 @@ export default function Home() {
   }, [searchInput, sorting, pageSize, currentPage, refreshDeviceDataKey]);
 
   const changeSearchInput = (value: string) => {
-    if(value == null || value == "")
+    if (value == null || value == "")
       setSearchInput("");
-    if(searchInputTimeoutRef.current) 
+    if (searchInputTimeoutRef.current)
       clearTimeout(searchInputTimeoutRef.current);
 
     searchInputTimeoutRef.current = setTimeout(() => {
@@ -366,16 +385,16 @@ export default function Home() {
                   <ListX className={styles.deviceRefreshIcon} onClick={() => { setSorting([]) }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
                 </Tooltip>}
               {deviceData && deviceData.length > 0 &&
-              <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Manual refresh button</span>}>
-                <Repeat className={styles.deviceRefreshIcon} onClick={() => { setRefreshDeviceDataKey(prev => prev + 1); justRefreshedRef.current = true; }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
-              </Tooltip>}
+                <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Refresh Device List</span>}>
+                  <Repeat className={styles.deviceRefreshIcon} onClick={() => { setRefreshDeviceDataKey(prev => prev + 1); justRefreshedRef.current = true; }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
+                </Tooltip>}
             </div>
           </div>
         </div>
 
         <div className={styles.bodyContainer}>
           <div className={`${styles.pageWrapper} ${isPropertyPanelOpen ? styles.pushRight : ''}`}>
-            <TableComponent sorting={sorting} setSorting={setSorting} refreshDeviceDataKey={refreshDeviceDataKey} updatedFieldsMap={updatedFieldsMap} totalPages={totalPages} pageSize={pageSize} setPageSize={setPageSize} setCurrentPage={setCurrentPage} currentPage={currentPage} data={deviceData} setIsPropertyPanelOpen={openPropertypanel} />
+            <TableComponent currentDeviceId={currentDeviceId} sorting={sorting} setSorting={setSorting} refreshDeviceDataKey={refreshDeviceDataKey} updatedFieldsMap={updatedFieldsMap} totalPages={totalPages} pageSize={pageSize} setPageSize={setPageSize} setCurrentPage={setCurrentPage} currentPage={currentPage} data={deviceData} setIsPropertyPanelOpen={openPropertypanel} />
           </div>
           {(deviceData && deviceData.length > 0) &&
             <Sidebar position="right" isOpen={isPropertyPanelOpen} setIsOpen={setIsPropertyPanelOpen} closeSidebar={closePropertyPanel}>

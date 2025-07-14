@@ -14,13 +14,13 @@ namespace Domain.Interface
 
         public Task<string> PutAlarm(Guid id, Alarm alarm);
 
-        public Task<string> AcknowledgeAlarm(Guid alarmId);
+        public Task<GetAlarmDto> InvestigateAlarm(Guid alarmId);
 
         public Task<GetAlarmDto> ResolveAlarm(Guid alarmId, string comment);
 
         public Task<Alarm> PostAlarm(PostAlarmDto alarm);
 
-        public Task<string> DeleteAlarm(Guid id);
+        public Task<GetAlarmDto> IgnoreAlarm(Guid id, string comment);
 
         public Task<GetLatestAlarmsDto> GetLatestFiveAlarms();
 

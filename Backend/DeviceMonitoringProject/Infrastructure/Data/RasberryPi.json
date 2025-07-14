@@ -4,8 +4,8 @@
   "Type": "Microcomputer",
   "Status": "Online",
   "MacId": "B8:27:EB:45:67:89",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-07-09T18:02:55.0142120+05:30",
+  "Connectivity": "High",
+  "LastUpdated": "2025-07-14T17:47:33.7956883+05:30",
   "staticProperties": {
     "Hardware Information": {
       "Model": "Raspberry Pi 4 Model B",
@@ -61,32 +61,32 @@
   },
   "dynamicProperties": {
     "System Health": {
-      "CPU Usage": "38%",
+      "CPU Usage": "35%",
       "RAM Usage": {
-        "Used": "1.8 GB",
+        "Used": "1 GB",
         "Total": "4 GB"
       },
       "System Temperature": {
-        "CPU": "56°C",
-        "Board": "42°C"
+        "CPU": "63°C",
+        "Board": "47°C"
       },
-      "Uptime": "5 days, 1 hours",
+      "Uptime": "1 days, 8 hours",
       "System Load": [
-        0.77,
-        0.69,
-        1.31
+        0.83,
+        0.92,
+        1.18
       ]
     },
     "Network Activity": {
       "Interfaces": [
         {
           "name": "eth0",
-          "ipAddress": "192.168.1.38",
+          "ipAddress": "192.168.1.34",
           "macAddress": "B8:27:EB:45:67:89",
           "connectionType": "Ethernet",
           "traffic": {
-            "upload": "2 Mbps",
-            "download": "55 Mbps"
+            "upload": "7 Mbps",
+            "download": "71 Mbps"
           }
         },
         {
@@ -104,13 +104,8 @@
       "Connected Clients (Media Server)": [
         {
           "deviceName": "Smart TV",
-          "ip": "192.168.1.83",
+          "ip": "192.168.1.85",
           "mediaStream": "HD Movie (5.1 GB transferred)"
-        },
-        {
-          "deviceName": "Mobile Device",
-          "ip": "192.168.1.109",
-          "mediaStream": "Music Stream (Streaming)"
         }
       ]
     },
@@ -129,13 +124,13 @@
         {
           "service": "Pi-hole",
           "status": "Running",
-          "dnsQueriesBlocked": "7,698"
+          "dnsQueriesBlocked": "7,327"
         }
       ],
       "Last Reboot Reason": "Scheduled maintenance",
       "Firmware": {
-        "Current Version": "2025.02.04",
-        "Last Update": "2025-07-03",
+        "Current Version": "2025.09.11",
+        "Last Update": "2025-07-05",
         "Update Available": false
       }
     }

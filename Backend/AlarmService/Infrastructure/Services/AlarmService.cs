@@ -27,7 +27,8 @@ namespace Infrastructure.Services
 
         public async Task<IEnumerable<GetAlarmDto>> GetAlarms(AlarmFilter filter)
         {
-            var alarms = _context.Alarms.Include(a => a.State).AsQueryable();
+            var ignoredStateId = await _context.AlarmStates.Where(state => state.Name == "Ignored").Select(state => state.Id).FirstOrDefaultAsync();
+            var alarms = _context.Alarms.Where(alarm => alarm.StateId != ignoredStateId).Include(a => a.State).AsQueryable();
             if (filter.Devices is not null && filter.Devices.Count > 0)
                 alarms = alarms.Where(a => filter.Devices.Contains(a.SourceDeviceMacId));
 
@@ -56,7 +57,8 @@ namespace Infrastructure.Services
                 Severity = alarm.Severity.ToString(),
                 SourceDeviceMacId = alarm.SourceDeviceMacId,
                 AlarmState = alarm.State.Name,
-                AlarmComment = alarm.Comment
+                AlarmComment = alarm.Comment,
+                AcknowledgedFrom = alarm.AcknowledgedFrom
             }).ToListAsync();
 
             return formattedAlarms;
@@ -122,14 +124,37 @@ namespace Infrastructure.Services
             return alarm;
         }
 
-        public async Task<string> DeleteAlarm(Guid id)
+        public async Task<GetAlarmDto> IgnoreAlarm(Guid id, string comment)
         {
-            var alarm = await _context.Alarms.FindAsync(id);
-            if (alarm == null)
-                throw new CustomException(404, "Alarm not found");
+            var alarm = await _context.Alarms.SingleOrDefaultAsync(alarm => alarm.Id == id);
+            if (alarm is null)
+                throw new CustomException(400, "Alarm not found");
 
-            _context.Alarms.Remove(alarm);
-            await _context.SaveChangesAsync();
+            if (alarm.IsAcknowledged is false)
+            {
+                alarm.IsAcknowledged = true;
+                alarm.AcknowledgedAt = DateTime.Now;
+                alarm.AcknowledgedFrom = "Ignored without investigation";
+            }
+            else
+            {
+                alarm.AcknowledgedFrom = "Ignored with investigation";
+            }
+
+            var ignoredState = await _context.AlarmStates.SingleOrDefaultAsync(alarm => alarm.Name == "Ignored");
+            alarm.StateId = ignoredState?.Id??1002; //1002 is hardcoded here later will throw exception or handle it here
+            alarm.Comment = (comment != "manual" && comment.Length > 0) ? comment : "Manually marked as Ignored";
+
+            _context.Entry(alarm).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new CustomException(500, ex.Message);
+            }
 
             var mainPageUpdates = await GetLatestFiveAlarms();
             var serializedData = JsonSerializer.Serialize(mainPageUpdates, new JsonSerializerOptions
@@ -148,7 +173,19 @@ namespace Infrastructure.Services
                 WriteIndented = true
             }));
 
-            return "Alarm deleted successfully";
+            return new GetAlarmDto
+            {
+                Id = alarm.Id,
+                AcknowledgedAt = alarm.AcknowledgedAt,
+                IsAcknowledged = alarm.IsAcknowledged,
+                Message = alarm.Message,
+                RaisedAt = alarm.RaisedAt,
+                Severity = alarm.Severity.ToString(),
+                SourceDeviceMacId = alarm.SourceDeviceMacId,
+                AlarmState = alarm.State.Name,
+                AlarmComment = alarm.Comment,
+                AcknowledgedFrom = alarm.AcknowledgedFrom
+            };
         }
 
         private bool AlarmExists(Guid id)
@@ -158,7 +195,8 @@ namespace Infrastructure.Services
 
         public async Task<IEnumerable<GetAlarmDto>> GetAlarmsByDeviceId(string id)
         {
-            var alarms = await _context.Alarms.Where(alarm => alarm.SourceDeviceMacId == id).Include(a => a.State).ToListAsync();
+            var ignoredStateId = await _context.AlarmStates.Where(state => state.Name == "Ignored").Select(state => state.Id).FirstOrDefaultAsync();
+            var alarms = await _context.Alarms.Where(alarm => alarm.SourceDeviceMacId == id && alarm.StateId != ignoredStateId).Include(a => a.State).ToListAsync();
 
             var formattedAlarms = new List<GetAlarmDto>();
             alarms.ForEach(alarm => {
@@ -172,14 +210,15 @@ namespace Infrastructure.Services
                     Severity = alarm.Severity.ToString(),
                     SourceDeviceMacId = alarm.SourceDeviceMacId,
                     AlarmState = alarm.State.Name,
-                    AlarmComment = alarm.Comment
+                    AlarmComment = alarm.Comment,
+                    AcknowledgedFrom = alarm.AcknowledgedFrom
                 });
             });
 
             return formattedAlarms;
         }
 
-        public async Task<string> AcknowledgeAlarm(Guid alarmId)
+        public async Task<GetAlarmDto> InvestigateAlarm(Guid alarmId)
         {
             var alarm = await _context.Alarms.SingleOrDefaultAsync(alarm => alarm.Id == alarmId);
             if (alarm is null)
@@ -190,7 +229,8 @@ namespace Infrastructure.Services
 
             var investigateState = await _context.AlarmStates.SingleOrDefaultAsync(alarm => alarm.Name == "Investigating");
             alarm.StateId = investigateState?.Id ?? 2; //2 is hardcoded here later will throw exception or handle it here
-            alarm.Comment = "Alarm is in 'Investigating' state currently";
+            alarm.Comment = "Under Investigation";
+            alarm.AcknowledgedFrom = "Alarm acknowledged";
 
             _context.Entry(alarm).State = EntityState.Modified;
 
@@ -203,13 +243,26 @@ namespace Infrastructure.Services
                 throw new CustomException(500, ex.Message);
             }
 
-            return "Alarm moved in investigating state";
+            return new GetAlarmDto
+            {
+                Id = alarm.Id,
+                AcknowledgedAt = alarm.AcknowledgedAt,
+                IsAcknowledged = alarm.IsAcknowledged,
+                Message = alarm.Message,
+                RaisedAt = alarm.RaisedAt,
+                Severity = alarm.Severity.ToString(),
+                SourceDeviceMacId = alarm.SourceDeviceMacId,
+                AlarmState = alarm.State.Name,
+                AlarmComment = alarm.Comment,
+                AcknowledgedFrom = alarm.AcknowledgedFrom
+            };
         }
 
         public async Task<GetLatestAlarmsDto> GetLatestFiveAlarms()
         {
-            var alarms = await _context.Alarms.Include(a => a.State).OrderByDescending(a => a.RaisedAt).Take(5).ToListAsync();
-            var totalAlarms = await _context.Alarms.CountAsync();
+            var ignoredStateId = await _context.AlarmStates.Where(state => state.Name == "Ignored").Select(state => state.Id).FirstOrDefaultAsync();
+            var alarms = await _context.Alarms.Where(alarm => alarm.StateId != ignoredStateId).Include(a => a.State).OrderByDescending(a => a.RaisedAt).Take(5).ToListAsync();
+            var totalAlarms = await _context.Alarms.Where(alarm => alarm.StateId != ignoredStateId).CountAsync();
 
             var formattedAlarms = new List<GetAlarmDto>();
             alarms.ForEach(alarm => {
@@ -236,7 +289,8 @@ namespace Infrastructure.Services
 
         public async Task<GetLatestAlarmForDeviceDto> GetLatestAlarmForDevice(string deviceMacId)
         {
-            var alarms = _context.Alarms.Where(a => a.SourceDeviceMacId == deviceMacId)?.Include(a => a.State).OrderByDescending(a => a.RaisedAt).AsQueryable();
+            var ignoredStateId = await _context.AlarmStates.Where(state => state.Name == "Ignored").Select(state => state.Id).FirstOrDefaultAsync();
+            var alarms = _context.Alarms.Where(a => a.SourceDeviceMacId == deviceMacId && a.StateId != ignoredStateId)?.Include(a => a.State).OrderByDescending(a => a.RaisedAt).AsQueryable();
             var totalAlarms = await alarms.CountAsync();
             var alarm = await alarms.FirstOrDefaultAsync();
             if (alarm == null)
@@ -282,12 +336,18 @@ namespace Infrastructure.Services
             {
                 alarm.IsAcknowledged = true;
                 alarm.AcknowledgedAt = DateTime.Now;
+                alarm.AcknowledgedFrom = "Resolved without investigation";
+            }
+            else
+            {
+                alarm.AcknowledgedFrom = "Resolved with investigation";
             }
 
-            var resolvedState = await _context.AlarmStates.SingleOrDefaultAsync(alarm => alarm.Name == "Resolved");
+                var resolvedState = await _context.AlarmStates.SingleOrDefaultAsync(alarm => alarm.Name == "Resolved");
             alarm.StateId = resolvedState?.Id ?? 3; //3 is hardcoded here later will throw exception or handle it here
             alarm.Comment = (comment != "manual" && comment.Length > 0) ? comment : "Manually marked as Resoved";
             alarm.ResolvedAt = DateTime.Now;
+            
 
             _context.Entry(alarm).State = EntityState.Modified;
 
@@ -310,7 +370,8 @@ namespace Infrastructure.Services
                 Severity = alarm.Severity.ToString(),
                 SourceDeviceMacId = alarm.SourceDeviceMacId,
                 AlarmState = alarm.State.Name,
-                AlarmComment = alarm.Comment
+                AlarmComment = alarm.Comment,
+                AcknowledgedFrom = alarm.AcknowledgedFrom
             };
         }
     }

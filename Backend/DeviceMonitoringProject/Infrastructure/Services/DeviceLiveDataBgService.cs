@@ -40,7 +40,7 @@ namespace Infrastructure.Services
                 {
                     await deviceService.SimulateTopLevelChangeForOneDevice();
 
-                    if ((DateTime.Now - _lastDynamicUpdateTime).TotalSeconds >= 20)
+                    if ((DateTime.Now - _lastDynamicUpdateTime).TotalSeconds >= 10)
                     {
                         await deviceService.SimulateDynamicPropertiesUpdateForBatch();
                         _lastDynamicUpdateTime = DateTime.Now;

@@ -29,9 +29,9 @@ export const getLatestAlarmForDevice = async (deviceMacId : any) => {
   }
 };
 
-export const acknowledgeAlarm = async (alarmId: any) => {
+export const investigateAlarm = async (alarmId: any) => {
   try {
-    const response = await axios.put(`${alarmServiceBaseURL}/api/Alarms/acknowledgeAlarm/${alarmId}`);
+    const response = await axios.put(`${alarmServiceBaseURL}/api/Alarms/investigateAlarm/${alarmId}`);
     return response;
   } catch (error : any) {
      handleAxiosError(error);
@@ -48,9 +48,10 @@ export const resolveAlarm = async (alarmId: any, input : string) => {
   }
 };
 
-export const deleteAlarm = async (alarmId: any) => {
+export const ignoreAlarm = async (alarmId: any, input : string) => {
+  const value = (input && input.length > 0) ? input :  "manual";
   try {
-    const response = await axios.delete(`${alarmServiceBaseURL}/api/Alarms/${alarmId}`);
+    const response = await axios.delete(`${alarmServiceBaseURL}/api/Alarms/ignoreAlarm/${alarmId}/${value}`);
     return response;
   } catch (error : any) {
      handleAxiosError(error);

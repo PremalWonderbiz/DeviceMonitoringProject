@@ -30,9 +30,9 @@ const KeyValueField = ({
   if (typeof value === "boolean") value = value ? "Yes" : "No";
 
   return (
-    <div className={`${styles.kvRow} ${isHighlighted ? styles.highlight : ""}`}>
+    <div className={`${styles.kvRow}`}>
       <span className={`${styles.kvKey} ${styles[`depth-${depth}`]}`}>{keyName}</span>
-      <span className={styles.kvValue}>{value}</span>
+      <span className={`${styles.kvValue} ${isHighlighted ? styles.highlight : ""}`}>{value}</span>
     </div>
   );
 };

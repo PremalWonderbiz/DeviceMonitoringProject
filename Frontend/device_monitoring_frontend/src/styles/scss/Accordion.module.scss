@@ -1,7 +1,7 @@
 
 .accordion {
   width: 100%;
-  border-radius: 5px;
+  overflow: hidden;
 }
 
 .header {
@@ -20,13 +20,15 @@
 .content {
   max-height: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   opacity: 0;
   transition: all 0.3s ease;
   padding-top: 0;
 }
 
 .open {
-  max-height: 100%; 
+  max-height: calc(100% - 1.7rem); 
   opacity: 1;
 }
 

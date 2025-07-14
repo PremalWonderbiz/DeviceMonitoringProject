@@ -1,19 +1,19 @@
 //function to capitalize first letter of the input text
 export function capitalizeFirstLetter(val: string) {
-    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+  return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
 
 export function handleAxiosError(error: any) {
-    if (error.response) {
-        // Server responded with a status code outside the 2xx range
-        console.error("Server responded with an error:", error.response.status, error.response.data);
-    } else if (error.request) {
-        // Request was made, but no response received
-        console.error("No response received. Server may be down or unreachable.");
-    } else {
-        // Something else happened
-        console.error("Error setting up the request:", error.message);
-    }
+  if (error.response) {
+    // Server responded with a status code outside the 2xx range
+    console.error("Server responded with an error:", error.response.status, error.response.data);
+  } else if (error.request) {
+    // Request was made, but no response received
+    console.error("No response received. Server may be down or unreachable.");
+  } else {
+    // Something else happened
+    console.error("Error setting up the request:", error.message);
+  }
 }
 
 export function formatRelativeTime(timestamp: string): string {
@@ -33,3 +33,49 @@ export function formatRelativeTime(timestamp: string): string {
     return `${days} day${days !== 1 ? 's' : ''} ago`;
   }
 }
+
+
+export function formatDateTime(datetime: string): string {
+  const date = new Date(datetime);
+    return new Intl.DateTimeFormat('en-US', {
+      dateStyle: 'short',
+      timeStyle: 'medium'
+    }).format(date)
+}
+
+//function to get all ancestors path of a given path
+export function getAncestorPaths(path: string): string[] {
+  const parts = path.split(".");
+  const ancestors: string[] = [];
+
+  for (let i = 1; i < parts.length; i++) {
+    ancestors.push(parts.slice(0, i).join("."));
+  }
+
+  return ancestors;
+}
+
+//function to get collapsed accordion titles to highlight
+export function getCollapsedAncestorsToHighlight(
+  highlightedPaths: string[],
+  accordionStates: Record<string, boolean>
+): Set<string> {
+  const result = new Set<string>();
+
+  for (const path of highlightedPaths) {
+    const ancestors = getAncestorPaths(path);
+
+    for (const ancestor of ancestors) {        
+      const isCollapsed = accordionStates[ancestor] === false;
+      if (isCollapsed) {
+        result.add(ancestor);
+      }
+    }
+  }
+
+  return result;
+}
+
+
+
+

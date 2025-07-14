@@ -4,24 +4,25 @@ import styles from "@/styles/scss/Table.module.scss";
 import TableRow from "./TableRow";
 import { ArrowDown, ArrowUp } from "lucide-react";
 import Pagination from "../Pagination";
-import { capitalizeFirstLetter } from "@/utils/helperfunctions";
+import { capitalizeFirstLetter, formatDateTime } from "@/utils/helperfunctions";
 
-const TableComponent = ({ sorting, setSorting, refreshDeviceDataKey, updatedFieldsMap, currentPage, setCurrentPage, totalPages, pageSize, setPageSize, data, setIsPropertyPanelOpen }: any) => {
+const TableComponent = ({ currentDeviceId, sorting, setSorting, refreshDeviceDataKey, updatedFieldsMap, currentPage, setCurrentPage, totalPages, pageSize, setPageSize, data, setIsPropertyPanelOpen }: any) => {
   if (!data || data.length === 0)
     return <p className="px-2">No data available.</p>;
 
-
-
   // Columns definition
   const columns = useMemo<ColumnDef<any, any>[]>(() => {
-    const excludedFields = ['lastUpdated'];
+    // const excludedFields = ['lastUpdated'];
 
     return Object.keys(data[0])
-      .filter((key) => !excludedFields.includes(key))
+      // .filter((key) => !excludedFields.includes(key))
       .map((key) => ({
         accessorKey: key,
         header: () => capitalizeFirstLetter(key),
-        cell: (info) => info.getValue(),
+        cell: (info) => {
+          const val = info.getValue();
+          return key === 'lastUpdated' ? formatDateTime(val) : val;
+        },
         enableSorting: true,
       }));
   }, [data]);
@@ -70,12 +71,12 @@ const TableComponent = ({ sorting, setSorting, refreshDeviceDataKey, updatedFiel
         <div className={styles.tableBody}>
           <table className={styles.table}>
             <tbody>
-              {table.getRowModel().rows.map((row) => (<TableRow refreshDeviceDataKey={refreshDeviceDataKey} updatedFieldsMap={updatedFieldsMap} key={row.id} row={row} setIsPropertyPanelOpen={setIsPropertyPanelOpen} />))}
+              {table.getRowModel().rows.map((row) => (<TableRow currentDeviceId={currentDeviceId} refreshDeviceDataKey={refreshDeviceDataKey} updatedFieldsMap={updatedFieldsMap} key={row.id} row={row} setIsPropertyPanelOpen={setIsPropertyPanelOpen} />))}
             </tbody>
           </table>
         </div>
       </div>
-      <Pagination setPageSize={setPageSize} currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} pageSize={pageSize} pageSizeOptions={[3 ,5, 10]} />
+      <Pagination setPageSize={setPageSize} currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} pageSize={pageSize} pageSizeOptions={[3, 5, 10]} />
     </>
   );
 };

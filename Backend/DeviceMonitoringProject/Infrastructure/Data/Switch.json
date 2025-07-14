@@ -2,10 +2,10 @@
   "FileName": "Switch.json",
   "Name": "Network Switch",
   "Type": "Networking Device",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "D4:6D:6D:88:11:22",
   "Connectivity": "Medium",
-  "LastUpdated": "2025-07-09T18:02:34.9936521+05:30",
+  "LastUpdated": "2025-07-14T17:52:54.2403043+05:30",
   "staticProperties": {
     "Hardware Info": {
       "Model": "Cisco Catalyst 2960-X",
@@ -71,27 +71,27 @@
       {
         "Port": "Gig1/0/2",
         "Link Status": "Up",
-        "Connected Device": "Core Router",
-        "Current Throughput": "459 Mbps"
+        "Connected Device": "Printer",
+        "Current Throughput": "236 Mbps"
       },
       {
         "Port": "Gig1/0/3",
         "Link Status": "Up",
-        "Connected Device": "Firewall",
-        "Current Throughput": "822 Mbps"
+        "Connected Device": "NAS Server",
+        "Current Throughput": "346 Mbps"
       }
     ],
     "System Health": {
-      "CPU Usage": "35%",
-      "RAM Usage": "1 GB / 2 GB",
-      "Temperature": "49°C",
+      "CPU Usage": "72%",
+      "RAM Usage": "1.7 GB / 2 GB",
+      "Temperature": "50°C",
       "Fan Status": "Operational"
     },
     "Traffic Statistics": {
-      "Total Data Sent": "6.77 TB",
-      "Total Data Received": "9.68 TB",
+      "Total Data Sent": "6.63 TB",
+      "Total Data Received": "9.42 TB",
       "Packet Errors": {
-        "Inbound": 12,
+        "Inbound": 6,
         "Outbound": 4
       },
       "Broadcast Storms Detected": false
@@ -131,59 +131,59 @@
       "Login Attempts": [
         {
           "User": "admin",
-          "IP": "192.168.0.48",
-          "Time": "2025-07-09T17:57:54",
-          "Success": true
-        },
-        {
-          "User": "admin",
-          "IP": "192.168.0.64",
-          "Time": "2025-07-09T17:59:34",
+          "IP": "192.168.0.69",
+          "Time": "2025-07-14T17:48:23",
           "Success": true
         },
         {
           "User": "guest",
-          "IP": "192.168.0.95",
-          "Time": "2025-07-09T17:59:54",
-          "Success": true
-        },
-        {
-          "User": "admin",
-          "IP": "192.168.0.52",
-          "Time": "2025-07-09T18:01:54",
+          "IP": "192.168.0.29",
+          "Time": "2025-07-14T17:49:43",
           "Success": false
         },
         {
-          "User": "guest",
-          "IP": "192.168.0.41",
-          "Time": "2025-07-09T18:02:14",
+          "User": "admin",
+          "IP": "192.168.0.83",
+          "Time": "2025-07-14T17:51:04",
+          "Success": true
+        },
+        {
+          "User": "admin",
+          "IP": "192.168.0.61",
+          "Time": "2025-07-14T17:51:44",
+          "Success": true
+        },
+        {
+          "User": "admin",
+          "IP": "192.168.0.70",
+          "Time": "2025-07-14T17:52:04",
           "Success": true
         }
       ],
       "Recent Logs": [
         {
-          "Timestamp": "2025-07-09T17:59:34",
+          "Timestamp": "2025-07-14T17:50:54",
+          "Event": "Interface Gig1/0/4 PoE fault"
+        },
+        {
+          "Timestamp": "2025-07-14T17:51:24",
           "Event": "Interface Gig1/0/2 went UP"
         },
         {
-          "Timestamp": "2025-07-09T17:59:54",
-          "Event": "Interface Gig1/0/4 went DOWN"
-        },
-        {
-          "Timestamp": "2025-07-09T18:00:54",
-          "Event": "Interface Gig1/0/2 went UP"
-        },
-        {
-          "Timestamp": "2025-07-09T18:01:14",
-          "Event": "Interface Gig1/0/1 Security violation detected"
-        },
-        {
-          "Timestamp": "2025-07-09T18:01:34",
-          "Event": "Interface Gig1/0/3 PoE fault"
-        },
-        {
-          "Timestamp": "2025-07-09T18:02:34",
+          "Timestamp": "2025-07-14T17:51:34",
           "Event": "Interface Gig1/0/4 went UP"
+        },
+        {
+          "Timestamp": "2025-07-14T17:51:44",
+          "Event": "Interface Gig1/0/4 Security violation detected"
+        },
+        {
+          "Timestamp": "2025-07-14T17:51:54",
+          "Event": "Interface Gig1/0/4 went UP"
+        },
+        {
+          "Timestamp": "2025-07-14T17:52:54",
+          "Event": "Interface Gig1/0/4 PoE fault"
         }
       ]
     }
