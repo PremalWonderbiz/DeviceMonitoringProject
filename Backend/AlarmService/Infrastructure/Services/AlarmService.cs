@@ -292,7 +292,8 @@ namespace Infrastructure.Services
             var ignoredStateId = await _context.AlarmStates.Where(state => state.Name == "Ignored").Select(state => state.Id).FirstOrDefaultAsync();
             var alarms = _context.Alarms.Where(a => a.SourceDeviceMacId == deviceMacId && a.StateId != ignoredStateId)?.Include(a => a.State).OrderByDescending(a => a.RaisedAt).AsQueryable();
             var totalAlarms = await alarms.CountAsync();
-            var alarm = await alarms.FirstOrDefaultAsync();
+            var resolvedStateId = await _context.AlarmStates.Where(state => state.Name == "Resolved").Select(state => state.Id).FirstOrDefaultAsync();
+            var alarm = await alarms.Where(alarm => alarm.StateId != resolvedStateId).FirstOrDefaultAsync();
             if (alarm == null)
                 throw new CustomException(404, "Alarm for this device not found");
 
@@ -359,6 +360,14 @@ namespace Infrastructure.Services
             {
                 throw new CustomException(500, ex.Message);
             }
+
+            var propertyPanelAlarm = await GetLatestAlarmForDevice(alarm.SourceDeviceMacId);
+            await _hubContext.Clients.Group($"Alarm-{alarm.SourceDeviceMacId}").SendAsync("ReceivePropertyPanelAlarmUpdates", JsonSerializer.Serialize(propertyPanelAlarm, new JsonSerializerOptions
+            {
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true
+            }));
 
             return new GetAlarmDto
             {

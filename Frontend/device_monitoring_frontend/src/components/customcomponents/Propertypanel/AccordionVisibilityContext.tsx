@@ -1,19 +1,37 @@
 import React, { createContext, useContext, useState } from "react";
 
-const AccordionStateContext = createContext<{
+type AccordionContextType = {
   state: Record<string, boolean>;
   register: (path: string, isOpen: boolean) => void;
-} | null>(null);
+  toggle: (path: string, openOrClose : boolean) => void;
+  getState: (path: string) => boolean | undefined;
+};
 
-export const AccordionStateProvider = ({ children } : any) => {
+const AccordionStateContext = createContext<AccordionContextType | null>(null);
+
+export const AccordionStateProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, setState] = useState<Record<string, boolean>>({});
 
   const register = (path: string, isOpen: boolean) => {
-    setState(prev => ({ ...prev, [path]: isOpen }));
+    setState(prev => {
+      if (path in prev) return prev;
+      return { ...prev, [path]: isOpen };
+    });
+  };
+
+  const toggle = (path: string, openOrClose : boolean) => {
+    setState(prev => ({
+      ...prev,
+      [path]: openOrClose
+    }));
+  };
+
+  const getState = (path: string) => {
+    return state[path];
   };
 
   return (
-    <AccordionStateContext.Provider value={{ state, register }}>
+    <AccordionStateContext.Provider value={{ state, register, toggle, getState }}>
       {children}
     </AccordionStateContext.Provider>
   );

@@ -12,26 +12,50 @@ type AccordionProps = {
   keyPath? : any;
 };
 
-export default function Accordion({title, children, defaultOpen = true, isTabList = false, bgColor = "#fff", keyPath }: AccordionProps) {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
+export default function Accordion({
+  title,
+  children,
+  defaultOpen = true,
+  isTabList = false,
+  bgColor = "#fff",
+  keyPath,
+}: AccordionProps) {
   const context = useAccordionState();
-  
+
+  const [localOpen, setLocalOpen] = useState(defaultOpen);
+
+  const isContextControlled = !!keyPath;
+  const isOpen = isContextControlled
+    ? context?.getState(keyPath) ?? defaultOpen
+    : localOpen;
+
+  const toggleOpen = () => {
+    if (isContextControlled) {
+      context?.toggle(keyPath!, !isOpen);
+    } else {
+      setLocalOpen((prev) => !prev);
+    }
+  };
+
   useEffect(() => {
-    if(keyPath)
-      context?.register(keyPath, isOpen);
-  }, [isOpen]);
+    if (isContextControlled) {
+      context?.register(keyPath!, defaultOpen);
+    }
+  }, [keyPath]);
 
   return (
-    <div className={styles.accordion} style={{ backgroundColor: bgColor }} >
-      <div className={`${styles.header} ${isTabList ? styles.tabListHeader : null}`} onClick={() => setIsOpen(!isOpen)}>
+    <div className={styles.accordion} style={{ backgroundColor: bgColor }}>
+      <div
+        className={`${styles.header} ${isTabList ? styles.tabListHeader : ""}`}
+        onClick={toggleOpen}
+      >
         <div>{title}</div>
         <span>{isOpen ? <ChevronUp /> : <ChevronDown />}</span>
       </div>
-      <div
-        className={`${styles.content} ${isOpen ? styles.open : ''}`}
-      >
+      <div className={`${styles.content} ${isOpen ? styles.open : ""}`}>
         {children}
       </div>
     </div>
   );
 }
+

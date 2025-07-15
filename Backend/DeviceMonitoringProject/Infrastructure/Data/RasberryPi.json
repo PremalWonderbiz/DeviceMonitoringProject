@@ -4,8 +4,8 @@
   "Type": "Microcomputer",
   "Status": "Online",
   "MacId": "B8:27:EB:45:67:89",
-  "Connectivity": "High",
-  "LastUpdated": "2025-07-14T17:47:33.7956883+05:30",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-07-15T17:17:00.5469348+05:30",
   "staticProperties": {
     "Hardware Information": {
       "Model": "Raspberry Pi 4 Model B",
@@ -61,20 +61,20 @@
   },
   "dynamicProperties": {
     "System Health": {
-      "CPU Usage": "35%",
+      "CPU Usage": "50%",
       "RAM Usage": {
-        "Used": "1 GB",
+        "Used": "1.4 GB",
         "Total": "4 GB"
       },
       "System Temperature": {
-        "CPU": "63°C",
-        "Board": "47°C"
+        "CPU": "59°C",
+        "Board": "46°C"
       },
-      "Uptime": "1 days, 8 hours",
+      "Uptime": "6 days, 3 hours",
       "System Load": [
-        0.83,
-        0.92,
-        1.18
+        0.34,
+        0.67,
+        0.83
       ]
     },
     "Network Activity": {
@@ -85,8 +85,8 @@
           "macAddress": "B8:27:EB:45:67:89",
           "connectionType": "Ethernet",
           "traffic": {
-            "upload": "7 Mbps",
-            "download": "71 Mbps"
+            "upload": "8 Mbps",
+            "download": "49 Mbps"
           }
         },
         {
@@ -104,8 +104,13 @@
       "Connected Clients (Media Server)": [
         {
           "deviceName": "Smart TV",
-          "ip": "192.168.1.85",
+          "ip": "192.168.1.80",
           "mediaStream": "HD Movie (5.1 GB transferred)"
+        },
+        {
+          "deviceName": "Mobile Device",
+          "ip": "192.168.1.103",
+          "mediaStream": "Music Stream (Streaming)"
         }
       ]
     },
@@ -119,18 +124,18 @@
         {
           "service": "Kodi",
           "status": "Running",
-          "activeClients": 3
+          "activeClients": 1
         },
         {
           "service": "Pi-hole",
           "status": "Running",
-          "dnsQueriesBlocked": "7,327"
+          "dnsQueriesBlocked": "4,672"
         }
       ],
       "Last Reboot Reason": "Scheduled maintenance",
       "Firmware": {
-        "Current Version": "2025.09.11",
-        "Last Update": "2025-07-05",
+        "Current Version": "2025.07.08",
+        "Last Update": "2025-07-10",
         "Update Available": false
       }
     }

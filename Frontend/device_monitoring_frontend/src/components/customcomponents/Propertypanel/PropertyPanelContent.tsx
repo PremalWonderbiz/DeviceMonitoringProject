@@ -194,12 +194,17 @@ export const renderArray = (
   if (!data || data.length === 0) return null;
 
   const fullPath = parentPath ? `${parentPath}.${key}` : key;
+  const shouldHighlightTitle = collapsedTitlesToHighlight.has(fullPath);
 
   return (
     <Accordion
       keyPath={fullPath}
       key={fullPath}
-      title={<span className={`${styles.propertyPanelTitles} ${styles[`depth-${depth}`]}`}>{key}</span>}
+      title={
+        <span className={`${styles.propertyPanelTitles} ${styles[`depth-${depth}`]} ${shouldHighlightTitle ? styles.highlightedTitle : ""}`}>
+          {key}
+        </span>
+      }
       defaultOpen={true}
       bgColor="white"
     >

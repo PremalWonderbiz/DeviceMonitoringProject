@@ -4,8 +4,8 @@
   "Type": "Entertainment Device",
   "Status": "Offline",
   "MacId": "B8:27:EB:45:9A:CB",
-  "Connectivity": "High",
-  "LastUpdated": "2025-07-14T17:49:13.9154991+05:30",
+  "Connectivity": "Medium",
+  "LastUpdated": "2025-07-15T17:19:10.7146467+05:30",
   "staticProperties": {
     "Display & Hardware": {
       "Screen Size": "55 inches",
@@ -80,56 +80,62 @@
   },
   "dynamicProperties": {
     "Current Usage": {
-      "Power State": "On",
-      "Input Source": "HDMI 1",
-      "Current App": "YouTube",
-      "Volume Level": 26,
+      "Power State": "Off",
+      "Input Source": "HDMI 2",
+      "Current App": "Netflix",
+      "Volume Level": 89,
       "Mute": false,
-      "Picture Mode": "Cinema",
-      "Audio Output": "External Speakers",
-      "Ambient Light Sensor": "Enabled"
+      "Picture Mode": "Vivid",
+      "Audio Output": "TV Speakers",
+      "Ambient Light Sensor": "Disabled"
     },
     "Streaming Activity": {
       "Watch History (Today)": [
         {
           "App": "Netflix",
           "Title": "The Crown",
-          "Start Time": "2025-07-14T16:22:54",
-          "Duration": "33 min"
+          "Start Time": "2025-07-15T16:27:08",
+          "Duration": "31 min"
+        },
+        {
+          "App": "YouTube",
+          "Title": "Gadget Reviews",
+          "Start Time": "2025-07-15T17:27:08",
+          "Duration": "24 min"
         }
       ],
       "Active App Sessions": [
         {
-          "App": "YouTube",
+          "App": "Netflix",
           "Status": "Streaming",
-          "Data Used": "651 MB"
+          "Data Used": "795 MB"
         }
       ],
       "AutoPlay Next Episode": true
     },
     "Network Activity": {
-      "IP Address": "192.168.1.48",
-      "Wi-Fi Signal Strength": "-48 dBm",
+      "IP Address": "192.168.1.45",
+      "Wi-Fi Signal Strength": "-52 dBm",
       "Connection Type": "Wi-Fi",
       "Data Usage": {
-        "Today": "3.0 GB",
-        "This Week": "131 GB",
-        "This Month": "541 GB"
+        "Today": "3.4 GB",
+        "This Week": "121 GB",
+        "This Month": "481 GB"
       },
-      "Last Online": "2025-07-14T17:48:54"
+      "Last Online": "2025-07-15T17:53:08"
     },
     "System Status": {
-      "Uptime": "19 hours 41 minutes",
-      "Last Reboot": "2025-07-12T21:52:54",
-      "Software Update Available": false,
-      "Last Software Update": "2025-06-17",
+      "Uptime": "7 hours 48 minutes",
+      "Last Reboot": "2025-07-14T08:57:08",
+      "Software Update Available": true,
+      "Last Software Update": "2025-07-04",
       "Storage Info": {
         "Total Storage": "16 GB",
-        "Used": "8.0 GB",
-        "Free": "8.0 GB"
+        "Used": "6.6 GB",
+        "Free": "9.4 GB"
       },
       "Temperature": {
-        "Panel": "41°C",
+        "Panel": "37°C",
         "Mainboard": "40°C"
       }
     }

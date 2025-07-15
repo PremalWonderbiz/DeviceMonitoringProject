@@ -192,9 +192,6 @@ export default function Home() {
       return prevDevices;
     });
 
-    // if (sorting.some((s: any) => s.id === "status" || s.id === "connectivity")) {
-    //   setSorting((prev: SortingState) => prev.filter((s) => s.id !== "status" && s.id !== "connectivity"));
-    // }
   }, [sorting, currentPage, searchInput]);
 
 
@@ -371,7 +368,7 @@ export default function Home() {
       </div>
 
       <div className='m-3'>
-        <Sidebar position="left" isOpen={isAlarmPanelOpen} setIsOpen={setIsAlarmPanelOpen} >
+        <Sidebar openIconMsg={"Open Alarm Panel"} closeIconMsg={"Close Alarm Panel"} position="left" isOpen={isAlarmPanelOpen} setIsOpen={setIsAlarmPanelOpen} >
           {isAlarmPanelOpen && <AlarmPanel devicesNameMacList={devicesNameMacList} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} selectedDevicePropertyPanel={selectedDevicePropertyPanel} />}
         </Sidebar>
 
@@ -397,7 +394,7 @@ export default function Home() {
             <TableComponent currentDeviceId={currentDeviceId} sorting={sorting} setSorting={setSorting} refreshDeviceDataKey={refreshDeviceDataKey} updatedFieldsMap={updatedFieldsMap} totalPages={totalPages} pageSize={pageSize} setPageSize={setPageSize} setCurrentPage={setCurrentPage} currentPage={currentPage} data={deviceData} setIsPropertyPanelOpen={openPropertypanel} />
           </div>
           {(deviceData && deviceData.length > 0) &&
-            <Sidebar position="right" isOpen={isPropertyPanelOpen} setIsOpen={setIsPropertyPanelOpen} closeSidebar={closePropertyPanel}>
+            <Sidebar openIconMsg={"Open Property Panel"} closeIconMsg={"Close Property Panel"} position="right" isOpen={isPropertyPanelOpen} setIsOpen={setIsPropertyPanelOpen} closeSidebar={closePropertyPanel}>
               {isPropertyPanelOpen && <PropertyPanel deviceFileNames={deviceFileNames} devicesNameMacList={devicesNameMacList} setCurrentDeviceId={setCurrentDeviceId} setCurrentDeviceFileName={setCurrentDeviceFileName} setIsAlarmPanelOpen={setIsAlarmPanelOpen} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} currentDeviceFileName={currentDeviceFileName} />}
             </Sidebar>}
         </div>

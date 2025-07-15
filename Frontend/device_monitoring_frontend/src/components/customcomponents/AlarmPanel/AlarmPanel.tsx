@@ -213,7 +213,7 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
             </span>
           </h2>
           {(selectedDevices.length > 0 || dateRange != null) && <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Clear alarm filter</span>}>
-            <ListX className={styles.deviceRefreshIcon} onClick={() => { clearAlarmFilter() }} strokeWidth={"2.5px"} size={23} cursor={"pointer"} />
+            <ListX className={styles.clearAlarmFilterIcon} onClick={() => { clearAlarmFilter() }} strokeWidth={"2.5px"} size={23} cursor={"pointer"} />
           </Tooltip>}
         </div>
 

@@ -131,7 +131,7 @@ const PropertyPanel = ({ setCurrentDeviceId, setCurrentDeviceFileName, deviceFil
                 </div>
                 <div className="mt-2">
                     <AccordionStateProvider>
-                    <Accordion isTabList={true} title={<TabList activeTab={activeTab} setActiveTab={changeActiveTab} />} defaultOpen={true} bgColor=''>
+                    <Accordion keyPath={activeTab} isTabList={true} title={<TabList highlightedPaths={highlightedPaths} activeTab={activeTab} setActiveTab={changeActiveTab} />} defaultOpen={true} bgColor=''>
                         {(activeTab === "Static" && PropertyPanelData.staticProperties) ?
                             <StaticTabContent staticProps={PropertyPanelData.staticProperties} />
                             : <HealthTabContent highlightedPaths={highlightedPaths} deviceName={PropertyPanelData.name} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} setIsAlarmPanelOpen={setIsAlarmPanelOpen} deviceMacId={PropertyPanelData.macId} dynamicProps={PropertyPanelData.dynamicProperties} />}
