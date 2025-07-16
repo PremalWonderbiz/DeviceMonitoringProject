@@ -4,8 +4,8 @@
   "Type": "Networking Device",
   "Status": "Online",
   "MacId": "84:C9:B2:3E:7F:A1",
-  "Connectivity": "High",
-  "LastUpdated": "2025-07-15T17:54:59.1655112+05:30",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-07-16T17:15:48.4003301+05:30",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "OpenWRT 21.02",
@@ -74,19 +74,19 @@
   "dynamicProperties": {
     "System Status": {
       "Uptime": "22 days, 5 hours",
-      "CPU Usage": "64%",
+      "CPU Usage": "24%",
       "Memory Usage": {
-        "Used": "319.4 MB",
+        "Used": "307.2 MB",
         "Total": "512 MB"
       },
       "Temperature": {
-        "CPU": "58°C",
-        "Board": "45°C"
+        "CPU": "55°C",
+        "Board": "43°C"
       },
       "System Load Average": [
-        "0.70",
-        "0.06",
-        "0.23"
+        "0.98",
+        "0.46",
+        "0.42"
       ]
     },
     "Network Activity": {
@@ -96,8 +96,8 @@
           "ipAddress": "203.0.113.45",
           "macAddress": "84:C9:B2:3E:7F:A1",
           "traffic": {
-            "upload": "40 Mbps",
-            "download": "67 Mbps"
+            "upload": "43 Mbps",
+            "download": "106 Mbps"
           }
         },
         {
@@ -105,8 +105,8 @@
           "ipAddress": "192.168.0.1",
           "macAddress": "84:C9:B2:3E:7F:A2",
           "traffic": {
-            "upload": "27 Mbps",
-            "download": "69 Mbps"
+            "upload": "37 Mbps",
+            "download": "58 Mbps"
           }
         }
       ],
@@ -118,7 +118,7 @@
           "connection": {
             "type": "Wi-Fi",
             "band": "5 GHz",
-            "signalStrength": "-61 dBm"
+            "signalStrength": "-59 dBm"
           }
         },
         {
@@ -132,7 +132,7 @@
         }
       ],
       "Total Data Usage": {
-        "Sent": "838.15 GB",
+        "Sent": "838.07 GB",
         "Received": "1.20 TB"
       }
     },
@@ -143,9 +143,7 @@
         "NAT",
         "Firewall"
       ],
-      "Failed Services": [
-        "Firewall"
-      ],
+      "Failed Services": [],
       "Last Reboot Reason": "Manual Reboot (Firmware Upgrade)",
       "Firmware": {
         "Current Version": "v3.0.4",

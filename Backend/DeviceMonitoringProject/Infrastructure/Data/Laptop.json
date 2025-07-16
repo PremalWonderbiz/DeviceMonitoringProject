@@ -2,10 +2,10 @@
   "FileName": "Laptop.json",
   "Name": "Laptop",
   "Type": "Personal Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "3C:5A:B4:91:22:AC",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-07-15T17:19:20.7338987+05:30",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-07-16T17:16:08.4179776+05:30",
   "staticProperties": {
     "Hardware Details": {
       "Operating System": "Windows 11 Pro",
@@ -80,61 +80,61 @@
   "dynamicProperties": {
     "System Status": {
       "Battery": {
-        "Level": "10%",
-        "Charging Status": "Discharging",
+        "Level": "18%",
+        "Charging Status": "Charging",
         "Health": "Good",
-        "Estimated Time Left": "1 hrs 31 mins"
+        "Estimated Time Left": "2 hrs 22 mins"
       },
-      "CPU Load": "25%",
+      "CPU Load": "20%",
       "RAM Usage": {
-        "Used": "15.5 GB",
-        "Free": "16.5 GB"
+        "Used": "12.8 GB",
+        "Free": "19.2 GB"
       },
       "GPU Usage": {
-        "Integrated": "10%",
-        "Dedicated": "3%"
+        "Integrated": "4%",
+        "Dedicated": "11%"
       },
       "Temperature": {
-        "CPU": "55.5°C",
-        "GPU": "46.7°C",
-        "Motherboard": "47.0°C"
+        "CPU": "57.7°C",
+        "GPU": "52.5°C",
+        "Motherboard": "43.6°C"
       },
-      "System Uptime": "4 days, 16 hours"
+      "System Uptime": "5 days, 23 hours"
     },
     "Network Activity": {
       "Current Wi-Fi": {
         "SSID": "Office_Network_5G",
-        "IP Address": "10.0.1.65",
-        "Signal Strength": "-54 dBm",
+        "IP Address": "10.0.1.116",
+        "Signal Strength": "-56 dBm",
         "Data Usage (Today)": {
-          "Download": "5.9 GB",
-          "Upload": "4.3 GB"
+          "Download": "8.1 GB",
+          "Upload": "1.9 GB"
         }
       },
       "VPN Status": {
-        "Connected": true,
+        "Connected": false,
         "Provider": "NordLayer",
-        "IP": "172.20.13.231"
+        "IP": "172.20.16.164"
       }
     },
     "Application Activity": {
       "Foreground Apps": [
         {
           "App Name": "Visual Studio Code",
-          "CPU": "15%",
-          "Memory": "1.3 GB"
+          "CPU": "19%",
+          "Memory": "0.9 GB"
         },
         {
           "App Name": "Slack",
-          "CPU": "1%",
-          "Memory": "1.0 GB"
+          "CPU": "4%",
+          "Memory": "0.8 GB"
         }
       ],
-      "Background Processes": 60,
+      "Background Processes": 96,
       "Recent Apps Launched": [
-        "Edge Browser",
-        "Figma",
-        "Jira"
+        "Spotify",
+        "Postman",
+        "Figma"
       ]
     }
   }

@@ -36,7 +36,7 @@ export const HealthTabContent = React.memo(
   }: any) => {
     const [alarm, setAlarm] = useState<any>(null);
     const [totalAlarmsForDevice, setTotalAlarmsForDevice] = useState<any>(0);
-    const accordionContext = useAccordionState();
+    const accordionContext = useAccordionState();    
 
     const collapsedTitlesToHighlight = useMemo(() => {
       return getCollapsedAncestorsToHighlight(highlightedPaths, accordionContext?.state || {});
