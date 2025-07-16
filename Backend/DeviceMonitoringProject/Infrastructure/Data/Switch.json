@@ -2,10 +2,10 @@
   "FileName": "Switch.json",
   "Name": "Network Switch",
   "Type": "Networking Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "D4:6D:6D:88:11:22",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-07-16T17:17:38.4969663+05:30",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-07-16T17:35:23.4146994+05:30",
   "staticProperties": {
     "Hardware Info": {
       "Model": "Cisco Catalyst 2960-X",

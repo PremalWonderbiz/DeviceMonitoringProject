@@ -2,10 +2,10 @@
   "FileName": "NAS.json",
   "Name": "NAS Server",
   "Type": "Server",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "00:1B:44:11:3A:B7",
   "Connectivity": "Medium",
-  "LastUpdated": "2025-07-16T17:17:58.5251708+05:30",
+  "LastUpdated": "2025-07-16T17:35:13.3562746+05:30",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "Synology DSM 7.2",

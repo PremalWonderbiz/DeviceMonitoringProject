@@ -312,6 +312,9 @@ private List<DeviceMetadata> _devices =>
 
                 //await _alarmEvaluationService.EvaluateDynamicAsync(currentDynamic, previousDynamic);
 
+                if(updatedNode is not null)
+                {
+
                 var jsonElement = JsonDocument.Parse(updatedNode.ToJsonString()).RootElement.Clone();
 
                 updatedDeviceDetails.Add((
@@ -319,6 +322,7 @@ private List<DeviceMetadata> _devices =>
                     EventName: $"DeviceUpdate-{device.MacId}",
                     DetailPayload: jsonElement
                 ));
+                }
             });
         }
 
