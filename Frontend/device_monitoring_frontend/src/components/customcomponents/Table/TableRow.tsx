@@ -14,7 +14,7 @@ const TableRow = React.memo(
   ({ currentDeviceId, refreshDeviceDataKey, updatedFieldsMap, row, setIsPropertyPanelOpen }: Props) => {
     const rowData = row.original;
     const macId = rowData.macId;
-    
+
     const [localUpdatedFields, setLocalUpdatedFields] = useState<any[]>([]);
 
     useEffect(() => {

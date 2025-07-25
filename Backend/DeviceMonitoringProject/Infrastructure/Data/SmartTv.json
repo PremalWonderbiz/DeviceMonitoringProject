@@ -4,8 +4,8 @@
   "Type": "Entertainment Device",
   "Status": "Offline",
   "MacId": "B8:27:EB:45:9A:CB",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-07-16T17:29:28.5783270+05:30",
+  "Connectivity": "High",
+  "LastUpdated": "2025-07-25T20:19:00.0127015+05:30",
   "staticProperties": {
     "Display & Hardware": {
       "Screen Size": "55 inches",
@@ -80,57 +80,280 @@
   },
   "dynamicProperties": {
     "Current Usage": {
-      "Power State": "Off",
-      "Input Source": "HDMI 4",
-      "Current App": "Netflix",
-      "Volume Level": 65,
+      "Power State": "On",
+      "Input Source": "HDMI 2",
+      "Current App": "Zee5",
+      "Volume Level": 20,
       "Mute": false,
       "Picture Mode": "Cinema",
-      "Audio Output": "TV Speakers",
-      "Ambient Light Sensor": "Disabled"
+      "Audio Output": "External Speakers",
+      "Ambient Light Sensor": true
     },
     "Streaming Activity": {
       "Watch History (Today)": [
-        {
-          "App": "Netflix",
-          "Title": "The Crown",
-          "Start Time": "2025-07-16T15:59:18",
-          "Duration": "44 min"
-        }
+        33,
+        66
       ],
       "Active App Sessions": [
-        {
-          "App": "Netflix",
-          "Status": "Streaming",
-          "Data Used": "455 MB"
-        }
+        8
       ],
       "AutoPlay Next Episode": false
     },
     "Network Activity": {
-      "IP Address": "192.168.1.44",
-      "Wi-Fi Signal Strength": "-55 dBm",
-      "Connection Type": "Wi-Fi",
+      "IP Address": "192.168.141.107",
+      "Wi-Fi Signal Strength": "-69 dBm",
+      "Connection Type": "Ethernet",
       "Data Usage": {
-        "Today": "3.0 GB",
-        "This Week": "131 GB",
-        "This Month": "431 GB"
+        "Today": "0.4 GB",
+        "This Week": "7.9 GB",
+        "This Month": "1.5 GB"
       },
-      "Last Online": "2025-07-16T17:21:18"
+      "Last Online": "2025-07-25T14:52:20.2406501Z"
     },
     "System Status": {
-      "Uptime": "14 hours 21 minutes",
-      "Last Reboot": "2025-07-15T00:29:18",
+      "Uptime": "6 days, 6 hrs",
+      "Last Reboot": "2025-07-25T14:52:20.2406566Z",
       "Software Update Available": false,
-      "Last Software Update": "2025-06-20",
+      "Last Software Update": "2025-07-25T14:52:20.2406604Z",
       "Storage Info": {
-        "Total Storage": "16 GB",
-        "Used": "8.9 GB",
-        "Free": "7.1 GB"
+        "Total Storage": "8.1 GB",
+        "Used": "8.3 GB",
+        "Free": "9.9 GB"
       },
       "Temperature": {
-        "Panel": "37°C",
-        "Mainboard": "40°C"
+        "Panel": 45.77,
+        "Mainboard": 32.92
+      }
+    }
+  },
+  "topLevelObservables": {
+    "Status": {
+      "type": "enum",
+      "values": [
+        "Online",
+        "Offline"
+      ],
+      "weights": [
+        0.9,
+        0.1
+      ]
+    },
+    "Connectivity": {
+      "type": "enum",
+      "values": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "weights": [
+        0.2,
+        0.3,
+        0.5
+      ]
+    }
+  },
+  "dynamicObservables": {
+    "Current Usage": {
+      "Power State": {
+        "type": "enum",
+        "values": [
+          "On",
+          "Off",
+          "Standby"
+        ]
+      },
+      "Input Source": {
+        "type": "enum",
+        "values": [
+          "HDMI 1",
+          "HDMI 2",
+          "AV",
+          "USB",
+          "Screen Mirroring"
+        ]
+      },
+      "Current App": {
+        "type": "enum",
+        "values": [
+          "Netflix",
+          "YouTube",
+          "Disney+ Hotstar",
+          "Prime Video",
+          "SonyLIV",
+          "Zee5"
+        ]
+      },
+      "Volume Level": {
+        "type": "int",
+        "min": 0,
+        "max": 100,
+        "unit": "level"
+      },
+      "Mute": {
+        "type": "boolean"
+      },
+      "Picture Mode": {
+        "type": "enum",
+        "values": [
+          "Standard",
+          "Cinema",
+          "Vivid",
+          "Game",
+          "Sports"
+        ]
+      },
+      "Audio Output": {
+        "type": "enum",
+        "values": [
+          "TV Speakers",
+          "External Speakers",
+          "Bluetooth"
+        ]
+      },
+      "Ambient Light Sensor": {
+        "type": "boolean"
+      }
+    },
+    "Streaming Activity": {
+      "Watch History (Today)": {
+        "type": "array",
+        "count": 2,
+        "children": {
+          "App": {
+            "type": "enum",
+            "values": [
+              "Netflix",
+              "YouTube",
+              "Disney+ Hotstar",
+              "Prime Video"
+            ]
+          },
+          "Title": {
+            "type": "enum",
+            "values": [
+              "The Crown",
+              "Gadget Reviews",
+              "News Live",
+              "Movie X",
+              "Series Y"
+            ]
+          },
+          "Start Time": {
+            "type": "timestamp"
+          },
+          "Duration": {
+            "type": "timeRange",
+            "min": 1,
+            "max": 60,
+            "unit": "minutes"
+          }
+        }
+      },
+      "Active App Sessions": {
+        "type": "array",
+        "count": 1,
+        "children": {
+          "App": {
+            "type": "enum",
+            "values": [
+              "Netflix",
+              "YouTube",
+              "Disney+ Hotstar",
+              "Prime Video"
+            ]
+          },
+          "Status": {
+            "type": "enum",
+            "values": [
+              "Streaming",
+              "Paused",
+              "Idle"
+            ]
+          },
+          "Data Used": {
+            "type": "dataVolume",
+            "unit": "MB"
+          }
+        }
+      },
+      "AutoPlay Next Episode": {
+        "type": "boolean"
+      }
+    },
+    "Network Activity": {
+      "IP Address": {
+        "type": "ip"
+      },
+      "Wi-Fi Signal Strength": {
+        "type": "dBm",
+        "min": -90,
+        "max": -30
+      },
+      "Connection Type": {
+        "type": "enum",
+        "values": [
+          "Wi-Fi",
+          "Ethernet"
+        ]
+      },
+      "Data Usage": {
+        "Today": {
+          "type": "dataVolume",
+          "unit": "GB"
+        },
+        "This Week": {
+          "type": "dataVolume",
+          "unit": "GB"
+        },
+        "This Month": {
+          "type": "dataVolume",
+          "unit": "GB"
+        }
+      },
+      "Last Online": {
+        "type": "timestamp"
+      }
+    },
+    "System Status": {
+      "Uptime": {
+        "type": "uptime"
+      },
+      "Last Reboot": {
+        "type": "timestamp"
+      },
+      "Software Update Available": {
+        "type": "boolean"
+      },
+      "Last Software Update": {
+        "type": "timestamp"
+      },
+      "Storage Info": {
+        "Total Storage": {
+          "type": "dataVolume",
+          "unit": "GB"
+        },
+        "Used": {
+          "type": "dataVolume",
+          "unit": "GB"
+        },
+        "Free": {
+          "type": "dataVolume",
+          "unit": "GB"
+        }
+      },
+      "Temperature": {
+        "Panel": {
+          "type": "float",
+          "unit": "°C",
+          "min": 30,
+          "max": 70
+        },
+        "Mainboard": {
+          "type": "float",
+          "unit": "°C",
+          "min": 30,
+          "max": 70
+        }
       }
     }
   }

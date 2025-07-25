@@ -4,8 +4,8 @@
   "Type": "Personal Device",
   "Status": "Offline",
   "MacId": "F0:9F:C2:12:34:56",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-07-16T17:17:48.5156380+05:30",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-07-25T20:19:20.0282791+05:30",
   "staticProperties": {
     "Device Specifications": {
       "Operating System": {
@@ -74,78 +74,309 @@
   "dynamicProperties": {
     "Device Health": {
       "Battery Status": {
-        "Level": "53%",
-        "Charging State": "Not Charging",
-        "Temperature": "35.9°C",
-        "Health": "Good"
+        "Level": "78%",
+        "Charging State": "Charging",
+        "Temperature": 66.6,
+        "Health": "Poor"
       },
-      "CPU Usage": "61%",
+      "CPU Usage": "50%",
       "RAM Usage": {
-        "Used": "4.6 GB",
-        "Free": "7.4 GB"
+        "Used": "0.7 GB",
+        "Free": "0.3 GB"
       },
       "Storage Usage": {
-        "Used": "125 GB",
-        "Free": "131 GB"
+        "Used": "4.6 GB",
+        "Free": "6.0 GB"
       },
       "Device Temperature": {
-        "CPU": "44.2°C",
-        "Battery": "35.9°C"
+        "CPU": 25.37,
+        "Battery": 16.71
       },
-      "Uptime": "0 days, 4 hours"
+      "Uptime": "5 days, 3 hrs"
     },
     "Network Activity": {
       "Current Network": {
-        "Connection Type": "Wi-Fi",
-        "SSID": "Home_5G",
-        "IP Address": "192.168.1.165",
-        "Signal Strength": "-57 dBm",
-        "MAC Address": "F0:9F:C2:12:34:56"
+        "Connection Type": "Ethernet",
+        "SSID": "Office_Network_5G",
+        "IP Address": "192.168.130.74",
+        "Signal Strength": "-68 dBm",
+        "MAC Address": "53:BB:2D:5D:2B:9B"
       },
       "Data Usage": {
         "Today": {
-          "Download": "0.8 GB",
-          "Upload": "157 MB"
+          "Download": "3.6 GB",
+          "Upload": "7.9 GB"
         },
         "Monthly": {
-          "Download": "30.7 GB",
-          "Upload": "8.1 GB"
+          "Download": "4.9 GB",
+          "Upload": "6.1 GB"
         }
       },
       "Connected Apps": [
-        {
-          "appName": "Spotify",
-          "dataUsage": "Streaming (347 MB today)"
-        },
-        {
-          "appName": "WhatsApp",
-          "dataUsage": "Video call (174 MB today)"
-        }
+        16,
+        84,
+        72,
+        48,
+        20
       ]
     },
     "App Activity": {
       "Active Apps": [
-        {
-          "name": "YouTube",
-          "status": "Foreground",
-          "screenTimeToday": "0 hr 40 min"
-        },
-        {
-          "name": "Gmail",
-          "status": "Background",
-          "notifications": 4
-        }
+        16,
+        50,
+        65,
+        53,
+        65
       ],
       "Battery Usage by Apps": [
-        {
-          "appName": "YouTube",
-          "usagePercent": "13%"
-        },
-        {
-          "appName": "Google Maps",
-          "usagePercent": "9%"
-        }
+        77,
+        68,
+        8,
+        44,
+        45
       ]
+    }
+  },
+  "topLevelObservables": {
+    "Status": {
+      "type": "enum",
+      "values": [
+        "Online",
+        "Offline"
+      ],
+      "weights": [
+        0.9,
+        0.1
+      ]
+    },
+    "Connectivity": {
+      "type": "enum",
+      "values": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "weights": [
+        0.2,
+        0.3,
+        0.5
+      ]
+    }
+  },
+  "dynamicObservables": {
+    "Device Health": {
+      "Battery Status": {
+        "Level": {
+          "type": "percentage",
+          "min": 0,
+          "max": 100
+        },
+        "Charging State": {
+          "type": "enum",
+          "values": [
+            "Charging",
+            "Not Charging",
+            "Discharging"
+          ]
+        },
+        "Temperature": {
+          "type": "float",
+          "min": 0,
+          "max": 100,
+          "unit": "°C"
+        },
+        "Health": {
+          "type": "enum",
+          "values": [
+            "Good",
+            "Average",
+            "Poor"
+          ]
+        }
+      },
+      "CPU Usage": {
+        "type": "percentage",
+        "min": 0,
+        "max": 100
+      },
+      "RAM Usage": {
+        "Used": {
+          "type": "dataVolume",
+          "unit": "GB",
+          "min": 0,
+          "max": 16
+        },
+        "Free": {
+          "type": "dataVolume",
+          "unit": "GB",
+          "min": 0,
+          "max": 16
+        }
+      },
+      "Storage Usage": {
+        "Used": {
+          "type": "dataVolume",
+          "unit": "GB",
+          "min": 0,
+          "max": 512
+        },
+        "Free": {
+          "type": "dataVolume",
+          "unit": "GB",
+          "min": 0,
+          "max": 512
+        }
+      },
+      "Device Temperature": {
+        "CPU": {
+          "type": "float",
+          "unit": "°C",
+          "min": 0,
+          "max": 100
+        },
+        "Battery": {
+          "type": "float",
+          "unit": "°C",
+          "min": 0,
+          "max": 100
+        }
+      },
+      "Uptime": {
+        "type": "uptime"
+      }
+    },
+    "Network Activity": {
+      "Current Network": {
+        "Connection Type": {
+          "type": "enum",
+          "values": [
+            "Wi-Fi",
+            "Ethernet",
+            "Mobile"
+          ]
+        },
+        "SSID": {
+          "type": "ssid"
+        },
+        "IP Address": {
+          "type": "ip"
+        },
+        "Signal Strength": {
+          "type": "dBm",
+          "min": -100,
+          "max": -30
+        },
+        "MAC Address": {
+          "type": "mac"
+        }
+      },
+      "Data Usage": {
+        "Today": {
+          "Download": {
+            "type": "dataVolume",
+            "unit": "GB",
+            "min": 0,
+            "max": 10
+          },
+          "Upload": {
+            "type": "dataVolume",
+            "unit": "MB",
+            "min": 0,
+            "max": 1000
+          }
+        },
+        "Monthly": {
+          "Download": {
+            "type": "dataVolume",
+            "unit": "GB",
+            "min": 0,
+            "max": 100
+          },
+          "Upload": {
+            "type": "dataVolume",
+            "unit": "GB",
+            "min": 0,
+            "max": 50
+          }
+        }
+      },
+      "Connected Apps": {
+        "type": "array",
+        "count": 5,
+        "values": {
+          "appName": {
+            "type": "pickN",
+            "values": [
+              "Spotify",
+              "WhatsApp",
+              "Zoom",
+              "Google Meet",
+              "Teams"
+            ]
+          },
+          "dataUsage": {
+            "type": "dataVolume",
+            "unit": "MB",
+            "min": 50,
+            "max": 1000
+          }
+        }
+      }
+    },
+    "App Activity": {
+      "Active Apps": {
+        "type": "array",
+        "count": 5,
+        "values": {
+          "name": {
+            "type": "pickN",
+            "values": [
+              "YouTube",
+              "Gmail",
+              "CameraApp",
+              "Drive",
+              "Maps"
+            ]
+          },
+          "status": {
+            "type": "enum",
+            "values": [
+              "Foreground",
+              "Background"
+            ]
+          },
+          "screenTimeToday": {
+            "type": "timeRange",
+            "min": "0:00",
+            "max": "4:00"
+          },
+          "notifications": {
+            "type": "int",
+            "min": 0,
+            "max": 50
+          }
+        }
+      },
+      "Battery Usage by Apps": {
+        "type": "array",
+        "count": 5,
+        "values": {
+          "appName": {
+            "type": "pickN",
+            "values": [
+              "YouTube",
+              "Google Maps",
+              "Spotify",
+              "Zoom"
+            ]
+          },
+          "usagePercent": {
+            "type": "percentage",
+            "min": 0,
+            "max": 100
+          }
+        }
+      }
     }
   }
 }

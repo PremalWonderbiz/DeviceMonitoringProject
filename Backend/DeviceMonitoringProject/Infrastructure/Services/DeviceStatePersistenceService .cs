@@ -33,7 +33,7 @@ namespace Infrastructure.Services
 
             while (!stoppingToken.IsCancellationRequested)
             {
-                await PersistToDiskAsync(stoppingToken);
+                await _deviceStateCache.PersistToDiskAsync();
                 await Task.Delay(_interval, stoppingToken);
             }
         }
@@ -41,44 +41,9 @@ namespace Infrastructure.Services
         public override async Task StopAsync(CancellationToken cancellationToken)
         {
             _logger.LogInformation("DeviceStatePersistenceService is stopping. Flushing cache to disk...");
-            await PersistToDiskAsync(cancellationToken);
+            await _deviceStateCache.PersistToDiskAsync();
             _logger.LogInformation("Final flush complete.");
             await base.StopAsync(cancellationToken);
-        }
-
-        private async Task PersistToDiskAsync(CancellationToken cancellationToken)
-        {
-            try
-            {
-                var allStates = _deviceStateCache.GetAllStates();
-
-                foreach (var state in allStates.Values)
-                {
-                    var fileName = state.Root["FileName"]?.GetValue<string>();
-
-                    if (string.IsNullOrWhiteSpace(fileName))
-                    {
-                        _logger.LogWarning("Device state missing FileName field. Skipping...");
-                        continue;
-                    }
-
-                    var json = state.Root.ToJsonString(new JsonSerializerOptions
-                    {
-                        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                        WriteIndented = true,
-                        TypeInfoResolver = new DefaultJsonTypeInfoResolver()
-                    });
-
-                    var path = Path.Combine(_dataDirectory, fileName);
-                    await File.WriteAllTextAsync(path, json, cancellationToken);
-                }
-
-                _logger.LogInformation("Device states persisted to disk at {Time}", DateTime.Now);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Failed to persist device state to disk.");
-            }
         }
     }
 }

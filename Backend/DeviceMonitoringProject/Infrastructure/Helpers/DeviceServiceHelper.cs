@@ -50,29 +50,6 @@ namespace Infrastructure.Helpers
             };
         }
 
-
-        public JsonNode UpdateDynamicProperties(string deviceType, JsonNode? dynamicProps)
-        {
-            if (dynamicProps == null) return null;
-
-            switch (deviceType)
-            {
-                case "IP Camera": return _dynamicDataHelper.UpdateIpCameraDynamic(dynamicProps); 
-                case "Air Conditioner": return _dynamicDataHelper.UpdateRoomAcDynamic(dynamicProps); 
-                case "Network Switch": return _dynamicDataHelper.UpdateSwitchDynamic(dynamicProps); 
-                case "Printer": return _dynamicDataHelper.UpdatePrinterDynamic(dynamicProps); 
-                case "Raspberry Pi": return _dynamicDataHelper.UpdateRaspberryPiDynamic(dynamicProps); 
-                case "Mobile": return _dynamicDataHelper.UpdateMobileDynamic(dynamicProps);
-                case "NAS Server": return _dynamicDataHelper.UpdateNasDynamic(dynamicProps);
-                case "Laptop": return _dynamicDataHelper.UpdateLaptopDynamic(dynamicProps);
-                case "WiFi Router": return _dynamicDataHelper.UpdateWifiRouterDynamic(dynamicProps); 
-                case "Smart TV": return _dynamicDataHelper.UpdateSmartTvDynamic(dynamicProps); 
-                default:
-                    _logger.LogWarning("No dynamic update logic for device type: {DeviceType}", deviceType);
-                    return null;
-            }
-        }
-
         public async Task WriteJsonFileAsync(string path, JsonNode rootNode)
         {
             string json = rootNode.ToJsonString(new JsonSerializerOptions
@@ -128,7 +105,71 @@ namespace Infrastructure.Helpers
             });
 
             await _hubContext.Clients.All.SendAsync("ReceiveUpdate", json);
-        }   
+        }
 
+        public JsonNode UpdateDynamicProperties(JsonNode? currentData, JsonNode? dynamicObservables)
+        {
+            var original = currentData?.DeepClone() ?? new JsonObject();
+
+            var result = _dynamicDataHelper.GenerateDynamicDataFromObservables(currentData, dynamicObservables);
+
+            var diff = GetJsonDiff(original, result);
+            return diff;
+        }
+
+        public static JsonNode? GetJsonDiff(JsonNode? original, JsonNode? updated)
+        {
+            if (original is JsonValue && updated is JsonValue)
+            {
+                return original.ToJsonString() == updated.ToJsonString() ? null : CloneNode(updated);
+            }
+
+            if (original is JsonObject origObj && updated is JsonObject updatedObj)
+            {
+                var diff = new JsonObject();
+
+                foreach (var kvp in updatedObj)
+                {
+                    var origChild = origObj.ContainsKey(kvp.Key) ? origObj[kvp.Key] : null;
+                    var updatedChild = kvp.Value;
+
+                    var childDiff = GetJsonDiff(origChild, updatedChild);
+                    if (childDiff != null)
+                        diff[kvp.Key] = childDiff;
+                }
+
+                return diff.Count > 0 ? diff : null;
+            }
+
+            if (original is JsonArray origArray && updated is JsonArray updatedArray)
+            {
+                var arrayDiff = new JsonArray();
+                bool hasChanges = false;
+
+                int maxLength = Math.Max(origArray.Count, updatedArray.Count);
+                for (int i = 0; i < maxLength; i++)
+                {
+                    JsonNode? origElem = i < origArray.Count ? origArray[i] : null;
+                    JsonNode? updatedElem = i < updatedArray.Count ? updatedArray[i] : null;
+
+                    var childDiff = GetJsonDiff(origElem, updatedElem);
+                    
+                    if (childDiff != null)
+                    {
+                        arrayDiff.Add(childDiff);
+                        hasChanges = true;
+                    }
+                }
+
+                return hasChanges ? arrayDiff : null;
+            }
+
+            return CloneNode(updated); // Types differ or null mismatch, treat as full change
+        }
+
+        private static JsonNode? CloneNode(JsonNode? node)
+        {
+            return node == null ? null : JsonNode.Parse(node.ToJsonString());
+        }
     }
 }

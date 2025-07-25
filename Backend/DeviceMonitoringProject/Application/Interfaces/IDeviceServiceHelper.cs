@@ -15,7 +15,7 @@ namespace Application.Interfaces
         public TopLevelDeviceDataDto ExtractTopLevelDto(string macId, JsonNode rootNode);
         public DynamicDeviceDataDto ExtractDynamicDto(string macId, JsonNode rootNode);
 
-        public JsonNode UpdateDynamicProperties(string deviceType, JsonNode? dynamicProps);
+        public JsonNode UpdateDynamicProperties(JsonNode? currentData, JsonNode? dynamicObservables);
 
         public Task WriteJsonFileAsync(string path, JsonNode rootNode);
 

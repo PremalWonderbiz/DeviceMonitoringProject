@@ -1,5 +1,6 @@
 ﻿using Application.Dtos;
 using Domain.Entities;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.Interfaces
 {
@@ -24,5 +25,9 @@ namespace Application.Interfaces
         public Task<List<DevicesNameMacIdDto>> GetDevicesNameMacIdList();
 
         public List<DeviceMetadata> ReadAllDeviceMetadataFiles();
+
+        public Task<string> UploadFile(IFormFile file);
+
+        public Task<DeviceMetadataPaginatedandSortedDto> GetAllDataRefereshedFromCache(DeviceTopLevelSortOptions request, string input);
     }
 }

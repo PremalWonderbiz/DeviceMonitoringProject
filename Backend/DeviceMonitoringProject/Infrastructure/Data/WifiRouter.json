@@ -2,10 +2,10 @@
   "FileName": "WifiRouter.json",
   "Name": "WiFi Router",
   "Type": "Networking Device",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "84:C9:B2:3E:7F:A1",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-07-16T17:15:48.4003301+05:30",
+  "Connectivity": "Medium",
+  "LastUpdated": "2025-07-25T20:21:50.1961536+05:30",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "OpenWRT 21.02",
@@ -73,82 +73,272 @@
   },
   "dynamicProperties": {
     "System Status": {
-      "Uptime": "22 days, 5 hours",
-      "CPU Usage": "24%",
+      "Uptime": "6 days, 23 hrs",
+      "CPU Usage": "35%",
       "Memory Usage": {
-        "Used": "307.2 MB",
-        "Total": "512 MB"
+        "Used": "6.2 GB",
+        "Total": "0.3 GB"
       },
       "Temperature": {
-        "CPU": "55°C",
-        "Board": "43°C"
+        "CPU": 24.64,
+        "Board": 60.73
       },
       "System Load Average": [
-        "0.98",
-        "0.46",
-        "0.42"
+        67,
+        80,
+        62
       ]
     },
     "Network Activity": {
       "Interfaces": [
-        {
-          "name": "WAN",
-          "ipAddress": "203.0.113.45",
-          "macAddress": "84:C9:B2:3E:7F:A1",
-          "traffic": {
-            "upload": "43 Mbps",
-            "download": "106 Mbps"
-          }
-        },
-        {
-          "name": "LAN1",
-          "ipAddress": "192.168.0.1",
-          "macAddress": "84:C9:B2:3E:7F:A2",
-          "traffic": {
-            "upload": "37 Mbps",
-            "download": "58 Mbps"
-          }
-        }
+        8,
+        57
       ],
       "Connected Clients": [
-        {
-          "hostname": "Laptop-Admin",
-          "ip": "192.168.0.101",
-          "mac": "00:1A:2B:3C:4D:5E",
-          "connection": {
-            "type": "Wi-Fi",
-            "band": "5 GHz",
-            "signalStrength": "-59 dBm"
-          }
-        },
-        {
-          "hostname": "Printer",
-          "ip": "192.168.0.105",
-          "mac": "00:1C:2D:3E:4F:6A",
-          "connection": {
-            "type": "Ethernet",
-            "port": "LAN3"
-          }
-        }
+        42,
+        4
       ],
       "Total Data Usage": {
-        "Sent": "838.07 GB",
-        "Received": "1.20 TB"
+        "Sent": "1.2 GB",
+        "Received": "3.3 GB"
       }
     },
     "Service Health": {
       "Services Running": [
-        "DHCP",
-        "DNS Resolver",
-        "NAT",
-        "Firewall"
+        62,
+        86,
+        37,
+        2
       ],
-      "Failed Services": [],
-      "Last Reboot Reason": "Manual Reboot (Firmware Upgrade)",
+      "Failed Services": [
+        71
+      ],
+      "Last Reboot Reason": "Crash Recovery",
       "Firmware": {
-        "Current Version": "v3.0.4",
-        "Last Updated": "2025-03-10",
-        "Update Available": false
+        "Current Version": "Unsupported Type",
+        "Last Updated": "2025-07-25T14:52:20.2420178Z",
+        "Update Available": true
+      }
+    }
+  },
+  "topLevelObservables": {
+    "Status": {
+      "type": "enum",
+      "values": [
+        "Online",
+        "Offline"
+      ],
+      "weights": [
+        0.9,
+        0.1
+      ]
+    },
+    "Connectivity": {
+      "type": "enum",
+      "values": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "weights": [
+        0.2,
+        0.3,
+        0.5
+      ]
+    }
+  },
+  "dynamicObservables": {
+    "System Status": {
+      "Uptime": {
+        "type": "uptime"
+      },
+      "CPU Usage": {
+        "type": "percentage",
+        "min": 0,
+        "max": 100
+      },
+      "Memory Usage": {
+        "Used": {
+          "type": "dataVolume",
+          "unit": "MB",
+          "min": 0,
+          "max": 512
+        },
+        "Total": {
+          "type": "dataVolume",
+          "unit": "MB",
+          "min": 512,
+          "max": 512
+        }
+      },
+      "Temperature": {
+        "CPU": {
+          "type": "float",
+          "unit": "°C",
+          "min": 20,
+          "max": 90
+        },
+        "Board": {
+          "type": "float",
+          "unit": "°C",
+          "min": 20,
+          "max": 80
+        }
+      },
+      "System Load Average": {
+        "type": "array",
+        "count": 3,
+        "values": {
+          "type": "float",
+          "min": 0,
+          "max": 5
+        }
+      }
+    },
+    "Network Activity": {
+      "Interfaces": {
+        "type": "array",
+        "count": 2,
+        "values": {
+          "name": {
+            "type": "enum",
+            "values": [
+              "WAN",
+              "LAN1",
+              "LAN2",
+              "LAN3"
+            ]
+          },
+          "ipAddress": {
+            "type": "ip"
+          },
+          "macAddress": {
+            "type": "mac"
+          },
+          "traffic": {
+            "upload": {
+              "type": "dataVolume",
+              "unit": "Mbps",
+              "min": 0,
+              "max": 1000
+            },
+            "download": {
+              "type": "dataVolume",
+              "unit": "Mbps",
+              "min": 0,
+              "max": 1000
+            }
+          }
+        }
+      },
+      "Connected Clients": {
+        "type": "array",
+        "count": 2,
+        "values": {
+          "hostname": {
+            "type": "string"
+          },
+          "ip": {
+            "type": "ip"
+          },
+          "mac": {
+            "type": "mac"
+          },
+          "connection": {
+            "type": {
+              "type": "enum",
+              "values": [
+                "Wi-Fi",
+                "Ethernet"
+              ]
+            },
+            "band": {
+              "type": "enum",
+              "values": [
+                "2.4 GHz",
+                "5 GHz"
+              ]
+            },
+            "port": {
+              "type": "enum",
+              "values": [
+                "LAN1",
+                "LAN2",
+                "LAN3",
+                "LAN4"
+              ]
+            },
+            "signalStrength": {
+              "type": "dBm",
+              "min": -100,
+              "max": -30
+            }
+          }
+        }
+      },
+      "Total Data Usage": {
+        "Sent": {
+          "type": "dataVolume",
+          "unit": "GB",
+          "min": 0,
+          "max": 2000
+        },
+        "Received": {
+          "type": "dataVolume",
+          "unit": "TB",
+          "min": 0,
+          "max": 5
+        }
+      }
+    },
+    "Service Health": {
+      "Services Running": {
+        "type": "array",
+        "values": {
+          "type": "enum",
+          "values": [
+            "DHCP",
+            "DNS Resolver",
+            "NAT",
+            "Firewall",
+            "QoS",
+            "UPnP"
+          ]
+        },
+        "count": 4
+      },
+      "Failed Services": {
+        "type": "array",
+        "values": {
+          "type": "enum",
+          "values": [
+            "DHCP",
+            "DNS Resolver",
+            "NAT",
+            "Firewall"
+          ]
+        },
+        "count": 1
+      },
+      "Last Reboot Reason": {
+        "type": "enum",
+        "values": [
+          "Manual Reboot",
+          "Power Failure",
+          "Crash Recovery",
+          "Firmware Upgrade"
+        ]
+      },
+      "Firmware": {
+        "Current Version": {
+          "type": "string"
+        },
+        "Last Updated": {
+          "type": "timestamp"
+        },
+        "Update Available": {
+          "type": "boolean"
+        }
       }
     }
   }

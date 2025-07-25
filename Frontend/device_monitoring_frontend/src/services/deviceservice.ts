@@ -32,6 +32,28 @@ export const getDeviceMetadataPaginatedandSorted = async (pageNo : any, pageSize
   }
 };
 
+export const getAllDataRefereshedFromCache = async (pageNo : any, pageSize : any, sortingState : any, input : any) => {
+  try {
+    (input == null || input == undefined || input == "") ? input = "undefined" : input = input;
+    const requestObject = {pageNumber : pageNo, pageSize : pageSize, sorting : sortingState };
+    const response = await axios.post(`${baseURL}/api/Devices/refreshCache/${input}`,requestObject);
+    return response;
+  } catch (error : any) {
+     handleAxiosError(error);
+  }
+};
+
+export const uploadFile = async (file : File) => {
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
+    const response = await axios.post(`${baseURL}/api/Devices/uploadFile`,formData);
+    return response;
+  } catch (error : any) {
+     return error;
+  }
+};
+
 
 export const getDevicesTopLevelData = async (pageNo : any, pageSize : any) => {
   try {

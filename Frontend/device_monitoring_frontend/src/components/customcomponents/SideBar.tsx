@@ -17,22 +17,22 @@ const Sidebar = ({closeIconMsg, openIconMsg, position = "left", children, isOpen
   return (
     <div className={`${styles.sidebar} ${styles[position]} ${isOpen ? styles.open : ""}`}>
       {position=="left" ? 
-      isOpen ? <button className={styles.closeButton} onClick={() => setIsOpen(false)}> 
+      isOpen ? <button data-testid="Leftsidebar-close-button" className={styles.closeButton} onClick={() => setIsOpen(false)}> 
                 <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">{closeIconMsg}</span>}>
                   <X className={styles.sidebarCloseIcon} size={28} />
                 </Tooltip></button> 
                 : 
                 <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">{openIconMsg}</span>}>
-                  <div onClick={() => setIsOpen(true)} className={`${styles.closeIcon} ${styles.rightCloseIcon}`} > <ChevronRight/> </div>
+                  <div data-testid="Leftsidebar-open-button" onClick={() => setIsOpen(true)} className={`${styles.closeIcon} ${styles.rightCloseIcon}`} > <ChevronRight/> </div>
                 </Tooltip>
                  :
-      isOpen ? <button className={styles.closeButton} onClick={() => closeSidebar()}>
+      isOpen ? <button data-testid="Rightsidebar-close-button" className={styles.closeButton} onClick={() => closeSidebar()}>
                 <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">{closeIconMsg}</span>}>
                   <X className={styles.sidebarCloseIcon} size={28} />
                 </Tooltip></button> 
                  : 
                  <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">{openIconMsg}</span>}>
-                  <div onClick={() => setIsOpen(true)} className={`${styles.closeIcon} ${styles.leftCloseIcon}`} > <ChevronLeft/> </div> 
+                  <div data-testid="Rightsidebar-open-button" onClick={() => setIsOpen(true)} className={`${styles.closeIcon} ${styles.leftCloseIcon}`} > <ChevronLeft/> </div> 
                 </Tooltip>
                  
       }

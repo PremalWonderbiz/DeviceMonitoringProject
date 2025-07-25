@@ -4,8 +4,8 @@
   "Type": "Smart Appliance",
   "Status": "Online",
   "MacId": "98:5F:D3:4B:22:AC",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-07-16T17:19:46.1569386+05:30",
+  "Connectivity": "High",
+  "LastUpdated": "2025-07-25T20:16:09.7646397+05:30",
   "staticProperties": {
     "Hardware Specifications": {
       "AC Type": "Split Inverter",
@@ -55,74 +55,299 @@
   "dynamicProperties": {
     "Current Status": {
       "Power State": "On",
-      "Mode": "Cool",
-      "Set Temperature": "24°C",
-      "Current Room Temperature": "28.8°C",
-      "Fan Speed": "Medium",
+      "Mode": "Dry",
+      "Set Temperature": 27,
+      "Current Room Temperature": 29.19,
+      "Fan Speed": "High",
       "Swing Mode": {
-        "Vertical Swing": "Auto",
-        "Horizontal Swing": "Fixed"
+        "Vertical Swing": "Fixed",
+        "Horizontal Swing": "Off"
       },
-      "Humidity Level": "63%",
-      "Sleep Mode": false
+      "Humidity Level": "86%",
+      "Sleep Mode": true
     },
     "Sensor Data": {
       "Temperature Sensors": [
-        {
-          "Sensor ID": "TS001",
-          "Location": "Indoor Unit",
-          "Reading": "28.7°C"
-        },
-        {
-          "Sensor ID": "TS002",
-          "Location": "Outdoor Unit",
-          "Reading": "33.9°C"
-        }
+        5,
+        19
       ],
       "Humidity Sensor": {
         "Sensor ID": "HS001",
-        "Reading": "63%"
+        "Reading": "18%"
       }
     },
     "Power Consumption Stats": {
-      "Today": "2.5 kWh",
-      "This Week": "14.4 kWh",
-      "This Month": "63.7 kWh",
+      "Today": 8.65,
+      "This Week": 22.13,
+      "This Month": 95.43,
       "Power Saving Mode": "Enabled",
-      "Last Reset": "2025-06-01"
+      "Last Reset": "2025-07-25T14:52:20.2410468Z"
     },
     "Network Activity": {
-      "IP Address": "192.168.1.67",
-      "Signal Strength": "-78 dBm",
-      "Last Connected": "2025-07-16 17:29",
+      "IP Address": "192.168.229.246",
+      "Signal Strength": "-68 dBm",
+      "Last Connected": "2025-07-25T14:52:20.2410547Z",
       "Control Access": [
-        {
-          "User": "kiran.j",
-          "Device": "Google Home",
-          "Access Time": "2025-06-04 07:15"
-        },
-        {
-          "User": "manual_remote",
-          "Device": "IR Controller",
-          "Access Time": "2025-06-03 22:50"
-        }
+        20,
+        81
       ]
     },
     "Service Logs": {
-      "Filter Status": "Needs Cleaning",
+      "Filter Status": "Clean",
       "Service History": [
-        {
-          "Date": "2024-12-12",
-          "Technician": "CoolCare Services",
-          "Work Done": "Gas Top-up"
-        },
-        {
-          "Date": "2023-09-18",
-          "Technician": "ACFix",
-          "Work Done": "Annual Maintenance"
-        }
+        5,
+        42
       ],
-      "Next Scheduled Maintenance": "2025-07-15"
+      "Next Scheduled Maintenance": "2025-07-25T14:52:20.2410683Z"
+    }
+  },
+  "topLevelObservables": {
+    "Status": {
+      "type": "enum",
+      "values": [
+        "Online",
+        "Offline"
+      ],
+      "weights": [
+        0.9,
+        0.1
+      ]
+    },
+    "Connectivity": {
+      "type": "enum",
+      "values": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "weights": [
+        0.2,
+        0.3,
+        0.5
+      ]
+    }
+  },
+  "dynamicObservables": {
+    "Current Status": {
+      "Power State": {
+        "type": "enum",
+        "values": [
+          "On",
+          "Off"
+        ]
+      },
+      "Mode": {
+        "type": "enum",
+        "values": [
+          "Cool",
+          "Heat",
+          "Fan",
+          "Dry",
+          "Auto"
+        ]
+      },
+      "Set Temperature": {
+        "type": "int",
+        "min": 16,
+        "max": 30,
+        "unit": "°C"
+      },
+      "Current Room Temperature": {
+        "type": "float",
+        "min": 16,
+        "max": 40,
+        "unit": "°C"
+      },
+      "Fan Speed": {
+        "type": "enum",
+        "values": [
+          "Low",
+          "Medium",
+          "High",
+          "Auto"
+        ]
+      },
+      "Swing Mode": {
+        "Vertical Swing": {
+          "type": "enum",
+          "values": [
+            "Auto",
+            "Fixed",
+            "Off"
+          ]
+        },
+        "Horizontal Swing": {
+          "type": "enum",
+          "values": [
+            "Auto",
+            "Fixed",
+            "Off"
+          ]
+        }
+      },
+      "Humidity Level": {
+        "type": "percentage",
+        "min": 30,
+        "max": 90
+      },
+      "Sleep Mode": {
+        "type": "boolean"
+      }
+    },
+    "Sensor Data": {
+      "Temperature Sensors": {
+        "type": "array",
+        "count": 2,
+        "children": {
+          "Sensor ID": {
+            "type": "pickN",
+            "values": [
+              "TS001",
+              "TS002",
+              "TS003"
+            ],
+            "count": 1
+          },
+          "Location": {
+            "type": "pickN",
+            "values": [
+              "Indoor Unit",
+              "Outdoor Unit"
+            ],
+            "count": 1
+          },
+          "Reading": {
+            "type": "float",
+            "min": 16,
+            "max": 40,
+            "unit": "°C"
+          }
+        }
+      },
+      "Humidity Sensor": {
+        "Sensor ID": {
+          "type": "enum",
+          "values": [
+            "HS001"
+          ]
+        },
+        "Reading": {
+          "type": "percentage",
+          "min": 30,
+          "max": 90
+        }
+      }
+    },
+    "Power Consumption Stats": {
+      "Today": {
+        "type": "float",
+        "min": 0,
+        "max": 10,
+        "unit": "kWh"
+      },
+      "This Week": {
+        "type": "float",
+        "min": 0,
+        "max": 70,
+        "unit": "kWh"
+      },
+      "This Month": {
+        "type": "float",
+        "min": 0,
+        "max": 300,
+        "unit": "kWh"
+      },
+      "Power Saving Mode": {
+        "type": "enum",
+        "values": [
+          "Enabled",
+          "Disabled"
+        ]
+      },
+      "Last Reset": {
+        "type": "timestamp"
+      }
+    },
+    "Network Activity": {
+      "IP Address": {
+        "type": "ip"
+      },
+      "Signal Strength": {
+        "type": "dBm",
+        "min": -90,
+        "max": -30
+      },
+      "Last Connected": {
+        "type": "timestamp"
+      },
+      "Control Access": {
+        "type": "array",
+        "count": 2,
+        "children": {
+          "User": {
+            "type": "pickN",
+            "values": [
+              "kiran.j",
+              "manual_remote",
+              "app_user"
+            ],
+            "count": 1
+          },
+          "Device": {
+            "type": "pickN",
+            "values": [
+              "Google Home",
+              "IR Controller",
+              "Mobile App"
+            ],
+            "count": 1
+          },
+          "Access Time": {
+            "type": "timestamp"
+          }
+        }
+      }
+    },
+    "Service Logs": {
+      "Filter Status": {
+        "type": "enum",
+        "values": [
+          "Clean",
+          "Needs Cleaning",
+          "Dirty"
+        ]
+      },
+      "Service History": {
+        "type": "array",
+        "count": 2,
+        "children": {
+          "Date": {
+            "type": "timestamp"
+          },
+          "Technician": {
+            "type": "pickN",
+            "values": [
+              "CoolCare Services",
+              "ACFix",
+              "ACBuddy"
+            ],
+            "count": 1
+          },
+          "Work Done": {
+            "type": "pickN",
+            "values": [
+              "Gas Top-up",
+              "Annual Maintenance",
+              "Filter Change",
+              "Leak Repair"
+            ],
+            "count": 1
+          }
+        }
+      },
+      "Next Scheduled Maintenance": {
+        "type": "timestamp"
+      }
     }
   }
 }

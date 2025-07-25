@@ -11,6 +11,8 @@ using Application.Interfaces;
 using Microsoft.Extensions.Options;
 using Infrastructure.Helpers;
 using Infrastructure.Cache;
+using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Services;
 
@@ -306,22 +308,22 @@ private List<DeviceMetadata> _devices =>
             await _deviceStateCache.WithLock(device.MacId, async (root) =>
             {
                 var previousDynamic = _deviceServiceHelper.ExtractDynamicDto(device.MacId, root.DeepClone());
-                var updatedNode = _deviceServiceHelper.UpdateDynamicProperties(device.Name, root["dynamicProperties"]);
+                var updatedNode = _deviceServiceHelper.UpdateDynamicProperties(root["dynamicProperties"], root["dynamicObservables"]);
 
                 var currentDynamic = _deviceServiceHelper.ExtractDynamicDto(device.MacId, root);
 
                 //await _alarmEvaluationService.EvaluateDynamicAsync(currentDynamic, previousDynamic);
 
-                if(updatedNode is not null)
+                if (updatedNode is not null)
                 {
 
-                var jsonElement = JsonDocument.Parse(updatedNode.ToJsonString()).RootElement.Clone();
+                    var jsonElement = JsonDocument.Parse(updatedNode.ToJsonString()).RootElement.Clone();
 
-                updatedDeviceDetails.Add((
-                    MacId: device.MacId,
-                    EventName: $"DeviceUpdate-{device.MacId}",
-                    DetailPayload: jsonElement
-                ));
+                    updatedDeviceDetails.Add((
+                        MacId: device.MacId,
+                        EventName: $"DeviceUpdate-{device.MacId}",
+                        DetailPayload: jsonElement
+                    ));
                 }
             });
         }
@@ -337,5 +339,89 @@ private List<DeviceMetadata> _devices =>
             DeviceName = d.Name,
             DeviceMacId = d.MacId
         }).ToList();
+    }
+
+    public async Task<DeviceMetadataPaginatedandSortedDto> GetAllDataRefereshedFromCache(DeviceTopLevelSortOptions request, string input = "")
+    {
+        await refreshDeviceStateCache();
+
+        if(input != "undefined")
+            return GetSearchedDeviceMetadataPaginated(request, input);
+
+        return GetAllDeviceMetadataPaginatedandSorted(request);
+    }
+
+    public async Task<string> UploadFile(IFormFile file)
+    {
+        if (file == null || file.Length == 0)
+            throw new Exception("No file uploaded.");
+
+        // Read file content as string
+        string fileContent;
+        using (var reader = new StreamReader(file.OpenReadStream()))
+        {
+            fileContent = await reader.ReadToEndAsync();
+        }
+
+        // Parse and validate JSON structure
+        JsonDocument jsonDoc;
+        try
+        {
+            jsonDoc = JsonDocument.Parse(fileContent);
+        }
+        catch (JsonException)
+        {
+            throw new Exception("Uploaded file is not a valid JSON.");
+        }
+
+        JsonElement root = jsonDoc.RootElement;
+
+        // Validate required top-level fields
+        if (!root.TryGetProperty("Name", out _) ||
+            !root.TryGetProperty("FileName", out var fileNameProp) ||
+            !root.TryGetProperty("Type", out _) ||
+            !root.TryGetProperty("staticProperties", out var staticProps) ||
+            !root.TryGetProperty("dynamicProperties", out var dynamicProps))
+        {
+            throw new Exception("JSON must contain 'FileName', 'Name', 'Type', 'staticProperties', and 'dynamicProperties' fields.");
+        }
+
+        // Validate that staticProperties and dynamicProperties are objects
+        if (staticProps.ValueKind != JsonValueKind.Object || dynamicProps.ValueKind != JsonValueKind.Object)
+        {
+            throw new Exception("'staticProperties' and 'dynamicProperties' must be JSON objects.");
+        }
+
+        // Validate that the 'FileName' field inside JSON matches the uploaded file's name
+        var jsonFileName = fileNameProp.GetString();
+        if (!string.Equals(jsonFileName, file.FileName, StringComparison.OrdinalIgnoreCase))
+        {
+            throw new Exception($"Mismatch between uploaded file name ('{file.FileName}') and JSON 'FileName' field ('{jsonFileName}').");
+        }
+
+        // Save the file if validation passes
+        if (!Directory.Exists(_dataDirectory))
+            Directory.CreateDirectory(_dataDirectory);
+
+        var filePath = Path.Combine(_dataDirectory, file.FileName);
+        if (File.Exists(filePath))
+        {
+            throw new Exception($"A file named '{file.FileName}' already exists. Please rename your file or delete the existing one.");
+        }
+
+        await File.WriteAllTextAsync(filePath, fileContent);
+
+        await refreshDeviceStateCache();
+
+        return "Device added successfully.";
+    }
+
+    private async Task<bool> refreshDeviceStateCache()
+    {
+        await _deviceStateCache.PersistToDiskAsync();
+        var allDevices = ReadAllDeviceMetadataFiles();
+        await _deviceStateCache.LoadAsync(allDevices);
+
+        return true;
     }
 }

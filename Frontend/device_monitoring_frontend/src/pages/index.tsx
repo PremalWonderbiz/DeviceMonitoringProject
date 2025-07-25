@@ -6,8 +6,8 @@ import TableComponent from "@/components/customcomponents/Table/TableComponent";
 import AlarmPanel from "@/components/customcomponents/AlarmPanel/AlarmPanel";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDevicesTopDataSocket } from "@/utils/customhooks/useDevicesTopDataSocket";
-import { BellRing, ListX, RefreshCw, Repeat, UserPen } from "lucide-react";
-import { getDeviceMetadataPaginatedandSorted, getDevicesNameMacIdList, getDevicesTopLevelData, getMacIdToFileNameMap, getSearchedDeviceMetadataPaginated } from "@/services/deviceservice";
+import { BellRing, FileUp, ListX, RefreshCw, Repeat, UserPen } from "lucide-react";
+import { getAllDataRefereshedFromCache, getDeviceMetadataPaginatedandSorted, getDevicesNameMacIdList, getDevicesTopLevelData, getMacIdToFileNameMap, getSearchedDeviceMetadataPaginated } from "@/services/deviceservice";
 import styles from "@/styles/scss/Home.module.scss";
 import PopOver from "@/components/chakrauicomponents/PopOver";
 import { AlarmPopUp, ProfilePopUp } from "@/components/customcomponents/AlarmPanel/AlarmPanelContent";
@@ -16,6 +16,7 @@ import { useDeviceAlertSocket } from "@/utils/customhooks/useDeviceAlertSocket";
 import { SortingState } from "@tanstack/react-table";
 import { Tooltip } from "@/components/ui/tooltip";
 import { log } from "console";
+import FileUploader from "@/components/customcomponents/FileUploader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -332,6 +333,17 @@ export default function Home() {
     setCurrentDeviceFileName(null);
   }
 
+  const getRefreshedData = async () => {
+    const response = await getAllDataRefereshedFromCache(currentPage, pageSize, sorting, searchInput);
+    if (!response)
+      console.log("Network response was not ok");
+
+    if (response && response.data) {
+      setDeviceData(response.data.data);
+      setTotalCount(response.data.totalCount);
+    }
+  };
+
   return (
     <div>
       <div className={styles.upperNav}>
@@ -377,13 +389,16 @@ export default function Home() {
           <div className={`py-2 pr-4 ${styles.subNav}`}>
             <input onChange={(event: any) => { changeSearchInput(event.target.value) }} className={styles.mainPageSearchInput} type="search" placeholder="Search..." />
             <div className={styles.mainPageIcons}>
+              <div className={""} >
+                <FileUploader setRefreshDeviceDataKey = {setRefreshDeviceDataKey} />
+              </div>
               {(sorting && sorting.length > 0) &&
                 <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Clear sorting</span>}>
                   <ListX className={styles.deviceRefreshIcon} onClick={() => { setSorting([]) }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
                 </Tooltip>}
               {deviceData && deviceData.length > 0 &&
-                <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Refresh Device List</span>}>
-                  <Repeat className={styles.deviceRefreshIcon} onClick={() => { setRefreshDeviceDataKey(prev => prev + 1); justRefreshedRef.current = true; }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
+                <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Refresh Device Cache</span>}>
+                  <Repeat className={styles.deviceRefreshIcon} onClick={() => { getRefreshedData(); justRefreshedRef.current = true; }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
                 </Tooltip>}
             </div>
           </div>

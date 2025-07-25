@@ -1,8 +1,6 @@
 ﻿using Application.Dtos;
 using Application.Interfaces;
 using Infrastructure.RealTime;
-using Infrastructure.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 
@@ -65,6 +63,28 @@ namespace API.Controllers
             });
         }
         
+        [HttpPost("refreshCache/{input}")]
+        public async Task<IActionResult> GetRefreshedData(DeviceTopLevelSortOptions request, string input = "")
+        {
+            var data = await _deviceService.GetAllDataRefereshedFromCache(request, input);
+
+            var formattedData = data.DeviceMetadata.Select(m => new DeviceTopLevelData
+            {
+                Name = m.Name,
+                Type = m.Type,
+                Status = m.Status,
+                MacId = m.MacId,
+                Connectivity = m.Connectivity,
+                LastUpdated = m.LastUpdated
+            }).ToList();
+
+            return Ok(new
+            {
+                totalCount = data.TotalCount,
+                data = formattedData
+            });
+        }
+        
         [HttpGet("getDevicesNameMacIdList")]
         public async Task<IActionResult> GetDevicesNameMacIdList()
         {
@@ -95,5 +115,14 @@ namespace API.Controllers
             }
 
         }
+
+        [HttpPost("uploadFile")]
+        public async Task<IActionResult> UploadFile(IFormFile file)
+        {
+            var res = await _deviceService.UploadFile(file);
+
+            return Ok(new { message = res, fileName = file.FileName });
+        }
+
     }
 }

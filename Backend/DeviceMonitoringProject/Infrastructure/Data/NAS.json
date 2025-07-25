@@ -2,10 +2,10 @@
   "FileName": "NAS.json",
   "Name": "NAS Server",
   "Type": "Server",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "00:1B:44:11:3A:B7",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-07-16T17:35:13.3562746+05:30",
+  "Connectivity": "High",
+  "LastUpdated": "2025-07-25T20:21:30.1568001+05:30",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "Synology DSM 7.2",
@@ -125,142 +125,407 @@
   "dynamicProperties": {
     "System Health": {
       "CPU Usage": {
-        "Load Percentage": 55,
+        "Load Percentage": "62%",
         "Core Usage": [
-          {
-            "Core": 0,
-            "Usage": "57%"
-          },
-          {
-            "Core": 1,
-            "Usage": "66%"
-          },
-          {
-            "Core": 2,
-            "Usage": "68%"
-          },
-          {
-            "Core": 3,
-            "Usage": "41%"
-          }
+          2,
+          39,
+          31,
+          34
         ]
       },
       "RAM Usage": {
-        "Used": "6.0 GB",
-        "Free": "2.0 GB",
-        "Swap Used": "0.2 GB"
+        "Used": "8.7 GB",
+        "Free": "6.8 GB",
+        "Swap Used": "5.9 GB"
       },
       "System Temperature": {
-        "CPU": "51.9°C",
-        "System Board": "40.9°C",
+        "CPU": 50.18,
+        "System Board": 47.59,
         "Drive Bays": [
-          {
-            "Bay": 1,
-            "Temp": "38.3°C"
-          },
-          {
-            "Bay": 2,
-            "Temp": "37.7°C"
-          },
-          {
-            "Bay": 3,
-            "Temp": "37.3°C"
-          },
-          {
-            "Bay": 4,
-            "Temp": "36.4°C"
-          }
+          34,
+          32,
+          52,
+          19
         ]
       },
       "System Load Average": {
-        "1m": "1.81",
-        "5m": "1.90",
-        "15m": "1.55"
+        "1m": 0.45,
+        "5m": 0.91,
+        "15m": 0.84
       },
-      "Uptime": "37 days, 21 hours"
+      "Uptime": "2 days, 22 hrs"
     },
     "Network Activity": {
-      "Primary IP": "192.168.1.44",
+      "Primary IP": "192.168.122.176",
       "Interfaces": [
-        {
-          "Name": "eth0",
-          "Status": "Active",
-          "Throughput": {
-            "Upload": "74 Mbps",
-            "Download": "113 Mbps"
-          },
-          "Data Transferred": {
-            "Sent": "1.1 TB",
-            "Received": "3.0 TB"
-          }
-        },
-        {
-          "Name": "eth1",
-          "Status": "Active",
-          "Throughput": {
-            "Upload": "3 Mbps",
-            "Download": "7 Mbps"
-          },
-          "Data Transferred": {
-            "Sent": "0.59 TB",
-            "Received": "0.23 TB"
-          }
-        }
+        58,
+        69
       ],
       "Connected Clients": [
-        {
-          "IP": "192.168.1.102",
-          "Hostname": "laptop-prem",
-          "Last Access": "2025-07-16 17:07"
-        },
-        {
-          "IP": "192.168.1.115",
-          "Hostname": "mobile-kiran",
-          "Last Access": "2025-07-16 15:51"
-        }
+        1,
+        63
       ]
     },
     "Service Status": {
       "Running Services": [
-        "SMB",
         "Docker",
-        "Cloud Sync",
-        "Time Machine"
+        "NFS",
+        "SMB"
       ],
       "Service Health": {
         "Docker": "Healthy",
-        "Cloud Sync": "Healthy",
+        "Cloud Sync": "Degraded",
         "Time Machine": "Healthy"
       },
       "Disk Health": {
-        "Status": "Healthy",
-        "Last Checked": "2025-07-15",
+        "Status": "Warning",
+        "Last Checked": "2025-07-25T14:52:20.2415280Z",
         "SMART Reports": [
-          {
-            "Bay": 1,
-            "Health": "Good",
-            "Reallocated Sectors": 0
-          },
-          {
-            "Bay": 2,
-            "Health": "Good",
-            "Reallocated Sectors": 1
-          }
+          2,
+          65
         ]
       },
       "Fan Status": {
         "Fan 1": {
-          "Speed": "1224 RPM",
-          "Status": "Normal"
+          "Speed": 1729,
+          "Status": "High"
         },
         "Fan 2": {
-          "Speed": "1113 RPM",
-          "Status": "Normal"
+          "Speed": 1126,
+          "Status": "High"
         }
       },
       "Last Backup": {
         "Status": "Success",
-        "Timestamp": "2025-07-15 23:15"
+        "Timestamp": "2025-07-25T14:52:20.2415537Z"
+      }
+    }
+  },
+  "topLevelObservables": {
+    "Status": {
+      "type": "enum",
+      "values": [
+        "Online",
+        "Offline"
+      ],
+      "weights": [
+        0.9,
+        0.1
+      ]
+    },
+    "Connectivity": {
+      "type": "enum",
+      "values": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "weights": [
+        0.2,
+        0.3,
+        0.5
+      ]
+    }
+  },
+  "dynamicObservables": {
+    "System Health": {
+      "CPU Usage": {
+        "Load Percentage": {
+          "type": "percentage",
+          "min": 1,
+          "max": 100
+        },
+        "Core Usage": {
+          "type": "array",
+          "count": 4,
+          "values": {
+            "Core": {
+              "type": "int",
+              "min": 0,
+              "max": 3
+            },
+            "Usage": {
+              "type": "percentage",
+              "min": 0,
+              "max": 100,
+              "unit": "%"
+            }
+          }
+        }
+      },
+      "RAM Usage": {
+        "Used": {
+          "type": "dataVolume",
+          "min": 2,
+          "max": 8,
+          "unit": "GB"
+        },
+        "Free": {
+          "type": "dataVolume",
+          "min": 0,
+          "max": 6,
+          "unit": "GB"
+        },
+        "Swap Used": {
+          "type": "dataVolume",
+          "min": 0,
+          "max": 2,
+          "unit": "GB"
+        }
+      },
+      "System Temperature": {
+        "CPU": {
+          "type": "float",
+          "min": 40,
+          "max": 90,
+          "unit": "°C"
+        },
+        "System Board": {
+          "type": "float",
+          "min": 30,
+          "max": 80,
+          "unit": "°C"
+        },
+        "Drive Bays": {
+          "type": "array",
+          "count": 4,
+          "values": {
+            "Bay": {
+              "type": "int",
+              "min": 1,
+              "max": 4
+            },
+            "Temp": {
+              "type": "float",
+              "min": 35,
+              "max": 60,
+              "unit": "°C"
+            }
+          }
+        }
+      },
+      "System Load Average": {
+        "1m": {
+          "type": "float",
+          "min": 0.0,
+          "max": 2.0
+        },
+        "5m": {
+          "type": "float",
+          "min": 0.0,
+          "max": 2.0
+        },
+        "15m": {
+          "type": "float",
+          "min": 0.0,
+          "max": 2.0
+        }
+      },
+      "Uptime": {
+        "type": "uptime",
+        "min": 1,
+        "max": 90,
+        "unit": "days"
+      }
+    },
+    "Network Activity": {
+      "Primary IP": {
+        "type": "ip"
+      },
+      "Interfaces": {
+        "type": "array",
+        "count": 2,
+        "values": {
+          "Name": {
+            "type": "pickN",
+            "count": 1,
+            "values": [
+              "eth0",
+              "eth1",
+              "eth2"
+            ]
+          },
+          "Status": {
+            "type": "enum",
+            "values": [
+              "Active",
+              "Inactive"
+            ]
+          },
+          "Throughput": {
+            "Upload": {
+              "type": "float",
+              "min": 1,
+              "max": 1000,
+              "unit": "Mbps"
+            },
+            "Download": {
+              "type": "float",
+              "min": 1,
+              "max": 1000,
+              "unit": "Mbps"
+            }
+          },
+          "Data Transferred": {
+            "Sent": {
+              "type": "dataVolume",
+              "min": 0.1,
+              "max": 2,
+              "unit": "TB"
+            },
+            "Received": {
+              "type": "dataVolume",
+              "min": 0.1,
+              "max": 3,
+              "unit": "TB"
+            }
+          }
+        }
+      },
+      "Connected Clients": {
+        "type": "array",
+        "count": 2,
+        "values": {
+          "IP": {
+            "type": "ip"
+          },
+          "Hostname": {
+            "type": "pickN",
+            "count": 1,
+            "values": [
+              "laptop-prem",
+              "mobile-kiran",
+              "tablet-ravi",
+              "iot-camera"
+            ]
+          },
+          "Last Access": {
+            "type": "timestamp"
+          }
+        }
+      }
+    },
+    "Service Status": {
+      "Running Services": {
+        "type": "pickN",
+        "count": 3,
+        "values": [
+          "SMB",
+          "Docker",
+          "Cloud Sync",
+          "Time Machine",
+          "NFS"
+        ]
+      },
+      "Service Health": {
+        "Docker": {
+          "type": "enum",
+          "values": [
+            "Healthy",
+            "Degraded",
+            "Unhealthy"
+          ]
+        },
+        "Cloud Sync": {
+          "type": "enum",
+          "values": [
+            "Healthy",
+            "Degraded",
+            "Unhealthy"
+          ]
+        },
+        "Time Machine": {
+          "type": "enum",
+          "values": [
+            "Healthy",
+            "Degraded",
+            "Unhealthy"
+          ]
+        }
+      },
+      "Disk Health": {
+        "Status": {
+          "type": "enum",
+          "values": [
+            "Healthy",
+            "Warning",
+            "Critical"
+          ]
+        },
+        "Last Checked": {
+          "type": "timestamp"
+        },
+        "SMART Reports": {
+          "type": "array",
+          "count": 2,
+          "values": {
+            "Bay": {
+              "type": "int",
+              "min": 1,
+              "max": 4
+            },
+            "Health": {
+              "type": "enum",
+              "values": [
+                "Good",
+                "Fair",
+                "Failing"
+              ]
+            },
+            "Reallocated Sectors": {
+              "type": "int",
+              "min": 0,
+              "max": 10
+            }
+          }
+        }
+      },
+      "Fan Status": {
+        "Fan 1": {
+          "Speed": {
+            "type": "int",
+            "min": 1000,
+            "max": 2000,
+            "unit": "RPM"
+          },
+          "Status": {
+            "type": "enum",
+            "values": [
+              "Normal",
+              "High",
+              "Critical"
+            ]
+          }
+        },
+        "Fan 2": {
+          "Speed": {
+            "type": "int",
+            "min": 1000,
+            "max": 2000,
+            "unit": "RPM"
+          },
+          "Status": {
+            "type": "enum",
+            "values": [
+              "Normal",
+              "High",
+              "Critical"
+            ]
+          }
+        }
+      },
+      "Last Backup": {
+        "Status": {
+          "type": "enum",
+          "values": [
+            "Success",
+            "Failed",
+            "Running"
+          ]
+        },
+        "Timestamp": {
+          "type": "timestamp"
+        }
       }
     }
   }

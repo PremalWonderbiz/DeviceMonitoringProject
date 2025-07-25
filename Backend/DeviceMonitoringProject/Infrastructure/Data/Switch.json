@@ -5,7 +5,7 @@
   "Status": "Online",
   "MacId": "D4:6D:6D:88:11:22",
   "Connectivity": "Low",
-  "LastUpdated": "2025-07-16T17:35:23.4146994+05:30",
+  "LastUpdated": "2025-07-25T20:20:30.0746431+05:30",
   "staticProperties": {
     "Hardware Info": {
       "Model": "Cisco Catalyst 2960-X",
@@ -62,59 +62,34 @@
   },
   "dynamicProperties": {
     "Port Status": [
-      {
-        "Port": "Gig1/0/1",
-        "Link Status": "Up",
-        "Connected Device": "Firewall",
-        "Current Throughput": "396 Mbps"
-      },
-      {
-        "Port": "Gig1/0/2",
-        "Link Status": "Down",
-        "Connected Device": null,
-        "Current Throughput": "0 Mbps"
-      },
-      {
-        "Port": "Gig1/0/3",
-        "Link Status": "Up",
-        "Connected Device": "NAS Server",
-        "Current Throughput": "241 Mbps"
-      }
+      62,
+      16,
+      24
     ],
     "System Health": {
-      "CPU Usage": "21%",
-      "RAM Usage": "1 GB / 2 GB",
-      "Temperature": "51°C",
+      "CPU Usage": "100%",
+      "RAM Usage": "Evaluated at runtime",
+      "Temperature": 41.71,
       "Fan Status": "Operational"
     },
     "Traffic Statistics": {
-      "Total Data Sent": "6.54 TB",
-      "Total Data Received": "9.71 TB",
+      "Total Data Sent": "4.5 GB",
+      "Total Data Received": "3.9 GB",
       "Packet Errors": {
-        "Inbound": 17,
-        "Outbound": 6
+        "Inbound": 34,
+        "Outbound": 83
       },
       "Broadcast Storms Detected": false
     },
     "VLANs & Routing": {
       "Active VLANs": [
-        10,
-        20,
-        30
+        47,
+        63,
+        71
       ],
       "Routing Table": [
-        {
-          "Destination": "192.168.10.0",
-          "Gateway": "192.168.0.1",
-          "Interface": "VLAN 10",
-          "Metric": 1
-        },
-        {
-          "Destination": "192.168.20.0",
-          "Gateway": "192.168.0.1",
-          "Interface": "VLAN 20",
-          "Metric": 1
-        }
+        1,
+        25
       ]
     },
     "Security & Logs": {
@@ -122,68 +97,249 @@
       "MAC Address Filtering": {
         "Mode": "Static",
         "Whitelisted MACs": [
-          "00:1B:44:11:3A:B7",
-          "3C:71:BF:12:34:56"
+          26,
+          19
         ]
       },
       "Login Attempts": [
-        {
-          "User": "admin",
-          "IP": "192.168.0.58",
-          "Time": "2025-07-16T17:14:38",
-          "Success": true
-        },
-        {
-          "User": "admin",
-          "IP": "192.168.0.82",
-          "Time": "2025-07-16T17:14:58",
-          "Success": false
-        },
-        {
-          "User": "guest",
-          "IP": "192.168.0.58",
-          "Time": "2025-07-16T17:15:48",
-          "Success": true
-        },
-        {
-          "User": "admin",
-          "IP": "192.168.0.77",
-          "Time": "2025-07-16T17:17:38",
-          "Success": false
-        },
-        {
-          "User": "guest",
-          "IP": "192.168.0.77",
-          "Time": "2025-07-16T17:29:18",
-          "Success": true
-        }
+        80,
+        16,
+        16,
+        14,
+        95
       ],
       "Recent Logs": [
-        {
-          "Timestamp": "2025-07-16T17:16:18",
-          "Event": "Interface Gig1/0/1 PoE fault"
-        },
-        {
-          "Timestamp": "2025-07-16T17:17:18",
-          "Event": "Interface Gig1/0/3 Security violation detected"
-        },
-        {
-          "Timestamp": "2025-07-16T17:17:48",
-          "Event": "Interface Gig1/0/1 went UP"
-        },
-        {
-          "Timestamp": "2025-07-16T17:17:58",
-          "Event": "Interface Gig1/0/1 Security violation detected"
-        },
-        {
-          "Timestamp": "2025-07-16T17:19:56",
-          "Event": "Interface Gig1/0/1 Security violation detected"
-        },
-        {
-          "Timestamp": "2025-07-16T17:29:18",
-          "Event": "Interface Gig1/0/2 PoE fault"
-        }
+        57,
+        90,
+        30,
+        27,
+        68,
+        69
       ]
+    }
+  },
+  "topLevelObservables": {
+    "Status": {
+      "type": "enum",
+      "values": [
+        "Online",
+        "Offline"
+      ],
+      "weights": [
+        0.9,
+        0.1
+      ]
+    },
+    "Connectivity": {
+      "type": "enum",
+      "values": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "weights": [
+        0.2,
+        0.3,
+        0.5
+      ]
+    }
+  },
+  "dynamicObservables": {
+    "Port Status": {
+      "type": "array",
+      "count": 3,
+      "children": {
+        "Port": {
+          "type": "enum",
+          "values": [
+            "Gig1/0/1",
+            "Gig1/0/2",
+            "Gig1/0/3",
+            "Gig1/0/4",
+            "Gig1/0/5"
+          ]
+        },
+        "Link Status": {
+          "type": "enum",
+          "values": [
+            "Up",
+            "Down"
+          ]
+        },
+        "Connected Device": {
+          "type": "enum",
+          "values": [
+            "Core Router",
+            "Firewall",
+            "Access Point",
+            "Printer",
+            null
+          ]
+        },
+        "Current Throughput": {
+          "type": "dataVolume",
+          "unit": "Mbps",
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "System Health": {
+      "CPU Usage": {
+        "type": "percentage",
+        "min": 0,
+        "max": 100
+      },
+      "RAM Usage": {
+        "type": "expression",
+        "note": "Can be derived by currentUsage + total"
+      },
+      "Temperature": {
+        "type": "float",
+        "unit": "°C",
+        "min": 20,
+        "max": 90
+      },
+      "Fan Status": {
+        "type": "enum",
+        "values": [
+          "Operational",
+          "Non-operational"
+        ]
+      }
+    },
+    "Traffic Statistics": {
+      "Total Data Sent": {
+        "type": "dataVolume",
+        "unit": "TB",
+        "min": 0,
+        "max": 100
+      },
+      "Total Data Received": {
+        "type": "dataVolume",
+        "unit": "TB",
+        "min": 0,
+        "max": 100
+      },
+      "Packet Errors": {
+        "Inbound": {
+          "type": "int",
+          "min": 0,
+          "max": 100
+        },
+        "Outbound": {
+          "type": "int",
+          "min": 0,
+          "max": 100
+        }
+      },
+      "Broadcast Storms Detected": {
+        "type": "boolean",
+        "probability": 0.05
+      }
+    },
+    "VLANs & Routing": {
+      "Active VLANs": {
+        "type": "array",
+        "count": 3,
+        "children": {
+          "type": "int",
+          "min": 1,
+          "max": 4094
+        }
+      },
+      "Routing Table": {
+        "type": "array",
+        "count": 2,
+        "children": {
+          "Destination": {
+            "type": "ip"
+          },
+          "Gateway": {
+            "type": "ip"
+          },
+          "Interface": {
+            "type": "enum",
+            "values": [
+              "VLAN 10",
+              "VLAN 20",
+              "VLAN 30",
+              "VLAN 40"
+            ]
+          },
+          "Metric": {
+            "type": "int",
+            "min": 1,
+            "max": 10
+          }
+        }
+      }
+    },
+    "Security & Logs": {
+      "Port Security Enabled": {
+        "type": "boolean"
+      },
+      "MAC Address Filtering": {
+        "Mode": {
+          "type": "enum",
+          "values": [
+            "Static",
+            "Dynamic"
+          ]
+        },
+        "Whitelisted MACs": {
+          "type": "array",
+          "count": 2,
+          "children": {
+            "type": "mac"
+          }
+        }
+      },
+      "Login Attempts": {
+        "type": "array",
+        "count": 5,
+        "children": {
+          "User": {
+            "type": "enum",
+            "values": [
+              "admin",
+              "guest",
+              "operator"
+            ]
+          },
+          "IP": {
+            "type": "ip"
+          },
+          "Time": {
+            "type": "timestamp"
+          },
+          "Success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Recent Logs": {
+        "type": "array",
+        "count": 6,
+        "children": {
+          "Timestamp": {
+            "type": "timestamp"
+          },
+          "Event": {
+            "type": "enum",
+            "values": [
+              "Interface Gig1/0/1 went UP",
+              "Interface Gig1/0/1 went DOWN",
+              "Interface Gig1/0/2 went UP",
+              "Interface Gig1/0/2 went DOWN",
+              "Interface Gig1/0/3 went UP",
+              "Interface Gig1/0/3 went DOWN",
+              "Port security violation detected",
+              "Broadcast storm detected"
+            ]
+          }
+        }
+      }
     }
   }
 }

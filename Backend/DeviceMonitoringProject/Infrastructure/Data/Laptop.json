@@ -2,10 +2,10 @@
   "FileName": "Laptop.json",
   "Name": "Laptop",
   "Type": "Personal Device",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "3C:5A:B4:91:22:AC",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-07-16T17:16:08.4179776+05:30",
+  "Connectivity": "Medium",
+  "LastUpdated": "2025-07-25T20:22:20.2381253+05:30",
   "staticProperties": {
     "Hardware Details": {
       "Operating System": "Windows 11 Pro",
@@ -80,62 +80,286 @@
   "dynamicProperties": {
     "System Status": {
       "Battery": {
-        "Level": "18%",
-        "Charging Status": "Charging",
-        "Health": "Good",
-        "Estimated Time Left": "2 hrs 22 mins"
+        "Level": "13%",
+        "Charging Status": "Full",
+        "Health": "Poor",
+        "Estimated Time Left": "Unsupported Type"
       },
-      "CPU Load": "20%",
+      "CPU Load": "92%",
       "RAM Usage": {
-        "Used": "12.8 GB",
-        "Free": "19.2 GB"
+        "Used": 12.58,
+        "Free": 17.36
       },
       "GPU Usage": {
-        "Integrated": "4%",
-        "Dedicated": "11%"
+        "Integrated": "78%",
+        "Dedicated": "24%"
       },
       "Temperature": {
-        "CPU": "57.7°C",
-        "GPU": "52.5°C",
-        "Motherboard": "43.6°C"
+        "CPU": 53.83,
+        "GPU": 51.56,
+        "Motherboard": 48.65
       },
-      "System Uptime": "5 days, 23 hours"
+      "System Uptime": "9 days, 4 hrs"
     },
     "Network Activity": {
       "Current Wi-Fi": {
         "SSID": "Office_Network_5G",
-        "IP Address": "10.0.1.116",
-        "Signal Strength": "-56 dBm",
+        "IP Address": "192.168.147.68",
+        "Signal Strength": "-69 dBm",
         "Data Usage (Today)": {
-          "Download": "8.1 GB",
-          "Upload": "1.9 GB"
+          "Download": "1.8 GB",
+          "Upload": "7.1 GB"
         }
       },
       "VPN Status": {
         "Connected": false,
-        "Provider": "NordLayer",
-        "IP": "172.20.16.164"
+        "Provider": "OpenVPN",
+        "IP": "192.168.62.233"
       }
     },
     "Application Activity": {
       "Foreground Apps": [
         {
-          "App Name": "Visual Studio Code",
-          "CPU": "19%",
-          "Memory": "0.9 GB"
+          "App Name": "Figma",
+          "CPU": "30%",
+          "Memory": 2.17
         },
         {
           "App Name": "Slack",
-          "CPU": "4%",
-          "Memory": "0.8 GB"
+          "CPU": "47%",
+          "Memory": 1.77
+        },
+        {
+          "App Name": "Visual Studio Code",
+          "CPU": "16%",
+          "Memory": 1.68
+        },
+        {
+          "App Name": "Figma",
+          "CPU": "96%",
+          "Memory": 1.87
         }
       ],
-      "Background Processes": 96,
+      "Background Processes": 91,
       "Recent Apps Launched": [
-        "Spotify",
-        "Postman",
-        "Figma"
+        "Zoom",
+        "Edge Browser",
+        "Spotify"
       ]
+    }
+  },
+  "topLevelObservables": {
+    "Status": {
+      "type": "enum",
+      "values": [
+        "Online",
+        "Offline"
+      ],
+      "weights": [
+        0.9,
+        0.1
+      ]
+    },
+    "Connectivity": {
+      "type": "enum",
+      "values": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "weights": [
+        0.2,
+        0.3,
+        0.5
+      ]
+    }
+  },
+  "dynamicObservables": {
+    "System Status": {
+      "Battery": {
+        "Level": {
+          "type": "percentage",
+          "min": 10,
+          "max": 100
+        },
+        "Charging Status": {
+          "type": "enum",
+          "values": [
+            "Charging",
+            "Discharging",
+            "Full"
+          ]
+        },
+        "Health": {
+          "type": "enum",
+          "values": [
+            "Good",
+            "Fair",
+            "Poor"
+          ]
+        },
+        "Estimated Time Left": {
+          "type": "timeRange",
+          "min": 1,
+          "max": 4,
+          "unit": "hours"
+        }
+      },
+      "CPU Load": {
+        "type": "percentage",
+        "min": 5,
+        "max": 90
+      },
+      "RAM Usage": {
+        "Used": {
+          "type": "float",
+          "unit": "GB",
+          "min": 8,
+          "max": 28
+        },
+        "Free": {
+          "type": "float",
+          "unit": "GB",
+          "min": 4,
+          "max": 24
+        }
+      },
+      "GPU Usage": {
+        "Integrated": {
+          "type": "percentage",
+          "min": 2,
+          "max": 20
+        },
+        "Dedicated": {
+          "type": "percentage",
+          "min": 0,
+          "max": 25
+        }
+      },
+      "Temperature": {
+        "CPU": {
+          "type": "float",
+          "unit": "°C",
+          "min": 40,
+          "max": 65
+        },
+        "GPU": {
+          "type": "float",
+          "unit": "°C",
+          "min": 38,
+          "max": 60
+        },
+        "Motherboard": {
+          "type": "float",
+          "unit": "°C",
+          "min": 35,
+          "max": 50
+        }
+      },
+      "System Uptime": {
+        "type": "uptime",
+        "max": 15,
+        "unit": "days"
+      }
+    },
+    "Network Activity": {
+      "Current Wi-Fi": {
+        "SSID": {
+          "type": "ssid",
+          "values": [
+            "Office_Network_5G",
+            "Corp-WiFi",
+            "Laptop-WiFi"
+          ]
+        },
+        "IP Address": {
+          "type": "ip",
+          "prefix": "10.0.1"
+        },
+        "Signal Strength": {
+          "type": "dBm",
+          "min": -85,
+          "max": -30
+        },
+        "Data Usage (Today)": {
+          "Download": {
+            "type": "dataVolume",
+            "unit": "GB",
+            "min": 0.5,
+            "max": 5
+          },
+          "Upload": {
+            "type": "dataVolume",
+            "unit": "GB",
+            "min": 0.2,
+            "max": 3
+          }
+        }
+      },
+      "VPN Status": {
+        "Connected": {
+          "type": "boolean",
+          "probability": 0.85
+        },
+        "Provider": {
+          "type": "enum",
+          "values": [
+            "NordLayer",
+            "Zscaler",
+            "OpenVPN"
+          ]
+        },
+        "IP": {
+          "type": "ip",
+          "prefix": "172.20"
+        }
+      }
+    },
+    "Application Activity": {
+      "Foreground Apps": {
+        "type": "array",
+        "count": 4,
+        "items": {
+          "App Name": {
+            "type": "enum",
+            "values": [
+              "Visual Studio Code",
+              "Slack",
+              "Zoom",
+              "Figma",
+              "Postman",
+              "Edge Browser"
+            ]
+          },
+          "CPU": {
+            "type": "percentage",
+            "min": 1,
+            "max": 20
+          },
+          "Memory": {
+            "type": "float",
+            "unit": "GB",
+            "min": 0.3,
+            "max": 2.5
+          }
+        }
+      },
+      "Background Processes": {
+        "type": "int",
+        "min": 40,
+        "max": 100
+      },
+      "Recent Apps Launched": {
+        "type": "pickN",
+        "values": [
+          "Spotify",
+          "Edge Browser",
+          "Zoom",
+          "Jira",
+          "Figma"
+        ],
+        "count": 3
+      }
     }
   }
 }

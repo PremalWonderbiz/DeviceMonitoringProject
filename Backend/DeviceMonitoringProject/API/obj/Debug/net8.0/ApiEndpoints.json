@@ -53,6 +53,27 @@
   },
   {
     "ContainingType": "API.Controllers.DevicesController",
+    "Method": "GetRefreshedData",
+    "RelativePath": "api/Devices/refreshCache/{input}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.Dtos.DeviceTopLevelSortOptions",
+        "IsRequired": true
+      },
+      {
+        "Name": "input",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.DevicesController",
     "Method": "GetSearchedDeviceMetadataPaginated",
     "RelativePath": "api/Devices/search/metadata/{input}",
     "HttpMethod": "POST",
@@ -68,6 +89,22 @@
         "Name": "input",
         "Type": "System.String",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.DevicesController",
+    "Method": "UploadFile",
+    "RelativePath": "api/Devices/uploadFile",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

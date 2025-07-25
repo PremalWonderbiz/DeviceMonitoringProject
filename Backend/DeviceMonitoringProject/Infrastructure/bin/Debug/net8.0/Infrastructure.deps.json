@@ -422,7 +422,8 @@
       "System.Threading.Channels/8.0.0": {},
       "Application/1.0.0": {
         "dependencies": {
-          "Domain": "1.0.0"
+          "Domain": "1.0.0",
+          "Microsoft.AspNetCore.Http": "2.3.0"
         },
         "runtime": {
           "Application.dll": {

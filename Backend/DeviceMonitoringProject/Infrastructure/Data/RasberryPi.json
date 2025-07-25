@@ -2,10 +2,10 @@
   "FileName": "RasberryPi.json",
   "Name": "Raspberry Pi",
   "Type": "Microcomputer",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "B8:27:EB:45:67:89",
-  "Connectivity": "High",
-  "LastUpdated": "2025-07-16T17:14:38.3231807+05:30",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-07-25T20:21:20.1479735+05:30",
   "staticProperties": {
     "Hardware Information": {
       "Model": "Raspberry Pi 4 Model B",
@@ -61,77 +61,277 @@
   },
   "dynamicProperties": {
     "System Health": {
-      "CPU Usage": "42%",
+      "CPU Usage": "20%",
       "RAM Usage": {
-        "Used": "2 GB",
-        "Total": "4 GB"
+        "Used": "2.4 GB",
+        "Total": "1.6 GB"
       },
       "System Temperature": {
-        "CPU": "60°C",
-        "Board": "49°C"
+        "CPU": 39.73,
+        "Board": 73.47
       },
-      "Uptime": "3 days, 9 hours",
+      "Uptime": "5 days, 13 hrs",
       "System Load": [
-        0.65,
-        0.5,
-        1.41
+        70,
+        44,
+        94
       ]
     },
     "Network Activity": {
       "Interfaces": [
-        {
-          "name": "eth0",
-          "ipAddress": "192.168.1.32",
-          "macAddress": "B8:27:EB:45:67:89",
-          "connectionType": "Ethernet",
-          "traffic": {
-            "upload": "8 Mbps",
-            "download": "24 Mbps"
-          }
-        },
-        {
-          "name": "wlan0",
-          "ipAddress": "192.168.1.35",
-          "macAddress": "B8:27:EB:45:67:90",
-          "connectionType": "Wi-Fi",
-          "status": "Disabled"
-        }
+        88
       ],
       "Total Data Usage": {
-        "Sent": "109.1 GB",
-        "Received": "253.7 GB"
+        "Sent": "0.6 GB",
+        "Received": "2.4 GB"
       },
       "Connected Clients (Media Server)": [
-        {
-          "deviceName": "Smart TV",
-          "ip": "192.168.1.86",
-          "mediaStream": "HD Movie (5.1 GB transferred)"
-        }
+        35
       ]
     },
     "Service Status": {
       "Running Services": [
-        "Kodi",
-        "Pi-hole",
-        "SSH"
+        "Node-RED",
+        "Docker",
+        "Kodi"
       ],
       "Service Health": [
-        {
-          "service": "Kodi",
-          "status": "Running",
-          "activeClients": 2
-        },
-        {
-          "service": "Pi-hole",
-          "status": "Running",
-          "dnsQueriesBlocked": "8,659"
-        }
+        40,
+        77
       ],
-      "Last Reboot Reason": "Scheduled maintenance",
+      "Last Reboot Reason": "Power failure",
       "Firmware": {
-        "Current Version": "2025.01.02",
-        "Last Update": "2025-07-10",
+        "Current Version": "Unsupported Type",
+        "Last Update": "2025-07-25T14:52:20.2429127Z",
         "Update Available": false
+      }
+    }
+  },
+  "topLevelObservables": {
+    "Status": {
+      "type": "enum",
+      "values": [
+        "Online",
+        "Offline"
+      ],
+      "weights": [
+        0.9,
+        0.1
+      ]
+    },
+    "Connectivity": {
+      "type": "enum",
+      "values": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "weights": [
+        0.2,
+        0.3,
+        0.5
+      ]
+    }
+  },
+  "dynamicObservables": {
+    "System Health": {
+      "CPU Usage": {
+        "type": "percentage",
+        "min": 0,
+        "max": 100,
+        "unit": "%"
+      },
+      "RAM Usage": {
+        "Used": {
+          "type": "dataVolume",
+          "unit": "GB",
+          "min": 0,
+          "max": 8
+        },
+        "Total": {
+          "type": "dataVolume",
+          "unit": "GB",
+          "min": 1,
+          "max": 8
+        }
+      },
+      "System Temperature": {
+        "CPU": {
+          "type": "float",
+          "unit": "°C",
+          "min": 20,
+          "max": 100
+        },
+        "Board": {
+          "type": "float",
+          "unit": "°C",
+          "min": 20,
+          "max": 100
+        }
+      },
+      "Uptime": {
+        "type": "uptime"
+      },
+      "System Load": {
+        "type": "array",
+        "count": 3,
+        "values": {
+          "type": "float",
+          "min": 0,
+          "max": 5
+        }
+      }
+    },
+    "Network Activity": {
+      "Interfaces": {
+        "type": "array",
+        "count": 1,
+        "values": {
+          "name": {
+            "type": "enum",
+            "values": [
+              "eth0",
+              "wlan0",
+              "usb0"
+            ]
+          },
+          "ipAddress": {
+            "type": "ip"
+          },
+          "macAddress": {
+            "type": "mac"
+          },
+          "connectionType": {
+            "type": "enum",
+            "values": [
+              "Ethernet",
+              "Wi-Fi",
+              "USB"
+            ]
+          },
+          "status": {
+            "type": "enum",
+            "values": [
+              "Enabled",
+              "Disabled"
+            ]
+          },
+          "traffic": {
+            "upload": {
+              "type": "dataVolume",
+              "unit": "Mbps",
+              "min": 0,
+              "max": 100
+            },
+            "download": {
+              "type": "dataVolume",
+              "unit": "Mbps",
+              "min": 0,
+              "max": 100
+            }
+          }
+        }
+      },
+      "Total Data Usage": {
+        "Sent": {
+          "type": "dataVolume",
+          "unit": "GB",
+          "min": 0,
+          "max": 500
+        },
+        "Received": {
+          "type": "dataVolume",
+          "unit": "GB",
+          "min": 0,
+          "max": 1000
+        }
+      },
+      "Connected Clients (Media Server)": {
+        "type": "array",
+        "count": 1,
+        "values": {
+          "deviceName": {
+            "type": "enum",
+            "values": [
+              "Smart TV",
+              "Laptop",
+              "Phone",
+              "Tablet"
+            ]
+          },
+          "ip": {
+            "type": "ip"
+          },
+          "mediaStream": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Service Status": {
+      "Running Services": {
+        "type": "pickN",
+        "values": [
+          "Kodi",
+          "Pi-hole",
+          "SSH",
+          "Docker",
+          "Node-RED"
+        ],
+        "count": 3
+      },
+      "Service Health": {
+        "type": "array",
+        "count": 2,
+        "values": {
+          "service": {
+            "type": "enum",
+            "values": [
+              "Kodi",
+              "Pi-hole",
+              "SSH",
+              "Docker"
+            ]
+          },
+          "status": {
+            "type": "enum",
+            "values": [
+              "Running",
+              "Stopped",
+              "Failed"
+            ]
+          },
+          "activeClients": {
+            "type": "int",
+            "min": 0,
+            "max": 10
+          },
+          "dnsQueriesBlocked": {
+            "type": "int",
+            "min": 0,
+            "max": 10000
+          }
+        }
+      },
+      "Last Reboot Reason": {
+        "type": "enum",
+        "values": [
+          "Scheduled maintenance",
+          "Power failure",
+          "Manual reboot",
+          "Crash recovery"
+        ]
+      },
+      "Firmware": {
+        "Current Version": {
+          "type": "string"
+        },
+        "Last Update": {
+          "type": "timestamp"
+        },
+        "Update Available": {
+          "type": "boolean"
+        }
       }
     }
   }
