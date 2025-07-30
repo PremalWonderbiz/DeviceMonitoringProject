@@ -26,7 +26,7 @@ namespace Infrastructure.Services
                 Current = current
             };
 
-            await SendEvaluationRequestAsync(request, "api/Alarms/evaluateTop");
+            await SendRequestAsync(request, "api/Alarms/evaluateTop");
         }
 
         public async Task EvaluateDynamicAsync(DynamicDeviceDataDto previous, DynamicDeviceDataDto current)
@@ -38,10 +38,15 @@ namespace Infrastructure.Services
                 Current = current
             };
 
-            await SendEvaluationRequestAsync(request, "api/Alarms/evaluateDynamic");
+            await SendRequestAsync(request, "api/Alarms/evaluateDynamic");
         }
 
-        private async Task SendEvaluationRequestAsync<T>(T payload, string endpoint)
+        public async Task AddAlarmRules(string deviceMacId, List<AlarmRuleDto> alarmRules)
+        {
+            await SendRequestAsync(alarmRules, $"api/Alarms/addAlarmRules/{deviceMacId}");
+        }
+
+        private async Task SendRequestAsync<T>(T payload, string endpoint)
         {
             var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions
             {

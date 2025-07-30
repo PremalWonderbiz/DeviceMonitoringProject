@@ -37,7 +37,7 @@ const KeyValueField = ({
   );
 };
 
-function areEqual(prevProps: any, nextProps: any) {
+export function areEqual(prevProps: any, nextProps: any) {
   const wasHighlighted = prevProps.highlightedPaths.includes(prevProps.fullPath);
   const isHighlighted = nextProps.highlightedPaths.includes(nextProps.fullPath);
 

@@ -6,12 +6,12 @@ type Props = {
   row: Row<any>;
   setIsPropertyPanelOpen: (id: string) => void;
   updatedFieldsMap: { [macId: string]: string[] } | null;
-  refreshDeviceDataKey: any;
+  refreshDeviceDataKey?: any;
   currentDeviceId : any;
 };
 
 const TableRow = React.memo(
-  ({ currentDeviceId, refreshDeviceDataKey, updatedFieldsMap, row, setIsPropertyPanelOpen }: Props) => {
+  ({ currentDeviceId, refreshDeviceDataKey = undefined, updatedFieldsMap, row, setIsPropertyPanelOpen }: Props) => {
     const rowData = row.original;
     const macId = rowData.macId;
 
@@ -33,20 +33,21 @@ const TableRow = React.memo(
       }
     }, [updatedFieldsMap?.[macId]]);
 
-    useEffect(() => {      
-      setLocalUpdatedFields([]);
+    useEffect(() => {  
+      if (refreshDeviceDataKey)    
+        setLocalUpdatedFields([]);
     }, [refreshDeviceDataKey]);
 
     return (
       <tr
-        className={`${styles.row} ${currentDeviceId && currentDeviceId == macId ? styles.rowSelected : ""}`}
-        key={macId || rowData.id}
+        className={`${localUpdatedFields.length > 0 ? styles.highlightedRow : ""} ${styles.row} ${currentDeviceId && currentDeviceId == macId ? styles.rowSelected : ""}`}
+        key={macId}
         onClick={() => setIsPropertyPanelOpen(macId)}
       >
         {row.getVisibleCells().map((cell: any) => {
           const columnId = cell.column.id;
           const isUpdated = localUpdatedFields.includes(columnId);
-
+          
           return (
             <td
               key={cell.id}
@@ -61,7 +62,7 @@ const TableRow = React.memo(
   areEqual
 );
 
-function areEqual(prevProps: Props, nextProps: Props) {
+export function areEqual(prevProps: Props, nextProps: Props) {
   const prevRow = prevProps.row.original;
   const nextRow = nextProps.row.original;
 

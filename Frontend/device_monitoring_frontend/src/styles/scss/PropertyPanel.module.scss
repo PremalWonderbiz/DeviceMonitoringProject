@@ -57,7 +57,7 @@
 
 @for $i from 1 through 10 {
     .depth-#{$i} {
-        padding-left: #{0.5 * $i}rem;
+        margin-left: #{0.5 * $i}rem;
     }
 }
 
@@ -153,7 +153,7 @@ font-weight: bold;
 }
 
 .highlightedTitle{
-    color: #ff0202;
+    background-color: #f3f65a;
 }
 
 .selectDeviceDropdown{

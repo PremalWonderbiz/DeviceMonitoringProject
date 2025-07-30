@@ -4,8 +4,8 @@
   "Type": "Server",
   "Status": "Offline",
   "MacId": "00:1B:44:11:3A:B7",
-  "Connectivity": "High",
-  "LastUpdated": "2025-07-25T20:21:30.1568001+05:30",
+  "Connectivity": "Medium",
+  "LastUpdated": "2025-07-30T14:57:59.5321060+05:30",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "Synology DSM 7.2",
@@ -125,79 +125,79 @@
   "dynamicProperties": {
     "System Health": {
       "CPU Usage": {
-        "Load Percentage": "62%",
+        "Load Percentage": "8%",
         "Core Usage": [
-          2,
-          39,
-          31,
-          34
+          83,
+          28,
+          54,
+          28
         ]
       },
       "RAM Usage": {
-        "Used": "8.7 GB",
-        "Free": "6.8 GB",
-        "Swap Used": "5.9 GB"
+        "Used": "8.3 GB",
+        "Free": "9.9 GB",
+        "Swap Used": "9.9 GB"
       },
       "System Temperature": {
-        "CPU": 50.18,
-        "System Board": 47.59,
+        "CPU": 57.37,
+        "System Board": 77.25,
         "Drive Bays": [
-          34,
-          32,
-          52,
-          19
+          5,
+          63,
+          40,
+          89
         ]
       },
       "System Load Average": {
-        "1m": 0.45,
-        "5m": 0.91,
-        "15m": 0.84
+        "1m": 0.18,
+        "5m": 0.75,
+        "15m": 0.16
       },
-      "Uptime": "2 days, 22 hrs"
+      "Uptime": "3 days, 1 hrs"
     },
     "Network Activity": {
-      "Primary IP": "192.168.122.176",
+      "Primary IP": "192.168.177.181",
       "Interfaces": [
-        58,
-        69
+        81,
+        20
       ],
       "Connected Clients": [
-        1,
-        63
+        42,
+        76
       ]
     },
     "Service Status": {
       "Running Services": [
+        "Cloud Sync",
         "Docker",
-        "NFS",
-        "SMB"
+        "Time Machine"
       ],
       "Service Health": {
-        "Docker": "Healthy",
-        "Cloud Sync": "Degraded",
-        "Time Machine": "Healthy"
+        "Docker": "Degraded",
+        "Cloud Sync": "Healthy",
+        "Time Machine": "Degraded"
       },
       "Disk Health": {
-        "Status": "Warning",
-        "Last Checked": "2025-07-25T14:52:20.2415280Z",
+        "Status": "Critical",
+        "Last Checked": "2025-07-30T09:29:49.6455522Z",
         "SMART Reports": [
-          2,
-          65
+          60,
+          64
         ]
       },
       "Fan Status": {
         "Fan 1": {
-          "Speed": 1729,
-          "Status": "High"
+          "Speed": 1002,
+          "Status": "Normal"
         },
         "Fan 2": {
-          "Speed": 1126,
+          "Speed": 1770,
           "Status": "High"
         }
       },
       "Last Backup": {
-        "Status": "Success",
-        "Timestamp": "2025-07-25T14:52:20.2415537Z"
+        "Status": "Failed",
+        "Timestamp": "2025-07-30T09:29:49.6455750Z"
       }
     }
   },
@@ -528,5 +528,49 @@
         }
       }
     }
-  }
+  },
+  "alarmRules": [
+    {
+      "FieldPath": "Status",
+      "Operator": "Equals",
+      "ThresholdValue": "Offline",
+      "Severity": "Critical",
+      "MessageTemplate": "NAS Server is offline"
+    },
+    {
+      "FieldPath": "Connectivity",
+      "Operator": "Equals",
+      "ThresholdValue": "Low",
+      "Severity": "Warning",
+      "MessageTemplate": "NAS Server has low connectivity"
+    },
+    {
+      "FieldPath": "DynamicProperties.System Health.CPU Usage.Load Percentage",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "90",
+      "Severity": "Warning",
+      "MessageTemplate": "NAS Server CPU usage is critically high"
+    },
+    {
+      "FieldPath": "DynamicProperties.System Health.RAM Usage.Used",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "7 GB",
+      "Severity": "Warning",
+      "MessageTemplate": "NAS Server RAM usage is too high"
+    },
+    {
+      "FieldPath": "DynamicProperties.System Health.System Temperature.CPU",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "60°C",
+      "Severity": "Critical",
+      "MessageTemplate": "NAS Server CPU temperature is too high"
+    },
+    {
+      "FieldPath": "DynamicProperties.Service Status.Service Health.Cloud Sync",
+      "Operator": "Equals",
+      "ThresholdValue": "Degraded",
+      "Severity": "Warning",
+      "MessageTemplate": "NAS Server Cloud Sync service is degraded"
+    }
+  ]
 }

@@ -148,6 +148,12 @@ namespace API.Controllers
             return Ok(result);
         }
 
+        [HttpPost("addAlarmRules/{deviceMacId}")]
+        public async Task<IActionResult> AddAlarmRules(string deviceMacId, List<AlarmRuleDto> alarmRules)
+        {
+            var result = await _alarmService.AddAlarmRulesAsync(deviceMacId, alarmRules);
+            return Ok(result);
+        }
 
         // DELETE: api/Alarms/5
         [HttpDelete("ignoreAlarm/{id}/{comment}")]

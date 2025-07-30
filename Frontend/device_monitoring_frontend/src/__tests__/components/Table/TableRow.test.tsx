@@ -2,6 +2,7 @@ import React from "react";
 import { render, fireEvent, act, waitFor } from "@testing-library/react";
 import TableRow from "@/components/customcomponents/Table/TableRow";
 import '@testing-library/jest-dom';
+import { areEqual } from "@/components/customcomponents/Table/TableRow";
 
 // Mock styles import
 jest.mock("@/styles/scss/Table.module.scss", () => ({
@@ -113,7 +114,6 @@ describe("TableRow", () => {
                         row={row as any}
                         setIsPropertyPanelOpen={setIsPropertyPanelOpen}
                         updatedFieldsMap={updatedFieldsMap}
-                        refreshDeviceDataKey={1}
                         currentDeviceId={null}
                     />
                 </tbody>
@@ -132,8 +132,6 @@ describe("TableRow", () => {
         });
 
         let tds = container.querySelectorAll("td");
-        console.log("td count:", tds.length);
-        tds.forEach((td, i) => console.log(`td[${i}] text:`, td.textContent, "class:", td.className));
 
         expect(tds[0].classList.contains("highlightedCell")).toBe(true);
         expect(tds[1].classList.contains("highlightedCell")).toBe(false);
@@ -144,7 +142,9 @@ describe("TableRow", () => {
         });
 
         // Query again and check class removal
-        tds = container.querySelectorAll("td");
+        await waitFor(() => {
+            tds = container.querySelectorAll("td");
+        });
         expect(tds[0].classList.contains("highlightedCell")).toBe(false);
     });
 
@@ -158,7 +158,6 @@ describe("TableRow", () => {
                         row={row as any}
                         setIsPropertyPanelOpen={setIsPropertyPanelOpen}
                         updatedFieldsMap={updatedFieldsMap}
-                        refreshDeviceDataKey={1}
                         currentDeviceId={null}
                     />
                 </tbody>
@@ -183,4 +182,64 @@ describe("TableRow", () => {
         );
         expect(container.querySelectorAll("td")[0].classList.contains("highlightedCell")).toBe(false);
     });
+
+    // areEqual function tests
+    describe("areEqual", () => {
+        const getProps = (overrides: any = {}): any => ({
+            row: { original: { macId: "mac-123", status: "online", connectivity: "wifi", ...(overrides.row?.original || {}) } },
+            setIsPropertyPanelOpen,
+            updatedFieldsMap: overrides.updatedFieldsMap ?? { "mac-123": ["status"] },
+            refreshDeviceDataKey: overrides.refreshDeviceDataKey ?? 1,
+            currentDeviceId: overrides.currentDeviceId ?? "mac-123",
+        });
+
+        it("returns false if refreshDeviceDataKey changes", () => {
+            const prevProps = getProps({ refreshDeviceDataKey: 1 });
+            const nextProps = getProps({ refreshDeviceDataKey: 2 });
+            expect(areEqual(prevProps, nextProps)).toBe(false);
+        });
+
+        it("returns false if currentDeviceId changes", () => {
+            const prevProps = getProps({ currentDeviceId: "mac-123" });
+            const nextProps = getProps({ currentDeviceId: "mac-456" });
+            expect(areEqual(prevProps, nextProps)).toBe(false);
+        });
+
+        it("returns false if macId changes", () => {
+            const prevProps = getProps({ row: { original: { macId: "mac-123", status: "online", connectivity: "wifi" } } });
+            const nextProps = getProps({ row: { original: { macId: "mac-456", status: "online", connectivity: "wifi" } } });
+            expect(areEqual(prevProps, nextProps)).toBe(false);
+        });
+
+        it("returns false if status changes", () => {
+            const prevProps = getProps({ row: { original: { macId: "mac-123", status: "online", connectivity: "wifi" } } });
+            const nextProps = getProps({ row: { original: { macId: "mac-123", status: "offline", connectivity: "wifi" } } });
+            expect(areEqual(prevProps, nextProps)).toBe(false);
+        });
+
+        it("returns false if connectivity changes", () => {
+            const prevProps = getProps({ row: { original: { macId: "mac-123", status: "online", connectivity: "wifi" } } });
+            const nextProps = getProps({ row: { original: { macId: "mac-123", status: "online", connectivity: "ethernet" } } });
+            expect(areEqual(prevProps, nextProps)).toBe(false);
+        });
+
+        it("returns false if updatedFieldsMap contents change (length)", () => {
+            const prevProps = getProps({ updatedFieldsMap: { "mac-123": ["status"] } });
+            const nextProps = getProps({ updatedFieldsMap: { "mac-123": ["status", "macId"] } });
+            expect(areEqual(prevProps, nextProps)).toBe(false);
+        });
+
+        it("returns false if updatedFieldsMap contents change (value)", () => {
+            const prevProps = getProps({ updatedFieldsMap: { "mac-123": ["status"] } });
+            const nextProps = getProps({ updatedFieldsMap: { "mac-123": [] } });
+            expect(areEqual(prevProps, nextProps)).toBe(false);
+        });
+
+        it("returns true if nothing relevant changes", () => {
+            const prevProps = getProps();
+            const nextProps = getProps();
+            expect(areEqual(prevProps, nextProps)).toBe(true);
+        });
+    });
+
 });

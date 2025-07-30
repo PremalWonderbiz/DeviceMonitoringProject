@@ -1,16 +1,15 @@
 ﻿using System.Globalization;
-using System.Security.Claims;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using Application.Dtos;
 using Common.Helper_Classes;
 using Domain.Entities;
+using Domain.Enums;
 using Domain.Interface;
 using Infrastructure.Persistence;
 using Infrastructure.RealTime;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Infrastructure.Services
 {
@@ -382,6 +381,34 @@ namespace Infrastructure.Services
                 AlarmComment = alarm.Comment,
                 AcknowledgedFrom = alarm.AcknowledgedFrom
             };
+        }
+
+        public async Task<string> AddAlarmRulesAsync(string deviceMacId, List<AlarmRuleDto> rules)
+        {
+            var alarmsToRemove = await _context.AlarmRules.Where(alarm => alarm.DeviceMacId == deviceMacId).ToListAsync();
+
+            if(alarmsToRemove.Count > 0)
+            {
+                _context.AlarmRules.RemoveRange(alarmsToRemove);
+                await _context.SaveChangesAsync();
+            }
+
+            var ruleEntities = rules.Select(rule => new AlarmRule
+            {
+                DeviceMacId = deviceMacId,
+                FieldPath = rule.FieldPath,
+                Operator = rule.Operator,
+                ThresholdValue = rule.ThresholdValue,
+                Severity = Enum.TryParse<AlarmSeverity>(rule.Severity, true, out var severity)
+                        ? severity
+                        : AlarmSeverity.Warning,
+                MessageTemplate = rule.MessageTemplate
+            }).ToList();
+
+            await _context.AlarmRules.AddRangeAsync(ruleEntities);
+            await _context.SaveChangesAsync();
+
+            return "Alarm rules added successfully";
         }
     }
 }

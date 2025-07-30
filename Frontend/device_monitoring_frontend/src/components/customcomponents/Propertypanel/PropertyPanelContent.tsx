@@ -1,12 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import Accordion from "../Accordion";
 import styles from "@/styles/scss/PropertyPanel.module.scss";
-import Badge from "../Badge";
 import { getLatestAlarmForDevice } from "@/services/alarmservice";
 import { formatRelativeTime, getCollapsedAncestorsToHighlight } from "@/utils/helperfunctions";
 import { useDeviceAlertSocket } from "@/utils/customhooks/useDeviceAlertSocket";
-import KeyValueField from "./KeyValueField";
-import { AccordionStateProvider, useAccordionState } from "./AccordionVisibilityContext";
+import { useAccordionState } from "@/components/customcomponents/Propertypanel/AccordionVisibilityContext";
+import { renderKeyValueSection, renderObject } from "@/utils/propertypanelfunctions";
+import Badge from "@/components/customcomponents/Badge";
 
 export const StaticTabContent = React.memo(({ staticProps }: { staticProps: any }) => {
   return (
@@ -75,8 +74,8 @@ export const HealthTabContent = React.memo(
         {alarm && (
           <div className={styles.alarmCard}>
             <div>
-              <p className={styles.message}>{alarm.message}</p>
               <span className={styles.time}>{formatRelativeTime(alarm.raisedAt)}</span>
+              <p className={styles.message}>{alarm.message}</p>
               <div>
                 <button
                   onClick={(e) => {
@@ -118,112 +117,7 @@ export const HealthTabContent = React.memo(
   }
 );
 
-export const renderKeyValueSection = (
-  key: string,
-  value: any,
-  depth: number,
-  parentPath: string,
-  highlightedPaths: string[]
-) => {
-  const fullPath = parentPath ? `${parentPath}.${key}` : key;
-  return (
-    <KeyValueField
-      key={fullPath}
-      keyName={key}
-      value={value}
-      depth={depth}
-      fullPath={fullPath}
-      highlightedPaths={highlightedPaths}
-    />
-  );
-};
 
-export const renderObject = (
-  key: string,
-  data: any,
-  depth = 1,
-  parentPath = "",
-  highlightedPaths: string[],
-  collapsedTitlesToHighlight: Set<string>,
-) => {
-  const fullPath = parentPath ? `${parentPath}.${key}` : key;
-  const shouldHighlightTitle = collapsedTitlesToHighlight.has(fullPath);
-
-  if (!data || typeof data !== "object") return null;
-
-  if (Array.isArray(data)) {
-    return renderArray(key, data, depth, parentPath, highlightedPaths, collapsedTitlesToHighlight);
-  }
-
-  return (
-    <Accordion
-      keyPath={fullPath}
-      key={fullPath}
-      title={
-        <span className={`${styles.propertyPanelTitles} ${styles[`depth-${depth}`]} ${shouldHighlightTitle ? styles.highlightedTitle : ""}`}>
-          {key}
-        </span>
-      }
-      defaultOpen={true}
-      bgColor="white"
-    >
-      <div className={styles.keyValueSection}>
-        {Object.entries(data).map(([childKey, childVal]) => {
-          const childPath = `${fullPath}.${childKey}`;
-          if (Array.isArray(childVal)) {
-            return renderArray(childKey, childVal, depth + 1, fullPath, highlightedPaths, collapsedTitlesToHighlight);
-          } else if (typeof childVal === "object" && childVal !== null) {
-            return renderObject(childKey, childVal, depth + 1, fullPath, highlightedPaths, collapsedTitlesToHighlight);
-          } else {
-            return renderKeyValueSection(childKey, childVal, depth + 1, fullPath, highlightedPaths);
-          }
-        })}
-      </div>
-    </Accordion>
-  );
-};
-
-export const renderArray = (
-  key: string,
-  data: any[],
-  depth: number,
-  parentPath = "",
-  highlightedPaths: string[],
-  collapsedTitlesToHighlight: Set<string>
-) => {
-  if (!data || data.length === 0) return null;
-
-  const fullPath = parentPath ? `${parentPath}.${key}` : key;
-  const shouldHighlightTitle = collapsedTitlesToHighlight.has(fullPath);
-
-  return (
-    <Accordion
-      keyPath={fullPath}
-      key={fullPath}
-      title={
-        <span className={`${styles.propertyPanelTitles} ${styles[`depth-${depth}`]} ${shouldHighlightTitle ? styles.highlightedTitle : ""}`}>
-          {key}
-        </span>
-      }
-      defaultOpen={true}
-      bgColor="white"
-    >
-      <div className={styles.keyValueSection}>
-        {data.map((item, idx) => {
-          const itemPath = `${fullPath}`;
-
-          const displayLabel = `${key} ${idx}`;
-
-          if (typeof item === "object" && item !== null) {
-            return renderObject(displayLabel, item, depth + 1, itemPath, highlightedPaths, collapsedTitlesToHighlight);
-          } else {
-            return renderKeyValueSection(displayLabel, item, depth + 1, itemPath, highlightedPaths);
-          }
-        })}
-      </div>
-    </Accordion>
-  );
-};
 
 
 

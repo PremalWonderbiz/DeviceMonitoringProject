@@ -1,7 +1,6 @@
 ﻿// Refactored DeviceService to use DeviceStateCache instead of reading/writing files
 
 using System.Text.Json;
-using System.Text.Json.Nodes;
 using Application.Dtos;
 using Domain.Entities;
 using Infrastructure.RealTime;
@@ -9,10 +8,8 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using Application.Interfaces;
 using Microsoft.Extensions.Options;
-using Infrastructure.Helpers;
 using Infrastructure.Cache;
 using Microsoft.AspNetCore.Http;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Services;
 
@@ -32,24 +29,24 @@ public class DeviceService : IDeviceService
         { "High", 3 }
     };
 
-private List<DeviceMetadata> _devices =>
-    _deviceStateCache.GetAllStates()
-        .Select(state =>
-        {
-            var root = state.Value.Root;
-            var lastUpdated = state.Value.LastUpdated;
-            return new DeviceMetadata
+    private List<DeviceMetadata> _devices =>
+        _deviceStateCache.GetAllStates()
+            .Select(state =>
             {
-                Name = root["Name"]?.GetValue<string>() ?? "Unknown",
-                Type = root["Type"]?.GetValue<string>() ?? "Unknown",
-                Status = root["Status"]?.GetValue<string>() ?? "Unknown",
-                MacId = state.Key,
-                Connectivity = root["Connectivity"]?.GetValue<string>() ?? "Unknown",
-                FileName = root["FileName"]?.GetValue<string>() ?? "",
-                LastUpdated = lastUpdated
-            };
-        })
-        .ToList();
+                var root = state.Value.Root;
+                var lastUpdated = state.Value.LastUpdated;
+                return new DeviceMetadata
+                {
+                    Name = root["Name"]?.GetValue<string>() ?? "Unknown",
+                    Type = root["Type"]?.GetValue<string>() ?? "Unknown",
+                    Status = root["Status"]?.GetValue<string>() ?? "Unknown",
+                    MacId = state.Key,
+                    Connectivity = root["Connectivity"]?.GetValue<string>() ?? "Unknown",
+                    FileName = root["FileName"]?.GetValue<string>() ?? "",
+                    LastUpdated = lastUpdated
+                };
+            })
+            .ToList();
 
     private readonly string _dataDirectory;
 
@@ -162,7 +159,7 @@ private List<DeviceMetadata> _devices =>
             "type" => desc ? data.OrderByDescending(u => u.Type) : data.OrderBy(u => u.Type),
             "status" => desc ? data.OrderByDescending(u => u.Status) : data.OrderBy(u => u.Status),
             "macId" => desc ? data.OrderByDescending(u => u.MacId) : data.OrderBy(u => u.MacId),
-            "connectivity" => desc  ? data.OrderByDescending(u => connectivityOrder.ContainsKey(u.Connectivity) ? connectivityOrder[u.Connectivity] : int.MaxValue)
+            "connectivity" => desc ? data.OrderByDescending(u => connectivityOrder.ContainsKey(u.Connectivity) ? connectivityOrder[u.Connectivity] : int.MaxValue)
                                     : data.OrderBy(u => connectivityOrder.ContainsKey(u.Connectivity) ? connectivityOrder[u.Connectivity] : int.MaxValue),
             "lastUpdated" => desc ? data.OrderByDescending(u => u.LastUpdated) : data.OrderBy(u => u.LastUpdated),
             _ => data.OrderBy(u => u.Name)
@@ -177,13 +174,13 @@ private List<DeviceMetadata> _devices =>
             "type" => desc ? data.ThenByDescending(u => u.Type) : data.ThenBy(u => u.Type),
             "status" => desc ? data.ThenByDescending(u => u.Status) : data.ThenBy(u => u.Status),
             "macId" => desc ? data.ThenByDescending(u => u.MacId) : data.ThenBy(u => u.MacId),
-            "connectivity" => desc  ? data.ThenByDescending(u => connectivityOrder.ContainsKey(u.Connectivity) ? connectivityOrder[u.Connectivity] : int.MaxValue)
+            "connectivity" => desc ? data.ThenByDescending(u => connectivityOrder.ContainsKey(u.Connectivity) ? connectivityOrder[u.Connectivity] : int.MaxValue)
                                     : data.ThenBy(u => connectivityOrder.ContainsKey(u.Connectivity) ? connectivityOrder[u.Connectivity] : int.MaxValue),
             "lastUpdated" => desc ? data.OrderByDescending(u => u.LastUpdated) : data.OrderBy(u => u.LastUpdated),
             _ => data.ThenBy(u => u.Name)
         };
     }
-        
+
     public DeviceMetadataPaginatedandSortedDto GetSearchedDeviceMetadataPaginated(DeviceTopLevelSortOptions options, string input = "")
     {
         var metadataList = string.IsNullOrWhiteSpace(input)
@@ -259,9 +256,9 @@ private List<DeviceMetadata> _devices =>
 
             if (!statusChanged && !connectivityChanged)
             {
-                return; 
+                return;
             }
-       
+
             if (statusChanged) rootNode["Status"] = newStatus;
             if (connectivityChanged) rootNode["Connectivity"] = newConnectivity;
 
@@ -271,7 +268,7 @@ private List<DeviceMetadata> _devices =>
 
             var currentTop = _deviceServiceHelper.ExtractTopLevelDto(device.MacId, rootNode);
 
-             //await _alarmEvaluationService.EvaluateTopAsync(currentTop, previousTop);
+            //await _alarmEvaluationService.EvaluateTopAsync(currentTop, previousTop);
 
             var updatedDevice = new DeviceMetadata
             {
@@ -290,7 +287,7 @@ private List<DeviceMetadata> _devices =>
 
             await _deviceServiceHelper.BroadcastTopLevelSummary(new List<(DeviceMetadata, List<string>)> { (updatedDevice, updatedFields) });
 
-            wasUpdated = true; 
+            wasUpdated = true;
         });
 
         return wasUpdated;
@@ -345,7 +342,7 @@ private List<DeviceMetadata> _devices =>
     {
         await refreshDeviceStateCache();
 
-        if(input != "undefined")
+        if (input != "undefined")
             return GetSearchedDeviceMetadataPaginated(request, input);
 
         return GetAllDeviceMetadataPaginatedandSorted(request);
@@ -380,10 +377,12 @@ private List<DeviceMetadata> _devices =>
         if (!root.TryGetProperty("Name", out _) ||
             !root.TryGetProperty("FileName", out var fileNameProp) ||
             !root.TryGetProperty("Type", out _) ||
+            !root.TryGetProperty("MacId", out var macIdProp) ||
             !root.TryGetProperty("staticProperties", out var staticProps) ||
-            !root.TryGetProperty("dynamicProperties", out var dynamicProps))
+            !root.TryGetProperty("dynamicProperties", out var dynamicProps) ||
+            !root.TryGetProperty("alarmRules", out var alarmRules))
         {
-            throw new Exception("JSON must contain 'FileName', 'Name', 'Type', 'staticProperties', and 'dynamicProperties' fields.");
+            throw new Exception("JSON must contain 'FileName', 'Name', 'Type', 'staticProperties', 'alarmRules' and 'dynamicProperties' fields.");
         }
 
         // Validate that staticProperties and dynamicProperties are objects
@@ -411,6 +410,10 @@ private List<DeviceMetadata> _devices =>
 
         await File.WriteAllTextAsync(filePath, fileContent);
 
+        var rulesToSend = ParseAlarmRules(alarmRules);
+
+        await _alarmEvaluationService.AddAlarmRules(macIdProp.ToString(), rulesToSend);
+
         await refreshDeviceStateCache();
 
         return "Device added successfully.";
@@ -424,4 +427,26 @@ private List<DeviceMetadata> _devices =>
 
         return true;
     }
+
+    private List<AlarmRuleDto> ParseAlarmRules(JsonElement alarmRulesElement)
+    {
+        var rules = new List<AlarmRuleDto>();
+
+        foreach (var ruleJson in alarmRulesElement.EnumerateArray())
+        {
+            var rule = new AlarmRuleDto
+            {
+                FieldPath = ruleJson.GetProperty("FieldPath").GetString()!,
+                Operator = ruleJson.GetProperty("Operator").GetString()!,
+                ThresholdValue = ruleJson.GetProperty("ThresholdValue").GetString()!,
+                Severity = ruleJson.GetProperty("Severity").GetString()!,
+                MessageTemplate = ruleJson.GetProperty("MessageTemplate").GetString()!
+            };
+
+            rules.Add(rule);
+        }
+
+        return rules;
+    }
+
 }

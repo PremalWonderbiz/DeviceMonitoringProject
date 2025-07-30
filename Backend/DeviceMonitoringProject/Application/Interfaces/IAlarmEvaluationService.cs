@@ -11,5 +11,6 @@ namespace Application.Interfaces
     {
         Task EvaluateTopAsync(TopLevelDeviceDataDto previous, TopLevelDeviceDataDto current);
         Task EvaluateDynamicAsync(DynamicDeviceDataDto previous, DynamicDeviceDataDto current);
+        Task AddAlarmRules(string deviceMacId, List<AlarmRuleDto> alarmRules);
     }
 }

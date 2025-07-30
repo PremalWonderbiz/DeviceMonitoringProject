@@ -2,10 +2,10 @@
   "FileName": "SmartTv.json",
   "Name": "Smart TV",
   "Type": "Entertainment Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "B8:27:EB:45:9A:CB",
-  "Connectivity": "High",
-  "LastUpdated": "2025-07-25T20:19:00.0127015+05:30",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-07-30T14:59:29.6186865+05:30",
   "staticProperties": {
     "Display & Hardware": {
       "Screen Size": "55 inches",
@@ -80,49 +80,49 @@
   },
   "dynamicProperties": {
     "Current Usage": {
-      "Power State": "On",
-      "Input Source": "HDMI 2",
+      "Power State": "Off",
+      "Input Source": "HDMI 1",
       "Current App": "Zee5",
-      "Volume Level": 20,
+      "Volume Level": 99,
       "Mute": false,
       "Picture Mode": "Cinema",
-      "Audio Output": "External Speakers",
+      "Audio Output": "Bluetooth",
       "Ambient Light Sensor": true
     },
     "Streaming Activity": {
       "Watch History (Today)": [
-        33,
-        66
+        72,
+        43
       ],
       "Active App Sessions": [
-        8
+        38
       ],
       "AutoPlay Next Episode": false
     },
     "Network Activity": {
-      "IP Address": "192.168.141.107",
-      "Wi-Fi Signal Strength": "-69 dBm",
+      "IP Address": "192.168.180.196",
+      "Wi-Fi Signal Strength": "-77 dBm",
       "Connection Type": "Ethernet",
       "Data Usage": {
-        "Today": "0.4 GB",
-        "This Week": "7.9 GB",
-        "This Month": "1.5 GB"
+        "Today": "3.5 GB",
+        "This Week": "9.2 GB",
+        "This Month": "1.6 GB"
       },
-      "Last Online": "2025-07-25T14:52:20.2406501Z"
+      "Last Online": "2025-07-30T09:29:49.6449338Z"
     },
     "System Status": {
-      "Uptime": "6 days, 6 hrs",
-      "Last Reboot": "2025-07-25T14:52:20.2406566Z",
-      "Software Update Available": false,
-      "Last Software Update": "2025-07-25T14:52:20.2406604Z",
+      "Uptime": "3 days, 12 hrs",
+      "Last Reboot": "2025-07-30T09:29:49.6449394Z",
+      "Software Update Available": true,
+      "Last Software Update": "2025-07-30T09:29:49.6449418Z",
       "Storage Info": {
-        "Total Storage": "8.1 GB",
-        "Used": "8.3 GB",
-        "Free": "9.9 GB"
+        "Total Storage": "3.1 GB",
+        "Used": "5.4 GB",
+        "Free": "1.4 GB"
       },
       "Temperature": {
-        "Panel": 45.77,
-        "Mainboard": 32.92
+        "Panel": 39.79,
+        "Mainboard": 63.98
       }
     }
   },
@@ -356,5 +356,63 @@
         }
       }
     }
-  }
+  },
+  "alarmRules": [
+    {
+      "FieldPath": "Status",
+      "Operator": "Equals",
+      "ThresholdValue": "Offline",
+      "Severity": "Critical",
+      "MessageTemplate": "Smart TV is offline"
+    },
+    {
+      "FieldPath": "Connectivity",
+      "Operator": "Equals",
+      "ThresholdValue": "Low",
+      "Severity": "Warning",
+      "MessageTemplate": "Smart TV has low connectivity"
+    },
+    {
+      "FieldPath": "dynamicProperties.Current Usage.Power State",
+      "Operator": "Equals",
+      "ThresholdValue": "Off",
+      "Severity": "Information",
+      "MessageTemplate": "Smart TV is turned off"
+    },
+    {
+      "FieldPath": "dynamicProperties.Current Usage.Volume Level",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "80",
+      "Severity": "Information",
+      "MessageTemplate": "Smart TV volume level is unusually high"
+    },
+    {
+      "FieldPath": "dynamicProperties.Network Activity.Wi-Fi Signal Strength",
+      "Operator": "LessThan",
+      "ThresholdValue": "-70 dBm",
+      "Severity": "Warning",
+      "MessageTemplate": "Smart TV has weak Wi-Fi signal"
+    },
+    {
+      "FieldPath": "dynamicProperties.Network Activity.Data Usage.Today",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "10 GB",
+      "Severity": "Information",
+      "MessageTemplate": "Smart TV used high data today"
+    },
+    {
+      "FieldPath": "dynamicProperties.System Status.Temperature.Panel",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "60°C",
+      "Severity": "Warning",
+      "MessageTemplate": "Smart TV panel temperature is too high"
+    },
+    {
+      "FieldPath": "dynamicProperties.System Status.Storage Info.Used",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "14 GB",
+      "Severity": "Warning",
+      "MessageTemplate": "Smart TV is running out of storage"
+    }
+  ]
 }

@@ -4,8 +4,8 @@
   "Type": "Peripheral Device",
   "Status": "Offline",
   "MacId": "F8:16:54:AA:34:12",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-07-25T20:19:30.0362826+05:30",
+  "Connectivity": "High",
+  "LastUpdated": "2025-07-30T14:59:19.6112063+05:30",
   "staticProperties": {
     "Hardware Specifications": {
       "Printer Type": "Laser",
@@ -62,45 +62,45 @@
     "Print Status": {
       "Current Job": {
         "Job Name": "Unsupported Type",
-        "Pages": 31,
-        "Status": "Printing",
+        "Pages": 63,
+        "Status": "Error",
         "Submitted By": "Unsupported Type"
       },
-      "Queue Length": 17,
+      "Queue Length": 48,
       "Recent Jobs": [
         {
           "Job Name": "Unsupported Type",
-          "Status": "Completed",
-          "Time": "2025-07-25T14:52:20.2391417Z"
+          "Status": "Cancelled",
+          "Time": "2025-07-30T09:29:49.6434135Z"
         },
         {
           "Job Name": "Unsupported Type",
           "Status": "Cancelled",
-          "Time": "2025-07-25T14:52:20.2391482Z"
+          "Time": "2025-07-30T09:29:49.6434312Z"
         },
         {
           "Job Name": "Unsupported Type",
-          "Status": "Error",
-          "Time": "2025-07-25T14:52:20.2391530Z"
+          "Status": "Completed",
+          "Time": "2025-07-30T09:29:49.6434365Z"
         }
       ]
     },
     "Consumables": {
-      "Toner Level": "71%",
-      "Drum Status": "Replace Soon",
-      "Fuser Unit Life": "36%",
-      "Maintenance Kit Life": "90%",
+      "Toner Level": "38%",
+      "Drum Status": "Replace Now",
+      "Fuser Unit Life": "68%",
+      "Maintenance Kit Life": "7%",
       "Paper Tray Status": {
         "Tray 1": "Unsupported Type",
         "Tray 2": "Unsupported Type"
       }
     },
     "Network Activity": {
-      "IP Address": "192.168.89.195",
-      "Subnet": "192.168.33.242",
-      "Gateway": "192.168.160.80",
-      "Upload Speed": "6.4 GB",
-      "Download Speed": "6.8 GB",
+      "IP Address": "192.168.119.62",
+      "Subnet": "192.168.103.191",
+      "Gateway": "192.168.89.133",
+      "Upload Speed": "6.1 GB",
+      "Download Speed": "3.6 GB",
       "Connected Clients": [
         {},
         {},
@@ -109,10 +109,10 @@
     },
     "System Health": {
       "Temperature": {
-        "Internal Sensor": 53.78,
-        "Ambient": 42.88
+        "Internal Sensor": 28.14,
+        "Ambient": 29.82
       },
-      "Uptime": "1 days, 0 hrs",
+      "Uptime": "8 days, 14 hrs",
       "Error Logs": [
         "Paper jam detected in Tray 1 at 2025-06-13 19:40",
         "Paper jam detected in Tray 2 at 2025-06-13 19:43",
@@ -124,7 +124,7 @@
         "Paper jam detected in Tray 2 at 2025-06-24 17:19"
       ],
       "Firmware Version": "Unsupported Type",
-      "Last Restart": "2025-07-25T14:52:20.2401994Z"
+      "Last Restart": "2025-07-30T09:29:49.6443012Z"
     }
   },
   "topLevelObservables": {
@@ -293,5 +293,56 @@
         "type": "timestamp"
       }
     }
-  }
+  },
+  "alarmRules": [
+    {
+      "FieldPath": "Status",
+      "Operator": "Equals",
+      "ThresholdValue": "Offline",
+      "Severity": "Critical",
+      "MessageTemplate": "Printer is offline"
+    },
+    {
+      "FieldPath": "Connectivity",
+      "Operator": "Equals",
+      "ThresholdValue": "Low",
+      "Severity": "Warning",
+      "MessageTemplate": "Printer has low connectivity"
+    },
+    {
+      "FieldPath": "DynamicProperties.Consumables.Toner Level",
+      "Operator": "LessThan",
+      "ThresholdValue": "10%",
+      "Severity": "Warning",
+      "MessageTemplate": "Printer toner level is below 10%"
+    },
+    {
+      "FieldPath": "DynamicProperties.Consumables.Fuser Unit Life",
+      "Operator": "LessThan",
+      "ThresholdValue": "0%",
+      "Severity": "Critical",
+      "MessageTemplate": "Printer fuser unit has exceeded its life"
+    },
+    {
+      "FieldPath": "DynamicProperties.Consumables.Maintenance Kit Life",
+      "Operator": "LessThan",
+      "ThresholdValue": "0%",
+      "Severity": "Warning",
+      "MessageTemplate": "Printer maintenance kit needs to be replaced"
+    },
+    {
+      "FieldPath": "DynamicProperties.System Health.Temperature.Internal Sensor",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "60°C",
+      "Severity": "Critical",
+      "MessageTemplate": "Printer internal temperature is critically high"
+    },
+    {
+      "FieldPath": "DynamicProperties.Network Activity.Upload Speed",
+      "Operator": "LessThan",
+      "ThresholdValue": "0.5 Mbps",
+      "Severity": "Warning",
+      "MessageTemplate": "Printer upload speed is low"
+    }
+  ]
 }

@@ -15,7 +15,6 @@ import { getLatestAlarms } from "@/services/alarmservice";
 import { useDeviceAlertSocket } from "@/utils/customhooks/useDeviceAlertSocket";
 import { SortingState } from "@tanstack/react-table";
 import { Tooltip } from "@/components/ui/tooltip";
-import { log } from "console";
 import FileUploader from "@/components/customcomponents/FileUploader";
 
 const geistSans = Geist({
@@ -47,6 +46,7 @@ export default function Home() {
   const [pageSize, setPageSize] = useState(10);
   const [totalPages, setTotalPages] = useState(0);
   const [refreshDeviceDataKey, setRefreshDeviceDataKey] = useState(0);
+  const [hardRefreshDeviceDataKey, setHardRefreshDeviceDataKey] = useState(0);
   const [searchInput, setSearchInput] = useState<any>(null);
   const [updatedFieldsMap, setUpdatedFieldsMap] = useState<{ [macId: string]: string[] } | null>(null);
   const highlightTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -241,7 +241,7 @@ export default function Home() {
 
     fetchDevicesData();
     fetchDevicesFileNames();
-  }, []);
+  }, [hardRefreshDeviceDataKey]);
 
   useEffect(() => {
     if (pendingHighlightRef.current && deviceData.length > 0) {
@@ -341,6 +341,7 @@ export default function Home() {
     if (response && response.data) {
       setDeviceData(response.data.data);
       setTotalCount(response.data.totalCount);
+      setHardRefreshDeviceDataKey(prev => prev + 1); // Trigger hard refresh when data refreshed in backend cache
     }
   };
 
@@ -390,7 +391,7 @@ export default function Home() {
             <input onChange={(event: any) => { changeSearchInput(event.target.value) }} className={styles.mainPageSearchInput} type="search" placeholder="Search..." />
             <div className={styles.mainPageIcons}>
               <div className={""} >
-                <FileUploader setRefreshDeviceDataKey = {setRefreshDeviceDataKey} />
+                <FileUploader setHardRefreshDeviceDataKey={setHardRefreshDeviceDataKey} setRefreshDeviceDataKey = {setRefreshDeviceDataKey} />
               </div>
               {(sorting && sorting.length > 0) &&
                 <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Clear sorting</span>}>

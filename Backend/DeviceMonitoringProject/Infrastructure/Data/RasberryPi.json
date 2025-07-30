@@ -5,7 +5,7 @@
   "Status": "Online",
   "MacId": "B8:27:EB:45:67:89",
   "Connectivity": "Low",
-  "LastUpdated": "2025-07-25T20:21:20.1479735+05:30",
+  "LastUpdated": "2025-07-30T14:59:39.6260586+05:30",
   "staticProperties": {
     "Hardware Information": {
       "Model": "Raspberry Pi 4 Model B",
@@ -61,49 +61,49 @@
   },
   "dynamicProperties": {
     "System Health": {
-      "CPU Usage": "20%",
+      "CPU Usage": "91%",
       "RAM Usage": {
-        "Used": "2.4 GB",
-        "Total": "1.6 GB"
+        "Used": "6.3 GB",
+        "Total": "3.8 GB"
       },
       "System Temperature": {
-        "CPU": 39.73,
-        "Board": 73.47
+        "CPU": 43.55,
+        "Board": 41.23
       },
-      "Uptime": "5 days, 13 hrs",
+      "Uptime": "4 days, 8 hrs",
       "System Load": [
-        70,
-        44,
-        94
+        34,
+        36,
+        1
       ]
     },
     "Network Activity": {
       "Interfaces": [
-        88
+        18
       ],
       "Total Data Usage": {
-        "Sent": "0.6 GB",
-        "Received": "2.4 GB"
+        "Sent": "3.0 GB",
+        "Received": "4.1 GB"
       },
       "Connected Clients (Media Server)": [
-        35
+        15
       ]
     },
     "Service Status": {
       "Running Services": [
-        "Node-RED",
-        "Docker",
-        "Kodi"
+        "SSH",
+        "Kodi",
+        "Node-RED"
       ],
       "Service Health": [
-        40,
-        77
+        71,
+        76
       ],
-      "Last Reboot Reason": "Power failure",
+      "Last Reboot Reason": "Crash recovery",
       "Firmware": {
         "Current Version": "Unsupported Type",
-        "Last Update": "2025-07-25T14:52:20.2429127Z",
-        "Update Available": false
+        "Last Update": "2025-07-30T09:29:49.6465528Z",
+        "Update Available": true
       }
     }
   },
@@ -334,5 +334,49 @@
         }
       }
     }
-  }
+  },
+  "alarmRules": [
+    {
+      "FieldPath": "Status",
+      "Operator": "Equals",
+      "ThresholdValue": "Offline",
+      "Severity": "Critical",
+      "MessageTemplate": "Raspberry Pi is offline"
+    },
+    {
+      "FieldPath": "Connectivity",
+      "Operator": "Equals",
+      "ThresholdValue": "Low",
+      "Severity": "Warning",
+      "MessageTemplate": "Raspberry Pi has low connectivity"
+    },
+    {
+      "FieldPath": "DynamicProperties.System Health.CPU Usage",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "85%",
+      "Severity": "Warning",
+      "MessageTemplate": "Raspberry Pi CPU usage is high"
+    },
+    {
+      "FieldPath": "DynamicProperties.System Health.System Temperature.CPU",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "75°C",
+      "Severity": "Critical",
+      "MessageTemplate": "Raspberry Pi CPU temperature is too high"
+    },
+    {
+      "FieldPath": "DynamicProperties.System Health.RAM Usage.Used",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "3.5 GB",
+      "Severity": "Warning",
+      "MessageTemplate": "Raspberry Pi is running low on RAM"
+    },
+    {
+      "FieldPath": "DynamicProperties.Network Activity.Interfaces[?name=='eth0'].traffic.upload",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "50 Mbps",
+      "Severity": "Information",
+      "MessageTemplate": "Raspberry Pi is uploading at high speed"
+    }
+  ]
 }

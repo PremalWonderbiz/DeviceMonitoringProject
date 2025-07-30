@@ -2,10 +2,10 @@
   "FileName": "Laptop.json",
   "Name": "Laptop",
   "Type": "Personal Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "3C:5A:B4:91:22:AC",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-07-25T20:22:20.2381253+05:30",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-07-30T14:59:49.6422602+05:30",
   "staticProperties": {
     "Hardware Details": {
       "Operating System": "Windows 11 Pro",
@@ -80,71 +80,71 @@
   "dynamicProperties": {
     "System Status": {
       "Battery": {
-        "Level": "13%",
-        "Charging Status": "Full",
+        "Level": "82%",
+        "Charging Status": "Charging",
         "Health": "Poor",
         "Estimated Time Left": "Unsupported Type"
       },
-      "CPU Load": "92%",
+      "CPU Load": "13%",
       "RAM Usage": {
-        "Used": 12.58,
-        "Free": 17.36
+        "Used": 9.38,
+        "Free": 16.68
       },
       "GPU Usage": {
-        "Integrated": "78%",
-        "Dedicated": "24%"
+        "Integrated": "21%",
+        "Dedicated": "91%"
       },
       "Temperature": {
-        "CPU": 53.83,
-        "GPU": 51.56,
-        "Motherboard": 48.65
+        "CPU": 42.55,
+        "GPU": 50.12,
+        "Motherboard": 40.49
       },
-      "System Uptime": "9 days, 4 hrs"
+      "System Uptime": "4 days, 19 hrs"
     },
     "Network Activity": {
       "Current Wi-Fi": {
         "SSID": "Office_Network_5G",
-        "IP Address": "192.168.147.68",
-        "Signal Strength": "-69 dBm",
+        "IP Address": "192.168.182.240",
+        "Signal Strength": "-51 dBm",
         "Data Usage (Today)": {
-          "Download": "1.8 GB",
-          "Upload": "7.1 GB"
+          "Download": "7.8 GB",
+          "Upload": "3.3 GB"
         }
       },
       "VPN Status": {
-        "Connected": false,
-        "Provider": "OpenVPN",
-        "IP": "192.168.62.233"
+        "Connected": true,
+        "Provider": "NordLayer",
+        "IP": "192.168.134.131"
       }
     },
     "Application Activity": {
       "Foreground Apps": [
         {
-          "App Name": "Figma",
-          "CPU": "30%",
-          "Memory": 2.17
+          "App Name": "Zoom",
+          "CPU": "77%",
+          "Memory": 2.21
+        },
+        {
+          "App Name": "Edge Browser",
+          "CPU": "100%",
+          "Memory": 0.55
         },
         {
           "App Name": "Slack",
-          "CPU": "47%",
-          "Memory": 1.77
-        },
-        {
-          "App Name": "Visual Studio Code",
-          "CPU": "16%",
-          "Memory": 1.68
+          "CPU": "94%",
+          "Memory": 0.48
         },
         {
           "App Name": "Figma",
-          "CPU": "96%",
-          "Memory": 1.87
+          "CPU": "31%",
+          "Memory": 2
         }
       ],
-      "Background Processes": 91,
+      "Background Processes": 69,
       "Recent Apps Launched": [
         "Zoom",
         "Edge Browser",
-        "Spotify"
+        "Figma"
       ]
     }
   },
@@ -361,5 +361,56 @@
         "count": 3
       }
     }
-  }
+  },
+  "alarmRules": [
+    {
+      "FieldPath": "Status",
+      "Operator": "Equals",
+      "ThresholdValue": "Offline",
+      "Severity": "Critical",
+      "MessageTemplate": "Laptop is offline"
+    },
+    {
+      "FieldPath": "Connectivity",
+      "Operator": "Equals",
+      "ThresholdValue": "Low",
+      "Severity": "Warning",
+      "MessageTemplate": "Laptop has low connectivity"
+    },
+    {
+      "FieldPath": "dynamicProperties.System Status.Battery.Health",
+      "Operator": "Equals",
+      "ThresholdValue": "Needs Attention",
+      "Severity": "Warning",
+      "MessageTemplate": "Battery health warning on Laptop"
+    },
+    {
+      "FieldPath": "dynamicProperties.System Status.Battery.Level",
+      "Operator": "LessThan",
+      "ThresholdValue": "15",
+      "Severity": "Warning",
+      "MessageTemplate": "Battery level is critically low on Laptop"
+    },
+    {
+      "FieldPath": "dynamicProperties.System Status.CPU Load",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "85",
+      "Severity": "Warning",
+      "MessageTemplate": "CPU usage is too high on Laptop"
+    },
+    {
+      "FieldPath": "dynamicProperties.System Status.Temperature.GPU",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "85",
+      "Severity": "Critical",
+      "MessageTemplate": "GPU temperature is too high on Laptop"
+    },
+    {
+      "FieldPath": "dynamicProperties.Application Activity.Background Processes",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "100",
+      "Severity": "Warning",
+      "MessageTemplate": "High number of background processes on Laptop"
+    }
+  ]
 }

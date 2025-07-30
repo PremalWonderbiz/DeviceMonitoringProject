@@ -8,6 +8,7 @@ import styles from "@/styles/scss/PropertyPanel.module.scss";
 import { getChangedPaths } from "@/utils/deepDiff";
 import ComboBox from "@/components/customcomponents/AlarmPanel/SelectDevicesComboBox";
 import { AccordionStateProvider } from "./AccordionVisibilityContext";
+import { deepMerge } from "@/utils/propertypanelfunctions";
 
 
 const PropertyPanel = ({ setCurrentDeviceId, setCurrentDeviceFileName, deviceFileNames, devicesNameMacList, setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, currentDeviceId, currentDeviceFileName, activeTab, setActiveTab }: any) => {
@@ -42,28 +43,6 @@ const PropertyPanel = ({ setCurrentDeviceId, setCurrentDeviceFileName, deviceFil
             return merged;
         });
     }, []);
-
-
-    function deepMerge(target: any, source: any): any {
-        if (Array.isArray(target) && Array.isArray(source)) {
-            // Merge arrays element-wise
-            return target.map((item, index) => deepMerge(item, source[index] ?? item));
-        }
-
-        if (typeof target === "object" && typeof source === "object") {
-            const result: any = { ...target };
-            for (const key of Object.keys(source)) {
-                if (key in target) {
-                    result[key] = deepMerge(target[key], source[key]);
-                } else {
-                    result[key] = source[key];
-                }
-            }
-            return result;
-        }
-
-        return source; // For primitives and fallback
-    }
 
     useEffect(() => {
         return () => {

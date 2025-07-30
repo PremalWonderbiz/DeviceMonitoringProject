@@ -4,8 +4,8 @@
   "Type": "Networking Device",
   "Status": "Offline",
   "MacId": "84:C9:B2:3E:7F:A1",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-07-25T20:21:50.1961536+05:30",
+  "Connectivity": "High",
+  "LastUpdated": "2025-07-30T14:57:09.4913995+05:30",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "OpenWRT 21.02",
@@ -73,51 +73,51 @@
   },
   "dynamicProperties": {
     "System Status": {
-      "Uptime": "6 days, 23 hrs",
-      "CPU Usage": "35%",
+      "Uptime": "2 days, 5 hrs",
+      "CPU Usage": "34%",
       "Memory Usage": {
-        "Used": "6.2 GB",
-        "Total": "0.3 GB"
+        "Used": "3.6 GB",
+        "Total": "6.3 GB"
       },
       "Temperature": {
-        "CPU": 24.64,
-        "Board": 60.73
+        "CPU": 53.75,
+        "Board": 65.76
       },
       "System Load Average": [
-        67,
-        80,
-        62
+        14,
+        83,
+        99
       ]
     },
     "Network Activity": {
       "Interfaces": [
-        8,
-        57
+        69,
+        91
       ],
       "Connected Clients": [
-        42,
-        4
+        18,
+        8
       ],
       "Total Data Usage": {
-        "Sent": "1.2 GB",
-        "Received": "3.3 GB"
+        "Sent": "4.1 GB",
+        "Received": "7.0 GB"
       }
     },
     "Service Health": {
       "Services Running": [
-        62,
-        86,
-        37,
-        2
+        42,
+        7,
+        52,
+        86
       ],
       "Failed Services": [
-        71
+        88
       ],
-      "Last Reboot Reason": "Crash Recovery",
+      "Last Reboot Reason": "Manual Reboot",
       "Firmware": {
         "Current Version": "Unsupported Type",
-        "Last Updated": "2025-07-25T14:52:20.2420178Z",
-        "Update Available": true
+        "Last Updated": "2025-07-30T09:29:49.6459072Z",
+        "Update Available": false
       }
     }
   },
@@ -341,5 +341,56 @@
         }
       }
     }
-  }
+  },
+  "alarmRules": [
+    {
+      "FieldPath": "Status",
+      "Operator": "Equals",
+      "ThresholdValue": "Offline",
+      "Severity": "Critical",
+      "MessageTemplate": "WiFi Router is offline"
+    },
+    {
+      "FieldPath": "Connectivity",
+      "Operator": "Equals",
+      "ThresholdValue": "Low",
+      "Severity": "Warning",
+      "MessageTemplate": "WiFi Router connectivity is degraded"
+    },
+    {
+      "FieldPath": "DynamicProperties.System Status.CPU Usage",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "85%",
+      "Severity": "Warning",
+      "MessageTemplate": "WiFi Router CPU usage is high"
+    },
+    {
+      "FieldPath": "DynamicProperties.System Status.Memory Usage.Used",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "400 MB",
+      "Severity": "Warning",
+      "MessageTemplate": "WiFi Router memory usage is high"
+    },
+    {
+      "FieldPath": "DynamicProperties.System Status.Temperature.CPU",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "70°C",
+      "Severity": "Critical",
+      "MessageTemplate": "WiFi Router CPU temperature is critical"
+    },
+    {
+      "FieldPath": "DynamicProperties.System Status.Temperature.Board",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "65°C",
+      "Severity": "Warning",
+      "MessageTemplate": "WiFi Router board temperature is too high"
+    },
+    {
+      "FieldPath": "DynamicProperties.Network Activity.Connected Clients",
+      "Operator": "CountGreaterThan",
+      "ThresholdValue": "20",
+      "Severity": "Warning",
+      "MessageTemplate": "Too many devices connected to WiFi Router"
+    }
+  ]
 }

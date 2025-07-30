@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
 import styles from "@/styles/scss/FileUploader.module.scss";
-import { X } from 'lucide-react';
+import { Info, X } from 'lucide-react';
 import { toast, ToastContainer } from 'react-toastify';
 import { uploadFile } from '@/services/deviceservice';
 import { Tooltip } from '../ui/tooltip';
 
-const FileUploader = (props : any) => {
+const FileUploader = (props: any) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [file, setFile] = useState<File | null>(null);
     const [error, setError] = useState<string>("");
@@ -31,7 +31,7 @@ const FileUploader = (props : any) => {
         setFile(null);
         setError("");
         if (inputRef.current) {
-            inputRef.current.value = ""; 
+            inputRef.current.value = "";
         }
     };
 
@@ -48,14 +48,15 @@ const FileUploader = (props : any) => {
             setFile(null);
             notify(response.data.message, "success");
             props.setRefreshDeviceDataKey((prev: any) => prev + 1); // Trigger a refresh in parent component
-        }else{
+            props.setHardRefreshDeviceDataKey((prev: any) => prev + 1); // Trigger a hard refresh in parent component
+        } else {
             notify(response.response.data, "error");
         }
     };
 
 
 
-    const notify = (msg : string, type : any) => toast(msg, {
+    const notify = (msg: string, type: any) => toast(msg, {
         pauseOnHover: true,
         autoClose: 3000,
         theme: "light",
@@ -63,6 +64,15 @@ const FileUploader = (props : any) => {
         closeButton: true,
         type: type,
     });
+
+    const handleDownload = () => {
+        const link = document.createElement("a");
+        link.href = "/template.json"; // file in public folder
+        link.download = "template.json"; // optional: enforce download instead of opening
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
     return (
         <div className={styles.fileUpload}>
@@ -74,10 +84,10 @@ const FileUploader = (props : any) => {
                 className={styles.fileInput}
                 accept=".json"
             />
-            <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Upload new device json file</span>}>            
-            <button onClick={handleButtonClick} className={styles.uploadButton}>
-                Upload File
-            </button>
+            <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Upload new device json file</span>}>
+                <button onClick={handleButtonClick} className={styles.uploadButton}>
+                    Upload File
+                </button>
             </Tooltip>
 
             <div className={styles.fileInfo}>
@@ -85,14 +95,18 @@ const FileUploader = (props : any) => {
                     <>
                         <span className={styles.fileName}>Selected: {file.name} </span>
                         <X className={styles.clearIcon} onClick={handleClear} />
-                        <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Add {file.name}</span>}>  
-                        <button className={styles.submitButton} onClick={handleSubmit}>
-                            Submit
-                        </button>
+                        <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Add {file.name}</span>}>
+                            <button className={styles.submitButton} onClick={handleSubmit}>
+                                Submit
+                            </button>
                         </Tooltip>
                     </>
                 ) : (
-                    <span className={styles.noFile}>No file selected</span>
+                    <span className={styles.noFile}>No file selected
+                        <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Download a template</span>}>
+                            <Info onClick={() => {handleDownload()}} className={styles.infoIcon} size={15} />
+                        </Tooltip>
+                    </span>
                 )}
             </div>
 

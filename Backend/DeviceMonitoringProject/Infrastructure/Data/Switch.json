@@ -2,10 +2,10 @@
   "FileName": "Switch.json",
   "Name": "Network Switch",
   "Type": "Networking Device",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "D4:6D:6D:88:11:22",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-07-25T20:20:30.0746431+05:30",
+  "Connectivity": "High",
+  "LastUpdated": "2025-07-30T14:55:19.3371576+05:30",
   "staticProperties": {
     "Hardware Info": {
       "Model": "Cisco Catalyst 2960-X",
@@ -62,59 +62,59 @@
   },
   "dynamicProperties": {
     "Port Status": [
-      62,
-      16,
-      24
+      37,
+      47,
+      57
     ],
     "System Health": {
-      "CPU Usage": "100%",
+      "CPU Usage": "16%",
       "RAM Usage": "Evaluated at runtime",
-      "Temperature": 41.71,
+      "Temperature": 63.68,
       "Fan Status": "Operational"
     },
     "Traffic Statistics": {
-      "Total Data Sent": "4.5 GB",
-      "Total Data Received": "3.9 GB",
+      "Total Data Sent": "6.3 GB",
+      "Total Data Received": "6.5 GB",
       "Packet Errors": {
-        "Inbound": 34,
-        "Outbound": 83
+        "Inbound": 79,
+        "Outbound": 90
       },
-      "Broadcast Storms Detected": false
+      "Broadcast Storms Detected": true
     },
     "VLANs & Routing": {
       "Active VLANs": [
-        47,
         63,
-        71
+        54,
+        40
       ],
       "Routing Table": [
-        1,
-        25
+        37,
+        65
       ]
     },
     "Security & Logs": {
       "Port Security Enabled": true,
       "MAC Address Filtering": {
-        "Mode": "Static",
+        "Mode": "Dynamic",
         "Whitelisted MACs": [
-          26,
-          19
+          29,
+          91
         ]
       },
       "Login Attempts": [
-        80,
-        16,
-        16,
-        14,
-        95
+        5,
+        64,
+        67,
+        30,
+        97
       ],
       "Recent Logs": [
-        57,
-        90,
-        30,
-        27,
-        68,
-        69
+        43,
+        64,
+        52,
+        28,
+        69,
+        8
       ]
     }
   },
@@ -341,5 +341,49 @@
         }
       }
     }
-  }
+  },
+  "alarmRules": [
+    {
+      "FieldPath": "Status",
+      "Operator": "Equals",
+      "ThresholdValue": "Offline",
+      "Severity": "Critical",
+      "MessageTemplate": "Network Switch is offline"
+    },
+    {
+      "FieldPath": "Connectivity",
+      "Operator": "Equals",
+      "ThresholdValue": "Low",
+      "Severity": "Warning",
+      "MessageTemplate": "Network Switch has low connectivity"
+    },
+    {
+      "FieldPath": "DynamicProperties.System Health.CPU Usage",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "85%",
+      "Severity": "Warning",
+      "MessageTemplate": "Network Switch CPU usage is high"
+    },
+    {
+      "FieldPath": "DynamicProperties.System Health.Temperature",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "70°C",
+      "Severity": "Critical",
+      "MessageTemplate": "Network Switch temperature is critical"
+    },
+    {
+      "FieldPath": "DynamicProperties.Traffic Statistics.Broadcast Storms Detected",
+      "Operator": "Equals",
+      "ThresholdValue": "true",
+      "Severity": "Critical",
+      "MessageTemplate": "Broadcast storm detected on the switch"
+    },
+    {
+      "FieldPath": "DynamicProperties.Security & Logs.Login Attempts[?Success==false]",
+      "Operator": "CountGreaterThan",
+      "ThresholdValue": "3",
+      "Severity": "Warning",
+      "MessageTemplate": "Multiple failed login attempts detected on Network Switch"
+    }
+  ]
 }

@@ -4,8 +4,8 @@
   "Type": "Personal Device",
   "Status": "Offline",
   "MacId": "F0:9F:C2:12:34:56",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-07-25T20:19:20.0282791+05:30",
+  "Connectivity": "High",
+  "LastUpdated": "2025-07-30T14:58:09.5439830+05:30",
   "staticProperties": {
     "Device Specifications": {
       "Operating System": {
@@ -74,66 +74,66 @@
   "dynamicProperties": {
     "Device Health": {
       "Battery Status": {
-        "Level": "78%",
-        "Charging State": "Charging",
-        "Temperature": 66.6,
-        "Health": "Poor"
+        "Level": "81%",
+        "Charging State": "Not Charging",
+        "Temperature": 20,
+        "Health": "Average"
       },
-      "CPU Usage": "50%",
+      "CPU Usage": "62%",
       "RAM Usage": {
-        "Used": "0.7 GB",
-        "Free": "0.3 GB"
+        "Used": "6.0 GB",
+        "Free": "7.9 GB"
       },
       "Storage Usage": {
-        "Used": "4.6 GB",
-        "Free": "6.0 GB"
+        "Used": "1.4 GB",
+        "Free": "3.4 GB"
       },
       "Device Temperature": {
-        "CPU": 25.37,
-        "Battery": 16.71
+        "CPU": 33.18,
+        "Battery": 72.15
       },
-      "Uptime": "5 days, 3 hrs"
+      "Uptime": "7 days, 18 hrs"
     },
     "Network Activity": {
       "Current Network": {
         "Connection Type": "Ethernet",
         "SSID": "Office_Network_5G",
-        "IP Address": "192.168.130.74",
-        "Signal Strength": "-68 dBm",
-        "MAC Address": "53:BB:2D:5D:2B:9B"
+        "IP Address": "192.168.248.178",
+        "Signal Strength": "-55 dBm",
+        "MAC Address": "1C:65:E2:43:6B:6B"
       },
       "Data Usage": {
         "Today": {
-          "Download": "3.6 GB",
-          "Upload": "7.9 GB"
+          "Download": "9.4 GB",
+          "Upload": "4.1 GB"
         },
         "Monthly": {
-          "Download": "4.9 GB",
-          "Upload": "6.1 GB"
+          "Download": "1.0 GB",
+          "Upload": "2.5 GB"
         }
       },
       "Connected Apps": [
-        16,
-        84,
-        72,
-        48,
-        20
+        9,
+        41,
+        51,
+        90,
+        43
       ]
     },
     "App Activity": {
       "Active Apps": [
-        16,
-        50,
-        65,
-        53,
-        65
+        1,
+        27,
+        23,
+        42,
+        11
       ],
       "Battery Usage by Apps": [
-        77,
-        68,
-        8,
+        74,
+        89,
         44,
-        45
+        80,
+        34
       ]
     }
   },
@@ -378,5 +378,56 @@
         }
       }
     }
-  }
+  },
+  "alarmRules": [
+    {
+      "FieldPath": "Status",
+      "Operator": "Equals",
+      "ThresholdValue": "Offline",
+      "Severity": "Critical",
+      "MessageTemplate": "Mobile is offline"
+    },
+    {
+      "FieldPath": "Connectivity",
+      "Operator": "Equals",
+      "ThresholdValue": "Low",
+      "Severity": "Warning",
+      "MessageTemplate": "Mobile has low connectivity"
+    },
+    {
+      "FieldPath": "DynamicProperties.Device Health.Battery Status.Level",
+      "Operator": "LessThan",
+      "ThresholdValue": "20",
+      "Severity": "Warning",
+      "MessageTemplate": "Mobile battery is low"
+    },
+    {
+      "FieldPath": "DynamicProperties.Device Health.Device Temperature.CPU",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "50",
+      "Severity": "Critical",
+      "MessageTemplate": "Mobile CPU temperature is high"
+    },
+    {
+      "FieldPath": "DynamicProperties.Device Health.Device Temperature.Battery",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "45",
+      "Severity": "Warning",
+      "MessageTemplate": "Mobile battery temperature is high"
+    },
+    {
+      "FieldPath": "DynamicProperties.Network Activity.Current Network.Signal Strength",
+      "Operator": "LessThan",
+      "ThresholdValue": "-75",
+      "Severity": "Warning",
+      "MessageTemplate": "Mobile Wi-Fi signal strength is weak"
+    },
+    {
+      "FieldPath": "DynamicProperties.App Activity.Active Apps[].ScreenTimeToday",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "3h",
+      "Severity": "Information",
+      "MessageTemplate": "An app on Mobile has high screen time today"
+    }
+  ]
 }

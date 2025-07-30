@@ -4,8 +4,8 @@
   "Type": "Surveillance Device",
   "Status": "Offline",
   "MacId": "3C:71:BF:12:34:56",
-  "Connectivity": "High",
-  "LastUpdated": "2025-07-25T20:22:00.2141028+05:30",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-07-30T14:59:09.5955874+05:30",
   "staticProperties": {
     "Camera Specifications": {
       "Resolution": "1920x1080 (Full HD)",
@@ -58,106 +58,106 @@
   },
   "dynamicProperties": {
     "Live Stream": {
-      "Streaming Status": "Paused",
-      "Current Viewers": 10,
-      "Streaming Bitrate": 1133,
+      "Streaming Status": "Active",
+      "Current Viewers": 5,
+      "Streaming Bitrate": 2927,
       "Live Snapshot URL": "http://192.168.1.88:8080/snapshot.jpg"
     },
     "Motion Detection": {
-      "Motion Detection Enabled": false,
+      "Motion Detection Enabled": true,
       "Detection Zones": [
         {
-          "Zone ID": "Zone B",
-          "Region": "Backyard",
+          "Zone ID": "Zone A",
+          "Region": "Driveway",
           "Sensitivity": "High"
         },
         {
           "Zone ID": "Zone B",
-          "Region": "Gate Door Area",
-          "Sensitivity": "Low"
+          "Region": "Driveway",
+          "Sensitivity": "Medium"
         }
       ],
       "Last Motion Detected": {
-        "Timestamp": "2025-07-25T14:52:20.2432898Z",
-        "Zone": "Zone A",
-        "Detected Object": "Animal"
+        "Timestamp": "2025-07-30T09:29:49.6467868Z",
+        "Zone": "Zone B",
+        "Detected Object": "Vehicle"
       },
       "Motion Events": [
         {
-          "Time": "2025-07-25T14:52:20.2433014Z",
+          "Time": "2025-07-30T09:29:49.6467930Z",
           "Zone": "Zone C",
-          "Event Type": "Tamper"
+          "Event Type": "Motion"
         },
         {
-          "Time": "2025-07-25T14:52:20.2433090Z",
+          "Time": "2025-07-30T09:29:49.6467969Z",
           "Zone": "Zone B",
-          "Event Type": "Motion"
+          "Event Type": "Sound"
         },
         {
-          "Time": "2025-07-25T14:52:20.2433157Z",
-          "Zone": "Zone C",
-          "Event Type": "Motion"
-        },
-        {
-          "Time": "2025-07-25T14:52:20.2433224Z",
-          "Zone": "Zone C",
+          "Time": "2025-07-30T09:29:49.6468006Z",
+          "Zone": "Zone A",
           "Event Type": "Tamper"
         },
         {
-          "Time": "2025-07-25T14:52:20.2433282Z",
+          "Time": "2025-07-30T09:29:49.6468040Z",
+          "Zone": "Zone A",
+          "Event Type": "Motion"
+        },
+        {
+          "Time": "2025-07-30T09:29:49.6468072Z",
           "Zone": "Zone C",
-          "Event Type": "Tamper"
+          "Event Type": "Motion"
         }
       ]
     },
     "Network Activity": {
-      "IP Address": "192.168.68.36",
+      "IP Address": "192.168.151.224",
       "Connection Type": "WiFi",
-      "Data Transferred Today": "4.4 GB",
-      "Packet Loss": "96%",
-      "Latency": 12.21
+      "Data Transferred Today": "0.7 GB",
+      "Packet Loss": "25%",
+      "Latency": 49
     },
     "System Status": {
-      "Uptime": "9 days, 17 hrs",
-      "Last Reboot": "2025-07-25T14:52:20.2433580Z",
+      "Uptime": "6 days, 7 hrs",
+      "Last Reboot": "2025-07-30T09:29:49.6468279Z",
       "Firmware Version": "v5.7.3",
       "Firmware Update Available": true,
-      "System Temperature": 37.52
+      "System Temperature": 38.37
     },
     "Security": {
       "Login Attempts": [
         {
-          "Username": "guest",
-          "Success": true,
-          "IP": "192.168.247.61",
-          "Time": "2025-07-25T14:52:20.2433820Z"
-        },
-        {
-          "Username": "guest",
-          "Success": false,
-          "IP": "192.168.28.72",
-          "Time": "2025-07-25T14:52:20.2433894Z"
-        },
-        {
-          "Username": "guest",
-          "Success": true,
-          "IP": "192.168.172.82",
-          "Time": "2025-07-25T14:52:20.2433962Z"
-        },
-        {
-          "Username": "guest",
-          "Success": false,
-          "IP": "192.168.184.81",
-          "Time": "2025-07-25T14:52:20.2434031Z"
-        },
-        {
           "Username": "admin",
           "Success": true,
-          "IP": "192.168.17.29",
-          "Time": "2025-07-25T14:52:20.2434108Z"
+          "IP": "192.168.149.22",
+          "Time": "2025-07-30T09:29:49.6468401Z"
+        },
+        {
+          "Username": "guest",
+          "Success": false,
+          "IP": "192.168.213.158",
+          "Time": "2025-07-30T09:29:49.6468448Z"
+        },
+        {
+          "Username": "guest",
+          "Success": true,
+          "IP": "192.168.108.91",
+          "Time": "2025-07-30T09:29:49.6468489Z"
+        },
+        {
+          "Username": "guest",
+          "Success": false,
+          "IP": "192.168.46.70",
+          "Time": "2025-07-30T09:29:49.6468529Z"
+        },
+        {
+          "Username": "guest",
+          "Success": false,
+          "IP": "192.168.194.32",
+          "Time": "2025-07-30T09:29:49.6468569Z"
         }
       ],
-      "Access Logs Enabled": false
+      "Access Logs Enabled": true
     }
   },
   "topLevelObservables": {
@@ -379,5 +379,42 @@
         "type": "boolean"
       }
     }
-  }
+  },
+  "alarmRules": [
+    {
+      "FieldPath": "Status",
+      "Operator": "Equals",
+      "ThresholdValue": "Offline",
+      "Severity": "Critical",
+      "MessageTemplate": "IP Camera is offline"
+    },
+    {
+      "FieldPath": "Connectivity",
+      "Operator": "Equals",
+      "ThresholdValue": "Low",
+      "Severity": "Warning",
+      "MessageTemplate": "IP Camera has low connectivity"
+    },
+    {
+      "FieldPath": "dynamicProperties.Live Stream.Streaming Status",
+      "Operator": "NotEquals",
+      "ThresholdValue": "Active",
+      "Severity": "Critical",
+      "MessageTemplate": "Live streaming is not active on IP Camera"
+    },
+    {
+      "FieldPath": "dynamicProperties.System Status.Firmware Update Available",
+      "Operator": "Equals",
+      "ThresholdValue": "true",
+      "Severity": "Warning",
+      "MessageTemplate": "Firmware update available for IP Camera"
+    },
+    {
+      "FieldPath": "dynamicProperties.System Status.System Temperature",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "50",
+      "Severity": "Warning",
+      "MessageTemplate": "IP Camera system temperature is high"
+    }
+  ]
 }

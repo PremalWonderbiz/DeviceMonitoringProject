@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useReactTable, getCoreRowModel, getSortedRowModel, flexRender, ColumnDef, SortingState, } from "@tanstack/react-table";
 import styles from "@/styles/scss/Table.module.scss";
-import TableRow from "./TableRow";
+import TableRow from "@/components/customcomponents/Table/TableRow";
 import { ArrowDown, ArrowUp } from "lucide-react";
 import Pagination from "../Pagination";
 import { capitalizeFirstLetter, formatDateTime } from "@/utils/helperfunctions";

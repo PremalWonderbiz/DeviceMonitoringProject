@@ -26,5 +26,8 @@ namespace Domain.Interface
 
         //states
         public Task<IEnumerable<GetAlarmStatesDto>> GetAlarmStates();
+
+        //add alarm rules for new device(coming from device project when we add new device)
+        public Task<string> AddAlarmRulesAsync(string deviceMacId, List<AlarmRuleDto> rules);
     }
 }

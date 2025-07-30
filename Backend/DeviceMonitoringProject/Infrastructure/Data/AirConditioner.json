@@ -5,7 +5,7 @@
   "Status": "Online",
   "MacId": "98:5F:D3:4B:22:AC",
   "Connectivity": "High",
-  "LastUpdated": "2025-07-25T20:16:09.7646397+05:30",
+  "LastUpdated": "2025-07-30T14:56:39.4499988+05:30",
   "staticProperties": {
     "Hardware Specifications": {
       "AC Type": "Split Inverter",
@@ -54,51 +54,51 @@
   },
   "dynamicProperties": {
     "Current Status": {
-      "Power State": "On",
-      "Mode": "Dry",
-      "Set Temperature": 27,
-      "Current Room Temperature": 29.19,
-      "Fan Speed": "High",
+      "Power State": "Off",
+      "Mode": "Cool",
+      "Set Temperature": 21,
+      "Current Room Temperature": 35.76,
+      "Fan Speed": "Auto",
       "Swing Mode": {
         "Vertical Swing": "Fixed",
         "Horizontal Swing": "Off"
       },
-      "Humidity Level": "86%",
-      "Sleep Mode": true
+      "Humidity Level": "56%",
+      "Sleep Mode": false
     },
     "Sensor Data": {
       "Temperature Sensors": [
-        5,
-        19
+        68,
+        69
       ],
       "Humidity Sensor": {
         "Sensor ID": "HS001",
-        "Reading": "18%"
+        "Reading": "11%"
       }
     },
     "Power Consumption Stats": {
-      "Today": 8.65,
-      "This Week": 22.13,
-      "This Month": 95.43,
-      "Power Saving Mode": "Enabled",
-      "Last Reset": "2025-07-25T14:52:20.2410468Z"
+      "Today": 7.64,
+      "This Week": 11.6,
+      "This Month": 286.77,
+      "Power Saving Mode": "Disabled",
+      "Last Reset": "2025-07-30T09:29:49.6452013Z"
     },
     "Network Activity": {
-      "IP Address": "192.168.229.246",
-      "Signal Strength": "-68 dBm",
-      "Last Connected": "2025-07-25T14:52:20.2410547Z",
+      "IP Address": "192.168.170.214",
+      "Signal Strength": "-79 dBm",
+      "Last Connected": "2025-07-30T09:29:49.6452069Z",
       "Control Access": [
-        20,
-        81
+        30,
+        95
       ]
     },
     "Service Logs": {
-      "Filter Status": "Clean",
+      "Filter Status": "Needs Cleaning",
       "Service History": [
-        5,
-        42
+        79,
+        10
       ],
-      "Next Scheduled Maintenance": "2025-07-25T14:52:20.2410683Z"
+      "Next Scheduled Maintenance": "2025-07-30T09:29:49.6452158Z"
     }
   },
   "topLevelObservables": {
@@ -349,5 +349,42 @@
         "type": "timestamp"
       }
     }
-  }
+  },
+  "alarmRules": [
+    {
+      "FieldPath": "dynamicProperties.Service Logs.Filter Status",
+      "Operator": "Equals",
+      "ThresholdValue": "Needs Cleaning",
+      "Severity": "Information",
+      "MessageTemplate": "Air Conditioner filter requires cleaning"
+    },
+    {
+      "FieldPath": "Status",
+      "Operator": "Equals",
+      "ThresholdValue": "Offline",
+      "Severity": "Critical",
+      "MessageTemplate": "Air Conditioner is currently offline"
+    },
+    {
+      "FieldPath": "staticProperties.Connectivity & Configuration.Wi-Fi Enabled",
+      "Operator": "Equals",
+      "ThresholdValue": "false",
+      "Severity": "Warning",
+      "MessageTemplate": "Air Conditioner Wi-Fi connectivity is lost"
+    },
+    {
+      "FieldPath": "dynamicProperties.Service Logs.Next Scheduled Maintenance",
+      "Operator": "IsDatePast",
+      "ThresholdValue": "",
+      "Severity": "Warning",
+      "MessageTemplate": "Air Conditioner service is overdue"
+    },
+    {
+      "FieldPath": "dynamicProperties.Power Consumption Stats.Power Saving Mode",
+      "Operator": "Equals",
+      "ThresholdValue": "Disabled",
+      "Severity": "Information",
+      "MessageTemplate": "Power Saving Mode is disabled on Air Conditioner"
+    }
+  ]
 }

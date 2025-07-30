@@ -61,6 +61,17 @@
 .noFile {
   font-size: 14px;
   color: #999;
+  display: flex;
+  align-items: center;
+}
+
+.infoIcon{
+  cursor: pointer;
+  margin-left: 0.3rem;
+}
+
+.infoIcon:hover {
+  color: #555;
 }
 
 .error {

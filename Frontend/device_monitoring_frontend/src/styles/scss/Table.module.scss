@@ -29,6 +29,11 @@
     font-weight: bold;
 }
 
+.highlightedRow{
+    background-color: #ddd !important;
+    border: 2px solid #aba80a !important;
+}
+
 .row:nth-child(even) {
     background-color: #fbfbfb;
 }
