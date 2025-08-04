@@ -2,7 +2,6 @@
     overflow-x: auto;
     width: 100%;
     max-width: 100%;
-    border-radius: 5px;
     // max-height: calc(100vh - 197px);
 }
 
@@ -12,7 +11,6 @@
     min-width: 100%;
     border-collapse: collapse;
     font-family: Arial, Helvetica, sans-serif;
-    border-radius: 5px;
 }
 
 .cell {
@@ -20,16 +18,16 @@
     padding: 8px;
     min-width: 180px;
     height: 50px;
-    word-wrap: break-word;  
+    word-wrap: break-word;
     // transition: background-color 0.8s ease
 }
 
-.highlightedCell{
+.highlightedCell {
     // background-color: #f3f19f;
     font-weight: bold;
 }
 
-.highlightedRow{
+.highlightedRow {
     background-color: #ddd !important;
     border: 2px solid #aba80a !important;
 }
@@ -42,7 +40,7 @@
     background-color: #ddd;
 }
 
-.rowSelected{
+.rowSelected {
     background-color: #ddd !important;
     border: 2px solid #696464 !important;
 }
@@ -59,16 +57,16 @@
     min-width: 180px;
 
     .sortIcon {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
     }
 }
 
-.tableBody{
+.tableBody {
     width: max-content;
     min-width: 100%;
-    max-height: 490px;
+    max-height: 530px;
     overflow-y: scroll;
 
     // Hide scrollbar by default
@@ -102,6 +100,8 @@
     }
 }
 
-.tableHeader{
-    margin-right: 3px;
+.tableHeader {
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }

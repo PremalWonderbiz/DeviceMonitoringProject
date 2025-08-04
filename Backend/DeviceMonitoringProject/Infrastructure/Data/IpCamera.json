@@ -2,10 +2,10 @@
   "FileName": "IpCamera.json",
   "Name": "IP Camera",
   "Type": "Surveillance Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "3C:71:BF:12:34:56",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-07-30T14:59:09.5955874+05:30",
+  "Connectivity": "Medium",
+  "LastUpdated": "2025-08-04T15:14:01.2249316+05:30",
   "staticProperties": {
     "Camera Specifications": {
       "Resolution": "1920x1080 (Full HD)",
@@ -59,102 +59,102 @@
   "dynamicProperties": {
     "Live Stream": {
       "Streaming Status": "Active",
-      "Current Viewers": 5,
-      "Streaming Bitrate": 2927,
+      "Current Viewers": 2,
+      "Streaming Bitrate": 2932,
       "Live Snapshot URL": "http://192.168.1.88:8080/snapshot.jpg"
     },
     "Motion Detection": {
       "Motion Detection Enabled": true,
       "Detection Zones": [
         {
-          "Zone ID": "Zone A",
-          "Region": "Driveway",
+          "Zone ID": "Zone B",
+          "Region": "Entrance Walkway",
           "Sensitivity": "High"
         },
         {
-          "Zone ID": "Zone B",
+          "Zone ID": "Zone A",
           "Region": "Driveway",
           "Sensitivity": "Medium"
         }
       ],
       "Last Motion Detected": {
-        "Timestamp": "2025-07-30T09:29:49.6467868Z",
+        "Timestamp": "2025-08-04T09:45:01.3322464Z",
         "Zone": "Zone B",
-        "Detected Object": "Vehicle"
+        "Detected Object": "Person"
       },
       "Motion Events": [
         {
-          "Time": "2025-07-30T09:29:49.6467930Z",
-          "Zone": "Zone C",
-          "Event Type": "Motion"
-        },
-        {
-          "Time": "2025-07-30T09:29:49.6467969Z",
+          "Time": "2025-08-04T09:45:01.3322524Z",
           "Zone": "Zone B",
           "Event Type": "Sound"
         },
         {
-          "Time": "2025-07-30T09:29:49.6468006Z",
+          "Time": "2025-08-04T09:45:01.3322560Z",
+          "Zone": "Zone C",
+          "Event Type": "Motion"
+        },
+        {
+          "Time": "2025-08-04T09:45:01.3322592Z",
+          "Zone": "Zone C",
+          "Event Type": "Tamper"
+        },
+        {
+          "Time": "2025-08-04T09:45:01.3322620Z",
           "Zone": "Zone A",
           "Event Type": "Tamper"
         },
         {
-          "Time": "2025-07-30T09:29:49.6468040Z",
+          "Time": "2025-08-04T09:45:01.3322651Z",
           "Zone": "Zone A",
-          "Event Type": "Motion"
-        },
-        {
-          "Time": "2025-07-30T09:29:49.6468072Z",
-          "Zone": "Zone C",
-          "Event Type": "Motion"
+          "Event Type": "Sound"
         }
       ]
     },
     "Network Activity": {
-      "IP Address": "192.168.151.224",
-      "Connection Type": "WiFi",
-      "Data Transferred Today": "0.7 GB",
+      "IP Address": "192.168.189.119",
+      "Connection Type": "Ethernet",
+      "Data Transferred Today": "8.6 GB",
       "Packet Loss": "25%",
-      "Latency": 49
+      "Latency": 10.45
     },
     "System Status": {
-      "Uptime": "6 days, 7 hrs",
-      "Last Reboot": "2025-07-30T09:29:49.6468279Z",
-      "Firmware Version": "v5.7.3",
+      "Uptime": "4 days, 23 hrs",
+      "Last Reboot": "2025-08-04T09:45:01.3322815Z",
+      "Firmware Version": "v5.7.2",
       "Firmware Update Available": true,
-      "System Temperature": 38.37
+      "System Temperature": 58.93
     },
     "Security": {
       "Login Attempts": [
         {
           "Username": "admin",
           "Success": true,
-          "IP": "192.168.149.22",
-          "Time": "2025-07-30T09:29:49.6468401Z"
-        },
-        {
-          "Username": "guest",
-          "Success": false,
-          "IP": "192.168.213.158",
-          "Time": "2025-07-30T09:29:49.6468448Z"
+          "IP": "192.168.187.106",
+          "Time": "2025-08-04T09:45:01.3322941Z"
         },
         {
           "Username": "guest",
           "Success": true,
-          "IP": "192.168.108.91",
-          "Time": "2025-07-30T09:29:49.6468489Z"
+          "IP": "192.168.8.106",
+          "Time": "2025-08-04T09:45:01.3322986Z"
+        },
+        {
+          "Username": "admin",
+          "Success": false,
+          "IP": "192.168.198.168",
+          "Time": "2025-08-04T09:45:01.3323041Z"
         },
         {
           "Username": "guest",
-          "Success": false,
-          "IP": "192.168.46.70",
-          "Time": "2025-07-30T09:29:49.6468529Z"
+          "Success": true,
+          "IP": "192.168.224.144",
+          "Time": "2025-08-04T09:45:01.3324654Z"
         },
         {
-          "Username": "guest",
-          "Success": false,
-          "IP": "192.168.194.32",
-          "Time": "2025-07-30T09:29:49.6468569Z"
+          "Username": "admin",
+          "Success": true,
+          "IP": "192.168.29.74",
+          "Time": "2025-08-04T09:45:01.3324779Z"
         }
       ],
       "Access Logs Enabled": true

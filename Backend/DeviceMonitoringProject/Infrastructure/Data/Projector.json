@@ -1,128 +1,120 @@
 {
-  "FileName": "SmartTv.json",
-  "Name": "Smart TV",
+  "FileName": "Projector.json",
+  "Name": "Home Projector",
   "Type": "Entertainment Device",
-  "Status": "Online",
-  "MacId": "B8:27:EB:45:9A:CB",
+  "Status": "Offline",
+  "MacId": "D0:AB:C5:92:7E:F3",
   "Connectivity": "Medium",
-  "LastUpdated": "2025-08-04T15:13:21.1815932+05:30",
+  "LastUpdated": "2025-08-04T15:13:51.2115620+05:30",
   "staticProperties": {
     "Display & Hardware": {
-      "Screen Size": "55 inches",
-      "Display Type": "OLED",
-      "Resolution": "4K UHD (3840 x 2160)",
-      "HDR Support": [
-        "HDR10+",
-        "Dolby Vision"
-      ],
-      "Refresh Rate": "120Hz",
-      "Speakers": {
-        "Speaker Channels": "2.1",
-        "Output Power": "40W"
-      },
+      "Projection Type": "DLP",
+      "Resolution": "Full HD (1920 x 1080)",
+      "Brightness": "3500 lumens",
+      "Contrast Ratio": "15000:1",
+      "Throw Ratio": "1.47 - 1.62",
+      "Projection Distance": "1.5m - 10m",
+      "Built-in Speaker": true,
       "Ports Available": [
         {
           "Type": "HDMI",
-          "Count": 4
-        },
-        {
-          "Type": "USB",
           "Count": 2
         },
         {
-          "Type": "Ethernet",
+          "Type": "USB",
           "Count": 1
         },
         {
-          "Type": "Optical Audio Out",
+          "Type": "Audio Out",
+          "Count": 1
+        },
+        {
+          "Type": "VGA",
           "Count": 1
         }
       ]
     },
     "Manufacturer Details": {
-      "Brand": "Sony",
-      "Model": "Bravia XR A80L",
-      "Serial Number": "SONYTV12345A80L",
-      "Manufacture Date": "2023-06-20",
-      "Purchase Date": "2023-07-05",
-      "Location": "Living Room",
+      "Brand": "BenQ",
+      "Model": "TH685i",
+      "Serial Number": "BENQTH685i2025",
+      "Manufacture Date": "2024-12-05",
+      "Purchase Date": "2025-01-15",
+      "Location": "Home Theater",
       "Warranty": {
         "Status": "Active",
-        "Expires On": "2026-07-05"
+        "Expires On": "2027-01-15"
       }
     },
     "OS & Software": {
-      "Operating System": "Google TV",
-      "OS Version": "12.0",
+      "Operating System": "Android TV",
+      "OS Version": "11.0",
       "Voice Assistant Support": [
-        "Google Assistant",
-        "Alexa"
+        "Google Assistant"
       ],
       "Pre-installed Apps": [
         "YouTube",
         "Netflix",
-        "Prime Video",
-        "Disney+ Hotstar",
-        "Spotify"
+        "Plex"
       ],
       "Remote Control Type": {
         "Physical Remote": true,
         "Mobile App Support": true,
-        "Voice Control": true
+        "Voice Control": false
       }
     },
     "Network Configuration": {
       "Wi-Fi Enabled": true,
-      "Ethernet Support": true,
-      "MAC Address": "B8:27:EB:45:9A:CB",
-      "Hostname": "sony-bravia-tv"
+      "Ethernet Support": false,
+      "MAC Address": "D0:AB:C5:92:7E:F3",
+      "Hostname": "benq-projector"
     }
   },
   "dynamicProperties": {
     "Current Usage": {
-      "Power State": "Off",
-      "Input Source": "HDMI 1",
-      "Current App": "Zee5",
-      "Volume Level": 77,
+      "Power State": "On",
+      "Input Source": "USB",
+      "Current App": "YouTube",
+      "Volume Level": 25,
       "Mute": false,
-      "Picture Mode": "Sports",
-      "Audio Output": "Bluetooth",
-      "Ambient Light Sensor": true
+      "Picture Mode": "Cinema",
+      "Keystone Correction": "Manual",
+      "Lamp Hours Used": 4160
     },
     "Streaming Activity": {
       "Watch History (Today)": [
-        8,
-        48
+        26,
+        98
       ],
       "Active App Sessions": [
-        45
+        20
       ],
       "AutoPlay Next Episode": true
     },
     "Network Activity": {
-      "IP Address": "192.168.61.96",
-      "Wi-Fi Signal Strength": "-61 dBm",
+      "IP Address": "192.168.127.52",
+      "Wi-Fi Signal Strength": "-60 dBm",
       "Connection Type": "Wi-Fi",
       "Data Usage": {
-        "Today": "3.9 GB",
-        "This Week": "0.3 GB",
-        "This Month": "0.5 GB"
+        "Today": "3.0 GB",
+        "This Week": "8.1 GB",
+        "This Month": "0.0 GB"
       },
-      "Last Online": "2025-08-04T09:45:01.3302357Z"
+      "Last Online": "2025-08-04T09:45:01.3292363Z"
     },
     "System Status": {
-      "Uptime": "9 days, 16 hrs",
-      "Last Reboot": "2025-08-04T09:45:01.3302390Z",
+      "Uptime": "2 days, 16 hrs",
+      "Last Reboot": "2025-08-04T09:45:01.3292422Z",
       "Software Update Available": false,
-      "Last Software Update": "2025-08-04T09:45:01.3302411Z",
+      "Last Software Update": "2025-08-04T09:45:01.3292444Z",
       "Storage Info": {
-        "Total Storage": "9.0 GB",
-        "Used": "3.8 GB",
-        "Free": "5.2 GB"
+        "Total Storage": "7.5 GB",
+        "Used": "3.0 GB",
+        "Free": "9.9 GB"
       },
       "Temperature": {
-        "Panel": 31.2,
-        "Mainboard": 40.01
+        "Lamp": 66.54,
+        "Mainboard": 37.15
       }
     }
   },
@@ -134,8 +126,8 @@
         "Offline"
       ],
       "weights": [
-        0.9,
-        0.1
+        0.95,
+        0.05
       ]
     },
     "Connectivity": {
@@ -146,9 +138,9 @@
         "High"
       ],
       "weights": [
-        0.2,
-        0.3,
-        0.5
+        0.1,
+        0.6,
+        0.3
       ]
     }
   },
@@ -165,10 +157,9 @@
       "Input Source": {
         "type": "enum",
         "values": [
-          "HDMI 1",
-          "HDMI 2",
-          "AV",
+          "HDMI",
           "USB",
+          "VGA",
           "Screen Mirroring"
         ]
       },
@@ -177,10 +168,7 @@
         "values": [
           "Netflix",
           "YouTube",
-          "Disney+ Hotstar",
-          "Prime Video",
-          "SonyLIV",
-          "Zee5"
+          "Plex"
         ]
       },
       "Volume Level": {
@@ -198,20 +186,21 @@
           "Standard",
           "Cinema",
           "Vivid",
-          "Game",
-          "Sports"
+          "Game"
         ]
       },
-      "Audio Output": {
+      "Keystone Correction": {
         "type": "enum",
         "values": [
-          "TV Speakers",
-          "External Speakers",
-          "Bluetooth"
+          "Auto",
+          "Manual"
         ]
       },
-      "Ambient Light Sensor": {
-        "type": "boolean"
+      "Lamp Hours Used": {
+        "type": "int",
+        "min": 0,
+        "max": 5000,
+        "unit": "hours"
       }
     },
     "Streaming Activity": {
@@ -224,18 +213,15 @@
             "values": [
               "Netflix",
               "YouTube",
-              "Disney+ Hotstar",
-              "Prime Video"
+              "Plex"
             ]
           },
           "Title": {
             "type": "enum",
             "values": [
-              "The Crown",
-              "Gadget Reviews",
-              "News Live",
-              "Movie X",
-              "Series Y"
+              "Planet Earth",
+              "Tech Explained",
+              "Classic Films"
             ]
           },
           "Start Time": {
@@ -244,7 +230,7 @@
           "Duration": {
             "type": "timeRange",
             "min": 1,
-            "max": 60,
+            "max": 90,
             "unit": "minutes"
           }
         }
@@ -258,8 +244,7 @@
             "values": [
               "Netflix",
               "YouTube",
-              "Disney+ Hotstar",
-              "Prime Video"
+              "Plex"
             ]
           },
           "Status": {
@@ -292,8 +277,7 @@
       "Connection Type": {
         "type": "enum",
         "values": [
-          "Wi-Fi",
-          "Ethernet"
+          "Wi-Fi"
         ]
       },
       "Data Usage": {
@@ -342,11 +326,11 @@
         }
       },
       "Temperature": {
-        "Panel": {
+        "Lamp": {
           "type": "float",
           "unit": "°C",
           "min": 30,
-          "max": 70
+          "max": 90
         },
         "Mainboard": {
           "type": "float",
@@ -359,60 +343,53 @@
   },
   "alarmRules": [
     {
+      "FieldPath": "dynamicProperties.Current Usage.Lamp Hours Used",
+      "Operator": "GreaterThan",
+      "ThresholdValue": "4500",
+      "Severity": "Warning",
+      "MessageTemplate": "Projector lamp usage has exceeded 4500 hours. Replace lamp soon."
+    },
+    {
       "FieldPath": "Status",
       "Operator": "Equals",
       "ThresholdValue": "Offline",
       "Severity": "Critical",
-      "MessageTemplate": "Smart TV is offline"
-    },
-    {
-      "FieldPath": "Connectivity",
-      "Operator": "Equals",
-      "ThresholdValue": "Low",
-      "Severity": "Warning",
-      "MessageTemplate": "Smart TV has low connectivity"
-    },
-    {
-      "FieldPath": "dynamicProperties.Current Usage.Power State",
-      "Operator": "Equals",
-      "ThresholdValue": "Off",
-      "Severity": "Information",
-      "MessageTemplate": "Smart TV is turned off"
-    },
-    {
-      "FieldPath": "dynamicProperties.Current Usage.Volume Level",
-      "Operator": "GreaterThan",
-      "ThresholdValue": "80",
-      "Severity": "Information",
-      "MessageTemplate": "Smart TV volume level is unusually high"
+      "MessageTemplate": "Projector is currently offline."
     },
     {
       "FieldPath": "dynamicProperties.Network Activity.Wi-Fi Signal Strength",
       "Operator": "LessThan",
-      "ThresholdValue": "-70 dBm",
+      "ThresholdValue": "-75",
       "Severity": "Warning",
-      "MessageTemplate": "Smart TV has weak Wi-Fi signal"
+      "MessageTemplate": "Projector Wi-Fi signal strength is weak."
     },
     {
-      "FieldPath": "dynamicProperties.Network Activity.Data Usage.Today",
+      "FieldPath": "dynamicProperties.System Status.Temperature.Lamp",
       "Operator": "GreaterThan",
-      "ThresholdValue": "10 GB",
-      "Severity": "Information",
-      "MessageTemplate": "Smart TV used high data today"
+      "ThresholdValue": "85",
+      "Severity": "Critical",
+      "MessageTemplate": "Projector lamp temperature is critically high."
     },
     {
-      "FieldPath": "dynamicProperties.System Status.Temperature.Panel",
+      "FieldPath": "dynamicProperties.System Status.Temperature.Mainboard",
       "Operator": "GreaterThan",
-      "ThresholdValue": "60°C",
+      "ThresholdValue": "65",
       "Severity": "Warning",
-      "MessageTemplate": "Smart TV panel temperature is too high"
+      "MessageTemplate": "Projector mainboard temperature is elevated."
     },
     {
       "FieldPath": "dynamicProperties.System Status.Storage Info.Used",
       "Operator": "GreaterThan",
-      "ThresholdValue": "14 GB",
+      "ThresholdValue": "5.5",
       "Severity": "Warning",
-      "MessageTemplate": "Smart TV is running out of storage"
+      "MessageTemplate": "Projector storage usage has exceeded 5.5 GB."
+    },
+    {
+      "FieldPath": "dynamicProperties.System Status.Software Update Available",
+      "Operator": "Equals",
+      "ThresholdValue": "true",
+      "Severity": "Information",
+      "MessageTemplate": "A software update is available for the projector."
     }
   ]
 }
