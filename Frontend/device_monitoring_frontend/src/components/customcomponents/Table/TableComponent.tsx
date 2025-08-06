@@ -43,9 +43,9 @@ const TableComponent = ({ currentDeviceId, sorting, setSorting, refreshDeviceDat
   return (
     <>
       <div className={`${styles.tableWrapper}`}>
-        <div className={`${styles.tableBody} `}>
+        <div className={`${styles.tableHeader} `}>
           <table className={styles.table}>
-            <thead className={styles.tableHeader}>
+            <thead>
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id} className={styles.row}>
                   {headerGroup.headers.map((header) => {
@@ -66,6 +66,11 @@ const TableComponent = ({ currentDeviceId, sorting, setSorting, refreshDeviceDat
                 </tr>
               ))}
             </thead>
+          </table>
+        </div>
+
+        <div className={styles.tableBody}>
+          <table className={styles.table}>
             <tbody>
               {table.getRowModel().rows.map((row) => (<TableRow currentDeviceId={currentDeviceId} refreshDeviceDataKey={refreshDeviceDataKey} updatedFieldsMap={updatedFieldsMap} key={row.id} row={row} setIsPropertyPanelOpen={setIsPropertyPanelOpen} />))}
             </tbody>

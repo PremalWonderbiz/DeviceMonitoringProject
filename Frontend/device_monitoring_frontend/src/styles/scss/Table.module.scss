@@ -66,7 +66,7 @@
 .tableBody {
     width: max-content;
     min-width: 100%;
-    max-height: 530px;
+    max-height: 490px;
     overflow-y: scroll;
 
     // Hide scrollbar by default
@@ -101,7 +101,5 @@
 }
 
 .tableHeader {
-    position: sticky;
-    top: 0;
-    z-index: 10;
+     margin-right: 3px;
 }

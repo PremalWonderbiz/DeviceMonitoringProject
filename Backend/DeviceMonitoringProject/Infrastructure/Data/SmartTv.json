@@ -2,10 +2,10 @@
   "FileName": "SmartTv.json",
   "Name": "Smart TV",
   "Type": "Entertainment Device",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "B8:27:EB:45:9A:CB",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-08-04T15:13:21.1815932+05:30",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-08-06T17:59:34.5066862+05:30",
   "staticProperties": {
     "Display & Hardware": {
       "Screen Size": "55 inches",
@@ -81,48 +81,48 @@
   "dynamicProperties": {
     "Current Usage": {
       "Power State": "Off",
-      "Input Source": "HDMI 1",
-      "Current App": "Zee5",
-      "Volume Level": 77,
-      "Mute": false,
-      "Picture Mode": "Sports",
+      "Input Source": "USB",
+      "Current App": "YouTube",
+      "Volume Level": 13,
+      "Mute": true,
+      "Picture Mode": "Standard",
       "Audio Output": "Bluetooth",
-      "Ambient Light Sensor": true
+      "Ambient Light Sensor": false
     },
     "Streaming Activity": {
       "Watch History (Today)": [
-        8,
-        48
+        83,
+        64
       ],
       "Active App Sessions": [
-        45
+        58
       ],
       "AutoPlay Next Episode": true
     },
     "Network Activity": {
-      "IP Address": "192.168.61.96",
-      "Wi-Fi Signal Strength": "-61 dBm",
-      "Connection Type": "Wi-Fi",
+      "IP Address": "192.168.29.78",
+      "Wi-Fi Signal Strength": "-69 dBm",
+      "Connection Type": "Ethernet",
       "Data Usage": {
-        "Today": "3.9 GB",
-        "This Week": "0.3 GB",
-        "This Month": "0.5 GB"
+        "Today": "2.1 GB",
+        "This Week": "4.2 GB",
+        "This Month": "9.0 GB"
       },
-      "Last Online": "2025-08-04T09:45:01.3302357Z"
+      "Last Online": "2025-08-06T12:30:14.5386966Z"
     },
     "System Status": {
-      "Uptime": "9 days, 16 hrs",
-      "Last Reboot": "2025-08-04T09:45:01.3302390Z",
+      "Uptime": "9 days, 6 hrs",
+      "Last Reboot": "2025-08-06T12:30:14.5387022Z",
       "Software Update Available": false,
-      "Last Software Update": "2025-08-04T09:45:01.3302411Z",
+      "Last Software Update": "2025-08-06T12:30:14.5387046Z",
       "Storage Info": {
-        "Total Storage": "9.0 GB",
-        "Used": "3.8 GB",
-        "Free": "5.2 GB"
+        "Total Storage": "3.5 GB",
+        "Used": "6.8 GB",
+        "Free": "4.4 GB"
       },
       "Temperature": {
-        "Panel": 31.2,
-        "Mainboard": 40.01
+        "Panel": 67.51,
+        "Mainboard": 61.76
       }
     }
   },

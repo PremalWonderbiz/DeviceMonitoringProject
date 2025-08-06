@@ -18,7 +18,7 @@ export function useDeviceAlertSocket(deviceId : any,onUpdate: (data: any) => voi
       console.log(`Subscribing to '${connMethodName}'`);
       try {
         if(connMethodName == "ReceiveAlarmPanelUpdates")
-            await conn.invoke("JoinAlarmPanelGroup", "AlarmPanelGroup");
+            await conn.invoke("JoinAlarmPanelGroup", "AlarmPa nelGroup");
         else if(connMethodName == "ReceivePropertyPanelAlarmUpdates")
             await conn.invoke("JoinPropertyPanelGroup", deviceId);
       } catch (err) {

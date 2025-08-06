@@ -1,4 +1,5 @@
 ﻿using Application.Dtos;
+using Application.Interface;
 using Application.Interfaces;
 using Infrastructure.RealTime;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,13 @@ namespace API.Controllers
         private readonly string _dataDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Data", "DeviceData");
         private readonly IDeviceService _deviceService;
         private readonly IHubContext<DeviceHub> _hubContext;
+        private readonly IAlarmToggleService _toggleService;
 
-        public DevicesController(IDeviceService deviceService, IHubContext<DeviceHub> hubContext)
+        public DevicesController(IDeviceService deviceService, IHubContext<DeviceHub> hubContext, IAlarmToggleService toggleService)
         {
             _deviceService = deviceService;
             _hubContext = hubContext;
+            _toggleService = toggleService;
         }
         
         [HttpPost("search/metadata/{input}")]
@@ -122,6 +125,21 @@ namespace API.Controllers
             var res = await _deviceService.UploadFile(file);
 
             return Ok(new { message = res, fileName = file.FileName });
+        }
+
+        //Toggle alarm generation logic
+        [HttpGet("alarmToggle")]
+        public IActionResult GetAlarmToggle()
+        {
+            var res = _toggleService.IsAlarmEnabled;
+            return Ok(new { AlarmEnabled = res });
+        }
+
+        [HttpPost("alarmToggle/{enabled}")]
+        public IActionResult SetAlarmToggle(bool enabled)
+        {
+            _toggleService.SetAlarmEnabled(enabled);
+            return Ok(new { AlarmEnabled = enabled });
         }
 
     }

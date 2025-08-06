@@ -1,6 +1,32 @@
 [
   {
     "ContainingType": "API.Controllers.DevicesController",
+    "Method": "GetAlarmToggle",
+    "RelativePath": "api/Devices/alarmToggle",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.DevicesController",
+    "Method": "SetAlarmToggle",
+    "RelativePath": "api/Devices/alarmToggle/{enabled}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "enabled",
+        "Type": "System.Boolean",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.DevicesController",
     "Method": "GetDevicesNameMacIdList",
     "RelativePath": "api/Devices/getDevicesNameMacIdList",
     "HttpMethod": "GET",

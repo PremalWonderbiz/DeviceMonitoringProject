@@ -4,8 +4,8 @@
   "Type": "Networking Device",
   "Status": "Offline",
   "MacId": "84:C9:B2:3E:7F:A1",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-08-04T15:14:11.2296788+05:30",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-08-06T17:57:04.3094458+05:30",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "OpenWRT 21.02",
@@ -73,50 +73,50 @@
   },
   "dynamicProperties": {
     "System Status": {
-      "Uptime": "9 days, 1 hrs",
-      "CPU Usage": "61%",
+      "Uptime": "8 days, 2 hrs",
+      "CPU Usage": "48%",
       "Memory Usage": {
-        "Used": "6.3 GB",
-        "Total": "0.9 GB"
+        "Used": "0.4 GB",
+        "Total": "9.4 GB"
       },
       "Temperature": {
-        "CPU": 66.64,
-        "Board": 62.42
+        "CPU": 89.09,
+        "Board": 66.41
       },
       "System Load Average": [
-        39,
-        61,
-        4
+        65,
+        82,
+        28
       ]
     },
     "Network Activity": {
       "Interfaces": [
-        55,
-        23
+        15,
+        13
       ],
       "Connected Clients": [
-        49,
-        92
+        62,
+        38
       ],
       "Total Data Usage": {
-        "Sent": "8.2 GB",
-        "Received": "8.4 GB"
+        "Sent": "0.5 GB",
+        "Received": "7.0 GB"
       }
     },
     "Service Health": {
       "Services Running": [
-        2,
-        59,
-        75,
-        41
+        37,
+        83,
+        30,
+        72
       ],
       "Failed Services": [
-        33
+        22
       ],
-      "Last Reboot Reason": "Manual Reboot",
+      "Last Reboot Reason": "Power Failure",
       "Firmware": {
         "Current Version": "Unsupported Type",
-        "Last Updated": "2025-08-04T09:45:01.3314780Z",
+        "Last Updated": "2025-08-06T12:30:14.5397466Z",
         "Update Available": true
       }
     }

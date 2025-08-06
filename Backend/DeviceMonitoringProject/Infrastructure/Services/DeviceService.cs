@@ -10,6 +10,7 @@ using Application.Interfaces;
 using Microsoft.Extensions.Options;
 using Infrastructure.Cache;
 using Microsoft.AspNetCore.Http;
+using Application.Interface;
 
 namespace Infrastructure.Services;
 
@@ -22,6 +23,8 @@ public class DeviceService : IDeviceService
     private readonly IAlarmEvaluationService _alarmEvaluationService;
     private readonly DeviceStateCache _deviceStateCache;
     private readonly Random _random = new();
+    private readonly IAlarmToggleService _alarmToggleService;
+
     private static readonly Dictionary<string, int> connectivityOrder = new()
     {
         { "Low", 1 },
@@ -57,7 +60,8 @@ public class DeviceService : IDeviceService
         IHubContext<DeviceHub> hubContext,
         IDynamicDataHelper dynamicDataHelper,
         IAlarmEvaluationService alarmEvaluationService,
-        DeviceStateCache deviceStateCache)
+        DeviceStateCache deviceStateCache,
+        IAlarmToggleService alarmToggleService)
     {
         _logger = logger;
         _hubContext = hubContext;
@@ -66,6 +70,7 @@ public class DeviceService : IDeviceService
         _deviceServiceHelper = deviceServiceHelper;
         _deviceStateCache = deviceStateCache;
         _dataDirectory = options.Value.DataDirectory;
+        _alarmToggleService = alarmToggleService;
     }
 
 
@@ -268,7 +273,10 @@ public class DeviceService : IDeviceService
 
             var currentTop = _deviceServiceHelper.ExtractTopLevelDto(device.MacId, rootNode);
 
-            //await _alarmEvaluationService.EvaluateTopAsync(currentTop, previousTop);
+            if (_alarmToggleService.IsAlarmEnabled)
+            {
+                await _alarmEvaluationService.EvaluateTopAsync(currentTop, previousTop);
+            }
 
             var updatedDevice = new DeviceMetadata
             {
@@ -309,7 +317,10 @@ public class DeviceService : IDeviceService
 
                 var currentDynamic = _deviceServiceHelper.ExtractDynamicDto(device.MacId, root);
 
-                //await _alarmEvaluationService.EvaluateDynamicAsync(currentDynamic, previousDynamic);
+                if (_alarmToggleService.IsAlarmEnabled)
+                {
+                    await _alarmEvaluationService.EvaluateDynamicAsync(currentDynamic, previousDynamic);
+                }
 
                 if (updatedNode is not null)
                 {

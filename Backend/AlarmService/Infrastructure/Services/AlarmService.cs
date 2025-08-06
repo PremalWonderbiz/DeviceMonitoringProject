@@ -2,6 +2,7 @@
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using Application.Dtos;
+using Application.Interface;
 using Common.Helper_Classes;
 using Domain.Entities;
 using Domain.Enums;
@@ -17,6 +18,7 @@ namespace Infrastructure.Services
     {
         private readonly AlarmDbContext _context;
         private readonly IHubContext<AlertHub> _hubContext;
+
 
         public AlarmService(AlarmDbContext context, IHubContext<AlertHub> hubContext)
         {

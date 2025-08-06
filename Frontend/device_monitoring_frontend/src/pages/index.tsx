@@ -16,6 +16,7 @@ import { useDeviceAlertSocket } from "@/utils/customhooks/useDeviceAlertSocket";
 import { SortingState } from "@tanstack/react-table";
 import { Tooltip } from "@/components/ui/tooltip";
 import FileUploader from "@/components/customcomponents/FileUploader";
+import AlarmToggle from "@/components/customcomponents/AlarmToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -381,15 +382,19 @@ export default function Home() {
       </div>
 
       <div className='m-3'>
+        {totalAlarms > 0 && 
         <Sidebar openIconMsg={"Open Alarm Panel"} closeIconMsg={"Close Alarm Panel"} position="left" isOpen={isAlarmPanelOpen} setIsOpen={setIsAlarmPanelOpen} >
           {isAlarmPanelOpen && <AlarmPanel devicesNameMacList={devicesNameMacList} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} selectedDevicePropertyPanel={selectedDevicePropertyPanel} />}
-        </Sidebar>
+        </Sidebar>}
 
         <div>
           <span className={`py-3 ${styles.mainPageTitle}`}>Welcome back, Premal Kadam</span>
           <div className={`py-2 pr-4 ${styles.subNav}`}>
             <input onChange={(event: any) => { changeSearchInput(event.target.value) }} className={styles.mainPageSearchInput} type="search" placeholder="Search..." />
             <div className={styles.mainPageIcons}>
+              <div>
+                <AlarmToggle />
+              </div>
               <div className={""} >
                 <FileUploader setHardRefreshDeviceDataKey={setHardRefreshDeviceDataKey} setRefreshDeviceDataKey = {setRefreshDeviceDataKey} />
               </div>

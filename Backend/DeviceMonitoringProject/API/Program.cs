@@ -1,5 +1,6 @@
 using API.Middleware;
 using Application.Dtos;
+using Application.Interface;
 using Application.Interfaces;
 using Infrastructure.Cache;
 using Infrastructure.Helpers;
@@ -41,6 +42,7 @@ builder.Services.AddCors(options =>
 
 //cache register
 builder.Services.AddSingleton<DeviceStateCache>();
+builder.Services.AddSingleton<IAlarmToggleService, AlarmToggleService>();
 builder.Services.AddHostedService<DeviceStatePersistenceService>();
 
 var app = builder.Build();

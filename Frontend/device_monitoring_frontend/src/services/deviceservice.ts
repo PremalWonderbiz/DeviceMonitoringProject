@@ -81,3 +81,21 @@ export const getMacIdToFileNameMap = async () => {
      handleAxiosError(error);
   }
 };
+
+export const getAlarmToggleValue = async () => {
+  try {
+    const response = await axios.get(`${baseURL}/api/Devices/alarmToggle`);
+    return response;
+  } catch (error : any) {
+     handleAxiosError(error);
+  }
+};
+
+export const setAlarmToggleValue = async (alarmToggle: boolean) => {  
+  try {    
+    const response = await axios.post(`${baseURL}/api/Devices/alarmToggle/${alarmToggle}`);
+    return response;
+  } catch (error : any) {
+     handleAxiosError(error);
+  }
+};

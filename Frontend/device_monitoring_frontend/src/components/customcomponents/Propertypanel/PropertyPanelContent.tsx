@@ -74,8 +74,8 @@ export const HealthTabContent = React.memo(
         {alarm && (
           <div className={styles.alarmCard}>
             <div>
-              <span className={styles.time}>{formatRelativeTime(alarm.raisedAt)}</span>
               <p className={styles.message}>{alarm.message}</p>
+              <span className={styles.time}>{formatRelativeTime(alarm.raisedAt)}</span>
               <div>
                 <button
                   onClick={(e) => {
