@@ -5,7 +5,7 @@
   "Status": "Online",
   "MacId": "B8:27:EB:45:67:89",
   "Connectivity": "Low",
-  "LastUpdated": "2025-08-06T18:00:14.5363408+05:30",
+  "LastUpdated": "2025-08-14T10:09:44.8770894Z",
   "staticProperties": {
     "Hardware Information": {
       "Model": "Raspberry Pi 4 Model B",
@@ -61,48 +61,48 @@
   },
   "dynamicProperties": {
     "System Health": {
-      "CPU Usage": "16%",
+      "CPU Usage": "63%",
       "RAM Usage": {
-        "Used": "7.7 GB",
+        "Used": "6.4 GB",
         "Total": "3.1 GB"
       },
       "System Temperature": {
-        "CPU": 85.02,
-        "Board": 70.57
+        "CPU": 51.75,
+        "Board": 62.04
       },
-      "Uptime": "9 days, 8 hrs",
+      "Uptime": "7 days, 19 hrs",
       "System Load": [
-        92,
-        78,
-        69
+        96,
+        71,
+        24
       ]
     },
     "Network Activity": {
       "Interfaces": [
-        43
+        58
       ],
       "Total Data Usage": {
-        "Sent": "3.2 GB",
-        "Received": "0.5 GB"
+        "Sent": "7.2 GB",
+        "Received": "2.4 GB"
       },
       "Connected Clients (Media Server)": [
-        98
+        9
       ]
     },
     "Service Status": {
       "Running Services": [
-        "Docker",
         "Kodi",
+        "SSH",
         "Node-RED"
       ],
       "Service Health": [
-        96,
-        68
+        25,
+        9
       ],
       "Last Reboot Reason": "Power failure",
       "Firmware": {
         "Current Version": "Unsupported Type",
-        "Last Update": "2025-08-06T12:30:14.5403094Z",
+        "Last Update": "2025-08-14T10:13:15.0869971Z",
         "Update Available": false
       }
     }

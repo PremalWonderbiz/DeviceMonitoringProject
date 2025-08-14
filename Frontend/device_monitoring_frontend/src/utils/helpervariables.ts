@@ -1,7 +1,12 @@
-
+//local
 export const baseURL = "https://localhost:7127";
-
 export const alarmServiceBaseURL = "https://localhost:7154";
+
+//docker
+// export const baseURL = "http://localhost:7127";
+// export const alarmServiceBaseURL = "http://localhost:7154"; 
+
+
 
 export const sampleTableData = [
   {

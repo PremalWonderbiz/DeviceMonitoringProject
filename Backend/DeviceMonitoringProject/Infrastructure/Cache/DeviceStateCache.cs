@@ -24,14 +24,17 @@ namespace Infrastructure.Cache
 
     public class DeviceStateCache
     {
-        private readonly string _dataDirectory;
+        //local
+        private readonly string _dataDirectory = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory())!.FullName, "Infrastructure", "Data");
+
+        //docker
+        //private readonly string _dataDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Infrastructure", "Data");
         private readonly ILogger<DeviceStatePersistenceService> _logger;
         private readonly ConcurrentDictionary<string, DeviceState> _deviceMap = new();
         private readonly ConcurrentDictionary<string, SemaphoreSlim> _locks = new();
 
-        public DeviceStateCache(IOptions<DeviceServiceOptions> options, ILogger<DeviceStatePersistenceService> logger)
+        public DeviceStateCache(ILogger<DeviceStatePersistenceService> logger)
         {
-            _dataDirectory = options.Value.DataDirectory;
             _logger = logger;
         }
         public ConcurrentDictionary<string, DeviceState> GetAllStates()
@@ -49,7 +52,7 @@ namespace Infrastructure.Cache
                 var node = JsonNode.Parse(json)!;
 
                 // Try to parse LastUpdatedAt from the root if available
-                DateTime lastUpdated = DateTime.Now;
+                DateTime lastUpdated = DateTime.UtcNow;
                 if (node["LastUpdated"] is JsonValue timestampNode &&
                     DateTime.TryParse(timestampNode.ToString(), out var parsedDate))
                 {
@@ -128,7 +131,7 @@ namespace Infrastructure.Cache
                     await File.WriteAllTextAsync(path, json);
                 }
 
-                _logger.LogInformation("Device states persisted to disk at {Time}", DateTime.Now);
+                _logger.LogInformation("Device states persisted to disk at {Time}", DateTime.UtcNow);
             }
             catch (Exception ex)
             {

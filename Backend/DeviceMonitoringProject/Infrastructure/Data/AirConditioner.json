@@ -2,10 +2,10 @@
   "FileName": "AirConditioner.json",
   "Name": "Air Conditioner",
   "Type": "Smart Appliance",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "98:5F:D3:4B:22:AC",
-  "Connectivity": "High",
-  "LastUpdated": "2025-08-06T18:00:04.5289708+05:30",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-08-14T10:12:05.0282991Z",
   "staticProperties": {
     "Hardware Specifications": {
       "AC Type": "Split Inverter",
@@ -55,50 +55,50 @@
   "dynamicProperties": {
     "Current Status": {
       "Power State": "Off",
-      "Mode": "Heat",
-      "Set Temperature": 29,
-      "Current Room Temperature": 27.29,
+      "Mode": "Fan",
+      "Set Temperature": 23,
+      "Current Room Temperature": 31.53,
       "Fan Speed": "Low",
       "Swing Mode": {
         "Vertical Swing": "Off",
         "Horizontal Swing": "Auto"
       },
-      "Humidity Level": "68%",
-      "Sleep Mode": false
+      "Humidity Level": "60%",
+      "Sleep Mode": true
     },
     "Sensor Data": {
       "Temperature Sensors": [
-        67,
-        25
+        64,
+        78
       ],
       "Humidity Sensor": {
         "Sensor ID": "HS001",
-        "Reading": "89%"
+        "Reading": "88%"
       }
     },
     "Power Consumption Stats": {
-      "Today": 0.84,
-      "This Week": 2.03,
-      "This Month": 141.77,
-      "Power Saving Mode": "Disabled",
-      "Last Reset": "2025-08-06T12:30:14.5389946Z"
+      "Today": 2.2,
+      "This Week": 33.83,
+      "This Month": 113.86,
+      "Power Saving Mode": "Enabled",
+      "Last Reset": "2025-08-14T10:13:15.0863537Z"
     },
     "Network Activity": {
-      "IP Address": "192.168.41.240",
-      "Signal Strength": "-42 dBm",
-      "Last Connected": "2025-08-06T12:30:14.5390012Z",
+      "IP Address": "192.168.35.47",
+      "Signal Strength": "-57 dBm",
+      "Last Connected": "2025-08-14T10:13:15.0863574Z",
       "Control Access": [
-        34,
-        57
+        83,
+        8
       ]
     },
     "Service Logs": {
-      "Filter Status": "Needs Cleaning",
+      "Filter Status": "Dirty",
       "Service History": [
-        40,
-        36
+        95,
+        99
       ],
-      "Next Scheduled Maintenance": "2025-08-06T12:30:14.5390104Z"
+      "Next Scheduled Maintenance": "2025-08-14T10:13:15.0863629Z"
     }
   },
   "topLevelObservables": {

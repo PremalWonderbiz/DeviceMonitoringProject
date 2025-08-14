@@ -8,7 +8,6 @@
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
     box-sizing: border-box;
     border-radius: 5px;
-    z-index: 20;
 }
 
 .left {
@@ -26,6 +25,14 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+}
+
+.zIndex200 {
+    z-index: 200;
+}
+
+.zIndex300 {
+    z-index: 300;
 }
 
 .closeButton {
@@ -55,29 +62,29 @@
     border-radius: 10px;
 }
 
-.rightCloseIcon{
+.rightCloseIcon {
     right: -20px;
     justify-content: end;
 }
 
-.rightCloseIcon:hover{
+.rightCloseIcon:hover {
     right: -30px;
 }
 
-.leftCloseIcon{
+.leftCloseIcon {
     left: -23px;
     justify-content: start;
 }
 
-.leftCloseIcon:hover{
+.leftCloseIcon:hover {
     left: -33px;
 }
 
-.closeIcon:hover {  
+.closeIcon:hover {
     border-color: #000;
 }
 
-.sidebarCloseIcon{
+.sidebarCloseIcon {
     transition: color .2s ease-in;
 }
 

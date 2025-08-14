@@ -1,5 +1,6 @@
 import { getSignalRConnection } from "@/sockets/signalRConnection";
 import { useEffect } from "react";
+import { alarmServiceBaseURL } from "../helpervariables";
 
 export function useDeviceAlertSocket(deviceId : any,onUpdate: (data: any) => void, connMethodName : string, shouldConnectSignalR : boolean = true) {
   useEffect(() => {
@@ -8,7 +9,7 @@ export function useDeviceAlertSocket(deviceId : any,onUpdate: (data: any) => voi
     const handler = (data: any) => onUpdate(data);
 
     const setupConnection = async () => {
-      conn = await getSignalRConnection("alerthub","https://localhost:7154/alerthub");
+      conn = await getSignalRConnection("alerthub",`${alarmServiceBaseURL}/alerthub`);
       if (!conn) {
         console.warn("SignalR connection not available");
         return;
@@ -18,7 +19,7 @@ export function useDeviceAlertSocket(deviceId : any,onUpdate: (data: any) => voi
       console.log(`Subscribing to '${connMethodName}'`);
       try {
         if(connMethodName == "ReceiveAlarmPanelUpdates")
-            await conn.invoke("JoinAlarmPanelGroup", "AlarmPa nelGroup");
+            await conn.invoke("JoinAlarmPanelGroup", "AlarmPanelGroup");
         else if(connMethodName == "ReceivePropertyPanelAlarmUpdates")
             await conn.invoke("JoinPropertyPanelGroup", deviceId);
       } catch (err) {

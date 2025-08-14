@@ -18,7 +18,7 @@ namespace Infrastructure.Services
         private readonly ILogger<DeviceLiveDataBgService> _logger;
         private readonly DeviceStateCache _deviceStateCache;
         private readonly IServiceScopeFactory _scopeFactory;
-        private DateTime _lastDynamicUpdateTime = DateTime.Now;
+        private DateTime _lastDynamicUpdateTime = DateTime.UtcNow;
 
         public DeviceLiveDataBgService(DeviceStateCache deviceStateCache, IServiceScopeFactory scopeFactory, ILogger<DeviceLiveDataBgService> logger, IHubContext<DeviceHub> hubContext)
         {
@@ -40,10 +40,10 @@ namespace Infrastructure.Services
                 {
                     await deviceService.SimulateTopLevelChangeForOneDevice();
 
-                    if ((DateTime.Now - _lastDynamicUpdateTime).TotalSeconds >= 10)
+                    if ((DateTime.UtcNow - _lastDynamicUpdateTime).TotalSeconds >= 10)
                     {
                         await deviceService.SimulateDynamicPropertiesUpdateForBatch();
-                        _lastDynamicUpdateTime = DateTime.Now;
+                        _lastDynamicUpdateTime = DateTime.UtcNow;
                     }
 
 

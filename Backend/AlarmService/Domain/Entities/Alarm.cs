@@ -18,7 +18,7 @@ namespace Domain.Entities
         [MaxLength(255, ErrorMessage = "Alarm Comment must be 255 characters or less")]
         public string Comment { get; set; } = "";
         public string AcknowledgedFrom { get; set; } = "";
-        public DateTime RaisedAt { get; set; } = DateTime.Now;
+        public DateTime RaisedAt { get; set; } = DateTime.UtcNow;
         public bool IsAcknowledged { get; set; } = false;
         public DateTime? AcknowledgedAt { get; set; }   
         public DateTime? ResolvedAt { get; set; }

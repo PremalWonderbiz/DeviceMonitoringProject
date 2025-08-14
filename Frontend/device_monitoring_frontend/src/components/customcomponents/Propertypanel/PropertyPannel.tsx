@@ -9,17 +9,18 @@ import { getChangedPaths } from "@/utils/deepDiff";
 import ComboBox from "@/components/customcomponents/AlarmPanel/SelectDevicesComboBox";
 import { AccordionStateProvider } from "./AccordionVisibilityContext";
 import { deepMerge } from "@/utils/propertypanelfunctions";
+import { DeviceDetailUpdate, DeviceNameMac, PropertyPanelData } from "@/models/propertyPanelInterfaces";
 
 
 const PropertyPanel = ({ setCurrentDeviceId, setCurrentDeviceFileName, deviceFileNames, devicesNameMacList, setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, currentDeviceId, currentDeviceFileName, activeTab, setActiveTab }: any) => {
-    const [PropertyPanelData, setPropertyPanelData] = useState<any>(null);
+    const [propertyPanelData, setPropertyPanelData] = useState<PropertyPanelData | null>(null);
     const [highlightedPaths, setHighlightedPaths] = useState<string[]>([]);
     const highlightTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const [shouldConnectSignalR, setShouldConnectSignalR] = useState<boolean>(true);
-    const [selectedDevices, setSelectedDevices] = useState<any[]>([]);
+    const [selectedDevices, setSelectedDevices] = useState<DeviceNameMac[]>([]);
 
     const handleUpdate = useCallback((msg: any) => {
-        const incomingDevicesDetails = JSON.parse(msg);        
+        const incomingDevicesDetails: DeviceDetailUpdate = JSON.parse(msg);
 
         setPropertyPanelData((prev: any) => {
             if (!prev) return prev;
@@ -57,7 +58,7 @@ const PropertyPanel = ({ setCurrentDeviceId, setCurrentDeviceFileName, deviceFil
         if (selectedDevices.length == 1) {
             const deviceId = selectedDevices[0].deviceMacId;
             setCurrentDeviceId(deviceId);
-            setCurrentDeviceFileName(deviceFileNames[deviceId] || null)
+            setCurrentDeviceFileName(deviceFileNames[deviceId!] || null)
         }
     }, [selectedDevices]);
 
@@ -105,16 +106,16 @@ const PropertyPanel = ({ setCurrentDeviceId, setCurrentDeviceFileName, deviceFil
             <div className="pt-2">
                 {/* <span className={`pl-2`}>{PropertyPanelData.name} : {PropertyPanelData.type}</span><br /> */}
                 <div className={`pl-2 ${styles.propertyPanelHeadingContainer}`}>
-                    <span className={styles.deviceTitle}>{PropertyPanelData.name}</span>
-                    <span className={styles.deviceSubTitle}>{PropertyPanelData.type}</span>
+                    <span className={styles.deviceTitle}>{propertyPanelData?.name}</span>
+                    <span className={styles.deviceSubTitle}>{propertyPanelData?.type}</span>
                 </div>
                 <div className="mt-2">
                     <AccordionStateProvider>
-                    <Accordion keyPath={activeTab} isTabList={true} title={<TabList highlightedPaths={highlightedPaths} activeTab={activeTab} setActiveTab={changeActiveTab} />} defaultOpen={true} bgColor=''>
-                        {(activeTab === "Static" && PropertyPanelData.staticProperties) ?
-                            <StaticTabContent staticProps={PropertyPanelData.staticProperties} />
-                            : <HealthTabContent highlightedPaths={highlightedPaths} deviceName={PropertyPanelData.name} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} setIsAlarmPanelOpen={setIsAlarmPanelOpen} deviceMacId={PropertyPanelData.macId} dynamicProps={PropertyPanelData.dynamicProperties} />}
-                    </Accordion>
+                        <Accordion keyPath={activeTab} isTabList={true} title={<TabList highlightedPaths={highlightedPaths} activeTab={activeTab} setActiveTab={changeActiveTab} />} defaultOpen={true} bgColor=''>
+                            {(activeTab === "Static" && propertyPanelData?.staticProperties) ?
+                                <StaticTabContent staticProps={propertyPanelData.staticProperties} />
+                                : <HealthTabContent highlightedPaths={highlightedPaths} deviceName={propertyPanelData?.name} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} setIsAlarmPanelOpen={setIsAlarmPanelOpen} deviceMacId={propertyPanelData?.macId} dynamicProps={propertyPanelData?.dynamicProperties} />}
+                        </Accordion>
                     </AccordionStateProvider>
                 </div>
             </div>
@@ -123,7 +124,7 @@ const PropertyPanel = ({ setCurrentDeviceId, setCurrentDeviceFileName, deviceFil
 
     return (
         <div className=''>
-            {renderPropertyPanelData(PropertyPanelData)}
+            {renderPropertyPanelData(propertyPanelData)}
         </div>
     );
 };

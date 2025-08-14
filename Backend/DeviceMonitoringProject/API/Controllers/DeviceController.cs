@@ -11,7 +11,6 @@ namespace API.Controllers
     [ApiController]
     public class DevicesController : ControllerBase
     {
-        private readonly string _dataDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Data", "DeviceData");
         private readonly IDeviceService _deviceService;
         private readonly IHubContext<DeviceHub> _hubContext;
         private readonly IAlarmToggleService _toggleService;

@@ -1,5 +1,6 @@
 import { getSignalRConnection } from "@/sockets/signalRConnection";
 import { useEffect, useRef } from "react";
+import { baseURL } from "../helpervariables";
 
 export function useDevicesTopDataSocket(onUpdate: (data: any) => void) {
   const onUpdateRef = useRef(onUpdate);
@@ -16,7 +17,7 @@ export function useDevicesTopDataSocket(onUpdate: (data: any) => void) {
     };
 
     const setupConnection = async () => {
-      conn = await getSignalRConnection("devicehub", "https://localhost:7127/devicehub");
+      conn = await getSignalRConnection("devicehub", `${baseURL}/devicehub`);
       if (!conn) {
         console.warn("SignalR connection not available");
         return;

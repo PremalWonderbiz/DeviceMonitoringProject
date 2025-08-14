@@ -2,10 +2,10 @@
   "FileName": "Switch.json",
   "Name": "Network Switch",
   "Type": "Networking Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "D4:6D:6D:88:11:22",
   "Connectivity": "Low",
-  "LastUpdated": "2025-08-06T17:58:54.4494889+05:30",
+  "LastUpdated": "2025-08-14T10:11:04.9635817Z",
   "staticProperties": {
     "Hardware Info": {
       "Model": "Cisco Catalyst 2960-X",
@@ -62,59 +62,59 @@
   },
   "dynamicProperties": {
     "Port Status": [
-      32,
-      7,
-      67
+      57,
+      8,
+      76
     ],
     "System Health": {
-      "CPU Usage": "30%",
+      "CPU Usage": "51%",
       "RAM Usage": "Evaluated at runtime",
-      "Temperature": 81.44,
+      "Temperature": 24.56,
       "Fan Status": "Non-operational"
     },
     "Traffic Statistics": {
-      "Total Data Sent": "5.3 GB",
-      "Total Data Received": "5.0 GB",
+      "Total Data Sent": "6.3 GB",
+      "Total Data Received": "0.7 GB",
       "Packet Errors": {
-        "Inbound": 8,
-        "Outbound": 91
+        "Inbound": 35,
+        "Outbound": 82
       },
       "Broadcast Storms Detected": false
     },
     "VLANs & Routing": {
       "Active VLANs": [
-        24,
-        44,
-        81
+        34,
+        45,
+        24
       ],
       "Routing Table": [
-        56,
-        78
+        62,
+        6
       ]
     },
     "Security & Logs": {
       "Port Security Enabled": true,
       "MAC Address Filtering": {
-        "Mode": "Dynamic",
+        "Mode": "Static",
         "Whitelisted MACs": [
-          42,
-          46
+          19,
+          37
         ]
       },
       "Login Attempts": [
-        47,
-        6,
-        41,
-        29,
-        91
+        11,
+        28,
+        53,
+        60,
+        95
       ],
       "Recent Logs": [
-        66,
-        66,
-        80,
-        33,
-        87,
-        65
+        15,
+        56,
+        25,
+        65,
+        76,
+        42
       ]
     }
   },

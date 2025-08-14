@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { FilePenLine, ShieldCheck, ShieldEllipsis } from "lucide-react";
+import { ShieldCheck, ShieldEllipsis, ShieldX } from "lucide-react";
 import styles from "@/styles/scss/AlarmPanel.module.scss";
 import CustomModal from "./CustomModal";
 import { formatRelativeTime } from "@/utils/helperfunctions";
@@ -15,7 +15,7 @@ const severityColors: Record<string, { bg: string; color: string }> = {
 const AlarmCard = ({ removeacknowledgedAlarm, removeunacknowledgedAlarm, alarm, investigateAlarm, resolveAlarm, currentExpandedAckAlarm, setCurrentExpandedAckAlarm, currentExpandedUnackAlarm, setCurrentExpandedUnackAlarm, resolveInvestigatedAlarmData }: any) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const [isResolveCommentModalOpen, setIsResolveCommentModalOpen] = useState(false);
-    const [alarmComment, setAlarmComment] = useState<string>("");
+    const [modalActionFunction, setModalActionFunction] = useState<any>(null);
 
     useEffect(() => {
         if(alarm.isAcknowledged){
@@ -60,29 +60,30 @@ const AlarmCard = ({ removeacknowledgedAlarm, removeunacknowledgedAlarm, alarm, 
         }
     }
 
-    const resolveInvestigatedAlarm = () => {
-        if(alarmComment=="")
-            setIsResolveCommentModalOpen(true);
-        else
-            resolveInvestigatedAlarmData(alarm.id, alarmComment)
+    const resolveInvestigatedAlarm = (alarmComment : string) => {
+        resolveInvestigatedAlarmData(alarm.id, alarmComment)
+    }
+
+    const resolveUnacknowledgedAlarm = (alarmComment : string) => {
+        resolveAlarm(alarm.id, alarmComment)
     }
     
-    const ignoreInvestigatedAlarm = () => {
-        if(alarmComment=="")
-            setIsResolveCommentModalOpen(true);
-        else
-            removeacknowledgedAlarm(alarm.id, alarmComment);
+    const ignoreInvestigatedAlarm = (alarmComment : string) => {
+        removeacknowledgedAlarm(alarm.id, alarmComment);
+    }
+
+    const ignoreUnacknowledgedAlarm = (alarmComment : string) => {
+        removeunacknowledgedAlarm(alarm.id, alarmComment);
     }
 
 
     return (
         <div className={`${styles.alarmCardContainer} ${isExpanded ? styles.expanded : ''} ${alarm.isAcknowledged && (alarm.alarmState == "Resolved" ? styles.resolvedAlarmCard : '')}`} onClick={() => { expandOrCollapseAlarm() }} >
             <CustomModal
-                setAlarmComment={setAlarmComment}
                 title={"Add comment"}
                 isOpen={isResolveCommentModalOpen}
+                actionFunction={modalActionFunction}
                 setIsOpen={setIsResolveCommentModalOpen}
-                defaultComment={alarmComment}
             />
 
             {alarm.isAcknowledged && (
@@ -91,16 +92,22 @@ const AlarmCard = ({ removeacknowledgedAlarm, removeunacknowledgedAlarm, alarm, 
                         <ShieldEllipsis size={15} className={`${styles.ackAlarmStateIcon} ${styles.ackAlarmStateInvestigateIcon}`} />
                     </Tooltip>
                     :
-                    <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">{alarm.alarmComment}</span>}>
-                        <ShieldCheck size={15} className={`${styles.ackAlarmStateIcon} ${styles.ackAlarmStateResolveIcon}`} />
-                    </Tooltip>
+                    alarm.alarmState == "Resolved" ?
+                        <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">{alarm.alarmComment}</span>}>
+                            <ShieldCheck size={15} className={`${styles.ackAlarmStateIcon} ${styles.ackAlarmStateResolveIcon}`} />
+                        </Tooltip>
+                        :
+                        <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">{alarm.alarmComment}</span>}>
+                            <ShieldX size={15} className={`${styles.ackAlarmStateIcon} ${styles.ackAlarmStateIgnoreIcon}`} />
+                        </Tooltip>
+
             )}
 
             <div className={styles.alarmCardDiv}>
                 <div>
                     <p className={styles.message}>{alarm.message}</p>
                     <span className={styles.time}>{formatRelativeTime(alarm.raisedAt)}</span>
-                    {(alarm.isAcknowledged && alarm.alarmState == "Resolved") && <span className={styles.alarmComment}>{alarm.acknowledgedFrom}</span>}
+                    {(alarm.isAcknowledged && (alarm.alarmState == "Resolved" || alarm.alarmState == "Ignored")) && <span className={styles.alarmComment}>{alarm.acknowledgedFrom}</span>}
                 </div>
                 <div className={styles.rightSide}>
                     <Badge
@@ -126,39 +133,41 @@ const AlarmCard = ({ removeacknowledgedAlarm, removeunacknowledgedAlarm, alarm, 
 
                     <Tooltip openDelay={100} closeDelay={150} content={<span>Mark as Resolved</span>}>
                     <button
-                        onClick={(event) => { event.stopPropagation(); resolveAlarm(alarm.id, alarmComment) }}
-                        className={`${styles.ackBtn} ${styles.resolveBtn}`}
+                        onClick={(event) => { event.stopPropagation(); setModalActionFunction(() => resolveUnacknowledgedAlarm); setIsResolveCommentModalOpen(true); }}
+                        className={`${styles.ackBtn}`}
                     >
                         Resolve
-                        <Tooltip openDelay={100} closeDelay={150} content={<span>Add comment (Optional)</span>}>
+                        {/* <Tooltip openDelay={100} closeDelay={150} content={<span>Add comment</span>}>
                             <FilePenLine
                                 size={20}
                                 onClick={(e) => {
                                     e.stopPropagation();
+                                    setModalActionFunction(() => resolveUnacknowledgedAlarm);
                                     setIsResolveCommentModalOpen(true);
                                 }}
                                 className={styles.resolveCommentIcon}
                             />
-                        </Tooltip>
+                        </Tooltip> */}
                     </button>
                     </Tooltip>
 
                     <Tooltip openDelay={100} closeDelay={150} content={<span>Ignore Alarm</span>}>
                     <button
-                        onClick={(event) => {event.stopPropagation(); removeunacknowledgedAlarm(alarm.id, alarmComment)}}
-                        className={`${styles.ackBtn} ${styles.ignoreBtn}`}
+                        onClick={(event) => {event.stopPropagation(); setModalActionFunction(() => ignoreUnacknowledgedAlarm); setIsResolveCommentModalOpen(true);}}
+                        className={`${styles.ackBtn}`}
                     >
                         Ignore
-                        <Tooltip openDelay={100} closeDelay={150} content={<span>Add comment (Optional)</span>}>
+                        {/* <Tooltip openDelay={100} closeDelay={150} content={<span>Add comment</span>}>
                             <FilePenLine
                                 size={20}
                                 onClick={(e) => {
                                     e.stopPropagation();
+                                    setModalActionFunction(() => ignoreUnacknowledgedAlarm);
                                     setIsResolveCommentModalOpen(true);
                                 }}
                                 className={styles.resolveCommentIcon}
                             />
-                        </Tooltip>
+                        </Tooltip> */}
                     </button>
                     </Tooltip>
                 </div>}
@@ -167,38 +176,40 @@ const AlarmCard = ({ removeacknowledgedAlarm, removeunacknowledgedAlarm, alarm, 
                 <div className={`${styles.expandedContent} ${isExpanded ? styles.show : ""}`}>
                     <Tooltip openDelay={100} closeDelay={150} content={<span>Mark as Resolved</span>}>
                     <button
-                        onClick={(event) => { event.stopPropagation(); resolveInvestigatedAlarm(); }}
-                        className={`${styles.ackBtn} ${styles.resolveBtn}`}>
+                        onClick={(event) => { event.stopPropagation(); setModalActionFunction(() => resolveInvestigatedAlarm); setIsResolveCommentModalOpen(true); }}
+                        className={`${styles.ackBtn}`}>
                         Resolve
-                        <Tooltip openDelay={100} closeDelay={150} content={<span>Add comment (Mandatory)</span>}>
+                        {/* <Tooltip openDelay={100} closeDelay={150} content={<span>Add comment</span>}>
                             <FilePenLine
                                 size={20}
                                 onClick={(e) => {
                                     e.stopPropagation();
+                                    setModalActionFunction(() => resolveInvestigatedAlarm);
                                     setIsResolveCommentModalOpen(true);
                                 }}
                                 className={styles.resolveCommentIcon}
                             />
-                        </Tooltip>
+                        </Tooltip> */}
                     </button>
                     </Tooltip>
 
                     <Tooltip openDelay={100} closeDelay={150} content={<span>Ignore Alarm</span>}>
                     <button
-                        onClick={(event) => { event.stopPropagation(); ignoreInvestigatedAlarm();}}
-                        className={`${styles.ackBtn} ${styles.ignoreBtn}`}
+                        onClick={(event) => { event.stopPropagation(); setModalActionFunction(() => ignoreInvestigatedAlarm); setIsResolveCommentModalOpen(true);}}
+                        className={`${styles.ackBtn}`}
                     >
                         Ignore
-                        <Tooltip openDelay={100} closeDelay={150} content={<span>Add comment (Mandatory)</span>}>
+                        {/* <Tooltip openDelay={100} closeDelay={150} content={<span>Add comment (Mandatory)</span>}>
                             <FilePenLine
                                 size={20}
                                 onClick={(e) => {
                                     e.stopPropagation();
+                                    setModalActionFunction(() => ignoreInvestigatedAlarm);
                                     setIsResolveCommentModalOpen(true);
                                 }}
                                 className={styles.resolveCommentIcon}
                             />
-                        </Tooltip>
+                        </Tooltip> */}
                     </button>
                     </Tooltip>
                 </div>}

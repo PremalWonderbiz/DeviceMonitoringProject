@@ -23,7 +23,7 @@ namespace Domain.Entities
 
             public string MessageTemplate { get; set; } = default!;
 
-            public DateTime CreatedAt { get; set; } = DateTime.Now;
+            public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         }
     
 

@@ -24,6 +24,16 @@ public class DeviceService : IDeviceService
     private readonly DeviceStateCache _deviceStateCache;
     private readonly Random _random = new();
     private readonly IAlarmToggleService _alarmToggleService;
+    private static readonly List<Func<DeviceMetadata, string>> _searchSequence = new()
+    {
+        d => d.Name,
+        d => d.Type,
+        d => d.Status,
+        d => d.MacId,
+        d => d.Connectivity,
+        d => d.FileName
+    };
+
 
     private static readonly Dictionary<string, int> connectivityOrder = new()
     {
@@ -51,11 +61,14 @@ public class DeviceService : IDeviceService
             })
             .ToList();
 
-    private readonly string _dataDirectory;
+    //local
+    private readonly string _dataDirectory = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory())!.FullName, "Infrastructure", "Data");
+
+    //docker
+    //private readonly string _dataDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Infrastructure", "Data");
 
     public DeviceService(
         IDeviceServiceHelper deviceServiceHelper,
-        IOptions<DeviceServiceOptions> options,
         ILogger<DeviceService> logger,
         IHubContext<DeviceHub> hubContext,
         IDynamicDataHelper dynamicDataHelper,
@@ -69,7 +82,6 @@ public class DeviceService : IDeviceService
         _alarmEvaluationService = alarmEvaluationService;
         _deviceServiceHelper = deviceServiceHelper;
         _deviceStateCache = deviceStateCache;
-        _dataDirectory = options.Value.DataDirectory;
         _alarmToggleService = alarmToggleService;
     }
 
@@ -188,21 +200,39 @@ public class DeviceService : IDeviceService
 
     public DeviceMetadataPaginatedandSortedDto GetSearchedDeviceMetadataPaginated(DeviceTopLevelSortOptions options, string input = "")
     {
-        var metadataList = string.IsNullOrWhiteSpace(input)
-            ? _devices
-            : _devices.Where(d => d.Name?.Contains(input, StringComparison.OrdinalIgnoreCase) == true).ToList();
+        var filteredList = string.IsNullOrWhiteSpace(input)
+        ? _devices
+        : _devices.Where(d => MatchesSearch(d, input)).ToList();
 
-        if (metadataList.Count <= 1)
+        if (filteredList.Count <= 1)
         {
-            return new DeviceMetadataPaginatedandSortedDto()
+            return new DeviceMetadataPaginatedandSortedDto
             {
-                TotalCount = metadataList.Count,
-                DeviceMetadata = metadataList
+                TotalCount = filteredList.Count,
+                DeviceMetadata = filteredList
             };
         }
 
-        return GetAllDeviceMetadataPaginatedandSorted(options, metadataList);
+        return GetAllDeviceMetadataPaginatedandSorted(options, filteredList);
     }
+
+    private bool MatchesSearch(DeviceMetadata device, string input)
+    {
+        input = input.ToLowerInvariant();
+
+        foreach (var selector in _searchSequence)
+        {
+            var value = selector(device);
+            if (!string.IsNullOrWhiteSpace(value) &&
+                value.ToLowerInvariant().Contains(input))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
     public Dictionary<string, string> GetMacIdToFileNameMap()
     {
@@ -267,7 +297,7 @@ public class DeviceService : IDeviceService
             if (statusChanged) rootNode["Status"] = newStatus;
             if (connectivityChanged) rootNode["Connectivity"] = newConnectivity;
 
-            var now = DateTime.Now;
+            var now = DateTime.UtcNow;
             rootNode["LastUpdated"] = now.ToString("o");
             _deviceStateCache.UpdateLastUpdated(device.MacId, now);
 

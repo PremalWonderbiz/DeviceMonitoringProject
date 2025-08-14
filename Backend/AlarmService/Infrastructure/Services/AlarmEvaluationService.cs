@@ -152,7 +152,7 @@ namespace Infrastructure.Services
             if (normalizedOp == "isdatepast")
             {
                 if (DateTime.TryParse(current, out var dateVal))
-                    return dateVal < DateTime.Now;
+                    return dateVal < DateTime.UtcNow;
 
                 return false;
             }

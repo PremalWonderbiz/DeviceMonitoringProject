@@ -5,7 +5,7 @@
   "Status": "Offline",
   "MacId": "B8:27:EB:45:9A:CB",
   "Connectivity": "Low",
-  "LastUpdated": "2025-08-06T17:59:34.5066862+05:30",
+  "LastUpdated": "2025-08-14T10:12:45.0575074Z",
   "staticProperties": {
     "Display & Hardware": {
       "Screen Size": "55 inches",
@@ -80,49 +80,49 @@
   },
   "dynamicProperties": {
     "Current Usage": {
-      "Power State": "Off",
+      "Power State": "Standby",
       "Input Source": "USB",
-      "Current App": "YouTube",
-      "Volume Level": 13,
+      "Current App": "SonyLIV",
+      "Volume Level": 11,
       "Mute": true,
-      "Picture Mode": "Standard",
+      "Picture Mode": "Vivid",
       "Audio Output": "Bluetooth",
       "Ambient Light Sensor": false
     },
     "Streaming Activity": {
       "Watch History (Today)": [
-        83,
-        64
+        3,
+        56
       ],
       "Active App Sessions": [
-        58
+        85
       ],
       "AutoPlay Next Episode": true
     },
     "Network Activity": {
-      "IP Address": "192.168.29.78",
-      "Wi-Fi Signal Strength": "-69 dBm",
+      "IP Address": "192.168.139.34",
+      "Wi-Fi Signal Strength": "-71 dBm",
       "Connection Type": "Ethernet",
       "Data Usage": {
-        "Today": "2.1 GB",
-        "This Week": "4.2 GB",
-        "This Month": "9.0 GB"
+        "Today": "0.7 GB",
+        "This Week": "9.9 GB",
+        "This Month": "7.3 GB"
       },
-      "Last Online": "2025-08-06T12:30:14.5386966Z"
+      "Last Online": "2025-08-14T10:13:15.0861884Z"
     },
     "System Status": {
-      "Uptime": "9 days, 6 hrs",
-      "Last Reboot": "2025-08-06T12:30:14.5387022Z",
-      "Software Update Available": false,
-      "Last Software Update": "2025-08-06T12:30:14.5387046Z",
+      "Uptime": "5 days, 10 hrs",
+      "Last Reboot": "2025-08-14T10:13:15.0861906Z",
+      "Software Update Available": true,
+      "Last Software Update": "2025-08-14T10:13:15.0861919Z",
       "Storage Info": {
-        "Total Storage": "3.5 GB",
-        "Used": "6.8 GB",
-        "Free": "4.4 GB"
+        "Total Storage": "8.0 GB",
+        "Used": "3.5 GB",
+        "Free": "8.3 GB"
       },
       "Temperature": {
-        "Panel": 67.51,
-        "Mainboard": 61.76
+        "Panel": 37.05,
+        "Mainboard": 60.01
       }
     }
   },

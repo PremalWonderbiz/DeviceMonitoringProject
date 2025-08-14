@@ -28,7 +28,10 @@ builder.Services.AddScoped<IDeviceServiceHelper, DeviceServiceHelper>();
 builder.Services.AddScoped<IAlarmEvaluationService, AlarmEvaluationService>();
 builder.Services.AddHttpClient<IAlarmEvaluationService, AlarmEvaluationService>(client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7154"); // later configure it in appsettings
+    //local
+    client.BaseAddress = new Uri("https://localhost:7154");
+    //docker
+    //client.BaseAddress = new Uri("http://alarmservice:7154"); // later configure it in appsettings
 });
 builder.Services.AddCors(options =>
 {

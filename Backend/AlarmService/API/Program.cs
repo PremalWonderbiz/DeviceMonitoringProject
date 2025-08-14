@@ -41,6 +41,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AlarmDbContext>();
+    db.Database.Migrate();
+}
+
 app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
