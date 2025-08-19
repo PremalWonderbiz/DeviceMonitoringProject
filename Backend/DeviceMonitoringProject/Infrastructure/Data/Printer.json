@@ -2,10 +2,10 @@
   "FileName": "Printer.json",
   "Name": "Printer",
   "Type": "Peripheral Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "F8:16:54:AA:34:12",
-  "Connectivity": "High",
-  "LastUpdated": "2025-08-14T10:09:24.8461381Z",
+  "Connectivity": "Medium",
+  "LastUpdated": "2025-08-19T12:53:37.3891834Z",
   "staticProperties": {
     "Hardware Specifications": {
       "Printer Type": "Laser",
@@ -31,7 +31,7 @@
       },
       "Output Tray Capacity": "150 sheets"
     },
-    "Manufacturer & Identity": {
+    "Manufacturer \u0026 Identity": {
       "Brand": "HP",
       "Model": "M428fdw",
       "Serial Number": "CNBG1234XYZ",
@@ -62,45 +62,45 @@
     "Print Status": {
       "Current Job": {
         "Job Name": "Unsupported Type",
-        "Pages": 62,
-        "Status": "Idle",
+        "Pages": 85,
+        "Status": "Paused",
         "Submitted By": "Unsupported Type"
       },
-      "Queue Length": 32,
+      "Queue Length": 0,
       "Recent Jobs": [
         {
           "Job Name": "Unsupported Type",
           "Status": "Completed",
-          "Time": "2025-08-14T10:13:15.0859792Z"
+          "Time": "2025-08-19T12:53:36.0031923Z"
         },
         {
           "Job Name": "Unsupported Type",
           "Status": "Error",
-          "Time": "2025-08-14T10:13:15.0859865Z"
+          "Time": "2025-08-19T12:53:36.0032002Z"
         },
         {
           "Job Name": "Unsupported Type",
           "Status": "Completed",
-          "Time": "2025-08-14T10:13:15.0859885Z"
+          "Time": "2025-08-19T12:53:36.0032066Z"
         }
       ]
     },
     "Consumables": {
-      "Toner Level": "46%",
-      "Drum Status": "Replace Now",
-      "Fuser Unit Life": "71%",
-      "Maintenance Kit Life": "17%",
+      "Toner Level": "15%",
+      "Drum Status": "Normal",
+      "Fuser Unit Life": "95%",
+      "Maintenance Kit Life": "15%",
       "Paper Tray Status": {
         "Tray 1": "Unsupported Type",
         "Tray 2": "Unsupported Type"
       }
     },
     "Network Activity": {
-      "IP Address": "192.168.160.204",
-      "Subnet": "192.168.76.245",
-      "Gateway": "192.168.218.86",
-      "Upload Speed": "8.5 GB",
-      "Download Speed": "3.4 GB",
+      "IP Address": "192.168.193.17",
+      "Subnet": "192.168.234.76",
+      "Gateway": "192.168.99.103",
+      "Upload Speed": "2.9 GB",
+      "Download Speed": "5.8 GB",
       "Connected Clients": [
         {},
         {},
@@ -109,10 +109,10 @@
     },
     "System Health": {
       "Temperature": {
-        "Internal Sensor": 60.82,
-        "Ambient": 24.92
+        "Internal Sensor": 71.48,
+        "Ambient": 28.07
       },
-      "Uptime": "3 days, 22 hrs",
+      "Uptime": "9 days, 22 hrs",
       "Error Logs": [
         "Paper jam detected in Tray 1 at 2025-06-13 19:40",
         "Paper jam detected in Tray 2 at 2025-06-13 19:43",
@@ -124,7 +124,7 @@
         "Paper jam detected in Tray 2 at 2025-06-24 17:19"
       ],
       "Firmware Version": "Unsupported Type",
-      "Last Restart": "2025-08-14T10:13:15.0860148Z"
+      "Last Restart": "2025-08-19T12:53:36.0033030Z"
     }
   },
   "topLevelObservables": {
@@ -272,13 +272,13 @@
       "Temperature": {
         "Internal Sensor": {
           "type": "float",
-          "unit": "°C",
+          "unit": "\u00B0C",
           "min": 25,
           "max": 80
         },
         "Ambient": {
           "type": "float",
-          "unit": "°C",
+          "unit": "\u00B0C",
           "min": 20,
           "max": 45
         }
@@ -333,7 +333,7 @@
     {
       "FieldPath": "DynamicProperties.System Health.Temperature.Internal Sensor",
       "Operator": "GreaterThan",
-      "ThresholdValue": "60°C",
+      "ThresholdValue": "60\u00B0C",
       "Severity": "Critical",
       "MessageTemplate": "Printer internal temperature is critically high"
     },

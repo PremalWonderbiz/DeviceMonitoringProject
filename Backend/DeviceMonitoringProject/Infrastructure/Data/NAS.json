@@ -4,8 +4,8 @@
   "Type": "Server",
   "Status": "Online",
   "MacId": "00:1B:44:11:3A:B7",
-  "Connectivity": "High",
-  "LastUpdated": "2025-08-14T10:11:34.9921015Z",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-08-19T12:53:37.4364396Z",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "Synology DSM 7.2",
@@ -68,7 +68,7 @@
     },
     "Manufacturer Details": {
       "Brand": "Synology",
-      "Model Number": "DS920+",
+      "Model Number": "DS920\u002B",
       "Serial Number": "SN1234567890",
       "Purchase Info": {
         "Purchase Date": "2023-05-15",
@@ -99,7 +99,7 @@
       },
       "SSH Access": true
     },
-    "Users & Access": {
+    "Users \u0026 Access": {
       "Admins": [
         "admin",
         "it_admin"
@@ -125,79 +125,79 @@
   "dynamicProperties": {
     "System Health": {
       "CPU Usage": {
-        "Load Percentage": "4%",
+        "Load Percentage": "55%",
         "Core Usage": [
-          93,
-          56,
-          91,
-          77
+          6,
+          43,
+          80,
+          62
         ]
       },
       "RAM Usage": {
-        "Used": "6.6 GB",
-        "Free": "1.5 GB",
-        "Swap Used": "8.4 GB"
+        "Used": "6.2 GB",
+        "Free": "8.6 GB",
+        "Swap Used": "1.5 GB"
       },
       "System Temperature": {
-        "CPU": 77.55,
-        "System Board": 68.85,
+        "CPU": 78.33,
+        "System Board": 77.69,
         "Drive Bays": [
-          54,
-          75,
-          77,
-          28
+          84,
+          7,
+          95,
+          19
         ]
       },
       "System Load Average": {
-        "1m": 1.57,
-        "5m": 0.56,
-        "15m": 1.55
+        "1m": 0.32,
+        "5m": 0.39,
+        "15m": 1.87
       },
-      "Uptime": "1 days, 20 hrs"
+      "Uptime": "2 days, 8 hrs"
     },
     "Network Activity": {
-      "Primary IP": "192.168.45.45",
+      "Primary IP": "192.168.245.226",
       "Interfaces": [
-        35,
-        58
+        97,
+        70
       ],
       "Connected Clients": [
-        51,
-        66
+        54,
+        84
       ]
     },
     "Service Status": {
       "Running Services": [
         "SMB",
         "Time Machine",
-        "Docker"
+        "Cloud Sync"
       ],
       "Service Health": {
         "Docker": "Healthy",
-        "Cloud Sync": "Degraded",
-        "Time Machine": "Degraded"
+        "Cloud Sync": "Unhealthy",
+        "Time Machine": "Unhealthy"
       },
       "Disk Health": {
         "Status": "Critical",
-        "Last Checked": "2025-08-14T10:13:15.0865401Z",
+        "Last Checked": "2025-08-19T12:53:36.4836976Z",
         "SMART Reports": [
-          44,
-          96
+          68,
+          72
         ]
       },
       "Fan Status": {
         "Fan 1": {
-          "Speed": 1843,
-          "Status": "High"
+          "Speed": 1437,
+          "Status": "Normal"
         },
         "Fan 2": {
-          "Speed": 1452,
-          "Status": "High"
+          "Speed": 1918,
+          "Status": "Normal"
         }
       },
       "Last Backup": {
         "Status": "Running",
-        "Timestamp": "2025-08-14T10:13:15.0865481Z"
+        "Timestamp": "2025-08-19T12:53:36.4837507Z"
       }
     }
   },
@@ -278,13 +278,13 @@
           "type": "float",
           "min": 40,
           "max": 90,
-          "unit": "°C"
+          "unit": "\u00B0C"
         },
         "System Board": {
           "type": "float",
           "min": 30,
           "max": 80,
-          "unit": "°C"
+          "unit": "\u00B0C"
         },
         "Drive Bays": {
           "type": "array",
@@ -299,7 +299,7 @@
               "type": "float",
               "min": 35,
               "max": 60,
-              "unit": "°C"
+              "unit": "\u00B0C"
             }
           }
         }
@@ -561,7 +561,7 @@
     {
       "FieldPath": "DynamicProperties.System Health.System Temperature.CPU",
       "Operator": "GreaterThan",
-      "ThresholdValue": "60°C",
+      "ThresholdValue": "60\u00B0C",
       "Severity": "Critical",
       "MessageTemplate": "NAS Server CPU temperature is too high"
     },

@@ -2,17 +2,17 @@
   "FileName": "SmartTv.json",
   "Name": "Smart TV",
   "Type": "Entertainment Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "B8:27:EB:45:9A:CB",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-08-14T10:12:45.0575074Z",
+  "Connectivity": "Medium",
+  "LastUpdated": "2025-08-19T12:53:37.4004767Z",
   "staticProperties": {
-    "Display & Hardware": {
+    "Display \u0026 Hardware": {
       "Screen Size": "55 inches",
       "Display Type": "OLED",
       "Resolution": "4K UHD (3840 x 2160)",
       "HDR Support": [
-        "HDR10+",
+        "HDR10\u002B",
         "Dolby Vision"
       ],
       "Refresh Rate": "120Hz",
@@ -51,7 +51,7 @@
         "Expires On": "2026-07-05"
       }
     },
-    "OS & Software": {
+    "OS \u0026 Software": {
       "Operating System": "Google TV",
       "OS Version": "12.0",
       "Voice Assistant Support": [
@@ -62,7 +62,7 @@
         "YouTube",
         "Netflix",
         "Prime Video",
-        "Disney+ Hotstar",
+        "Disney\u002B Hotstar",
         "Spotify"
       ],
       "Remote Control Type": {
@@ -80,49 +80,49 @@
   },
   "dynamicProperties": {
     "Current Usage": {
-      "Power State": "Standby",
-      "Input Source": "USB",
-      "Current App": "SonyLIV",
-      "Volume Level": 11,
+      "Power State": "On",
+      "Input Source": "HDMI 1",
+      "Current App": "Prime Video",
+      "Volume Level": 64,
       "Mute": true,
-      "Picture Mode": "Vivid",
-      "Audio Output": "Bluetooth",
+      "Picture Mode": "Cinema",
+      "Audio Output": "External Speakers",
       "Ambient Light Sensor": false
     },
     "Streaming Activity": {
       "Watch History (Today)": [
-        3,
-        56
+        33,
+        27
       ],
       "Active App Sessions": [
-        85
+        45
       ],
-      "AutoPlay Next Episode": true
+      "AutoPlay Next Episode": false
     },
     "Network Activity": {
-      "IP Address": "192.168.139.34",
-      "Wi-Fi Signal Strength": "-71 dBm",
-      "Connection Type": "Ethernet",
+      "IP Address": "192.168.174.53",
+      "Wi-Fi Signal Strength": "-63 dBm",
+      "Connection Type": "Wi-Fi",
       "Data Usage": {
-        "Today": "0.7 GB",
-        "This Week": "9.9 GB",
-        "This Month": "7.3 GB"
+        "Today": "4.2 GB",
+        "This Week": "5.7 GB",
+        "This Month": "1.0 GB"
       },
-      "Last Online": "2025-08-14T10:13:15.0861884Z"
+      "Last Online": "2025-08-19T12:53:36.0658340Z"
     },
     "System Status": {
-      "Uptime": "5 days, 10 hrs",
-      "Last Reboot": "2025-08-14T10:13:15.0861906Z",
-      "Software Update Available": true,
-      "Last Software Update": "2025-08-14T10:13:15.0861919Z",
+      "Uptime": "8 days, 7 hrs",
+      "Last Reboot": "2025-08-19T12:53:36.0658459Z",
+      "Software Update Available": false,
+      "Last Software Update": "2025-08-19T12:53:36.0658491Z",
       "Storage Info": {
-        "Total Storage": "8.0 GB",
-        "Used": "3.5 GB",
-        "Free": "8.3 GB"
+        "Total Storage": "3.2 GB",
+        "Used": "6.9 GB",
+        "Free": "5.1 GB"
       },
       "Temperature": {
-        "Panel": 37.05,
-        "Mainboard": 60.01
+        "Panel": 34.65,
+        "Mainboard": 67.63
       }
     }
   },
@@ -177,7 +177,7 @@
         "values": [
           "Netflix",
           "YouTube",
-          "Disney+ Hotstar",
+          "Disney\u002B Hotstar",
           "Prime Video",
           "SonyLIV",
           "Zee5"
@@ -224,7 +224,7 @@
             "values": [
               "Netflix",
               "YouTube",
-              "Disney+ Hotstar",
+              "Disney\u002B Hotstar",
               "Prime Video"
             ]
           },
@@ -258,7 +258,7 @@
             "values": [
               "Netflix",
               "YouTube",
-              "Disney+ Hotstar",
+              "Disney\u002B Hotstar",
               "Prime Video"
             ]
           },
@@ -344,13 +344,13 @@
       "Temperature": {
         "Panel": {
           "type": "float",
-          "unit": "°C",
+          "unit": "\u00B0C",
           "min": 30,
           "max": 70
         },
         "Mainboard": {
           "type": "float",
-          "unit": "°C",
+          "unit": "\u00B0C",
           "min": 30,
           "max": 70
         }
@@ -403,7 +403,7 @@
     {
       "FieldPath": "dynamicProperties.System Status.Temperature.Panel",
       "Operator": "GreaterThan",
-      "ThresholdValue": "60°C",
+      "ThresholdValue": "60\u00B0C",
       "Severity": "Warning",
       "MessageTemplate": "Smart TV panel temperature is too high"
     },

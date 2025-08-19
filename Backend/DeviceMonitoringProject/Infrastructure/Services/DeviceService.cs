@@ -11,6 +11,9 @@ using Microsoft.Extensions.Options;
 using Infrastructure.Cache;
 using Microsoft.AspNetCore.Http;
 using Application.Interface;
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Nodes;
+using Infrastructure.Persistence;
 
 namespace Infrastructure.Services;
 
@@ -24,6 +27,8 @@ public class DeviceService : IDeviceService
     private readonly DeviceStateCache _deviceStateCache;
     private readonly Random _random = new();
     private readonly IAlarmToggleService _alarmToggleService;
+    private readonly bool _useDatabase;
+    private readonly DeviceDbContext _dbContext;
     private static readonly List<Func<DeviceMetadata, string>> _searchSequence = new()
     {
         d => d.Name,
@@ -74,7 +79,9 @@ public class DeviceService : IDeviceService
         IDynamicDataHelper dynamicDataHelper,
         IAlarmEvaluationService alarmEvaluationService,
         DeviceStateCache deviceStateCache,
-        IAlarmToggleService alarmToggleService)
+        IAlarmToggleService alarmToggleService,
+        IOptions<DeviceStorageOptions> options,
+        DeviceDbContext dbContext)
     {
         _logger = logger;
         _hubContext = hubContext;
@@ -83,37 +90,39 @@ public class DeviceService : IDeviceService
         _deviceServiceHelper = deviceServiceHelper;
         _deviceStateCache = deviceStateCache;
         _alarmToggleService = alarmToggleService;
+        _useDatabase = options.Value.UseDatabase;
+        _dbContext = dbContext;
     }
 
 
-    public List<DeviceMetadata> ReadAllDeviceMetadataFiles()
-    {
-        var deviceFiles = Directory.GetFiles(_dataDirectory, "*.json");
-        var metadataList = new List<DeviceMetadata>();
+    //public List<DeviceMetadata> ReadAllDeviceMetadataFiles()
+    //{
+    //    var deviceFiles = Directory.GetFiles(_dataDirectory, "*.json");
+    //    var metadataList = new List<DeviceMetadata>();
 
-        foreach (var file in deviceFiles)
-        {
-            try
-            {
-                using var jsonStream = System.IO.File.OpenRead(file);
-                var metadata = JsonSerializer.Deserialize<DeviceMetadata>(
-                    jsonStream,
-                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+    //    foreach (var file in deviceFiles)
+    //    {
+    //        try
+    //        {
+    //            using var jsonStream = System.IO.File.OpenRead(file);
+    //            var metadata = JsonSerializer.Deserialize<DeviceMetadata>(
+    //                jsonStream,
+    //                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-                if (metadata != null)
-                {
-                    metadata.FileName = Path.GetFileName(file);
-                    metadataList.Add(metadata);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error parsing file {file}: {ex.Message}");
-            }
-        }
+    //            if (metadata != null)
+    //            {
+    //                metadata.FileName = Path.GetFileName(file);
+    //                metadataList.Add(metadata);
+    //            }
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            Console.WriteLine($"Error parsing file {file}: {ex.Message}");
+    //        }
+    //    }
 
-        return metadataList;
-    }
+    //    return metadataList;
+    //}
 
     public async Task<bool> GenerateAndSendLiveUpdatesDevicesData()
     {
@@ -428,43 +437,86 @@ public class DeviceService : IDeviceService
 
         // Validate that staticProperties and dynamicProperties are objects
         if (staticProps.ValueKind != JsonValueKind.Object || dynamicProps.ValueKind != JsonValueKind.Object)
-        {
             throw new Exception("'staticProperties' and 'dynamicProperties' must be JSON objects.");
-        }
 
         // Validate that the 'FileName' field inside JSON matches the uploaded file's name
         var jsonFileName = fileNameProp.GetString();
         if (!string.Equals(jsonFileName, file.FileName, StringComparison.OrdinalIgnoreCase))
-        {
             throw new Exception($"Mismatch between uploaded file name ('{file.FileName}') and JSON 'FileName' field ('{jsonFileName}').");
-        }
 
-        // Save the file if validation passes
-        if (!Directory.Exists(_dataDirectory))
-            Directory.CreateDirectory(_dataDirectory);
-
-        var filePath = Path.Combine(_dataDirectory, file.FileName);
-        if (File.Exists(filePath))
+        // Prepare DeviceState object
+        var deviceState = new DeviceState
         {
-            throw new Exception($"A file named '{file.FileName}' already exists. Please rename your file or delete the existing one.");
+            Root = JsonNode.Parse(fileContent)!,
+            LastUpdated = DateTime.UtcNow
+        };
+
+        if (_useDatabase) // Use DB
+        {
+            var device = await _dbContext.Devices.FirstOrDefaultAsync(d => d.MacId == macIdProp.ToString());
+            if (device != null)
+            {
+                // Update existing device
+                device.Name = root.GetProperty("Name").GetString();
+                device.Type = root.GetProperty("Type").GetString();
+                device.Status = root.GetProperty("Status").GetString();
+                device.Connectivity = root.GetProperty("Connectivity").GetString();
+                device.FileName = jsonFileName;
+                device.LastUpdated = deviceState.LastUpdated;
+                device.StaticPropertiesJson = staticProps.GetRawText();
+                device.DynamicPropertiesJson = dynamicProps.GetRawText();
+                device.TopLevelObservablesJson = root.TryGetProperty("topLevelObservables", out var topObs) ? topObs.GetRawText() : "{}";
+                device.DynamicObservablesJson = root.TryGetProperty("dynamicObservables", out var dynObs) ? dynObs.GetRawText() : "{}";
+            }
+            else
+            {
+                // Insert new device
+                device = new Device
+                {
+                    MacId = macIdProp.GetString(),
+                    Name = root.GetProperty("Name").GetString(),
+                    Type = root.GetProperty("Type").GetString(),
+                    Status = root.GetProperty("Status").GetString(),
+                    Connectivity = root.GetProperty("Connectivity").GetString(),
+                    FileName = jsonFileName,
+                    LastUpdated = deviceState.LastUpdated,
+                    StaticPropertiesJson = staticProps.GetRawText(),
+                    DynamicPropertiesJson = dynamicProps.GetRawText(),
+                    TopLevelObservablesJson = root.TryGetProperty("topLevelObservables", out var topObs2) ? topObs2.GetRawText() : "{}",
+                    DynamicObservablesJson = root.TryGetProperty("dynamicObservables", out var dynObs2) ? dynObs2.GetRawText() : "{}"
+                };
+                await _dbContext.Devices.AddAsync(device);
+            }
+
+            await _dbContext.SaveChangesAsync();
+        }
+        else // Use JSON file storage
+        {
+            if (!Directory.Exists(_dataDirectory))
+                Directory.CreateDirectory(_dataDirectory);
+
+            var filePath = Path.Combine(_dataDirectory, file.FileName);
+            if (File.Exists(filePath))
+                throw new Exception($"A file named '{file.FileName}' already exists. Please rename your file or delete the existing one.");
+
+            await File.WriteAllTextAsync(filePath, fileContent);
         }
 
-        await File.WriteAllTextAsync(filePath, fileContent);
-
+        // Parse alarm rules and add
         var rulesToSend = ParseAlarmRules(alarmRules);
-
         await _alarmEvaluationService.AddAlarmRules(macIdProp.ToString(), rulesToSend);
 
-        await refreshDeviceStateCache();
+        // Refresh cache
+        await _deviceStateCache.LoadAsync();
 
         return "Device added successfully.";
     }
 
+
     private async Task<bool> refreshDeviceStateCache()
     {
         await _deviceStateCache.PersistToDiskAsync();
-        var allDevices = ReadAllDeviceMetadataFiles();
-        await _deviceStateCache.LoadAsync(allDevices);
+        await _deviceStateCache.LoadAsync();
 
         return true;
     }

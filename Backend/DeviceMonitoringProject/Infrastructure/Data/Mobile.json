@@ -4,8 +4,8 @@
   "Type": "Personal Device",
   "Status": "Online",
   "MacId": "F0:9F:C2:12:34:56",
-  "Connectivity": "High",
-  "LastUpdated": "2025-08-14T10:00:54.2178412Z",
+  "Connectivity": "Medium",
+  "LastUpdated": "2025-08-19T12:53:37.319013Z",
   "staticProperties": {
     "Device Specifications": {
       "Operating System": {
@@ -22,7 +22,7 @@
         "Cores": 8,
         "Max Clock Speed": "2.85 GHz"
       },
-      "Memory & Storage": {
+      "Memory \u0026 Storage": {
         "RAM": "12 GB",
         "Internal Storage": "256 GB",
         "Expandable Storage": false
@@ -38,7 +38,7 @@
         "Wireless": "23W Wireless Charging"
       }
     },
-    "Network & SIM": {
+    "Network \u0026 SIM": {
       "SIM Slots": 2,
       "5G Support": true,
       "eSIM Enabled": true,
@@ -49,7 +49,7 @@
       ],
       "Bluetooth Version": "5.2"
     },
-    "Security & Access": {
+    "Security \u0026 Access": {
       "Biometric Methods": [
         "Face Unlock",
         "Fingerprint (Under Display)"
@@ -74,66 +74,66 @@
   "dynamicProperties": {
     "Device Health": {
       "Battery Status": {
-        "Level": "88%",
-        "Charging State": "Charging",
-        "Temperature": 70.25,
+        "Level": "16%",
+        "Charging State": "Not Charging",
+        "Temperature": 6.44,
         "Health": "Good"
       },
-      "CPU Usage": "3%",
+      "CPU Usage": "5%",
       "RAM Usage": {
-        "Used": "9.0 GB",
-        "Free": "1.7 GB"
+        "Used": "4.6 GB",
+        "Free": "6.5 GB"
       },
       "Storage Usage": {
-        "Used": "5.8 GB",
-        "Free": "1.6 GB"
+        "Used": "6.1 GB",
+        "Free": "7.2 GB"
       },
       "Device Temperature": {
-        "CPU": 11.43,
-        "Battery": 84.28
+        "CPU": 52.67,
+        "Battery": 53.72
       },
-      "Uptime": "6 days, 22 hrs"
+      "Uptime": "0 days, 17 hrs"
     },
     "Network Activity": {
       "Current Network": {
-        "Connection Type": "Mobile",
+        "Connection Type": "Wi-Fi",
         "SSID": "Office_Network_5G",
-        "IP Address": "192.168.52.86",
-        "Signal Strength": "-50 dBm",
-        "MAC Address": "8A:21:B7:29:77:EB"
+        "IP Address": "192.168.33.79",
+        "Signal Strength": "-47 dBm",
+        "MAC Address": "65:BF:E4:72:96:6E"
       },
       "Data Usage": {
         "Today": {
-          "Download": "5.2 GB",
-          "Upload": "8.4 GB"
+          "Download": "3.7 GB",
+          "Upload": "9.5 GB"
         },
         "Monthly": {
-          "Download": "1.9 GB",
-          "Upload": "0.1 GB"
+          "Download": "5.0 GB",
+          "Upload": "2.3 GB"
         }
       },
       "Connected Apps": [
-        32,
-        9,
-        10,
-        16,
-        97
+        38,
+        38,
+        6,
+        19,
+        73
       ]
     },
     "App Activity": {
       "Active Apps": [
-        57,
-        92,
-        31,
-        37,
-        66
+        90,
+        99,
+        53,
+        14,
+        76
       ],
       "Battery Usage by Apps": [
-        61,
-        73,
-        64,
-        60,
-        36
+        83,
+        3,
+        52,
+        14,
+        8
       ]
     }
   },
@@ -183,7 +183,7 @@
           "type": "float",
           "min": 0,
           "max": 100,
-          "unit": "°C"
+          "unit": "\u00B0C"
         },
         "Health": {
           "type": "enum",
@@ -230,13 +230,13 @@
       "Device Temperature": {
         "CPU": {
           "type": "float",
-          "unit": "°C",
+          "unit": "\u00B0C",
           "min": 0,
           "max": 100
         },
         "Battery": {
           "type": "float",
-          "unit": "°C",
+          "unit": "\u00B0C",
           "min": 0,
           "max": 100
         }

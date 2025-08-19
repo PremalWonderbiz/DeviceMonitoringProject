@@ -5,7 +5,7 @@
   "Status": "Online",
   "MacId": "D4:6D:6D:88:11:22",
   "Connectivity": "Low",
-  "LastUpdated": "2025-08-14T10:11:04.9635817Z",
+  "LastUpdated": "2025-08-19T12:53:37.2985273Z",
   "staticProperties": {
     "Hardware Info": {
       "Model": "Cisco Catalyst 2960-X",
@@ -62,59 +62,59 @@
   },
   "dynamicProperties": {
     "Port Status": [
-      57,
-      8,
-      76
+      48,
+      59,
+      33
     ],
     "System Health": {
-      "CPU Usage": "51%",
+      "CPU Usage": "47%",
       "RAM Usage": "Evaluated at runtime",
-      "Temperature": 24.56,
+      "Temperature": 22.91,
       "Fan Status": "Non-operational"
     },
     "Traffic Statistics": {
-      "Total Data Sent": "6.3 GB",
-      "Total Data Received": "0.7 GB",
+      "Total Data Sent": "9.5 GB",
+      "Total Data Received": "3.7 GB",
       "Packet Errors": {
         "Inbound": 35,
-        "Outbound": 82
+        "Outbound": 59
       },
       "Broadcast Storms Detected": false
     },
-    "VLANs & Routing": {
+    "VLANs \u0026 Routing": {
       "Active VLANs": [
-        34,
-        45,
-        24
+        20,
+        38,
+        56
       ],
       "Routing Table": [
-        62,
-        6
+        79,
+        91
       ]
     },
-    "Security & Logs": {
-      "Port Security Enabled": true,
+    "Security \u0026 Logs": {
+      "Port Security Enabled": false,
       "MAC Address Filtering": {
-        "Mode": "Static",
+        "Mode": "Dynamic",
         "Whitelisted MACs": [
-          19,
-          37
+          98,
+          85
         ]
       },
       "Login Attempts": [
-        11,
-        28,
-        53,
-        60,
-        95
+        42,
+        7,
+        25,
+        5,
+        6
       ],
       "Recent Logs": [
-        15,
-        56,
-        25,
-        65,
-        76,
-        42
+        19,
+        9,
+        94,
+        13,
+        36,
+        8
       ]
     }
   },
@@ -192,11 +192,11 @@
       },
       "RAM Usage": {
         "type": "expression",
-        "note": "Can be derived by currentUsage + total"
+        "note": "Can be derived by currentUsage \u002B total"
       },
       "Temperature": {
         "type": "float",
-        "unit": "°C",
+        "unit": "\u00B0C",
         "min": 20,
         "max": 90
       },
@@ -238,7 +238,7 @@
         "probability": 0.05
       }
     },
-    "VLANs & Routing": {
+    "VLANs \u0026 Routing": {
       "Active VLANs": {
         "type": "array",
         "count": 3,
@@ -275,7 +275,7 @@
         }
       }
     },
-    "Security & Logs": {
+    "Security \u0026 Logs": {
       "Port Security Enabled": {
         "type": "boolean"
       },
@@ -367,7 +367,7 @@
     {
       "FieldPath": "DynamicProperties.System Health.Temperature",
       "Operator": "GreaterThan",
-      "ThresholdValue": "70°C",
+      "ThresholdValue": "70\u00B0C",
       "Severity": "Critical",
       "MessageTemplate": "Network Switch temperature is critical"
     },
@@ -379,7 +379,7 @@
       "MessageTemplate": "Broadcast storm detected on the switch"
     },
     {
-      "FieldPath": "DynamicProperties.Security & Logs.Login Attempts[?Success==false]",
+      "FieldPath": "DynamicProperties.Security \u0026 Logs.Login Attempts[?Success==false]",
       "Operator": "CountGreaterThan",
       "ThresholdValue": "3",
       "Severity": "Warning",

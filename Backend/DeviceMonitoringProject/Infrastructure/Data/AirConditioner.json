@@ -4,8 +4,8 @@
   "Type": "Smart Appliance",
   "Status": "Offline",
   "MacId": "98:5F:D3:4B:22:AC",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-08-14T10:12:05.0282991Z",
+  "Connectivity": "High",
+  "LastUpdated": "2025-08-19T12:53:37.411808Z",
   "staticProperties": {
     "Hardware Specifications": {
       "AC Type": "Split Inverter",
@@ -32,7 +32,7 @@
         "Expiry": "2025-03-01"
       }
     },
-    "Connectivity & Configuration": {
+    "Connectivity \u0026 Configuration": {
       "Wi-Fi Enabled": true,
       "Bluetooth Enabled": false,
       "IR Remote Supported": true,
@@ -44,7 +44,7 @@
       "Hostname": "ac-livingroom"
     },
     "User Preferences": {
-      "Default Temperature": "24°C",
+      "Default Temperature": "24\u00B0C",
       "Eco Mode Default": true,
       "Timer Settings": {
         "Default Timer": "8 hours",
@@ -54,51 +54,51 @@
   },
   "dynamicProperties": {
     "Current Status": {
-      "Power State": "Off",
-      "Mode": "Fan",
-      "Set Temperature": 23,
-      "Current Room Temperature": 31.53,
+      "Power State": "On",
+      "Mode": "Cool",
+      "Set Temperature": 27,
+      "Current Room Temperature": 28.12,
       "Fan Speed": "Low",
       "Swing Mode": {
         "Vertical Swing": "Off",
-        "Horizontal Swing": "Auto"
+        "Horizontal Swing": "Fixed"
       },
-      "Humidity Level": "60%",
+      "Humidity Level": "83%",
       "Sleep Mode": true
     },
     "Sensor Data": {
       "Temperature Sensors": [
-        64,
-        78
+        43,
+        89
       ],
       "Humidity Sensor": {
         "Sensor ID": "HS001",
-        "Reading": "88%"
+        "Reading": "37%"
       }
     },
     "Power Consumption Stats": {
-      "Today": 2.2,
-      "This Week": 33.83,
-      "This Month": 113.86,
+      "Today": 5.74,
+      "This Week": 28.78,
+      "This Month": 144.09,
       "Power Saving Mode": "Enabled",
-      "Last Reset": "2025-08-14T10:13:15.0863537Z"
+      "Last Reset": "2025-08-19T12:53:36.3023086Z"
     },
     "Network Activity": {
-      "IP Address": "192.168.35.47",
-      "Signal Strength": "-57 dBm",
-      "Last Connected": "2025-08-14T10:13:15.0863574Z",
+      "IP Address": "192.168.18.25",
+      "Signal Strength": "-40 dBm",
+      "Last Connected": "2025-08-19T12:53:36.3023334Z",
       "Control Access": [
-        83,
-        8
+        69,
+        19
       ]
     },
     "Service Logs": {
-      "Filter Status": "Dirty",
+      "Filter Status": "Clean",
       "Service History": [
-        95,
-        99
+        27,
+        69
       ],
-      "Next Scheduled Maintenance": "2025-08-14T10:13:15.0863629Z"
+      "Next Scheduled Maintenance": "2025-08-19T12:53:36.3023556Z"
     }
   },
   "topLevelObservables": {
@@ -150,13 +150,13 @@
         "type": "int",
         "min": 16,
         "max": 30,
-        "unit": "°C"
+        "unit": "\u00B0C"
       },
       "Current Room Temperature": {
         "type": "float",
         "min": 16,
         "max": 40,
-        "unit": "°C"
+        "unit": "\u00B0C"
       },
       "Fan Speed": {
         "type": "enum",
@@ -220,7 +220,7 @@
             "type": "float",
             "min": 16,
             "max": 40,
-            "unit": "°C"
+            "unit": "\u00B0C"
           }
         }
       },
@@ -366,7 +366,7 @@
       "MessageTemplate": "Air Conditioner is currently offline"
     },
     {
-      "FieldPath": "staticProperties.Connectivity & Configuration.Wi-Fi Enabled",
+      "FieldPath": "staticProperties.Connectivity \u0026 Configuration.Wi-Fi Enabled",
       "Operator": "Equals",
       "ThresholdValue": "false",
       "Severity": "Warning",

@@ -15,9 +15,14 @@ builder.Services.AddSignalR();
 builder.Services.AddScoped<IAlarmService, AlarmService>();
 builder.Services.AddScoped<IAlarmEvaluationService, AlarmEvaluationService>();
 
+//builder.Services.AddDbContext<AlarmDbContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+//);
+
+var dbPath = "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProjectSQLite\\DeviceMonitoringProject\\Backend\\DeviceMonitoring.db";
 builder.Services.AddDbContext<AlarmDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-);
+    options.UseSqlite($"Data Source={dbPath}"));
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy",

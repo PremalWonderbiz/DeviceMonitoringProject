@@ -4,8 +4,10 @@ using Application.Interface;
 using Application.Interfaces;
 using Infrastructure.Cache;
 using Infrastructure.Helpers;
+using Infrastructure.Persistence;
 using Infrastructure.RealTime;
 using Infrastructure.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,10 +15,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<DeviceServiceOptions>(
     builder.Configuration.GetSection("DeviceServiceOptions"));
 
+builder.Services.Configure<DeviceStorageOptions>(
+    builder.Configuration.GetSection("DeviceStorageOptions"));
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+//builder.Services.AddDbContext<AlarmDbContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+//);
+
+var dbPath = "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProjectSQLite\\DeviceMonitoringProject\\Backend\\DeviceMonitoring.db";
+builder.Services.AddDbContext<DeviceDbContext>(options =>
+    options.UseSqlite($"Data Source={dbPath};Cache=Shared;Pooling=True"));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

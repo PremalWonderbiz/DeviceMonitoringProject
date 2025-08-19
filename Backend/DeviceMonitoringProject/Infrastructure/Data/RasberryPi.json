@@ -5,7 +5,7 @@
   "Status": "Online",
   "MacId": "B8:27:EB:45:67:89",
   "Connectivity": "Low",
-  "LastUpdated": "2025-08-14T10:09:44.8770894Z",
+  "LastUpdated": "2025-08-19T12:53:37.4840399Z",
   "staticProperties": {
     "Hardware Information": {
       "Model": "Raspberry Pi 4 Model B",
@@ -45,9 +45,9 @@
       "Purchase Date": "2023-10-03",
       "Location": "Living Room Shelf"
     },
-    "OS & Software": {
+    "OS \u0026 Software": {
       "Operating System": "Raspberry Pi OS (64-bit)",
-      "Kernel Version": "6.1.21-v8+",
+      "Kernel Version": "6.1.21-v8\u002B",
       "Default User": {
         "username": "pi",
         "sudoAccess": true
@@ -61,48 +61,48 @@
   },
   "dynamicProperties": {
     "System Health": {
-      "CPU Usage": "63%",
+      "CPU Usage": "81%",
       "RAM Usage": {
-        "Used": "6.4 GB",
-        "Total": "3.1 GB"
+        "Used": "4.0 GB",
+        "Total": "4.7 GB"
       },
       "System Temperature": {
-        "CPU": 51.75,
-        "Board": 62.04
+        "CPU": 78.72,
+        "Board": 74.02
       },
-      "Uptime": "7 days, 19 hrs",
+      "Uptime": "7 days, 21 hrs",
       "System Load": [
-        96,
-        71,
-        24
+        67,
+        33,
+        81
       ]
     },
     "Network Activity": {
       "Interfaces": [
-        58
+        35
       ],
       "Total Data Usage": {
-        "Sent": "7.2 GB",
-        "Received": "2.4 GB"
+        "Sent": "1.2 GB",
+        "Received": "5.5 GB"
       },
       "Connected Clients (Media Server)": [
-        9
+        94
       ]
     },
     "Service Status": {
       "Running Services": [
-        "Kodi",
+        "Docker",
         "SSH",
         "Node-RED"
       ],
       "Service Health": [
-        25,
-        9
+        33,
+        91
       ],
-      "Last Reboot Reason": "Power failure",
+      "Last Reboot Reason": "Manual reboot",
       "Firmware": {
         "Current Version": "Unsupported Type",
-        "Last Update": "2025-08-14T10:13:15.0869971Z",
+        "Last Update": "2025-08-19T12:53:36.7674982Z",
         "Update Available": false
       }
     }
@@ -158,13 +158,13 @@
       "System Temperature": {
         "CPU": {
           "type": "float",
-          "unit": "°C",
+          "unit": "\u00B0C",
           "min": 20,
           "max": 100
         },
         "Board": {
           "type": "float",
-          "unit": "°C",
+          "unit": "\u00B0C",
           "min": 20,
           "max": 100
         }
@@ -360,7 +360,7 @@
     {
       "FieldPath": "DynamicProperties.System Health.System Temperature.CPU",
       "Operator": "GreaterThan",
-      "ThresholdValue": "75°C",
+      "ThresholdValue": "75\u00B0C",
       "Severity": "Critical",
       "MessageTemplate": "Raspberry Pi CPU temperature is too high"
     },
@@ -372,7 +372,7 @@
       "MessageTemplate": "Raspberry Pi is running low on RAM"
     },
     {
-      "FieldPath": "DynamicProperties.Network Activity.Interfaces[?name=='eth0'].traffic.upload",
+      "FieldPath": "DynamicProperties.Network Activity.Interfaces[?name==\u0027eth0\u0027].traffic.upload",
       "Operator": "GreaterThan",
       "ThresholdValue": "50 Mbps",
       "Severity": "Information",

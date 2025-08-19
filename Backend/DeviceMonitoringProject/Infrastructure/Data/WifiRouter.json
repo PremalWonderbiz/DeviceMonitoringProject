@@ -2,10 +2,10 @@
   "FileName": "WifiRouter.json",
   "Name": "WiFi Router",
   "Type": "Networking Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "84:C9:B2:3E:7F:A1",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-08-14T10:12:55.0693058Z",
+  "Connectivity": "High",
+  "LastUpdated": "2025-08-19T12:53:37.474911Z",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "OpenWRT 21.02",
@@ -73,50 +73,50 @@
   },
   "dynamicProperties": {
     "System Status": {
-      "Uptime": "8 days, 22 hrs",
-      "CPU Usage": "2%",
+      "Uptime": "6 days, 4 hrs",
+      "CPU Usage": "17%",
       "Memory Usage": {
-        "Used": "7.4 GB",
-        "Total": "3.4 GB"
+        "Used": "4.1 GB",
+        "Total": "9.0 GB"
       },
       "Temperature": {
-        "CPU": 88.59,
-        "Board": 42.67
+        "CPU": 46.53,
+        "Board": 26.52
       },
       "System Load Average": [
-        16,
-        60,
-        84
+        50,
+        9,
+        50
       ]
     },
     "Network Activity": {
       "Interfaces": [
-        62,
-        57
+        26,
+        45
       ],
       "Connected Clients": [
-        26,
-        84
+        58,
+        76
       ],
       "Total Data Usage": {
-        "Sent": "3.0 GB",
-        "Received": "9.9 GB"
+        "Sent": "8.8 GB",
+        "Received": "7.6 GB"
       }
     },
     "Service Health": {
       "Services Running": [
-        7,
-        81,
-        82,
-        75
+        88,
+        95,
+        9,
+        38
       ],
       "Failed Services": [
-        4
+        40
       ],
       "Last Reboot Reason": "Firmware Upgrade",
       "Firmware": {
         "Current Version": "Unsupported Type",
-        "Last Updated": "2025-08-14T10:13:15.0867839Z",
+        "Last Updated": "2025-08-19T12:53:36.6955925Z",
         "Update Available": true
       }
     }
@@ -174,13 +174,13 @@
       "Temperature": {
         "CPU": {
           "type": "float",
-          "unit": "°C",
+          "unit": "\u00B0C",
           "min": 20,
           "max": 90
         },
         "Board": {
           "type": "float",
-          "unit": "°C",
+          "unit": "\u00B0C",
           "min": 20,
           "max": 80
         }
@@ -374,14 +374,14 @@
     {
       "FieldPath": "DynamicProperties.System Status.Temperature.CPU",
       "Operator": "GreaterThan",
-      "ThresholdValue": "70°C",
+      "ThresholdValue": "70\u00B0C",
       "Severity": "Critical",
       "MessageTemplate": "WiFi Router CPU temperature is critical"
     },
     {
       "FieldPath": "DynamicProperties.System Status.Temperature.Board",
       "Operator": "GreaterThan",
-      "ThresholdValue": "65°C",
+      "ThresholdValue": "65\u00B0C",
       "Severity": "Warning",
       "MessageTemplate": "WiFi Router board temperature is too high"
     },

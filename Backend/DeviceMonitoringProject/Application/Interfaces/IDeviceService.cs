@@ -24,7 +24,7 @@ namespace Application.Interfaces
 
         public Task<List<DevicesNameMacIdDto>> GetDevicesNameMacIdList();
 
-        public List<DeviceMetadata> ReadAllDeviceMetadataFiles();
+        //public List<DeviceMetadata> ReadAllDeviceMetadataFiles();
 
         public Task<string> UploadFile(IFormFile file);
 

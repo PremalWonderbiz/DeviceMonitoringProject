@@ -33,8 +33,7 @@ namespace Infrastructure.Services
             using (var scope = _scopeFactory.CreateScope())
             {
                 var deviceService = scope.ServiceProvider.GetRequiredService<IDeviceService>();
-                var allDevices = deviceService.ReadAllDeviceMetadataFiles();
-                await _deviceStateCache.LoadAsync(allDevices);
+                await _deviceStateCache.LoadAsync();
 
                 while (!stoppingToken.IsCancellationRequested)
                 {

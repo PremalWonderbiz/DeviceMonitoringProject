@@ -10,7 +10,11 @@ using System.Text.Json.Nodes;
 using System.Text.Json.Serialization.Metadata;
 using System.Threading.Tasks;
 using Application.Dtos;
+using Domain.Entities;
+using Infrastructure.Persistence;
 using Infrastructure.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -32,38 +36,83 @@ namespace Infrastructure.Cache
         private readonly ILogger<DeviceStatePersistenceService> _logger;
         private readonly ConcurrentDictionary<string, DeviceState> _deviceMap = new();
         private readonly ConcurrentDictionary<string, SemaphoreSlim> _locks = new();
+        private readonly bool _useDatabase;
+        private readonly IServiceProvider _serviceProvider;
+        private static readonly SemaphoreSlim _dbLock = new(1, 1);
 
-        public DeviceStateCache(ILogger<DeviceStatePersistenceService> logger)
+        public DeviceStateCache(ILogger<DeviceStatePersistenceService> logger, IOptions<DeviceStorageOptions> options,
+        IServiceProvider serviceProvider)
         {
             _logger = logger;
+            _useDatabase = options.Value.UseDatabase;
+            _serviceProvider = serviceProvider;
         }
         public ConcurrentDictionary<string, DeviceState> GetAllStates()
         {
             return _deviceMap;
         }
 
-        public async Task LoadAsync(List<DeviceMetadata> devices)
+        public async Task LoadAsync()
         {
+            using var scope = _serviceProvider.CreateScope();
+            var _dbContext = scope.ServiceProvider.GetRequiredService<DeviceDbContext>();
             _deviceMap.Clear();
-            foreach (var device in devices)
+
+            if (_useDatabase)
             {
-                var file = Path.Combine(_dataDirectory, device.FileName);
-                var json = await File.ReadAllTextAsync(file);
-                var node = JsonNode.Parse(json)!;
+                var devices = await _dbContext.Devices.ToListAsync();
 
-                // Try to parse LastUpdatedAt from the root if available
-                DateTime lastUpdated = DateTime.UtcNow;
-                if (node["LastUpdated"] is JsonValue timestampNode &&
-                    DateTime.TryParse(timestampNode.ToString(), out var parsedDate))
+                foreach (var device in devices)
                 {
-                    lastUpdated = parsedDate;
+                    var root = new JsonObject
+                    {
+                        ["MacId"] = device.MacId,
+                        ["Name"] = device.Name,
+                        ["Type"] = device.Type,
+                        ["FileName"] = device.FileName,
+                        ["Status"] = device.Status,
+                        ["Connectivity"] = device.Connectivity,
+                        ["LastUpdated"] = device.LastUpdated,
+                        ["staticProperties"] = JsonNode.Parse(device.StaticPropertiesJson),
+                        ["dynamicProperties"] = JsonNode.Parse(device.DynamicPropertiesJson),
+                        ["topLevelObservables"] = JsonNode.Parse(device.TopLevelObservablesJson),
+                        ["dynamicObservables"] = JsonNode.Parse(device.DynamicObservablesJson)
+                    };
+
+                    _deviceMap[device.MacId] = new DeviceState
+                    {
+                        Root = root,
+                        LastUpdated = device.LastUpdated
+                    };
                 }
+            }
+            else
+            {
+                var deviceFiles = Directory.GetFiles(_dataDirectory, "*.json");
 
-                _deviceMap[device.MacId] = new DeviceState
+                foreach (var file in deviceFiles)
                 {
-                    Root = node,
-                    LastUpdated = lastUpdated
-                };
+                    try
+                    {
+                        var json = await File.ReadAllTextAsync(file);
+                        var node = JsonNode.Parse(json)!;
+
+                        DateTime lastUpdated = DateTime.UtcNow;
+                        if (node["LastUpdated"] is JsonValue ts &&
+                            DateTime.TryParse(ts.ToString(), out var parsedDate))
+                            lastUpdated = parsedDate;
+
+                        _deviceMap[node["MacId"]!.ToString()] = new DeviceState
+                        {
+                            Root = node,
+                            LastUpdated = lastUpdated
+                        };
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "Failed to load file {File}", file);
+                    }
+                }
             }
         }
 
@@ -99,46 +148,56 @@ namespace Infrastructure.Cache
 
         public async Task PersistToDiskAsync()
         {
+            await _dbLock.WaitAsync();
             try
             {
-                var allStates = GetAllStates();
+                using var scope = _serviceProvider.CreateScope();
+                var _dbContext = scope.ServiceProvider.GetRequiredService<DeviceDbContext>();
+                await _dbContext.Database.ExecuteSqlRawAsync("PRAGMA journal_mode=WAL;");
 
-                foreach (var state in allStates.Values)
+                foreach (var kvp in _deviceMap)
                 {
-                    var fileName = state.Root["FileName"]?.GetValue<string>();
+                    var macId = kvp.Key;
+                    var state = kvp.Value;
+                    state.LastUpdated = DateTime.UtcNow;
+                    state.Root["LastUpdated"] = state.LastUpdated;
 
-                    if (string.IsNullOrWhiteSpace(fileName))
+                    if (_useDatabase)
                     {
-                        _logger.LogWarning("Device state missing FileName field. Skipping...");
-                        continue;
+                        var device = await _dbContext.Devices.FirstOrDefaultAsync(d => d.MacId == macId);
+                        if (device != null)
+                        {
+                            //device.StaticPropertiesJson = state.Root["staticProperties"]!.ToJsonString();
+                            device.DynamicPropertiesJson = state.Root["dynamicProperties"]!.ToJsonString();
+                            device.Status = state.Root["Status"]?.ToString();
+                            device.Connectivity = state.Root["Connectivity"]?.ToString();
+                            //device.TopLevelObservablesJson = state.Root["topLevelObservables"]!.ToJsonString();
+                            //device.DynamicObservablesJson = state.Root["dynamicObservables"]!.ToJsonString();
+                            device.LastUpdated = state.LastUpdated;
+                        }
                     }
-
-                    var path = Path.Combine(_dataDirectory, fileName);
-
-                    if (!File.Exists(path))
+                    else
                     {
-                        _logger.LogWarning("File '{FileName}' does not exist. Skipping persistence.", fileName);
-                        continue;
+                        var fileName = state.Root["FileName"]!.ToString();
+                        var path = Path.Combine(_dataDirectory, fileName!);
+                        await File.WriteAllTextAsync(path, state.Root.ToJsonString(new JsonSerializerOptions
+                        {
+                            WriteIndented = true
+                        }));
                     }
-
-                    var json = state.Root.ToJsonString(new JsonSerializerOptions
-                    {
-                        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                        WriteIndented = true,
-                        TypeInfoResolver = new DefaultJsonTypeInfoResolver()
-                    });
-
-                    await File.WriteAllTextAsync(path, json);
                 }
 
-                _logger.LogInformation("Device states persisted to disk at {Time}", DateTime.UtcNow);
+                if (_useDatabase)
+                {
+                    await _dbContext.SaveChangesAsync(); // Save all updates at once
+                }
             }
-            catch (Exception ex)
+            finally
             {
-                _logger.LogError(ex, "Failed to persist device state to disk.");
+                _dbLock.Release();
             }
+            
         }
-
     }
 
 }
