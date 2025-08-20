@@ -2,10 +2,10 @@
   "FileName": "AirConditioner.json",
   "Name": "Air Conditioner",
   "Type": "Smart Appliance",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "98:5F:D3:4B:22:AC",
   "Connectivity": "High",
-  "LastUpdated": "2025-08-19T12:53:37.411808Z",
+  "LastUpdated": "2025-08-20T10:57:49.8485874Z",
   "staticProperties": {
     "Hardware Specifications": {
       "AC Type": "Split Inverter",
@@ -54,51 +54,51 @@
   },
   "dynamicProperties": {
     "Current Status": {
-      "Power State": "On",
-      "Mode": "Cool",
-      "Set Temperature": 27,
-      "Current Room Temperature": 28.12,
+      "Power State": "Off",
+      "Mode": "Fan",
+      "Set Temperature": 22,
+      "Current Room Temperature": 27.29,
       "Fan Speed": "Low",
       "Swing Mode": {
         "Vertical Swing": "Off",
-        "Horizontal Swing": "Fixed"
+        "Horizontal Swing": "Off"
       },
       "Humidity Level": "83%",
       "Sleep Mode": true
     },
     "Sensor Data": {
       "Temperature Sensors": [
-        43,
-        89
+        76,
+        34
       ],
       "Humidity Sensor": {
         "Sensor ID": "HS001",
-        "Reading": "37%"
+        "Reading": "39%"
       }
     },
     "Power Consumption Stats": {
-      "Today": 5.74,
-      "This Week": 28.78,
-      "This Month": 144.09,
+      "Today": 2.21,
+      "This Week": 45.04,
+      "This Month": 127.28,
       "Power Saving Mode": "Enabled",
-      "Last Reset": "2025-08-19T12:53:36.3023086Z"
+      "Last Reset": "2025-08-20T10:57:41.0620883Z"
     },
     "Network Activity": {
-      "IP Address": "192.168.18.25",
-      "Signal Strength": "-40 dBm",
-      "Last Connected": "2025-08-19T12:53:36.3023334Z",
+      "IP Address": "192.168.189.50",
+      "Signal Strength": "-60 dBm",
+      "Last Connected": "2025-08-20T10:57:41.0620940Z",
       "Control Access": [
-        69,
-        19
+        26,
+        83
       ]
     },
     "Service Logs": {
-      "Filter Status": "Clean",
+      "Filter Status": "Dirty",
       "Service History": [
-        27,
-        69
+        77,
+        16
       ],
-      "Next Scheduled Maintenance": "2025-08-19T12:53:36.3023556Z"
+      "Next Scheduled Maintenance": "2025-08-20T10:57:41.0621032Z"
     }
   },
   "topLevelObservables": {

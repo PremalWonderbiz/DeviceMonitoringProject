@@ -40,80 +40,98 @@ namespace Infrastructure.Cache
         private readonly IServiceProvider _serviceProvider;
         private static readonly SemaphoreSlim _dbLock = new(1, 1);
 
-        public DeviceStateCache(ILogger<DeviceStatePersistenceService> logger, IOptions<DeviceStorageOptions> options,
+        public DeviceStateCache(
+        ILogger<DeviceStatePersistenceService> logger,
+        IOptions<DeviceStorageOptions> options,
         IServiceProvider serviceProvider)
         {
             _logger = logger;
             _useDatabase = options.Value.UseDatabase;
             _serviceProvider = serviceProvider;
         }
-        public ConcurrentDictionary<string, DeviceState> GetAllStates()
-        {
-            return _deviceMap;
-        }
+
+        public ConcurrentDictionary<string, DeviceState> GetAllStates() => _deviceMap;
 
         public async Task LoadAsync()
         {
-            using var scope = _serviceProvider.CreateScope();
-            var _dbContext = scope.ServiceProvider.GetRequiredService<DeviceDbContext>();
             _deviceMap.Clear();
-
             if (_useDatabase)
             {
-                var devices = await _dbContext.Devices.ToListAsync();
-
-                foreach (var device in devices)
-                {
-                    var root = new JsonObject
-                    {
-                        ["MacId"] = device.MacId,
-                        ["Name"] = device.Name,
-                        ["Type"] = device.Type,
-                        ["FileName"] = device.FileName,
-                        ["Status"] = device.Status,
-                        ["Connectivity"] = device.Connectivity,
-                        ["LastUpdated"] = device.LastUpdated,
-                        ["staticProperties"] = JsonNode.Parse(device.StaticPropertiesJson),
-                        ["dynamicProperties"] = JsonNode.Parse(device.DynamicPropertiesJson),
-                        ["topLevelObservables"] = JsonNode.Parse(device.TopLevelObservablesJson),
-                        ["dynamicObservables"] = JsonNode.Parse(device.DynamicObservablesJson)
-                    };
-
-                    _deviceMap[device.MacId] = new DeviceState
-                    {
-                        Root = root,
-                        LastUpdated = device.LastUpdated
-                    };
-                }
+                await LoadFromDatabaseAsync();
             }
             else
             {
-                var deviceFiles = Directory.GetFiles(_dataDirectory, "*.json");
+                await LoadFromFilesAsync();
+            }
+        }
 
-                foreach (var file in deviceFiles)
+        private async Task LoadFromDatabaseAsync()
+        {
+            using var scope = _serviceProvider.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<DeviceDbContext>();
+            var devices = await dbContext.Devices.ToListAsync();
+
+            foreach (var device in devices)
+            {
+                var root = new JsonObject
                 {
-                    try
-                    {
-                        var json = await File.ReadAllTextAsync(file);
-                        var node = JsonNode.Parse(json)!;
+                    ["MacId"] = device.MacId,
+                    ["Name"] = device.Name,
+                    ["Type"] = device.Type,
+                    ["FileName"] = device.FileName,
+                    ["Status"] = device.Status,
+                    ["Connectivity"] = device.Connectivity,
+                    ["LastUpdated"] = device.LastUpdated,
+                    ["staticProperties"] = JsonNode.Parse(device.StaticPropertiesJson),
+                    ["dynamicProperties"] = JsonNode.Parse(device.DynamicPropertiesJson),
+                    ["topLevelObservables"] = JsonNode.Parse(device.TopLevelObservablesJson),
+                    ["dynamicObservables"] = JsonNode.Parse(device.DynamicObservablesJson)
+                };
 
-                        DateTime lastUpdated = DateTime.UtcNow;
-                        if (node["LastUpdated"] is JsonValue ts &&
-                            DateTime.TryParse(ts.ToString(), out var parsedDate))
-                            lastUpdated = parsedDate;
+                _deviceMap[device.MacId] = new DeviceState
+                {
+                    Root = root,
+                    LastUpdated = device.LastUpdated
+                };
+            }
+        }
 
-                        _deviceMap[node["MacId"]!.ToString()] = new DeviceState
-                        {
-                            Root = node,
-                            LastUpdated = lastUpdated
-                        };
-                    }
-                    catch (Exception ex)
+        private async Task LoadFromFilesAsync()
+        {
+            var deviceFiles = Directory.GetFiles(_dataDirectory, "*.json");
+            foreach (var file in deviceFiles)
+            {
+                try
+                {
+                    var state = await ParseDeviceFileAsync(file);
+                    if (state != null)
                     {
-                        _logger.LogError(ex, "Failed to load file {File}", file);
+                        var macId = state.Root["MacId"]!.ToString();
+                        _deviceMap[macId] = state;
                     }
                 }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Failed to load file {File}", file);
+                }
             }
+        }
+
+        private async Task<DeviceState?> ParseDeviceFileAsync(string file)
+        {
+            var json = await File.ReadAllTextAsync(file);
+            var node = JsonNode.Parse(json)!;
+
+            DateTime lastUpdated = DateTime.UtcNow;
+            if (node["LastUpdated"] is JsonValue ts &&
+                DateTime.TryParse(ts.ToString(), out var parsedDate))
+                lastUpdated = parsedDate;
+
+            return new DeviceState
+            {
+                Root = node,
+                LastUpdated = lastUpdated
+            };
         }
 
         public JsonNode? GetDeviceState(string macId)
@@ -151,53 +169,67 @@ namespace Infrastructure.Cache
             await _dbLock.WaitAsync();
             try
             {
-                using var scope = _serviceProvider.CreateScope();
-                var _dbContext = scope.ServiceProvider.GetRequiredService<DeviceDbContext>();
-                await _dbContext.Database.ExecuteSqlRawAsync("PRAGMA journal_mode=WAL;");
-
-                foreach (var kvp in _deviceMap)
-                {
-                    var macId = kvp.Key;
-                    var state = kvp.Value;
-                    state.LastUpdated = DateTime.UtcNow;
-                    state.Root["LastUpdated"] = state.LastUpdated;
-
-                    if (_useDatabase)
-                    {
-                        var device = await _dbContext.Devices.FirstOrDefaultAsync(d => d.MacId == macId);
-                        if (device != null)
-                        {
-                            //device.StaticPropertiesJson = state.Root["staticProperties"]!.ToJsonString();
-                            device.DynamicPropertiesJson = state.Root["dynamicProperties"]!.ToJsonString();
-                            device.Status = state.Root["Status"]?.ToString();
-                            device.Connectivity = state.Root["Connectivity"]?.ToString();
-                            //device.TopLevelObservablesJson = state.Root["topLevelObservables"]!.ToJsonString();
-                            //device.DynamicObservablesJson = state.Root["dynamicObservables"]!.ToJsonString();
-                            device.LastUpdated = state.LastUpdated;
-                        }
-                    }
-                    else
-                    {
-                        var fileName = state.Root["FileName"]!.ToString();
-                        var path = Path.Combine(_dataDirectory, fileName!);
-                        await File.WriteAllTextAsync(path, state.Root.ToJsonString(new JsonSerializerOptions
-                        {
-                            WriteIndented = true
-                        }));
-                    }
-                }
-
                 if (_useDatabase)
                 {
-                    await _dbContext.SaveChangesAsync(); // Save all updates at once
+                    await PersistToDatabaseAsync();
+                }
+                else
+                {
+                    await PersistToFilesAsync();
                 }
             }
             finally
             {
                 _dbLock.Release();
             }
-            
+        }
+
+        private async Task PersistToDatabaseAsync()
+        {
+            using var scope = _serviceProvider.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<DeviceDbContext>();
+            await dbContext.Database.ExecuteSqlRawAsync("PRAGMA journal_mode=WAL;");
+
+            foreach (var kvp in _deviceMap)
+            {
+                var macId = kvp.Key;
+                var state = kvp.Value;
+                state.LastUpdated = DateTime.UtcNow;
+                state.Root["LastUpdated"] = state.LastUpdated;
+
+                var device = await dbContext.Devices.FirstOrDefaultAsync(d => d.MacId == macId);
+                if (device != null)
+                {
+                    //device.StaticPropertiesJson = state.Root["staticProperties"]!.ToJsonString();
+                    device.DynamicPropertiesJson = state.Root["dynamicProperties"]!.ToJsonString();
+                    device.Status = state.Root["Status"]?.ToString();
+                    device.Connectivity = state.Root["Connectivity"]?.ToString();
+                    //device.TopLevelObservablesJson = state.Root["topLevelObservables"]!.ToJsonString();
+                    //device.DynamicObservablesJson = state.Root["dynamicObservables"]!.ToJsonString();
+                    device.LastUpdated = state.LastUpdated;
+                }
+            }
+            await dbContext.SaveChangesAsync();
+        }
+
+        private async Task PersistToFilesAsync()
+        {
+            foreach (var kvp in _deviceMap)
+            {
+                var state = kvp.Value;
+                state.LastUpdated = DateTime.UtcNow;
+                state.Root["LastUpdated"] = state.LastUpdated;
+
+                var fileName = state.Root["FileName"]!.ToString();
+                var path = Path.Combine(_dataDirectory, fileName!);
+                if (File.Exists(path))
+                {
+                    await File.WriteAllTextAsync(path, state.Root.ToJsonString(new JsonSerializerOptions
+                    {
+                        WriteIndented = true
+                    }));
+                }
+            }
         }
     }
-
 }

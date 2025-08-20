@@ -94,36 +94,6 @@ public class DeviceService : IDeviceService
         _dbContext = dbContext;
     }
 
-
-    //public List<DeviceMetadata> ReadAllDeviceMetadataFiles()
-    //{
-    //    var deviceFiles = Directory.GetFiles(_dataDirectory, "*.json");
-    //    var metadataList = new List<DeviceMetadata>();
-
-    //    foreach (var file in deviceFiles)
-    //    {
-    //        try
-    //        {
-    //            using var jsonStream = System.IO.File.OpenRead(file);
-    //            var metadata = JsonSerializer.Deserialize<DeviceMetadata>(
-    //                jsonStream,
-    //                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-    //            if (metadata != null)
-    //            {
-    //                metadata.FileName = Path.GetFileName(file);
-    //                metadataList.Add(metadata);
-    //            }
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            Console.WriteLine($"Error parsing file {file}: {ex.Message}");
-    //        }
-    //    }
-
-    //    return metadataList;
-    //}
-
     public async Task<bool> GenerateAndSendLiveUpdatesDevicesData()
     {
         throw new NotImplementedException();
@@ -398,32 +368,81 @@ public class DeviceService : IDeviceService
         return GetAllDeviceMetadataPaginatedandSorted(request);
     }
 
+    // Handles device file upload, validation, and storage (DB or file system). Also updates alarm rules and refreshes cache.
     public async Task<string> UploadFile(IFormFile file)
     {
+        // Check if a file was uploaded
         if (file == null || file.Length == 0)
             throw new Exception("No file uploaded.");
 
-        // Read file content as string
-        string fileContent;
-        using (var reader = new StreamReader(file.OpenReadStream()))
+        // Read the uploaded file content as a string
+        string fileContent = await ReadFileContentAsync(file);
+
+        // Parse the file content as JSON and validate its structure
+        JsonDocument jsonDoc = ParseJsonDocument(fileContent);
+        JsonElement root = jsonDoc.RootElement;
+
+        // Validate required top-level fields and extract them
+        var (fileNameProp, macIdProp, staticProps, dynamicProps, alarmRules) = ValidateAndExtractFields(root, file.FileName);
+
+        // Prepare the device state object for cache and DB/file storage
+        var deviceState = new DeviceState
         {
-            fileContent = await reader.ReadToEndAsync();
+            Root = JsonNode.Parse(fileContent)!,
+            LastUpdated = DateTime.UtcNow
+        };
+
+        // Store device data in the appropriate storage (DB or file system)
+        if (_useDatabase)
+        {
+            await InsertDeviceInDatabase(root, fileNameProp, macIdProp, staticProps, dynamicProps, deviceState.LastUpdated);
+        }
+        else
+        {
+            await SaveDeviceFileToDisk(file.FileName, fileContent);
         }
 
-        // Parse and validate JSON structure
-        JsonDocument jsonDoc;
+        // Parse alarm rules and add them to the alarm evaluation service
+        var rulesToSend = ParseAlarmRules(alarmRules);
+        await _alarmEvaluationService.AddAlarmRules(macIdProp.ToString(), rulesToSend);
+
+        // Refresh the device state cache to reflect the new/updated device
+        await _deviceStateCache.LoadAsync();
+
+        return "Device added successfully.";
+    }
+
+    /// <summary>
+    /// Reads the content of the uploaded file as a string.
+    /// </summary>
+    private async Task<string> ReadFileContentAsync(IFormFile file)
+    {
+        using var reader = new StreamReader(file.OpenReadStream());
+        return await reader.ReadToEndAsync();
+    }
+
+    /// <summary>
+    /// Parses the file content into a JsonDocument, throws if invalid.
+    /// </summary>
+    private JsonDocument ParseJsonDocument(string fileContent)
+    {
         try
         {
-            jsonDoc = JsonDocument.Parse(fileContent);
+            return JsonDocument.Parse(fileContent);
         }
         catch (JsonException)
         {
             throw new Exception("Uploaded file is not a valid JSON.");
         }
+    }
 
-        JsonElement root = jsonDoc.RootElement;
-
-        // Validate required top-level fields
+    /// <summary>
+    /// Validates required fields in the root JSON and extracts them.
+    /// Throws if any required field is missing or invalid.
+    /// </summary>
+    private (JsonElement fileNameProp, JsonElement macIdProp, JsonElement staticProps, JsonElement dynamicProps, JsonElement alarmRules)
+        ValidateAndExtractFields(JsonElement root, string uploadedFileName)
+    {
         if (!root.TryGetProperty("Name", out _) ||
             !root.TryGetProperty("FileName", out var fileNameProp) ||
             !root.TryGetProperty("Type", out _) ||
@@ -435,83 +454,74 @@ public class DeviceService : IDeviceService
             throw new Exception("JSON must contain 'FileName', 'Name', 'Type', 'staticProperties', 'alarmRules' and 'dynamicProperties' fields.");
         }
 
-        // Validate that staticProperties and dynamicProperties are objects
+        // Ensure staticProperties and dynamicProperties are objects
         if (staticProps.ValueKind != JsonValueKind.Object || dynamicProps.ValueKind != JsonValueKind.Object)
             throw new Exception("'staticProperties' and 'dynamicProperties' must be JSON objects.");
 
-        // Validate that the 'FileName' field inside JSON matches the uploaded file's name
+        // Ensure the FileName in JSON matches the uploaded file's name
         var jsonFileName = fileNameProp.GetString();
-        if (!string.Equals(jsonFileName, file.FileName, StringComparison.OrdinalIgnoreCase))
-            throw new Exception($"Mismatch between uploaded file name ('{file.FileName}') and JSON 'FileName' field ('{jsonFileName}').");
+        if (!string.Equals(jsonFileName, uploadedFileName, StringComparison.OrdinalIgnoreCase))
+            throw new Exception($"Mismatch between uploaded file name ('{uploadedFileName}') and JSON 'FileName' field ('{jsonFileName}').");
 
-        // Prepare DeviceState object
-        var deviceState = new DeviceState
-        {
-            Root = JsonNode.Parse(fileContent)!,
-            LastUpdated = DateTime.UtcNow
-        };
-
-        if (_useDatabase) // Use DB
-        {
-            var device = await _dbContext.Devices.FirstOrDefaultAsync(d => d.MacId == macIdProp.ToString());
-            if (device != null)
-            {
-                // Update existing device
-                device.Name = root.GetProperty("Name").GetString();
-                device.Type = root.GetProperty("Type").GetString();
-                device.Status = root.GetProperty("Status").GetString();
-                device.Connectivity = root.GetProperty("Connectivity").GetString();
-                device.FileName = jsonFileName;
-                device.LastUpdated = deviceState.LastUpdated;
-                device.StaticPropertiesJson = staticProps.GetRawText();
-                device.DynamicPropertiesJson = dynamicProps.GetRawText();
-                device.TopLevelObservablesJson = root.TryGetProperty("topLevelObservables", out var topObs) ? topObs.GetRawText() : "{}";
-                device.DynamicObservablesJson = root.TryGetProperty("dynamicObservables", out var dynObs) ? dynObs.GetRawText() : "{}";
-            }
-            else
-            {
-                // Insert new device
-                device = new Device
-                {
-                    MacId = macIdProp.GetString(),
-                    Name = root.GetProperty("Name").GetString(),
-                    Type = root.GetProperty("Type").GetString(),
-                    Status = root.GetProperty("Status").GetString(),
-                    Connectivity = root.GetProperty("Connectivity").GetString(),
-                    FileName = jsonFileName,
-                    LastUpdated = deviceState.LastUpdated,
-                    StaticPropertiesJson = staticProps.GetRawText(),
-                    DynamicPropertiesJson = dynamicProps.GetRawText(),
-                    TopLevelObservablesJson = root.TryGetProperty("topLevelObservables", out var topObs2) ? topObs2.GetRawText() : "{}",
-                    DynamicObservablesJson = root.TryGetProperty("dynamicObservables", out var dynObs2) ? dynObs2.GetRawText() : "{}"
-                };
-                await _dbContext.Devices.AddAsync(device);
-            }
-
-            await _dbContext.SaveChangesAsync();
-        }
-        else // Use JSON file storage
-        {
-            if (!Directory.Exists(_dataDirectory))
-                Directory.CreateDirectory(_dataDirectory);
-
-            var filePath = Path.Combine(_dataDirectory, file.FileName);
-            if (File.Exists(filePath))
-                throw new Exception($"A file named '{file.FileName}' already exists. Please rename your file or delete the existing one.");
-
-            await File.WriteAllTextAsync(filePath, fileContent);
-        }
-
-        // Parse alarm rules and add
-        var rulesToSend = ParseAlarmRules(alarmRules);
-        await _alarmEvaluationService.AddAlarmRules(macIdProp.ToString(), rulesToSend);
-
-        // Refresh cache
-        await _deviceStateCache.LoadAsync();
-
-        return "Device added successfully.";
+        return (fileNameProp, macIdProp, staticProps, dynamicProps, alarmRules);
     }
 
+    /// <summary>
+    /// Inserts or updates a device record in the database.
+    /// </summary>
+    private async Task InsertDeviceInDatabase(
+        JsonElement root,
+        JsonElement fileNameProp,
+        JsonElement macIdProp,
+        JsonElement staticProps,
+        JsonElement dynamicProps,
+        DateTime lastUpdated)
+    {
+        var macId = macIdProp.GetString();
+        var jsonFileName = fileNameProp.GetString();
+
+        var device = await _dbContext.Devices.FirstOrDefaultAsync(d => d.MacId == macId);
+        if (device != null)
+        {
+            throw new Exception($"A device with file named '{device.FileName}' already exists. Please rename your file or delete the existing one.");
+        }
+        else
+        {
+            // Insert new device record
+            device = new Device
+            {
+                MacId = macId,
+                Name = root.GetProperty("Name").GetString(),
+                Type = root.GetProperty("Type").GetString(),
+                Status = root.GetProperty("Status").GetString(),
+                Connectivity = root.GetProperty("Connectivity").GetString(),
+                FileName = jsonFileName,
+                LastUpdated = lastUpdated,
+                StaticPropertiesJson = staticProps.GetRawText(),
+                DynamicPropertiesJson = dynamicProps.GetRawText(),
+                TopLevelObservablesJson = root.TryGetProperty("topLevelObservables", out var topObs2) ? topObs2.GetRawText() : "{}",
+                DynamicObservablesJson = root.TryGetProperty("dynamicObservables", out var dynObs2) ? dynObs2.GetRawText() : "{}"
+            };
+            await _dbContext.Devices.AddAsync(device);
+        }
+
+        await _dbContext.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Saves the device file to disk, ensuring no overwrite occurs.
+    /// </summary>
+    private async Task SaveDeviceFileToDisk(string fileName, string fileContent)
+    {
+        if (!Directory.Exists(_dataDirectory))
+            Directory.CreateDirectory(_dataDirectory);
+
+        var filePath = Path.Combine(_dataDirectory, fileName);
+        if (File.Exists(filePath))
+            throw new Exception($"A file named '{fileName}' already exists. Please rename your file or delete the existing one.");
+
+        await File.WriteAllTextAsync(filePath, fileContent);
+    }
 
     private async Task<bool> refreshDeviceStateCache()
     {

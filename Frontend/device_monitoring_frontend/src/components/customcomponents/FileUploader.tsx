@@ -25,6 +25,10 @@ const FileUploader = (props: any) => {
                 setError("Only .json files are allowed.");
             }
         }
+
+        if (inputRef.current) {
+            inputRef.current.value = "";
+        }
     };
 
     const handleClear = () => {
@@ -104,7 +108,7 @@ const FileUploader = (props: any) => {
                 ) : (
                     <span className={styles.noFile}>No file selected
                         <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Download a template</span>}>
-                            <Info onClick={() => {handleDownload()}} className={styles.infoIcon} size={15} />
+                            <Info onClick={() => { handleDownload() }} className={styles.infoIcon} size={15} />
                         </Tooltip>
                     </span>
                 )}

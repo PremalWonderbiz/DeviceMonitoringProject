@@ -19,7 +19,7 @@ builder.Services.AddScoped<IAlarmEvaluationService, AlarmEvaluationService>();
 //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 //);
 
-var dbPath = "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProjectSQLite\\DeviceMonitoringProject\\Backend\\DeviceMonitoring.db";
+var dbPath = "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoring.db";
 builder.Services.AddDbContext<AlarmDbContext>(options =>
     options.UseSqlite($"Data Source={dbPath}"));
 
