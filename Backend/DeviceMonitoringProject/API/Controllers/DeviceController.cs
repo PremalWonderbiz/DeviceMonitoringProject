@@ -1,7 +1,6 @@
 ﻿using Application.Dtos;
 using Application.Interface;
 using Application.Interfaces;
-using Infrastructure.RealTime;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 

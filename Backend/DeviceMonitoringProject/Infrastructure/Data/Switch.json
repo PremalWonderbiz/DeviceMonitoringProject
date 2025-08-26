@@ -1,10 +1,10 @@
 {
   "Name": "Network Switch",
   "Type": "Networking Device",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "D4:6D:6D:88:11:22",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-08-26T07:12:53.3364962Z",
+  "Connectivity": "High",
+  "LastUpdated": "2025-08-26T11:02:25.2816284Z",
   "staticProperties": {
     "Hardware Info": {
       "Model": "Cisco Catalyst 2960-X",
@@ -61,59 +61,59 @@
   },
   "dynamicProperties": {
     "Port Status": [
-      33,
-      56,
-      25
+      57,
+      98,
+      85
     ],
     "System Health": {
-      "CPU Usage": "94%",
+      "CPU Usage": "82%",
       "RAM Usage": "Evaluated at runtime",
-      "Temperature": 70.06,
+      "Temperature": 61.78,
       "Fan Status": "Non-operational"
     },
     "Traffic Statistics": {
-      "Total Data Sent": "6.4 GB",
-      "Total Data Received": "4.9 GB",
+      "Total Data Sent": "9.7 GB",
+      "Total Data Received": "3.2 GB",
       "Packet Errors": {
-        "Inbound": 53,
-        "Outbound": 80
+        "Inbound": 80,
+        "Outbound": 99
       },
-      "Broadcast Storms Detected": true
+      "Broadcast Storms Detected": false
     },
     "VLANs \u0026 Routing": {
       "Active VLANs": [
-        9,
-        16,
-        98
+        82,
+        80,
+        53
       ],
       "Routing Table": [
-        96,
-        52
+        92,
+        26
       ]
     },
     "Security \u0026 Logs": {
-      "Port Security Enabled": true,
+      "Port Security Enabled": false,
       "MAC Address Filtering": {
-        "Mode": "Static",
+        "Mode": "Dynamic",
         "Whitelisted MACs": [
-          59,
-          33
+          57,
+          41
         ]
       },
       "Login Attempts": [
-        43,
-        33,
-        34,
-        9,
-        43
+        75,
+        65,
+        19,
+        82,
+        78
       ],
       "Recent Logs": [
-        63,
-        60,
-        96,
-        61,
-        32,
-        59
+        34,
+        26,
+        6,
+        16,
+        71,
+        93
       ]
     }
   },

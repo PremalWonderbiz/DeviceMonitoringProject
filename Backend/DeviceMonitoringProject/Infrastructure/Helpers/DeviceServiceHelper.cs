@@ -8,8 +8,6 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Application.Dtos;
 using Application.Interfaces;
-using Microsoft.AspNetCore.SignalR;
-using Infrastructure.RealTime;
 using Infrastructure.Services;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -20,14 +18,14 @@ namespace Infrastructure.Helpers
     public class DeviceServiceHelper : IDeviceServiceHelper
     {
         private readonly ILogger<DeviceService> _logger;
-        private readonly IHubContext<DeviceHub> _hubContext;
         private readonly IDynamicDataHelper _dynamicDataHelper;
+        private readonly HttpClient _httpClient;
 
-        public DeviceServiceHelper(ILogger<DeviceService> logger, IHubContext<DeviceHub> hubContext, IDynamicDataHelper dynamicDataHelper)
+        public DeviceServiceHelper(ILogger<DeviceService> logger, IDynamicDataHelper dynamicDataHelper, HttpClient httpClient)
         {
             _logger = logger;
-            _hubContext = hubContext;
             _dynamicDataHelper = dynamicDataHelper;
+            _httpClient = httpClient;
         }
         public TopLevelDeviceDataDto ExtractTopLevelDto(string macId, JsonNode rootNode)
         {
@@ -72,7 +70,8 @@ namespace Infrastructure.Helpers
                     WriteIndented = true
                 });
 
-                await _hubContext.Clients.Group($"device-{macId}").SendAsync(eventName, json);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                await _httpClient.PostAsync($"https://localhost:7169/api/realtime/device-group-update/{macId}", content);
             }
         }
 
@@ -104,7 +103,8 @@ namespace Infrastructure.Helpers
                 WriteIndented = true
             });
 
-            await _hubContext.Clients.All.SendAsync("ReceiveUpdate", json);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            await _httpClient.PostAsync("https://localhost:7169/api/realtime/device-update", content);
         }
 
         public JsonNode UpdateDynamicProperties(JsonNode? currentData, JsonNode? dynamicObservables)

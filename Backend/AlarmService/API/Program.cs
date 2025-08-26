@@ -11,9 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddSignalR();
 builder.Services.AddScoped<IAlarmService, AlarmService>();
 builder.Services.AddScoped<IAlarmEvaluationService, AlarmEvaluationService>();
+builder.Services.AddScoped<AlertService>();
 
 //builder.Services.AddDbContext<AlarmDbContext>(options =>
 //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
@@ -36,6 +36,7 @@ builder.Services.AddCors(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient<AlertService>();
 
 var app = builder.Build();
 
@@ -61,7 +62,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UseCors("CorsPolicy");
-
-app.MapHub<AlertHub>("/alerthub");
 
 app.Run();

@@ -1,0 +1,97 @@
+[
+  {
+    "ContainingType": "API.Controllers.RealtimeController",
+    "Method": "SendAlarmUpdate",
+    "RelativePath": "api/realtime/alarm-update",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serializedData",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.RealtimeController",
+    "Method": "SendAlarmPanelGroupUpdate",
+    "RelativePath": "api/realtime/alarmPanel-alarm-update",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "alarmId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "json",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.RealtimeController",
+    "Method": "SendDeviceGroupUpdate",
+    "RelativePath": "api/realtime/device-group-update/{deviceId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "deviceId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "json",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.RealtimeController",
+    "Method": "SendDeviceUpdate",
+    "RelativePath": "api/realtime/device-update",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "json",
+        "Type": "System.Text.Json.JsonElement",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.RealtimeController",
+    "Method": "SendAlarmGroupUpdate",
+    "RelativePath": "api/realtime/propertyPanel-alarm-update/{deviceId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "deviceId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "json",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

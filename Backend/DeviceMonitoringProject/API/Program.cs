@@ -5,7 +5,6 @@ using Application.Interfaces;
 using Infrastructure.Cache;
 using Infrastructure.Helpers;
 using Infrastructure.Persistence;
-using Infrastructure.RealTime;
 using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -31,7 +30,6 @@ builder.Services.AddDbContext<DeviceDbContext>(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSignalR();
 builder.Services.AddHostedService<DeviceLiveDataBgService>();
 builder.Services.AddScoped<IDeviceService, DeviceService>();
 builder.Services.AddScoped<IDynamicDataHelper, DynamicDataHelper>();
@@ -44,6 +42,9 @@ builder.Services.AddHttpClient<IAlarmEvaluationService, AlarmEvaluationService>(
     //docker
     //client.BaseAddress = new Uri("http://alarmservice:7154"); // later configure it in appsettings
 });
+
+builder.Services.AddHttpClient();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy",
@@ -77,7 +78,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UseCors("CorsPolicy");
-
-app.MapHub<DeviceHub>("/devicehub");
 
 app.Run();

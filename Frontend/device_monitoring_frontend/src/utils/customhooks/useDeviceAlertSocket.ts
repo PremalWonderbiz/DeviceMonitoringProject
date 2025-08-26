@@ -9,7 +9,7 @@ export function useDeviceAlertSocket(deviceId : any,onUpdate: (data: any) => voi
     const handler = (data: any) => onUpdate(data);
 
     const setupConnection = async () => {
-      conn = await getSignalRConnection("alerthub",`${alarmServiceBaseURL}/alerthub`);
+      conn = await getSignalRConnection();
       if (!conn) {
         console.warn("SignalR connection not available");
         return;

@@ -17,13 +17,13 @@ namespace Infrastructure.Services
     public class AlarmService : IAlarmService
     {
         private readonly AlarmDbContext _context;
-        private readonly IHubContext<AlertHub> _hubContext;
+        private readonly AlertService _alertService;
 
 
-        public AlarmService(AlarmDbContext context, IHubContext<AlertHub> hubContext)
+        public AlarmService(AlarmDbContext context, AlertService alertService)
         {
             _context = context;
-            _hubContext = hubContext;
+            _alertService = alertService;
         }
 
         public async Task<IEnumerable<GetAlarmDto>> GetAlarms(AlarmFilter filter)
@@ -163,21 +163,21 @@ namespace Infrastructure.Services
                 WriteIndented = true,
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
             });
-            await _hubContext.Clients.All.SendAsync("ReceiveMainPageUpdates", serializedData);
+            await _alertService.MainPageUpdates(serializedData);
 
             try
             {
                 var propertyPanelAlarm = await GetLatestAlarmForDevice(alarm.SourceDeviceMacId);
-                await _hubContext.Clients.Group($"Alarm-{alarm.SourceDeviceMacId}").SendAsync("ReceivePropertyPanelAlarmUpdates", JsonSerializer.Serialize(propertyPanelAlarm, new JsonSerializerOptions
+                await _alertService.PropertyPanelUpdates(JsonSerializer.Serialize(propertyPanelAlarm, new JsonSerializerOptions
                 {
                     Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                     WriteIndented = true
-                }));
+                }), alarm.SourceDeviceMacId);
             }
             catch (CustomException ex)
             {
-                await _hubContext.Clients.Group($"Alarm-{alarm.SourceDeviceMacId}").SendAsync("ReceivePropertyPanelAlarmUpdates", "");
+                await _alertService.PropertyPanelUpdates("", alarm.SourceDeviceMacId);
             }
 
             return new GetAlarmDto
@@ -375,21 +375,21 @@ namespace Infrastructure.Services
                 WriteIndented = true,
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
             });
-            await _hubContext.Clients.All.SendAsync("ReceiveMainPageUpdates", serializedData);
+            await _alertService.MainPageUpdates(serializedData);
 
             try
             {
                 var propertyPanelAlarm = await GetLatestAlarmForDevice(alarm.SourceDeviceMacId);
-                await _hubContext.Clients.Group($"Alarm-{alarm.SourceDeviceMacId}").SendAsync("ReceivePropertyPanelAlarmUpdates", JsonSerializer.Serialize(propertyPanelAlarm, new JsonSerializerOptions
+                await _alertService.PropertyPanelUpdates(JsonSerializer.Serialize(propertyPanelAlarm, new JsonSerializerOptions
                 {
                     Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                     WriteIndented = true
-                }));
+                }), alarm.SourceDeviceMacId);
             }
             catch (CustomException ex)
             {
-                await _hubContext.Clients.Group($"Alarm-{alarm.SourceDeviceMacId}").SendAsync("ReceivePropertyPanelAlarmUpdates", "");
+                await _alertService.PropertyPanelUpdates("", alarm.SourceDeviceMacId);
             }
 
             return new GetAlarmDto

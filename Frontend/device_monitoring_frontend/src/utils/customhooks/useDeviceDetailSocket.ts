@@ -17,7 +17,7 @@ export function useDeviceDetailSocket(deviceId: string, onDetailUpdate: (data: a
     };
 
     const setup = async () => {
-      conn = await getSignalRConnection("devicehub",`${baseURL}/devicehub`);
+      conn = await getSignalRConnection();
       if (!conn) {
         console.warn("SignalR connection not available");
         return;

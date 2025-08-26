@@ -3,7 +3,6 @@
 using System.Text.Json;
 using Application.Dtos;
 using Domain.Entities;
-using Infrastructure.RealTime;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using Application.Interfaces;

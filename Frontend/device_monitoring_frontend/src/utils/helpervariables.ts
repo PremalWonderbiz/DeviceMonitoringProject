@@ -1,6 +1,7 @@
 //local
 export const baseURL = "https://localhost:7127";
 export const alarmServiceBaseURL = "https://localhost:7154";
+export const websocketGatewayUrl = "https://localhost:7169/ws/gateway";
 
 //docker
 // export const baseURL = "http://localhost:7127";

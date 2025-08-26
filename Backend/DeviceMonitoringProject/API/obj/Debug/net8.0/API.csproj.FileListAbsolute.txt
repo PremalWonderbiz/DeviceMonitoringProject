@@ -51,58 +51,6 @@ D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitor
 D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.pdb
 D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\ref\API.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.csproj.AssemblyReference.cache
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.AssemblyInfoInputs.cache
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.AssemblyInfo.cs
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.csproj.CoreCompileInputs.cache
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.sourcelink.json
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\appsettings.json
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\API.staticwebassets.endpoints.json
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\API.exe
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\API.deps.json
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\API.runtimeconfig.json
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\API.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\API.pdb
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.OpenApi.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Newtonsoft.Json.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Application.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Common.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Domain.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Infrastructure.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Application.pdb
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Common.pdb
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Domain.pdb
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Infrastructure.pdb
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\scopedcss\bundle\API.styles.css
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets.build.json
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets\msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets\msbuild.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets\msbuild.build.API.props
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.API.props
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.API.props
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.csproj.Up2Date
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\refint\API.dll
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.pdb
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.genruntimeconfig.cache
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\ref\API.dll
 D:\Study\Device Monitoring Project\DeviceMonitoringProjectSQLite\DeviceMonitoringProject\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\appsettings.Development.json
 D:\Study\Device Monitoring Project\DeviceMonitoringProjectSQLite\DeviceMonitoringProject\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\appsettings.json
 D:\Study\Device Monitoring Project\DeviceMonitoringProjectSQLite\DeviceMonitoringProject\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\API.staticwebassets.endpoints.json
@@ -315,6 +263,22 @@ D:\Study\Device Monitoring Project\DeviceMonitoringProjectSQLite\DeviceMonitorin
 D:\Study\Device Monitoring Project\DeviceMonitoringProjectSQLite\DeviceMonitoringProject\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Study\Device Monitoring Project\DeviceMonitoringProjectSQLite\DeviceMonitoringProject\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\Study\Device Monitoring Project\DeviceMonitoringProjectSQLite\DeviceMonitoringProject\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.csproj.AssemblyReference.cache
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.AssemblyInfoInputs.cache
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.AssemblyInfo.cs
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.csproj.CoreCompileInputs.cache
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.sourcelink.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\appsettings.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\API.staticwebassets.endpoints.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\API.exe
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\API.deps.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\API.runtimeconfig.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\API.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\API.pdb
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Humanizer.dll
@@ -338,8 +302,14 @@ C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backe
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Identity.Client.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
@@ -349,12 +319,17 @@ C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backe
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.OpenApi.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Mono.TextTemplating.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\SQLitePCLRaw.batteries_v2.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\SQLitePCLRaw.core.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\System.ClientModel.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\System.CodeDom.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\System.Composition.AttributedModel.dll
@@ -369,6 +344,7 @@ C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backe
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\System.IO.Pipelines.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\System.Memory.Data.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\System.Runtime.Caching.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\System.Security.Permissions.dll
@@ -474,3 +450,28 @@ C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backe
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Application.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Common.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Domain.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Infrastructure.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Application.pdb
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Common.pdb
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Domain.pdb
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Infrastructure.pdb
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\scopedcss\bundle\API.styles.css
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets\msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets\msbuild.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets\msbuild.build.API.props
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.API.props
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.API.props
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.csproj.Up2Date
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\refint\API.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.pdb
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.genruntimeconfig.cache
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\ref\API.dll

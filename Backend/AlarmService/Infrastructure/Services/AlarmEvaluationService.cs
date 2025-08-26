@@ -15,14 +15,14 @@ namespace Infrastructure.Services
     public class AlarmEvaluationService : IAlarmEvaluationService
     {
         private readonly AlarmDbContext _dbContext;
-        private readonly IHubContext<AlertHub> _hubContext;
         private readonly IAlarmService _alarmService;
+        private readonly AlertService _alertService;
 
-        public AlarmEvaluationService(AlarmDbContext dbContext, IHubContext<AlertHub> hubContext, IAlarmService alarmService)
+        public AlarmEvaluationService(AlarmDbContext dbContext, IAlarmService alarmService, AlertService alertService)
         {
             _dbContext = dbContext;
-            _hubContext = hubContext;
             _alarmService = alarmService;
+            _alertService = alertService;
         }
 
         public async Task<List<Alarm>> EvaluateTopLevelAsync(TopLevelDeviceDataDto current, TopLevelDeviceDataDto previous)
@@ -94,25 +94,25 @@ namespace Infrastructure.Services
                     WriteIndented = true,
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 });
-                await _hubContext.Clients.All.SendAsync("ReceiveMainPageUpdates", serializedData);
+                await _alertService.MainPageUpdates(serializedData);
 
                 var alarmPanelUpdates = await _alarmService.GetAlarms(new AlarmFilter());
-                await _hubContext.Clients.Group("AlarmPanelGroup").SendAsync("ReceiveAlarmPanelUpdates",
-                    JsonSerializer.Serialize(alarmPanelUpdates, new JsonSerializerOptions
-                    {
-                        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                        WriteIndented = true
-                    }));
+                    
+                await _alertService.AlarmPanelUpdates(JsonSerializer.Serialize(alarmPanelUpdates, new JsonSerializerOptions
+                {
+                    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    WriteIndented = true
+                }));
 
                 var propertyPanelAlarm = await _alarmService.GetLatestAlarmForDevice(deviceMacId);
-                await _hubContext.Clients.Group($"Alarm-{deviceMacId}").SendAsync("ReceivePropertyPanelAlarmUpdates",
-                    JsonSerializer.Serialize(propertyPanelAlarm, new JsonSerializerOptions
-                    {
-                        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                        WriteIndented = true
-                    }));
+
+                await _alertService.PropertyPanelUpdates(JsonSerializer.Serialize(propertyPanelAlarm, new JsonSerializerOptions
+                {
+                    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    WriteIndented = true
+                }), deviceMacId);
             }
 
             return triggeredAlarms;

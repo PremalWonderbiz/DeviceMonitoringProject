@@ -3,8 +3,8 @@
   "Type": "Personal Device",
   "Status": "Online",
   "MacId": "F0:9F:C2:12:34:56",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-08-26T07:12:53.3397172Z",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-08-26T11:02:25.2863106Z",
   "staticProperties": {
     "Device Specifications": {
       "Operating System": {
@@ -73,66 +73,66 @@
   "dynamicProperties": {
     "Device Health": {
       "Battery Status": {
-        "Level": "59%",
-        "Charging State": "Not Charging",
-        "Temperature": 80.81,
-        "Health": "Average"
+        "Level": "36%",
+        "Charging State": "Discharging",
+        "Temperature": 3.38,
+        "Health": "Good"
       },
-      "CPU Usage": "71%",
+      "CPU Usage": "50%",
       "RAM Usage": {
-        "Used": "8.6 GB",
-        "Free": "4.7 GB"
+        "Used": "2.0 GB",
+        "Free": "2.9 GB"
       },
       "Storage Usage": {
-        "Used": "5.4 GB",
-        "Free": "0.8 GB"
+        "Used": "3.2 GB",
+        "Free": "7.6 GB"
       },
       "Device Temperature": {
-        "CPU": 15.41,
-        "Battery": 49.47
+        "CPU": 65.87,
+        "Battery": 52.5
       },
-      "Uptime": "9 days, 17 hrs"
+      "Uptime": "7 days, 13 hrs"
     },
     "Network Activity": {
       "Current Network": {
-        "Connection Type": "Mobile",
+        "Connection Type": "Wi-Fi",
         "SSID": "Office_Network_5G",
-        "IP Address": "192.168.105.163",
-        "Signal Strength": "-69 dBm",
-        "MAC Address": "CC:2B:1F:43:F5:62"
+        "IP Address": "192.168.222.56",
+        "Signal Strength": "-74 dBm",
+        "MAC Address": "FE:CB:60:9B:90:E2"
       },
       "Data Usage": {
         "Today": {
-          "Download": "7.5 GB",
-          "Upload": "1.0 GB"
+          "Download": "0.3 GB",
+          "Upload": "9.7 GB"
         },
         "Monthly": {
-          "Download": "4.9 GB",
-          "Upload": "0.8 GB"
+          "Download": "4.7 GB",
+          "Upload": "4.2 GB"
         }
       },
       "Connected Apps": [
-        62,
-        43,
-        12,
-        10,
-        40
+        6,
+        85,
+        11,
+        82,
+        22
       ]
     },
     "App Activity": {
       "Active Apps": [
-        78,
-        69,
-        2,
+        58,
+        35,
+        51,
         11,
-        53
+        82
       ],
       "Battery Usage by Apps": [
-        77,
+        58,
+        65,
+        92,
         70,
-        42,
-        64,
-        61
+        97
       ]
     }
   },

@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Infrastructure.Cache;
-using Infrastructure.RealTime;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,7 +19,7 @@ namespace Infrastructure.Services
         private readonly IServiceScopeFactory _scopeFactory;
         private DateTime _lastDynamicUpdateTime = DateTime.UtcNow;
 
-        public DeviceLiveDataBgService(DeviceStateCache deviceStateCache, IServiceScopeFactory scopeFactory, ILogger<DeviceLiveDataBgService> logger, IHubContext<DeviceHub> hubContext)
+        public DeviceLiveDataBgService(DeviceStateCache deviceStateCache, IServiceScopeFactory scopeFactory, ILogger<DeviceLiveDataBgService> logger)
         {
             _deviceStateCache = deviceStateCache;
             _logger = logger;

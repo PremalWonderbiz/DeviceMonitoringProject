@@ -17,7 +17,7 @@ export function useDevicesTopDataSocket(onUpdate: (data: any) => void) {
     };
 
     const setupConnection = async () => {
-      conn = await getSignalRConnection("devicehub", `${baseURL}/devicehub`);
+      conn = await getSignalRConnection();
       if (!conn) {
         console.warn("SignalR connection not available");
         return;

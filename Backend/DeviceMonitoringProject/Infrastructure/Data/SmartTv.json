@@ -4,7 +4,7 @@
   "Status": "Offline",
   "MacId": "B8:27:EB:45:9A:CB",
   "Connectivity": "Low",
-  "LastUpdated": "2025-08-26T07:12:53.3477634Z",
+  "LastUpdated": "2025-08-26T11:02:25.2922012Z",
   "staticProperties": {
     "Display \u0026 Hardware": {
       "Screen Size": "55 inches",
@@ -79,49 +79,49 @@
   },
   "dynamicProperties": {
     "Current Usage": {
-      "Power State": "Off",
-      "Input Source": "USB",
+      "Power State": "Standby",
+      "Input Source": "AV",
       "Current App": "SonyLIV",
-      "Volume Level": 87,
-      "Mute": true,
-      "Picture Mode": "Standard",
-      "Audio Output": "External Speakers",
-      "Ambient Light Sensor": false
+      "Volume Level": 15,
+      "Mute": false,
+      "Picture Mode": "Cinema",
+      "Audio Output": "TV Speakers",
+      "Ambient Light Sensor": true
     },
     "Streaming Activity": {
       "Watch History (Today)": [
-        29,
-        84
+        54,
+        65
       ],
       "Active App Sessions": [
-        59
+        75
       ],
-      "AutoPlay Next Episode": false
+      "AutoPlay Next Episode": true
     },
     "Network Activity": {
-      "IP Address": "192.168.23.10",
-      "Wi-Fi Signal Strength": "-47 dBm",
-      "Connection Type": "Ethernet",
+      "IP Address": "192.168.150.50",
+      "Wi-Fi Signal Strength": "-75 dBm",
+      "Connection Type": "Wi-Fi",
       "Data Usage": {
-        "Today": "4.8 GB",
-        "This Week": "5.2 GB",
+        "Today": "7.7 GB",
+        "This Week": "8.5 GB",
         "This Month": "6.2 GB"
       },
-      "Last Online": "2025-08-26T07:12:47.8428385Z"
+      "Last Online": "2025-08-26T11:02:16.0034000Z"
     },
     "System Status": {
-      "Uptime": "9 days, 1 hrs",
-      "Last Reboot": "2025-08-26T07:12:47.8428447Z",
-      "Software Update Available": false,
-      "Last Software Update": "2025-08-26T07:12:47.8428476Z",
+      "Uptime": "6 days, 21 hrs",
+      "Last Reboot": "2025-08-26T11:02:16.0034030Z",
+      "Software Update Available": true,
+      "Last Software Update": "2025-08-26T11:02:16.0034048Z",
       "Storage Info": {
-        "Total Storage": "8.9 GB",
-        "Used": "7.2 GB",
-        "Free": "3.1 GB"
+        "Total Storage": "0.4 GB",
+        "Used": "5.9 GB",
+        "Free": "9.1 GB"
       },
       "Temperature": {
-        "Panel": 48.08,
-        "Mainboard": 40.72
+        "Panel": 36.37,
+        "Mainboard": 40.27
       }
     }
   },

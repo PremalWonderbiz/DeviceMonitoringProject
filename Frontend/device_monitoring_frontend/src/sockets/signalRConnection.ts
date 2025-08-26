@@ -1,26 +1,27 @@
+import { websocketGatewayUrl } from "@/utils/helpervariables";
 import * as signalR from "@microsoft/signalr";
 
-const connections: Record<string, signalR.HubConnection> = {};
+let connection: signalR.HubConnection | null = null;
 
-async function startConnection(connection: signalR.HubConnection, hubName: string) {
+async function startConnection(conn: signalR.HubConnection) {
   try {
-    await connection.start();
-    console.log(`SignalR connected to ${hubName}.`);
+    await conn.start();
+    console.log("SignalR connected to GatewayHub.");
   } catch (err) {
-    console.warn(`SignalR connection to ${hubName} failed:`, err);
+    console.warn("SignalR connection failed:", err);
+    // Retry logic can be added if needed
   }
 }
 
-export async function getSignalRConnection(hubName: string, url: string): Promise<signalR.HubConnection> {
-  if (!connections[hubName]) {
-    const connection = new signalR.HubConnectionBuilder()
-      .withUrl(url)
+export async function getSignalRConnection(): Promise<signalR.HubConnection> {
+  if (!connection) {
+    connection = new signalR.HubConnectionBuilder()
+      .withUrl(websocketGatewayUrl)
       .withAutomaticReconnect()
       .build();
 
-    connections[hubName] = connection;
-    await startConnection(connection, hubName);
+    await startConnection(connection);
   }
 
-  return connections[hubName];
+  return connection;
 }
