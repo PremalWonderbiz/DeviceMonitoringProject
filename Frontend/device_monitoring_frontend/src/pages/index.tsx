@@ -31,12 +31,12 @@ const geistMono = Geist_Mono({
 
 export default function Home() {
   const [deviceData, setDeviceData] = useState<Device[]>([]);
-  const [deviceFileNames, setDeviceFileNames] = useState<DeviceFileNameMap>({});
+  // const [deviceFileNames, setDeviceFileNames] = useState<DeviceFileNameMap>({});
   const initialTabState = "Health"; // Default active tab
   const [activeTab, setActiveTab] = useState(initialTabState);
   const [isPropertyPanelOpen, setIsPropertyPanelOpen] = useState<boolean>(false);
   const [currentDeviceId, setCurrentDeviceId] = useState<string | null>(null);
-  const [currentDeviceFileName, setCurrentDeviceFileName] = useState<string | null>(null);
+  // const [currentDeviceFileName, setCurrentDeviceFileName] = useState<string | null>(null);
   const [isAlarmPanelOpen, setIsAlarmPanelOpen] = useState<boolean>(false);
   const [isAlarmPopOverOpen, setIsAlarmPopOverOpen] = useState<boolean>(false);
   const [isProfilePopOverOpen, setIsProfilePopOverOpen] = useState<boolean>(false);
@@ -220,15 +220,15 @@ export default function Home() {
 
   // Initial data fetch
   useEffect(() => {
-    const fetchDevicesFileNames = async () => {
-      const response = await getMacIdToFileNameMap();
-      if (!response)
-        console.log("Network response was not ok");
+    // const fetchDevicesFileNames = async () => {
+    //   const response = await getMacIdToFileNameMap();
+    //   if (!response)
+    //     console.log("Network response was not ok");
 
-      if (response && response.data) {
-        setDeviceFileNames(response.data);
-      }
-    };
+    //   if (response && response.data) {
+    //     setDeviceFileNames(response.data);
+    //   }
+    // };
 
     const fetchDevicesData = async () => {
       const response = await getDevicesNameMacIdList();
@@ -241,7 +241,7 @@ export default function Home() {
     };
 
     fetchDevicesData();
-    fetchDevicesFileNames();
+    // fetchDevicesFileNames();
   }, [hardRefreshDeviceDataKey]);
 
   useEffect(() => {
@@ -323,7 +323,7 @@ export default function Home() {
   const openPropertypanel = (deviceId: string) => {
     setActiveTab(initialTabState); // Reset to default tab
     setIsPropertyPanelOpen(true);
-    setCurrentDeviceFileName(deviceFileNames[deviceId] || null);
+    // setCurrentDeviceFileName(deviceFileNames[deviceId] || null);
     setCurrentDeviceId(deviceId);
   }
 
@@ -331,7 +331,7 @@ export default function Home() {
     setIsPropertyPanelOpen(false);
     setCurrentDeviceId(null);
     setSelectedDevicePropertyPanel(null);
-    setCurrentDeviceFileName(null);
+    // setCurrentDeviceFileName(null);
   }
 
   const getRefreshedData = async () => {
@@ -415,7 +415,7 @@ export default function Home() {
           </div>
           {(deviceData && deviceData.length > 0) &&
             <Sidebar zIndex="zIndex200" openIconMsg={"Open Property Panel"} closeIconMsg={"Close Property Panel"} position="right" isOpen={isPropertyPanelOpen} setIsOpen={setIsPropertyPanelOpen} closeSidebar={closePropertyPanel}>
-              {isPropertyPanelOpen && <PropertyPanel deviceFileNames={deviceFileNames} devicesNameMacList={devicesNameMacList} setCurrentDeviceId={setCurrentDeviceId} setCurrentDeviceFileName={setCurrentDeviceFileName} setIsAlarmPanelOpen={setIsAlarmPanelOpen} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} currentDeviceFileName={currentDeviceFileName} />}
+              {isPropertyPanelOpen && <PropertyPanel  devicesNameMacList={devicesNameMacList} setCurrentDeviceId={setCurrentDeviceId}  setIsAlarmPanelOpen={setIsAlarmPanelOpen} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} />}
             </Sidebar>}
         </div>
       </div>

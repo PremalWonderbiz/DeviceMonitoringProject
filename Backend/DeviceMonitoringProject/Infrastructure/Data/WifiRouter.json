@@ -1,11 +1,10 @@
 {
-  "FileName": "WifiRouter.json",
   "Name": "WiFi Router",
   "Type": "Networking Device",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "84:C9:B2:3E:7F:A1",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-08-20T10:57:49.857278Z",
+  "Connectivity": "High",
+  "LastUpdated": "2025-08-26T07:12:53.3683519Z",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "OpenWRT 21.02",
@@ -73,50 +72,50 @@
   },
   "dynamicProperties": {
     "System Status": {
-      "Uptime": "2 days, 11 hrs",
-      "CPU Usage": "97%",
+      "Uptime": "4 days, 5 hrs",
+      "CPU Usage": "72%",
       "Memory Usage": {
-        "Used": "1.0 GB",
-        "Total": "1.4 GB"
+        "Used": "7.9 GB",
+        "Total": "4.4 GB"
       },
       "Temperature": {
-        "CPU": 28.05,
-        "Board": 53.22
+        "CPU": 43.3,
+        "Board": 45.65
       },
       "System Load Average": [
-        90,
-        86,
-        1
+        26,
+        83,
+        22
       ]
     },
     "Network Activity": {
       "Interfaces": [
-        55,
-        1
+        52,
+        30
       ],
       "Connected Clients": [
-        46,
-        90
+        26,
+        67
       ],
       "Total Data Usage": {
-        "Sent": "1.6 GB",
-        "Received": "4.9 GB"
+        "Sent": "9.6 GB",
+        "Received": "2.9 GB"
       }
     },
     "Service Health": {
       "Services Running": [
-        87,
-        93,
-        64,
-        38
+        82,
+        16,
+        22,
+        15
       ],
       "Failed Services": [
-        28
+        15
       ],
       "Last Reboot Reason": "Power Failure",
       "Firmware": {
         "Current Version": "Unsupported Type",
-        "Last Updated": "2025-08-20T10:57:41.0628053Z",
+        "Last Updated": "2025-08-26T07:12:47.8437932Z",
         "Update Available": true
       }
     }

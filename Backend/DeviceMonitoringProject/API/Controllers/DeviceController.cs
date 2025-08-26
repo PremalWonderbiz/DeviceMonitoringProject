@@ -12,13 +12,11 @@ namespace API.Controllers
     public class DevicesController : ControllerBase
     {
         private readonly IDeviceService _deviceService;
-        private readonly IHubContext<DeviceHub> _hubContext;
         private readonly IAlarmToggleService _toggleService;
 
-        public DevicesController(IDeviceService deviceService, IHubContext<DeviceHub> hubContext, IAlarmToggleService toggleService)
+        public DevicesController(IDeviceService deviceService, IAlarmToggleService toggleService)
         {
             _deviceService = deviceService;
-            _hubContext = hubContext;
             _toggleService = toggleService;
         }
         

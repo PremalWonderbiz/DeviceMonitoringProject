@@ -12,7 +12,7 @@ import { deepMerge } from "@/utils/propertypanelfunctions";
 import { DeviceDetailUpdate, DeviceNameMac, PropertyPanelData } from "@/models/propertyPanelInterfaces";
 
 
-const PropertyPanel = ({ setCurrentDeviceId, setCurrentDeviceFileName, deviceFileNames, devicesNameMacList, setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, currentDeviceId, currentDeviceFileName, activeTab, setActiveTab }: any) => {
+const PropertyPanel = ({ setCurrentDeviceId, devicesNameMacList, setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, currentDeviceId, activeTab, setActiveTab }: any) => {
     const [propertyPanelData, setPropertyPanelData] = useState<PropertyPanelData | null>(null);
     const [highlightedPaths, setHighlightedPaths] = useState<string[]>([]);
     const highlightTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -58,21 +58,23 @@ const PropertyPanel = ({ setCurrentDeviceId, setCurrentDeviceFileName, deviceFil
         if (selectedDevices.length == 1) {
             const deviceId = selectedDevices[0].deviceMacId;
             setCurrentDeviceId(deviceId);
-            setCurrentDeviceFileName(deviceFileNames[deviceId!] || null)
+            // setCurrentDeviceFileName(deviceFileNames[deviceId!] || null)
         }
     }, [selectedDevices]);
 
     useDeviceDetailSocket(currentDeviceId, handleUpdate, shouldConnectSignalR);
 
     useEffect(() => {
-        if (currentDeviceFileName && currentDeviceId) {
+        if (currentDeviceId) {
             const fetchData = async () => {
-                const response = await getPropertyPanelData(currentDeviceFileName);
+                const response = await getPropertyPanelData(currentDeviceId);
                 if (!response)
                     console.log("Network response was not ok");
 
                 if (response && response.data) {
                     setPropertyPanelData(response.data);
+                    console.log(response.data);
+                    
                 }
             };
             fetchData();

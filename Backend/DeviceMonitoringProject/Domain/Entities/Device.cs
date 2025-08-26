@@ -20,16 +20,16 @@ namespace Domain.Entities
         public string Name { get; set; } = default!;
 
         public string Type { get; set; } = default!;
-        public string FileName { get; set; } = default!;
+        //public string FileName { get; set; } = default!;
         public string Status { get; set; } = default!;
         public string Connectivity { get; set; } = default!;
         public DateTime LastUpdated { get; set; }
 
         // Store JSON as string
-        public string StaticPropertiesJson { get; set; } = "{}";
-        public string DynamicPropertiesJson { get; set; } = "{}";
-        public string TopLevelObservablesJson { get; set; } = "{}";
-        public string DynamicObservablesJson { get; set; } = "{}";
+        public string StaticProperties { get; set; } = "{}";
+        public string DynamicProperties { get; set; } = "{}";
+        public string TopLevelObservables { get; set; } = "{}";
+        public string DynamicObservables { get; set; } = "{}";
     }
 
 }

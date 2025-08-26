@@ -1,11 +1,10 @@
 {
-  "FileName": "RasberryPi.json",
   "Name": "Raspberry Pi",
   "Type": "Microcomputer",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "B8:27:EB:45:67:89",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-08-20T10:57:49.869874Z",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-08-26T07:12:53.383964Z",
   "staticProperties": {
     "Hardware Information": {
       "Model": "Raspberry Pi 4 Model B",
@@ -61,48 +60,48 @@
   },
   "dynamicProperties": {
     "System Health": {
-      "CPU Usage": "89%",
+      "CPU Usage": "96%",
       "RAM Usage": {
-        "Used": "7.1 GB",
-        "Total": "1.6 GB"
+        "Used": "0.9 GB",
+        "Total": "3.8 GB"
       },
       "System Temperature": {
-        "CPU": 38.08,
-        "Board": 46.02
+        "CPU": 51.11,
+        "Board": 90.77
       },
-      "Uptime": "9 days, 20 hrs",
+      "Uptime": "0 days, 10 hrs",
       "System Load": [
-        9,
-        48,
-        23
+        3,
+        73,
+        48
       ]
     },
     "Network Activity": {
       "Interfaces": [
-        62
+        20
       ],
       "Total Data Usage": {
-        "Sent": "0.8 GB",
-        "Received": "7.7 GB"
+        "Sent": "9.7 GB",
+        "Received": "3.1 GB"
       },
       "Connected Clients (Media Server)": [
-        4
+        42
       ]
     },
     "Service Status": {
       "Running Services": [
+        "Kodi",
         "Pi-hole",
-        "Node-RED",
-        "Kodi"
+        "Node-RED"
       ],
       "Service Health": [
-        15,
-        32
+        66,
+        71
       ],
-      "Last Reboot Reason": "Manual reboot",
+      "Last Reboot Reason": "Crash recovery",
       "Firmware": {
         "Current Version": "Unsupported Type",
-        "Last Update": "2025-08-20T10:57:41.0634430Z",
+        "Last Update": "2025-08-26T07:12:47.8443455Z",
         "Update Available": false
       }
     }

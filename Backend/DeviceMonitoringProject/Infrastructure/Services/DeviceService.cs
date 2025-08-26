@@ -20,7 +20,6 @@ namespace Infrastructure.Services;
 public class DeviceService : IDeviceService
 {
     private readonly ILogger<DeviceService> _logger;
-    private readonly IHubContext<DeviceHub> _hubContext;
     private readonly IDynamicDataHelper _dynamicDataHelper;
     private readonly IDeviceServiceHelper _deviceServiceHelper;
     private readonly IAlarmEvaluationService _alarmEvaluationService;
@@ -75,7 +74,6 @@ public class DeviceService : IDeviceService
     public DeviceService(
         IDeviceServiceHelper deviceServiceHelper,
         ILogger<DeviceService> logger,
-        IHubContext<DeviceHub> hubContext,
         IDynamicDataHelper dynamicDataHelper,
         IAlarmEvaluationService alarmEvaluationService,
         DeviceStateCache deviceStateCache,
@@ -84,7 +82,6 @@ public class DeviceService : IDeviceService
         DeviceDbContext dbContext)
     {
         _logger = logger;
-        _hubContext = hubContext;
         _dynamicDataHelper = dynamicDataHelper;
         _alarmEvaluationService = alarmEvaluationService;
         _deviceServiceHelper = deviceServiceHelper;
@@ -218,16 +215,14 @@ public class DeviceService : IDeviceService
         return _devices.ToDictionary(d => d.MacId, d => d.FileName, StringComparer.OrdinalIgnoreCase);
     }
 
-    public async Task<DeviceDetails> GetPropertyPanelDataForDevice(string deviceFileName)
+    public async Task<DeviceDetails> GetPropertyPanelDataForDevice(string deviceId)
     {
-        var state = _deviceStateCache
-       .GetAllStates()
-       .Values
-       .FirstOrDefault(s => s.Root?["FileName"]?.GetValue<string>() == deviceFileName);
+        // Try to get the device state from the cache using the deviceId (MacId)
+        var state = _deviceStateCache.GetAllStates().TryGetValue(deviceId, out var deviceState) ? deviceState : null;
 
         if (state?.Root == null)
         {
-            _logger.LogError("Missing or malformed state for file: {file}", deviceFileName);
+            _logger.LogError("Missing or malformed state for deviceId: {deviceId}", deviceId);
             throw new Exception("Device not found or invalid state");
         }
 
@@ -241,7 +236,7 @@ public class DeviceService : IDeviceService
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Deserialization failed for file: {file}", deviceFileName);
+            _logger.LogError(ex, "Deserialization failed for deviceId: {deviceId}", deviceId);
             throw new Exception("Failed to parse device details");
         }
     }
@@ -383,7 +378,7 @@ public class DeviceService : IDeviceService
         JsonElement root = jsonDoc.RootElement;
 
         // Validate required top-level fields and extract them
-        var (fileNameProp, macIdProp, staticProps, dynamicProps, alarmRules) = ValidateAndExtractFields(root, file.FileName);
+        var (macIdProp, staticProps, dynamicProps, alarmRules) = ValidateAndExtractFields(root, file.FileName);
 
         // Prepare the device state object for cache and DB/file storage
         var deviceState = new DeviceState
@@ -395,7 +390,7 @@ public class DeviceService : IDeviceService
         // Store device data in the appropriate storage (DB or file system)
         if (_useDatabase)
         {
-            await InsertDeviceInDatabase(root, fileNameProp, macIdProp, staticProps, dynamicProps, deviceState.LastUpdated);
+            await InsertDeviceInDatabase(root, macIdProp, staticProps, dynamicProps, deviceState.LastUpdated);
         }
         else
         {
@@ -440,11 +435,10 @@ public class DeviceService : IDeviceService
     /// Validates required fields in the root JSON and extracts them.
     /// Throws if any required field is missing or invalid.
     /// </summary>
-    private (JsonElement fileNameProp, JsonElement macIdProp, JsonElement staticProps, JsonElement dynamicProps, JsonElement alarmRules)
+    private (JsonElement macIdProp, JsonElement staticProps, JsonElement dynamicProps, JsonElement alarmRules)
         ValidateAndExtractFields(JsonElement root, string uploadedFileName)
     {
         if (!root.TryGetProperty("Name", out _) ||
-            !root.TryGetProperty("FileName", out var fileNameProp) ||
             !root.TryGetProperty("Type", out _) ||
             !root.TryGetProperty("MacId", out var macIdProp) ||
             !root.TryGetProperty("staticProperties", out var staticProps) ||
@@ -456,14 +450,9 @@ public class DeviceService : IDeviceService
 
         // Ensure staticProperties and dynamicProperties are objects
         if (staticProps.ValueKind != JsonValueKind.Object || dynamicProps.ValueKind != JsonValueKind.Object)
-            throw new Exception("'staticProperties' and 'dynamicProperties' must be JSON objects.");
+            throw new Exception("'staticProperties' and 'dynamicProperties' must be JSON objects.");     
 
-        // Ensure the FileName in JSON matches the uploaded file's name
-        var jsonFileName = fileNameProp.GetString();
-        if (!string.Equals(jsonFileName, uploadedFileName, StringComparison.OrdinalIgnoreCase))
-            throw new Exception($"Mismatch between uploaded file name ('{uploadedFileName}') and JSON 'FileName' field ('{jsonFileName}').");
-
-        return (fileNameProp, macIdProp, staticProps, dynamicProps, alarmRules);
+        return (macIdProp, staticProps, dynamicProps, alarmRules);
     }
 
     /// <summary>
@@ -471,19 +460,17 @@ public class DeviceService : IDeviceService
     /// </summary>
     private async Task InsertDeviceInDatabase(
         JsonElement root,
-        JsonElement fileNameProp,
         JsonElement macIdProp,
         JsonElement staticProps,
         JsonElement dynamicProps,
         DateTime lastUpdated)
     {
         var macId = macIdProp.GetString();
-        var jsonFileName = fileNameProp.GetString();
 
         var device = await _dbContext.Devices.FirstOrDefaultAsync(d => d.MacId == macId);
         if (device != null)
         {
-            throw new Exception($"A device with file named '{device.FileName}' already exists. Please rename your file or delete the existing one.");
+            throw new Exception($"A device with name '{device.Name}' already exists. Please rename your file or delete the existing one.");
         }
         else
         {
@@ -495,12 +482,11 @@ public class DeviceService : IDeviceService
                 Type = root.GetProperty("Type").GetString(),
                 Status = root.GetProperty("Status").GetString(),
                 Connectivity = root.GetProperty("Connectivity").GetString(),
-                FileName = jsonFileName,
                 LastUpdated = lastUpdated,
-                StaticPropertiesJson = staticProps.GetRawText(),
-                DynamicPropertiesJson = dynamicProps.GetRawText(),
-                TopLevelObservablesJson = root.TryGetProperty("topLevelObservables", out var topObs2) ? topObs2.GetRawText() : "{}",
-                DynamicObservablesJson = root.TryGetProperty("dynamicObservables", out var dynObs2) ? dynObs2.GetRawText() : "{}"
+                StaticProperties = staticProps.GetRawText(),
+                DynamicProperties = dynamicProps.GetRawText(),
+                TopLevelObservables = root.TryGetProperty("topLevelObservables", out var topObs2) ? topObs2.GetRawText() : "{}",
+                DynamicObservables = root.TryGetProperty("dynamicObservables", out var dynObs2) ? dynObs2.GetRawText() : "{}"
             };
             await _dbContext.Devices.AddAsync(device);
         }

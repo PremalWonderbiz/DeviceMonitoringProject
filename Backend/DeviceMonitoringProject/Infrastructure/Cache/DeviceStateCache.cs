@@ -35,6 +35,7 @@ namespace Infrastructure.Cache
         //private readonly string _dataDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Infrastructure", "Data");
         private readonly ILogger<DeviceStatePersistenceService> _logger;
         private readonly ConcurrentDictionary<string, DeviceState> _deviceMap = new();
+        private readonly Dictionary<string, string> _fileMap = new();
         private readonly ConcurrentDictionary<string, SemaphoreSlim> _locks = new();
         private readonly bool _useDatabase;
         private readonly IServiceProvider _serviceProvider;
@@ -78,14 +79,13 @@ namespace Infrastructure.Cache
                     ["MacId"] = device.MacId,
                     ["Name"] = device.Name,
                     ["Type"] = device.Type,
-                    ["FileName"] = device.FileName,
                     ["Status"] = device.Status,
                     ["Connectivity"] = device.Connectivity,
                     ["LastUpdated"] = device.LastUpdated,
-                    ["staticProperties"] = JsonNode.Parse(device.StaticPropertiesJson),
-                    ["dynamicProperties"] = JsonNode.Parse(device.DynamicPropertiesJson),
-                    ["topLevelObservables"] = JsonNode.Parse(device.TopLevelObservablesJson),
-                    ["dynamicObservables"] = JsonNode.Parse(device.DynamicObservablesJson)
+                    ["staticProperties"] = JsonNode.Parse(device.StaticProperties),
+                    ["dynamicProperties"] = JsonNode.Parse(device.DynamicProperties),
+                    ["topLevelObservables"] = JsonNode.Parse(device.TopLevelObservables),
+                    ["dynamicObservables"] = JsonNode.Parse(device.DynamicObservables)
                 };
 
                 _deviceMap[device.MacId] = new DeviceState
@@ -108,6 +108,7 @@ namespace Infrastructure.Cache
                     {
                         var macId = state.Root["MacId"]!.ToString();
                         _deviceMap[macId] = state;
+                        _fileMap[macId] = Path.GetFileName(file);
                     }
                 }
                 catch (Exception ex)
@@ -201,7 +202,7 @@ namespace Infrastructure.Cache
                 if (device != null)
                 {
                     //device.StaticPropertiesJson = state.Root["staticProperties"]!.ToJsonString();
-                    device.DynamicPropertiesJson = state.Root["dynamicProperties"]!.ToJsonString();
+                    device.DynamicProperties = state.Root["dynamicProperties"]!.ToJsonString();
                     device.Status = state.Root["Status"]?.ToString();
                     device.Connectivity = state.Root["Connectivity"]?.ToString();
                     //device.TopLevelObservablesJson = state.Root["topLevelObservables"]!.ToJsonString();
@@ -220,8 +221,8 @@ namespace Infrastructure.Cache
                 state.LastUpdated = DateTime.UtcNow;
                 state.Root["LastUpdated"] = state.LastUpdated;
 
-                var fileName = state.Root["FileName"]!.ToString();
-                var path = Path.Combine(_dataDirectory, fileName!);
+                _fileMap.TryGetValue(kvp.Key, out var fileName);
+                var path = Path.Combine(_dataDirectory, fileName??"");
                 if (File.Exists(path))
                 {
                     await File.WriteAllTextAsync(path, state.Root.ToJsonString(new JsonSerializerOptions

@@ -1,11 +1,10 @@
 {
-  "FileName": "Mobile.json",
   "Name": "Mobile",
   "Type": "Personal Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "F0:9F:C2:12:34:56",
   "Connectivity": "Medium",
-  "LastUpdated": "2025-08-20T10:57:49.8357977Z",
+  "LastUpdated": "2025-08-26T07:12:53.3397172Z",
   "staticProperties": {
     "Device Specifications": {
       "Operating System": {
@@ -74,66 +73,66 @@
   "dynamicProperties": {
     "Device Health": {
       "Battery Status": {
-        "Level": "97%",
-        "Charging State": "Discharging",
-        "Temperature": 69.03,
-        "Health": "Poor"
+        "Level": "59%",
+        "Charging State": "Not Charging",
+        "Temperature": 80.81,
+        "Health": "Average"
       },
-      "CPU Usage": "77%",
+      "CPU Usage": "71%",
       "RAM Usage": {
-        "Used": "5.3 GB",
-        "Free": "4.3 GB"
+        "Used": "8.6 GB",
+        "Free": "4.7 GB"
       },
       "Storage Usage": {
-        "Used": "9.3 GB",
-        "Free": "7.6 GB"
+        "Used": "5.4 GB",
+        "Free": "0.8 GB"
       },
       "Device Temperature": {
-        "CPU": 94.18,
-        "Battery": 49.39
+        "CPU": 15.41,
+        "Battery": 49.47
       },
-      "Uptime": "1 days, 17 hrs"
+      "Uptime": "9 days, 17 hrs"
     },
     "Network Activity": {
       "Current Network": {
-        "Connection Type": "Wi-Fi",
+        "Connection Type": "Mobile",
         "SSID": "Office_Network_5G",
-        "IP Address": "192.168.132.80",
-        "Signal Strength": "-71 dBm",
-        "MAC Address": "BC:4C:E4:9C:08:56"
+        "IP Address": "192.168.105.163",
+        "Signal Strength": "-69 dBm",
+        "MAC Address": "CC:2B:1F:43:F5:62"
       },
       "Data Usage": {
         "Today": {
-          "Download": "3.4 GB",
-          "Upload": "6.3 GB"
+          "Download": "7.5 GB",
+          "Upload": "1.0 GB"
         },
         "Monthly": {
-          "Download": "6.7 GB",
-          "Upload": "1.9 GB"
+          "Download": "4.9 GB",
+          "Upload": "0.8 GB"
         }
       },
       "Connected Apps": [
-        86,
-        74,
-        82,
-        26,
-        19
+        62,
+        43,
+        12,
+        10,
+        40
       ]
     },
     "App Activity": {
       "Active Apps": [
-        91,
-        91,
-        59,
-        7,
-        97
+        78,
+        69,
+        2,
+        11,
+        53
       ],
       "Battery Usage by Apps": [
-        45,
-        18,
-        5,
-        62,
-        94
+        77,
+        70,
+        42,
+        64,
+        61
       ]
     }
   },

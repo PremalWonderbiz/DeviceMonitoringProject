@@ -3,9 +3,9 @@ import { baseURL } from "@/utils/helpervariables";
 import axios from "axios";
 
 //get property panel data for a device
-export const getPropertyPanelData = async (currentDeviceFileName: any) => {
+export const getPropertyPanelData = async (currentDeviceMacId: any) => {
   try {
-    const response = await axios.get(`${baseURL}/api/Devices/getPropertyPanelData/${currentDeviceFileName}`);
+    const response = await axios.get(`${baseURL}/api/Devices/getPropertyPanelData/${currentDeviceMacId}`);
     return response;
   } catch (error : any) {
      handleAxiosError(error);
