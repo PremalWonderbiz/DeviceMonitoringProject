@@ -21,35 +21,39 @@ namespace API.Controllers
         public async Task<IActionResult> SendDeviceUpdate([FromBody] JsonElement json)
         {
             var rawJson = json.GetRawText();
-            await _hubContext.Clients.All.SendAsync("ReceiveUpdate", json);
+            await _hubContext.Clients.All.SendAsync("ReceiveUpdate", rawJson);
             return Ok();
         }
 
         [HttpPost("alarm-update")]
-        public async Task<IActionResult> SendAlarmUpdate([FromBody] string serializedData)
+        public async Task<IActionResult> SendAlarmUpdate([FromBody] JsonElement json)
         {
-            await _hubContext.Clients.All.SendAsync("ReceiveMainPageUpdates", serializedData);
+            var rawJson = json.GetRawText();
+            await _hubContext.Clients.All.SendAsync("ReceiveMainPageUpdates", rawJson);
             return Ok();
         }
 
         [HttpPost("device-group-update/{deviceId}")]
-        public async Task<IActionResult> SendDeviceGroupUpdate(string deviceId, [FromBody] string json)
+        public async Task<IActionResult> SendDeviceGroupUpdate(string deviceId, [FromBody] JsonElement json)
         {
-            await _hubContext.Clients.Group($"device-{deviceId}").SendAsync($"DeviceUpdate-{deviceId}", json);
+            var rawJson = json.GetRawText();
+            await _hubContext.Clients.Group($"device-{deviceId}").SendAsync($"DeviceUpdate-{deviceId}", rawJson);
             return Ok();
         }
 
         [HttpPost("alarmPanel-alarm-update")]
-        public async Task<IActionResult> SendAlarmPanelGroupUpdate(string alarmId, [FromBody] string json)
+        public async Task<IActionResult> SendAlarmPanelGroupUpdate([FromBody] JsonElement json)
         {
-            await _hubContext.Clients.Group($"AlarmPanelGroup").SendAsync("ReceiveAlarmPanelUpdates", json);
+            var rawJson = json.GetRawText();
+            await _hubContext.Clients.Group($"AlarmPanelGroup").SendAsync("ReceiveAlarmPanelUpdates", rawJson);
             return Ok();
         }
         
         [HttpPost("propertyPanel-alarm-update/{deviceId}")]
-        public async Task<IActionResult> SendAlarmGroupUpdate(string deviceId, [FromBody] string json)
+        public async Task<IActionResult> SendAlarmGroupUpdate(string deviceId, [FromBody] JsonElement json)
         {
-            await _hubContext.Clients.Group($"Alarm-{deviceId}").SendAsync("ReceivePropertyPanelAlarmUpdates", json);
+            var rawJson = json.GetRawText();
+            await _hubContext.Clients.Group($"Alarm-{deviceId}").SendAsync("ReceivePropertyPanelAlarmUpdates", rawJson);
             return Ok();
         }
     }

@@ -79,7 +79,7 @@ export default function Home() {
   }, []);
 
   // Handle incoming SignalR updates for devices top level data
-  const handleUpdate = useCallback((msg: string) => {
+  const handleUpdate = useCallback((msg: string) => {    
     const rawDevices: DeviceUpdateMessage[] = JSON.parse(msg);
     console.log("WebSocket update received", rawDevices);
 

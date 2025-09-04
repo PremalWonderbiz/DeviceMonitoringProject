@@ -38,19 +38,13 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": {
-                "type": "string"
-              }
+              "schema": { }
             },
             "text/json": {
-              "schema": {
-                "type": "string"
-              }
+              "schema": { }
             },
             "application/*+json": {
-              "schema": {
-                "type": "string"
-              }
+              "schema": { }
             }
           }
         },
@@ -79,19 +73,13 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": {
-                "type": "string"
-              }
+              "schema": { }
             },
             "text/json": {
-              "schema": {
-                "type": "string"
-              }
+              "schema": { }
             },
             "application/*+json": {
-              "schema": {
-                "type": "string"
-              }
+              "schema": { }
             }
           }
         },
@@ -107,31 +95,16 @@
         "tags": [
           "Realtime"
         ],
-        "parameters": [
-          {
-            "name": "alarmId",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": {
-                "type": "string"
-              }
+              "schema": { }
             },
             "text/json": {
-              "schema": {
-                "type": "string"
-              }
+              "schema": { }
             },
             "application/*+json": {
-              "schema": {
-                "type": "string"
-              }
+              "schema": { }
             }
           }
         },
@@ -160,19 +133,13 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": {
-                "type": "string"
-              }
+              "schema": { }
             },
             "text/json": {
-              "schema": {
-                "type": "string"
-              }
+              "schema": { }
             },
             "application/*+json": {
-              "schema": {
-                "type": "string"
-              }
+              "schema": { }
             }
           }
         },

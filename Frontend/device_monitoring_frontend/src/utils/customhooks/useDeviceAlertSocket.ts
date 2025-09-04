@@ -13,19 +13,20 @@ export function useDeviceAlertSocket(deviceId : any,onUpdate: (data: any) => voi
       if (!conn) {
         console.warn("SignalR connection not available");
         return;
+      }else{
+        console.log("SignalR connection obtained");
+        console.log(`Subscribing to '${connMethodName}'`);
+        try {
+          if(connMethodName == "ReceiveAlarmPanelUpdates")
+              await conn.invoke("JoinAlarmPanelGroup", "AlarmPanelGroup");
+          else if(connMethodName == "ReceivePropertyPanelAlarmUpdates")
+              await conn.invoke("JoinPropertyPanelGroup", deviceId);
+        } catch (err) {
+          console.log("JoinDeviceGroup failed:", err);
+        }
+        conn.on(connMethodName, handler);
       }
 
-      console.log("SignalR connection obtained");
-      console.log(`Subscribing to '${connMethodName}'`);
-      try {
-        if(connMethodName == "ReceiveAlarmPanelUpdates")
-            await conn.invoke("JoinAlarmPanelGroup", "AlarmPanelGroup");
-        else if(connMethodName == "ReceivePropertyPanelAlarmUpdates")
-            await conn.invoke("JoinPropertyPanelGroup", deviceId);
-      } catch (err) {
-        console.log("JoinDeviceGroup failed:", err);
-      }
-      conn.on(connMethodName, handler);
     };
 
     setupConnection();

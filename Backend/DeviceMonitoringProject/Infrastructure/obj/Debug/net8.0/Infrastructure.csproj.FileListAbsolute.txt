@@ -56,3 +56,5 @@ C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backe
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Infrastructure.runtimeconfig.json
+D:\Study\Device Monitoring Project\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
