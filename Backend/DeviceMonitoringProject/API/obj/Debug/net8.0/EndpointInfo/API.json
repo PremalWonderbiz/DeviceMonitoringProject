@@ -78,6 +78,18 @@
         }
       }
     },
+    "/api/Devices/allMetadata": {
+      "post": {
+        "tags": [
+          "Devices"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Devices/refreshCache/{input}": {
       "post": {
         "tags": [

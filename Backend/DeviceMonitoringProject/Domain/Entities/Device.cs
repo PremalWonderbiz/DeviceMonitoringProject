@@ -30,6 +30,7 @@ namespace Domain.Entities
         public string DynamicProperties { get; set; } = "{}";
         public string TopLevelObservables { get; set; } = "{}";
         public string DynamicObservables { get; set; } = "{}";
+
     }
 
 }

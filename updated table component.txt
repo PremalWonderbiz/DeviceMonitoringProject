@@ -1,0 +1,226 @@
+.tableWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  max-height: 520px;
+  overflow: auto;
+
+  /* Reserve scrollbar space to avoid layout shift */
+  scrollbar-gutter: stable both-edges;
+
+  /* Scrollbar styling (matches your old body scrollbar) */
+  &::-webkit-scrollbar {
+    width: 3px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    transition: background-color 0.3s;
+    border-radius: 25px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(31, 30, 30, 0.3);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #5e5e5e;
+  }
+  &:hover::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+  }
+}
+
+/* Main table */
+.table {
+  width: 100%;
+  border-collapse: separate; /* changed */
+  border-spacing: 0;         /* ensures seamless look */
+  font-family: Arial, Helvetica, sans-serif;
+  table-layout: fixed;
+}
+
+.table thead th {
+  border-bottom: 1px solid #ddd;
+  background-clip: padding-box; /* avoids alias gaps */
+}
+
+.table tbody td {
+  border-top: 1px solid #ddd;
+  background-clip: padding-box;
+}
+
+.table thead {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: white;
+  /* optional subtle shadow to distinguish */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+/* Each header cell */
+.header {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  background-color: white;
+  color: black;
+  height: 40px;
+  cursor: pointer;
+  font-weight: bold;
+  min-width: 180px;
+  box-sizing: border-box;
+}
+
+.sortIcon {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Data cells */
+.cell {
+  border: 1px solid #ddd;
+  padding: 8px;
+  min-width: 180px;
+  height: 50px;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+
+/* Highlight states */
+.highlightedCell {
+  font-weight: bold;
+}
+.highlightedRow {
+  position: relative;
+  background-color: #ddd !important;
+}
+
+.highlightedRow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid #aba80a;
+  pointer-events: none;
+//   box-sizing: border-box;
+}
+
+/* Row appearance */
+.row:nth-child(even) {
+  background-color: #fbfbfb;
+}
+.row:hover {
+  background-color: #ddd;
+}
+.rowSelected {
+  background-color: #ddd !important;
+  border: 2px solid #696464 !important;
+}
+
+/* Table header no longer separate, so this class stays empty (safe cleanup placeholder) */
+.tableHeader {}
+
+/* Table body no longer separate div, but we keep this to not break imports */
+.tableBody {}
+
+
+
+
+
+import React, { useEffect, useMemo, useState } from "react";
+import { useReactTable, getCoreRowModel, getSortedRowModel, flexRender, ColumnDef, SortingState, } from "@tanstack/react-table";
+import styles from "@/styles/scss/Table.module.scss";
+import TableRow from "@/components/customcomponents/Table/TableRow";
+import { ArrowDown, ArrowUp } from "lucide-react";
+import Pagination from "../Pagination";
+import { capitalizeFirstLetter, formatDateTime } from "@/utils/helperfunctions";
+
+const TableComponent = ({ currentDeviceId, sorting, setSorting, refreshDeviceDataKey, updatedFieldsMap, currentPage, setCurrentPage, totalPages, pageSize, setPageSize, data, setIsPropertyPanelOpen }: any) => {
+  if (!data || data.length === 0)
+    return <p className="px-2">No data available.</p>;
+
+  // Columns definition
+  const columns = useMemo<ColumnDef<any, any>[]>(() => {
+    // const excludedFields = ['lastUpdated'];
+
+    return Object.keys(data[0])
+      // .filter((key) => !excludedFields.includes(key))
+      .map((key) => ({
+        accessorKey: key,
+        header: () => capitalizeFirstLetter(key),
+        cell: (info) => {
+          const val = info.getValue();
+          return key === 'lastUpdated' ? formatDateTime(val) : val;
+        },
+        enableSorting: true,
+      }));
+  }, [data]);
+
+  // Table instance
+  const table = useReactTable({
+    data,
+    columns,
+    manualSorting: true,
+    state: {
+      sorting,
+    },
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+  });
+
+  return (
+    <>
+      <div className={styles.tableWrapper}>
+  <table className={styles.table}>
+    <thead className={styles.tableHeader}>
+      {table.getHeaderGroups().map((headerGroup) => (
+        <tr key={headerGroup.id} className={styles.row}>
+          {headerGroup.headers.map((header) => {
+            const isSortable = header.column.getCanSort();
+            const sortDir = header.column.getIsSorted();
+            return (
+              <th
+                key={header.id}
+                className={styles.header}
+                onClick={isSortable ? header.column.getToggleSortingHandler() : undefined}
+              >
+                <div className={styles.sortIcon}>
+                  {flexRender(header.column.columnDef.header, header.getContext())}
+                  {isSortable &&
+                    (sortDir === "asc" ? (
+                      <ArrowUp size={16} />
+                    ) : sortDir === "desc" ? (
+                      <ArrowDown size={16} />
+                    ) : null)}
+                </div>
+              </th>
+            );
+          })}
+        </tr>
+      ))}
+    </thead>
+
+    <tbody className={styles.tableBody}>
+      {table.getRowModel().rows.map((row) => (
+        <TableRow
+          key={row.id}
+          currentDeviceId={currentDeviceId}
+          refreshDeviceDataKey={refreshDeviceDataKey}
+          updatedFieldsMap={updatedFieldsMap}
+          row={row}
+          setIsPropertyPanelOpen={setIsPropertyPanelOpen}
+        />
+      ))}
+    </tbody>
+  </table>
+</div>
+
+      <Pagination setPageSize={setPageSize} currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} pageSize={pageSize} pageSizeOptions={[3, 5, 10]} />
+    </>
+  );
+};
+
+export default TableComponent;

@@ -45,7 +45,7 @@ const SelectDevicesComboBox = ({ devices, selectedDevices, setSelectedDevices, m
       value={selectedMacIds}
       collection={collection}
       onValueChange={handleValueChange}
-      onInputValueChange={(details) => setSearchValue(details.inputValue)}
+      onInputValueChange={(details) => setSearchValue(details.inputValue) }
     >
       <Wrap gap="2">
         {selectedDevices.map((device: any) => (
@@ -88,7 +88,7 @@ const SelectDevicesComboBox = ({ devices, selectedDevices, setSelectedDevices, m
             backgroundColor="#fff"
             color="#000"
             padding="0.5rem 0rem"
-            zIndex="popover"
+            zIndex="2100"
           >
             <Combobox.ItemGroup>
               <Combobox.ItemGroupLabel padding={"0rem 1rem"} fontWeight={"bold"}>Devices</Combobox.ItemGroupLabel>

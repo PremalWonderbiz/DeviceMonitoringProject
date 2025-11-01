@@ -95,3 +95,17 @@ export const sampleTableData = [
 export const severities = [
   "Critical", "Warning", "Information"
 ]
+
+
+//React diagram related helper variables
+
+export const ICONS: Record<string, string> = {
+  "Networking Device": "📡",
+  "Personal Device": "💻",
+  "Peripheral Device": "🖨️",
+  "Smart Appliance": "❄️",
+  "Entertainment Device": "📺",
+  "Surveillance Device": "📷",
+  "Server": "🖥️",
+  "Microcomputer": "🍓",
+};

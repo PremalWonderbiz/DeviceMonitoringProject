@@ -4,10 +4,10 @@ import Sidebar from "@/components/customcomponents/SideBar";
 import PropertyPanel from "@/components/customcomponents/Propertypanel/PropertyPannel";
 import TableComponent from "@/components/customcomponents/Table/TableComponent";
 import AlarmPanel from "@/components/customcomponents/AlarmPanel/AlarmPanel";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useDevicesTopDataSocket } from "@/utils/customhooks/useDevicesTopDataSocket";
 import { BellRing, ListX, Repeat, UserPen } from "lucide-react";
-import { getAllDataRefereshedFromCache, getDeviceMetadataPaginatedandSorted, getDevicesNameMacIdList, getDevicesTopLevelData, getMacIdToFileNameMap, getSearchedDeviceMetadataPaginated } from "@/services/deviceservice";
+import { getAllDataRefereshedFromCache, getDeviceMetadata, getDeviceMetadataPaginatedandSorted, getDevicesNameMacIdList, getDevicesTopLevelData, getMacIdToFileNameMap, getSearchedDeviceMetadataPaginated } from "@/services/deviceservice";
 import styles from "@/styles/scss/Home.module.scss";
 import PopOver from "@/components/chakrauicomponents/PopOver";
 import { AlarmPopUp, ProfilePopUp } from "@/components/customcomponents/AlarmPanel/AlarmPanelContent";
@@ -17,7 +17,12 @@ import { SortingState } from "@tanstack/react-table";
 import { Tooltip } from "@/components/ui/tooltip";
 import FileUploader from "@/components/customcomponents/FileUploader";
 import AlarmToggle from "@/components/customcomponents/AlarmToggle";
-import { Alarm, AlarmResponse, Device, DeviceFileNameMap, DeviceNameMac, DeviceUpdateMessage, UpdatedFieldsMap } from "@/models/allInterfaces";
+import { Alarm, AlarmResponse, AppState, Device, DeviceFileNameMap, DeviceNameMac, DeviceUpdateMessage, UpdatedFieldsMap } from "@/models/allInterfaces";
+import { Button, Popover, Portal } from "@chakra-ui/react"
+import * as go from "gojs";
+import { useImmer } from "use-immer";
+import { ReactDiagramWrapper } from "@/components/customcomponents/ReactDiagramWrapper";
+import { formatDateTime, getIcon } from "@/utils/helperfunctions";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +36,13 @@ const geistMono = Geist_Mono({
 
 export default function Home() {
   const [deviceData, setDeviceData] = useState<Device[]>([]);
+  const [state, updateState] = useImmer<AppState>({
+    devices: [],
+    nodeDataArray: [],
+    linkDataArray: [],
+    modelData: { canRelink: false },
+    skipsDiagramUpdate: false,
+  });
   // const [deviceFileNames, setDeviceFileNames] = useState<DeviceFileNameMap>({});
   const initialTabState = "Health"; // Default active tab
   const [activeTab, setActiveTab] = useState(initialTabState);
@@ -56,6 +68,7 @@ export default function Home() {
   const justRefreshedRef = useRef(false);
   const pendingHighlightRef = useRef<UpdatedFieldsMap | null>(null);
   const searchInputTimeoutRef = useRef<any>(null);
+  const [open, setOpen] = useState(false)
 
 
   useEffect(() => {
@@ -79,7 +92,7 @@ export default function Home() {
   }, []);
 
   // Handle incoming SignalR updates for devices top level data
-  const handleUpdate = useCallback((msg: string) => {    
+  const handleUpdate = useCallback((msg: string) => {
     const rawDevices: DeviceUpdateMessage[] = JSON.parse(msg);
     console.log("WebSocket update received", rawDevices);
 
@@ -135,6 +148,22 @@ export default function Home() {
         //   return prevDevices;
         // }
 
+        updateState((draft) => {
+          // 1️⃣ Update only affected devices
+          draft.devices.forEach((device) => {
+            if (!updatedMacIds.includes(device.macId)) return;
+
+            const changes = updatedMap[device.macId];
+            const updatedDevice = updatedDevices.find((d) => d.macId === device.macId);
+            if (!updatedDevice) return;
+
+            if (changes.includes("status")) device.status = updatedDevice.status;
+            if (changes.includes("connectivity")) device.connectivity = updatedDevice.connectivity;
+            if (changes.includes("lastUpdated")) device.lastUpdated = updatedDevice.lastUpdated;
+          });
+
+
+        });
         if (justRefreshedRef.current) {
           setTimeout(() => {
             setUpdatedFieldsMap(updatedMap);
@@ -195,7 +224,6 @@ export default function Home() {
     });
 
   }, [sorting, currentPage, searchInput]);
-
 
   useEffect(() => {
     return () => {
@@ -346,6 +374,228 @@ export default function Home() {
     }
   };
 
+  function createDiagram(diagram: go.Diagram) {
+    const $ = go.GraphObject.make;
+
+    // Basic setup
+    diagram.initialContentAlignment = go.Spot.Center;
+    diagram.initialAutoScale = go.Diagram.Uniform;
+    diagram.contentAlignment = go.Spot.Center;
+    diagram.layout = $(go.TreeLayout, {
+      angle: 90,
+      layerSpacing: 80,
+      alignment: go.TreeLayout.AlignmentCenterChildren,
+    });
+
+    diagram.toolManager.hoverDelay = 200;
+
+    /* --------------------------- Group Template --------------------------- */
+    diagram.groupTemplate = $(
+      go.Group,
+      "Auto",
+      {
+        layout: $(go.GridLayout, {
+          wrappingColumn: 4,
+          cellSize: new go.Size(130, 100),
+          spacing: new go.Size(30, 30),
+          alignment: go.GridLayout.Position,
+        }),
+        background: "transparent",
+      },
+      // Outer rounded rectangle background
+      $(
+        go.Shape,
+        "RoundedRectangle",
+        {
+          fill: "#f9fafb",
+          stroke: "#cbd5e1",
+          strokeWidth: 2,
+        }
+      ),
+      // Main vertical stack panel (Title + Placeholder)
+      $(
+        go.Panel,
+        "Vertical",
+        { margin: 10 },
+        // 🏷️ Group Title
+        $(
+          go.TextBlock,
+          {
+            font: "bold 14px Inter, sans-serif",
+            stroke: "#334155",
+            margin: new go.Margin(5, 0, 10, 0),
+            alignment: go.Spot.Center,
+            editable: false,
+          },
+          new go.Binding("text")
+        ),
+        // Child Nodes Placeholder
+        $(go.Placeholder, { padding: 20 })
+      )
+    );
+
+    /* --------------------------- Server Node --------------------------- */
+    diagram.nodeTemplateMap.add(
+      "server",
+      $(
+        go.Node,
+        "Auto",
+        {
+          isShadowed: true,
+          shadowBlur: 10,
+          shadowColor: "rgba(0,0,0,0.15)"
+        },
+        $(go.Shape, "RoundedRectangle", {
+          fill: "#e2e8f0",
+          stroke: "#334155",
+          strokeWidth: 2,
+        }),
+        $(go.TextBlock, {
+          margin: 10,
+          font: "bold 14px Inter, sans-serif",
+          stroke: "#1e293b",
+        }, new go.Binding("text", "text"))
+      )
+    );
+
+    /* --------------------------- Device Node --------------------------- */
+    function makeKV(label: string, field: string) {
+      return $(
+        go.Panel,
+        "Horizontal",
+        { margin: new go.Margin(2, 0, 0, 0) },
+        $(go.TextBlock, label, {
+          font: "11px Inter, sans-serif",
+          stroke: "#475569",
+          margin: new go.Margin(0, 4, 0, 0),
+        }),
+        $(go.TextBlock, {
+          font: "11px Inter, sans-serif",
+          stroke: "#334155",
+          wrap: go.TextBlock.None,
+        }, new go.Binding("text", field))
+      );
+    }
+
+    diagram.nodeTemplate = $(
+      go.Node,
+      "Spot",
+      { margin: 6, width: 100, height: 88, cursor: "pointer" },
+      $(
+        go.Panel,
+        "Vertical",
+        $(go.Shape, "RoundedRectangle",
+          {
+            fill: "white",
+            strokeWidth: 2,
+            desiredSize: new go.Size(80, 52),
+          },
+          new go.Binding("stroke", "status", (s) =>
+            s === "Online" ? "#16a34a" : "#dc2626"
+          ),
+        ),
+        $(go.TextBlock, { font: "18px sans-serif", stroke: "#475569" },
+          new go.Binding("text", "icon")),
+        $(go.TextBlock, {
+          font: "11px Inter, sans-serif",
+          stroke: "#1e293b",
+          margin: 2,
+        }, new go.Binding("text", "text"))
+      ),
+
+      // Status LED
+      $(go.Shape, "Circle", {
+        alignment: go.Spot.TopRight,
+        alignmentFocus: go.Spot.TopRight,
+        desiredSize: new go.Size(12, 12),
+        stroke: "#f1f5f9",
+        strokeWidth: 1.5,
+      }, new go.Binding("fill", "status", (s) =>
+        s === "Online" ? "#22c55e" : "#ef4444"
+      )),
+
+      // Tooltip
+      {
+        toolTip: $(
+          go.Adornment,
+          "Auto",
+          $(go.Shape, { fill: "#f9fafb", stroke: "#cbd5e1", strokeWidth: 1 }),
+          $(
+            go.Panel,
+            "Vertical",
+            { padding: 8, defaultAlignment: go.Spot.Left },
+            $(go.TextBlock, "Device Info", {
+              margin: new go.Margin(0, 0, 6, 0),
+              font: "bold 12px Inter, sans-serif",
+              stroke: "#1e293b",
+            }),
+            makeKV("Type:", "type"),
+            makeKV("MAC:", "macId"),
+            makeKV("Connectivity:", "connectivity"),
+            makeKV("Last Updated:", "lastUpdated")
+          )
+        ),
+      }
+    );
+
+    /* --------------------------- Link Template --------------------------- */
+    diagram.linkTemplate = $(
+      go.Link,
+      { routing: go.Link.AvoidsNodes, curve: go.Link.JumpGap, corner: 5 },
+      $(go.Shape, { strokeWidth: 2, stroke: "#475569" }),
+      $(go.Shape, { toArrow: "Standard", fill: "#475569" })
+    );
+  }
+
+  const handleModelChange = useCallback((e: any) => {
+    // console.log(e);
+  }, []);
+  useEffect(() => {
+    const fetchAllDeviceData = async () => {
+      const response = await getDeviceMetadata();
+      if (!response)
+        console.log("Network response was not ok");
+
+      if (response && response.data) {
+        updateState(draft => {
+          draft.devices = response.data.data;
+        });
+      }
+    };
+
+    fetchAllDeviceData();
+  }, []);
+
+  const diagramData = useMemo(() => {
+    const nodes: go.ObjectData[] = [
+      { key: 0, text: "Monitoring Server", category: "server" },
+      { key: 1, text: "Devices", isGroup: true },
+      ...state.devices.map((d, i) => ({
+        key: i + 10,
+        text: d.name,
+        status: d.status,
+        connectivity: d.connectivity,
+        type: d.type,
+        macId: d.macId,
+        lastUpdated: formatDateTime(d.lastUpdated),
+        icon: getIcon(d.type),
+        parent: 1,
+      })),
+    ];
+    const links: go.ObjectData[] = [{ from: 0, to: 1 }];
+    return { nodes, links };
+  }, [state.devices]);
+
+  useEffect(() => {
+    console.log(diagramData);
+
+    updateState((draft) => {
+      draft.nodeDataArray = diagramData.nodes;
+      draft.linkDataArray = diagramData.links;
+    });
+  }, [diagramData, updateState]);
+
+
   return (
     <div>
       <div className={styles.upperNav}>
@@ -392,6 +642,73 @@ export default function Home() {
             <input onChange={(event: any) => { changeSearchInput(event.target.value) }} className={styles.mainPageSearchInput} type="search" placeholder="Search..." />
             <div className={styles.mainPageIcons}>
               <div>
+                <Popover.Root closeOnInteractOutside={false} open={open} onOpenChange={(e) => setOpen(e.open)} positioning={{ placement: "bottom-end" }}>
+                  <Popover.Trigger asChild>
+                    {/* <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Clear sorting</span>}> */}
+                    <Button size="sm" variant="outline" style={{ padding: "5px 15px", height: "auto", backgroundColor: "#1e1e1e", color:"white" }} >
+                      Visualize Devices
+                    </Button>
+                    {/* </Tooltip> */}
+
+                  </Popover.Trigger>
+                  <Portal>
+                    <Popover.Positioner>
+                      <Popover.Content style={{
+                        width: "800px",
+                        height: "1000px",
+                        overflow: "auto",
+                      }} >
+                        <Popover.Body>
+                          <div
+                            style={{
+                              width: "full",
+                              height: "100%",
+                            }}
+                          >
+                            <div style={{position:"absolute", right:"0", top:"0", padding:"10px 15px", zIndex:2000}}>
+                              <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Close</span>}>
+                              <button onClick={() => setOpen(false)} style={{fontWeight:"normal", cursor:"pointer", fontSize : "20px"}}>X</button>
+                              </Tooltip>
+                            </div>
+                            {open && (
+                              <ReactDiagramWrapper
+                                nodeDataArray={state.nodeDataArray}
+                                linkDataArray={state.linkDataArray}
+                                modelData={state.modelData}
+                                skipsDiagramUpdate={state.skipsDiagramUpdate}
+                                onModelChange={handleModelChange}
+                                onInitDiagram={createDiagram}
+                                onDiagramEvent={(e: go.DiagramEvent) => {
+                                  const name = e.name;
+                                  switch (name) {
+                                    case 'ChangedSelection': {
+                                      const sel = e.subject.first();
+                                      if (sel instanceof go.Node) {
+                                        const data = sel.data;
+
+                                        // Example conditions — adjust based on your model
+                                        if (data?.macId) {
+                                          console.log('Device node selected:', data);
+                                          openPropertypanel(data.macId);
+                                        }
+                                      }
+                                      break;
+                                    }
+                                    default:
+                                      break;
+                                  }
+                                }}
+
+                              />
+                            )}
+                          </div>
+                        </Popover.Body>
+                      </Popover.Content>
+                    </Popover.Positioner>
+                  </Portal>
+                </Popover.Root>
+              </div>
+              <div>
                 <AlarmToggle />
               </div>
               <div className={""} >
@@ -415,7 +732,7 @@ export default function Home() {
           </div>
           {(deviceData && deviceData.length > 0) &&
             <Sidebar zIndex="zIndex200" openIconMsg={"Open Property Panel"} closeIconMsg={"Close Property Panel"} position="right" isOpen={isPropertyPanelOpen} setIsOpen={setIsPropertyPanelOpen} closeSidebar={closePropertyPanel}>
-              {isPropertyPanelOpen && <PropertyPanel  devicesNameMacList={devicesNameMacList} setCurrentDeviceId={setCurrentDeviceId}  setIsAlarmPanelOpen={setIsAlarmPanelOpen} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} />}
+              {isPropertyPanelOpen && <PropertyPanel devicesNameMacList={devicesNameMacList} setCurrentDeviceId={setCurrentDeviceId} setIsAlarmPanelOpen={setIsAlarmPanelOpen} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} activeTab={activeTab} setActiveTab={setActiveTab} currentDeviceId={currentDeviceId} />}
             </Sidebar>}
         </div>
       </div>

@@ -13,6 +13,7 @@ using Application.Interface;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Nodes;
 using Infrastructure.Persistence;
+using System.Collections.Specialized;
 
 namespace Infrastructure.Services;
 
@@ -537,4 +538,16 @@ public class DeviceService : IDeviceService
         return rules;
     }
 
+    public DeviceMetadataPaginatedandSortedDto GetAllDeviceMetadata()
+    {
+        var metaData = _devices.AsQueryable();
+
+
+
+        return new DeviceMetadataPaginatedandSortedDto()
+        {
+            TotalCount = metaData.Count(),
+            DeviceMetadata = metaData.ToList()
+        };
+    }
 }

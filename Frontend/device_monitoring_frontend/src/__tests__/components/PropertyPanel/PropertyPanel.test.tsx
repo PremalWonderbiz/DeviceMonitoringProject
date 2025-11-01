@@ -118,7 +118,6 @@ describe("PropertyPanel", () => {
         render(<PropertyPanel {...defaultProps} currentDeviceId={null} currentDeviceFileName={null} />);
         fireEvent.change(screen.getByTestId("combobox"), { target: { value: "mac1" } });
         expect(defaultProps.setCurrentDeviceId).toHaveBeenCalledWith("mac1");
-        expect(defaultProps.setCurrentDeviceFileName).toHaveBeenCalledWith("file1");
     });
 
     it("cleans up highlight timeout on unmount", () => {

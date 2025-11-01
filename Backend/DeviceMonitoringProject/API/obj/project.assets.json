@@ -6587,23 +6587,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Prem\\.nuget\\packages\\": {},
+    "C:\\Users\\Premal Kadam\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\Prem\\.nuget\\packages\\",
-      "outputPath": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\obj\\",
+      "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\Premal Kadam\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Prem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Premal Kadam\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6612,23 +6612,24 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Application.csproj": {
-              "projectPath": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Application.csproj"
+            "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Application.csproj": {
+              "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Application.csproj"
             },
-            "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Common\\Common.csproj": {
-              "projectPath": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Common\\Common.csproj"
+            "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Common\\Common.csproj": {
+              "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Common\\Common.csproj"
             },
-            "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj"
+            "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj"
             },
-            "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "D:\\Study\\Device Monitoring Project\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
@@ -6697,7 +6698,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

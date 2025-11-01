@@ -62,6 +62,28 @@ namespace API.Controllers
             });
         }
         
+        [HttpPost("allMetadata")]
+        public IActionResult GetDeviceMetadata()
+        {
+            var data = _deviceService.GetAllDeviceMetadata();
+
+            var formattedData = data.DeviceMetadata.Select(m => new DeviceTopLevelData
+            {
+                Name = m.Name,
+                Type = m.Type,
+                Status = m.Status,
+                MacId = m.MacId,
+                Connectivity = m.Connectivity,
+                LastUpdated = m.LastUpdated
+            }).ToList();
+
+            return Ok(new
+            {
+                totalCount = data.TotalCount,
+                data = formattedData
+            });
+        }
+        
         [HttpPost("refreshCache/{input}")]
         public async Task<IActionResult> GetRefreshedData(DeviceTopLevelSortOptions request, string input = "")
         {

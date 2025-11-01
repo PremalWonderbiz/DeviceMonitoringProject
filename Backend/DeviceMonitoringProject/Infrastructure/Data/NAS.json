@@ -4,7 +4,7 @@
   "Status": "Online",
   "MacId": "00:1B:44:11:3A:B7",
   "Connectivity": "Low",
-  "LastUpdated": "2025-09-04T05:55:08.9072537Z",
+  "LastUpdated": "2025-10-30T12:29:29.0312091Z",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "Synology DSM 7.2",
@@ -124,79 +124,79 @@
   "dynamicProperties": {
     "System Health": {
       "CPU Usage": {
-        "Load Percentage": "71%",
+        "Load Percentage": "34%",
         "Core Usage": [
-          20,
-          45,
           18,
-          67
+          33,
+          76,
+          53
         ]
       },
       "RAM Usage": {
-        "Used": "7.9 GB",
-        "Free": "1.1 GB",
-        "Swap Used": "9.7 GB"
+        "Used": "9.0 GB",
+        "Free": "1.4 GB",
+        "Swap Used": "6.0 GB"
       },
       "System Temperature": {
-        "CPU": 75.38,
-        "System Board": 53.72,
+        "CPU": 82.17,
+        "System Board": 70.67,
         "Drive Bays": [
-          76,
-          59,
-          68,
-          98
+          70,
+          57,
+          48,
+          47
         ]
       },
       "System Load Average": {
-        "1m": 0.2,
-        "5m": 1.01,
-        "15m": 0.77
+        "1m": 1.72,
+        "5m": 1.98,
+        "15m": 1.67
       },
-      "Uptime": "8 days, 16 hrs"
+      "Uptime": "5 days, 7 hrs"
     },
     "Network Activity": {
-      "Primary IP": "192.168.178.84",
+      "Primary IP": "192.168.238.217",
       "Interfaces": [
-        50,
-        40
+        43,
+        57
       ],
       "Connected Clients": [
-        49,
-        88
+        55,
+        10
       ]
     },
     "Service Status": {
       "Running Services": [
-        "SMB",
-        "Cloud Sync",
-        "Docker"
+        "Time Machine",
+        "NFS",
+        "SMB"
       ],
       "Service Health": {
-        "Docker": "Healthy",
-        "Cloud Sync": "Degraded",
-        "Time Machine": "Degraded"
+        "Docker": "Unhealthy",
+        "Cloud Sync": "Unhealthy",
+        "Time Machine": "Unhealthy"
       },
       "Disk Health": {
         "Status": "Critical",
-        "Last Checked": "2025-09-04T05:54:57.6751712Z",
+        "Last Checked": "2025-10-30T12:29:27.1680645Z",
         "SMART Reports": [
-          87,
-          84
+          10,
+          2
         ]
       },
       "Fan Status": {
         "Fan 1": {
-          "Speed": 1750,
-          "Status": "Critical"
+          "Speed": 1911,
+          "Status": "Normal"
         },
         "Fan 2": {
-          "Speed": 1553,
+          "Speed": 1117,
           "Status": "High"
         }
       },
       "Last Backup": {
         "Status": "Success",
-        "Timestamp": "2025-09-04T05:54:57.6751979Z"
+        "Timestamp": "2025-10-30T12:29:27.1680724Z"
       }
     }
   },

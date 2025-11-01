@@ -7,6 +7,7 @@ export interface Device {
   status: string;
   connectivity: string;
   lastUpdated: string; // ISO date string
+  type: string;
 }
 
 export interface DeviceUpdateMessage {
@@ -61,6 +62,17 @@ export interface MacIdToFileNameResponse {
 
 export interface DeviceNameMacListResponse {
   data: DeviceNameMac[];
+}
+
+// -------------------------
+// React Diagram interfaces
+// -------------------------
+export interface AppState {
+  devices: Device[];
+  nodeDataArray: go.ObjectData[];
+  linkDataArray: go.ObjectData[];
+  modelData: go.ObjectData;
+  skipsDiagramUpdate: boolean;
 }
 
 

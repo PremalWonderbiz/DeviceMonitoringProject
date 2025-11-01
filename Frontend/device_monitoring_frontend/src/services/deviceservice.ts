@@ -32,6 +32,15 @@ export const getDeviceMetadataPaginatedandSorted = async (pageNo : any, pageSize
   }
 };
 
+export const getDeviceMetadata = async () => {
+  try { 
+    const response = await axios.post(`${baseURL}/api/Devices/allMetadata`);
+    return response;
+  } catch (error : any) {
+     handleAxiosError(error);
+  }
+};
+
 export const getAllDataRefereshedFromCache = async (pageNo : any, pageSize : any, sortingState : any, input : any) => {
   try {
     (input == null || input == undefined || input == "") ? input = "undefined" : input = input;

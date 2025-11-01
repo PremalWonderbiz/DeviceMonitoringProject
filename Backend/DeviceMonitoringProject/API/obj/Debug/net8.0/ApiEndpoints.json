@@ -27,6 +27,16 @@
   },
   {
     "ContainingType": "API.Controllers.DevicesController",
+    "Method": "GetDeviceMetadata",
+    "RelativePath": "api/Devices/allMetadata",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.DevicesController",
     "Method": "GetDevicesNameMacIdList",
     "RelativePath": "api/Devices/getDevicesNameMacIdList",
     "HttpMethod": "GET",

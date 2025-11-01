@@ -1,3 +1,5 @@
+import { ICONS } from "./helpervariables";
+
 //function to capitalize first letter of the input text
 export function capitalizeFirstLetter(val: string) {
   return String(val).charAt(0).toUpperCase() + String(val).slice(1);
@@ -75,6 +77,9 @@ export function getCollapsedAncestorsToHighlight(
 
   return result;
 }
+
+//React diagram related helper functions
+export const getIcon = (type: string): string => ICONS[type] || "🔘";
 
 
 

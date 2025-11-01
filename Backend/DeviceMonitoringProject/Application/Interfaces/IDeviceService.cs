@@ -9,6 +9,8 @@ namespace Application.Interfaces
         public List<DeviceMetadata> GetAllDeviceMetadataPaginated(List<DeviceMetadata> metadata, int pageNumber = 1, int pageSize = 10);
 
         public DeviceMetadataPaginatedandSortedDto GetAllDeviceMetadataPaginatedandSorted(DeviceTopLevelSortOptions sortRequest, List<DeviceMetadata> filteredData = null);
+        
+        public DeviceMetadataPaginatedandSortedDto GetAllDeviceMetadata();
 
         public DeviceMetadataPaginatedandSortedDto GetSearchedDeviceMetadataPaginated(DeviceTopLevelSortOptions sortRequest, string input="");
 
