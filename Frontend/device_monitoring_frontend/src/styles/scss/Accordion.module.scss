@@ -2,6 +2,9 @@
 .accordion {
   width: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex : 1 1 auto;
 }
 
 .header {
@@ -25,6 +28,7 @@
   opacity: 0;
   transition: all 0.3s ease;
   padding-top: 0;
+  flex: 1 1 auto;
 }
 
 .open {

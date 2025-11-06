@@ -105,13 +105,13 @@ const PropertyPanel = ({ setCurrentDeviceId, devicesNameMacList, setIsAlarmPanel
             return renderSelectDeviceDropdown();
 
         return (
-            <div className="pt-2">
+            <div className={`${styles.propertyPanelContainer} pt-2 pb-2`}>
                 {/* <span className={`pl-2`}>{PropertyPanelData.name} : {PropertyPanelData.type}</span><br /> */}
                 <div className={`pl-2 ${styles.propertyPanelHeadingContainer}`}>
                     <span className={styles.deviceTitle}>{propertyPanelData?.name}</span>
                     <span className={styles.deviceSubTitle}>{propertyPanelData?.type}</span>
                 </div>
-                <div className="mt-2">
+                <div className={`mt-2 ${styles.propertyPanelMainContent}`}>
                     <AccordionStateProvider>
                         <Accordion keyPath={activeTab} isTabList={true} title={<TabList highlightedPaths={highlightedPaths} activeTab={activeTab} setActiveTab={changeActiveTab} />} defaultOpen={true} bgColor=''>
                             {(activeTab === "Static" && propertyPanelData?.staticProperties) ?
@@ -125,9 +125,9 @@ const PropertyPanel = ({ setCurrentDeviceId, devicesNameMacList, setIsAlarmPanel
     }
 
     return (
-        <div className=''>
+        < >
             {renderPropertyPanelData(propertyPanelData)}
-        </div>
+        </>
     );
 };
 

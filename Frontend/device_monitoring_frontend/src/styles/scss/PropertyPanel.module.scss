@@ -1,5 +1,16 @@
+.propertyPanelContainer{
+    height: calc(100vh - 122.781px);
+}
+
+.propertyPanelMainContent{
+    height: calc(100% - 59.6px);
+    display: flex;
+    flex-direction: column;
+}
+
 .propertyPanelTabContent {
-    max-height: 500px;
+    // max-height: 500px;
+    flex : 1 1 auto;
     overflow-y: auto;
 
     &:global(body)>& {
@@ -8,7 +19,7 @@
 
     // Hide scrollbar by default
     &::-webkit-scrollbar {
-        width: 5px;
+        width: 3px;
         background: transparent;
     }
 

@@ -42,6 +42,10 @@ export const ReactDiagramWrapper = (props: DiagramProps) => {
     const initDiagram = (): go.Diagram => {
         const diagram = new go.Diagram({
             "undoManager.isEnabled": true,
+            "toolManager.mouseWheelBehavior": go.WheelMode.Zoom,
+            allowHorizontalScroll: false,
+            allowVerticalScroll: true,
+            autoScrollRegion: 0, // disables auto-scrolling when dragging near edges
             model: new go.GraphLinksModel({
                 linkKeyProperty: "key",
                 // 👇 tell GoJS to use "parent" property for grouping
@@ -51,10 +55,26 @@ export const ReactDiagramWrapper = (props: DiagramProps) => {
             }),
         });
 
+        // Wait until layout completes so viewport bounds are correct
+        diagram.addDiagramListener("InitialLayoutCompleted", () => {
+            diagram.nodes.each(node => {
+                node.dragComputation = (part, newLoc) => {
+                    const vb = diagram.viewportBounds.copy(); // visible area in document coords
+                    const nb = part.actualBounds;
+
+                    // Clamp so node stays fully inside visible area
+                    const clampedX = Math.max(vb.x, Math.min(newLoc.x, vb.right - nb.width));
+                    const clampedY = Math.max(vb.y, Math.min(newLoc.y, vb.bottom - nb.height));
+
+                    return new go.Point(clampedX, clampedY);
+                };
+            });
+        });
+
         // 👇 Allow external customization (layouts, templates, etc.)
         if (props.onInitDiagram) {
             props.onInitDiagram(diagram);
-        } 
+        }
         else {
             // Default fallback template (if none provided)
             diagram.nodeTemplate = new go.Node('Auto')

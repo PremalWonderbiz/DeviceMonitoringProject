@@ -73,6 +73,7 @@ export interface AppState {
   linkDataArray: go.ObjectData[];
   modelData: go.ObjectData;
   skipsDiagramUpdate: boolean;
+  selectedDevice: Device | null;
 }
 
 

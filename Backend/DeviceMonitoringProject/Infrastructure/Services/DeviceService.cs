@@ -504,7 +504,7 @@ public class DeviceService : IDeviceService
 
         var filePath = Path.Combine(_dataDirectory, fileName);
         if (File.Exists(filePath))
-            throw new Exception($"A file named '{fileName}' already exists. Please rename your file or delete the existing one.");
+            throw new Exception($"A Device already exists. Please rename your file {fileName} or delete the existing one.");
 
         await File.WriteAllTextAsync(filePath, fileContent);
     }

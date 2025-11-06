@@ -6,8 +6,8 @@ import TableComponent from "@/components/customcomponents/Table/TableComponent";
 import AlarmPanel from "@/components/customcomponents/AlarmPanel/AlarmPanel";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useDevicesTopDataSocket } from "@/utils/customhooks/useDevicesTopDataSocket";
-import { BellRing, ListX, Repeat, UserPen } from "lucide-react";
-import { getAllDataRefereshedFromCache, getDeviceMetadata, getDeviceMetadataPaginatedandSorted, getDevicesNameMacIdList, getDevicesTopLevelData, getMacIdToFileNameMap, getSearchedDeviceMetadataPaginated } from "@/services/deviceservice";
+import { BellRing, ListX, Menu, Repeat, UserPen } from "lucide-react";
+import { getAlarmToggleValue, getAllDataRefereshedFromCache, getDeviceMetadata, getDeviceMetadataPaginatedandSorted, getDevicesNameMacIdList, getDevicesTopLevelData, getMacIdToFileNameMap, getSearchedDeviceMetadataPaginated, setAlarmToggleValue } from "@/services/deviceservice";
 import styles from "@/styles/scss/Home.module.scss";
 import PopOver from "@/components/chakrauicomponents/PopOver";
 import { AlarmPopUp, ProfilePopUp } from "@/components/customcomponents/AlarmPanel/AlarmPanelContent";
@@ -16,13 +16,13 @@ import { useDeviceAlertSocket } from "@/utils/customhooks/useDeviceAlertSocket";
 import { SortingState } from "@tanstack/react-table";
 import { Tooltip } from "@/components/ui/tooltip";
 import FileUploader from "@/components/customcomponents/FileUploader";
-import AlarmToggle from "@/components/customcomponents/AlarmToggle";
 import { Alarm, AlarmResponse, AppState, Device, DeviceFileNameMap, DeviceNameMac, DeviceUpdateMessage, UpdatedFieldsMap } from "@/models/allInterfaces";
-import { Button, Popover, Portal } from "@chakra-ui/react"
+import { Button, Input, Popover, Portal, Text } from "@chakra-ui/react"
 import * as go from "gojs";
 import { useImmer } from "use-immer";
 import { ReactDiagramWrapper } from "@/components/customcomponents/ReactDiagramWrapper";
 import { formatDateTime, getIcon } from "@/utils/helperfunctions";
+import Settings from "@/components/customcomponents/Settings";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +42,7 @@ export default function Home() {
     linkDataArray: [],
     modelData: { canRelink: false },
     skipsDiagramUpdate: false,
+    selectedDevice: null
   });
   // const [deviceFileNames, setDeviceFileNames] = useState<DeviceFileNameMap>({});
   const initialTabState = "Health"; // Default active tab
@@ -68,7 +69,9 @@ export default function Home() {
   const justRefreshedRef = useRef(false);
   const pendingHighlightRef = useRef<UpdatedFieldsMap | null>(null);
   const searchInputTimeoutRef = useRef<any>(null);
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [isDiagramView, setIsDiagramView] = useState(false);
+  const diagramRef = useRef<go.Diagram | null>(null);
 
 
   useEffect(() => {
@@ -353,6 +356,7 @@ export default function Home() {
     setIsPropertyPanelOpen(true);
     // setCurrentDeviceFileName(deviceFileNames[deviceId] || null);
     setCurrentDeviceId(deviceId);
+
   }
 
   const closePropertyPanel = () => {
@@ -360,6 +364,8 @@ export default function Home() {
     setCurrentDeviceId(null);
     setSelectedDevicePropertyPanel(null);
     // setCurrentDeviceFileName(null);
+
+    diagramRef.current?.clearSelection();
   }
 
   const getRefreshedData = async () => {
@@ -379,7 +385,7 @@ export default function Home() {
 
     // Basic setup
     diagram.initialContentAlignment = go.Spot.Center;
-    diagram.initialAutoScale = go.Diagram.Uniform;
+    diagram.autoScale = go.Diagram.Uniform;
     diagram.contentAlignment = go.Spot.Center;
     diagram.layout = $(go.TreeLayout, {
       angle: 90,
@@ -545,6 +551,8 @@ export default function Home() {
       $(go.Shape, { strokeWidth: 2, stroke: "#475569" }),
       $(go.Shape, { toArrow: "Standard", fill: "#475569" })
     );
+
+    diagramRef.current = diagram;
   }
 
   const handleModelChange = useCallback((e: any) => {
@@ -571,7 +579,7 @@ export default function Home() {
       { key: 0, text: "Monitoring Server", category: "server" },
       { key: 1, text: "Devices", isGroup: true },
       ...state.devices.map((d, i) => ({
-        key: i + 10,
+        key: d.macId,
         text: d.name,
         status: d.status,
         connectivity: d.connectivity,
@@ -595,9 +603,13 @@ export default function Home() {
     });
   }, [diagramData, updateState]);
 
+  const setDeviceView = () => {
+    setIsDiagramView(!isDiagramView);
+  };
+
 
   return (
-    <div>
+    <div className={styles.homeContainer}>
       <div className={styles.upperNav}>
         <div onMouseEnter={() => setIsAlarmPopOverOpen(true)} onMouseLeave={() => setIsAlarmPopOverOpen(false)}>
           <PopOver isOpen={isAlarmPopOverOpen}
@@ -631,7 +643,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='m-3'>
+      <div className={`${styles.subContainer} m-3`}>
         <Sidebar zIndex="zIndex300" openIconMsg={"Open Alarm Panel"} closeIconMsg={"Close Alarm Panel"} position="left" isOpen={isAlarmPanelOpen} setIsOpen={setIsAlarmPanelOpen} >
           {isAlarmPanelOpen && <AlarmPanel devicesNameMacList={devicesNameMacList} setSelectedDevicePropertyPanel={setSelectedDevicePropertyPanel} selectedDevicePropertyPanel={selectedDevicePropertyPanel} />}
         </Sidebar>
@@ -641,79 +653,6 @@ export default function Home() {
           <div className={`py-2 pr-4 ${styles.subNav}`}>
             <input onChange={(event: any) => { changeSearchInput(event.target.value) }} className={styles.mainPageSearchInput} type="search" placeholder="Search..." />
             <div className={styles.mainPageIcons}>
-              <div>
-                <Popover.Root closeOnInteractOutside={false} open={open} onOpenChange={(e) => setOpen(e.open)} positioning={{ placement: "bottom-end" }}>
-                  <Popover.Trigger asChild>
-                    {/* <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Clear sorting</span>}> */}
-                    <Button size="sm" variant="outline" style={{ padding: "5px 15px", height: "auto", backgroundColor: "#1e1e1e", color:"white" }} >
-                      Visualize Devices
-                    </Button>
-                    {/* </Tooltip> */}
-
-                  </Popover.Trigger>
-                  <Portal>
-                    <Popover.Positioner>
-                      <Popover.Content style={{
-                        width: "800px",
-                        height: "1000px",
-                        overflow: "auto",
-                      }} >
-                        <Popover.Body>
-                          <div
-                            style={{
-                              width: "full",
-                              height: "100%",
-                            }}
-                          >
-                            <div style={{position:"absolute", right:"0", top:"0", padding:"10px 15px", zIndex:2000}}>
-                              <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Close</span>}>
-                              <button onClick={() => setOpen(false)} style={{fontWeight:"normal", cursor:"pointer", fontSize : "20px"}}>X</button>
-                              </Tooltip>
-                            </div>
-                            {open && (
-                              <ReactDiagramWrapper
-                                nodeDataArray={state.nodeDataArray}
-                                linkDataArray={state.linkDataArray}
-                                modelData={state.modelData}
-                                skipsDiagramUpdate={state.skipsDiagramUpdate}
-                                onModelChange={handleModelChange}
-                                onInitDiagram={createDiagram}
-                                onDiagramEvent={(e: go.DiagramEvent) => {
-                                  const name = e.name;
-                                  switch (name) {
-                                    case 'ChangedSelection': {
-                                      const sel = e.subject.first();
-                                      if (sel instanceof go.Node) {
-                                        const data = sel.data;
-
-                                        // Example conditions — adjust based on your model
-                                        if (data?.macId) {
-                                          console.log('Device node selected:', data);
-                                          openPropertypanel(data.macId);
-                                        }
-                                      }
-                                      break;
-                                    }
-                                    default:
-                                      break;
-                                  }
-                                }}
-
-                              />
-                            )}
-                          </div>
-                        </Popover.Body>
-                      </Popover.Content>
-                    </Popover.Positioner>
-                  </Portal>
-                </Popover.Root>
-              </div>
-              <div>
-                <AlarmToggle />
-              </div>
-              <div className={""} >
-                <FileUploader setHardRefreshDeviceDataKey={setHardRefreshDeviceDataKey} setRefreshDeviceDataKey={setRefreshDeviceDataKey} />
-              </div>
               {(sorting && sorting.length > 0) &&
                 <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Clear sorting</span>}>
                   <ListX className={styles.deviceRefreshIcon} onClick={() => { setSorting([]) }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
@@ -722,13 +661,61 @@ export default function Home() {
                 <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Refresh Device Cache</span>}>
                   <Repeat className={styles.deviceRefreshIcon} onClick={() => { getRefreshedData(); justRefreshedRef.current = true; }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
                 </Tooltip>}
+              <div>
+                <Settings isDiagramView = {isDiagramView} setDeviceView = {setDeviceView} setHardRefreshDeviceDataKey={setHardRefreshDeviceDataKey} setRefreshDeviceDataKey={setRefreshDeviceDataKey}/>
+              </div>
             </div>
           </div>
         </div>
 
         <div className={styles.bodyContainer}>
           <div className={`${styles.pageWrapper} ${isPropertyPanelOpen ? styles.pushRight : ''}`}>
-            <TableComponent currentDeviceId={currentDeviceId} sorting={sorting} setSorting={setSorting} refreshDeviceDataKey={refreshDeviceDataKey} updatedFieldsMap={updatedFieldsMap} totalPages={totalPages} pageSize={pageSize} setPageSize={setPageSize} setCurrentPage={setCurrentPage} currentPage={currentPage} data={deviceData} setIsPropertyPanelOpen={openPropertypanel} />
+            {!isDiagramView ?
+              <TableComponent currentDeviceId={currentDeviceId} sorting={sorting} setSorting={setSorting} refreshDeviceDataKey={refreshDeviceDataKey} updatedFieldsMap={updatedFieldsMap} totalPages={totalPages} pageSize={pageSize} setPageSize={setPageSize} setCurrentPage={setCurrentPage} currentPage={currentPage} data={deviceData} setIsPropertyPanelOpen={openPropertypanel} />
+              :
+              <ReactDiagramWrapper
+                nodeDataArray={state.nodeDataArray}
+                linkDataArray={state.linkDataArray}
+                modelData={state.modelData}
+                skipsDiagramUpdate={state.skipsDiagramUpdate}
+                onModelChange={handleModelChange}
+                onInitDiagram={createDiagram}
+                onDiagramEvent={(e: go.DiagramEvent) => {
+                  const name = e.name;
+                  console.log(name);
+                  
+                  switch (name) {
+                    case 'ChangedSelection': {
+                      const sel = e.subject.first();
+                      console.log(sel);
+
+                      if (sel instanceof go.Node) {
+                        const data = sel.data;
+
+                        // Example conditions — adjust based on your model
+                        if (data?.macId) {
+                          console.log('Device node selected:', data);
+                          openPropertypanel(data.macId);
+                        } else {
+                          closePropertyPanel();
+                        }
+                      } else {
+                        closePropertyPanel();
+                      }
+                      break;
+                    }
+                    case 'ClipboardPasted': {
+                      console.log(e.subject);
+                      
+                      break;
+                    }
+                    default:
+                      break;
+                  }
+                }}
+
+              />
+            }
           </div>
           {(deviceData && deviceData.length > 0) &&
             <Sidebar zIndex="zIndex200" openIconMsg={"Open Property Panel"} closeIconMsg={"Close Property Panel"} position="right" isOpen={isPropertyPanelOpen} setIsOpen={setIsPropertyPanelOpen} closeSidebar={closePropertyPanel}>

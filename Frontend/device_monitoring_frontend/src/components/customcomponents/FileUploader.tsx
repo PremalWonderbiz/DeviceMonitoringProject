@@ -79,42 +79,48 @@ const FileUploader = (props: any) => {
     };
 
     return (
-        <div className={styles.fileUpload}>
+        <div >
             <ToastContainer />
-            <input
-                type="file"
-                ref={inputRef}
-                onChange={handleFileChange}
-                className={styles.fileInput}
-                accept=".json"
-            />
-            <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Upload new device json file</span>}>
-                <button onClick={handleButtonClick} className={styles.uploadButton}>
-                    Upload File
-                </button>
-            </Tooltip>
+            <div className={styles.fileUpload}>
 
-            <div className={styles.fileInfo}>
-                {file ? (
-                    <>
-                        <span className={styles.fileName}>Selected: {file.name} </span>
-                        <X className={styles.clearIcon} onClick={handleClear} />
-                        <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Add {file.name}</span>}>
-                            <button className={styles.submitButton} onClick={handleSubmit}>
-                                Submit
-                            </button>
-                        </Tooltip>
-                    </>
-                ) : (
-                    <span className={styles.noFile}>No file selected
-                        <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Download a template</span>}>
-                            <Info onClick={() => { handleDownload() }} className={styles.infoIcon} size={15} />
-                        </Tooltip>
-                    </span>
-                )}
+                <input
+                    type="file"
+                    ref={inputRef}
+                    onChange={handleFileChange}
+                    className={styles.fileInput}
+                    accept=".json"
+                />
+                <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Upload new device json file</span>}>
+                    <button onClick={handleButtonClick} className={styles.uploadButton}>
+                        Upload File
+                    </button>
+                </Tooltip>
+
+
+                <div className={styles.fileInfo}>
+                    {file ? (
+                        <>
+                            <span className={styles.fileName}>Selected: {file.name} </span>
+                            <X className={styles.clearIcon} onClick={handleClear} />
+                        </>
+                    ) : (
+                        <span className={styles.noFile}>No file selected
+                            <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Download a template</span>}>
+                                <Info onClick={() => { handleDownload() }} className={styles.infoIcon} size={15} />
+                            </Tooltip>
+                        </span>
+                    )}
+                </div>
             </div>
-
+            <div style={{marginTop: "0.5rem", display:"flex"}}>
+            {file &&
+            <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Add {file.name}</span>}>
+                <button className={styles.submitButton} onClick={handleSubmit}>
+                    Submit
+                </button>
+            </Tooltip>}
             {error && <div className={styles.error}>{error}</div>}
+            </div>
         </div>
     );
 };
