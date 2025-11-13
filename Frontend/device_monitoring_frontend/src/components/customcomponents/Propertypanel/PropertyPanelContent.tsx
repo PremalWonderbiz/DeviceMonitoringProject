@@ -46,6 +46,7 @@ export const HealthTabContent = React.memo(
       if (msg == "") {
         setAlarm(null);
         setTotalAlarmsForDevice(0);
+        return;
       }
       const incomingUpdates: AlarmUpdateMessage = JSON.parse(msg);
       if (incomingUpdates) {

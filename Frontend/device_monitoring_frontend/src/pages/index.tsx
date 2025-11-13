@@ -558,6 +558,7 @@ export default function Home() {
   const handleModelChange = useCallback((e: any) => {
     // console.log(e);
   }, []);
+  
   useEffect(() => {
     const fetchAllDeviceData = async () => {
       const response = await getDeviceMetadata();

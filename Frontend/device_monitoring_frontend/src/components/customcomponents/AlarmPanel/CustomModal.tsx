@@ -39,7 +39,7 @@ const CustomModal = ({
   if (!isOpen) return null;
 
   return (
-    <div className={styles.customModalWrapper} onClick={(e: any) => e.stopPropagation()}>
+    <div className={styles.customModalWrapper} data-testid="customModalWrapper" onClick={(e: any) => e.stopPropagation()}>
       <button className={styles.closeBtn} onClick={handleClose}>×</button>
       <h3 className={styles.modalTitle}>{title}</h3>
       <div className={styles.commentInputWrapper}>

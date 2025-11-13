@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FDC17397-881D-4577-B3BF-9EA02067CEF2}|API\\API.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\gatewayservice\\gatewayservice\\api\\controllers\\realtimecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FDC17397-881D-4577-B3BF-9EA02067CEF2}|API\\API.csproj|solutionrelative:api\\controllers\\realtimecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FDC17397-881D-4577-B3BF-9EA02067CEF2}|API\\API.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\gatewayservice\\gatewayservice\\api\\realtime\\gatewayhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FDC17397-881D-4577-B3BF-9EA02067CEF2}|API\\API.csproj|solutionrelative:api\\realtime\\gatewayhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDC17397-881D-4577-B3BF-9EA02067CEF2}|API\\API.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring\\backend\\gatewayservice\\gatewayservice\\api\\controllers\\realtimecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDC17397-881D-4577-B3BF-9EA02067CEF2}|API\\API.csproj|solutionrelative:api\\controllers\\realtimecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,28 +46,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "RealtimeController.cs",
               "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\Controllers\\RealtimeController.cs",
               "RelativeDocumentMoniker": "API\\Controllers\\RealtimeController.cs",
               "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\Controllers\\RealtimeController.cs",
               "RelativeToolTip": "API\\Controllers\\RealtimeController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAYwBcAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAswCEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-04T05:16:03.57Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "GatewayHub.cs",
               "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\RealTime\\GatewayHub.cs",
               "RelativeDocumentMoniker": "API\\RealTime\\GatewayHub.cs",
               "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\RealTime\\GatewayHub.cs",
               "RelativeToolTip": "API\\RealTime\\GatewayHub.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAkwAkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-04T05:14:55.222Z"
+              "WhenOpened": "2025-09-04T05:14:55.222Z",
+              "EditorCaption": ""
             }
           ]
         },

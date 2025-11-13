@@ -1,10 +1,10 @@
 {
   "Name": "Home Projector",
   "Type": "Entertainment Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "D0:AB:C5:92:7E:F3",
   "Connectivity": "Medium",
-  "LastUpdated": "2025-11-06T07:17:52.9554985Z",
+  "LastUpdated": "2025-11-12T09:28:33.0844317Z",
   "staticProperties": {
     "Display \u0026 Hardware": {
       "Projection Type": "DLP",
@@ -72,48 +72,48 @@
   "dynamicProperties": {
     "Current Usage": {
       "Power State": "Standby",
-      "Input Source": "VGA",
-      "Current App": "Netflix",
-      "Volume Level": 61,
-      "Mute": false,
+      "Input Source": "HDMI",
+      "Current App": "Plex",
+      "Volume Level": 18,
+      "Mute": true,
       "Picture Mode": "Standard",
-      "Keystone Correction": "Manual",
-      "Lamp Hours Used": 2247
+      "Keystone Correction": "Auto",
+      "Lamp Hours Used": 4778
     },
     "Streaming Activity": {
       "Watch History (Today)": [
-        8,
-        6
+        86,
+        87
       ],
       "Active App Sessions": [
-        6
+        69
       ],
-      "AutoPlay Next Episode": true
+      "AutoPlay Next Episode": false
     },
     "Network Activity": {
-      "IP Address": "192.168.15.91",
-      "Wi-Fi Signal Strength": "-68 dBm",
+      "IP Address": "192.168.156.23",
+      "Wi-Fi Signal Strength": "-50 dBm",
       "Connection Type": "Wi-Fi",
       "Data Usage": {
-        "Today": "4.2 GB",
-        "This Week": "6.7 GB",
-        "This Month": "8.7 GB"
+        "Today": "6.0 GB",
+        "This Week": "6.9 GB",
+        "This Month": "4.5 GB"
       },
-      "Last Online": "2025-11-06T07:17:46.1831474Z"
+      "Last Online": "2025-11-12T09:28:22.9055809Z"
     },
     "System Status": {
-      "Uptime": "4 days, 9 hrs",
-      "Last Reboot": "2025-11-06T07:17:46.1831526Z",
-      "Software Update Available": true,
-      "Last Software Update": "2025-11-06T07:17:46.1831542Z",
+      "Uptime": "3 days, 21 hrs",
+      "Last Reboot": "2025-11-12T09:28:22.9055901Z",
+      "Software Update Available": false,
+      "Last Software Update": "2025-11-12T09:28:22.9055941Z",
       "Storage Info": {
-        "Total Storage": "2.4 GB",
-        "Used": "0.5 GB",
-        "Free": "5.7 GB"
+        "Total Storage": "2.9 GB",
+        "Used": "1.5 GB",
+        "Free": "6.1 GB"
       },
       "Temperature": {
-        "Lamp": 69.01,
-        "Mainboard": 56.7
+        "Lamp": 68.34,
+        "Mainboard": 57.54
       }
     }
   },

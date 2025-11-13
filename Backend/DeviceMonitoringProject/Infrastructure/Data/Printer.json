@@ -1,10 +1,10 @@
 {
   "Name": "Printer",
   "Type": "Peripheral Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "F8:16:54:AA:34:12",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-11-06T07:17:52.9624798Z",
+  "Connectivity": "High",
+  "LastUpdated": "2025-11-12T09:28:33.0975166Z",
   "staticProperties": {
     "Hardware Specifications": {
       "Printer Type": "Laser",
@@ -61,45 +61,45 @@
     "Print Status": {
       "Current Job": {
         "Job Name": "Unsupported Type",
-        "Pages": 40,
-        "Status": "Idle",
+        "Pages": 9,
+        "Status": "Paused",
         "Submitted By": "Unsupported Type"
       },
-      "Queue Length": 11,
+      "Queue Length": 33,
       "Recent Jobs": [
         {
           "Job Name": "Unsupported Type",
-          "Status": "Completed",
-          "Time": "2025-11-06T07:17:46.1838719Z"
-        },
-        {
-          "Job Name": "Unsupported Type",
           "Status": "Cancelled",
-          "Time": "2025-11-06T07:17:46.1838764Z"
+          "Time": "2025-11-12T09:28:33.0960375Z"
         },
         {
           "Job Name": "Unsupported Type",
           "Status": "Error",
-          "Time": "2025-11-06T07:17:46.1838789Z"
+          "Time": "2025-11-12T09:28:33.0960396Z"
+        },
+        {
+          "Job Name": "Unsupported Type",
+          "Status": "Error",
+          "Time": "2025-11-12T09:28:33.0960437Z"
         }
       ]
     },
     "Consumables": {
-      "Toner Level": "71%",
-      "Drum Status": "Replace Now",
-      "Fuser Unit Life": "49%",
-      "Maintenance Kit Life": "73%",
+      "Toner Level": "44%",
+      "Drum Status": "Normal",
+      "Fuser Unit Life": "42%",
+      "Maintenance Kit Life": "48%",
       "Paper Tray Status": {
         "Tray 1": "Unsupported Type",
         "Tray 2": "Unsupported Type"
       }
     },
     "Network Activity": {
-      "IP Address": "192.168.118.74",
-      "Subnet": "192.168.138.42",
-      "Gateway": "192.168.141.55",
-      "Upload Speed": "6.5 GB",
-      "Download Speed": "1.7 GB",
+      "IP Address": "192.168.121.58",
+      "Subnet": "192.168.131.150",
+      "Gateway": "192.168.247.82",
+      "Upload Speed": "1.5 GB",
+      "Download Speed": "7.6 GB",
       "Connected Clients": [
         {},
         {},
@@ -108,10 +108,10 @@
     },
     "System Health": {
       "Temperature": {
-        "Internal Sensor": 77.51,
-        "Ambient": 29.67
+        "Internal Sensor": 73.99,
+        "Ambient": 32.43
       },
-      "Uptime": "9 days, 8 hrs",
+      "Uptime": "7 days, 20 hrs",
       "Error Logs": [
         "Paper jam detected in Tray 1 at 2025-06-13 19:40",
         "Paper jam detected in Tray 2 at 2025-06-13 19:43",
@@ -123,7 +123,7 @@
         "Paper jam detected in Tray 2 at 2025-06-24 17:19"
       ],
       "Firmware Version": "Unsupported Type",
-      "Last Restart": "2025-11-06T07:17:46.1839161Z"
+      "Last Restart": "2025-11-12T09:28:33.0960618Z"
     }
   },
   "topLevelObservables": {

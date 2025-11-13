@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "sonar": "sonar-scanner -Dsonar.login=sqp_ed78a7e7a235f41db790a302be56adaa6c97676e",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start -p 3000",
     "lint": "next lint",
-    "test": "jest --coverage"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.21.0",
@@ -35,13 +37,16 @@
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv-cli": "^11.0.0",
     "jest": "^30.0.4",
     "jest-environment-jsdom": "^30.0.4",
     "sass": "^1.89.1",
+    "sonarqube-scanner": "^4.3.2",
     "ts-node": "^10.9.2",
     "typescript": "^5"
   }

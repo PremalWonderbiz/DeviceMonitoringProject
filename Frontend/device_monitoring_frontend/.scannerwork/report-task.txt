@@ -1,0 +1,6 @@
+projectKey=Device-Monitoring-Frontend
+serverUrl=http://localhost:9000
+serverVersion=25.11.0.114957
+dashboardUrl=http://localhost:9000/dashboard?id=Device-Monitoring-Frontend
+ceTaskId=ecc7b0fa-a8d0-4bc2-bac5-14a6571fc646
+ceTaskUrl=http://localhost:9000/api/ce/task?id=ecc7b0fa-a8d0-4bc2-bac5-14a6571fc646

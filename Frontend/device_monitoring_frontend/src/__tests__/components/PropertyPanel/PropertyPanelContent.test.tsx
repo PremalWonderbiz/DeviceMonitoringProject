@@ -230,6 +230,39 @@ describe("HealthTabContent", () => {
         });
     });
 
+    it("handleAlertUpdates clears alarm when message is empty string", async () => {
+        const mockUseDeviceAlertSocket = require("@/utils/customhooks/useDeviceAlertSocket").useDeviceAlertSocket;
+        let handler: any;
+        mockUseDeviceAlertSocket.mockImplementation((_: any, h: any) => { handler = h; });
+
+        render(
+            <HealthTabContent
+                highlightedPaths={["foo"]}
+                deviceName="Device1"
+                setIsAlarmPanelOpen={jest.fn()}
+                setSelectedDevicePropertyPanel={jest.fn()}
+                deviceMacId="mac123"
+                dynamicProps={{}}
+            />
+        );
+
+        // initial state from mocked getLatestAlarmForDevice
+        await waitFor(() => {
+            expect(screen.getByText("Overheat")).toBeInTheDocument();
+            expect(screen.getByTestId("badge")).toHaveTextContent("3");
+        });
+
+        // send empty string — should clear alarm/state and not throw
+        act(() => {
+            handler("");
+        });
+
+        await waitFor(() => {
+            expect(screen.queryByText("Overheat")).not.toBeInTheDocument();
+            expect(screen.queryByTestId("badge")).not.toBeInTheDocument();
+        });
+    });
+
     // Access the memo compare function
     const memoCompare = (HealthTabContent as any).type?.compare || (HealthTabContent as any).compare;
 

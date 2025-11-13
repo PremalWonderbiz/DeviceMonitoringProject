@@ -1,54 +1,18 @@
-version: "3.9"
+version: "3"
 services:
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: sqlserver
-    environment:
-      SA_PASSWORD: "Your_password123"
-      ACCEPT_EULA: "Y"
+  sonarqube:
+    image: sonarqube:community
+    container_name: sonarqube
     ports:
-      - "1433:1433"
+      - "9000:9000"
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
     volumes:
-      - sql_data:/var/opt/mssql
-    networks:
-      - device_net
-
-  alarmservice:
-    image: premal09/devicemonitoring-alarmservice
-    ports:
-      - "7154:7154"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=AlarmDb;User=sa;Password=Your_password123;TrustServerCertificate=True
-    depends_on:
-      - sqlserver
-    networks:
-      - device_net
-
-  deviceservice:
-    image: premal09/devicemonitoring-deviceservice
-    ports:
-      - "7127:7127"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    networks:
-      - device_net
-
-  frontend:
-    image: premal09/devicemonitoring-frontend
-    ports:
-      - "3000:3000"
-    environment:
-      - NEXT_PUBLIC_ALARM_API_URL=http://localhost:7154
-      - NEXT_PUBLIC_DEVICE_API_URL=http://localhost:7127
-    depends_on:
-      - alarmservice
-      - deviceservice
-    networks:
-      - device_net
-
-networks:
-  device_net:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
 
 volumes:
-  sql_data:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:

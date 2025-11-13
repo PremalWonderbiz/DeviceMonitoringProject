@@ -11,10 +11,10 @@ type SidebarProps = {
   closeSidebar? : () => void;
   closeIconMsg : any;
   openIconMsg : any;
-  zIndex : string;
+  zIndex? : string;
 };
 
-const Sidebar = ({zIndex, closeIconMsg, openIconMsg, position = "left", children, isOpen = false, setIsOpen = (isOpen: boolean) => { }, closeSidebar = () => {}}: SidebarProps) => {
+const Sidebar = ({zIndex="2000", closeIconMsg, openIconMsg, position = "left", children, isOpen = false, setIsOpen = (isOpen: boolean) => { }, closeSidebar = () => {}}: SidebarProps) => {
   return (
     <div className={`${styles.sidebar} ${styles[position]} ${isOpen ? styles.open : ""} ${styles[zIndex]}`}>
       {position=="left" ? 

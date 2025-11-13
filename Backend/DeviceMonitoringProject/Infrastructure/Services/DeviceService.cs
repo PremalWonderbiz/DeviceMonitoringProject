@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Nodes;
 using Infrastructure.Persistence;
 using System.Collections.Specialized;
+using System.Security.Cryptography;
 
 namespace Infrastructure.Services;
 
@@ -24,7 +25,6 @@ public class DeviceService : IDeviceService
     private readonly IDeviceServiceHelper _deviceServiceHelper;
     private readonly IAlarmEvaluationService _alarmEvaluationService;
     private readonly DeviceStateCache _deviceStateCache;
-    private readonly Random _random = new();
     private readonly IAlarmToggleService _alarmToggleService;
     private readonly bool _useDatabase;
     private readonly DeviceDbContext _dbContext;
@@ -243,7 +243,9 @@ public class DeviceService : IDeviceService
 
     public async Task<bool> SimulateTopLevelChangeForOneDevice()
     {
-        var device = _devices[_random.Next(_devices.Count)];
+        int index = RandomNumberGenerator.GetInt32(_devices.Count);
+
+        var device = _devices[index];
 
         var rootSnapshot = _deviceStateCache.GetDeviceState(device.MacId);
         if (rootSnapshot == null) return false;
@@ -323,7 +325,7 @@ public class DeviceService : IDeviceService
 
                 if (_alarmToggleService.IsAlarmEnabled)
                 {
-                    await _alarmEvaluationService.EvaluateDynamicAsync(currentDynamic, previousDynamic);
+                    await _alarmEvaluationService.EvaluateDynamicAsync(previousDynamic, currentDynamic);
                 }
 
                 if (updatedNode is not null)

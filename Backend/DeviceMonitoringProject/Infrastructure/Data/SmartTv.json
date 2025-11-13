@@ -1,10 +1,10 @@
 {
   "Name": "Smart TV",
   "Type": "Entertainment Device",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "B8:27:EB:45:9A:CB",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-11-06T07:17:52.9669321Z",
+  "Connectivity": "High",
+  "LastUpdated": "2025-11-12T09:28:33.1047219Z",
   "staticProperties": {
     "Display \u0026 Hardware": {
       "Screen Size": "55 inches",
@@ -80,48 +80,48 @@
   "dynamicProperties": {
     "Current Usage": {
       "Power State": "On",
-      "Input Source": "USB",
-      "Current App": "Prime Video",
-      "Volume Level": 48,
-      "Mute": false,
-      "Picture Mode": "Standard",
-      "Audio Output": "TV Speakers",
+      "Input Source": "HDMI 2",
+      "Current App": "SonyLIV",
+      "Volume Level": 68,
+      "Mute": true,
+      "Picture Mode": "Vivid",
+      "Audio Output": "Bluetooth",
       "Ambient Light Sensor": false
     },
     "Streaming Activity": {
       "Watch History (Today)": [
-        12,
-        24
+        88,
+        38
       ],
       "Active App Sessions": [
-        34
+        75
       ],
-      "AutoPlay Next Episode": true
+      "AutoPlay Next Episode": false
     },
     "Network Activity": {
-      "IP Address": "192.168.164.145",
-      "Wi-Fi Signal Strength": "-75 dBm",
+      "IP Address": "192.168.98.109",
+      "Wi-Fi Signal Strength": "-76 dBm",
       "Connection Type": "Ethernet",
       "Data Usage": {
-        "Today": "1.3 GB",
-        "This Week": "6.2 GB",
-        "This Month": "5.4 GB"
+        "Today": "7.9 GB",
+        "This Week": "7.6 GB",
+        "This Month": "4.0 GB"
       },
-      "Last Online": "2025-11-06T07:17:46.1842328Z"
+      "Last Online": "2025-11-12T09:28:33.0962641Z"
     },
     "System Status": {
-      "Uptime": "2 days, 1 hrs",
-      "Last Reboot": "2025-11-06T07:17:46.1842405Z",
+      "Uptime": "7 days, 12 hrs",
+      "Last Reboot": "2025-11-12T09:28:33.0962677Z",
       "Software Update Available": false,
-      "Last Software Update": "2025-11-06T07:17:46.1842446Z",
+      "Last Software Update": "2025-11-12T09:28:33.0962711Z",
       "Storage Info": {
-        "Total Storage": "5.3 GB",
-        "Used": "9.7 GB",
+        "Total Storage": "5.0 GB",
+        "Used": "0.1 GB",
         "Free": "3.3 GB"
       },
       "Temperature": {
-        "Panel": 64.31,
-        "Mainboard": 54.49
+        "Panel": 40.28,
+        "Mainboard": 56.02
       }
     }
   },

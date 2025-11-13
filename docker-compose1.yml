@@ -1,0 +1,54 @@
+version: "3.9"
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: "Your_password123"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    networks:
+      - device_net
+
+  alarmservice:
+    image: premal09/devicemonitoring-alarmservice
+    ports:
+      - "7154:7154"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=AlarmDb;User=sa;Password=Your_password123;TrustServerCertificate=True
+    depends_on:
+      - sqlserver
+    networks:
+      - device_net
+
+  deviceservice:
+    image: premal09/devicemonitoring-deviceservice
+    ports:
+      - "7127:7127"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - device_net
+
+  frontend:
+    image: premal09/devicemonitoring-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_ALARM_API_URL=http://localhost:7154
+      - NEXT_PUBLIC_DEVICE_API_URL=http://localhost:7127
+    depends_on:
+      - alarmservice
+      - deviceservice
+    networks:
+      - device_net
+
+networks:
+  device_net:
+
+volumes:
+  sql_data:

@@ -71,7 +71,18 @@ namespace Infrastructure.Helpers
                 });
 
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                await _httpClient.PostAsync($"https://localhost:7169/api/realtime/device-group-update/{macId}", content);
+                try
+                {
+                    await _httpClient.PostAsync($"https://localhost:7169/api/realtime/device-group-update/{macId}", content);
+                }
+                catch (HttpRequestException ex)
+                {
+                    _logger.LogWarning(ex, $"Failed to broadcast device detail update for MacId: {macId}. Connection unavailable.");
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, $"Unexpected error broadcasting device detail update for MacId: {macId}.");
+                }
             }
         }
 
@@ -104,7 +115,18 @@ namespace Infrastructure.Helpers
             });
 
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            await _httpClient.PostAsync("https://localhost:7169/api/realtime/device-update", content);
+            try
+            {
+                await _httpClient.PostAsync("https://localhost:7169/api/realtime/device-update", content);
+            }
+            catch (HttpRequestException ex)
+            {
+                _logger.LogWarning(ex, "Failed to broadcast top-level summary. Connection unavailable.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Unexpected error broadcasting top-level summary.");
+            }
         }
 
         public JsonNode UpdateDynamicProperties(JsonNode? currentData, JsonNode? dynamicObservables)

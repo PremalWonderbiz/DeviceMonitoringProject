@@ -54,7 +54,10 @@ const FileUploader = (props: any) => {
             props.setRefreshDeviceDataKey((prev: any) => prev + 1); // Trigger a refresh in parent component
             props.setHardRefreshDeviceDataKey((prev: any) => prev + 1); // Trigger a hard refresh in parent component
         } else {
-            notify(response.response.data, "error");
+            if(response && response.response && response.response.data)
+                 notify(response.response.data, "error");
+            else
+                 notify("File upload failed. Please try again.", "error");
         }
     };
 
@@ -92,7 +95,7 @@ const FileUploader = (props: any) => {
                 />
                 <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Upload new device json file</span>}>
                     <button onClick={handleButtonClick} className={styles.uploadButton}>
-                        Upload File
+                        Onboard Device
                     </button>
                 </Tooltip>
 

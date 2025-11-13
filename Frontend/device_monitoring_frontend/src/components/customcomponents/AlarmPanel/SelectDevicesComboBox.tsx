@@ -32,6 +32,7 @@ const SelectDevicesComboBox = ({ devices, selectedDevices, setSelectedDevices, m
   )
 
   const handleValueChange = (details: Combobox.ValueChangeDetails) => {
+    console.log("Value changed:", details.value);
     const newSelected = details.value
       .map((macId: string) => devices.find((d: any) => d.deviceMacId === macId))
       .filter(Boolean)
@@ -50,6 +51,7 @@ const SelectDevicesComboBox = ({ devices, selectedDevices, setSelectedDevices, m
       <Wrap gap="2">
         {selectedDevices.map((device: any) => (
           <Badge
+          data-testid={device.deviceName}
             key={device.deviceMacId}
             padding="0.25rem 0 0.25rem 0.4rem"
             display="flex"
@@ -78,7 +80,7 @@ const SelectDevicesComboBox = ({ devices, selectedDevices, setSelectedDevices, m
       <Combobox.Control>
         <Combobox.Input _placeholder={{ color : "#252525" }} placeholder="Select Devices" padding="0.5rem 0.5rem" />
         <Combobox.IndicatorGroup>
-          <Combobox.Trigger padding="0.5rem" />
+          <Combobox.Trigger data-testid={"comboBoxTrigger"} padding="0.5rem" />
         </Combobox.IndicatorGroup>
       </Combobox.Control>
 
@@ -95,6 +97,7 @@ const SelectDevicesComboBox = ({ devices, selectedDevices, setSelectedDevices, m
 
               {filteredItems.map((item: any) => (
                 <Combobox.Item
+                  data-testid={item.deviceMacId}
                   padding={"0.1rem 1rem"}
                   _hover={{ backgroundColor: "#e6e6e6ff" }}
                   key={item.deviceMacId}
