@@ -1,4 +1,4 @@
-// adding comment to test pipeline v1
+// adding comment to test pipeline v2
 import React from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
