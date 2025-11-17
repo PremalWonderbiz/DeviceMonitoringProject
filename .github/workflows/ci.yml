@@ -27,11 +27,11 @@ jobs:
         with:
           filters: |
             backend:
-              - 'backend/**'
+              - 'Backend/**'
             ui:
-              - 'frontend/device-monitoring-ui/**'
+              - 'Frontend/device_monitoring_frontend/**'
             viz:
-              - 'frontend/device-monitoring-viz/**'
+              - 'Frontend/device-monitoring-viz/**'
 
   # -------------------------------
   # Build & Test .NET Backend Services
