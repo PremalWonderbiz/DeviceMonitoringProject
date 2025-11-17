@@ -50,15 +50,15 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore all backend services
-        run: dotnet restore backend
+        run: dotnet restore Backend
 
       - name: Build all backend services
-        run: dotnet build backend --no-restore --configuration Release
+        run: dotnet build Backend --no-restore --configuration Release
 
       - name: Run tests (if any)
         run: |
-          if ls backend/**/*Tests.csproj 1> /dev/null 2>&1; then
-            dotnet test backend --no-build --configuration Release
+          if ls Backend/**/*Tests.csproj 1> /dev/null 2>&1; then
+            dotnet test Backend --no-build --configuration Release
           else
             echo "No test projects found. Skipping tests."
           fi
@@ -80,19 +80,19 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        working-directory: frontend/device-monitoring-ui
+        working-directory: Frontend/device_monitoring_frontend
         run: npm install
 
       - name: Lint (optional)
-        working-directory: frontend/device-monitoring-ui
+        working-directory: Frontend/device_monitoring_frontend
         run: npm run lint --if-present
 
       - name: Run tests (optional)
-        working-directory: frontend/device-monitoring-ui
+        working-directory: Frontend/device_monitoring_frontend
         run: npm test --if-present
 
       - name: Build Next.js app
-        working-directory: frontend/device-monitoring-ui
+        working-directory: Frontend/device_monitoring_frontend
         run: npm run build
 
   # -------------------------------
@@ -112,13 +112,13 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        working-directory: frontend/device-monitoring-viz
+        working-directory: Frontend/device-monitoring-viz
         run: npm install
 
       - name: Lint (optional)
-        working-directory: frontend/device-monitoring-viz
+        working-directory: Frontend/device-monitoring-viz
         run: npm run lint --if-present
 
       - name: Build Viz Frontend
-        working-directory: frontend/device-monitoring-viz
+        working-directory: Frontend/device-monitoring-viz
         run: npm run build
