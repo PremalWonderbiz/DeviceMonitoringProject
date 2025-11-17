@@ -128,3 +128,36 @@ jobs:
       - name: Build Viz Frontend
         working-directory: Frontend/device-monitoring-viz
         run: npm run build
+
+  sonar-scan:
+    needs: [backend-ci, ui-ci, viz-ci]   # wait for all builds
+    runs-on: ubuntu-latest
+    if: ${{ needs.detect-changes.outputs.backend_changed == 'true' || needs.detect-changes.outputs.ui_changed == 'true' || needs.detect-changes.outputs.viz_changed == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # Set up Java for SonarScanner
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17
+
+      # Install SonarScanner CLI
+      - name: Install SonarScanner
+        run: |
+          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.9.3.731-linux.zip
+          unzip sonar-scanner-cli-4.9.3.731-linux.zip
+          mv sonar-scanner-4.9.3.731-linux sonar-scanner
+
+      # Run SonarQube Scan
+      - name: Run SonarQube Scanner
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: |
+          ./sonar-scanner/bin/sonar-scanner \
+            -Dsonar.projectKey=PremalWonderbiz_DeviceMonitoringProject_9168aabf-fb1d-4707-8bae-a3bd072df572 \
+            -Dsonar.host.url=$SONAR_HOST_URL \
+            -Dsonar.login=$SONAR_TOKEN
+
