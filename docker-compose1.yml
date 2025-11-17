@@ -1,3 +1,4 @@
+# test pr merge from another branch : testing branch rules
 version: "3.9"
 services:
   sqlserver:
