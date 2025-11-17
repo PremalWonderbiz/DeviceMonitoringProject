@@ -40,28 +40,34 @@ jobs:
     needs: detect-changes
     if: ${{ needs.detect-changes.outputs.backend_changed == 'true' }}
     runs-on: ubuntu-latest
-
+  
     steps:
       - uses: actions/checkout@v4
-
+  
       - name: Setup .NET 8
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-
-      - name: Restore all backend services
-        run: dotnet restore Backend
-
-      - name: Build all backend services
-        run: dotnet build Backend --no-restore --configuration Release
-
+  
+      - name: Restore all backend projects
+        run: |
+          dotnet restore Backend/DeviceMonitoringProject
+          dotnet restore Backend/AlarmService
+          dotnet restore Backend/GatewayService/GatewayService
+  
+      - name: Build all backend projects
+        run: |
+          dotnet build Backend/DeviceMonitoringProject --no-restore --configuration Release
+          dotnet build Backend/AlarmService --no-restore --configuration Release
+          dotnet build Backend/GatewayService/GatewayService --no-restore --configuration Release
+  
       - name: Run tests (if any)
         run: |
-          if ls Backend/**/*Tests.csproj 1> /dev/null 2>&1; then
-            dotnet test Backend --no-build --configuration Release
-          else
-            echo "No test projects found. Skipping tests."
-          fi
+          for proj in backend/*/*Tests.csproj; do
+            if [ -f "$proj" ]; then
+              dotnet test "$proj" --no-build --configuration Release
+            fi
+          done
 
   # -------------------------------
   # Frontend CI – device-monitoring-ui
