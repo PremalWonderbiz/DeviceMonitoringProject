@@ -1,0 +1,9 @@
+# Version: 3c60fc625b p-2024.12-push-36
+# Command Line: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-security-da --dir C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int --ticker-mode no-spin
+timer                         ms      calls
+-------------------------------------------
+cov_security_da::run          16          1
+
+activity                      ms      calls
+-------------------------------------------
+cov_security_da::run          16          1

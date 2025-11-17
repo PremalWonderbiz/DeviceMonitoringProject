@@ -4,7 +4,7 @@
   "Status": "Online",
   "MacId": "00:1B:44:11:3A:B7",
   "Connectivity": "Medium",
-  "LastUpdated": "2025-11-12T09:28:33.1157557Z",
+  "LastUpdated": "2025-11-13T12:16:09.0715201Z",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "Synology DSM 7.2",
@@ -124,79 +124,79 @@
   "dynamicProperties": {
     "System Health": {
       "CPU Usage": {
-        "Load Percentage": "47%",
+        "Load Percentage": "18%",
         "Core Usage": [
-          52,
-          66,
-          81,
-          61
+          24,
+          99,
+          46,
+          47
         ]
       },
       "RAM Usage": {
-        "Used": "3.6 GB",
-        "Free": "4.1 GB",
-        "Swap Used": "9.6 GB"
+        "Used": "4.5 GB",
+        "Free": "8.9 GB",
+        "Swap Used": "8.3 GB"
       },
       "System Temperature": {
-        "CPU": 82.32,
-        "System Board": 43.82,
+        "CPU": 68.97,
+        "System Board": 74.66,
         "Drive Bays": [
-          5,
-          80,
-          69,
-          13
+          65,
+          47,
+          48,
+          15
         ]
       },
       "System Load Average": {
-        "1m": 0.94,
-        "5m": 1.58,
-        "15m": 0.2
+        "1m": 1.66,
+        "5m": 0.56,
+        "15m": 1.65
       },
-      "Uptime": "1 days, 0 hrs"
+      "Uptime": "8 days, 12 hrs"
     },
     "Network Activity": {
-      "Primary IP": "192.168.160.197",
+      "Primary IP": "192.168.55.152",
       "Interfaces": [
-        39,
-        63
+        34,
+        48
       ],
       "Connected Clients": [
-        37,
-        82
+        21,
+        27
       ]
     },
     "Service Status": {
       "Running Services": [
         "Cloud Sync",
         "Docker",
-        "NFS"
+        "Time Machine"
       ],
       "Service Health": {
-        "Docker": "Degraded",
+        "Docker": "Unhealthy",
         "Cloud Sync": "Degraded",
-        "Time Machine": "Healthy"
+        "Time Machine": "Degraded"
       },
       "Disk Health": {
-        "Status": "Warning",
-        "Last Checked": "2025-11-12T09:28:33.0965671Z",
+        "Status": "Critical",
+        "Last Checked": "2025-11-13T12:15:24.6631693Z",
         "SMART Reports": [
-          23,
-          16
+          60,
+          36
         ]
       },
       "Fan Status": {
         "Fan 1": {
-          "Speed": 1245,
-          "Status": "Normal"
+          "Speed": 1644,
+          "Status": "High"
         },
         "Fan 2": {
-          "Speed": 1426,
+          "Speed": 1107,
           "Status": "Critical"
         }
       },
       "Last Backup": {
-        "Status": "Failed",
-        "Timestamp": "2025-11-12T09:28:33.0965760Z"
+        "Status": "Running",
+        "Timestamp": "2025-11-13T12:15:24.6631872Z"
       }
     }
   },

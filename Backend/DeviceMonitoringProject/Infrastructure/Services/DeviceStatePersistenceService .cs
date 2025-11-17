@@ -14,17 +14,14 @@ namespace Infrastructure.Services
     {
         private readonly DeviceStateCache _deviceStateCache;
         private readonly ILogger<DeviceStatePersistenceService> _logger;
-        private readonly string _dataDirectory;
         private readonly TimeSpan _interval = TimeSpan.FromSeconds(100); 
 
         public DeviceStatePersistenceService(
             DeviceStateCache deviceStateCache,
-            ILogger<DeviceStatePersistenceService> logger,
-            IOptions<DeviceServiceOptions> options)
+            ILogger<DeviceStatePersistenceService> logger)
         {
             _deviceStateCache = deviceStateCache;
             _logger = logger;
-            _dataDirectory = options.Value.DataDirectory;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)

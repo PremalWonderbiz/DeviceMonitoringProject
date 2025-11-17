@@ -16,7 +16,7 @@ namespace Application.Interfaces
 
         public Dictionary<string, string> GetMacIdToFileNameMap();
 
-        public Task<DeviceDetails> GetPropertyPanelDataForDevice(string deviceFileName);
+        public Task<DeviceDetails> GetPropertyPanelDataForDevice(string deviceId);
 
         public Task<bool> GenerateAndSendLiveUpdatesDevicesData();
 
@@ -28,6 +28,6 @@ namespace Application.Interfaces
 
         public Task<string> UploadFile(IFormFile file);
 
-        public Task<DeviceMetadataPaginatedandSortedDto> GetAllDataRefereshedFromCache(DeviceTopLevelSortOptions request, string input);
+        public Task<DeviceMetadataPaginatedandSortedDto> GetAllDataRefereshedFromCache(DeviceTopLevelSortOptions request, string input="");
     }
 }

@@ -1,0 +1,8 @@
+Native Compiler invocation: ./ --coverity_resp_file=C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\tmp\cicf-043f745fc0205fb318741459fefeadc0\cov-translate-resp-file2
+Working directory: C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz
+Comptype: javascript
+* Configuring JavaScript Buildless Capture (javascript)
+Checking for 'mount' command
+Checking for Cygwin registry keys
+           * HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Cygnus Solutions\Cygwin
+           * HKEY_CURRENT_USER\SOFTWARE\Wow6432Node\Cygnus Solutions\Cygwin

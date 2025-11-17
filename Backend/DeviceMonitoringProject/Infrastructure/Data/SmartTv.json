@@ -3,8 +3,8 @@
   "Type": "Entertainment Device",
   "Status": "Offline",
   "MacId": "B8:27:EB:45:9A:CB",
-  "Connectivity": "High",
-  "LastUpdated": "2025-11-12T09:28:33.1047219Z",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-11-13T12:16:09.0479942Z",
   "staticProperties": {
     "Display \u0026 Hardware": {
       "Screen Size": "55 inches",
@@ -81,47 +81,47 @@
     "Current Usage": {
       "Power State": "On",
       "Input Source": "HDMI 2",
-      "Current App": "SonyLIV",
-      "Volume Level": 68,
-      "Mute": true,
-      "Picture Mode": "Vivid",
+      "Current App": "Disney\u002B Hotstar",
+      "Volume Level": 9,
+      "Mute": false,
+      "Picture Mode": "Sports",
       "Audio Output": "Bluetooth",
-      "Ambient Light Sensor": false
+      "Ambient Light Sensor": true
     },
     "Streaming Activity": {
       "Watch History (Today)": [
-        88,
-        38
+        12,
+        64
       ],
       "Active App Sessions": [
-        75
+        57
       ],
-      "AutoPlay Next Episode": false
+      "AutoPlay Next Episode": true
     },
     "Network Activity": {
-      "IP Address": "192.168.98.109",
-      "Wi-Fi Signal Strength": "-76 dBm",
-      "Connection Type": "Ethernet",
+      "IP Address": "192.168.28.10",
+      "Wi-Fi Signal Strength": "-50 dBm",
+      "Connection Type": "Wi-Fi",
       "Data Usage": {
-        "Today": "7.9 GB",
-        "This Week": "7.6 GB",
-        "This Month": "4.0 GB"
+        "Today": "5.0 GB",
+        "This Week": "5.1 GB",
+        "This Month": "9.1 GB"
       },
-      "Last Online": "2025-11-12T09:28:33.0962641Z"
+      "Last Online": "2025-11-13T12:15:24.6625894Z"
     },
     "System Status": {
-      "Uptime": "7 days, 12 hrs",
-      "Last Reboot": "2025-11-12T09:28:33.0962677Z",
-      "Software Update Available": false,
-      "Last Software Update": "2025-11-12T09:28:33.0962711Z",
+      "Uptime": "7 days, 18 hrs",
+      "Last Reboot": "2025-11-13T12:15:24.6625925Z",
+      "Software Update Available": true,
+      "Last Software Update": "2025-11-13T12:15:24.6625944Z",
       "Storage Info": {
-        "Total Storage": "5.0 GB",
-        "Used": "0.1 GB",
-        "Free": "3.3 GB"
+        "Total Storage": "0.4 GB",
+        "Used": "1.4 GB",
+        "Free": "3.0 GB"
       },
       "Temperature": {
-        "Panel": 40.28,
-        "Mainboard": 56.02
+        "Panel": 66.41,
+        "Mainboard": 36.58
       }
     }
   },

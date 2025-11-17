@@ -1,0 +1,83 @@
+[INFO] Executing command: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-manage-emit --dir C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int create
+[INFO] Telemetry is enabled
+[INFO] Executing command: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-manage-emit --dir C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int list-capture-diagnostics
+[INFO] Executing action Delete compiler configurations for intermediate directory 'C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int'
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler gcc --comptype gcc --template
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler cc --comptype gcc --template
+[WARNING] Template config template-gcc-config-1 already exists for gcc-* and will be reused. 
+[WARNING] Template config template-gcc-config-2 already exists for *-gcc and will be reused. 
+[WARNING] Template config template-g++-config-1 already exists for g++-* and will be reused. 
+[WARNING] Template config template-g++-config-2 already exists for *-g++ and will be reused. 
+[WARNING] Template config template-ld-config-0 already exists for ld and will be reused. 
+[WARNING] Template config template-ar-config-0 already exists for ar and will be reused. 
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler c++ --comptype g++ --template
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler clang --comptype clangcc --template
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler java --comptype java --template
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler go --comptype go --template
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler ccache --comptype prefix --template
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler kotlinc --comptype kotlinc --template
+[WARNING] Template config template-java-config-0 already exists for java and will be reused. 
+[WARNING] Template config template-apt-config-0 already exists for apt and will be reused. 
+[WARNING] Template config template-javaw-config-0 already exists for javaw and will be reused. 
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler csc --comptype csc --template
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler vbc --comptype vbc --template
+[WARNING] Template config template-dotnet-config-0 already exists for dotnet and will be reused. 
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler cl --comptype msvc --template
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler i686-w64-mingw32-gcc --comptype gcc --template
+[WARNING] Template config template-gcc-config-1 already exists for gcc-* and will be reused. 
+[WARNING] Template config template-gcc-config-2 already exists for *-gcc and will be reused. 
+[WARNING] Template config template-g++-config-1 already exists for g++-* and will be reused. 
+[WARNING] Template config template-g++-config-2 already exists for *-g++ and will be reused. 
+[WARNING] Template config template-ld-config-0 already exists for ld and will be reused. 
+[WARNING] Template config template-ar-config-0 already exists for ar and will be reused. 
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler i686-w64-mingw32-c++ --comptype g++ --template
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler mingw32-gcc --comptype gcc --template
+[WARNING] Template config template-gcc-config-1 already exists for gcc-* and will be reused. 
+[WARNING] Template config template-gcc-config-2 already exists for *-gcc and will be reused. 
+[WARNING] Template config template-g++-config-1 already exists for g++-* and will be reused. 
+[WARNING] Template config template-g++-config-2 already exists for *-g++ and will be reused. 
+[WARNING] Template config template-ld-config-0 already exists for ld and will be reused. 
+[WARNING] Template config template-ar-config-0 already exists for ar and will be reused. 
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler mingw32-c++ --comptype g++ --template
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler x86_64-w64-mingw32-gcc --comptype gcc --template
+[WARNING] Template config template-gcc-config-1 already exists for gcc-* and will be reused. 
+[WARNING] Template config template-gcc-config-2 already exists for *-gcc and will be reused. 
+[WARNING] Template config template-g++-config-1 already exists for g++-* and will be reused. 
+[WARNING] Template config template-g++-config-2 already exists for *-g++ and will be reused. 
+[WARNING] Template config template-ld-config-0 already exists for ld and will be reused. 
+[WARNING] Template config template-ar-config-0 already exists for ar and will be reused. 
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml --compiler x86_64-w64-mingw32-c++ --comptype g++ --template
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\buildless-compiler-configs\coverity_config.xml --dart
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\buildless-compiler-configs\coverity_config.xml --javascript
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\buildless-compiler-configs\coverity_config.xml --php
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\buildless-compiler-configs\coverity_config.xml --python
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\buildless-compiler-configs\coverity_config.xml --ruby
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\buildless-compiler-configs\coverity_config.xml --java-buildless
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\buildless-compiler-configs\coverity_config.xml --comptype capture-config-files --file-regex $capture-config-files$ --template
+[WARNING] Configuration already exists for file regex $capture-config-files$
+          and it will not be updated.
+[INFO] Executing action Configure build compiler: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-configure -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\buildless-compiler-configs\coverity_config.xml --cs-buildless
+Skipping generation of coverity scan configuration because a configuration has already been generated
+[INFO] Loading compiler config 'C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\build-compiler-configs\coverity_config.xml'
+[INFO] Loading compiler config 'C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\buildless-compiler-configs\coverity_config.xml'
+[INFO] Executing action Emit files using buildless capture: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-internal-capture-files --dir C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int -c C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\buildless-compiler-configs\coverity_config.xml --ticker-mode no-spin --append-log --capture-list-file C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int\coverity-cli\capture-file-list-4215709870
+[INFO] Buildless capture started.
+[INFO] Emitting 20 Files.
+|0----------25-----------50----------75---------100|
+****************************************************
+[INFO] Buildless capture completed.
+
+[INFO] Executing action deleteResidualTUs C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int
+[INFO] Executing command: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-manage-emit --dir C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int list-capture-diagnostics
+[INFO] Executing action Invalidate capture results
+[INFO] Executing action Invoke cov-security-da: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-security-da --dir C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int --ticker-mode no-spin
+[INFO] Executing command: C:\Tools\cov-analysis-win64-2024.12.1\bin\cov-manage-emit --dir C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz\cov-int list-capture-diagnostics
+Capture summary:
+    SUCCEEDED: 19
+    INCOMPLETE: 0
+    FAILED: 0
+    IGNORED: 8
+    FILES CAPTURED: 19
+    LINES OF CODE: 7965
+[INFO] Capture phase took 55.027s.
+[INFO] To analyze your project, type 'coverity analyze --project-dir C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Frontend\device-monitoring-viz --dir cov-int'.

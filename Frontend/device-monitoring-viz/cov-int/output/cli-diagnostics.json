@@ -1,0 +1,462 @@
+{
+  "type": "Coverity CLI Diagnostics Data",
+  "version": 1,
+  "general": {
+    "coverity-static-analysis-version": "2024.12.1"
+  },
+  "capture": {
+    "primary-capture-mode": "Auto",
+    "command-line": "coverity capture --dir cov-int --project-dir ./",
+    "working-directory": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+    "project-directory": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+    "intermediate-directory": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int",
+    "configuration": {
+      "effective-configuration": {
+        "commit": null,
+        "caching": {
+          "bytecode": true,
+          "tu": false,
+          "wur": true
+        }
+      },
+      "configuration-hash": "a5996a40117c67893e3e3becdc06aade2c7a42bdcebef20131bf27dc43552439"
+    },
+    "capture-summary": {
+      "files-captured": 19,
+      "ignored": 8,
+      "lines-of-code": 7965,
+      "succeeded": 19
+    },
+    "capture-rate": 100,
+    "command-info": [
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-manage-emit --dir C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int create",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "start-time": "2025-11-13T14:55:21.9937766+05:30",
+        "end-time": "2025-11-13T14:55:23.4215055+05:30",
+        "duration": 1427728900
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-manage-emit --dir C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int list-capture-diagnostics",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "{",
+          "  \"type\" : \"Coverity Capture Diagnostics\",",
+          "  \"format_version\" : 4,",
+          "  \"captured-files\" : []",
+          "}"
+        ],
+        "start-time": "2025-11-13T14:55:23.4260793+05:30",
+        "end-time": "2025-11-13T14:55:23.5866262+05:30",
+        "duration": 160546900
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler gcc --comptype gcc --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: *-g++ *-gcc ar g++ g++-* gcc gcc-* ld"
+        ],
+        "start-time": "2025-11-13T14:55:23.5906937+05:30",
+        "end-time": "2025-11-13T14:55:27.0061156+05:30",
+        "duration": 3415421900
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler cc --comptype gcc --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: cc"
+        ],
+        "stderr-tail": [
+          "[WARNING] Template config template-gcc-config-1 already exists for gcc-* and will be reused. ",
+          "[WARNING] Template config template-gcc-config-2 already exists for *-gcc and will be reused. ",
+          "[WARNING] Template config template-g++-config-1 already exists for g++-* and will be reused. ",
+          "[WARNING] Template config template-g++-config-2 already exists for *-g++ and will be reused. ",
+          "[WARNING] Template config template-ld-config-0 already exists for ld and will be reused. ",
+          "[WARNING] Template config template-ar-config-0 already exists for ar and will be reused. "
+        ],
+        "start-time": "2025-11-13T14:55:27.0061156+05:30",
+        "end-time": "2025-11-13T14:55:27.3859811+05:30",
+        "duration": 379865500
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler c++ --comptype g++ --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: c++"
+        ],
+        "start-time": "2025-11-13T14:55:27.3859811+05:30",
+        "end-time": "2025-11-13T14:55:27.76498+05:30",
+        "duration": 378998900
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler clang --comptype clangcc --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: clang clang++"
+        ],
+        "start-time": "2025-11-13T14:55:27.766872+05:30",
+        "end-time": "2025-11-13T14:55:28.1588734+05:30",
+        "duration": 392001400
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler java --comptype java --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: apt java javac javaw",
+          "Successfully generated configuration for the buildless capture patterns: jar"
+        ],
+        "start-time": "2025-11-13T14:55:28.1594239+05:30",
+        "end-time": "2025-11-13T14:55:28.6085526+05:30",
+        "duration": 449128700
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler go --comptype go --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: go"
+        ],
+        "start-time": "2025-11-13T14:55:28.6085526+05:30",
+        "end-time": "2025-11-13T14:55:29.3403734+05:30",
+        "duration": 731820800
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler ccache --comptype prefix --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: ccache"
+        ],
+        "start-time": "2025-11-13T14:55:29.3408816+05:30",
+        "end-time": "2025-11-13T14:55:30.009764+05:30",
+        "duration": 668882400
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler kotlinc --comptype kotlinc --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: kotlin kotlinc",
+          "Successfully generated configuration for the buildless capture patterns: android kotlin-module"
+        ],
+        "stderr-tail": [
+          "[WARNING] Template config template-java-config-0 already exists for java and will be reused. ",
+          "[WARNING] Template config template-apt-config-0 already exists for apt and will be reused. ",
+          "[WARNING] Template config template-javaw-config-0 already exists for javaw and will be reused. "
+        ],
+        "start-time": "2025-11-13T14:55:30.009764+05:30",
+        "end-time": "2025-11-13T14:55:30.7062251+05:30",
+        "duration": 696461100
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler csc --comptype csc --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: csc csc.dll csc2 devenv dotnet microsoft.aspnetcore.mvc.razor.viewcompilation microsoft.aspnetcore.mvc.razor.viewcompilation-x64 microsoft.aspnetcore.mvc.razor.viewcompilation-x64.dll microsoft.aspnetcore.mvc.razor.viewcompilation-x86 microsoft.aspnetcore.mvc.razor.viewcompilation-x86.dll microsoft.aspnetcore.mvc.razor.viewcompilation.dll msbuild razor"
+        ],
+        "start-time": "2025-11-13T14:55:30.7080893+05:30",
+        "end-time": "2025-11-13T14:55:31.3890086+05:30",
+        "duration": 680919300
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler vbc --comptype vbc --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: vbc vbc.dll"
+        ],
+        "stderr-tail": [
+          "[WARNING] Template config template-dotnet-config-0 already exists for dotnet and will be reused. "
+        ],
+        "start-time": "2025-11-13T14:55:31.3890086+05:30",
+        "end-time": "2025-11-13T14:55:32.1272808+05:30",
+        "duration": 738272200
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler cl --comptype msvc --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: cl lib link"
+        ],
+        "start-time": "2025-11-13T14:55:32.1298355+05:30",
+        "end-time": "2025-11-13T14:55:32.8313514+05:30",
+        "duration": 701515900
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler i686-w64-mingw32-gcc --comptype gcc --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: i686-w64-mingw32-g++ i686-w64-mingw32-gcc"
+        ],
+        "stderr-tail": [
+          "[WARNING] Template config template-gcc-config-1 already exists for gcc-* and will be reused. ",
+          "[WARNING] Template config template-gcc-config-2 already exists for *-gcc and will be reused. ",
+          "[WARNING] Template config template-g++-config-1 already exists for g++-* and will be reused. ",
+          "[WARNING] Template config template-g++-config-2 already exists for *-g++ and will be reused. ",
+          "[WARNING] Template config template-ld-config-0 already exists for ld and will be reused. ",
+          "[WARNING] Template config template-ar-config-0 already exists for ar and will be reused. "
+        ],
+        "start-time": "2025-11-13T14:55:32.8313514+05:30",
+        "end-time": "2025-11-13T14:55:33.548144+05:30",
+        "duration": 716792600
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler i686-w64-mingw32-c++ --comptype g++ --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: i686-w64-mingw32-c++"
+        ],
+        "start-time": "2025-11-13T14:55:33.5501631+05:30",
+        "end-time": "2025-11-13T14:55:34.1970669+05:30",
+        "duration": 646903800
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler mingw32-gcc --comptype gcc --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: mingw32-g++ mingw32-gcc"
+        ],
+        "stderr-tail": [
+          "[WARNING] Template config template-gcc-config-1 already exists for gcc-* and will be reused. ",
+          "[WARNING] Template config template-gcc-config-2 already exists for *-gcc and will be reused. ",
+          "[WARNING] Template config template-g++-config-1 already exists for g++-* and will be reused. ",
+          "[WARNING] Template config template-g++-config-2 already exists for *-g++ and will be reused. ",
+          "[WARNING] Template config template-ld-config-0 already exists for ld and will be reused. ",
+          "[WARNING] Template config template-ar-config-0 already exists for ar and will be reused. "
+        ],
+        "start-time": "2025-11-13T14:55:34.1970669+05:30",
+        "end-time": "2025-11-13T14:55:35.0879243+05:30",
+        "duration": 890857400
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler mingw32-c++ --comptype g++ --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: mingw32-c++"
+        ],
+        "start-time": "2025-11-13T14:55:35.0879243+05:30",
+        "end-time": "2025-11-13T14:55:35.8340781+05:30",
+        "duration": 746153800
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler x86_64-w64-mingw32-gcc --comptype gcc --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: x86_64-w64-mingw32-g++ x86_64-w64-mingw32-gcc"
+        ],
+        "stderr-tail": [
+          "[WARNING] Template config template-gcc-config-1 already exists for gcc-* and will be reused. ",
+          "[WARNING] Template config template-gcc-config-2 already exists for *-gcc and will be reused. ",
+          "[WARNING] Template config template-g++-config-1 already exists for g++-* and will be reused. ",
+          "[WARNING] Template config template-g++-config-2 already exists for *-g++ and will be reused. ",
+          "[WARNING] Template config template-ld-config-0 already exists for ld and will be reused. ",
+          "[WARNING] Template config template-ar-config-0 already exists for ar and will be reused. "
+        ],
+        "start-time": "2025-11-13T14:55:35.8340781+05:30",
+        "end-time": "2025-11-13T14:55:36.6275497+05:30",
+        "duration": 793471600
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\build-compiler-configs\\coverity_config.xml --compiler x86_64-w64-mingw32-c++ --comptype g++ --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/build-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the compilers: x86_64-w64-mingw32-c++"
+        ],
+        "start-time": "2025-11-13T14:55:36.6275497+05:30",
+        "end-time": "2025-11-13T14:55:37.3029533+05:30",
+        "duration": 675403600
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\buildless-compiler-configs\\coverity_config.xml --dart",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/buildless-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the buildless capture patterns: capture-config-files dart"
+        ],
+        "start-time": "2025-11-13T14:55:37.3053536+05:30",
+        "end-time": "2025-11-13T14:55:37.977848+05:30",
+        "duration": 672494400
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\buildless-compiler-configs\\coverity_config.xml --javascript",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/buildless-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the buildless capture patterns: capture-config-files html javascript jsx typescript vue"
+        ],
+        "start-time": "2025-11-13T14:55:37.977848+05:30",
+        "end-time": "2025-11-13T14:55:38.5916767+05:30",
+        "duration": 613828700
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\buildless-compiler-configs\\coverity_config.xml --php",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/buildless-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the buildless capture patterns: capture-config-files php"
+        ],
+        "start-time": "2025-11-13T14:55:38.5916767+05:30",
+        "end-time": "2025-11-13T14:55:39.1979598+05:30",
+        "duration": 606283100
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\buildless-compiler-configs\\coverity_config.xml --python",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/buildless-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the buildless capture patterns: capture-config-files python"
+        ],
+        "start-time": "2025-11-13T14:55:39.1979598+05:30",
+        "end-time": "2025-11-13T14:55:39.8652946+05:30",
+        "duration": 667334800
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\buildless-compiler-configs\\coverity_config.xml --ruby",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/buildless-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the buildless capture patterns: capture-config-files ruby"
+        ],
+        "start-time": "2025-11-13T14:55:39.8652946+05:30",
+        "end-time": "2025-11-13T14:55:40.2586919+05:30",
+        "duration": 393397300
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\buildless-compiler-configs\\coverity_config.xml --java-buildless",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/buildless-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the buildless capture patterns: android capture-config-files java-buildless jsp"
+        ],
+        "start-time": "2025-11-13T14:55:40.2586919+05:30",
+        "end-time": "2025-11-13T14:55:40.6598864+05:30",
+        "duration": 401194500
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\buildless-compiler-configs\\coverity_config.xml --comptype capture-config-files --file-regex $capture-config-files$ --template",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stderr-tail": [
+          "[WARNING] Configuration already exists for file regex $capture-config-files$",
+          "          and it will not be updated."
+        ],
+        "start-time": "2025-11-13T14:55:40.6617089+05:30",
+        "end-time": "2025-11-13T14:55:40.6972987+05:30",
+        "duration": 35589800
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-configure -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\buildless-compiler-configs\\coverity_config.xml --cs-buildless",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "",
+          "Generated coverity_config.xml at location C:/Users/Premal Kadam/Documents/Device Monitoring Project/DeviceMonitoring/Frontend/device-monitoring-viz/cov-int/coverity-cli/buildless-compiler-configs/coverity_config.xml",
+          "Successfully generated configuration for the buildless capture patterns: cs-buildless"
+        ],
+        "stderr-tail": [
+          "Skipping generation of coverity scan configuration because a configuration has already been generated"
+        ],
+        "start-time": "2025-11-13T14:55:40.6990863+05:30",
+        "end-time": "2025-11-13T14:55:41.0946947+05:30",
+        "duration": 395608400
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-internal-capture-files --dir C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int -c C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\buildless-compiler-configs\\coverity_config.xml --ticker-mode no-spin --append-log --capture-list-file C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int\\coverity-cli\\capture-file-list-4215709870",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "[INFO] Buildless capture started.",
+          "[INFO] Emitting 20 Files.",
+          "|0----------25-----------50----------75---------100|",
+          "****************************************************",
+          "[INFO] Buildless capture completed.",
+          ""
+        ],
+        "start-time": "2025-11-13T14:55:41.111605+05:30",
+        "end-time": "2025-11-13T14:56:15.9647668+05:30",
+        "duration": 34853161800
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-manage-emit --dir C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int list-capture-diagnostics",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "        \"id\" : 26,",
+          "        \"source-language\" : \"TypeScript ES6 module\",",
+          "        \"capture-percentage\" : 100,",
+          "        \"had-failures\" : false,",
+          "        \"had-recoverable-errors\" : false,",
+          "        \"had-abstract-syntax-trees\" : true",
+          "      }",
+          "    }",
+          "  ]",
+          "}"
+        ],
+        "start-time": "2025-11-13T14:56:15.9647668+05:30",
+        "end-time": "2025-11-13T14:56:16.1330699+05:30",
+        "duration": 168303100
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-security-da --dir C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int --ticker-mode no-spin",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "start-time": "2025-11-13T14:56:16.1347+05:30",
+        "end-time": "2025-11-13T14:56:16.8640847+05:30",
+        "duration": 729384700
+      },
+      {
+        "command-line": "C:\\Tools\\cov-analysis-win64-2024.12.1\\bin\\cov-manage-emit --dir C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz\\cov-int list-capture-diagnostics",
+        "cwd": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Frontend\\device-monitoring-viz",
+        "stdout-tail": [
+          "        \"id\" : 26,",
+          "        \"source-language\" : \"TypeScript ES6 module\",",
+          "        \"capture-percentage\" : 100,",
+          "        \"had-failures\" : false,",
+          "        \"had-recoverable-errors\" : false,",
+          "        \"had-abstract-syntax-trees\" : true",
+          "      }",
+          "    }",
+          "  ]",
+          "}"
+        ],
+        "start-time": "2025-11-13T14:56:16.8668483+05:30",
+        "end-time": "2025-11-13T14:56:17.0144647+05:30",
+        "duration": 147616400
+      }
+    ]
+  },
+  "analysis": {
+    "configuration": {}
+  }
+}

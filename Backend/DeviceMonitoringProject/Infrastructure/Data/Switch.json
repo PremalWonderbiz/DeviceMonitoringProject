@@ -1,10 +1,10 @@
 {
   "Name": "Network Switch",
   "Type": "Networking Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "D4:6D:6D:88:11:22",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-11-12T09:28:33.0751344Z",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-11-13T12:16:09.0268399Z",
   "staticProperties": {
     "Hardware Info": {
       "Model": "Cisco Catalyst 2960-X",
@@ -61,59 +61,59 @@
   },
   "dynamicProperties": {
     "Port Status": [
+      42,
       3,
-      46,
-      48
+      40
     ],
     "System Health": {
-      "CPU Usage": "49%",
+      "CPU Usage": "98%",
       "RAM Usage": "Evaluated at runtime",
-      "Temperature": 80.37,
-      "Fan Status": "Non-operational"
+      "Temperature": 50.96,
+      "Fan Status": "Operational"
     },
     "Traffic Statistics": {
-      "Total Data Sent": "4.7 GB",
-      "Total Data Received": "0.8 GB",
+      "Total Data Sent": "2.5 GB",
+      "Total Data Received": "7.9 GB",
       "Packet Errors": {
-        "Inbound": 3,
-        "Outbound": 86
+        "Inbound": 34,
+        "Outbound": 99
       },
-      "Broadcast Storms Detected": true
+      "Broadcast Storms Detected": false
     },
     "VLANs \u0026 Routing": {
       "Active VLANs": [
-        43,
-        32,
-        19
+        74,
+        92,
+        84
       ],
       "Routing Table": [
-        59,
-        34
+        63,
+        56
       ]
     },
     "Security \u0026 Logs": {
-      "Port Security Enabled": true,
+      "Port Security Enabled": false,
       "MAC Address Filtering": {
-        "Mode": "Static",
+        "Mode": "Dynamic",
         "Whitelisted MACs": [
-          14,
-          44
+          26,
+          6
         ]
       },
       "Login Attempts": [
-        61,
-        14,
-        43,
-        62,
-        80
+        33,
+        49,
+        11,
+        46,
+        74
       ],
       "Recent Logs": [
-        9,
-        71,
-        75,
-        50,
-        85,
-        84
+        83,
+        32,
+        10,
+        56,
+        20,
+        10
       ]
     }
   },

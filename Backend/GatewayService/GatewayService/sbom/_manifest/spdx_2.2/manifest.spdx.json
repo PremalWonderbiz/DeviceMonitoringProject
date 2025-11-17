@@ -1,0 +1,1857 @@
+{
+  "files": [
+    {
+      "fileName": "./API.runtimeconfig.json",
+      "SPDXID": "SPDXRef-File--API.runtimeconfig.json-805603B8A1C75B2928046FDCB805CC82C4F9B0B9",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "2927e7d9a65748a82c4f265a0c9c1876a5ee233d9f5283881e0966e81ca94e14"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "805603b8a1c75b2928046fdcb805cc82c4f9b0b9"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./API.pdb",
+      "SPDXID": "SPDXRef-File--API.pdb-7F661714E02249D64A8EC561F1B26BA6F5915222",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "2d654483081bd3396b9d17f3f3bef06b034914a6123fdffe47249d30e2ef6a94"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "7f661714e02249d64a8ec561f1b26ba6f5915222"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./API.staticwebassets.endpoints.json",
+      "SPDXID": "SPDXRef-File--API.staticwebassets.endpoints.json-E148462980BF0FEE46695DE5D4499F6918B4ACA1",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "f2e2a4350b75a492654a47a485cfdf3372a4a516f7da2ae2175a0e9854918724"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "e148462980bf0fee46695de5d4499f6918b4aca1"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./appsettings.Development.json",
+      "SPDXID": "SPDXRef-File--appsettings.Development.json-C4395DEC377A5BC3F27955FE131047DC9F4FA2AF",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "73f95f9e0ceb205fc1c4dc50c07697fcfa29d7087868c2aef1d504cb38c771ec"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "c4395dec377a5bc3f27955fe131047dc9f4fa2af"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.OpenApi.dll",
+      "SPDXID": "SPDXRef-File--Microsoft.OpenApi.dll-6634F1E3B374E800BEB7E78FA1C910B9D1F183EF",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "aeecfa60db32dbcfac06bceb835745951c88fcac194a84b2d0fe61893d1b7c07"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "6634f1e3b374e800beb7e78fa1c910b9d1f183ef"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.Extensions.Options.dll",
+      "SPDXID": "SPDXRef-File--Microsoft.Extensions.Options.dll-E8FCA245A2B9A21589BFE18526C97C22939ABF1B",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "5e01894cbc0661bacb8ca8f485a40d5ee4e02f28fef58007668a0276431b4693"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "e8fca245a2b9a21589bfe18526c97c22939abf1b"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./appsettings.json",
+      "SPDXID": "SPDXRef-File--appsettings.json-1A929A30E30E1F245E734FA9BD976CB0B58EE82A",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "200332b434757a0054a3d356c91cde01f2c48712be8aa2bcb0f3e973619f06e3"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "1a929a30e30e1f245e734fa9bd976cb0b58ee82a"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.Extensions.ObjectPool.dll",
+      "SPDXID": "SPDXRef-File--Microsoft.Extensions.ObjectPool.dll-63607851E3C31C52CFDEDC32E40A47A47EC16EF7",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "f226697838b7b6862cbafadcfc037d7118a4a65e742f3949d3c42e948eb4de7a"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "63607851e3c31c52cfdedc32e40a47a47ec16ef7"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.Extensions.Logging.Abstractions.dll",
+      "SPDXID": "SPDXRef-File--Microsoft.Extensions.Logging.Abstractions.dll-FCB5492A4880763E727B5A5BA0156DB023BDB2B9",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "45c22524218541717e4a0ade36847c1cda4921f5945b4975a1c78ddfe023d0b1"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "fcb5492a4880763e727b5a5ba0156db023bdb2b9"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./System.Net.WebSockets.WebSocketProtocol.dll",
+      "SPDXID": "SPDXRef-File--System.Net.WebSockets.WebSocketProtocol.dll-F941E94EF8D8B1BDF7E194A5232F4016BCFE2203",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "c1bdac77de553b1c33ab42313000816a3160b198519dd34eda8cff5b9127af0e"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "f941e94ef8d8b1bdf7e194a5232f4016bcfe2203"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./API.dll",
+      "SPDXID": "SPDXRef-File--API.dll-BC210BDDC749E308B584FA3A325029FA696AAA37",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "f84006853532d09e899bcc78e68c820d9e7fe525f29222261e3e86da39e21dd5"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "bc210bddc749e308b584fa3a325029fa696aaa37"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.Extensions.Diagnostics.Abstractions.dll",
+      "SPDXID": "SPDXRef-File--Microsoft.Extensions.Diagnostics.Abstractions.dll-5AD81D2A8E2E0FA8D44A5438EDF9D834EC0517EC",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "9864dbcfdbfe395bbd64deec7568fdaf0cbc3850f0cd8f53e7359189bd158082"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "5ad81d2a8e2e0fa8d44a5438edf9d834ec0517ec"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./API.deps.json",
+      "SPDXID": "SPDXRef-File--API.deps.json-58B5824D7994045CD4A359332542A1CEC53C0F07",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "a92717b9b3b774f31caa261ba2e2a18b4f7feb2057ce88674d2ef1a97b2ada56"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "58b5824d7994045cd4a359332542a1cec53c0f07"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./API.exe",
+      "SPDXID": "SPDXRef-File--API.exe-1C4E5CD6E8EBB2D1DD0987289BA639E648DA3174",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "3d854347648bcd7ca5ae34ac0e0173ce4545298b96e63e962544ca6b9a3fe969"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "1c4e5cd6e8ebb2d1dd0987289ba639e648da3174"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.Extensions.Hosting.Abstractions.dll",
+      "SPDXID": "SPDXRef-File--Microsoft.Extensions.Hosting.Abstractions.dll-3BF99D2F7EFA643BB4CD3B4E2D132539060B4878",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "27f074952005f74ba37fc62756690255e5f743ff3f7426fcdeb65a0d6ec9ff77"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "3bf99d2f7efa643bb4cd3b4e2d132539060b4878"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+      "SPDXID": "SPDXRef-File--Microsoft.Extensions.DependencyInjection.Abstractions.dll-F1B7207FFC54183E96AD1DA76401F896A030DEA1",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "67fa4325000db017dc0c35829b416f024f042d24efb868bcf17a895ee6500a93"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "f1b7207ffc54183e96ad1da76401f896a030dea1"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Swashbuckle.AspNetCore.Swagger.dll",
+      "SPDXID": "SPDXRef-File--Swashbuckle.AspNetCore.Swagger.dll-E3EFEB94A6EB935D4DB1045B2B6FCD999BC99EDB",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "5c5f8b453b40c37a13656fc7ea0641553b9fa72e80fc07046bd012c0334350ac"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "e3efeb94a6eb935d4db1045b2b6fcd999bc99edb"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Newtonsoft.Json.dll",
+      "SPDXID": "SPDXRef-File--Newtonsoft.Json.dll-9A5133F9315AA76ED0ED132FC4A64B41D950E774",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "824222a6f8bdde186ae8f13e5afa0a53cdb109f05c7e5d8f4c73630f77a7c6de"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "9a5133f9315aa76ed0ed132fc4a64b41d950e774"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Swashbuckle.AspNetCore.SwaggerGen.dll",
+      "SPDXID": "SPDXRef-File--Swashbuckle.AspNetCore.SwaggerGen.dll-232A9E721C9F8FFAC598CF0D4DD4E9B31B8A6C40",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b3dd86d15e24f75b5246f69cf8cfff5038352ededd178979c7fcd7519cc201cc"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "232a9e721c9f8ffac598cf0d4dd4e9b31b8a6c40"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Swashbuckle.AspNetCore.SwaggerUI.dll",
+      "SPDXID": "SPDXRef-File--Swashbuckle.AspNetCore.SwaggerUI.dll-659BBBDBD049BAB5097A809C14162B084B223702",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "d83f7e15a8c6c34e7bc4319e1b81e69f3856e692a076894a6e0efd7f27f34d1f"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "659bbbdbd049bab5097a809c14162b084b223702"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    }
+  ],
+  "packages": [
+    {
+      "name": "Microsoft.AspNetCore.SignalR",
+      "SPDXID": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "1.2.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.SignalR@1.2.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.SignalR.Protocols.Json",
+      "SPDXID": "SPDXRef-Package-89668DBB2E1B0C56FB08FEF405784066D354C7ACFAFC669DA7F6F276E2D43586",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "1.2.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.SignalR.Protocols.Json@1.2.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "System.IO.Pipelines",
+      "SPDXID": "SPDXRef-Package-4CCCC3BC1DB953AA7771C96A8108E562B0B27C655D36D5F0CA4B84DC03F7EAA6",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "8.0.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.IO.Pipelines@8.0.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Authentication.Abstractions",
+      "SPDXID": "SPDXRef-Package-482CB189441CB6A5290DBD0AFFB0DF93AEFC209A2EDF3C4A223965C1268C99B1",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.Authentication.Abstractions@2.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "sonar-scanner",
+      "SPDXID": "SPDXRef-Package-50B1719D6B4DC7AB6DCAFAC82E7902DA978990FD4E8DC2ECF5075AA13D249765",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "3.1.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:npm/sonar-scanner@3.1.0"
+        }
+      ],
+      "supplier": "Organization: Bastien Caudan"
+    },
+    {
+      "name": "Microsoft.Extensions.Primitives",
+      "SPDXID": "SPDXRef-Package-8D06DF291817DDFE90DEF98A2470F5E9BEC769CC740E0A952AD456BA01BA5B0D",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "8.0.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.Extensions.Primitives@8.0.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.Extensions.ApiDescription.Server",
+      "SPDXID": "SPDXRef-Package-436C599854114144BCF025F85AF31D68EF233A54B710BB94F84C342CE56A9151",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "6.0.5",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.Extensions.ApiDescription.Server@6.0.5"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.Extensions.Hosting.Abstractions",
+      "SPDXID": "SPDXRef-Package-EB1B3BBCF5149F7E6531C51A96424202DE4103590641C13DADA475F31F26FE09",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "8.0.1",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.Extensions.Hosting.Abstractions@8.0.1"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.Net.Http.Headers",
+      "SPDXID": "SPDXRef-Package-C7E5F642C6FDB2631DC1C35BB834324D60C6185F79CE0894E5E35FEC72F060CC",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.Net.Http.Headers@2.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Routing.Abstractions",
+      "SPDXID": "SPDXRef-Package-0ED0572A798E162DFFA3F82CC53858C7A0948F48D13A2057C34DA3BFA9AC9EA2",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.Routing.Abstractions@2.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Swashbuckle.AspNetCore",
+      "SPDXID": "SPDXRef-Package-9E47C3873853151C0FDFFB880F99EACCDEB23203AE84EC2CA39CBF3BEB69521A",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "6.6.2",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Swashbuckle.AspNetCore@6.6.2"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "System.Reflection.Emit",
+      "SPDXID": "SPDXRef-Package-1A7BDBEECB384B22B3D8D8FA2A5A3C81EDB4173F8B4114D1B543A657D31623F7",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "4.7.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Reflection.Emit@4.7.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.Extensions.Logging.Abstractions",
+      "SPDXID": "SPDXRef-Package-97BC400C410A127EA0A6F1E477C40574387AA14FF569FF0CFC3D1E557EF6B346",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "8.0.2",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.Extensions.Logging.Abstractions@8.0.2"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.Extensions.FileProviders.Abstractions",
+      "SPDXID": "SPDXRef-Package-1CDFD9A0CB837E793D6E87111C1AEAA00821070E3DF348091FA2874AE00F82C5",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "8.0.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.Extensions.FileProviders.Abstractions@8.0.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "System.Net.WebSockets.WebSocketProtocol",
+      "SPDXID": "SPDXRef-Package-4163D5DA1DE061E4081FB4B5F805D445FDCC5B77C12446A88FDF3D0AFEB94F0A",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "5.1.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Net.WebSockets.WebSocketProtocol@5.1.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.Extensions.DependencyInjection.Abstractions",
+      "SPDXID": "SPDXRef-Package-D45E310E2C14FFDECCB77BD34DCB98F27CC8FD0868B7FC5852809E9398F9DBBB",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "8.0.2",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.Extensions.DependencyInjection.Abstractions@8.0.2"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Hosting.Abstractions",
+      "SPDXID": "SPDXRef-Package-D0D05151F59C3C7DD3584001AD1D73C194571E9ECADDC3650FD91DD6CFD4DE36",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.Hosting.Abstractions@2.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "System.Text.Encodings.Web",
+      "SPDXID": "SPDXRef-Package-D595C7CA243D238A94C6D0F9277EB98AE42EDA370259D4615A58E5BE78BAD562",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "8.0.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Text.Encodings.Web@8.0.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Http.Connections",
+      "SPDXID": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "1.2.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.Http.Connections@1.2.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Authorization",
+      "SPDXID": "SPDXRef-Package-4D7249D55C408AC74D12DDBED2F953B1D6E36A026D4910E79C46A0221492C9C9",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.Authorization@2.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Http",
+      "SPDXID": "SPDXRef-Package-FCDC3943D641E96ED381871DFBD039B9D267B8298C07E41F66F2C7A64960E0DF",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.Http@2.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Hosting.Server.Abstractions",
+      "SPDXID": "SPDXRef-Package-EDD39F317575D827E05A4CE553ED802455C833ABC81410A08DF7D4AC466B7D86",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.Hosting.Server.Abstractions@2.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "System.Threading.Channels",
+      "SPDXID": "SPDXRef-Package-B51339A22F51905881D2D842FBD3BF1F1A98E63256FAA3B4616C6D09A2D4705B",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "8.0.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Threading.Channels@8.0.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.Extensions.Options",
+      "SPDXID": "SPDXRef-Package-38EB9C1270DDB3C49EB53BA52C164FE55D40DE5425BDD41EA43CAF4CEE32F946",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "8.0.2",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.Extensions.Options@8.0.2"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Routing",
+      "SPDXID": "SPDXRef-Package-E85FEC48070CD6EC2BF29F76B41294287396666CB40650C29A5C9C1DC64C5047",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.Routing@2.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Swashbuckle.AspNetCore.SwaggerGen",
+      "SPDXID": "SPDXRef-Package-E314E28D0450E9294104233135A0CAFF0EDFE4951DDF3CE5D00899D92B48D07E",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "6.6.2",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Swashbuckle.AspNetCore.SwaggerGen@6.6.2"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.OpenApi",
+      "SPDXID": "SPDXRef-Package-32C6EEF4FAA6BE419A1FAFB4853FA93418D0678AC79386B4BF3B6575F9821751",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "1.6.14",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.OpenApi@1.6.14"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.Extensions.ObjectPool",
+      "SPDXID": "SPDXRef-Package-DCAA650CB8B9CE104C48F5ED380AF650CFA53B0A018584749FD7BAB6EEF910D1",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "8.0.11",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.Extensions.ObjectPool@8.0.11"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Newtonsoft.Json",
+      "SPDXID": "SPDXRef-Package-02757F171479EFBA2C351BAC4CFCDD81A7933075838569DB9F681BC4219BFEB4",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "11.0.2",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Newtonsoft.Json@11.0.2"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Swashbuckle.AspNetCore.SwaggerUI",
+      "SPDXID": "SPDXRef-Package-06920EEB869962E4208E553AAB5AB791AD2A5EDE822D00939245D9C5D4A07A1F",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "6.6.2",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Swashbuckle.AspNetCore.SwaggerUI@6.6.2"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.Extensions.Diagnostics.Abstractions",
+      "SPDXID": "SPDXRef-Package-E2DF737F0CC3C3536A93CBB40305ACF6EF6C44B4DD9EC0AFE5B5586DCC16BC75",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "8.0.1",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.Extensions.Diagnostics.Abstractions@8.0.1"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Http.Connections.Common",
+      "SPDXID": "SPDXRef-Package-E638D0790B2208BC20F7838068FE08986DDB159591047BA18CA07141A4F62318",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "1.2.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.Http.Connections.Common@1.2.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Swashbuckle.AspNetCore.Swagger",
+      "SPDXID": "SPDXRef-Package-ECFCAE6EF2FF75DDD43A030902718C27D46D6E9B0EB6BE27AF371843F90B851F",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "6.6.2",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Swashbuckle.AspNetCore.Swagger@6.6.2"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Authorization.Policy",
+      "SPDXID": "SPDXRef-Package-EAF3E4F832BA0D0764167DC0CE345B115549BF63626245C2916F3836CB558E64",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.Authorization.Policy@2.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.Extensions.Configuration.Abstractions",
+      "SPDXID": "SPDXRef-Package-94004F1D9E495048B7DDC680757AD96C5549911E159B9FB4170D01C1EDFE34F4",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "8.0.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.Extensions.Configuration.Abstractions@8.0.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "System.Buffers",
+      "SPDXID": "SPDXRef-Package-C2AE0F9A4CAF24317EFBD430091C880657427F9A29D05A63F28F9F1D68E46BED",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "4.6.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Buffers@4.6.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.WebSockets",
+      "SPDXID": "SPDXRef-Package-8952F61D9EC654EFE2E0158D908B7C214CA49598539CE9BA46D3A70F731CC552",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.WebSockets@2.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Http.Abstractions",
+      "SPDXID": "SPDXRef-Package-59B98406F99C180C679741D7C5887369FF5AC61C34FBC07BEA331CB2F86EF2DF",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.Http.Abstractions@2.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Http.Features",
+      "SPDXID": "SPDXRef-Package-B8832DC213EB878C27C2D5DD94D0CEB5F7C92E1C4D6045F92C9C2B683DF50A05",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.Http.Features@2.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.SignalR.Common",
+      "SPDXID": "SPDXRef-Package-3EB2CBF6738EEEF023AA4ECD087EA691D8C34A7CDE0C384C268501239D1C209C",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "1.2.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.SignalR.Common@1.2.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Http.Extensions",
+      "SPDXID": "SPDXRef-Package-D1375365636D52F8315C47BAC88E72A9DB32983BFA50E1C8AE56CDC0758E5A07",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.Http.Extensions@2.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.SignalR.Core",
+      "SPDXID": "SPDXRef-Package-58A76DF60689B08D8721DE64D6DF3A4B0D43223409916D48CB9B13CC7235450B",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "1.2.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.SignalR.Core@1.2.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.Connections.Abstractions",
+      "SPDXID": "SPDXRef-Package-352BF29AC005D6E311C9E0D92BBD60A4D794D4593F8B56E09462B4876130A982",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.Connections.Abstractions@2.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Microsoft.AspNetCore.WebUtilities",
+      "SPDXID": "SPDXRef-Package-2FD5B2316BDFB94BD4F4F03CFAF6E577E3FBAE210DC4E673A8EB5D901E92CF9D",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.AspNetCore.WebUtilities@2.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "GatewayService",
+      "SPDXID": "SPDXRef-RootPackage",
+      "downloadLocation": "NOASSERTION",
+      "packageVerificationCode": {
+        "packageVerificationCodeValue": "49e21be1e15a53dadc9cdb1d121f73a064185df5"
+      },
+      "filesAnalyzed": true,
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoFromFiles": [
+        "NOASSERTION"
+      ],
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "1.0.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/Premal%20Kadam/spdx.org/GatewayService@1.0.0?tag_id=4352e970-a9c5-466b-83d3-cf5a95e729e0"
+        }
+      ],
+      "supplier": "Organization: Premal Kadam",
+      "hasFiles": [
+        "SPDXRef-File--Swashbuckle.AspNetCore.SwaggerUI.dll-659BBBDBD049BAB5097A809C14162B084B223702",
+        "SPDXRef-File--Swashbuckle.AspNetCore.SwaggerGen.dll-232A9E721C9F8FFAC598CF0D4DD4E9B31B8A6C40",
+        "SPDXRef-File--Newtonsoft.Json.dll-9A5133F9315AA76ED0ED132FC4A64B41D950E774",
+        "SPDXRef-File--System.Net.WebSockets.WebSocketProtocol.dll-F941E94EF8D8B1BDF7E194A5232F4016BCFE2203",
+        "SPDXRef-File--Microsoft.Extensions.Logging.Abstractions.dll-FCB5492A4880763E727B5A5BA0156DB023BDB2B9",
+        "SPDXRef-File--Microsoft.OpenApi.dll-6634F1E3B374E800BEB7E78FA1C910B9D1F183EF",
+        "SPDXRef-File--appsettings.Development.json-C4395DEC377A5BC3F27955FE131047DC9F4FA2AF",
+        "SPDXRef-File--Swashbuckle.AspNetCore.Swagger.dll-E3EFEB94A6EB935D4DB1045B2B6FCD999BC99EDB",
+        "SPDXRef-File--Microsoft.Extensions.ObjectPool.dll-63607851E3C31C52CFDEDC32E40A47A47EC16EF7",
+        "SPDXRef-File--Microsoft.Extensions.Options.dll-E8FCA245A2B9A21589BFE18526C97C22939ABF1B",
+        "SPDXRef-File--API.staticwebassets.endpoints.json-E148462980BF0FEE46695DE5D4499F6918B4ACA1",
+        "SPDXRef-File--Microsoft.Extensions.DependencyInjection.Abstractions.dll-F1B7207FFC54183E96AD1DA76401F896A030DEA1",
+        "SPDXRef-File--API.deps.json-58B5824D7994045CD4A359332542A1CEC53C0F07",
+        "SPDXRef-File--API.pdb-7F661714E02249D64A8EC561F1B26BA6F5915222",
+        "SPDXRef-File--Microsoft.Extensions.Hosting.Abstractions.dll-3BF99D2F7EFA643BB4CD3B4E2D132539060B4878",
+        "SPDXRef-File--API.exe-1C4E5CD6E8EBB2D1DD0987289BA639E648DA3174",
+        "SPDXRef-File--appsettings.json-1A929A30E30E1F245E734FA9BD976CB0B58EE82A",
+        "SPDXRef-File--Microsoft.Extensions.Diagnostics.Abstractions.dll-5AD81D2A8E2E0FA8D44A5438EDF9D834EC0517EC",
+        "SPDXRef-File--API.dll-BC210BDDC749E308B584FA3A325029FA696AAA37",
+        "SPDXRef-File--API.runtimeconfig.json-805603B8A1C75B2928046FDCB805CC82C4F9B0B9"
+      ]
+    }
+  ],
+  "externalDocumentRefs": [],
+  "relationships": [
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-EAF3E4F832BA0D0764167DC0CE345B115549BF63626245C2916F3836CB558E64",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-EAF3E4F832BA0D0764167DC0CE345B115549BF63626245C2916F3836CB558E64",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-D45E310E2C14FFDECCB77BD34DCB98F27CC8FD0868B7FC5852809E9398F9DBBB",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-D45E310E2C14FFDECCB77BD34DCB98F27CC8FD0868B7FC5852809E9398F9DBBB",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-D45E310E2C14FFDECCB77BD34DCB98F27CC8FD0868B7FC5852809E9398F9DBBB",
+      "spdxElementId": "SPDXRef-Package-EAF3E4F832BA0D0764167DC0CE345B115549BF63626245C2916F3836CB558E64"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-D45E310E2C14FFDECCB77BD34DCB98F27CC8FD0868B7FC5852809E9398F9DBBB",
+      "spdxElementId": "SPDXRef-Package-482CB189441CB6A5290DBD0AFFB0DF93AEFC209A2EDF3C4A223965C1268C99B1"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-D45E310E2C14FFDECCB77BD34DCB98F27CC8FD0868B7FC5852809E9398F9DBBB",
+      "spdxElementId": "SPDXRef-Package-97BC400C410A127EA0A6F1E477C40574387AA14FF569FF0CFC3D1E557EF6B346"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-4163D5DA1DE061E4081FB4B5F805D445FDCC5B77C12446A88FDF3D0AFEB94F0A",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-4163D5DA1DE061E4081FB4B5F805D445FDCC5B77C12446A88FDF3D0AFEB94F0A",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-4163D5DA1DE061E4081FB4B5F805D445FDCC5B77C12446A88FDF3D0AFEB94F0A",
+      "spdxElementId": "SPDXRef-Package-8952F61D9EC654EFE2E0158D908B7C214CA49598539CE9BA46D3A70F731CC552"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-1CDFD9A0CB837E793D6E87111C1AEAA00821070E3DF348091FA2874AE00F82C5",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-1CDFD9A0CB837E793D6E87111C1AEAA00821070E3DF348091FA2874AE00F82C5",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-1CDFD9A0CB837E793D6E87111C1AEAA00821070E3DF348091FA2874AE00F82C5",
+      "spdxElementId": "SPDXRef-Package-D0D05151F59C3C7DD3584001AD1D73C194571E9ECADDC3650FD91DD6CFD4DE36"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-1CDFD9A0CB837E793D6E87111C1AEAA00821070E3DF348091FA2874AE00F82C5",
+      "spdxElementId": "SPDXRef-Package-EB1B3BBCF5149F7E6531C51A96424202DE4103590641C13DADA475F31F26FE09"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-97BC400C410A127EA0A6F1E477C40574387AA14FF569FF0CFC3D1E557EF6B346",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-97BC400C410A127EA0A6F1E477C40574387AA14FF569FF0CFC3D1E557EF6B346",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-97BC400C410A127EA0A6F1E477C40574387AA14FF569FF0CFC3D1E557EF6B346",
+      "spdxElementId": "SPDXRef-Package-EAF3E4F832BA0D0764167DC0CE345B115549BF63626245C2916F3836CB558E64"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-97BC400C410A127EA0A6F1E477C40574387AA14FF569FF0CFC3D1E557EF6B346",
+      "spdxElementId": "SPDXRef-Package-482CB189441CB6A5290DBD0AFFB0DF93AEFC209A2EDF3C4A223965C1268C99B1"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-D1375365636D52F8315C47BAC88E72A9DB32983BFA50E1C8AE56CDC0758E5A07",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-D1375365636D52F8315C47BAC88E72A9DB32983BFA50E1C8AE56CDC0758E5A07",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-D1375365636D52F8315C47BAC88E72A9DB32983BFA50E1C8AE56CDC0758E5A07",
+      "spdxElementId": "SPDXRef-Package-E85FEC48070CD6EC2BF29F76B41294287396666CB40650C29A5C9C1DC64C5047"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-482CB189441CB6A5290DBD0AFFB0DF93AEFC209A2EDF3C4A223965C1268C99B1",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-482CB189441CB6A5290DBD0AFFB0DF93AEFC209A2EDF3C4A223965C1268C99B1",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-482CB189441CB6A5290DBD0AFFB0DF93AEFC209A2EDF3C4A223965C1268C99B1",
+      "spdxElementId": "SPDXRef-Package-EAF3E4F832BA0D0764167DC0CE345B115549BF63626245C2916F3836CB558E64"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-4CCCC3BC1DB953AA7771C96A8108E562B0B27C655D36D5F0CA4B84DC03F7EAA6",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "spdxElementId": "SPDXRef-DOCUMENT"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-4CCCC3BC1DB953AA7771C96A8108E562B0B27C655D36D5F0CA4B84DC03F7EAA6",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-4CCCC3BC1DB953AA7771C96A8108E562B0B27C655D36D5F0CA4B84DC03F7EAA6",
+      "spdxElementId": "SPDXRef-Package-E638D0790B2208BC20F7838068FE08986DDB159591047BA18CA07141A4F62318"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-4CCCC3BC1DB953AA7771C96A8108E562B0B27C655D36D5F0CA4B84DC03F7EAA6",
+      "spdxElementId": "SPDXRef-Package-352BF29AC005D6E311C9E0D92BBD60A4D794D4593F8B56E09462B4876130A982"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-89668DBB2E1B0C56FB08FEF405784066D354C7ACFAFC669DA7F6F276E2D43586",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-89668DBB2E1B0C56FB08FEF405784066D354C7ACFAFC669DA7F6F276E2D43586",
+      "spdxElementId": "SPDXRef-Package-58A76DF60689B08D8721DE64D6DF3A4B0D43223409916D48CB9B13CC7235450B"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0",
+      "spdxElementId": "SPDXRef-RootPackage"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-ECFCAE6EF2FF75DDD43A030902718C27D46D6E9B0EB6BE27AF371843F90B851F",
+      "spdxElementId": "SPDXRef-Package-9E47C3873853151C0FDFFB880F99EACCDEB23203AE84EC2CA39CBF3BEB69521A"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-E638D0790B2208BC20F7838068FE08986DDB159591047BA18CA07141A4F62318",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-E638D0790B2208BC20F7838068FE08986DDB159591047BA18CA07141A4F62318",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-E2DF737F0CC3C3536A93CBB40305ACF6EF6C44B4DD9EC0AFE5B5586DCC16BC75",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-E2DF737F0CC3C3536A93CBB40305ACF6EF6C44B4DD9EC0AFE5B5586DCC16BC75",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-E2DF737F0CC3C3536A93CBB40305ACF6EF6C44B4DD9EC0AFE5B5586DCC16BC75",
+      "spdxElementId": "SPDXRef-Package-D0D05151F59C3C7DD3584001AD1D73C194571E9ECADDC3650FD91DD6CFD4DE36"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-E2DF737F0CC3C3536A93CBB40305ACF6EF6C44B4DD9EC0AFE5B5586DCC16BC75",
+      "spdxElementId": "SPDXRef-Package-EB1B3BBCF5149F7E6531C51A96424202DE4103590641C13DADA475F31F26FE09"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-06920EEB869962E4208E553AAB5AB791AD2A5EDE822D00939245D9C5D4A07A1F",
+      "spdxElementId": "SPDXRef-Package-9E47C3873853151C0FDFFB880F99EACCDEB23203AE84EC2CA39CBF3BEB69521A"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-02757F171479EFBA2C351BAC4CFCDD81A7933075838569DB9F681BC4219BFEB4",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-02757F171479EFBA2C351BAC4CFCDD81A7933075838569DB9F681BC4219BFEB4",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-02757F171479EFBA2C351BAC4CFCDD81A7933075838569DB9F681BC4219BFEB4",
+      "spdxElementId": "SPDXRef-Package-E638D0790B2208BC20F7838068FE08986DDB159591047BA18CA07141A4F62318"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-3EB2CBF6738EEEF023AA4ECD087EA691D8C34A7CDE0C384C268501239D1C209C",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-3EB2CBF6738EEEF023AA4ECD087EA691D8C34A7CDE0C384C268501239D1C209C",
+      "spdxElementId": "SPDXRef-Package-58A76DF60689B08D8721DE64D6DF3A4B0D43223409916D48CB9B13CC7235450B"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-DCAA650CB8B9CE104C48F5ED380AF650CFA53B0A018584749FD7BAB6EEF910D1",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-DCAA650CB8B9CE104C48F5ED380AF650CFA53B0A018584749FD7BAB6EEF910D1",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-DCAA650CB8B9CE104C48F5ED380AF650CFA53B0A018584749FD7BAB6EEF910D1",
+      "spdxElementId": "SPDXRef-Package-FCDC3943D641E96ED381871DFBD039B9D267B8298C07E41F66F2C7A64960E0DF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-32C6EEF4FAA6BE419A1FAFB4853FA93418D0678AC79386B4BF3B6575F9821751",
+      "spdxElementId": "SPDXRef-Package-9E47C3873853151C0FDFFB880F99EACCDEB23203AE84EC2CA39CBF3BEB69521A"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-32C6EEF4FAA6BE419A1FAFB4853FA93418D0678AC79386B4BF3B6575F9821751",
+      "spdxElementId": "SPDXRef-Package-ECFCAE6EF2FF75DDD43A030902718C27D46D6E9B0EB6BE27AF371843F90B851F"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-E314E28D0450E9294104233135A0CAFF0EDFE4951DDF3CE5D00899D92B48D07E",
+      "spdxElementId": "SPDXRef-Package-9E47C3873853151C0FDFFB880F99EACCDEB23203AE84EC2CA39CBF3BEB69521A"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-E85FEC48070CD6EC2BF29F76B41294287396666CB40650C29A5C9C1DC64C5047",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-E85FEC48070CD6EC2BF29F76B41294287396666CB40650C29A5C9C1DC64C5047",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-352BF29AC005D6E311C9E0D92BBD60A4D794D4593F8B56E09462B4876130A982",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-352BF29AC005D6E311C9E0D92BBD60A4D794D4593F8B56E09462B4876130A982",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-352BF29AC005D6E311C9E0D92BBD60A4D794D4593F8B56E09462B4876130A982",
+      "spdxElementId": "SPDXRef-Package-E638D0790B2208BC20F7838068FE08986DDB159591047BA18CA07141A4F62318"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-58A76DF60689B08D8721DE64D6DF3A4B0D43223409916D48CB9B13CC7235450B",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-38EB9C1270DDB3C49EB53BA52C164FE55D40DE5425BDD41EA43CAF4CEE32F946",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-38EB9C1270DDB3C49EB53BA52C164FE55D40DE5425BDD41EA43CAF4CEE32F946",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-38EB9C1270DDB3C49EB53BA52C164FE55D40DE5425BDD41EA43CAF4CEE32F946",
+      "spdxElementId": "SPDXRef-Package-EAF3E4F832BA0D0764167DC0CE345B115549BF63626245C2916F3836CB558E64"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-38EB9C1270DDB3C49EB53BA52C164FE55D40DE5425BDD41EA43CAF4CEE32F946",
+      "spdxElementId": "SPDXRef-Package-482CB189441CB6A5290DBD0AFFB0DF93AEFC209A2EDF3C4A223965C1268C99B1"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-B51339A22F51905881D2D842FBD3BF1F1A98E63256FAA3B4616C6D09A2D4705B",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-B51339A22F51905881D2D842FBD3BF1F1A98E63256FAA3B4616C6D09A2D4705B",
+      "spdxElementId": "SPDXRef-Package-58A76DF60689B08D8721DE64D6DF3A4B0D43223409916D48CB9B13CC7235450B"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-EDD39F317575D827E05A4CE553ED802455C833ABC81410A08DF7D4AC466B7D86",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-EDD39F317575D827E05A4CE553ED802455C833ABC81410A08DF7D4AC466B7D86",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-EDD39F317575D827E05A4CE553ED802455C833ABC81410A08DF7D4AC466B7D86",
+      "spdxElementId": "SPDXRef-Package-D0D05151F59C3C7DD3584001AD1D73C194571E9ECADDC3650FD91DD6CFD4DE36"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-FCDC3943D641E96ED381871DFBD039B9D267B8298C07E41F66F2C7A64960E0DF",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-FCDC3943D641E96ED381871DFBD039B9D267B8298C07E41F66F2C7A64960E0DF",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-B8832DC213EB878C27C2D5DD94D0CEB5F7C92E1C4D6045F92C9C2B683DF50A05",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-B8832DC213EB878C27C2D5DD94D0CEB5F7C92E1C4D6045F92C9C2B683DF50A05",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-B8832DC213EB878C27C2D5DD94D0CEB5F7C92E1C4D6045F92C9C2B683DF50A05",
+      "spdxElementId": "SPDXRef-Package-EAF3E4F832BA0D0764167DC0CE345B115549BF63626245C2916F3836CB558E64"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-B8832DC213EB878C27C2D5DD94D0CEB5F7C92E1C4D6045F92C9C2B683DF50A05",
+      "spdxElementId": "SPDXRef-Package-482CB189441CB6A5290DBD0AFFB0DF93AEFC209A2EDF3C4A223965C1268C99B1"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-B8832DC213EB878C27C2D5DD94D0CEB5F7C92E1C4D6045F92C9C2B683DF50A05",
+      "spdxElementId": "SPDXRef-Package-59B98406F99C180C679741D7C5887369FF5AC61C34FBC07BEA331CB2F86EF2DF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-59B98406F99C180C679741D7C5887369FF5AC61C34FBC07BEA331CB2F86EF2DF",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-59B98406F99C180C679741D7C5887369FF5AC61C34FBC07BEA331CB2F86EF2DF",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-59B98406F99C180C679741D7C5887369FF5AC61C34FBC07BEA331CB2F86EF2DF",
+      "spdxElementId": "SPDXRef-Package-EAF3E4F832BA0D0764167DC0CE345B115549BF63626245C2916F3836CB558E64"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-59B98406F99C180C679741D7C5887369FF5AC61C34FBC07BEA331CB2F86EF2DF",
+      "spdxElementId": "SPDXRef-Package-482CB189441CB6A5290DBD0AFFB0DF93AEFC209A2EDF3C4A223965C1268C99B1"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-4D7249D55C408AC74D12DDBED2F953B1D6E36A026D4910E79C46A0221492C9C9",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-4D7249D55C408AC74D12DDBED2F953B1D6E36A026D4910E79C46A0221492C9C9",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-4D7249D55C408AC74D12DDBED2F953B1D6E36A026D4910E79C46A0221492C9C9",
+      "spdxElementId": "SPDXRef-Package-EAF3E4F832BA0D0764167DC0CE345B115549BF63626245C2916F3836CB558E64"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-D595C7CA243D238A94C6D0F9277EB98AE42EDA370259D4615A58E5BE78BAD562",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-D595C7CA243D238A94C6D0F9277EB98AE42EDA370259D4615A58E5BE78BAD562",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-D595C7CA243D238A94C6D0F9277EB98AE42EDA370259D4615A58E5BE78BAD562",
+      "spdxElementId": "SPDXRef-Package-EAF3E4F832BA0D0764167DC0CE345B115549BF63626245C2916F3836CB558E64"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-D595C7CA243D238A94C6D0F9277EB98AE42EDA370259D4615A58E5BE78BAD562",
+      "spdxElementId": "SPDXRef-Package-482CB189441CB6A5290DBD0AFFB0DF93AEFC209A2EDF3C4A223965C1268C99B1"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-D595C7CA243D238A94C6D0F9277EB98AE42EDA370259D4615A58E5BE78BAD562",
+      "spdxElementId": "SPDXRef-Package-59B98406F99C180C679741D7C5887369FF5AC61C34FBC07BEA331CB2F86EF2DF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-D0D05151F59C3C7DD3584001AD1D73C194571E9ECADDC3650FD91DD6CFD4DE36",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-D0D05151F59C3C7DD3584001AD1D73C194571E9ECADDC3650FD91DD6CFD4DE36",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-8952F61D9EC654EFE2E0158D908B7C214CA49598539CE9BA46D3A70F731CC552",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-8952F61D9EC654EFE2E0158D908B7C214CA49598539CE9BA46D3A70F731CC552",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-C2AE0F9A4CAF24317EFBD430091C880657427F9A29D05A63F28F9F1D68E46BED",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-C2AE0F9A4CAF24317EFBD430091C880657427F9A29D05A63F28F9F1D68E46BED",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-C2AE0F9A4CAF24317EFBD430091C880657427F9A29D05A63F28F9F1D68E46BED",
+      "spdxElementId": "SPDXRef-Package-FCDC3943D641E96ED381871DFBD039B9D267B8298C07E41F66F2C7A64960E0DF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-C2AE0F9A4CAF24317EFBD430091C880657427F9A29D05A63F28F9F1D68E46BED",
+      "spdxElementId": "SPDXRef-Package-2FD5B2316BDFB94BD4F4F03CFAF6E577E3FBAE210DC4E673A8EB5D901E92CF9D"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-C2AE0F9A4CAF24317EFBD430091C880657427F9A29D05A63F28F9F1D68E46BED",
+      "spdxElementId": "SPDXRef-Package-C7E5F642C6FDB2631DC1C35BB834324D60C6185F79CE0894E5E35FEC72F060CC"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-94004F1D9E495048B7DDC680757AD96C5549911E159B9FB4170D01C1EDFE34F4",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-94004F1D9E495048B7DDC680757AD96C5549911E159B9FB4170D01C1EDFE34F4",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-94004F1D9E495048B7DDC680757AD96C5549911E159B9FB4170D01C1EDFE34F4",
+      "spdxElementId": "SPDXRef-Package-D0D05151F59C3C7DD3584001AD1D73C194571E9ECADDC3650FD91DD6CFD4DE36"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-94004F1D9E495048B7DDC680757AD96C5549911E159B9FB4170D01C1EDFE34F4",
+      "spdxElementId": "SPDXRef-Package-EDD39F317575D827E05A4CE553ED802455C833ABC81410A08DF7D4AC466B7D86"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-436C599854114144BCF025F85AF31D68EF233A54B710BB94F84C342CE56A9151",
+      "spdxElementId": "SPDXRef-Package-9E47C3873853151C0FDFFB880F99EACCDEB23203AE84EC2CA39CBF3BEB69521A"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-8D06DF291817DDFE90DEF98A2470F5E9BEC769CC740E0A952AD456BA01BA5B0D",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-8D06DF291817DDFE90DEF98A2470F5E9BEC769CC740E0A952AD456BA01BA5B0D",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-8D06DF291817DDFE90DEF98A2470F5E9BEC769CC740E0A952AD456BA01BA5B0D",
+      "spdxElementId": "SPDXRef-Package-EAF3E4F832BA0D0764167DC0CE345B115549BF63626245C2916F3836CB558E64"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-8D06DF291817DDFE90DEF98A2470F5E9BEC769CC740E0A952AD456BA01BA5B0D",
+      "spdxElementId": "SPDXRef-Package-482CB189441CB6A5290DBD0AFFB0DF93AEFC209A2EDF3C4A223965C1268C99B1"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-8D06DF291817DDFE90DEF98A2470F5E9BEC769CC740E0A952AD456BA01BA5B0D",
+      "spdxElementId": "SPDXRef-Package-59B98406F99C180C679741D7C5887369FF5AC61C34FBC07BEA331CB2F86EF2DF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-8D06DF291817DDFE90DEF98A2470F5E9BEC769CC740E0A952AD456BA01BA5B0D",
+      "spdxElementId": "SPDXRef-Package-B8832DC213EB878C27C2D5DD94D0CEB5F7C92E1C4D6045F92C9C2B683DF50A05"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-50B1719D6B4DC7AB6DCAFAC82E7902DA978990FD4E8DC2ECF5075AA13D249765",
+      "spdxElementId": "SPDXRef-RootPackage"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-2FD5B2316BDFB94BD4F4F03CFAF6E577E3FBAE210DC4E673A8EB5D901E92CF9D",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-2FD5B2316BDFB94BD4F4F03CFAF6E577E3FBAE210DC4E673A8EB5D901E92CF9D",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-2FD5B2316BDFB94BD4F4F03CFAF6E577E3FBAE210DC4E673A8EB5D901E92CF9D",
+      "spdxElementId": "SPDXRef-Package-FCDC3943D641E96ED381871DFBD039B9D267B8298C07E41F66F2C7A64960E0DF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-1A7BDBEECB384B22B3D8D8FA2A5A3C81EDB4173F8B4114D1B543A657D31623F7",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-1A7BDBEECB384B22B3D8D8FA2A5A3C81EDB4173F8B4114D1B543A657D31623F7",
+      "spdxElementId": "SPDXRef-Package-58A76DF60689B08D8721DE64D6DF3A4B0D43223409916D48CB9B13CC7235450B"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-9E47C3873853151C0FDFFB880F99EACCDEB23203AE84EC2CA39CBF3BEB69521A",
+      "spdxElementId": "SPDXRef-RootPackage"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-0ED0572A798E162DFFA3F82CC53858C7A0948F48D13A2057C34DA3BFA9AC9EA2",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-0ED0572A798E162DFFA3F82CC53858C7A0948F48D13A2057C34DA3BFA9AC9EA2",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-0ED0572A798E162DFFA3F82CC53858C7A0948F48D13A2057C34DA3BFA9AC9EA2",
+      "spdxElementId": "SPDXRef-Package-E85FEC48070CD6EC2BF29F76B41294287396666CB40650C29A5C9C1DC64C5047"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-C7E5F642C6FDB2631DC1C35BB834324D60C6185F79CE0894E5E35FEC72F060CC",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-C7E5F642C6FDB2631DC1C35BB834324D60C6185F79CE0894E5E35FEC72F060CC",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-C7E5F642C6FDB2631DC1C35BB834324D60C6185F79CE0894E5E35FEC72F060CC",
+      "spdxElementId": "SPDXRef-Package-FCDC3943D641E96ED381871DFBD039B9D267B8298C07E41F66F2C7A64960E0DF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-C7E5F642C6FDB2631DC1C35BB834324D60C6185F79CE0894E5E35FEC72F060CC",
+      "spdxElementId": "SPDXRef-Package-2FD5B2316BDFB94BD4F4F03CFAF6E577E3FBAE210DC4E673A8EB5D901E92CF9D"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-EB1B3BBCF5149F7E6531C51A96424202DE4103590641C13DADA475F31F26FE09",
+      "spdxElementId": "SPDXRef-Package-9061E967D94F87C748FA74020A997CA20866090B84DD784AEEB9C1EBFF6530C0"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-EB1B3BBCF5149F7E6531C51A96424202DE4103590641C13DADA475F31F26FE09",
+      "spdxElementId": "SPDXRef-Package-94DF77F83E9444F6D473AF1B6F1EB04F6B8E2E35499FD65718DD068E1414DEFF"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-EB1B3BBCF5149F7E6531C51A96424202DE4103590641C13DADA475F31F26FE09",
+      "spdxElementId": "SPDXRef-Package-D0D05151F59C3C7DD3584001AD1D73C194571E9ECADDC3650FD91DD6CFD4DE36"
+    }
+  ],
+  "spdxVersion": "SPDX-2.2",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "GatewayService 1.0.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sbom-tool-4.1.3-6d676c72-3fbb-4964-894f-a0b54e123227/GatewayService/1.0.0/ljWtPeCJb02ZwtVp6-JZLg",
+  "creationInfo": {
+    "created": "2025-11-13T08:56:43Z",
+    "creators": [
+      "Organization: Premal Kadam",
+      "Tool: Microsoft.SBOMTool-4.1.3"
+    ]
+  },
+  "documentDescribes": [
+    "SPDXRef-RootPackage"
+  ]
+}

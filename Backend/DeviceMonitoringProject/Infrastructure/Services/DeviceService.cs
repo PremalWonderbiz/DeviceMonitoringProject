@@ -15,6 +15,7 @@ using System.Text.Json.Nodes;
 using Infrastructure.Persistence;
 using System.Collections.Specialized;
 using System.Security.Cryptography;
+using System.Linq.Expressions;
 
 namespace Infrastructure.Services;
 
@@ -46,8 +47,9 @@ public class DeviceService : IDeviceService
         { "High", 3 }
     };
 
-    private List<DeviceMetadata> _devices =>
-        _deviceStateCache.GetAllStates()
+    private List<DeviceMetadata> GetDevices()
+    {
+        return _deviceStateCache.GetAllStates()
             .Select(state =>
             {
                 var root = state.Value.Root;
@@ -64,6 +66,7 @@ public class DeviceService : IDeviceService
                 };
             })
             .ToList();
+    }
 
     //local
     private readonly string _dataDirectory = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory())!.FullName, "Infrastructure", "Data");
@@ -96,19 +99,19 @@ public class DeviceService : IDeviceService
         throw new NotImplementedException();
     }
 
-    public List<DeviceMetadata> GetAllDeviceMetadataPaginated(List<DeviceMetadata> data, int pageNumber = 1, int pageSize = 10)
+    public List<DeviceMetadata> GetAllDeviceMetadataPaginated(List<DeviceMetadata> metadata, int pageNumber = 1, int pageSize = 10)
     {
-        return data.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+        return metadata.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
     }
 
     public DeviceMetadataPaginatedandSortedDto GetAllDeviceMetadataPaginatedandSorted(DeviceTopLevelSortOptions sortRequest, List<DeviceMetadata> filteredData = null)
     {
         var metaData = filteredData is not null
     ? filteredData.AsQueryable()
-    : _devices.AsQueryable();
+    : GetDevices().AsQueryable();
 
         IOrderedQueryable<DeviceMetadata> ordered;
-
+        
         if (sortRequest.Sorting == null || !sortRequest.Sorting.Any())
         {
             ordered = metaData.OrderByDescending(d => d.LastUpdated);
@@ -146,39 +149,50 @@ public class DeviceService : IDeviceService
 
     private IOrderedQueryable<DeviceMetadata> SortInitial(IQueryable<DeviceMetadata> data, string id, bool desc)
     {
-        return id switch
-        {
-            "name" => desc ? data.OrderByDescending(u => u.Name) : data.OrderBy(u => u.Name),
-            "type" => desc ? data.OrderByDescending(u => u.Type) : data.OrderBy(u => u.Type),
-            "status" => desc ? data.OrderByDescending(u => u.Status) : data.OrderBy(u => u.Status),
-            "macId" => desc ? data.OrderByDescending(u => u.MacId) : data.OrderBy(u => u.MacId),
-            "connectivity" => desc ? data.OrderByDescending(u => connectivityOrder.ContainsKey(u.Connectivity) ? connectivityOrder[u.Connectivity] : int.MaxValue)
-                                    : data.OrderBy(u => connectivityOrder.ContainsKey(u.Connectivity) ? connectivityOrder[u.Connectivity] : int.MaxValue),
-            "lastUpdated" => desc ? data.OrderByDescending(u => u.LastUpdated) : data.OrderBy(u => u.LastUpdated),
-            _ => data.OrderBy(u => u.Name)
-        };
+        var keySelector = GetSortKeySelector(id);
+        return ApplyOrdering(data, keySelector, desc, isThen: false);
     }
 
     private IOrderedQueryable<DeviceMetadata> SortThen(IOrderedQueryable<DeviceMetadata> data, string id, bool desc)
     {
+        var keySelector = GetSortKeySelector(id);
+        return ApplyOrdering(data, keySelector, desc, isThen: true);
+    }
+
+    private Expression<Func<DeviceMetadata, object>> GetSortKeySelector(string id)
+    {
         return id switch
         {
-            "name" => desc ? data.ThenByDescending(u => u.Name) : data.ThenBy(u => u.Name),
-            "type" => desc ? data.ThenByDescending(u => u.Type) : data.ThenBy(u => u.Type),
-            "status" => desc ? data.ThenByDescending(u => u.Status) : data.ThenBy(u => u.Status),
-            "macId" => desc ? data.ThenByDescending(u => u.MacId) : data.ThenBy(u => u.MacId),
-            "connectivity" => desc ? data.ThenByDescending(u => connectivityOrder.ContainsKey(u.Connectivity) ? connectivityOrder[u.Connectivity] : int.MaxValue)
-                                    : data.ThenBy(u => connectivityOrder.ContainsKey(u.Connectivity) ? connectivityOrder[u.Connectivity] : int.MaxValue),
-            "lastUpdated" => desc ? data.OrderByDescending(u => u.LastUpdated) : data.OrderBy(u => u.LastUpdated),
-            _ => data.ThenBy(u => u.Name)
+            "name" => u => u.Name,
+            "type" => u => u.Type,
+            "status" => u => u.Status,
+            "macId" => u => u.MacId,
+            "connectivity" => u => connectivityOrder.ContainsKey(u.Connectivity)
+                                    ? connectivityOrder[u.Connectivity]
+                                    : int.MaxValue,
+            "lastUpdated" => u => u.LastUpdated,
+            _ => u => u.Name
         };
     }
 
-    public DeviceMetadataPaginatedandSortedDto GetSearchedDeviceMetadataPaginated(DeviceTopLevelSortOptions options, string input = "")
+    private static IOrderedQueryable<DeviceMetadata> ApplyOrdering<T>(
+        IQueryable<DeviceMetadata> data,
+        Expression<Func<DeviceMetadata, T>> keySelector,
+        bool desc,
+        bool isThen)
+    {
+        if (isThen && data is IOrderedQueryable<DeviceMetadata> ordered)
+            return desc ? ordered.ThenByDescending(keySelector) : ordered.ThenBy(keySelector);
+
+        return desc ? data.OrderByDescending(keySelector) : data.OrderBy(keySelector);
+    }
+
+
+    public DeviceMetadataPaginatedandSortedDto GetSearchedDeviceMetadataPaginated(DeviceTopLevelSortOptions sortRequest, string input = "")
     {
         var filteredList = string.IsNullOrWhiteSpace(input)
-        ? _devices
-        : _devices.Where(d => MatchesSearch(d, input)).ToList();
+        ? GetDevices()
+        : GetDevices().Where(d => MatchesSearch(d, input)).ToList();
 
         if (filteredList.Count <= 1)
         {
@@ -189,7 +203,7 @@ public class DeviceService : IDeviceService
             };
         }
 
-        return GetAllDeviceMetadataPaginatedandSorted(options, filteredList);
+        return GetAllDeviceMetadataPaginatedandSorted(sortRequest, filteredList);
     }
 
     private bool MatchesSearch(DeviceMetadata device, string input)
@@ -212,7 +226,7 @@ public class DeviceService : IDeviceService
 
     public Dictionary<string, string> GetMacIdToFileNameMap()
     {
-        return _devices.ToDictionary(d => d.MacId, d => d.FileName, StringComparer.OrdinalIgnoreCase);
+        return GetDevices().ToDictionary(d => d.MacId, d => d.FileName, StringComparer.OrdinalIgnoreCase);
     }
 
     public async Task<DeviceDetails> GetPropertyPanelDataForDevice(string deviceId)
@@ -243,9 +257,9 @@ public class DeviceService : IDeviceService
 
     public async Task<bool> SimulateTopLevelChangeForOneDevice()
     {
-        int index = RandomNumberGenerator.GetInt32(_devices.Count);
+        int index = RandomNumberGenerator.GetInt32(GetDevices().Count);
 
-        var device = _devices[index];
+        var device = GetDevices()[index];
 
         var rootSnapshot = _deviceStateCache.GetDeviceState(device.MacId);
         if (rootSnapshot == null) return false;
@@ -311,7 +325,7 @@ public class DeviceService : IDeviceService
     {
         var updatedDeviceDetails = new List<(string MacId, string EventName, JsonElement DetailPayload)>();
 
-        foreach (var device in _devices)
+        foreach (var device in GetDevices())
         {
             var root = _deviceStateCache.GetDeviceState(device.MacId);
             if (root == null) continue;
@@ -348,7 +362,7 @@ public class DeviceService : IDeviceService
 
     public async Task<List<DevicesNameMacIdDto>> GetDevicesNameMacIdList()
     {
-        return _devices.Select(d => new DevicesNameMacIdDto
+        return GetDevices().Select(d => new DevicesNameMacIdDto
         {
             DeviceName = d.Name,
             DeviceMacId = d.MacId
@@ -542,7 +556,7 @@ public class DeviceService : IDeviceService
 
     public DeviceMetadataPaginatedandSortedDto GetAllDeviceMetadata()
     {
-        var metaData = _devices.AsQueryable();
+        var metaData = GetDevices().AsQueryable();
 
 
 
