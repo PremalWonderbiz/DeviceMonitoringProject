@@ -1,0 +1,124 @@
+name: Device Monitoring Monorepo CI
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # -------------------------------
+  # Detect what changed
+  # -------------------------------
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      backend_changed: ${{ steps.filter.outputs.backend }}
+      ui_changed: ${{ steps.filter.outputs.ui }}
+      viz_changed: ${{ steps.filter.outputs.viz }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Detect changes in backend and frontend
+        id: filter
+        uses: dorny/paths-filter@v2
+        with:
+          filters: |
+            backend:
+              - 'backend/**'
+            ui:
+              - 'frontend/device-monitoring-ui/**'
+            viz:
+              - 'frontend/device-monitoring-viz/**'
+
+  # -------------------------------
+  # Build & Test .NET Backend Services
+  # -------------------------------
+  backend-ci:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.backend_changed == 'true' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore all backend services
+        run: dotnet restore backend
+
+      - name: Build all backend services
+        run: dotnet build backend --no-restore --configuration Release
+
+      - name: Run tests (if any)
+        run: |
+          if ls backend/**/*Tests.csproj 1> /dev/null 2>&1; then
+            dotnet test backend --no-build --configuration Release
+          else
+            echo "No test projects found. Skipping tests."
+          fi
+
+  # -------------------------------
+  # Frontend CI – device-monitoring-ui
+  # -------------------------------
+  ui-ci:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.ui_changed == 'true' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        working-directory: frontend/device-monitoring-ui
+        run: npm install
+
+      - name: Lint (optional)
+        working-directory: frontend/device-monitoring-ui
+        run: npm run lint --if-present
+
+      - name: Run tests (optional)
+        working-directory: frontend/device-monitoring-ui
+        run: npm test --if-present
+
+      - name: Build Next.js app
+        working-directory: frontend/device-monitoring-ui
+        run: npm run build
+
+  # -------------------------------
+  # Frontend CI – device-monitoring-viz
+  # -------------------------------
+  viz-ci:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.viz_changed == 'true' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        working-directory: frontend/device-monitoring-viz
+        run: npm install
+
+      - name: Lint (optional)
+        working-directory: frontend/device-monitoring-viz
+        run: npm run lint --if-present
+
+      - name: Build Viz Frontend
+        working-directory: frontend/device-monitoring-viz
+        run: npm run build
