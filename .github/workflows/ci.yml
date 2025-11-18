@@ -132,7 +132,7 @@ jobs:
   sonar-scan:
     needs: [detect-changes,backend-ci, ui-ci, viz-ci]   # wait for all builds
     runs-on: ubuntu-latest
-    if: always() && (${{ needs.detect-changes.outputs.backend_changed == 'true' || needs.detect-changes.outputs.ui_changed == 'true' || needs.detect-changes.outputs.viz_changed == 'true' }})
+    if: always()
     steps:
       - uses: actions/checkout@v4
 
