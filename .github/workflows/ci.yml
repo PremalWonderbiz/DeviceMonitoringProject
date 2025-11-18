@@ -130,7 +130,11 @@ jobs:
         run: npm run build
 
   sonar-scan:
-    needs: [detect-changes, backend-ci, ui-ci, viz-ci]
+    needs: 
+      - detect-changes
+      - backend-ci
+      - ui-ci
+      - viz-ci
     runs-on: ubuntu-latest
     steps:
       - name: Debug changed flags
