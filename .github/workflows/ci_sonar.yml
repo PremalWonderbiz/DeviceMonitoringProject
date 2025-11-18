@@ -168,7 +168,7 @@ jobs:
         working-directory: ./Frontend/device_monitoring_frontend
 
       - name: SonarCloud Scan
-        run: npx sonar-scanner -Dsonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" -Dsonar.organization="premalwonderbiz" -Dsonar.projectKey="premalwonderbiz_DeviceMonitoringProject_DeviceFrontend" -Dsonar.sources=src -Dsonar.exclusions="**/node_modules/**,**/.next/**,**/out/**,**/coverage/**,**/*.test.*,**/*.spec.*,**/*.config.*,**/helpervariables.ts/**" -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info -Dsonar.test.inclusions="**/*.test.js,**/*.test.jsx,**/*.test.ts,**/*.test.tsx"
+        run: npx sonar-scanner -Dsonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" -D sonar.host.url="https://sonarcloud.io" -Dsonar.organization="premalwonderbiz" -Dsonar.projectKey="premalwonderbiz_DeviceMonitoringProject_DeviceFrontend" -Dsonar.sources=src -Dsonar.exclusions="**/node_modules/**,**/.next/**,**/out/**,**/coverage/**,**/*.test.*,**/*.spec.*,**/*.config.*,**/helpervariables.ts/**" -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info -Dsonar.test.inclusions="**/*.test.js,**/*.test.jsx,**/*.test.ts,**/*.test.tsx"
         working-directory: ./Frontend/device_monitoring_frontend
 
 
