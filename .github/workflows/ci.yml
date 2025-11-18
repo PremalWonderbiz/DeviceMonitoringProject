@@ -139,8 +139,7 @@ jobs:
         )
   
     env:
-      SONAR_TOKEN: "sqp_ed60defccf6aee1511fdc50af1003312eb2a5d6e"    # store your token as GitHub secret
-      SONAR_HOST_URL: "https://sonarcloud.io"
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   
     steps:
       - uses: actions/checkout@v4
@@ -154,11 +153,25 @@ jobs:
       - name: Run SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         with:
+          organization: PremalWonderbiz
+          projectKey: PremalWonderbiz_DeviceMonitoringProject_9168aabf-fb1d-4707-8bae-a3bd072df572
+          projectBaseDir: ./
           args: >
-            -Dsonar.organization=your-org-key
-            -Dsonar.projectKey=PremalWonderbiz_DeviceMonitoringProject_9168aabf-fb1d-4707-8bae-a3bd072df572
-            -Dsonar.host.url=${{ env.SONAR_HOST_URL }}
-            -Dsonar.login=${{ env.SONAR_TOKEN }}
+            -Dsonar.projectName=DeviceMonitoringProject
+            -Dsonar.projectVersion=1.0
+            -Dsonar.modules=DeviceMonitoringProject,AlarmService,GatewayService,UI,Viz
+            -DDeviceMonitoringProject.sonar.projectBaseDir=Backend/DeviceMonitoringProject
+            -DAlarmService.sonar.projectBaseDir=Backend/AlarmService
+            -DGatewayService.sonar.projectBaseDir=Backend/GatewayService/GatewayService
+            -DUI.sonar.projectBaseDir=Frontend/device_monitoring_frontend
+            -DViz.sonar.projectBaseDir=Frontend/device-monitoring-viz
+            -Dsonar.sources=Backend,Frontend
+            -Dsonar.exclusions=**/bin/**,**/obj/**,**/node_modules/**,**/.next/**,**/dist/**
+            -Dsonar.coverage.exclusions=**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**,**/Views/**,**/Windows/**,**/Models/**,**/Repositories/**,**/CustomAttributes/**
+            -Dsonar.cs.opencover.reportsPaths=Backend/**/TestResults/*.opencover*.xml
+            -Dsonar.javascript.lcov.reportPaths=Frontend/**/coverage/lcov.info
+            -Dsonar.typescript.tsconfigPath=Frontend/**/tsconfig.json
+
 
 
 
