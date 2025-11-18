@@ -155,25 +155,26 @@ jobs:
       - name: Run SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         with:
-          organization: PremalWonderbiz
-          projectKey: PremalWonderbiz_DeviceMonitoringProject_9168aabf-fb1d-4707-8bae-a3bd072df572
           projectBaseDir: ./
-          token: ${{ secrets.SONAR_TOKEN }}
-          extra-properties: |
-            sonar.projectName=DeviceMonitoringProject
-            sonar.projectVersion=1.0
-            sonar.modules=DeviceMonitoringProject,AlarmService,GatewayService,UI,Viz
-            DeviceMonitoringProject.sonar.projectBaseDir=Backend/DeviceMonitoringProject
-            AlarmService.sonar.projectBaseDir=Backend/AlarmService
-            GatewayService.sonar.projectBaseDir=Backend/GatewayService/GatewayService
-            UI.sonar.projectBaseDir=Frontend/device_monitoring_frontend
-            Viz.sonar.projectBaseDir=Frontend/device-monitoring-viz
-            sonar.sources=Backend,Frontend
-            sonar.exclusions=**/bin/**,**/obj/**,**/node_modules/**,**/.next/**,**/dist/**
-            sonar.coverage.exclusions=**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**,**/Views/**,**/Windows/**,**/Models/**,**/Repositories/**,**/CustomAttributes/**
-            sonar.cs.opencover.reportsPaths=Backend/**/TestResults/*.opencover*.xml
-            sonar.javascript.lcov.reportPaths=Frontend/**/coverage/lcov.info
-            sonar.typescript.tsconfigPath=Frontend/**/tsconfig.json
+          args: >
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.organization=premalwonderbiz
+            -Dsonar.projectKey=PremalWonderbiz_DeviceMonitoringProject_9168aabf-fb1d-4707-8bae-a3bd072df572
+            -Dsonar.projectName=DeviceMonitoringProject
+            -Dsonar.projectVersion=1.0
+            -Dsonar.modules=DeviceMonitoringProject,AlarmService,GatewayService,UI,Viz
+            -DDeviceMonitoringProject.sonar.projectBaseDir=Backend/DeviceMonitoringProject
+            -DAlarmService.sonar.projectBaseDir=Backend/AlarmService
+            -DGatewayService.sonar.projectBaseDir=Backend/GatewayService/GatewayService
+            -DUI.sonar.projectBaseDir=Frontend/device_monitoring_frontend
+            -DViz.sonar.projectBaseDir=Frontend/device-monitoring-viz
+            -Dsonar.sources=Backend,Frontend
+            -Dsonar.exclusions=**/bin/**,**/obj/**,**/node_modules/**,**/.next/**,**/dist/**
+            -Dsonar.coverage.exclusions=**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**,**/Views/**,**/Windows/**,**/Models/**,**/Repositories/**,**/CustomAttributes/**
+            -Dsonar.cs.opencover.reportsPaths=Backend/**/TestResults/*.opencover*.xml
+            -Dsonar.javascript.lcov.reportPaths=Frontend/**/coverage/lcov.info
+            -Dsonar.typescript.tsconfigPath=Frontend/**/tsconfig.json
+
 
 
 
