@@ -139,8 +139,8 @@ jobs:
         )
   
     env:
-      SONAR_TOKEN: "sqp_ed60defccf6aee1511fdc50af1003312eb2a5d6e"
-      SONAR_HOST_URL: "http://localhost:9000"
+      SONAR_TOKEN: "sqp_ed60defccf6aee1511fdc50af1003312eb2a5d6e"    # store your token as GitHub secret
+      SONAR_HOST_URL: "https://sonarcloud.io"
   
     steps:
       - uses: actions/checkout@v4
@@ -151,12 +151,15 @@ jobs:
           distribution: 'temurin'
           java-version: 17
   
-      - name: Set up SonarScanner
+      - name: Run SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         with:
           args: >
+            -Dsonar.organization=your-org-key
             -Dsonar.projectKey=PremalWonderbiz_DeviceMonitoringProject_9168aabf-fb1d-4707-8bae-a3bd072df572
             -Dsonar.host.url=${{ env.SONAR_HOST_URL }}
+            -Dsonar.login=${{ env.SONAR_TOKEN }}
+
 
 
 
