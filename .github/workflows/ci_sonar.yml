@@ -76,13 +76,16 @@ jobs:
         
       - name: Build
         run: dotnet build ./Backend/DeviceMonitoringProject
+        working-directory: ./Backend/DeviceMonitoringProject
 
       - name: Run Unit Tests (DeviceMonitoring.Tests)
         run: dotnet test ./Backend/DeviceMonitoringProject/DeviceMonitoring.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=TestResults/DeviceMonitoring.coverage.opencover.xml 
-
+        working-directory: ./Backend/DeviceMonitoringProject
+        
       - name: Run Unit Tests (InfrastructureTests)
         run: dotnet test ./Backend/DeviceMonitoringProject/InfrastructureTests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=TestResults/Infrastructure.coverage.opencover.xml
-
+        working-directory: ./Backend/DeviceMonitoringProject
+        
       - name: SonarCloud End
         run: dotnet sonarscanner end /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757"
         working-directory: ./Backend/DeviceMonitoringProject
