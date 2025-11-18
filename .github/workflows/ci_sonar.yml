@@ -85,7 +85,7 @@ jobs:
 
       - name: SonarCloud End
         run: dotnet sonarscanner end /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757"
-
+        working-directory: ./Backend/DeviceMonitoringProject
 
   # ===============================
   # Backend: AlarmService
