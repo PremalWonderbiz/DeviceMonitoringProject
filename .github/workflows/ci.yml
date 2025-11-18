@@ -132,45 +132,47 @@ jobs:
   sonar-scan:
     needs: [detect-changes, backend-ci, ui-ci, viz-ci]
     runs-on: ubuntu-latest
-    if: always() && (
-          needs.detect-changes.outputs.backend_changed == 'true' ||
-          needs.detect-changes.outputs.ui_changed == 'true' ||
-          needs.detect-changes.outputs.viz_changed == 'true'
-        )
+    if: >
+      always() && (
+        needs.detect-changes.outputs.backend_changed == 'true' ||
+        needs.detect-changes.outputs.ui_changed == 'true' ||
+        needs.detect-changes.outputs.viz_changed == 'true'
+      )
   
     env:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_TOKEN: "sqp_ed60defccf6aee1511fdc50af1003312eb2a5d6e"
   
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
   
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
+          distribution: temurin
           java-version: 17
   
       - name: Run SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v2
-        with:
-          organization: PremalWonderbiz
-          projectKey: PremalWonderbiz_DeviceMonitoringProject_9168aabf-fb1d-4707-8bae-a3bd072df572
-          projectBaseDir: ./
-          args: >
-            -Dsonar.projectName=DeviceMonitoringProject
-            -Dsonar.projectVersion=1.0
-            -Dsonar.modules=DeviceMonitoringProject,AlarmService,GatewayService,UI,Viz
-            -DDeviceMonitoringProject.sonar.projectBaseDir=Backend/DeviceMonitoringProject
-            -DAlarmService.sonar.projectBaseDir=Backend/AlarmService
-            -DGatewayService.sonar.projectBaseDir=Backend/GatewayService/GatewayService
-            -DUI.sonar.projectBaseDir=Frontend/device_monitoring_frontend
-            -DViz.sonar.projectBaseDir=Frontend/device-monitoring-viz
-            -Dsonar.sources=Backend,Frontend
-            -Dsonar.exclusions=**/bin/**,**/obj/**,**/node_modules/**,**/.next/**,**/dist/**
-            -Dsonar.coverage.exclusions=**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**,**/Views/**,**/Windows/**,**/Models/**,**/Repositories/**,**/CustomAttributes/**
-            -Dsonar.cs.opencover.reportsPaths=Backend/**/TestResults/*.opencover*.xml
-            -Dsonar.javascript.lcov.reportPaths=Frontend/**/coverage/lcov.info
+        run: |
+          sonar-scanner \
+            -Dsonar.login=$SONAR_TOKEN \
+            -Dsonar.organization=PremalWonderbiz \
+            -Dsonar.projectKey=PremalWonderbiz_DeviceMonitoringProject_9168aabf-fb1d-4707-8bae-a3bd072df572 \
+            -Dsonar.projectName=DeviceMonitoringProject \
+            -Dsonar.projectVersion=1.0 \
+            -Dsonar.modules=DeviceMonitoringProject,AlarmService,GatewayService,UI,Viz \
+            -DDeviceMonitoringProject.sonar.projectBaseDir=Backend/DeviceMonitoringProject \
+            -DAlarmService.sonar.projectBaseDir=Backend/AlarmService \
+            -DGatewayService.sonar.projectBaseDir=Backend/GatewayService/GatewayService \
+            -DUI.sonar.projectBaseDir=Frontend/device_monitoring_frontend \
+            -DViz.sonar.projectBaseDir=Frontend/device-monitoring-viz \
+            -Dsonar.sources=Backend,Frontend \
+            -Dsonar.exclusions=**/bin/**,**/obj/**,**/node_modules/**,**/.next/**,**/dist/** \
+            -Dsonar.coverage.exclusions=**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**,**/Views/**,**/Windows/**,**/Models/**,**/Repositories/**,**/CustomAttributes/** \
+            -Dsonar.cs.opencover.reportsPaths=Backend/**/TestResults/*.opencover*.xml \
+            -Dsonar.javascript.lcov.reportPaths=Frontend/**/coverage/lcov.info \
             -Dsonar.typescript.tsconfigPath=Frontend/**/tsconfig.json
+
 
 
 
