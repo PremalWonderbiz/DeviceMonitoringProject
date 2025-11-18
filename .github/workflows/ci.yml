@@ -130,7 +130,7 @@ jobs:
         run: npm run build
 
   sonar-scan:
-    needs: [backend-ci, ui-ci, viz-ci]   # wait for all builds
+    needs: [detect-changes,backend-ci, ui-ci, viz-ci]   # wait for all builds
     runs-on: ubuntu-latest
     if: ${{ needs.detect-changes.outputs.backend_changed == 'true' || needs.detect-changes.outputs.ui_changed == 'true' || needs.detect-changes.outputs.viz_changed == 'true' }}
     steps:
