@@ -139,8 +139,8 @@ jobs:
         )
   
     env:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      SONAR_TOKEN: "sqp_ed60defccf6aee1511fdc50af1003312eb2a5d6e"
+      SONAR_HOST_URL: "http://localhost:9000"
   
     steps:
       - uses: actions/checkout@v4
