@@ -140,7 +140,7 @@ jobs:
       )
   
     env:
-      SONAR_TOKEN: "sqp_ed60defccf6aee1511fdc50af1003312eb2a5d6e"
+      SONAR_TOKEN: "c83e2120fc4b45d6a2c3983cbf0da346d76a2f9e"
   
     steps:
       - name: Checkout repository
