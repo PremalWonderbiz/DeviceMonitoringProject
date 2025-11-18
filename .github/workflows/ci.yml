@@ -155,7 +155,7 @@ jobs:
       - name: Run SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         with:
-          projectBaseDir: ./
+          projectBaseDir: ${{ github.workspace }}
           args: >
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
             -Dsonar.organization=premalwonderbiz
@@ -163,17 +163,17 @@ jobs:
             -Dsonar.projectName=DeviceMonitoringProject
             -Dsonar.projectVersion=1.0
             -Dsonar.modules=DeviceMonitoringProject,AlarmService,GatewayService,UI,Viz
-            -DDeviceMonitoringProject.sonar.projectBaseDir=${{ github.workspace }}/Backend/DeviceMonitoringProject
-            -DAlarmService.sonar.projectBaseDir=${{ github.workspace }}/Backend/AlarmService
-            -DGatewayService.sonar.projectBaseDir=${{ github.workspace }}/Backend/GatewayService/GatewayService
-            -DUI.sonar.projectBaseDir=${{ github.workspace }}/Frontend/device_monitoring_frontend
-            -DViz.sonar.projectBaseDir=${{ github.workspace }}/Frontend/device-monitoring-viz
+            -DDeviceMonitoringProject.sonar.projectBaseDir=/Backend/DeviceMonitoringProject
+            -DAlarmService.sonar.projectBaseDir=/Backend/AlarmService
+            -DGatewayService.sonar.projectBaseDir=/Backend/GatewayService/GatewayService
+            -DUI.sonar.projectBaseDir=/Frontend/device_monitoring_frontend
+            -DViz.sonar.projectBaseDir=/Frontend/device-monitoring-viz
             -Dsonar.sources=Backend,Frontend
             -Dsonar.exclusions=**/bin/**,**/obj/**,**/node_modules/**,**/.next/**,**/dist/**
             -Dsonar.coverage.exclusions=**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**,**/Views/**,**/Windows/**,**/Models/**,**/Repositories/**,**/CustomAttributes/**
-            -Dsonar.cs.opencover.reportsPaths=${{ github.workspace }}/Backend/**/TestResults/*.opencover*.xml
-            -Dsonar.javascript.lcov.reportPaths=${{ github.workspace }}/Frontend/**/coverage/lcov.info
-            -Dsonar.typescript.tsconfigPath=${{ github.workspace }}/Frontend/**/tsconfig.json
+            -Dsonar.cs.opencover.reportsPaths=/Backend/**/TestResults/*.opencover*.xml
+            -Dsonar.javascript.lcov.reportPaths=/Frontend/**/coverage/lcov.info
+            -Dsonar.typescript.tsconfigPath=/Frontend/**/tsconfig.json
 
 
 
