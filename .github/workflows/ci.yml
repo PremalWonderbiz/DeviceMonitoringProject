@@ -138,6 +138,10 @@ jobs:
           needs.detect-changes.outputs.viz_changed == 'true'
         )
   
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+  
     steps:
       - uses: actions/checkout@v4
   
@@ -149,15 +153,10 @@ jobs:
   
       - name: Set up SonarScanner
         uses: SonarSource/sonarcloud-github-action@v2
-  
-      - name: Run SonarScanner
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: |
-          sonar-scanner \
-            -Dsonar.projectKey=PremalWonderbiz_DeviceMonitoringProject_9168aabf-fb1d-4707-8bae-a3bd072df572 \
-            -Dsonar.host.url=$SONAR_HOST_URL \
-            -Dsonar.login=$SONAR_TOKEN
+        with:
+          args: >
+            -Dsonar.projectKey=PremalWonderbiz_DeviceMonitoringProject_9168aabf-fb1d-4707-8bae-a3bd072df572
+            -Dsonar.host.url=${{ env.SONAR_HOST_URL }}
+
 
 
