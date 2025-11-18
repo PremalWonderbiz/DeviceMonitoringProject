@@ -155,7 +155,7 @@ jobs:
       - name: Run SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         with:
-          projectBaseDir: ./
+          projectBaseDir: ${{ github.workspace }}
           args: >
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
             -Dsonar.organization=premalwonderbiz
