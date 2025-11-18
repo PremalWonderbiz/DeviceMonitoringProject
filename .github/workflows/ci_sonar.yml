@@ -65,13 +65,8 @@ jobs:
 
       - name: SonarCloud Begin
         run: |
-          dotnet sonarscanner begin \
-            /k:"premalwonderbiz_DeviceMonitoringProject_DeviceFrontend" \
-            /o:"premalwonderbiz" \
-            /d:sonar.host.url="https://sonarcloud.io" \
-            /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" \
-            /d:sonar.cs.opencover.reportsPaths="TestResults/*.coverage.opencover.xml" \
-            /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
+          dotnet sonarscanner begin /k:"premalwonderbiz_DeviceMonitoringProject_DeviceService" /o:"premalwonderbiz" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" /d:sonar.cs.opencover.reportsPaths="TestResults/*.coverage.opencover.xml" /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
+
       - name: Build
         run: dotnet build ./Backend/DeviceMonitoringProject
 
