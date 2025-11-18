@@ -1,4 +1,5 @@
 // adding comment to test pipeline v2
+//adding comment to test sonarqube in pipeline v3
 import React from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
