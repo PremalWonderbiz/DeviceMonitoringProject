@@ -71,17 +71,17 @@ jobs:
 
       - name: SonarCloud Begin
         run: |
-          dotnet sonarscanner begin /k:"premalwonderbiz_DeviceMonitoringProject_DeviceService" /o:"premalwonderbiz" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" /d:sonar.cs.opencover.reportsPaths="TestResults/*.coverage.opencover.xml" /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
+          dotnet sonarscanner begin /k:"premalwonderbiz_DeviceMonitoringProject_DeviceService" /o:"premalwonderbiz" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" /d:sonar.cs.opencover.reportsPaths="**/*.opencover*" /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
         working-directory: ./Backend/DeviceMonitoringProject
         
       - name: Build
         run: dotnet build ./Backend/DeviceMonitoringProject
 
-      - name: Test with Coverage
-        run: dotnet test ./Backend/DeviceMonitoringProject \
-          /p:CollectCoverage=true \
-          /p:CoverletOutputFormat=opencover \
-          /p:CoverletOutput=TestResults/DeviceMonitoringProject.coverage.opencover.xml
+      - name: Run Unit Tests (DeviceMonitoring.Tests)
+        run: dotnet test ./Backend/DeviceMonitoringProject/DeviceMonitoring.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=TestResults/DeviceMonitoring.coverage.opencover.xml 
+
+      - name: Run Unit Tests (InfrastructureTests)
+        run: dotnet test ./Backend/DeviceMonitoringProject/InfrastructureTests /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=TestResults/Infrastructure.coverage.opencover.xml
 
       - name: SonarCloud End
         run: dotnet sonarscanner end /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757"
