@@ -193,12 +193,12 @@ jobs:
             https://scan.coverity.com/builds?project=Device+Monitoring+frontend+Git
 
 
-    # ===============================
+# ===============================
 # Frontend: device-monitoring-viz
 # ===============================
   frontend-device-monitoring-viz-coverity:
     needs: detect-changes
-    # if: ${{ needs.detect-changes.outputs.device_viz_changed == 'true' }}
+    if: ${{ needs.detect-changes.outputs.device_viz_changed == 'true' }}
     name: Frontend_DeviceMonitoring_Viz_Coverity
     runs-on: ubuntu-latest
   
