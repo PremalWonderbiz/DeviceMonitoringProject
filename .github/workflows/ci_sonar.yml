@@ -124,7 +124,7 @@ jobs:
         working-directory: ./Backend/AlarmService
 
       - name: Build
-        run: dotnet build ./Backend/AlarmService
+        run: dotnet build
         working-directory: ./Backend/AlarmService
 
       - name: SonarCloud End
@@ -160,7 +160,7 @@ jobs:
         working-directory: ./Backend/GatewayService/GatewayService
 
       - name: Build
-        run: dotnet build ./backend/GatewayService
+        run: dotnet build
         working-directory: ./Backend/GatewayService/GatewayService
 
       - name: SonarCloud End
