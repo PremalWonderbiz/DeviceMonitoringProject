@@ -37,4 +37,4 @@ jobs:
             --form token=shSWX9k3rXxqbuwb2wk4Gg \
             --form email=premal.kadam@wonderbiz.in \
             --form file=@cov-int.tgz \
-            https://scan.coverity.com/builds?project=YourProjectName
+            https://scan.coverity.com/builds?project=Device+Service+Git
