@@ -106,10 +106,10 @@ jobs:
 
       - name: Install SonarScanner for .NET
         run: dotnet tool install --global dotnet-sonarscanner
-	
+
       - name: Add .NET tools to PATH
         run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
-
+		
       - name: Restore Dependencies
         run: dotnet restore ./Backend/AlarmService
 
