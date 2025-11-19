@@ -1,6 +1,6 @@
 // adding comment to test pipeline v2
 // testing branch rules for pr
-//tesing for sonarqube in pipeline v3
+//tesing for sonarqube in pipeline v2
 import { Geist, Geist_Mono } from "next/font/google";
 import Badge from "@/components/customcomponents/Badge";
 import Sidebar from "@/components/customcomponents/SideBar";
