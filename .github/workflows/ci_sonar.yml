@@ -107,32 +107,29 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x'
+          dotnet-version: '8.0.x'
+
+      - name: Install SonarScanner for .NET
+        run: dotnet tool install --global dotnet-sonarscanner
+
+      - name: Add .NET tools to PATH
+        run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
 
       - name: Restore Dependencies
         run: dotnet restore ./Backend/AlarmService
 
       - name: SonarCloud Begin
         run: |
-          dotnet sonarscanner begin \
-            /k:"premalwonderbiz_DeviceMonitoringProject_AlarmService" \
-            /o:"premalwonderbiz" \
-            /d:sonar.host.url="https://sonarcloud.io" \
-            /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" \
-            /d:sonar.cs.opencover.reportsPaths="TestResults/*.coverage.opencover.xml" \
-            /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
+          dotnet sonarscanner begin /k:"premalwonderbiz_DeviceMonitoringProject_AlarmService" /o:"premalwonderbiz" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" /d:sonar.cs.opencover.reportsPaths="**/*.opencover*" /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
+        working-directory: ./Backend/AlarmService
 
       - name: Build
         run: dotnet build ./Backend/AlarmService
-
-      - name: Test with Coverage
-        run: dotnet test ./Backend/AlarmService \
-          /p:CollectCoverage=true \
-          /p:CoverletOutputFormat=opencover \
-          /p:CoverletOutput=TestResults/AlarmService.coverage.opencover.xml
+        working-directory: ./Backend/AlarmService
 
       - name: SonarCloud End
         run: dotnet sonarscanner end /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757"
+        working-directory: ./Backend/AlarmService
 
 
   # ===============================
@@ -152,32 +149,23 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x'
+          dotnet-version: '8.0.x'
 
       - name: Restore Dependencies
         run: dotnet restore ./Backend/GatewayService/GatewayService
 
       - name: SonarCloud Begin
         run: |
-          dotnet sonarscanner begin \
-            /k:"premalwonderbiz_DeviceMonitoringProject_GatewayService" \
-            /o:"premalwonderbiz" \
-            /d:sonar.host.url="https://sonarcloud.io" \
-            /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" \
-            /d:sonar.cs.opencover.reportsPaths="TestResults/*.coverage.opencover.xml" \
-            /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
+          dotnet sonarscanner begin /k:"premalwonderbiz_DeviceMonitoringProject_GatewayService" /o:"premalwonderbiz" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" /d:sonar.cs.opencover.reportsPaths="**/*.opencover*" /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
+        working-directory: ./Backend/GatewayService/GatewayService
 
       - name: Build
         run: dotnet build ./backend/GatewayService
-
-      - name: Test with Coverage
-        run: dotnet test ./Backend/GatewayService/GatewayService \
-          /p:CollectCoverage=true \
-          /p:CoverletOutputFormat=opencover \
-          /p:CoverletOutput=TestResults/GatewayService.coverage.opencover.xml
+        working-directory: ./Backend/GatewayService/GatewayService
 
       - name: SonarCloud End
         run: dotnet sonarscanner end /d:sonar.login="$d7eadd915619c8d1b8d18013078fca2a0b5ad757"
+        working-directory: ./Backend/GatewayService/GatewayService
 
 
   # ===============================
