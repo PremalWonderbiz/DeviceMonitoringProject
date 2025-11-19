@@ -1,22 +1,98 @@
-name: Coverity Scan - DeviceMonitoringService
+name: CI / Coverity Scan
 
 on:
-  workflow_dispatch:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
 
+  # -------------------------------
+  # Detect what changed
+  # -------------------------------
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      device_service_changed: ${{ steps.filter.outputs.deviceService }}
+      alarm_service_changed: ${{ steps.filter.outputs.alarmService }}
+      gateway_service_changed: ${{ steps.filter.outputs.gatewayService }}
+      device_frontend_changed: ${{ steps.filter.outputs.deviceFrontend }}
+      device_viz_changed: ${{ steps.filter.outputs.deviceVizFrontend }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Detect changes in backend and frontend
+        id: filter
+        uses: dorny/paths-filter@v2
+        with:
+          filters: |
+            deviceService:
+            	- 'Backend/DeviceMonitoringProject/**'
+            alarmService:
+            	- 'Backend/AlarmService/**'
+            gatewayService:
+            	- 'Backend/GatewayService/GatewayService/**'
+            deviceFrontend:
+            	- 'Frontend/device_monitoring_frontend/**'
+            deviceVizFrontend:
+            	- 'Frontend/device-monitoring-viz/**'
+
+# ===============================
+# Backend: DeviceMonitoringService
+# ===============================
+  # backend-device-monitoring-service:
+  #   needs: detect-changes
+  #   if: ${{ needs.detect-changes.outputs.device_service_changed == 'true' }}
+  #   name: Backend_DeviceMonitoringService_Coverity
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+
+  #     - name: Download Coverity Tools
+  #       run: |
+  #         wget -q https://scan.coverity.com/download/linux64 --post-data "token=shSWX9k3rXxqbuwb2wk4Gg&project=Device+Service+Git" -O coverity_tool.tgz
+
+  #     - name: Extract Coverity Tools
+  #       run: |
+  #         mkdir coverity
+  #         tar -zxvf coverity_tool.tgz -C coverity --strip-components=1
+
+  #     - name: Build with Coverity
+  #       run: |
+  #         ./coverity/bin/cov-build --dir cov-int dotnet build ./Backend/DeviceMonitoringProject
+
+  #     - name: Create Zip
+  #       run: |
+  #         tar czvf cov-int.tgz cov-int
+
+  #     - name: Upload to Coverity Scan
+  #       run: |
+  #         curl \
+  #           --form token=shSWX9k3rXxqbuwb2wk4Gg \
+  #           --form email=premal.kadam@wonderbiz.in \
+  #           --form file=@cov-int.tgz \
+  #           https://scan.coverity.com/builds?project=Device+Service+Git
+
+# ===============================
+# Backend: AlarmService
+# ===============================
+  backend-alarm-service:
+    needs: detect-changes
+    # if: ${{ needs.detect-changes.outputs.alarm_service_changed == 'true' }}
+    name: Backend_AlarmService_Coverity
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Download Coverity Tools
         run: |
-          wget -q https://scan.coverity.com/download/linux64 --post-data "token=shSWX9k3rXxqbuwb2wk4Gg&project=Device+Service+Git" -O coverity_tool.tgz
+          wget -q https://scan.coverity.com/download/linux64 --post-data "token=VhyEudspBo6lzg_aZuGcpA&project=Alarm+Service+Git" -O coverity_tool.tgz
 
       - name: Extract Coverity Tools
         run: |
@@ -25,7 +101,7 @@ jobs:
 
       - name: Build with Coverity
         run: |
-          ./coverity/bin/cov-build --dir cov-int dotnet build ./Backend/DeviceMonitoringProject
+          ./coverity/bin/cov-build --dir cov-int dotnet build ./Backend/AlarmService
 
       - name: Create Zip
         run: |
@@ -34,7 +110,44 @@ jobs:
       - name: Upload to Coverity Scan
         run: |
           curl \
-            --form token=shSWX9k3rXxqbuwb2wk4Gg \
+            --form token=VhyEudspBo6lzg_aZuGcpA \
             --form email=premal.kadam@wonderbiz.in \
             --form file=@cov-int.tgz \
-            https://scan.coverity.com/builds?project=Device+Service+Git
+            https://scan.coverity.com/builds?project=Alarm+Service+Git
+
+# ===============================
+# Backend: GatewayService
+# ===============================
+  backend-gateway-service:
+    needs: detect-changes
+    # if: ${{ needs.detect-changes.outputs.gateway_service_changed == 'true' }}
+    name: Backend_GatewayService_Coverity
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Download Coverity Tools
+        run: |
+          wget -q https://scan.coverity.com/download/linux64 --post-data "token=jWBgMbwvs958zF7fa6V6_A&project=Device+Gateway+Service+Git" -O coverity_tool.tgz
+
+      - name: Extract Coverity Tools
+        run: |
+          mkdir coverity
+          tar -zxvf coverity_tool.tgz -C coverity --strip-components=1
+
+      - name: Build with Coverity
+        run: |
+          ./coverity/bin/cov-build --dir cov-int dotnet build ./Backend/GatewayService/GatewayService
+
+      - name: Create Zip
+        run: |
+          tar czvf cov-int.tgz cov-int
+
+      - name: Upload to Coverity Scan
+        run: |
+          curl \
+            --form token=jWBgMbwvs958zF7fa6V6_A \
+            --form email=premal.kadam@wonderbiz.in \
+            --form file=@cov-int.tgz \
+            https://scan.coverity.com/builds?project=Device+Gateway+Service+Git
