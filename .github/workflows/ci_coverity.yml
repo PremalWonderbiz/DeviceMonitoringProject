@@ -25,7 +25,7 @@ jobs:
 
       - name: Build with Coverity
         run: |
-          ./coverity/bin/cov-build --dir cov-int dotnet build
+          ./coverity/bin/cov-build --dir cov-int dotnet build ./Backend/DeviceMonitoringProject
 
       - name: Create Zip
         run: |
