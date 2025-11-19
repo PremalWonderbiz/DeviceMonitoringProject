@@ -158,7 +158,7 @@ jobs:
 # ===============================
   frontend-device-monitoring-coverity:
     needs: detect-changes
-    # if: ${{ needs.detect-changes.outputs.device_frontend_changed == 'true' }}
+    if: ${{ needs.detect-changes.outputs.device_frontend_changed == 'true' }}
     name: Frontend_DeviceMonitoring_Coverity
     runs-on: ubuntu-latest
   
@@ -191,3 +191,43 @@ jobs:
             --form version="CI-Build-$(date +%s)" \
             --form file=@cov-int.tgz \
             https://scan.coverity.com/builds?project=Device+Monitoring+frontend+Git
+
+
+    # ===============================
+# Frontend: device-monitoring-viz
+# ===============================
+  frontend-device-monitoring-viz-coverity:
+    needs: detect-changes
+    # if: ${{ needs.detect-changes.outputs.device_viz_changed == 'true' }}
+    name: Frontend_DeviceMonitoring_Viz_Coverity
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+  
+      - name: Download Coverity Tools
+        run: |
+          wget -q https://scan.coverity.com/download/linux64 --post-data "token=T3IXPW2u67rm7pHY2Cf2Yg&project=Device+Monitoring+Visualizaton+Git" -O coverity_tool.tgz
+  
+      - name: Extract Coverity Tools
+        run: |
+          mkdir coverity
+          tar -zxvf coverity_tool.tgz -C coverity --strip-components=1
+  
+      - name: Run Coverity Buildless Capture
+        run: |
+          ./coverity/bin/coverity capture --dir cov-int --project-dir Frontend/device-monitoring-viz
+  
+      - name: Create Zip
+        run: |
+          tar czvf cov-int.tgz cov-int
+  
+      - name: Upload to Coverity Scan
+        run: |
+          curl \
+            --form token="T3IXPW2u67rm7pHY2Cf2Yg" \
+            --form email=premal.kadam@wonderbiz.in \
+            --form version="CI-Build-$(date +%s)" \
+            --form file=@cov-int.tgz \
+            https://scan.coverity.com/builds?project=Device+Monitoring+Visualizaton+Git
