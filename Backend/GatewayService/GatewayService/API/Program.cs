@@ -1,4 +1,5 @@
 // adding comment to test pipeline v2
+//comment to test sonarqube ci check v1
 using API.RealTime;
 
 var builder = WebApplication.CreateBuilder(args);
