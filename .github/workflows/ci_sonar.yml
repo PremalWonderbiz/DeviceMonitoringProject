@@ -10,7 +10,9 @@ on:
 
 jobs:
 
+  # -------------------------------
   # Detect what changed
+  # -------------------------------
   detect-changes:
     runs-on: ubuntu-latest
     outputs:
@@ -39,7 +41,9 @@ jobs:
             deviceVizFrontend:
             	- 'Frontend/device-monitoring-viz/**'
 
+  # ===============================
   # Backend: DeviceMonitoringService
+  # ===============================
   backend-device-monitoring-service:
     needs: detect-changes
     if: ${{ needs.detect-changes.outputs.device_service_changed == 'true' }}
@@ -86,8 +90,9 @@ jobs:
         run: dotnet sonarscanner end /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757"
         working-directory: ./Backend/DeviceMonitoringProject
 
-
+  # ===============================
   # Backend: AlarmService
+  # ===============================
   backend-alarm-service:
     needs: detect-changes
     if: ${{ needs.detect-changes.outputs.alarm_service_changed == 'true' }}
@@ -102,31 +107,37 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '7.0.x'
 
-      - name: Install SonarScanner for .NET
-        run: dotnet tool install --global dotnet-sonarscanner
-
-      - name: Add .NET tools to PATH
-        run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
-		
       - name: Restore Dependencies
         run: dotnet restore ./Backend/AlarmService
 
       - name: SonarCloud Begin
         run: |
-          dotnet sonarscanner begin /k:"premalwonderbiz_DeviceMonitoringProject_AlarmService" /o:"premalwonderbiz" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" /d:sonar.cs.opencover.reportsPaths="**/*.opencover*" /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
-        working-directory: ./Backend/AlarmService
-		
+          dotnet sonarscanner begin \
+            /k:"premalwonderbiz_DeviceMonitoringProject_AlarmService" \
+            /o:"premalwonderbiz" \
+            /d:sonar.host.url="https://sonarcloud.io" \
+            /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" \
+            /d:sonar.cs.opencover.reportsPaths="TestResults/*.coverage.opencover.xml" \
+            /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
+
       - name: Build
         run: dotnet build ./Backend/AlarmService
-        working-directory: ./Backend/AlarmService		
+
+      - name: Test with Coverage
+        run: dotnet test ./Backend/AlarmService \
+          /p:CollectCoverage=true \
+          /p:CoverletOutputFormat=opencover \
+          /p:CoverletOutput=TestResults/AlarmService.coverage.opencover.xml
 
       - name: SonarCloud End
         run: dotnet sonarscanner end /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757"
-        working-directory: ./Backend/AlarmService
 
+
+  # ===============================
   # Backend: GatewayService
+  # ===============================
   backend-gateway-service:
     needs: detect-changes
     if: ${{ needs.detect-changes.outputs.gateway_service_changed == 'true' }}
@@ -141,26 +152,37 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '7.0.x'
 
       - name: Restore Dependencies
         run: dotnet restore ./Backend/GatewayService/GatewayService
 
       - name: SonarCloud Begin
         run: |
-          dotnet sonarscanner begin /k:"premalwonderbiz_DeviceMonitoringProject_GatewayService" /o:"premalwonderbiz" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" /d:sonar.cs.opencover.reportsPaths="**/*.opencover*" /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
-        working-directory: ./Backend/GatewayService/GatewayService
-		
+          dotnet sonarscanner begin \
+            /k:"premalwonderbiz_DeviceMonitoringProject_GatewayService" \
+            /o:"premalwonderbiz" \
+            /d:sonar.host.url="https://sonarcloud.io" \
+            /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" \
+            /d:sonar.cs.opencover.reportsPaths="TestResults/*.coverage.opencover.xml" \
+            /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
+
       - name: Build
         run: dotnet build ./backend/GatewayService
-        working-directory: ./Backend/GatewayService/GatewayService
+
+      - name: Test with Coverage
+        run: dotnet test ./Backend/GatewayService/GatewayService \
+          /p:CollectCoverage=true \
+          /p:CoverletOutputFormat=opencover \
+          /p:CoverletOutput=TestResults/GatewayService.coverage.opencover.xml
 
       - name: SonarCloud End
         run: dotnet sonarscanner end /d:sonar.login="$d7eadd915619c8d1b8d18013078fca2a0b5ad757"
-        working-directory: ./Backend/GatewayService/GatewayService
 
 
+  # ===============================
   # Frontend: device-monitoring-ui
+  # ===============================
   frontend-device-monitoring-ui:
     needs: detect-changes
     if: ${{ needs.detect-changes.outputs.device_frontend_changed == 'true' }}
@@ -194,7 +216,9 @@ jobs:
         working-directory: ./Frontend/device_monitoring_frontend
 
 
+  # ===============================
   # Frontend: device-monitoring-viz
+  # ===============================
   frontend-device-monitoring-viz:
     needs: detect-changes
     if: ${{ needs.detect-changes.outputs.device_viz_changed == 'true' }}
@@ -222,4 +246,3 @@ jobs:
       - name: SonarCloud Scan
         run: npx sonar-scanner -Dsonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" -D sonar.host.url="https://sonarcloud.io" -Dsonar.organization="premalwonderbiz" -Dsonar.projectKey="premalwonderbiz_DeviceMonitoringProject_DeviceViz" -Dsonar.sources=src -Dsonar.exclusions="**/node_modules/**,**/.next/**,**/out/**,**/coverage/**,**/*.test.*,**/*.spec.*,**/*.config.*,**/helpervariables.ts/**" -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info -Dsonar.test.inclusions="**/*.test.js,**/*.test.jsx,**/*.test.ts,**/*.test.tsx"
         working-directory: ./Frontend/device-monitoring-viz
-
