@@ -7,41 +7,34 @@ on:
       - main
 
 jobs:
-  coverity-device-service:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: "8.0.x"
-
-      - name: Download Coverity Build Tool
+      - name: Download Coverity Tools
         run: |
-          wget https://scan.coverity.com/download/linux64 --post-data "token=shSWX9k3rXxqbuwb2wk4Gg&project=Device+Service+Git" -O coverity.tgz
-          tar -xzf coverity.tgz
-          mv cov-analysis-linux64* coverity
+          wget -q https://scan.coverity.com/download/linux64 --post-data "token=shSWX9k3rXxqbuwb2wk4Gg&project=Device+Service+Git" -O coverity_tool.tgz
 
-      - name: Capture Build With Coverity
+      - name: Extract Coverity Tools
+        run: |
+          mkdir coverity
+          tar -zxvf coverity_tool.tgz -C coverity --strip-components=1
+
+      - name: Build with Coverity
         run: |
           ./coverity/bin/cov-build --dir cov-int dotnet build
-        working-directory: ./Backend/DeviceMonitoringProject
 
-      - name: Create Tarball
-        run: tar czf cov-int.tgz cov-int
-        working-directory: ./Backend/DeviceMonitoringProject
+      - name: Create Zip
+        run: |
+          tar czvf cov-int.tgz cov-int
 
       - name: Upload to Coverity Scan
         run: |
-          curl --form token="shSWX9k3rXxqbuwb2wk4Gg" \
-               --form email=premal.kadam@wonderbiz.in \
-               --form file=@cov-int.tgz \
-               --form version="$(date +'%Y%m%d-%H%M')-$(git rev-parse --short HEAD)" \
-               --form description="Automated CI build from GitHub Actions" \
-               "https://scan.coverity.com/builds?project=Device+Service+Git"
-        working-directory: ./Backend/DeviceMonitoringProject
+          curl \
+            --form token=shSWX9k3rXxqbuwb2wk4Gg \
+            --form email=premal.kadam@wonderbiz.in \
+            --form file=@cov-int.tgz \
+            https://scan.coverity.com/builds?project=YourProjectName
