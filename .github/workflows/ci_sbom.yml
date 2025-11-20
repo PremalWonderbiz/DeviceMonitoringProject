@@ -46,7 +46,7 @@ jobs:
 # ===============================
   backend-device-monitoring-service:
     needs: detect-changes
-    // if: ${{ needs.detect-changes.outputs.device_service_changed == 'true' }}
+    # if: ${{ needs.detect-changes.outputs.device_service_changed == 'true' }}
     name: Backend_DeviceMonitoringService_SBOM
     runs-on: ubuntu-latest
 
