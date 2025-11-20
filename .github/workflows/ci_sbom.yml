@@ -199,7 +199,7 @@ jobs:
         run: |
           mkdir -p sbom
           sbom-tool generate \
-            -b ./.next \
+            -b Frontend/device_monitoring_frontend/.next \
             -bc Frontend/device_monitoring_frontend \
             -pn DeviceMonitoringFrontend \
             -pv 1.0.0 \
@@ -244,7 +244,7 @@ jobs:
         run: |
           mkdir -p sbom
           sbom-tool generate \
-            -b ./.next \
+            -b Frontend/device-monitoring-viz/.next \
             -bc Frontend/device-monitoring-viz \
             -pn DeviceMonitoringFrontendViz \
             -pv 1.0.0 \
