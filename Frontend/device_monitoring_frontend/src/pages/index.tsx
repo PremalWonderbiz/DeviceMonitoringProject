@@ -10,7 +10,7 @@ import TableComponent from "@/components/customcomponents/Table/TableComponent";
 import AlarmPanel from "@/components/customcomponents/AlarmPanel/AlarmPanel";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useDevicesTopDataSocket } from "@/utils/customhooks/useDevicesTopDataSocket";
-import { BellRing, ListX, Menu, Repeat, UserPen } from "lucide-react";
+import { BellRing, Download, ListX, Menu, Repeat, UserPen } from "lucide-react";
 import { getAlarmToggleValue, getAllDataRefereshedFromCache, getDeviceMetadata, getDeviceMetadataPaginatedandSorted, getDevicesNameMacIdList, getDevicesTopLevelData, getMacIdToFileNameMap, getSearchedDeviceMetadataPaginated, setAlarmToggleValue } from "@/services/deviceservice";
 import styles from "@/styles/scss/Home.module.scss";
 import PopOver from "@/components/chakrauicomponents/PopOver";
@@ -612,6 +612,14 @@ export default function Home() {
     setIsDiagramView(!isDiagramView);
   };
 
+  const downloadDiagram = () => {
+    if (diagramRef && diagramRef.current) {
+      const diagram = diagramRef.current;
+      diagram.commandHandler.downloadSvg({ name: "mySVGfile.svg" });  
+    }else{
+      alert('Diagram download failed!');
+    }
+  }
 
   return (
     <div className={styles.homeContainer}>
@@ -658,6 +666,10 @@ export default function Home() {
           <div className={`py-2 pr-4 ${styles.subNav}`}>
             <input onChange={(event: any) => { changeSearchInput(event.target.value) }} className={styles.mainPageSearchInput} type="search" placeholder="Search..." />
             <div className={styles.mainPageIcons}>
+              {isDiagramView &&
+              <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Download diagram</span>}>
+                  <Download className={styles.deviceRefreshIcon} onClick={() => { downloadDiagram() }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
+                </Tooltip>}
               {(sorting && sorting.length > 0) &&
                 <Tooltip openDelay={100} closeDelay={150} content={<span className="p-2">Clear sorting</span>}>
                   <ListX className={styles.deviceRefreshIcon} onClick={() => { setSorting([]) }} strokeWidth={"2.5px"} size={25} cursor={"pointer"} />
