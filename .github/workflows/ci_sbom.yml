@@ -268,7 +268,7 @@ jobs:
             -m sbom/DeviceMonitoringViz.spdx.json
 
       - name: Upload SBOM to GitHub Security
-        uses: advanced-security/upload-sbom@v1
+        uses: github/advanced-security/upload-sbom@v1
         with:
           sbom-file: sbom/DeviceMonitoringViz.spdx.json
 
