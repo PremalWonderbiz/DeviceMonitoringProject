@@ -15,8 +15,8 @@ export function initDiagram(): go.Diagram {
     'grid.visible': true,
     'grid.gridCellSize': new go.Size(10, 10),
     allowMove: true,
-    allowCopy: false,
-    allowDelete: false, 
+    allowCopy: true,
+    allowDelete: true, 
     model: new go.GraphLinksModel({
       linkKeyProperty: 'key'
     })

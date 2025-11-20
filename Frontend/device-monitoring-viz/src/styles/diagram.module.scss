@@ -34,12 +34,30 @@
     margin: 0;
   }
   
-  p {
+  
+}
+
+.lowerDescription {
     color: #6b7280;
     margin-top: 0.25rem;
     font-size: 0.95rem;
+    display: flex;
   }
-}
+
+  .downloadDiagramBtn{
+    padding: 0.5rem;
+    margin-left: auto;
+    width: fit-content;
+    border: 1px solid #1f2937;
+    cursor: pointer;
+    background-color: springgreen;
+    color: black;
+    transition: background-color 0.2s ease;
+  }
+
+  .downloadDiagramBtn:hover{
+    background-color: rgb(3, 244, 124);
+  }
 
 .contentArea {
   flex: 1;
