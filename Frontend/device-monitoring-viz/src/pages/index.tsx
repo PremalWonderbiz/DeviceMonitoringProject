@@ -6,14 +6,14 @@ import dynamic from 'next/dynamic';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import styles from '@/styles/diagram.module.scss';
+import { useRef } from 'react';
+import { ReactDiagram } from 'gojs-react';
+import SystemArchitectureDiagram from '@/components/diagrams/SystemArchitectureDiagram';
 
-// Dynamic import to avoid SSR issues with GoJS
-const SystemArchitectureDiagram = dynamic(
-  () => import('@/components/diagrams/SystemArchitectureDiagram'),
-  { ssr: false }
-);
+
 
 export default function Home() {
+  const diagramRef = useRef<ReactDiagram>(null);
   return (
     <>
       <Head>
@@ -24,9 +24,9 @@ export default function Home() {
       </Head>
 
       <div className={styles.pageWrapper}>
-        <Header />
+        <Header diagramRef={diagramRef}/>
         <main className={styles.contentArea}>
-          <SystemArchitectureDiagram />
+          <SystemArchitectureDiagram diagramRef={diagramRef} />
         </main>
         <Footer />
       </div>
