@@ -75,13 +75,13 @@ jobs:
             -pn DeviceMonitoringProject \
             -pv 1.0.0 \
             -ps "Premal Kadam" \
-            -m sbom/DeviceMonitoringProject.spdx.json
+            -m sbom/
 
       - name: Upload SBOM Artifact
         uses: actions/upload-artifact@v4
         with:
           name: DeviceMonitoringProject-SBOM
-          path: sbom/DeviceMonitoringProject.spdx.json
+          path: sbom/_manifest/spdx_2.2/manifest.spdx.json
 
 # ===============================
 # Backend: AlarmService
