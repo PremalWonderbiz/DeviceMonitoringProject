@@ -210,7 +210,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: DeviceMonitoringFrontend-SBOM
-          path: sbom/_manifest/spdx_2.2/manifest.json
+          path: sbom/_manifest/spdx_2.2/manifest.spdx.json
 
 
 
@@ -255,4 +255,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: DeviceMonitoringFrontendViz-SBOM
-          path: sbom/_manifest/spdx_2.2/manifest.json
+          path: sbom/_manifest/spdx_2.2/manifest.spdx.json
