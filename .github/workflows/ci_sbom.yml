@@ -63,16 +63,25 @@ jobs:
           dotnet restore Backend/DeviceMonitoringProject
           dotnet build Backend/DeviceMonitoringProject -c Release -o ./artifacts/device-monitoring
 
-      - name: Generate SBOM
-        uses: advanced-security/generate-sbom-action@v1
-        id: gensbom
+      - name: Install SBOM Tool
+        run: dotnet tool install --global sbom-tool
+
+      - name: Generate SBOM (DeviceMonitoringProject)
+        run: |
+          mkdir -p sbom
+          sbom-tool generate \
+            -b ./artifacts/device-monitoring \
+            -bc Backend/DeviceMonitoringProject \
+            -pn DeviceMonitoringProject \
+            -pv 1.0.0 \
+            -ps "Premal Kadam" \
+            -m sbom/DeviceMonitoringProject.spdx.json
 
       - name: Upload SBOM Artifact
         uses: actions/upload-artifact@v4
         with:
           name: DeviceMonitoringProject-SBOM
-          path: ${{ steps.gensbom.outputs.fileName }}
-
+          path: sbom/DeviceMonitoringProject.spdx.json
 
 # ===============================
 # Backend: AlarmService
