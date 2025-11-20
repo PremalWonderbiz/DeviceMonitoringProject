@@ -77,10 +77,16 @@ jobs:
             -ps "Premal Kadam" \
             -m sbom/
 
-      - name: Convert SPDX to HTML
+      - name: Install CycloneDX CLI
+        run: npm install -g @cyclonedx/cli
+      
+      - name: Convert to HTML
         run: |
-          pip install spdx-tools
-          spdx-to-html sbom/_manifest/spdx_2.2/manifest.spdx.json sbom/_manifest/spdx_2.2/manifest.html
+          cyclonedx convert \
+            --input-format spdxjson \
+            --output-format html \
+            --input-file sbom/_manifest/spdx_2.2/manifest.json \
+            --output-file sbom/_manifest/spdx_2.2/manifest.html
 
       - name: Upload SBOM Artifact
         uses: actions/upload-artifact@v4
