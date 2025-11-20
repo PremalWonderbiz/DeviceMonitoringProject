@@ -64,7 +64,7 @@ jobs:
           dotnet build Backend/DeviceMonitoringProject -c Release -o ./artifacts/device-monitoring
 
       - name: Install SBOM Tool
-        run: dotnet tool install --global sbom-tool
+        run: dotnet tool install --global Microsoft.Sbom.DotNetTool
 
       - name: Generate SBOM (DeviceMonitoringProject)
         run: |
