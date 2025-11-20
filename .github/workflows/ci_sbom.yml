@@ -77,11 +77,16 @@ jobs:
             -ps "Premal Kadam" \
             -m sbom/
 
+      - name: Convert SPDX to HTML
+        run: |
+          pip install spdx-tools
+          spdx-to-html sbom/_manifest/spdx_2.2/manifest.spdx.json sbom/_manifest/spdx_2.2/manifest.html
+
       - name: Upload SBOM Artifact
         uses: actions/upload-artifact@v4
         with:
           name: DeviceMonitoringProject-SBOM
-          path: sbom/_manifest/spdx_2.2/manifest.spdx.json
+          path: sbom/_manifest/spdx_2.2/manifest.html
 
 # ===============================
 # Backend: AlarmService
