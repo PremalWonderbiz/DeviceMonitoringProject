@@ -91,7 +91,7 @@ jobs:
 # ===============================
 # Backend: AlarmService
 # ===============================
-  backend-alarm-service:
+  backend-alarm-servicev:
     needs: detect-changes
     if: ${{ needs.detect-changes.outputs.alarm_service_changed == 'true' }}
     name: Backend_AlarmService_SBOM
