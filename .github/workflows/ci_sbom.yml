@@ -61,7 +61,7 @@ jobs:
       - name: Build DeviceMonitoringProject
         run: |
           dotnet restore Backend/DeviceMonitoringProject
-          dotnet build Backend/DeviceMonitoringProject -c Release -o ./artifacts/device-monitoring
+          dotnet build Backend/DeviceMonitoringProject -c Release -o ./artifacts/packages
 
       - name: Install SBOM Tool
         run: dotnet tool install --global Microsoft.Sbom.DotNetTool
@@ -70,36 +70,25 @@ jobs:
         run: |
           mkdir -p sbom
           sbom-tool generate \
-            -b ./artifacts/device-monitoring \
+            -b ./artifacts/packages \
             -bc Backend/DeviceMonitoringProject \
             -pn DeviceMonitoringProject \
             -pv 1.0.0 \
             -ps "Premal Kadam" \
             -m sbom/
 
-      - name: Install CycloneDX CLI
-        run: npm install -g @cyclonedx/cli
-      
-      - name: Convert to HTML
-        run: |
-          cyclonedx convert \
-            --input-format spdxjson \
-            --output-format html \
-            --input-file sbom/_manifest/spdx_2.2/manifest.json \
-            --output-file sbom/_manifest/spdx_2.2/manifest.html
-
       - name: Upload SBOM Artifact
         uses: actions/upload-artifact@v4
         with:
           name: DeviceMonitoringProject-SBOM
-          path: sbom/_manifest/spdx_2.2/manifest.html
+          path: sbom/_manifest/spdx_2.2/manifest.json
 
 # ===============================
 # Backend: AlarmService
 # ===============================
-  backend-alarm-servicev:
+  backend-alarm-service:
     needs: detect-changes
-    if: ${{ needs.detect-changes.outputs.alarm_service_changed == 'true' }}
+    # if: ${{ needs.detect-changes.outputs.alarm_service_changed == 'true' }}
     name: Backend_AlarmService_SBOM
     runs-on: ubuntu-latest
 
@@ -114,31 +103,27 @@ jobs:
       - name: Build AlarmService
         run: |
           dotnet restore Backend/AlarmService
-          dotnet build Backend/AlarmService -c Release -o ./artifacts/alarm-service
+          dotnet build Backend/AlarmService -c Release -o ./artifacts/packages
 
       - name: Install SBOM Tool
-        run: dotnet tool install --global sbom-tool
+        run: dotnet tool install --global Microsoft.Sbom.DotNetTool
 
       - name: Generate SBOM (AlarmService)
         run: |
+          mkdir -p sbom
           sbom-tool generate \
-            -b ./artifacts/alarm-service \
+            -b ./artifacts/packages \
             -bc Backend/AlarmService \
             -pn AlarmService \
             -pv 1.0.0 \
-            -ps "Prem Kadam" \
-            -m sbom/AlarmService.spdx.json
-
-      - name: Upload SBOM to GitHub Security
-        uses: advanced-security/upload-sbom@v1
-        with:
-          sbom-file: sbom/AlarmService.spdx.json
+            -ps "Premal Kadam" \
+            -m sbom/
 
       - name: Upload SBOM Artifact
         uses: actions/upload-artifact@v4
         with:
           name: AlarmService-SBOM
-          path: sbom/AlarmService.spdx.json
+          path: sbom/_manifest/spdx_2.2/manifest.json
 
 
 # ===============================
@@ -146,7 +131,7 @@ jobs:
 # ===============================
   backend-gateway-service:
     needs: detect-changes
-    if: ${{ needs.detect-changes.outputs.gateway_service_changed == 'true' }}
+    # if: ${{ needs.detect-changes.outputs.gateway_service_changed == 'true' }}
     name: Backend_GatewayService_SBOM
     runs-on: ubuntu-latest
 
@@ -160,40 +145,36 @@ jobs:
 
       - name: Build GatewayService
         run: |
-          dotnet restore Backend/GatewayService
-          dotnet build Backend/GatewayService -c Release -o ./artifacts/gateway-service
+          dotnet restore Backend/GatewayService/GatewayService
+          dotnet build Backend/GatewayService/GatewayService -c Release -o ./artifacts/packages
 
       - name: Install SBOM Tool
-        run: dotnet tool install --global sbom-tool
+        run: dotnet tool install --global Microsoft.Sbom.DotNetTool
 
       - name: Generate SBOM (GatewayService)
         run: |
+          mkdir -p sbom
           sbom-tool generate \
-            -b ./artifacts/gateway-service \
-            -bc Backend/GatewayService \
+            -b ./artifacts/packages \
+            -bc Backend/GatewayService/GatewayService \
             -pn GatewayService \
             -pv 1.0.0 \
-            -ps "Prem Kadam" \
-            -m sbom/GatewayService.spdx.json
-
-      - name: Upload SBOM to GitHub Security
-        uses: advanced-security/upload-sbom@v1
-        with:
-          sbom-file: sbom/GatewayService.spdx.json
+            -ps "Premal Kadam" \
+            -m sbom/
 
       - name: Upload SBOM Artifact
         uses: actions/upload-artifact@v4
         with:
           name: GatewayService-SBOM
-          path: sbom/GatewayService.spdx.json
+          path: sbom/_manifest/spdx_2.2/manifest.json
 
 
 # ===============================
 # Frontend: device-monitoring-ui
 # ===============================
-  frontend-device-monitoring-coverity:
+  frontend-device-monitoring:
     needs: detect-changes
-    if: ${{ needs.detect-changes.outputs.device_frontend_changed == 'true' }}
+    # if: ${{ needs.detect-changes.outputs.device_frontend_changed == 'true' }}
     name: Frontend_DeviceMonitoring_SBOM
     runs-on: ubuntu-latest
 
@@ -212,37 +193,33 @@ jobs:
           npm run build
 
       - name: Install SBOM Tool
-        run: dotnet tool install --global sbom-tool
+        run: dotnet tool install --global Microsoft.Sbom.DotNetTool
 
-      - name: Generate SBOM (Frontend)
+      - name: Generate SBOM (DeviceMonitoringFrontend)
         run: |
+          mkdir -p sbom
           sbom-tool generate \
-            -b ./Frontend/device_monitoring_frontend/.next \
-            -bc ./Frontend/device_monitoring_frontend \
+            -b ./artifacts/packages \
+            -bc Frontend/device_monitoring_frontend \
             -pn DeviceMonitoringFrontend \
             -pv 1.0.0 \
-            -ps "Prem Kadam" \
-            -m sbom/DeviceMonitoringFrontend.spdx.json
-
-      - name: Upload SBOM to GitHub Security
-        uses: advanced-security/upload-sbom@v1
-        with:
-          sbom-file: sbom/DeviceMonitoringFrontend.spdx.json
+            -ps "Premal Kadam" \
+            -m sbom/
 
       - name: Upload SBOM Artifact
         uses: actions/upload-artifact@v4
         with:
           name: DeviceMonitoringFrontend-SBOM
-          path: sbom/DeviceMonitoringFrontend.spdx.json
+          path: sbom/_manifest/spdx_2.2/manifest.json
 
 
 
 # ===============================
 # Frontend: device-monitoring-viz
 # ===============================
-  frontend-device-monitoring-viz-coverity:
+  frontend-device-monitoring-viz:
     needs: detect-changes
-    if: ${{ needs.detect-changes.outputs.device_viz_changed == 'true' }}
+    # if: ${{ needs.detect-changes.outputs.device_viz_changed == 'true' }}
     name: Frontend_DeviceMonitoring_Viz_SBOM
     runs-on: ubuntu-latest
 
@@ -261,25 +238,21 @@ jobs:
           npm run build
 
       - name: Install SBOM Tool
-        run: dotnet tool install --global sbom-tool
+        run: dotnet tool install --global Microsoft.Sbom.DotNetTool
 
-      - name: Generate SBOM (Viz Frontend)
+      - name: Generate SBOM (DeviceMonitoringFrontendViz)
         run: |
+          mkdir -p sbom
           sbom-tool generate \
-            -b ./Frontend/device-monitoring-viz/.next \
-            -bc ./Frontend/device-monitoring-viz \
-            -pn DeviceMonitoringViz \
+            -b ./artifacts/packages \
+            -bc Frontend/device-monitoring-viz \
+            -pn DeviceMonitoringFrontendViz \
             -pv 1.0.0 \
-            -ps "Prem Kadam" \
-            -m sbom/DeviceMonitoringViz.spdx.json
-
-      - name: Upload SBOM to GitHub Security
-        uses: github/advanced-security/upload-sbom@v1
-        with:
-          sbom-file: sbom/DeviceMonitoringViz.spdx.json
+            -ps "Premal Kadam" \
+            -m sbom/
 
       - name: Upload SBOM Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: DeviceMonitoringViz-SBOM
-          path: sbom/DeviceMonitoringViz.spdx.json
+          name: DeviceMonitoringFrontendViz-SBOM
+          path: sbom/_manifest/spdx_2.2/manifest.json
