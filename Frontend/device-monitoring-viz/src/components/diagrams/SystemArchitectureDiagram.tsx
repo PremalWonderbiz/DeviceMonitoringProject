@@ -8,7 +8,7 @@ const SystemArchitectureDiagram = (props:any) => {
   return (
     <div className={styles.diagramContainer}>
       <ReactDiagram
-        // ref={props.diagramRef}
+        ref={props.diagramRef}
         initDiagram={initDiagram}
         divClassName="gojs-diagram"
         nodeDataArray={nodeDataArray}
