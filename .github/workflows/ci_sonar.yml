@@ -162,7 +162,7 @@ jobs:
 
       - name: SonarCloud Begin
         run: |
-          dotnet sonarscanner begin /k:"premalwonderbiz_DeviceMonitoringProject_GatewayService" /o:"premalwonderbiz" /d:sonar.host.url=${{ secrets.SONAR_HOST_URL }} /d:sonar.login="${{ secrets.SONAR_TOKEN }} /d:sonar.cs.opencover.reportsPaths="**/*.opencover*" /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
+          dotnet sonarscanner begin /k:"premalwonderbiz_DeviceMonitoringProject_GatewayService" /o:"premalwonderbiz" /d:sonar.host.url=${{ secrets.SONAR_HOST_URL }} /d:sonar.login=${{ secrets.SONAR_TOKEN }} /d:sonar.cs.opencover.reportsPaths="**/*.opencover*" /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
         working-directory: ./Backend/GatewayService/GatewayService
 
       - name: Build
