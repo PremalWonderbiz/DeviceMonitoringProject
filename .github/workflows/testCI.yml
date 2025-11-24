@@ -1,123 +1,115 @@
-name: Detect C# Services
+name: Detect Services & Projects
 
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Deployment environment'
-        required: false
-        default: 'staging'
-      version:
-        description: 'Version to deploy'
-        required: false
-        default: '1.0.0'
-      
+
 jobs:
-  detect-services:
+  detect:
     runs-on: ubuntu-latest
 
     outputs:
-      services: ${{ steps.detect.outputs.services }}
-      changed_services: ${{ steps.changed.outputs.changed_services }}
+      backend_services: ${{ steps.backend_valid.outputs.backend_services }}
+      changed_backend: ${{ steps.backend_changed.outputs.changed_backend }}
+      frontend_projects: ${{ steps.frontend_valid.outputs.frontend_projects }}
+      changed_frontend: ${{ steps.frontend_changed.outputs.changed_frontend }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      # ----------------------------------------------------------
-      # STEP 1 — Detect services by .sln files ONLY
-      # ----------------------------------------------------------
-      - name: Detect service root folders (.sln-based)
-        id: detect
+
+      ###########################################################
+      # 1) LOAD CONFIGURATION (SIMPLE)
+      ###########################################################
+      - name: Load config
+        id: config
         run: |
-          echo "Detecting services via .sln files..."
+          CONFIG="config/projects.json"
 
-          # Find directories that contain .sln files
-          SERVICES=$(find Backend -type f -name "*.sln" -printf '%h\n' | sort -u)
+          BACKEND=$(jq -c '.backend' "$CONFIG")
+          FRONTEND=$(jq -c '.frontend' "$CONFIG")
 
-          echo "Detected services:"
-          echo "$SERVICES"
+          echo "backend=$BACKEND" >> "$GITHUB_OUTPUT"
+          echo "frontend=$FRONTEND" >> "$GITHUB_OUTPUT"
 
-          # Convert to JSON array
-          JSON=$(printf '%s\n' "$SERVICES" | jq -R . | jq -s -c .)
-          echo "services=$JSON" >> "$GITHUB_OUTPUT"
 
-      # ----------------------------------------------------------
-      # STEP 2 — Detect changed services
-      # ----------------------------------------------------------
-      - name: Detect changed services
-        id: changed
+      ###########################################################
+      # 2) VALIDATE BACKEND SERVICES (must contain .sln)
+      ###########################################################
+      - name: Validate backend services
+        id: backend_valid
         run: |
-          echo "Detecting changed services..."
+          VALID=()
 
-          # Get changed files for PR or push
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} HEAD)
-          else
-            FILES=$(git diff --name-only HEAD~1 HEAD)
-          fi
-
-          echo "Changed files:"
-          echo "$FILES"
-
-          CHANGED=()
-
-          for service in $(echo '${{ steps.detect.outputs.services }}' | jq -r '.[]'); do
-            if echo "$FILES" | grep -q "^${service}/"; then
-              CHANGED+=("$service")
-            fi
-          done
-
-          JSON=$(printf '%s\n' "${CHANGED[@]}" | jq -R . | jq -s -c .)
-          echo "changed_services=$JSON" >> "$GITHUB_OUTPUT"
-
-      - name: Summary
-        run: |
-          echo "All services:"
-          echo '${{ steps.detect.outputs.services }}'
-          echo "Changed services:"
-          echo '${{ steps.changed.outputs.changed_services }}'
-          
-      - name: Detect frontend projects (one-level only)
-        id: frontend
-        run: |
-          echo "Detecting frontend projects (one-level deep)..."
-      
-          CONFIG="Configurations/frontend_Structure.json"
-          ROOTS=$(jq -r '.frontendRoots[]' "$CONFIG")
-          PROJECTS=()
-      
-          for root in $ROOTS; do
-            echo "--- Scanning root: $root ---"
-      
-            if [ -d "$root" ]; then
-      
-              # Check only 1-level subfolders
-              for project in $(find "$root" -maxdepth 1 -mindepth 1 -type d); do
-      
-                # Only accept folders containing package.json
-                if [ -f "$project/package.json" ]; then
-                  echo "Detected frontend project: $project"
-                  PROJECTS+=("$project")
-                else
-                  echo "Skipping $project (no package.json)"
-                fi
-      
-              done
-      
+          for service in $(echo '${{ steps.config.outputs.backend }}' | jq -r '.[]'); do
+            if ls "$service"/*.sln >/dev/null 2>&1; then
+              echo "VALID backend: $service"
+              VALID+=("$service")
             else
-              echo "Root folder $root does not exist, skipping."
+              echo "INVALID backend (no .sln): $service"
             fi
           done
-      
-          # Make unique
-          UNIQUE=$(printf "%s\n" "${PROJECTS[@]}" | sort -u)
-      
-          echo "FINAL DETECTED FRONTEND PROJECTS:"
-          printf "%s\n" "${UNIQUE[@]}"
-      
-          JSON=$(printf "%s\n" "${UNIQUE[@]}" | jq -R . | jq -s -c .)
+
+          JSON=$(printf "%s\n" "${VALID[@]}" | jq -R . | jq -s -c .)
+          echo "backend_services=$JSON" >> "$GITHUB_OUTPUT"
+
+
+      ###########################################################
+      # 3) DETECT CHANGED BACKEND (paths-filter)
+      ###########################################################
+      - name: Detect changed backend services
+        id: backend_changed
+        uses: dorny/paths-filter@v2
+        with:
+          filters: |
+            ${{ steps.backend_valid.outputs.backend_services }}
+
+
+      ###########################################################
+      # 4) VALIDATE FRONTEND PROJECTS (must contain package.json)
+      ###########################################################
+      - name: Validate frontend projects
+        id: frontend_valid
+        run: |
+          VALID=()
+
+          for project in $(echo '${{ steps.config.outputs.frontend }}' | jq -r '.[]'); do
+            if [ -f "$project/package.json" ]; then
+              echo "VALID frontend: $project"
+              VALID+=("$project")
+            else
+              echo "INVALID frontend (no package.json): $project"
+            fi
+          done
+
+          JSON=$(printf "%s\n" "${VALID[@]}" | jq -R . | jq -s -c .)
           echo "frontend_projects=$JSON" >> "$GITHUB_OUTPUT"
 
+
+      ###########################################################
+      # 5) DETECT CHANGED FRONTEND (paths-filter)
+      ###########################################################
+      - name: Detect changed frontend projects
+        id: frontend_changed
+        uses: dorny/paths-filter@v2
+        with:
+          filters: |
+            ${{ steps.frontend_valid.outputs.frontend_projects }}
+
+
+      ###########################################################
+      # 6) SUMMARY
+      ###########################################################
+      - name: Summary
+        run: |
+          echo "=== Backend Services (Valid) ==="
+          echo '${{ steps.backend_valid.outputs.backend_services }}'
+          echo
+          echo "=== Changed Backend ==="
+          echo '${{ steps.backend_changed.outputs }}'
+          echo
+          echo "=== Frontend Projects (Valid) ==="
+          echo '${{ steps.frontend_valid.outputs.frontend_projects }}'
+          echo
+          echo "=== Changed Frontend ==="
+          echo '${{ steps.frontend_changed.outputs }}'
