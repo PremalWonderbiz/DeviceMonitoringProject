@@ -147,7 +147,7 @@ jobs:
           echo
 
           echo "================ BACKEND CHANGES ================"
-          echo '${{ toJson(steps.backend_changed.outputs) }}'
+          echo '${{ toJson(steps.backend_changed.outputs.changes) }}'
           echo
 
           echo "================ FRONTEND PROJECTS ================"
