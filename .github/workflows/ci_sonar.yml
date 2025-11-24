@@ -215,7 +215,7 @@ jobs:
   # ===============================
   frontend-device-monitoring-viz:
     needs: detect-changes
-    if: ${{ needs.detect-changes.outputs.device_viz_changed == 'true' }}
+    # if: ${{ needs.detect-changes.outputs.device_viz_changed == 'true' }}
     name: Frontend_device-monitoring-viz
     runs-on: ubuntu-latest
     steps:
@@ -223,6 +223,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      - name: Use confidential token
+        run: |
+          echo "Using token: ${{ secrets.SONAR_TOKEN }}"
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -238,5 +242,5 @@ jobs:
         working-directory: ./Frontend/device-monitoring-viz
 
       - name: SonarCloud Scan
-        run: npx sonar-scanner -Dsonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" -D sonar.host.url="https://sonarcloud.io" -Dsonar.organization="premalwonderbiz" -Dsonar.projectKey="premalwonderbiz_DeviceMonitoringProject_DeviceViz" -Dsonar.sources=src -Dsonar.exclusions="**/node_modules/**,**/.next/**,**/out/**,**/coverage/**,**/*.test.*,**/*.spec.*,**/*.config.*,**/helpervariables.ts/**" -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info -Dsonar.test.inclusions="**/*.test.js,**/*.test.jsx,**/*.test.ts,**/*.test.tsx"
+        run: npx sonar-scanner -Dsonar.login=${{ secrets.SONAR_TOKEN }} -D sonar.host.url=${{ secrets.SONAR_HOST_URL }} -Dsonar.organization="premalwonderbiz" -Dsonar.projectKey="premalwonderbiz_DeviceMonitoringProject_DeviceViz" -Dsonar.sources=src -Dsonar.exclusions="**/node_modules/**,**/.next/**,**/out/**,**/coverage/**,**/*.test.*,**/*.spec.*,**/*.config.*,**/helpervariables.ts/**" -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info -Dsonar.test.inclusions="**/*.test.js,**/*.test.jsx,**/*.test.ts,**/*.test.tsx"
         working-directory: ./Frontend/device-monitoring-viz
