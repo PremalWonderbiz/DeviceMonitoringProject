@@ -21,24 +21,18 @@ jobs:
         uses: actions/checkout@v4
 
       # ----------------------------------------
-      # 1. Load unified config
+      # Load unified config
       # ----------------------------------------
       - name: Load project configuration
         id: config
         run: |
           CONFIG="Configurations/projects.json"
 
-          BACKEND=$(jq -c '.backend' "$CONFIG")
-          FRONTEND=$(jq -c '.frontend' "$CONFIG")
-
-          echo "backend=$BACKEND" >> "$GITHUB_OUTPUT"
-          echo "frontend=$FRONTEND" >> "$GITHUB_OUTPUT"
-
-          echo "Loaded backend entries: $BACKEND"
-          echo "Loaded frontend entries: $FRONTEND"
+          echo "backend=$(jq -c '.backend' "$CONFIG")" >> "$GITHUB_OUTPUT"
+          echo "frontend=$(jq -c '.frontend' "$CONFIG")" >> "$GITHUB_OUTPUT"
 
       # ----------------------------------------
-      # 2. Validate backend services (.sln required)
+      # Validate backend services (.sln required)
       # ----------------------------------------
       - name: Validate backend services
         id: backend_valid
@@ -47,48 +41,48 @@ jobs:
 
           for service in $(echo '${{ steps.config.outputs.backend }}' | jq -r '.[]'); do
             if ls "$service"/*.sln >/dev/null 2>&1; then
-              echo "VALID backend: $service"
               VALID+=("$service")
             else
-              echo "INVALID backend (no .sln): $service"
+              echo "Skipping backend (no .sln): $service"
             fi
           done
 
-          JSON=$(printf "%s\n" "${VALID[@]}" | jq -R . | jq -s -c .)
-          echo "backend_services=$JSON" >> "$GITHUB_OUTPUT"
+          printf "%s\n" "${VALID[@]}" | jq -R . | jq -s -c . > backend.json
+          echo "backend_services=$(cat backend.json)" >> "$GITHUB_OUTPUT"
 
       # ----------------------------------------
-      # 3. Build backend filters for paths-filter
+      # Build backend filters
       # ----------------------------------------
       - name: Build backend YAML filters
         id: backend_filter_yaml
         run: |
-          SERVICES=$(echo '${{ steps.backend_valid.outputs.backend_services }}' | jq -r '.[]')
-          echo "Building backend filters..."
+          SERVICES=$(jq -r '.[]' <<< '${{ steps.backend_valid.outputs.backend_services }}')
 
-          FILTERS=""
-          for s in $SERVICES; do
-            NAME=$(basename "$s")
-            FILTERS="$FILTERS
-            $NAME:
-              - \"$s/**\""
-                    done
-          
-                    FILTERS_ESCAPED=$(echo "$FILTERS" | sed 's/%/%25/g; s/\n/%0A/g; s/\r/%0D/g')
-                    echo "filters=$FILTERS_ESCAPED" >> "$GITHUB_OUTPUT"
+          echo "Building backend filters..."
+          {
+            for s in $SERVICES; do
+              NAME=$(basename "$s")
+              echo "$NAME:"
+              echo "  - \"$s/**\""
+            done
+          } > backend_filters.yml
+
+          echo "filters<<EOF" >> "$GITHUB_OUTPUT"
+          cat backend_filters.yml >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
 
       # ----------------------------------------
-      # 4. Detect backend changes
+      # Detect backend changes
       # ----------------------------------------
       - name: Detect changed backend services
         id: backend_changed
         uses: dorny/paths-filter@v2
         with:
-          filters: |
-            ${{ steps.backend_filter_yaml.outputs.filters }}
+          list-files: shell
+          filters: ${{ steps.backend_filter_yaml.outputs.filters }}
 
       # ----------------------------------------
-      # 5. Validate frontend projects (package.json required)
+      # Validate frontend (package.json required)
       # ----------------------------------------
       - name: Validate frontend projects
         id: frontend_valid
@@ -97,70 +91,70 @@ jobs:
 
           for project in $(echo '${{ steps.config.outputs.frontend }}' | jq -r '.[]'); do
             if [ -f "$project/package.json" ]; then
-              echo "VALID frontend: $project"
               VALID+=("$project")
             else
-              echo "INVALID frontend (no package.json): $project"
+              echo "Skipping frontend (no package.json): $project"
             fi
           done
 
-          JSON=$(printf "%s\n" "${VALID[@]}" | jq -R . | jq -s -c .)
-          echo "frontend_projects=$JSON" >> "$GITHUB_OUTPUT"
+          printf "%s\n" "${VALID[@]}" | jq -R . | jq -s -c . > frontend.json
+          echo "frontend_projects=$(cat frontend.json)" >> "$GITHUB_OUTPUT"
 
       # ----------------------------------------
-      # 6. Build frontend filters for paths-filter
+      # Build frontend filters
       # ----------------------------------------
       - name: Build frontend YAML filters
         id: frontend_filter_yaml
         run: |
-          PROJECTS=$(echo '${{ steps.frontend_valid.outputs.frontend_projects }}' | jq -r '.[]')
-          echo "Building frontend filters..."
+          PROJECTS=$(jq -r '.[]' <<< '${{ steps.frontend_valid.outputs.frontend_projects }}')
 
-          FILTERS=""
-          for p in $PROJECTS; do
-            NAME=$(basename "$p")
-            FILTERS="$FILTERS
-            $NAME:
-              - \"$p/**\""
-                    done
-          
-                    FILTERS_ESCAPED=$(echo "$FILTERS" | sed 's/%/%25/g; s/\n/%0A/g; s/\r/%0D/g')
-                    echo "filters=$FILTERS_ESCAPED" >> "$GITHUB_OUTPUT"
+          echo "Building frontend filters..."
+          {
+            for p in $PROJECTS; do
+              NAME=$(basename "$p")
+              echo "$NAME:"
+              echo "  - \"$p/**\""
+            done
+          } > frontend_filters.yml
+
+          echo "filters<<EOF" >> "$GITHUB_OUTPUT"
+          cat frontend_filters.yml >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
 
       # ----------------------------------------
-      # 7. Detect frontend changes
+      # Detect frontend changes
       # ----------------------------------------
       - name: Detect changed frontend projects
         id: frontend_changed
         uses: dorny/paths-filter@v2
         with:
-          filters: |
-            ${{ steps.frontend_filter_yaml.outputs.filters }}
+          list-files: shell
+          filters: ${{ steps.frontend_filter_yaml.outputs.filters }}
 
       # ----------------------------------------
-      # 8. Summary
+      # Summary
       # ----------------------------------------
       - name: Summary
         run: |
           echo "======================================="
-          echo "        BACKEND SERVICES (VALID)       "
+          echo " BACKEND SERVICES (VALID)"
           echo "======================================="
           echo '${{ steps.backend_valid.outputs.backend_services }}'
           echo
 
           echo "======================================="
-          echo "       BACKEND CHANGES DETECTED        "
+          echo " BACKEND CHANGES DETECTED"
           echo "======================================="
           echo '${{ steps.backend_changed.outputs }}'
           echo
 
           echo "======================================="
-          echo "       FRONTEND PROJECTS (VALID)       "
+          echo " FRONTEND PROJECTS (VALID)"
           echo "======================================="
           echo '${{ steps.frontend_valid.outputs.frontend_projects }}'
           echo
 
           echo "======================================="
-          echo "      FRONTEND CHANGES DETECTED        "
+          echo " FRONTEND CHANGES DETECTED"
           echo "======================================="
           echo '${{ steps.frontend_changed.outputs }}'
