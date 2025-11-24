@@ -14,44 +14,45 @@ jobs:
       changed_services: ${{ steps.changed.outputs.changed_services }}
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       # ----------------------------------------------------------
-      # DETECT ONLY ROOT SERVICE FOLDERS
-      # Criteria:
-      #   - Folder containing "*.sln"
-      #   - OR folder containing "*API.csproj"
+      # STEP 1: Detect REAL service root folders
+      # Rules:
+      #   - Must contain API/, Application/, Domain/, Infrastructure/
+      #   - Exclude nested folders like API/, API/API, API/Application, etc.
       # ----------------------------------------------------------
-      - name: Detect root service folders
+      - name: Detect service roots
         id: detect
         run: |
-          echo "Detecting service root folders..."
+          echo "Detecting root service folders..."
 
-          # Find root service folders
-          SERVICES=$( \
-            find Backend -type f \( -name "*.sln" -o -name "*API.csproj" \) \
-            -printf '%h\n' | sort -u \
-          )
+          ROOTS=()
 
-          echo "Detected root folders:"
-          echo "$SERVICES"
+          # Any folder that contains the four clean architecture layers
+          while IFS= read -r dir; do
+            if [ -d "$dir/API" ] && [ -d "$dir/Application" ] && [ -d "$dir/Domain" ] && [ -d "$dir/Infrastructure" ]; then
+              ROOTS+=("$dir")
+            fi
+          done < <(find Backend -maxdepth 3 -type d)
 
-          # Convert to compact JSON array
-          JSON=$(printf '%s\n' "$SERVICES" | jq -R . | jq -s -c .)
+          echo "Detected service roots:"
+          printf '%s\n' "${ROOTS[@]}"
 
+          JSON=$(printf '%s\n' "${ROOTS[@]}" | jq -R . | jq -s -c .)
           echo "services=$JSON" >> "$GITHUB_OUTPUT"
 
       # ----------------------------------------------------------
-      # DETECT WHICH SERVICES CHANGED
+      # STEP 2 — Detect changed services
       # ----------------------------------------------------------
       - name: Detect changed services
         id: changed
         run: |
           echo "Detecting changed services..."
 
-          # Changed files between base & head
           FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} HEAD || echo "")
 
           echo "Files changed:"
@@ -65,12 +66,12 @@ jobs:
             fi
           done
 
-          # JSON output
           JSON=$(printf '%s\n' "${CHANGED[@]}" | jq -R . | jq -s -c .)
-
           echo "changed_services=$JSON" >> "$GITHUB_OUTPUT"
 
       - name: Summary
         run: |
-          echo "All services: ${{ steps.detect.outputs.services }}"
-          echo "Changed services: ${{ steps.changed.outputs.changed_services }}"
+          echo "All services:"
+          echo '${{ steps.detect.outputs.services }}'
+          echo "Changed services:"
+          echo '${{ steps.changed.outputs.changed_services }}'
