@@ -5,16 +5,12 @@ on:
     inputs:
       environment:
         description: 'Deployment environment'
-        required: true
+        required: false
         default: 'staging'
       version:
         description: 'Version to deploy'
         required: false
         default: '1.0.0'
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
       
 jobs:
   detect-services:
