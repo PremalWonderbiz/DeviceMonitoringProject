@@ -52,7 +52,7 @@ jobs:
 
       - name: Download Coverity Tools
         run: |
-          wget -q https://scan.coverity.com/download/linux64 --post-data "token=shSWX9k3rXxqbuwb2wk4Gg&project=Device+Service+Git" -O coverity_tool.tgz
+          wget -q https://scan.coverity.com/download/linux64 --post-data "token=${{ secrets.COVERITY_DEVICE_SERVICE_TOKEN }}&project=Device+Service+Git" -O coverity_tool.tgz
 
       - name: Extract Coverity Tools
         run: |
@@ -70,7 +70,7 @@ jobs:
       - name: Upload to Coverity Scan
         run: |
           curl \
-            --form token=shSWX9k3rXxqbuwb2wk4Gg \
+            --form token=${{ secrets.COVERITY_DEVICE_SERVICE_TOKEN }} \
             --form email=premal.kadam@wonderbiz.in \
             --form file=@cov-int.tgz \
             https://scan.coverity.com/builds?project=Device+Service+Git
@@ -89,7 +89,7 @@ jobs:
 
       - name: Download Coverity Tools
         run: |
-          wget -q https://scan.coverity.com/download/linux64 --post-data "token=VhyEudspBo6lzg_aZuGcpA&project=Alarm+Service+Git" -O coverity_tool.tgz
+          wget -q https://scan.coverity.com/download/linux64 --post-data "token=${{ secrets.COVERITY_ALARM_SERVICE_TOKEN }}&project=Alarm+Service+Git" -O coverity_tool.tgz
 
       - name: Extract Coverity Tools
         run: |
@@ -107,7 +107,7 @@ jobs:
       - name: Upload to Coverity Scan
         run: |
           curl \
-            --form token=VhyEudspBo6lzg_aZuGcpA \
+            --form token=${{ secrets.COVERITY_ALARM_SERVICE_TOKEN }} \
             --form email=premal.kadam@wonderbiz.in \
             --form file=@cov-int.tgz \
             https://scan.coverity.com/builds?project=Alarm+Service+Git
@@ -126,7 +126,7 @@ jobs:
 
       - name: Download Coverity Tools
         run: |
-          wget -q https://scan.coverity.com/download/linux64 --post-data "token=jWBgMbwvs958zF7fa6V6_A&project=Device+Gateway+Service+Git" -O coverity_tool.tgz
+          wget -q https://scan.coverity.com/download/linux64 --post-data "token=${{ secrets.COVERITY_GATEWAY_SERVICE_TOKEN }}&project=Device+Gateway+Service+Git" -O coverity_tool.tgz
 
       - name: Extract Coverity Tools
         run: |
@@ -144,7 +144,7 @@ jobs:
       - name: Upload to Coverity Scan
         run: |
           curl \
-            --form token=jWBgMbwvs958zF7fa6V6_A \
+            --form token=${{ secrets.COVERITY_GATEWAY_SERVICE_TOKEN }} \
             --form email=premal.kadam@wonderbiz.in \
             --form file=@cov-int.tgz \
             https://scan.coverity.com/builds?project=Device+Gateway+Service+Git
@@ -165,7 +165,7 @@ jobs:
   
       - name: Download Coverity Tools
         run: |
-          wget -q https://scan.coverity.com/download/linux64 --post-data "token=9UOaMEKn6wuz2eaAwH20hA&project=Device+Monitoring+frontend+Git" -O coverity_tool.tgz
+          wget -q https://scan.coverity.com/download/linux64 --post-data "token=${{ secrets.COVERITY_DEVICE_FRONTEND_TOKEN }}&project=Device+Monitoring+frontend+Git" -O coverity_tool.tgz
   
       - name: Extract Coverity Tools
         run: |
@@ -183,7 +183,7 @@ jobs:
       - name: Upload to Coverity Scan
         run: |
           curl \
-            --form token="9UOaMEKn6wuz2eaAwH20hA" \
+            --form token=${{ secrets.COVERITY_DEVICE_FRONTEND_TOKEN }} \
             --form email=premal.kadam@wonderbiz.in \
             --form version="CI-Build-$(date +%s)" \
             --form file=@cov-int.tgz \
@@ -205,7 +205,7 @@ jobs:
   
       - name: Download Coverity Tools
         run: |
-          wget -q https://scan.coverity.com/download/linux64 --post-data "token=T3IXPW2u67rm7pHY2Cf2Yg&project=Device+Monitoring+Visualizaton+Git" -O coverity_tool.tgz
+          wget -q https://scan.coverity.com/download/linux64 --post-data "token=${{ secrets.COVERITY_DEVICE_VIZ_TOKEN }}&project=Device+Monitoring+Visualizaton+Git" -O coverity_tool.tgz
   
       - name: Extract Coverity Tools
         run: |
@@ -223,7 +223,7 @@ jobs:
       - name: Upload to Coverity Scan
         run: |
           curl \
-            --form token="T3IXPW2u67rm7pHY2Cf2Yg" \
+            --form token=${{ secrets.COVERITY_DEVICE_VIZ_TOKEN }} \
             --form email=premal.kadam@wonderbiz.in \
             --form version="CI-Build-$(date +%s)" \
             --form file=@cov-int.tgz \
