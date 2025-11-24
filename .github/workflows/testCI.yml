@@ -24,7 +24,7 @@ jobs:
       - name: Load config
         id: config
         run: |
-          CONFIG="config/projects.json"
+          CONFIG="Configuration/projects.json"
 
           BACKEND=$(jq -c '.backend' "$CONFIG")
           FRONTEND=$(jq -c '.frontend' "$CONFIG")
