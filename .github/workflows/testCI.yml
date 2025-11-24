@@ -2,9 +2,19 @@ name: Detect C# Services
 
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to run on'
+        required: true
+        default: 'main'
+        type: string
   push:
+    branches:
+      - main
   pull_request:
-
+    branches:
+      - main
+      
 jobs:
   detect-services:
     runs-on: ubuntu-latest
