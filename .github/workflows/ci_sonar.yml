@@ -71,7 +71,7 @@ jobs:
 
       - name: SonarCloud Begin
         run: |
-          dotnet sonarscanner begin /k:"premalwonderbiz_DeviceMonitoringProject_DeviceService" /o:"premalwonderbiz" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" /d:sonar.cs.opencover.reportsPaths="**/*.opencover*" /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
+          dotnet sonarscanner begin /k:"premalwonderbiz_DeviceMonitoringProject_DeviceService" /o:"premalwonderbiz" /d:sonar.host.url=${{ secrets.SONAR_HOST_URL }} /d:sonar.login=${{ secrets.SONAR_TOKEN }} /d:sonar.cs.opencover.reportsPaths="**/*.opencover*" /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
         working-directory: ./Backend/DeviceMonitoringProject
         
       - name: Build
@@ -87,7 +87,7 @@ jobs:
         working-directory: ./Backend/DeviceMonitoringProject/InfrastructureTests
         
       - name: SonarCloud End
-        run: dotnet sonarscanner end /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757"
+        run: dotnet sonarscanner end /d:sonar.login=${{ secrets.SONAR_TOKEN }}
         working-directory: ./Backend/DeviceMonitoringProject
 
   # ===============================
@@ -120,7 +120,7 @@ jobs:
 
       - name: SonarCloud Begin
         run: |
-          dotnet sonarscanner begin /k:"premalwonderbiz_DeviceMonitoringProject_AlarmService" /o:"premalwonderbiz" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" /d:sonar.cs.opencover.reportsPaths="**/*.opencover*" /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
+          dotnet sonarscanner begin /k:"premalwonderbiz_DeviceMonitoringProject_AlarmService" /o:"premalwonderbiz" /d:sonar.host.url=${{ secrets.SONAR_HOST_URL }} /d:sonar.login=${{ secrets.SONAR_TOKEN }} /d:sonar.cs.opencover.reportsPaths="**/*.opencover*" /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
         working-directory: ./Backend/AlarmService
 
       - name: Build
@@ -128,7 +128,7 @@ jobs:
         working-directory: ./Backend/AlarmService
 
       - name: SonarCloud End
-        run: dotnet sonarscanner end /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757"
+        run: dotnet sonarscanner end /d:sonar.login=${{ secrets.SONAR_TOKEN }}
         working-directory: ./Backend/AlarmService
 
 
@@ -162,7 +162,7 @@ jobs:
 
       - name: SonarCloud Begin
         run: |
-          dotnet sonarscanner begin /k:"premalwonderbiz_DeviceMonitoringProject_GatewayService" /o:"premalwonderbiz" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" /d:sonar.cs.opencover.reportsPaths="**/*.opencover*" /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
+          dotnet sonarscanner begin /k:"premalwonderbiz_DeviceMonitoringProject_GatewayService" /o:"premalwonderbiz" /d:sonar.host.url=${{ secrets.SONAR_HOST_URL }} /d:sonar.login="${{ secrets.SONAR_TOKEN }} /d:sonar.cs.opencover.reportsPaths="**/*.opencover*" /d:sonar.coverage.exclusions="**Tests*.cs,**/Program.cs,**/Startup.cs,**/MainWindow.xaml.cs,**/Animations/**/*,**/Views/**/*,**/Windows/**/*,**/Models/**/*,**/Repositories/**/*,**/CustomAttributes/**/*"
         working-directory: ./Backend/GatewayService/GatewayService
 
       - name: Build
@@ -170,7 +170,7 @@ jobs:
         working-directory: ./Backend/GatewayService/GatewayService
 
       - name: SonarCloud End
-        run: dotnet sonarscanner end /d:sonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757"
+        run: dotnet sonarscanner end /d:sonar.login=${{ secrets.SONAR_TOKEN }}
         working-directory: ./Backend/GatewayService/GatewayService
 
 
@@ -206,7 +206,7 @@ jobs:
         working-directory: ./Frontend/device_monitoring_frontend
 
       - name: SonarCloud Scan
-        run: npx sonar-scanner -Dsonar.login="d7eadd915619c8d1b8d18013078fca2a0b5ad757" -D sonar.host.url="https://sonarcloud.io" -Dsonar.organization="premalwonderbiz" -Dsonar.projectKey="premalwonderbiz_DeviceMonitoringProject_DeviceFrontend" -Dsonar.sources=src -Dsonar.exclusions="**/node_modules/**,**/.next/**,**/out/**,**/coverage/**,**/*.test.*,**/*.spec.*,**/*.config.*,**/helpervariables.ts/**" -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info -Dsonar.test.inclusions="**/*.test.js,**/*.test.jsx,**/*.test.ts,**/*.test.tsx"
+        run: npx sonar-scanner -Dsonar.login=${{ secrets.SONAR_TOKEN }} -D sonar.host.url=${{ secrets.SONAR_HOST_URL }} -Dsonar.organization="premalwonderbiz" -Dsonar.projectKey="premalwonderbiz_DeviceMonitoringProject_DeviceFrontend" -Dsonar.sources=src -Dsonar.exclusions="**/node_modules/**,**/.next/**,**/out/**,**/coverage/**,**/*.test.*,**/*.spec.*,**/*.config.*,**/helpervariables.ts/**" -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info -Dsonar.test.inclusions="**/*.test.js,**/*.test.jsx,**/*.test.ts,**/*.test.tsx"
         working-directory: ./Frontend/device_monitoring_frontend
 
 
@@ -215,7 +215,7 @@ jobs:
   # ===============================
   frontend-device-monitoring-viz:
     needs: detect-changes
-    # if: ${{ needs.detect-changes.outputs.device_viz_changed == 'true' }}
+    if: ${{ needs.detect-changes.outputs.device_viz_changed == 'true' }}
     name: Frontend_device-monitoring-viz
     runs-on: ubuntu-latest
     steps:
@@ -223,10 +223,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
-      - name: Use confidential token
-        run: |
-          echo "Using token: ${{ secrets.SONAR_TOKEN }}"
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
