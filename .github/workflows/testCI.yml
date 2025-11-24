@@ -1,0 +1,80 @@
+name: Detect C# Services
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [main, master, develop]
+
+jobs:
+  detect-services:
+    name: Detect all C# services + changed ones
+    runs-on: ubuntu-latest
+
+    outputs:
+      services: ${{ steps.detect.outputs.services }}
+      changed_services: ${{ steps.changed.outputs.changed_services }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # required for diff
+
+      # ----------------------------------------------------------
+      # STEP 1: Detect all services (directory containing .sln or .csproj)
+      # ----------------------------------------------------------
+      - name: Detect C# services
+        id: detect
+        run: |
+          echo "Scanning repository for C# service folders..."
+
+          # Find folders that contain .sln or .csproj
+          SERVICES=$(find . -type f \( -name "*.sln" -o -name "*.csproj" \) \
+                      -printf '%h\n' | sort -u)
+
+          echo "Detected services:"
+          echo "$SERVICES"
+
+          # Convert list → JSON array
+          JSON=$(printf '%s\n' "$SERVICES" | jq -R . | jq -s .)
+
+          echo "services=$JSON" >> $GITHUB_OUTPUT
+
+      # ----------------------------------------------------------
+      # STEP 2: Detect services with changes
+      # ----------------------------------------------------------
+      - name: Detect changed services
+        id: changed
+        run: |
+          echo "Detecting changed folders..."
+
+          # Get changed files
+          FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} HEAD || echo "")
+
+          echo "Changed files:"
+          echo "$FILES"
+
+          CHANGED_SERVICES=()
+
+          # Loop through service folders
+          for service in $(printf '%s\n' "${{ steps.detect.outputs.services }}" | jq -r '.[]'); do
+            if echo "$FILES" | grep -q "^${service#./}/"; then
+              CHANGED_SERVICES+=("$service")
+            fi
+          done
+
+          # Convert list → JSON
+          JSON=$(printf '%s\n' "${CHANGED_SERVICES[@]}" | jq -R . | jq -s .)
+
+          echo "changed_services=$JSON" >> $GITHUB_OUTPUT
+
+      # ----------------------------------------------------------
+      # STEP 3: Show summary
+      # ----------------------------------------------------------
+      - name: Print summary
+        run: |
+          echo "All services:"
+          echo '${{ steps.detect.outputs.services }}'
+          echo "Changed services:"
+          echo '${{ steps.changed.outputs.changed_services }}'
