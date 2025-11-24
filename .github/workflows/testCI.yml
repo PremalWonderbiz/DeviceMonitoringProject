@@ -79,3 +79,45 @@ jobs:
           echo '${{ steps.detect.outputs.services }}'
           echo "Changed services:"
           echo '${{ steps.changed.outputs.changed_services }}'
+          
+      - name: Detect frontend projects (one-level only)
+        id: frontend
+        run: |
+          echo "Detecting frontend projects (one-level deep)..."
+      
+          CONFIG="Configurations/frontend_Structure.json"
+          ROOTS=$(jq -r '.frontendRoots[]' "$CONFIG")
+          PROJECTS=()
+      
+          for root in $ROOTS; do
+            echo "--- Scanning root: $root ---"
+      
+            if [ -d "$root" ]; then
+      
+              # Check only 1-level subfolders
+              for project in $(find "$root" -maxdepth 1 -mindepth 1 -type d); do
+      
+                # Only accept folders containing package.json
+                if [ -f "$project/package.json" ]; then
+                  echo "Detected frontend project: $project"
+                  PROJECTS+=("$project")
+                else
+                  echo "Skipping $project (no package.json)"
+                fi
+      
+              done
+      
+            else
+              echo "Root folder $root does not exist, skipping."
+            fi
+          done
+      
+          # Make unique
+          UNIQUE=$(printf "%s\n" "${PROJECTS[@]}" | sort -u)
+      
+          echo "FINAL DETECTED FRONTEND PROJECTS:"
+          printf "%s\n" "${UNIQUE[@]}"
+      
+          JSON=$(printf "%s\n" "${UNIQUE[@]}" | jq -R . | jq -s -c .)
+          echo "frontend_projects=$JSON" >> "$GITHUB_OUTPUT"
+
