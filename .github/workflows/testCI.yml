@@ -9,9 +9,9 @@ jobs:
 
     outputs:
       backend_services: ${{ steps.backend_valid.outputs.backend_services }}
-      changed_backend: ${{ steps.backend_changed.outputs.changed_backend }}
+      changed_backend: ${{ steps.backend_changed.outputs }}
       frontend_projects: ${{ steps.frontend_valid.outputs.frontend_projects }}
-      changed_frontend: ${{ steps.frontend_changed.outputs.changed_frontend }}
+      changed_frontend: ${{ steps.frontend_changed.outputs }}
 
     steps:
       - name: Checkout
@@ -19,7 +19,7 @@ jobs:
 
 
       ###########################################################
-      # 1) LOAD CONFIGURATION (SIMPLE)
+      # 1) LOAD PROJECT CONFIG
       ###########################################################
       - name: Load config
         id: config
@@ -32,9 +32,12 @@ jobs:
           echo "backend=$BACKEND" >> "$GITHUB_OUTPUT"
           echo "frontend=$FRONTEND" >> "$GITHUB_OUTPUT"
 
+          echo "Backend from config: $BACKEND"
+          echo "Frontend from config: $FRONTEND"
+
 
       ###########################################################
-      # 2) VALIDATE BACKEND SERVICES (must contain .sln)
+      # 2) VALIDATE BACKEND SERVICES (.sln check)
       ###########################################################
       - name: Validate backend services
         id: backend_valid
@@ -55,18 +58,36 @@ jobs:
 
 
       ###########################################################
-      # 3) DETECT CHANGED BACKEND (paths-filter)
+      # 3) BUILD YAML FILTER FILE FOR BACKEND (paths-filter)
+      ###########################################################
+      - name: Build backend path filters
+        id: backend_filters
+        run: |
+          SERVICES=$(echo '${{ steps.backend_valid.outputs.backend_services }}' | jq -r '.[]')
+
+          echo "filters:" > backend-filters.yml
+          for s in $SERVICES; do
+            NAME=$(basename "$s")
+            echo "  $NAME:" >> backend-filters.yml
+            echo "    - \"$s/**\"" >> backend-filters.yml
+          done
+
+          echo "Generated backend-filters.yml:"
+          cat backend-filters.yml
+
+
+      ###########################################################
+      # 4) DETECT BACKEND CHANGES USING paths-filter
       ###########################################################
       - name: Detect changed backend services
         id: backend_changed
         uses: dorny/paths-filter@v2
         with:
-          filters: |
-            ${{ steps.backend_valid.outputs.backend_services }}
+          config: backend-filters.yml
 
 
       ###########################################################
-      # 4) VALIDATE FRONTEND PROJECTS (must contain package.json)
+      # 5) VALIDATE FRONTEND PROJECTS (package.json check)
       ###########################################################
       - name: Validate frontend projects
         id: frontend_valid
@@ -87,29 +108,47 @@ jobs:
 
 
       ###########################################################
-      # 5) DETECT CHANGED FRONTEND (paths-filter)
+      # 6) BUILD YAML FILTER FILE FOR FRONTEND (paths-filter)
+      ###########################################################
+      - name: Build frontend path filters
+        id: frontend_filters
+        run: |
+          PROJECTS=$(echo '${{ steps.frontend_valid.outputs.frontend_projects }}' | jq -r '.[]')
+
+          echo "filters:" > frontend-filters.yml
+          for p in $PROJECTS; do
+            NAME=$(basename "$p")
+            echo "  $NAME:" >> frontend-filters.yml
+            echo "    - \"$p/**\"" >> frontend-filters.yml
+          done
+
+          echo "Generated frontend-filters.yml:"
+          cat frontend-filters.yml
+
+
+      ###########################################################
+      # 7) DETECT FRONTEND CHANGES USING paths-filter
       ###########################################################
       - name: Detect changed frontend projects
         id: frontend_changed
         uses: dorny/paths-filter@v2
         with:
-          filters: |
-            ${{ steps.frontend_valid.outputs.frontend_projects }}
+          config: frontend-filters.yml
 
 
       ###########################################################
-      # 6) SUMMARY
+      # 8) SUMMARY
       ###########################################################
       - name: Summary
         run: |
-          echo "=== Backend Services (Valid) ==="
+          echo "=== BACKEND VALID SERVICES ==="
           echo '${{ steps.backend_valid.outputs.backend_services }}'
           echo
-          echo "=== Changed Backend ==="
+          echo "=== BACKEND CHANGES ==="
           echo '${{ steps.backend_changed.outputs }}'
           echo
-          echo "=== Frontend Projects (Valid) ==="
+          echo "=== FRONTEND VALID PROJECTS ==="
           echo '${{ steps.frontend_valid.outputs.frontend_projects }}'
           echo
-          echo "=== Changed Frontend ==="
+          echo "=== FRONTEND CHANGES ==="
           echo '${{ steps.frontend_changed.outputs }}'
