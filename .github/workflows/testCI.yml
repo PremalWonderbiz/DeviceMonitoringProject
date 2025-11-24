@@ -9,20 +9,19 @@ jobs:
 
     outputs:
       backend_services: ${{ steps.backend_valid.outputs.backend_services }}
-      changed_backend: ${{ steps.backend_changed.outputs }}
       frontend_projects: ${{ steps.frontend_valid.outputs.frontend_projects }}
-      changed_frontend: ${{ steps.frontend_changed.outputs }}
+      backend_changes: ${{ steps.backend_changed.outputs }}
+      frontend_changes: ${{ steps.frontend_changed.outputs }}
 
     steps:
       # ---------------------------------------------------------
       # Checkout
       # ---------------------------------------------------------
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
 
       # ---------------------------------------------------------
-      # Load JSON config
+      # Load config JSON
       # ---------------------------------------------------------
       - name: Load project configuration
         id: config
@@ -32,43 +31,54 @@ jobs:
           echo "backend=$(jq -c '.backend' "$CONFIG")" >> "$GITHUB_OUTPUT"
           echo "frontend=$(jq -c '.frontend' "$CONFIG")" >> "$GITHUB_OUTPUT"
 
+          echo "Loaded backend entries: $(jq -c '.backend' "$CONFIG")"
+          echo "Loaded frontend entries: $(jq -c '.frontend' "$CONFIG")"
+
 
       # ---------------------------------------------------------
-      # Validate backend services + build filters
+      # Validate backend + build dynamic filter YAML
       # ---------------------------------------------------------
       - name: Validate backend & build filters
         id: backend_valid
         run: |
           SERVICES=$(echo '${{ steps.config.outputs.backend }}' | jq -r '.[]')
 
+          echo "Validating backend services..."
           VALID_LIST=()
-
           echo "" > backend_filters.yml
 
           for s in $SERVICES; do
             if ls "$s"/*.sln >/dev/null 2>&1; then
               NAME=$(basename "$s")
+              echo "  ✔ Valid: $s"
+              VALID_LIST+=("$s")
+
               echo "$NAME:" >> backend_filters.yml
               echo "  - \"$s/**\"" >> backend_filters.yml
-              VALID_LIST+=("$s")
             else
-              echo "[SKIP] Backend invalid (no .sln): $s"
+              echo "  ✖ Skipped (no .sln found): $s"
             fi
           done
 
+          # Save valid list
           printf "%s\n" "${VALID_LIST[@]}" | jq -R . | jq -s -c . > backend_services.json
-
           echo "backend_services=$(cat backend_services.json)" >> "$GITHUB_OUTPUT"
 
-          echo "filters<<EOF" >> "$GITHUB_OUTPUT"
-          cat backend_filters.yml >> "$GITHUB_OUTPUT"
-          echo "EOF" >> "$GITHUB_OUTPUT"
+          # Export filters
+          {
+            echo "filters<<EOF"
+            cat backend_filters.yml
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+          echo "--- Backend filters generated ---"
+          cat backend_filters.yml
 
 
       # ---------------------------------------------------------
       # Detect backend changes
       # ---------------------------------------------------------
-      - name: Detect changed backend services
+      - name: Detect backend changes
         id: backend_changed
         uses: dorny/paths-filter@v2
         with:
@@ -77,41 +87,49 @@ jobs:
 
 
       # ---------------------------------------------------------
-      # Validate frontend projects + build filters
+      # Validate frontend + build dynamic filters
       # ---------------------------------------------------------
       - name: Validate frontend & build filters
         id: frontend_valid
         run: |
           PROJECTS=$(echo '${{ steps.config.outputs.frontend }}' | jq -r '.[]')
 
+          echo "Validating frontend projects..."
           VALID_LIST=()
-
           echo "" > frontend_filters.yml
 
           for p in $PROJECTS; do
             if [ -f "$p/package.json" ]; then
               NAME=$(basename "$p")
+              echo "  ✔ Valid: $p"
+              VALID_LIST+=("$p")
+
               echo "$NAME:" >> frontend_filters.yml
               echo "  - \"$p/**\"" >> frontend_filters.yml
-              VALID_LIST+=("$p")
             else
-              echo "[SKIP] Frontend invalid (no package.json): $p"
+              echo "  ✖ Skipped (no package.json found): $p"
             fi
           done
 
+          # Save valid list
           printf "%s\n" "${VALID_LIST[@]}" | jq -R . | jq -s -c . > frontend_projects.json
-
           echo "frontend_projects=$(cat frontend_projects.json)" >> "$GITHUB_OUTPUT"
 
-          echo "filters<<EOF" >> "$GITHUB_OUTPUT"
-          cat frontend_filters.yml >> "$GITHUB_OUTPUT"
-          echo "EOF" >> "$GITHUB_OUTPUT"
+          # Export filters
+          {
+            echo "filters<<EOF"
+            cat frontend_filters.yml
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+          echo "--- Frontend filters generated ---"
+          cat frontend_filters.yml
 
 
       # ---------------------------------------------------------
       # Detect frontend changes
       # ---------------------------------------------------------
-      - name: Detect changed frontend projects
+      - name: Detect frontend changes
         id: frontend_changed
         uses: dorny/paths-filter@v2
         with:
@@ -120,18 +138,22 @@ jobs:
 
 
       # ---------------------------------------------------------
-      # Summary
+      # Summary (Dynamic)
       # ---------------------------------------------------------
       - name: Summary
         run: |
           echo "================ BACKEND SERVICES ================"
           echo '${{ steps.backend_valid.outputs.backend_services }}'
+          echo
 
-          echo "================ BACKEND CHANGES ================="
-          echo '${{ steps.backend_changed.outputs }}'
+          echo "================ BACKEND CHANGES ================"
+          echo '${{ toJson(steps.backend_changed.outputs) }}'
+          echo
 
-          echo "================ FRONTEND PROJECTS ==============="
+          echo "================ FRONTEND PROJECTS ================"
           echo '${{ steps.frontend_valid.outputs.frontend_projects }}'
+          echo
 
           echo "================ FRONTEND CHANGES ================"
-          echo '${{ steps.frontend_changed.outputs }}'
+          echo '${{ toJson(steps.frontend_changed.outputs) }}'
+          echo
