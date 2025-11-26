@@ -7,5 +7,5 @@ jobs:
   sonar:
     uses: PremalWonderbiz/Workflows/.github/workflows/main-sequential-ci.yml@main
     with:
-      sonarAnalysisFile: "Backend/SonarQube.Analysis.xml"
+      sonarAnalysisFile: "**/data.sql,**/AlarmRulesScripts/**"
     secrets: inherit
