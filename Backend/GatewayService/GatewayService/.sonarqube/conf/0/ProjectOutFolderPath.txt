@@ -1,1 +1,0 @@
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\GatewayService\GatewayService\.sonarqube\out\0

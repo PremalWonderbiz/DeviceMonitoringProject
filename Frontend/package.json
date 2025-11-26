@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "sonar": "sonar-scanner"
+  },
+  "devDependencies": {
+    "sonar-scanner": "^3.1.0"
+  }
+}

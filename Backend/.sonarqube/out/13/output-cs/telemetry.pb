@@ -1,0 +1,1 @@
+°R™C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\InfrastructureTests\InfrastructureTests.csproj¢net8.0òCSharp13

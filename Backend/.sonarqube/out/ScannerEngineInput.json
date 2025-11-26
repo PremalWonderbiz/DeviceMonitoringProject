@@ -1,0 +1,584 @@
+{
+  "scannerProperties": [
+    {
+      "key": "sonar.scanner.app",
+      "value": "ScannerMSBuild"
+    },
+    {
+      "key": "sonar.scanner.appVersion",
+      "value": "11.0"
+    },
+    {
+      "key": "sonar.scanner.bootstrapStartTime",
+      "value": "1764140612000"
+    },
+    {
+      "key": "sonar.projectKey",
+      "value": "Device-Monitoring-System"
+    },
+    {
+      "key": "sonar.working.directory",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\.sonar"
+    },
+    {
+      "key": "sonar.projectBaseDir",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend"
+    },
+    {
+      "key": "sonar.pullrequest.cache.basepath",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend"
+    },
+    {
+      "key": "sonar.sources",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\package-lock.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\package.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\artifacts\\packages\\API.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\artifacts\\packages\\API.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\artifacts\\packages\\API.staticwebassets.endpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\artifacts\\packages\\Application.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\artifacts\\packages\\appsettings.Development.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\artifacts\\packages\\appsettings.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\artifacts\\packages\\Common.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\artifacts\\packages\\Domain.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\artifacts\\packages\\Infrastructure.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\artifacts\\packages\\Infrastructure.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\artifacts\\packages\\API.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\artifacts\\packages\\API.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\artifacts\\packages\\API.staticwebassets.endpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\artifacts\\packages\\Application.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\artifacts\\packages\\appsettings.Development.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\artifacts\\packages\\appsettings.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\artifacts\\packages\\Common.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\artifacts\\packages\\DeviceMonitoring.Tests.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\artifacts\\packages\\DeviceMonitoring.Tests.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\artifacts\\packages\\Domain.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\artifacts\\packages\\Infrastructure.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\artifacts\\packages\\Infrastructure.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\node_modules\\.package-lock.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\sbom\\_manifest\\spdx_2.2\\manifest.spdx.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\.vs\\DeviceMonitoringProject\\config\\applicationhost.config,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\.vs\\DeviceMonitoringProject\\v17\\DocumentLayout.backup.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\.vs\\DeviceMonitoringProject\\v17\\DocumentLayout.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\sbom\\_manifest\\spdx_2.2\\manifest.spdx.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\artifacts\\packages\\API.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\artifacts\\packages\\API.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\artifacts\\packages\\API.staticwebassets.endpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\artifacts\\packages\\appsettings.Development.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\artifacts\\packages\\appsettings.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\node_modules\\.bin\\sonar-scanner.ps1,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\node_modules\\sonar-scanner\\index.js,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\node_modules\\sonar-scanner\\package-lock.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\node_modules\\sonar-scanner\\package.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\node_modules\\sonar-scanner\\postinstall.js,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\artifacts\\packages\\_manifest\\spdx_2.2\\manifest.spdx.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\.vs\\GatewayService\\config\\applicationhost.config,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\.vs\\GatewayService\\v17\\DocumentLayout.backup.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\.vs\\GatewayService\\v17\\DocumentLayout.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\node_modules\\sonar-scanner\\conf\\sonar-scanner.properties,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\sbom\\_manifest\\spdx_2.2\\manifest.spdx.json"
+    },
+    {
+      "key": "sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "sonar.modules",
+      "value": "D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404,E1BAA5C8-96D8-4D01-B3D5-479AEE48EF99,61CA6391-932B-4817-86A6-5E9B17322773,9DAB9FC3-B22D-4ABE-8FF2-2DB7C3E21DCB,FDC17397-881D-4577-B3BF-9EA02067CEF2,4CA7B57E-F8C3-F284-CFB5-83BCF9C1831F,6E1E7959-4D04-46AF-9CA7-3A45D5528C49,E3F93296-33F5-42F4-AA63-44D2B6D5C37A,346D76A6-5579-42C5-AC24-2AE59F39B5DD,37118C58-9CAF-454D-A8C0-D111BE45C9E2,F1A587B3-D8FA-4AAD-9C95-1A09A31CF9E5,903DFAAD-0365-480C-826F-FD3F6DDDA7AF,B7C7334F-17CB-47D1-BD2C-A702C40FC296"
+    },
+    {
+      "key": "D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404.sonar.projectKey",
+      "value": "Device-Monitoring-System:D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404"
+    },
+    {
+      "key": "D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404.sonar.projectName",
+      "value": "Domain"
+    },
+    {
+      "key": "D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404.sonar.projectBaseDir",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain"
+    },
+    {
+      "key": "D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404.sonar.working.directory",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\.sonar\\mod0"
+    },
+    {
+      "key": "D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404.sonar.sources",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\Entities\\Device.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\obj\\Domain.csproj.nuget.dgspec.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\obj\\project.assets.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\bin\\Debug\\net8.0\\Domain.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\bin\\Release\\net8.0\\Domain.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\obj\\Debug\\net8.0\\Domain.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\obj\\Release\\net8.0\\Domain.sourcelink.json"
+    },
+    {
+      "key": "D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404.sonar.cs.analyzer.projectOutPaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\0,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\14"
+    },
+    {
+      "key": "D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404.sonar.cs.roslyn.reportFilePaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\0\\Issues.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\14\\Issues.json"
+    },
+    {
+      "key": "D9DDE31F-7BB6-428B-AC70-1D4AC3F1C404.sonar.cs.scanner.telemetry",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\0\\Telemetry.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\14\\Telemetry.json"
+    },
+    {
+      "key": "E1BAA5C8-96D8-4D01-B3D5-479AEE48EF99.sonar.projectKey",
+      "value": "Device-Monitoring-System:E1BAA5C8-96D8-4D01-B3D5-479AEE48EF99"
+    },
+    {
+      "key": "E1BAA5C8-96D8-4D01-B3D5-479AEE48EF99.sonar.projectName",
+      "value": "Common"
+    },
+    {
+      "key": "E1BAA5C8-96D8-4D01-B3D5-479AEE48EF99.sonar.projectBaseDir",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Common"
+    },
+    {
+      "key": "E1BAA5C8-96D8-4D01-B3D5-479AEE48EF99.sonar.working.directory",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\.sonar\\mod1"
+    },
+    {
+      "key": "E1BAA5C8-96D8-4D01-B3D5-479AEE48EF99.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "E1BAA5C8-96D8-4D01-B3D5-479AEE48EF99.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "E1BAA5C8-96D8-4D01-B3D5-479AEE48EF99.sonar.sources",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Common\\obj\\Common.csproj.nuget.dgspec.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Common\\obj\\project.assets.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Common\\bin\\Debug\\net8.0\\Common.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Common\\bin\\Release\\net8.0\\Common.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Common\\obj\\Debug\\net8.0\\Common.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Common\\obj\\Release\\net8.0\\Common.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Common\\Helper Classes\\CustomException.cs"
+    },
+    {
+      "key": "E1BAA5C8-96D8-4D01-B3D5-479AEE48EF99.sonar.cs.analyzer.projectOutPaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\1,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\15"
+    },
+    {
+      "key": "E1BAA5C8-96D8-4D01-B3D5-479AEE48EF99.sonar.cs.roslyn.reportFilePaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\1\\Issues.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\15\\Issues.json"
+    },
+    {
+      "key": "E1BAA5C8-96D8-4D01-B3D5-479AEE48EF99.sonar.cs.scanner.telemetry",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\1\\Telemetry.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\15\\Telemetry.json"
+    },
+    {
+      "key": "61CA6391-932B-4817-86A6-5E9B17322773.sonar.projectKey",
+      "value": "Device-Monitoring-System:61CA6391-932B-4817-86A6-5E9B17322773"
+    },
+    {
+      "key": "61CA6391-932B-4817-86A6-5E9B17322773.sonar.projectName",
+      "value": "Infrastructure"
+    },
+    {
+      "key": "61CA6391-932B-4817-86A6-5E9B17322773.sonar.projectBaseDir",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Infrastructure"
+    },
+    {
+      "key": "61CA6391-932B-4817-86A6-5E9B17322773.sonar.working.directory",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\.sonar\\mod2"
+    },
+    {
+      "key": "61CA6391-932B-4817-86A6-5E9B17322773.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "61CA6391-932B-4817-86A6-5E9B17322773.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "61CA6391-932B-4817-86A6-5E9B17322773.sonar.sources",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Infrastructure\\obj\\Infrastructure.csproj.nuget.dgspec.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Infrastructure\\obj\\project.assets.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Infrastructure\\bin\\Debug\\net8.0\\Infrastructure.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Infrastructure\\bin\\Debug\\net8.0\\Infrastructure.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Infrastructure\\obj\\Debug\\net8.0\\Infrastructure.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Infrastructure\\obj\\Release\\net8.0\\Infrastructure.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Infrastructure\\Migrations\\20250819044630_InitialSQLite.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Infrastructure\\Migrations\\20250819044630_InitialSQLite.Designer.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Infrastructure\\Migrations\\AlarmDbContextModelSnapshot.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Infrastructure\\Persistence\\AlarmDbContext.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Infrastructure\\RealTime\\AlertService.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Infrastructure\\Services\\AlarmEvaluationService.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Infrastructure\\Services\\AlarmService.cs"
+    },
+    {
+      "key": "61CA6391-932B-4817-86A6-5E9B17322773.sonar.cs.analyzer.projectOutPaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\10"
+    },
+    {
+      "key": "61CA6391-932B-4817-86A6-5E9B17322773.sonar.cs.roslyn.reportFilePaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\10\\Issues.json"
+    },
+    {
+      "key": "61CA6391-932B-4817-86A6-5E9B17322773.sonar.cs.scanner.telemetry",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\10\\Telemetry.json"
+    },
+    {
+      "key": "9DAB9FC3-B22D-4ABE-8FF2-2DB7C3E21DCB.sonar.projectKey",
+      "value": "Device-Monitoring-System:9DAB9FC3-B22D-4ABE-8FF2-2DB7C3E21DCB"
+    },
+    {
+      "key": "9DAB9FC3-B22D-4ABE-8FF2-2DB7C3E21DCB.sonar.projectName",
+      "value": "API"
+    },
+    {
+      "key": "9DAB9FC3-B22D-4ABE-8FF2-2DB7C3E21DCB.sonar.projectBaseDir",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API"
+    },
+    {
+      "key": "9DAB9FC3-B22D-4ABE-8FF2-2DB7C3E21DCB.sonar.working.directory",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\.sonar\\mod3"
+    },
+    {
+      "key": "9DAB9FC3-B22D-4ABE-8FF2-2DB7C3E21DCB.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "9DAB9FC3-B22D-4ABE-8FF2-2DB7C3E21DCB.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "9DAB9FC3-B22D-4ABE-8FF2-2DB7C3E21DCB.sonar.sources",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\appsettings.Development.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\appsettings.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\obj\\API.csproj.nuget.dgspec.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\obj\\project.assets.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\Properties\\launchSettings.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\bin\\Debug\\net8.0\\API.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\bin\\Debug\\net8.0\\API.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\bin\\Debug\\net8.0\\API.staticwebassets.endpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\bin\\Debug\\net8.0\\appsettings.Development.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\bin\\Debug\\net8.0\\appsettings.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\obj\\Debug\\net8.0\\API.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\obj\\Debug\\net8.0\\staticwebassets.build.endpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\obj\\Debug\\net8.0\\staticwebassets.build.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\obj\\Release\\net8.0\\API.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\obj\\Release\\net8.0\\staticwebassets.build.endpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\obj\\Release\\net8.0\\staticwebassets.build.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\Controllers\\AlarmsController.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\Middleware\\ExceptionMiddleware.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\Program.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\obj\\Debug\\net8.0\\API.GlobalUsings.g.cs,\"C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs\",C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\obj\\Debug\\net8.0\\API.AssemblyInfo.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\obj\\Debug\\net8.0\\API.MvcApplicationPartsAssemblyInfo.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\API.http,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\data.sql,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\API\\DeviceMonitoring.db"
+    },
+    {
+      "key": "9DAB9FC3-B22D-4ABE-8FF2-2DB7C3E21DCB.sonar.cs.analyzer.projectOutPaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\11"
+    },
+    {
+      "key": "9DAB9FC3-B22D-4ABE-8FF2-2DB7C3E21DCB.sonar.cs.roslyn.reportFilePaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\11\\Issues.json"
+    },
+    {
+      "key": "9DAB9FC3-B22D-4ABE-8FF2-2DB7C3E21DCB.sonar.cs.scanner.telemetry",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\11\\Telemetry.json"
+    },
+    {
+      "key": "FDC17397-881D-4577-B3BF-9EA02067CEF2.sonar.projectKey",
+      "value": "Device-Monitoring-System:FDC17397-881D-4577-B3BF-9EA02067CEF2"
+    },
+    {
+      "key": "FDC17397-881D-4577-B3BF-9EA02067CEF2.sonar.projectName",
+      "value": "API"
+    },
+    {
+      "key": "FDC17397-881D-4577-B3BF-9EA02067CEF2.sonar.projectBaseDir",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API"
+    },
+    {
+      "key": "FDC17397-881D-4577-B3BF-9EA02067CEF2.sonar.working.directory",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\.sonar\\mod4"
+    },
+    {
+      "key": "FDC17397-881D-4577-B3BF-9EA02067CEF2.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "FDC17397-881D-4577-B3BF-9EA02067CEF2.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "FDC17397-881D-4577-B3BF-9EA02067CEF2.sonar.sources",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\appsettings.Development.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\appsettings.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\obj\\API.csproj.nuget.dgspec.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\obj\\project.assets.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\Properties\\launchSettings.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\bin\\Debug\\net8.0\\API.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\bin\\Debug\\net8.0\\API.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\bin\\Debug\\net8.0\\API.staticwebassets.endpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\bin\\Debug\\net8.0\\appsettings.Development.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\bin\\Debug\\net8.0\\appsettings.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\obj\\Debug\\net8.0\\API.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\obj\\Debug\\net8.0\\ApiEndpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\obj\\Debug\\net8.0\\staticwebassets.build.endpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\obj\\Debug\\net8.0\\staticwebassets.build.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\obj\\Release\\net8.0\\API.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\obj\\Release\\net8.0\\staticwebassets.build.endpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\obj\\Release\\net8.0\\staticwebassets.build.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\obj\\Debug\\net8.0\\EndpointInfo\\API.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\Controllers\\RealtimeController.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\Program.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\RealTime\\GatewayHub.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\obj\\Debug\\net8.0\\API.GlobalUsings.g.cs,\"C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs\",C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\obj\\Debug\\net8.0\\API.AssemblyInfo.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\obj\\Debug\\net8.0\\API.MvcApplicationPartsAssemblyInfo.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\API.http"
+    },
+    {
+      "key": "FDC17397-881D-4577-B3BF-9EA02067CEF2.sonar.cs.analyzer.projectOutPaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\12"
+    },
+    {
+      "key": "FDC17397-881D-4577-B3BF-9EA02067CEF2.sonar.cs.roslyn.reportFilePaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\12\\Issues.json"
+    },
+    {
+      "key": "FDC17397-881D-4577-B3BF-9EA02067CEF2.sonar.cs.scanner.telemetry",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\12\\Telemetry.json"
+    },
+    {
+      "key": "4CA7B57E-F8C3-F284-CFB5-83BCF9C1831F.sonar.projectKey",
+      "value": "Device-Monitoring-System:4CA7B57E-F8C3-F284-CFB5-83BCF9C1831F"
+    },
+    {
+      "key": "4CA7B57E-F8C3-F284-CFB5-83BCF9C1831F.sonar.projectName",
+      "value": "InfrastructureTests"
+    },
+    {
+      "key": "4CA7B57E-F8C3-F284-CFB5-83BCF9C1831F.sonar.projectBaseDir",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\InfrastructureTests"
+    },
+    {
+      "key": "4CA7B57E-F8C3-F284-CFB5-83BCF9C1831F.sonar.working.directory",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\.sonar\\mod5"
+    },
+    {
+      "key": "4CA7B57E-F8C3-F284-CFB5-83BCF9C1831F.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "4CA7B57E-F8C3-F284-CFB5-83BCF9C1831F.sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "4CA7B57E-F8C3-F284-CFB5-83BCF9C1831F.sonar.tests",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\InfrastructureTests\\.filenesting.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\InfrastructureTests\\obj\\InfrastructureTests.csproj.nuget.dgspec.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\InfrastructureTests\\obj\\project.assets.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\InfrastructureTests\\bin\\Debug\\net8.0\\InfrastructureTests.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\InfrastructureTests\\bin\\Debug\\net8.0\\InfrastructureTests.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\InfrastructureTests\\obj\\Debug\\net8.0\\InfrastructureTests.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\InfrastructureTests\\Services\\AlarmEvaluationServiceTests.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\InfrastructureTests\\UnitTest1.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\InfrastructureTests\\TestResults\\coverage.opencover.xml"
+    },
+    {
+      "key": "4CA7B57E-F8C3-F284-CFB5-83BCF9C1831F.sonar.cs.analyzer.projectOutPaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\13,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\2"
+    },
+    {
+      "key": "4CA7B57E-F8C3-F284-CFB5-83BCF9C1831F.sonar.cs.roslyn.reportFilePaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\13\\Issues.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\2\\Issues.json"
+    },
+    {
+      "key": "4CA7B57E-F8C3-F284-CFB5-83BCF9C1831F.sonar.cs.scanner.telemetry",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\13\\Telemetry.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\2\\Telemetry.json"
+    },
+    {
+      "key": "6E1E7959-4D04-46AF-9CA7-3A45D5528C49.sonar.projectKey",
+      "value": "Device-Monitoring-System:6E1E7959-4D04-46AF-9CA7-3A45D5528C49"
+    },
+    {
+      "key": "6E1E7959-4D04-46AF-9CA7-3A45D5528C49.sonar.projectName",
+      "value": "Application"
+    },
+    {
+      "key": "6E1E7959-4D04-46AF-9CA7-3A45D5528C49.sonar.projectBaseDir",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application"
+    },
+    {
+      "key": "6E1E7959-4D04-46AF-9CA7-3A45D5528C49.sonar.working.directory",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\.sonar\\mod6"
+    },
+    {
+      "key": "6E1E7959-4D04-46AF-9CA7-3A45D5528C49.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "6E1E7959-4D04-46AF-9CA7-3A45D5528C49.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "6E1E7959-4D04-46AF-9CA7-3A45D5528C49.sonar.sources",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\obj\\Application.csproj.nuget.dgspec.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\obj\\project.assets.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\bin\\Debug\\net8.0\\Application.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\bin\\Release\\net8.0\\Application.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\obj\\Debug\\net8.0\\Application.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\obj\\Release\\net8.0\\Application.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\AlarmEvaluationRequest.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\AlarmRuleDto.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceDetails.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceMetadata.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceMetadataPaginated.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceServiceOptions.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DevicesNameMacIdDto.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceStorageOptions.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceTopLevelData.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceTopLevelLiveData.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\DeviceTopLevelSortOptions.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\LiveDataExtractDto.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\LiveDeviceDataDto.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Dtos\\ObservableFieldDEfination.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IAlarmEvaluationService.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IAlarmToggleService.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IDeviceService.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IDeviceServiceHelper.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Interfaces\\IDynamicDataHelper.cs"
+    },
+    {
+      "key": "6E1E7959-4D04-46AF-9CA7-3A45D5528C49.sonar.cs.analyzer.projectOutPaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\16,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\3"
+    },
+    {
+      "key": "6E1E7959-4D04-46AF-9CA7-3A45D5528C49.sonar.cs.roslyn.reportFilePaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\16\\Issues.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\3\\Issues.json"
+    },
+    {
+      "key": "6E1E7959-4D04-46AF-9CA7-3A45D5528C49.sonar.cs.scanner.telemetry",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\16\\Telemetry.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\3\\Telemetry.json"
+    },
+    {
+      "key": "E3F93296-33F5-42F4-AA63-44D2B6D5C37A.sonar.projectKey",
+      "value": "Device-Monitoring-System:E3F93296-33F5-42F4-AA63-44D2B6D5C37A"
+    },
+    {
+      "key": "E3F93296-33F5-42F4-AA63-44D2B6D5C37A.sonar.projectName",
+      "value": "Infrastructure"
+    },
+    {
+      "key": "E3F93296-33F5-42F4-AA63-44D2B6D5C37A.sonar.projectBaseDir",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure"
+    },
+    {
+      "key": "E3F93296-33F5-42F4-AA63-44D2B6D5C37A.sonar.working.directory",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\.sonar\\mod7"
+    },
+    {
+      "key": "E3F93296-33F5-42F4-AA63-44D2B6D5C37A.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "E3F93296-33F5-42F4-AA63-44D2B6D5C37A.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "E3F93296-33F5-42F4-AA63-44D2B6D5C37A.sonar.sources",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\AirConditioner.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\IpCamera.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Laptop.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\LoadBalancer.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Mobile.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\NAS.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Printer.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Projector.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\RasberryPi.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\SmartTv.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\Switch.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Data\\WifiRouter.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\obj\\Infrastructure.csproj.nuget.dgspec.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\obj\\project.assets.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\bin\\Debug\\net8.0\\Infrastructure.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\bin\\Debug\\net8.0\\Infrastructure.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\bin\\Release\\net8.0\\Infrastructure.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\bin\\Release\\net8.0\\Infrastructure.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\obj\\Debug\\net8.0\\Infrastructure.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\obj\\Release\\net8.0\\Infrastructure.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Cache\\DeviceStateCache.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Helpers\\DeviceServiceHelper.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Helpers\\DynamicDataHelper.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Persistence\\DeviceDbContext.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\RealTime\\DeviceHub.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\AlarmEvaluationService.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\AlarmToggleService.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\DeviceLiveDataBgService.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\DeviceService.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Services\\DeviceStatePersistenceService .cs"
+    },
+    {
+      "key": "E3F93296-33F5-42F4-AA63-44D2B6D5C37A.sonar.cs.analyzer.projectOutPaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\17,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\4"
+    },
+    {
+      "key": "E3F93296-33F5-42F4-AA63-44D2B6D5C37A.sonar.cs.roslyn.reportFilePaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\17\\Issues.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\4\\Issues.json"
+    },
+    {
+      "key": "E3F93296-33F5-42F4-AA63-44D2B6D5C37A.sonar.cs.scanner.telemetry",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\17\\Telemetry.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\4\\Telemetry.json"
+    },
+    {
+      "key": "346D76A6-5579-42C5-AC24-2AE59F39B5DD.sonar.projectKey",
+      "value": "Device-Monitoring-System:346D76A6-5579-42C5-AC24-2AE59F39B5DD"
+    },
+    {
+      "key": "346D76A6-5579-42C5-AC24-2AE59F39B5DD.sonar.projectName",
+      "value": "API"
+    },
+    {
+      "key": "346D76A6-5579-42C5-AC24-2AE59F39B5DD.sonar.projectBaseDir",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API"
+    },
+    {
+      "key": "346D76A6-5579-42C5-AC24-2AE59F39B5DD.sonar.working.directory",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\.sonar\\mod8"
+    },
+    {
+      "key": "346D76A6-5579-42C5-AC24-2AE59F39B5DD.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "346D76A6-5579-42C5-AC24-2AE59F39B5DD.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "346D76A6-5579-42C5-AC24-2AE59F39B5DD.sonar.sources",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\appsettings.Development.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\appsettings.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\API.csproj.nuget.dgspec.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\project.assets.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\Properties\\launchSettings.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\bin\\Debug\\net8.0\\API.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\bin\\Debug\\net8.0\\API.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\bin\\Debug\\net8.0\\API.staticwebassets.endpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\bin\\Debug\\net8.0\\appsettings.Development.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\bin\\Debug\\net8.0\\appsettings.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\bin\\Release\\net8.0\\API.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\bin\\Release\\net8.0\\API.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\bin\\Release\\net8.0\\API.staticwebassets.endpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\bin\\Release\\net8.0\\appsettings.Development.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\bin\\Release\\net8.0\\appsettings.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\Debug\\net8.0\\API.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\Debug\\net8.0\\ApiEndpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\Debug\\net8.0\\staticwebassets.build.endpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\Debug\\net8.0\\staticwebassets.build.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\Release\\net8.0\\API.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\Release\\net8.0\\staticwebassets.build.endpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\Release\\net8.0\\staticwebassets.build.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\Debug\\net8.0\\EndpointInfo\\API.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\Controllers\\DeviceController.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\Middleware\\ExceptionMiddleware.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\Program.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\Debug\\net8.0\\API.GlobalUsings.g.cs,\"C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs\",C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\Debug\\net8.0\\API.AssemblyInfo.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\Debug\\net8.0\\API.MvcApplicationPartsAssemblyInfo.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\API.http"
+    },
+    {
+      "key": "346D76A6-5579-42C5-AC24-2AE59F39B5DD.sonar.cs.analyzer.projectOutPaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\18,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\5"
+    },
+    {
+      "key": "346D76A6-5579-42C5-AC24-2AE59F39B5DD.sonar.cs.roslyn.reportFilePaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\18\\Issues.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\5\\Issues.json"
+    },
+    {
+      "key": "346D76A6-5579-42C5-AC24-2AE59F39B5DD.sonar.cs.scanner.telemetry",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\18\\Telemetry.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\5\\Telemetry.json"
+    },
+    {
+      "key": "37118C58-9CAF-454D-A8C0-D111BE45C9E2.sonar.projectKey",
+      "value": "Device-Monitoring-System:37118C58-9CAF-454D-A8C0-D111BE45C9E2"
+    },
+    {
+      "key": "37118C58-9CAF-454D-A8C0-D111BE45C9E2.sonar.projectName",
+      "value": "DeviceMonitoring.Tests"
+    },
+    {
+      "key": "37118C58-9CAF-454D-A8C0-D111BE45C9E2.sonar.projectBaseDir",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests"
+    },
+    {
+      "key": "37118C58-9CAF-454D-A8C0-D111BE45C9E2.sonar.working.directory",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\.sonar\\mod9"
+    },
+    {
+      "key": "37118C58-9CAF-454D-A8C0-D111BE45C9E2.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "37118C58-9CAF-454D-A8C0-D111BE45C9E2.sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "37118C58-9CAF-454D-A8C0-D111BE45C9E2.sonar.tests",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\obj\\DeviceMonitoring.Tests.csproj.nuget.dgspec.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\obj\\project.assets.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\bin\\Debug\\net8.0\\API.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\bin\\Debug\\net8.0\\API.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\bin\\Debug\\net8.0\\API.staticwebassets.endpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\bin\\Debug\\net8.0\\appsettings.Development.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\bin\\Debug\\net8.0\\appsettings.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\bin\\Debug\\net8.0\\DeviceMonitoring.Tests.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\bin\\Debug\\net8.0\\DeviceMonitoring.Tests.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\bin\\Release\\net8.0\\API.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\bin\\Release\\net8.0\\API.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\bin\\Release\\net8.0\\API.staticwebassets.endpoints.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\bin\\Release\\net8.0\\appsettings.Development.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\bin\\Release\\net8.0\\appsettings.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\bin\\Release\\net8.0\\DeviceMonitoring.Tests.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\bin\\Release\\net8.0\\DeviceMonitoring.Tests.runtimeconfig.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\obj\\Debug\\net8.0\\DeviceMonitoring.Tests.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\obj\\Release\\net8.0\\DeviceMonitoring.Tests.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\API\\Controllers\\DeviceControllerTests.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\MockData\\DevicesNameMacIdListMockData.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\UnitTest1.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\DeviceMonitoring.Tests\\Testresults\\coverage.opencover.xml"
+    },
+    {
+      "key": "37118C58-9CAF-454D-A8C0-D111BE45C9E2.sonar.cs.analyzer.projectOutPaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\19,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\6"
+    },
+    {
+      "key": "37118C58-9CAF-454D-A8C0-D111BE45C9E2.sonar.cs.roslyn.reportFilePaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\19\\Issues.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\6\\Issues.json"
+    },
+    {
+      "key": "37118C58-9CAF-454D-A8C0-D111BE45C9E2.sonar.cs.scanner.telemetry",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\19\\Telemetry.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\6\\Telemetry.json"
+    },
+    {
+      "key": "F1A587B3-D8FA-4AAD-9C95-1A09A31CF9E5.sonar.projectKey",
+      "value": "Device-Monitoring-System:F1A587B3-D8FA-4AAD-9C95-1A09A31CF9E5"
+    },
+    {
+      "key": "F1A587B3-D8FA-4AAD-9C95-1A09A31CF9E5.sonar.projectName",
+      "value": "Domain"
+    },
+    {
+      "key": "F1A587B3-D8FA-4AAD-9C95-1A09A31CF9E5.sonar.projectBaseDir",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Domain"
+    },
+    {
+      "key": "F1A587B3-D8FA-4AAD-9C95-1A09A31CF9E5.sonar.working.directory",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\.sonar\\mod10"
+    },
+    {
+      "key": "F1A587B3-D8FA-4AAD-9C95-1A09A31CF9E5.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "F1A587B3-D8FA-4AAD-9C95-1A09A31CF9E5.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "F1A587B3-D8FA-4AAD-9C95-1A09A31CF9E5.sonar.sources",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Domain\\obj\\Domain.csproj.nuget.dgspec.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Domain\\obj\\project.assets.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Domain\\bin\\Debug\\net8.0\\Domain.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Domain\\obj\\Debug\\net8.0\\Domain.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Domain\\obj\\Release\\net8.0\\Domain.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Domain\\Entities\\Alarm.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Domain\\Entities\\AlarmRule.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Domain\\Entities\\AlarmState.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Domain\\Enums\\AlarmSeverity.cs"
+    },
+    {
+      "key": "F1A587B3-D8FA-4AAD-9C95-1A09A31CF9E5.sonar.cs.analyzer.projectOutPaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\7"
+    },
+    {
+      "key": "F1A587B3-D8FA-4AAD-9C95-1A09A31CF9E5.sonar.cs.roslyn.reportFilePaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\7\\Issues.json"
+    },
+    {
+      "key": "F1A587B3-D8FA-4AAD-9C95-1A09A31CF9E5.sonar.cs.scanner.telemetry",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\7\\Telemetry.json"
+    },
+    {
+      "key": "903DFAAD-0365-480C-826F-FD3F6DDDA7AF.sonar.projectKey",
+      "value": "Device-Monitoring-System:903DFAAD-0365-480C-826F-FD3F6DDDA7AF"
+    },
+    {
+      "key": "903DFAAD-0365-480C-826F-FD3F6DDDA7AF.sonar.projectName",
+      "value": "Application"
+    },
+    {
+      "key": "903DFAAD-0365-480C-826F-FD3F6DDDA7AF.sonar.projectBaseDir",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application"
+    },
+    {
+      "key": "903DFAAD-0365-480C-826F-FD3F6DDDA7AF.sonar.working.directory",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\.sonar\\mod11"
+    },
+    {
+      "key": "903DFAAD-0365-480C-826F-FD3F6DDDA7AF.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "903DFAAD-0365-480C-826F-FD3F6DDDA7AF.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "903DFAAD-0365-480C-826F-FD3F6DDDA7AF.sonar.sources",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\obj\\Application.csproj.nuget.dgspec.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\obj\\project.assets.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\bin\\Debug\\net8.0\\Application.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\obj\\Debug\\net8.0\\Application.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\obj\\Release\\net8.0\\Application.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\Dtos\\AlarmEvaluationRequest.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\Dtos\\AlarmFilter.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\Dtos\\AlarmRuleDto.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\Dtos\\GetAlarmDto.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\Dtos\\GetAlarmStatesDto.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\Dtos\\GetLatestAlarmForDeviceDto.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\Dtos\\GetLatestAlarmsDto.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\Dtos\\LiveDataExtractDto.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\Dtos\\LiveDeviceDataDto.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\Dtos\\PostAlarmDto.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\Interface\\IAlarmEvaluationService.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Application\\Interface\\IAlarmService.cs"
+    },
+    {
+      "key": "903DFAAD-0365-480C-826F-FD3F6DDDA7AF.sonar.cs.analyzer.projectOutPaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\8"
+    },
+    {
+      "key": "903DFAAD-0365-480C-826F-FD3F6DDDA7AF.sonar.cs.roslyn.reportFilePaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\8\\Issues.json"
+    },
+    {
+      "key": "903DFAAD-0365-480C-826F-FD3F6DDDA7AF.sonar.cs.scanner.telemetry",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\8\\Telemetry.json"
+    },
+    {
+      "key": "B7C7334F-17CB-47D1-BD2C-A702C40FC296.sonar.projectKey",
+      "value": "Device-Monitoring-System:B7C7334F-17CB-47D1-BD2C-A702C40FC296"
+    },
+    {
+      "key": "B7C7334F-17CB-47D1-BD2C-A702C40FC296.sonar.projectName",
+      "value": "Common"
+    },
+    {
+      "key": "B7C7334F-17CB-47D1-BD2C-A702C40FC296.sonar.projectBaseDir",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Common"
+    },
+    {
+      "key": "B7C7334F-17CB-47D1-BD2C-A702C40FC296.sonar.working.directory",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\.sonar\\mod12"
+    },
+    {
+      "key": "B7C7334F-17CB-47D1-BD2C-A702C40FC296.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "B7C7334F-17CB-47D1-BD2C-A702C40FC296.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "B7C7334F-17CB-47D1-BD2C-A702C40FC296.sonar.sources",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Common\\obj\\Common.csproj.nuget.dgspec.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Common\\obj\\project.assets.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Common\\bin\\Debug\\net8.0\\Common.deps.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Common\\obj\\Debug\\net8.0\\Common.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Common\\obj\\Release\\net8.0\\Common.sourcelink.json,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Common\\Helper Classes\\CustomException.cs,C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\AlarmService\\Common\\Helper Classes\\JsonFlatter.cs"
+    },
+    {
+      "key": "B7C7334F-17CB-47D1-BD2C-A702C40FC296.sonar.cs.analyzer.projectOutPaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\9"
+    },
+    {
+      "key": "B7C7334F-17CB-47D1-BD2C-A702C40FC296.sonar.cs.roslyn.reportFilePaths",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\9\\Issues.json"
+    },
+    {
+      "key": "B7C7334F-17CB-47D1-BD2C-A702C40FC296.sonar.cs.scanner.telemetry",
+      "value": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\.sonarqube\\out\\9\\Telemetry.json"
+    },
+    {
+      "key": "sonar.login",
+      "value": "***"
+    },
+    {
+      "key": "sonar.host.url",
+      "value": "http://localhost:9000"
+    },
+    {
+      "key": "sonar.exclusions",
+      "value": "\n    **/coverage.opencover.xml\n  "
+    },
+    {
+      "key": "sonar.cs.opencover.reportsPaths",
+      "value": "\n    **/coverage.opencover.xml\n  "
+    },
+    {
+      "key": "sonar.visualstudio.enable",
+      "value": "false"
+    }
+  ]
+}
