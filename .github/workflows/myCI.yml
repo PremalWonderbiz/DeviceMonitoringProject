@@ -8,6 +8,4 @@ jobs:
     uses: PremalWonderbiz/Workflows/.github/workflows/main-sequential-ci.yml@main
     with:
       sonarAnalysisFile: "Backend/SonarQube.Analysis.xml"
-    secrets:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    secrets: inherit
