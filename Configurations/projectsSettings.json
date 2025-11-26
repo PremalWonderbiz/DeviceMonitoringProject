@@ -1,0 +1,11 @@
+{
+  "runtime": {
+    "dotnet": "8.0.x",
+    "java": "25.0.1",
+    "node": "20.9.0"
+  },
+
+  "sonarqube": {
+    "backendProjectKey": "premalwonderbiz_DeviceMonitoringBackend"
+  }
+}
