@@ -2,9 +2,9 @@
 <CoverageSession>
   <Summary numSequencePoints="1114" visitedSequencePoints="11" numBranchPoints="402" visitedBranchPoints="0" sequenceCoverage="0.98" branchCoverage="0" maxCyclomaticComplexity="440" minCyclomaticComplexity="2" visitedClasses="3" numClasses="72" visitedMethods="4" numMethods="170" />
   <Modules>
-    <Module hash="C91D559F-6FBF-4DB8-80C7-BA18AFC8BB12">
+    <Module hash="5DE38E28-C6C4-425E-9741-FE1FE2DB54D4">
       <ModulePath>API.dll</ModulePath>
-      <ModuleTime>2025-11-26T07:03:08</ModuleTime>
+      <ModuleTime>2025-12-02T11:39:06</ModuleTime>
       <ModuleName>API</ModuleName>
       <Files>
         <File uid="1" fullPath="C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\Program.cs" />
@@ -414,9 +414,9 @@
         </Class>
       </Classes>
     </Module>
-    <Module hash="43618817-1378-4989-9951-2D5740779AA1">
+    <Module hash="12343EDA-02F4-4355-89FD-9E0E9798480E">
       <ModulePath>Application.dll</ModulePath>
-      <ModuleTime>2025-11-26T07:03:08</ModuleTime>
+      <ModuleTime>2025-12-02T11:39:06</ModuleTime>
       <ModuleName>Application</ModuleName>
       <Files>
         <File uid="4" fullPath="C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Application\Dtos\DeviceDetails.cs" />
@@ -1226,9 +1226,9 @@
         </Class>
       </Classes>
     </Module>
-    <Module hash="ED2D0970-C4C7-490D-99BE-1B9B6BF2780D">
+    <Module hash="6C4CB7BF-F631-4344-A1B6-EE94AFBF915C">
       <ModulePath>Common.dll</ModulePath>
-      <ModuleTime>2025-11-26T07:03:08</ModuleTime>
+      <ModuleTime>2025-12-02T11:39:06</ModuleTime>
       <ModuleName>Common</ModuleName>
       <Files>
         <File uid="18" fullPath="C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Common\Helper Classes\CustomException.cs" />
@@ -1267,9 +1267,9 @@
         </Class>
       </Classes>
     </Module>
-    <Module hash="420ED391-8FEF-4D9B-9E7A-4A08497D5827">
+    <Module hash="0714D959-9A7B-4F44-8865-39EC28FD8B2D">
       <ModulePath>Domain.dll</ModulePath>
-      <ModuleTime>2025-11-26T07:03:08</ModuleTime>
+      <ModuleTime>2025-12-02T11:39:06</ModuleTime>
       <ModuleName>Domain</ModuleName>
       <Files>
         <File uid="19" fullPath="C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Domain\Entities\Device.cs" />
@@ -1404,9 +1404,9 @@
         </Class>
       </Classes>
     </Module>
-    <Module hash="9B5F5CEB-C2B4-4696-9DD3-B8691FFC16FF">
+    <Module hash="0A19B8F4-00FF-4B4D-843C-F98900033C12">
       <ModulePath>Infrastructure.dll</ModulePath>
-      <ModuleTime>2025-11-26T07:03:08</ModuleTime>
+      <ModuleTime>2025-12-02T11:39:06</ModuleTime>
       <ModuleName>Infrastructure</ModuleName>
       <Files>
         <File uid="20" fullPath="C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Infrastructure\Services\AlarmEvaluationService.cs" />

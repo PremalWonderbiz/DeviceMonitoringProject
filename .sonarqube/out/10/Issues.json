@@ -1,0 +1,801 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.13.0.0",
+        "fileVersion": "4.13.0-3.25112.7 (afe5bc4a)",
+        "semanticVersion": "4.13.0",
+        "language": "en-US"
+      },
+      "results": [
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable property 'AlarmRules' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Persistence/AlarmDbContext.cs",
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 16,
+                  "endLine": 8,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Persistence/AlarmDbContext.cs",
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 33,
+                  "endLine": 14,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS0168",
+          "level": "warning",
+          "message": "The variable 'ex' is declared but never used",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmService.cs",
+                "region": {
+                  "startLine": 178,
+                  "startColumn": 36,
+                  "endLine": 178,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'source' in 'Task<int> EntityFrameworkQueryableExtensions.CountAsync<Alarm>(IQueryable<Alarm> source, CancellationToken cancellationToken = default(CancellationToken))'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmService.cs",
+                "region": {
+                  "startLine": 302,
+                  "startColumn": 37,
+                  "endLine": 302,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS0168",
+          "level": "warning",
+          "message": "The variable 'ex' is declared but never used",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmService.cs",
+                "region": {
+                  "startLine": 390,
+                  "startColumn": 36,
+                  "endLine": 390,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'Unknown' 4 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmEvaluationService.cs",
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 48,
+                  "endLine": 32,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmEvaluationService.cs",
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 60,
+                  "endLine": 33,
+                  "endColumn": 69
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmEvaluationService.cs",
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 49,
+                  "endLine": 38,
+                  "endColumn": 58
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmEvaluationService.cs",
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 61,
+                  "endLine": 39,
+                  "endColumn": 70
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "2": null
+            }
+          }
+        },
+        {
+          "ruleId": "S1075",
+          "level": "warning",
+          "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/RealTime/AlertService.cs",
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 41,
+                  "endLine": 29,
+                  "endColumn": 102
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1075",
+          "level": "warning",
+          "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/RealTime/AlertService.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 41,
+                  "endLine": 23,
+                  "endColumn": 91
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1192",
+          "level": "warning",
+          "message": "Define a constant instead of using this literal 'Alarm not found' 5 times.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmService.cs",
+                "region": {
+                  "startLine": 72,
+                  "startColumn": 48,
+                  "endLine": 72,
+                  "endColumn": 65
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmService.cs",
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 52,
+                  "endLine": 101,
+                  "endColumn": 69
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmService.cs",
+                "region": {
+                  "startLine": 131,
+                  "startColumn": 48,
+                  "endLine": 131,
+                  "endColumn": 65
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmService.cs",
+                "region": {
+                  "startLine": 231,
+                  "startColumn": 48,
+                  "endLine": 231,
+                  "endColumn": 65
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmService.cs",
+                "region": {
+                  "startLine": 341,
+                  "startColumn": 48,
+                  "endLine": 341,
+                  "endColumn": 65
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null,
+              "1": null,
+              "2": null,
+              "3": null
+            }
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'alarmDto' to 'alarm' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmService.cs",
+                "region": {
+                  "startLine": 112,
+                  "startColumn": 57,
+                  "endLine": 112,
+                  "endColumn": 65
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmService.cs",
+                "region": {
+                  "startLine": 133,
+                  "startColumn": 38,
+                  "endLine": 133,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1244",
+          "level": "warning",
+          "message": "Do not check floating point equality with exact values, use a range instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmEvaluationService.cs",
+                "region": {
+                  "startLine": 144,
+                  "startColumn": 41,
+                  "endLine": 144,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1244",
+          "level": "warning",
+          "message": "Do not check floating point inequality with exact values, use a range instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmEvaluationService.cs",
+                "region": {
+                  "startLine": 145,
+                  "startColumn": 44,
+                  "endLine": 145,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1869",
+          "level": "note",
+          "message": "Avoid creating a new 'JsonSerializerOptions' instance for every serialization operation. Cache and reuse instances instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmEvaluationService.cs",
+                "region": {
+                  "startLine": 91,
+                  "startColumn": 80,
+                  "endLine": 96,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1869",
+          "level": "note",
+          "message": "Avoid creating a new 'JsonSerializerOptions' instance for every serialization operation. Cache and reuse instances instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmEvaluationService.cs",
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 99,
+                  "endLine": 106,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1869",
+          "level": "note",
+          "message": "Avoid creating a new 'JsonSerializerOptions' instance for every serialization operation. Cache and reuse instances instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmEvaluationService.cs",
+                "region": {
+                  "startLine": 110,
+                  "startColumn": 103,
+                  "endLine": 115,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1860",
+          "level": "note",
+          "message": "Prefer comparing 'Count' to 0 rather than using 'Any()', both for clarity and for performance",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmEvaluationService.cs",
+                "region": {
+                  "startLine": 85,
+                  "startColumn": 17,
+                  "endLine": 85,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "DiagnosticPropertyKey": "Count"
+            }
+          }
+        },
+        {
+          "ruleId": "S6580",
+          "level": "warning",
+          "message": "Use a format provider when parsing date and time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmEvaluationService.cs",
+                "region": {
+                  "startLine": 154,
+                  "startColumn": 21,
+                  "endLine": 154,
+                  "endColumn": 64
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmService.cs",
+                "region": {
+                  "startLine": 343,
+                  "startColumn": 37,
+                  "endLine": 343,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1869",
+          "level": "note",
+          "message": "Avoid creating a new 'JsonSerializerOptions' instance for every serialization operation. Cache and reuse instances instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmService.cs",
+                "region": {
+                  "startLine": 160,
+                  "startColumn": 76,
+                  "endLine": 165,
+                  "endColumn": 14
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1869",
+          "level": "note",
+          "message": "Avoid creating a new 'JsonSerializerOptions' instance for every serialization operation. Cache and reuse instances instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmService.cs",
+                "region": {
+                  "startLine": 171,
+                  "startColumn": 103,
+                  "endLine": 176,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'IsThresholdBreached' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmEvaluationService.cs",
+                "region": {
+                  "startLine": 121,
+                  "startColumn": 22,
+                  "endLine": 121,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1869",
+          "level": "note",
+          "message": "Avoid creating a new 'JsonSerializerOptions' instance for every serialization operation. Cache and reuse instances instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmService.cs",
+                "region": {
+                  "startLine": 372,
+                  "startColumn": 76,
+                  "endLine": 377,
+                  "endColumn": 14
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1869",
+          "level": "note",
+          "message": "Avoid creating a new 'JsonSerializerOptions' instance for every serialization operation. Cache and reuse instances instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/AlarmService/Infrastructure/Services/AlarmService.cs",
+                "region": {
+                  "startLine": 383,
+                  "startColumn": 103,
+                  "endLine": 388,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CA1822": {
+          "id": "CA1822",
+          "shortDescription": "Mark members as static",
+          "fullDescription": "Members that do not access instance data or call instance methods can be marked as static. After you mark the methods as static, the compiler will emit nonvirtual call sites to these members. This can give you a measurable performance gain for performance-sensitive code.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "PortedFromFxCop",
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CA1860": {
+          "id": "CA1860",
+          "shortDescription": "Avoid using 'Enumerable.Any()' extension method",
+          "fullDescription": "Prefer using 'IsEmpty', 'Count' or 'Length' properties whichever available, rather than calling 'Enumerable.Any()'. The intent is clearer and it is more performant than using 'Enumerable.Any()' extension method.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1860",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CA1869": {
+          "id": "CA1869",
+          "shortDescription": "Cache and reuse 'JsonSerializerOptions' instances",
+          "fullDescription": "Avoid creating a new 'JsonSerializerOptions' instance for every serialization operation. Cache and reuse instances instead. Single use 'JsonSerializerOptions' instances can substantially degrade the performance of your application.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1869",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CS0168": {
+          "id": "CS0168",
+          "shortDescription": "Variable is declared but never used",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS0168)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8604": {
+          "id": "CS8604",
+          "shortDescription": "Possible null reference argument.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8604)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8618": {
+          "id": "CS8618",
+          "shortDescription": "Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8618)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "S1075": {
+          "id": "S1075",
+          "shortDescription": "URIs should not be hardcoded",
+          "fullDescription": "Hard-coding a URI makes it difficult to test a program for a variety of reasons:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1075",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1125": {
+          "id": "S1125",
+          "shortDescription": "Boolean literals should not be redundant",
+          "fullDescription": "A boolean literal can be represented in two different ways: true or false. They can be combined with logical operators (!, &&, ||, ==, !=) to produce logical expressions that represent truth values. However, comparing a boolean literal to a variable or expression that evaluates to a boolean value is unnecessary and can make the code harder to read and understand. The more complex a boolean expression is, the harder it will be for developers to understand its meaning and expected behavior, and it will favour the introduction of new bugs.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1125",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1192": {
+          "id": "S1192",
+          "shortDescription": "String literals should not be duplicated",
+          "fullDescription": "Duplicated string literals make the process of refactoring complex and error-prone, as any change would need to be propagated on all occurrences.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1192",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": false,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1244": {
+          "id": "S1244",
+          "shortDescription": "Floating point numbers should not be tested for equality",
+          "fullDescription": "Floating point numbers in C# (and in most other programming languages) are not precise. They are a binary approximation of the actual value. This means that even if two floating point numbers appear to be equal, they might not be due to the tiny differences in their binary representation.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1244",
+          "properties": {
+            "category": "Major Bug",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6580": {
+          "id": "S6580",
+          "shortDescription": "Use a format provider when parsing date and time",
+          "fullDescription": "When converting a string representation of a date and time to a DateTime object or any other temporal type with one of the available system parsing methods, you should always provide an IFormatProvider parameter.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6580",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S927": {
+          "id": "S927",
+          "shortDescription": "Parameter names should match base declaration and other partial definitions",
+          "fullDescription": "Parameters are part of the method signature and its identity.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-927",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

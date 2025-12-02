@@ -1,0 +1,1 @@
+¶RŸC:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\DeviceMonitoring.Tests\DeviceMonitoring.Tests.csproj¢net8.0òCSharp12

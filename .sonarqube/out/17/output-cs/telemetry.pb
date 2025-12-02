@@ -1,0 +1,1 @@
+¶RèC:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Infrastructure\Infrastructure.csproj¢net8.0ÚCSharp12

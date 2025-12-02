@@ -1,0 +1,587 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.13.0.0",
+        "fileVersion": "4.13.0-3.25112.7 (afe5bc4a)",
+        "semanticVersion": "4.13.0",
+        "language": "en-US"
+      },
+      "results": [
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 118,
+                  "startColumn": 42,
+                  "endLine": 118,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Program.cs",
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 1,
+                  "endLine": 28,
+                  "endColumn": 5
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2325",
+          "level": "warning",
+          "message": "Make 'HandleExceptionAsync' a static method.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Middleware/ExceptionMiddleware.cs",
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 28,
+                  "endLine": 31,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6968",
+          "level": "warning",
+          "message": "Annotate this method with ProducesResponseType containing the return type for successful responses.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 30,
+                  "endLine": 23,
+                  "endColumn": 64
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 20,
+                  "endLine": 40,
+                  "endColumn": 15
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null
+            }
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'HandleExceptionAsync' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Middleware/ExceptionMiddleware.cs",
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 28,
+                  "endLine": 31,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6968",
+          "level": "warning",
+          "message": "Annotate this method with ProducesResponseType containing the return type for successful responses.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 30,
+                  "endLine": 44,
+                  "endColumn": 65
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 20,
+                  "endLine": 62,
+                  "endColumn": 15
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null
+            }
+          }
+        },
+        {
+          "ruleId": "S6968",
+          "level": "warning",
+          "message": "Annotate this method with ProducesResponseType containing the return type for successful responses.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 30,
+                  "endLine": 66,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 80,
+                  "startColumn": 20,
+                  "endLine": 84,
+                  "endColumn": 15
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null
+            }
+          }
+        },
+        {
+          "ruleId": "S6968",
+          "level": "warning",
+          "message": "Annotate this method with ProducesResponseType containing the return type for successful responses.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 150,
+                  "startColumn": 30,
+                  "endLine": 150,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 153,
+                  "startColumn": 20,
+                  "endLine": 153,
+                  "endColumn": 50
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null
+            }
+          }
+        },
+        {
+          "ruleId": "S6968",
+          "level": "warning",
+          "message": "Annotate this method with ProducesResponseType containing the return type for successful responses.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 157,
+                  "startColumn": 30,
+                  "endLine": 157,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 160,
+                  "startColumn": 20,
+                  "endLine": 160,
+                  "endColumn": 54
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null
+            }
+          }
+        },
+        {
+          "ruleId": "S6960",
+          "level": "warning",
+          "message": "This controller has multiple responsibilities and could be split into 2 smaller controllers.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 18,
+                  "endLine": 11,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 30,
+                  "endLine": 66,
+                  "endColumn": 47
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 30,
+                  "endLine": 44,
+                  "endColumn": 65
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 110,
+                  "startColumn": 42,
+                  "endLine": 110,
+                  "endColumn": 65
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 118,
+                  "startColumn": 42,
+                  "endLine": 118,
+                  "endColumn": 63
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 125,
+                  "startColumn": 42,
+                  "endLine": 125,
+                  "endColumn": 71
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 88,
+                  "startColumn": 42,
+                  "endLine": 88,
+                  "endColumn": 58
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 30,
+                  "endLine": 23,
+                  "endColumn": 64
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 141,
+                  "startColumn": 42,
+                  "endLine": 141,
+                  "endColumn": 52
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 150,
+                  "startColumn": 30,
+                  "endLine": 150,
+                  "endColumn": 44
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Controllers/DeviceController.cs",
+                "region": {
+                  "startLine": 157,
+                  "startColumn": 30,
+                  "endLine": 157,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "May belong to responsibility #1.",
+              "1": "May belong to responsibility #1.",
+              "2": "May belong to responsibility #1.",
+              "3": "May belong to responsibility #1.",
+              "4": "May belong to responsibility #1.",
+              "5": "May belong to responsibility #1.",
+              "6": "May belong to responsibility #1.",
+              "7": "May belong to responsibility #1.",
+              "8": "May belong to responsibility #2.",
+              "9": "May belong to responsibility #2."
+            }
+          }
+        },
+        {
+          "ruleId": "S1075",
+          "level": "warning",
+          "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Program.cs",
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 14,
+                  "endLine": 30,
+                  "endColumn": 125
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1075",
+          "level": "warning",
+          "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/Premal%20Kadam/Documents/Device%20Monitoring%20Project/DeviceMonitoring/Backend/DeviceMonitoringProject/API/Program.cs",
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 34,
+                  "endLine": 44,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CA1822": {
+          "id": "CA1822",
+          "shortDescription": "Mark members as static",
+          "fullDescription": "Members that do not access instance data or call instance methods can be marked as static. After you mark the methods as static, the compiler will emit nonvirtual call sites to these members. This can give you a measurable performance gain for performance-sensitive code.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "PortedFromFxCop",
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CS1998": {
+          "id": "CS1998",
+          "shortDescription": "Async method lacks 'await' operators and will run synchronously",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS1998)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "S1075": {
+          "id": "S1075",
+          "shortDescription": "URIs should not be hardcoded",
+          "fullDescription": "Hard-coding a URI makes it difficult to test a program for a variety of reasons:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1075",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S125": {
+          "id": "S125",
+          "shortDescription": "Sections of code should not be commented out",
+          "fullDescription": "Commented-out code distracts the focus from the actual executed code. It creates a noise that increases maintenance code. And because it is never executed, it quickly becomes out of date and invalid.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-125",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2325": {
+          "id": "S2325",
+          "shortDescription": "Methods and properties that don't access instance data should be static",
+          "fullDescription": "Methods and properties that don’t access instance data should be marked as static for the following reasons:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2325",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6960": {
+          "id": "S6960",
+          "shortDescription": "Controllers should not have mixed responsibilities",
+          "fullDescription": "ASP.NET controllers should not have mixed responsibilities. Following the Single Responsibility Principle (SRP), they should be kept lean and focused on a single, separate concern. In short, they should have a single reason to change.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6960",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6968": {
+          "id": "S6968",
+          "shortDescription": "Actions that return a value should be annotated with ProducesResponseTypeAttribute containing the return type",
+          "fullDescription": "In an ASP.NET Core Web API, controller actions can optionally return a result value. If a controller action returns a value in the happy path, for example ControllerBase.Ok(Object), annotating the action with one of the [ProducesResponseType] overloads that describe the type is recommended.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6968",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

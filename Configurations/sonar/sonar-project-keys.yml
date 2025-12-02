@@ -1,0 +1,6 @@
+SonarQubeProjectKeys:
+  - name: Backend
+    key: Device-Monitoring-System-Backends
+
+  - name: Frontend
+    key: Device-Monitoring-System-Frontends

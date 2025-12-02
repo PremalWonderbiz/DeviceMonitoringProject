@@ -1,0 +1,6 @@
+projectKey=Device-Monitoring-System-Backends
+serverUrl=http://localhost:9000
+serverVersion=25.11.0.114957
+dashboardUrl=http://localhost:9000/dashboard?id=Device-Monitoring-System-Backends
+ceTaskId=27d7e350-1bc0-4e88-b302-03cf3b8fbcbf
+ceTaskUrl=http://localhost:9000/api/ce/task?id=27d7e350-1bc0-4e88-b302-03cf3b8fbcbf

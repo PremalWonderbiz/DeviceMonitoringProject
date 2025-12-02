@@ -1,0 +1,12 @@
+{"dotnetenterprise.s4net.params.sonar_projectname.source":"SONARQUBE_ANALYSIS_XML"}
+{"dotnetenterprise.s4net.params.sonar_cs_opencover_reportspaths.source":"SONARQUBE_ANALYSIS_XML"}
+{"dotnetenterprise.s4net.params.sonar_exclusions.source":"SONARQUBE_ANALYSIS_XML"}
+{"dotnetenterprise.s4net.params.sonar_test_exclusions.source":"SONARQUBE_ANALYSIS_XML"}
+{"dotnetenterprise.s4net.serverInfo.product":"SQ_Server"}
+{"dotnetenterprise.s4net.serverInfo.serverUrl":"localhost"}
+{"dotnetenterprise.s4net.serverInfo.version":"25.11.0.114957"}
+{"dotnetenterprise.s4net.jre.bootstrapping":"Enabled"}
+{"dotnetenterprise.s4net.jre.download":"CacheHit"}
+{"dotnetenterprise.s4net.scannerEngine.bootstrapping":"Enabled"}
+{"dotnetenterprise.s4net.scannerEngine.download":"CacheHit"}
+{"dotnetenterprise.s4net.endstep.legacyTFS":"NotCalled"}

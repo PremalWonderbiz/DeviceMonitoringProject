@@ -1,0 +1,1 @@
+ŠRtC:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\AlarmService\Common\Common.csproj¢net8.0òCSharp12
