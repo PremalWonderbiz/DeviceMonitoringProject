@@ -1,11 +1,20 @@
-name: Sonar Analysis
+name: CI
+
+# on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
 
 on:
   workflow_dispatch:
 
 jobs:
-  sonar:
+  call-generic:
     uses: PremalWonderbiz/Workflows/.github/workflows/main-sequential-ci.yml@main
+    secrets:
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     with:
-      sonarAnalysisFile: "**/data.sql,**/AlarmRulesScripts/**"
-    secrets: inherit
+      backend_sonar_key: "premalwonderbiz_DeviceMonitoringProject_Backend"
+      frontend_sonar_key: "premalwonderbiz_DeviceMonitoringProject_Frontend"
