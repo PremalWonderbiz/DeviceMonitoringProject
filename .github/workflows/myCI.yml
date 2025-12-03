@@ -15,6 +15,7 @@ jobs:
     secrets:
       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_ORG: ${{ secrets.SONAR_ORG }}
     with:
       backend_sonar_key: "premalwonderbiz_DeviceMonitoringProject_Backend"
       frontend_sonar_key: "premalwonderbiz_DeviceMonitoringProject_Frontend"
