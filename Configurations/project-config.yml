@@ -14,7 +14,7 @@ frontendProjects:
 
 settings:
   backend:
-    sonar: true
+    sonar: false
     coverity: true
     sbom: true
   frontend:
