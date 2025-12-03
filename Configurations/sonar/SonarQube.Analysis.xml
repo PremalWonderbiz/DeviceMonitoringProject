@@ -22,5 +22,9 @@
   <Property Name="sonar.cs.opencover.reportsPaths">
     **/coverage.opencover.xml
   </Property>
-  
+
+  <Property Name="sonar.exclusions">
+    **/Frontend/**,**/Configurations/**
+  </Property>
+
 </SonarQubeAnalysisProperties>
