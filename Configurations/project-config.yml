@@ -1,17 +1,14 @@
 backendServices:
   - name: DeviceMonitoringProject
     path: Backend/DeviceMonitoringProject
-
   - name: AlarmService
     path: Backend/AlarmService
-
   - name: GatewayService
     path: Backend/GatewayService/GatewayService
 
 frontendProjects:
   - name: device_monitoring_frontend
     path: Frontend/device_monitoring_frontend
-
   - name: device-monitoring-viz
     path: Frontend/device-monitoring-viz
 
@@ -20,7 +17,6 @@ settings:
     sonar: true
     coverity: true
     sbom: true
-
   frontend:
     sonar: true
     coverity: true
