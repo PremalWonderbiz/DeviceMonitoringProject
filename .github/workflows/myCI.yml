@@ -19,3 +19,4 @@ jobs:
     with:
       backend_sonar_key: "premalwonderbiz_DeviceMonitoringProject_Backend"
       frontend_sonar_key: "premalwonderbiz_DeviceMonitoringProject_Frontend"
+      
