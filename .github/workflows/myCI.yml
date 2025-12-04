@@ -11,10 +11,10 @@ jobs:
   call-generic:
     uses: PremalWonderbiz/Workflows/.github/workflows/main-sequential-ci.yml@main
     secrets:
-      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      SONAR_ORG: ${{ secrets.SONAR_ORG }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   
     with:
       backend_sonar_key: "premalwonderbiz_DeviceMonitoringProject_Backend"
       frontend_sonar_key: "premalwonderbiz_DeviceMonitoringProject_Frontend"
+      SONAR_HOST_URL: "premalwonderbiz"
+      SONAR_ORG: "https://sonarcloud.io"
       
