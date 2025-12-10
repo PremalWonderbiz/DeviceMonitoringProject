@@ -12,6 +12,8 @@ jobs:
     uses: PremalWonderbiz/Workflows/.github/workflows/main-sequential-ci.yml@main
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   
+      COVERITY_BACKEND_PROJECT_TOKEN: ${{ secrets.COVERITY_BACKEND_PROJECT_TOKEN }}  
+      COVERITY_FRONTEND_PROJECT_TOKEN: ${{ secrets.COVERITY_FRONTEND_PROJECT_TOKEN }}  
     with:
       backend_sonar_key: "premalwonderbiz_DeviceMonitoringProject_Backend"
       frontend_sonar_key: "premalwonderbiz_DeviceMonitoringProject_Frontend"
