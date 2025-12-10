@@ -17,4 +17,3 @@ jobs:
       frontend_sonar_key: "premalwonderbiz_DeviceMonitoringProject_Frontend"
       SONAR_HOST_URL: "https://sonarcloud.io"
       SONAR_ORG: "premalwonderbiz"
-      
