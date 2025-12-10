@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  call-generic:
+    uses: PremalWonderbiz/Workflows/.github/workflows/main-sequential-ci.yml@main
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   
+    with:
+      backend_sonar_key: "premalwonderbiz_DeviceMonitoringProject_Backend"
+      frontend_sonar_key: "premalwonderbiz_DeviceMonitoringProject_Frontend"
+      SONAR_HOST_URL: "https://sonarcloud.io"
+      SONAR_ORG: "premalwonderbiz"
