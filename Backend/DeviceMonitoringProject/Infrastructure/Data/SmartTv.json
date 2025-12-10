@@ -1,10 +1,10 @@
 {
   "Name": "Smart TV",
   "Type": "Entertainment Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "B8:27:EB:45:9A:CB",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-11-13T12:16:09.0479942Z",
+  "Connectivity": "High",
+  "LastUpdated": "2025-12-08T09:26:18.7356487Z",
   "staticProperties": {
     "Display \u0026 Hardware": {
       "Screen Size": "55 inches",
@@ -79,49 +79,49 @@
   },
   "dynamicProperties": {
     "Current Usage": {
-      "Power State": "On",
-      "Input Source": "HDMI 2",
-      "Current App": "Disney\u002B Hotstar",
-      "Volume Level": 9,
+      "Power State": "Off",
+      "Input Source": "HDMI 1",
+      "Current App": "Prime Video",
+      "Volume Level": 92,
       "Mute": false,
-      "Picture Mode": "Sports",
+      "Picture Mode": "Vivid",
       "Audio Output": "Bluetooth",
       "Ambient Light Sensor": true
     },
     "Streaming Activity": {
       "Watch History (Today)": [
-        12,
-        64
+        36,
+        87
       ],
       "Active App Sessions": [
-        57
+        49
       ],
-      "AutoPlay Next Episode": true
+      "AutoPlay Next Episode": false
     },
     "Network Activity": {
-      "IP Address": "192.168.28.10",
-      "Wi-Fi Signal Strength": "-50 dBm",
-      "Connection Type": "Wi-Fi",
+      "IP Address": "192.168.151.46",
+      "Wi-Fi Signal Strength": "-59 dBm",
+      "Connection Type": "Ethernet",
       "Data Usage": {
-        "Today": "5.0 GB",
-        "This Week": "5.1 GB",
-        "This Month": "9.1 GB"
+        "Today": "6.1 GB",
+        "This Week": "8.6 GB",
+        "This Month": "7.4 GB"
       },
-      "Last Online": "2025-11-13T12:15:24.6625894Z"
+      "Last Online": "2025-12-08T09:26:16.1124344Z"
     },
     "System Status": {
-      "Uptime": "7 days, 18 hrs",
-      "Last Reboot": "2025-11-13T12:15:24.6625925Z",
-      "Software Update Available": true,
-      "Last Software Update": "2025-11-13T12:15:24.6625944Z",
+      "Uptime": "1 days, 16 hrs",
+      "Last Reboot": "2025-12-08T09:26:16.1124368Z",
+      "Software Update Available": false,
+      "Last Software Update": "2025-12-08T09:26:16.1124383Z",
       "Storage Info": {
-        "Total Storage": "0.4 GB",
-        "Used": "1.4 GB",
-        "Free": "3.0 GB"
+        "Total Storage": "7.2 GB",
+        "Used": "4.5 GB",
+        "Free": "3.8 GB"
       },
       "Temperature": {
-        "Panel": 66.41,
-        "Mainboard": 36.58
+        "Panel": 46.3,
+        "Mainboard": 38.64
       }
     }
   },

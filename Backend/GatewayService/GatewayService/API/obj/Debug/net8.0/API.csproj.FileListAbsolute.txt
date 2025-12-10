@@ -87,3 +87,4 @@ C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backe
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\API.pdb
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\ref\API.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

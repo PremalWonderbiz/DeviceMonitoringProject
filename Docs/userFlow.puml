@@ -1,0 +1,126 @@
+@startuml DeviceMonitoringSystemUserFlow
+title Device Monitoring System - Sequence Flow
+skinparam sequenceMessageAlign center
+skinparam ParticipantPadding 30
+
+Actor "User" as User
+participant "Frontend" as DeviceFrontend
+participant "Device Service" as DeviceService
+participant "Alarm Service" as AlarmService
+participant "Gateway Service\n(SignalR Hub)" as GatewayService
+database "Database" as DeviceDB
+
+== System Initialization ==
+DeviceService -> DeviceDB: Load all devices
+activate DeviceDB
+note left: Device Service retrieves\ninitial device data.
+
+DeviceDB --> DeviceService: All Devices data
+deactivate DeviceDB
+note left: Service caches device data\nlocally for performance.
+DeviceService -> DeviceService: Start background\nsimulation
+note left: Starts background services \nfor live data generation and data persistance.
+
+== Live Data & Alarm Generation Loop ==
+group At each live data simulation cycle
+DeviceService -> DeviceService: Generate live device data
+note left: Simulates realistic device\nmetrics based on configurations.
+
+group When alarm detection enabled
+DeviceService -> AlarmService: Transmit live data
+activate AlarmService
+AlarmService -> DeviceDB: Load alarm rules
+activate DeviceDB
+DeviceDB --> AlarmService: Alarm rule set
+deactivate DeviceDB
+AlarmService -> AlarmService: Evaluate data against rules
+group Alarms triggered
+AlarmService -> DeviceDB: Persist new alarms
+activate DeviceDB
+deactivate DeviceDB
+AlarmService -> GatewayService: Transmit new alarms
+deactivate AlarmService
+group Active client connections
+GatewayService -> DeviceFrontend: Broadcast alarm updates
+end
+end
+end
+DeviceService -> GatewayService: Transmit live device updates
+group Active client connections
+GatewayService -> DeviceFrontend: Broadcast device updates  
+end
+end
+
+== Device cache data persistance loop ==
+group At each cache data persistance cycle
+DeviceService -> DeviceDB: Persist cached device data
+end
+
+== Frontend Operations ==
+group Initial Connection
+DeviceFrontend <-> GatewayService: Establish live data subscription\n(SignalR)
+activate GatewayService
+DeviceFrontend -> DeviceService: Load initial device list
+activate DeviceService
+DeviceService --> DeviceFrontend: Device summary
+deactivate DeviceService
+DeviceFrontend -> AlarmService: Load alarm history
+activate AlarmService
+AlarmService -> DeviceDB: Load alarms
+activate DeviceDB
+DeviceDB --> AlarmService: Alarm Data
+deactivate DeviceDB
+AlarmService --> DeviceFrontend: Recent alarms & count
+deactivate AlarmService
+deactivate GatewayService
+end
+
+group View Device Details
+User -> DeviceFrontend: Select device
+DeviceFrontend -> DeviceService: Load detailed metrics
+DeviceService --> DeviceFrontend: Device details
+note left: User sees comprehensive\ndevice data separated in static \nand dynamic data sections.
+end
+
+group Manage Alarms
+User -> DeviceFrontend: Open alarms panel
+activate DeviceFrontend
+DeviceFrontend -> AlarmService: Retrieve alarms
+activate AlarmService
+AlarmService -> DeviceDB: Load alarm data
+activate DeviceDB
+DeviceDB --> AlarmService: Alarms data
+deactivate DeviceDB
+AlarmService --> DeviceFrontend: Alarm list
+deactivate AlarmService
+deactivate DeviceFrontend
+note left: User views active & historical\nalarms with metadata.
+
+User -> DeviceFrontend: Acknowledge/Resolve alarm
+activate DeviceFrontend
+DeviceFrontend -> AlarmService: Update alarm status
+activate AlarmService
+AlarmService -> DeviceDB: Persist status change
+activate DeviceDB
+DeviceDB --> AlarmService: Updated record
+deactivate DeviceDB
+AlarmService --> DeviceFrontend: Updated alarm
+deactivate AlarmService
+deactivate DeviceFrontend
+end
+
+group Refresh Data
+User -> DeviceFrontend: Trigger cache refresh
+activate DeviceFrontend
+DeviceFrontend -> DeviceService: Reload device cache
+activate DeviceService
+DeviceService -> DeviceDB: Load latest snapshot
+activate DeviceDB
+DeviceDB --> DeviceService: Current devices
+deactivate DeviceDB
+DeviceService -> DeviceService: Update cache
+DeviceService --> DeviceFrontend: Refreshed data
+deactivate DeviceService
+deactivate DeviceFrontend
+end
+@enduml

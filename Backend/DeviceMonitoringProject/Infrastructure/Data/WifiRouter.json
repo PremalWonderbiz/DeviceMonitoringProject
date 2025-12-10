@@ -1,10 +1,10 @@
 {
   "Name": "WiFi Router",
   "Type": "Networking Device",
-  "Status": "Online",
+  "Status": "Offline",
   "MacId": "84:C9:B2:3E:7F:A1",
-  "Connectivity": "High",
-  "LastUpdated": "2025-11-13T12:16:09.0768392Z",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-12-08T09:26:18.7471444Z",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "OpenWRT 21.02",
@@ -72,50 +72,50 @@
   },
   "dynamicProperties": {
     "System Status": {
-      "Uptime": "3 days, 3 hrs",
-      "CPU Usage": "23%",
+      "Uptime": "4 days, 17 hrs",
+      "CPU Usage": "58%",
       "Memory Usage": {
-        "Used": "2.8 GB",
-        "Total": "3.3 GB"
+        "Used": "4.3 GB",
+        "Total": "1.6 GB"
       },
       "Temperature": {
-        "CPU": 80.81,
-        "Board": 50.82
+        "CPU": 44.51,
+        "Board": 36.74
       },
       "System Load Average": [
-        3,
-        3,
-        87
+        88,
+        69,
+        12
       ]
     },
     "Network Activity": {
       "Interfaces": [
-        56,
-        85
+        65,
+        64
       ],
       "Connected Clients": [
-        12,
-        95
+        97,
+        86
       ],
       "Total Data Usage": {
-        "Sent": "9.6 GB",
-        "Received": "3.2 GB"
+        "Sent": "3.9 GB",
+        "Received": "8.1 GB"
       }
     },
     "Service Health": {
       "Services Running": [
-        95,
-        74,
-        54,
-        8
+        85,
+        49,
+        93,
+        46
       ],
       "Failed Services": [
-        40
+        91
       ],
-      "Last Reboot Reason": "Crash Recovery",
+      "Last Reboot Reason": "Manual Reboot",
       "Firmware": {
         "Current Version": "Unsupported Type",
-        "Last Updated": "2025-11-13T12:15:24.6634158Z",
+        "Last Updated": "2025-12-08T09:26:16.1128785Z",
         "Update Available": true
       }
     }

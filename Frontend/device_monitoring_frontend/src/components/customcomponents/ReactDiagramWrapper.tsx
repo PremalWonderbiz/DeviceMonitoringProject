@@ -114,7 +114,6 @@ export const ReactDiagramWrapper = (props: DiagramProps) => {
             modelData={props.modelData}
             onModelChange={props.onModelChange}
             skipsDiagramUpdate={props.skipsDiagramUpdate}
-            ondia
         />
     );
 };
