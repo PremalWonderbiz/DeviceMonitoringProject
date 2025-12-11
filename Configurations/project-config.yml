@@ -19,5 +19,5 @@ settings:
     sbom: true
   frontend:
     sonar: true
-    coverity: true
+    coverity: false
     sbom: false
