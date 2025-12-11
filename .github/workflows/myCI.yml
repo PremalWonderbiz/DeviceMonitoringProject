@@ -9,7 +9,7 @@ on:
 
 jobs:
   call-generic:
-    uses: PremalWonderbiz/Workflows/.github/workflows/main-sequential-ci.yml@main
+    uses: PremalWonderbiz/Workflows/.github/workflows/generic-ci.yml@main
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   
       COVERITY_BACKEND_PROJECT_TOKEN: ${{ secrets.COVERITY_BACKEND_PROJECT_TOKEN }}  
