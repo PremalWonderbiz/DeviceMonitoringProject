@@ -18,7 +18,7 @@ settings:
     coverity: false
     coverity_project_name: "Device+Monitoring+Backends+Git"
     coverity_project_url_name: "device-monitoring-backends-git"
-    sbom: true
+    sbom: false
   frontend:
     sonar: false
     coverity: false
