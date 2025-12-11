@@ -1,4 +1,4 @@
-#comment to test pipeline for frontend v1
+#comment to test pipeline for frontend v2
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
 ## Getting Started
