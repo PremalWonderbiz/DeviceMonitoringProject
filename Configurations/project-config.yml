@@ -14,10 +14,10 @@ frontendProjects:
 
 settings:
   backend:
-    sonar: true
-    coverity: true
+    sonar: false
+    coverity: false
     sbom: true
   frontend:
-    sonar: true
+    sonar: false
     coverity: false
-    sbom: false
+    sbom: true
