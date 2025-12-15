@@ -24,4 +24,3 @@ settings:
     coverity: false
     coverity_project_name: "Device+Monitoring+Frontends+Git"
     coverity_project_url_name: "device-monitoring-frontends-git"
-    sbom: false
