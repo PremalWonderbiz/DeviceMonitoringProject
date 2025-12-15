@@ -21,6 +21,7 @@ settings:
     sbom: true
   frontend:
     sonar: false
+    coverity: false
     coverity_project_name: "Device+Monitoring+Frontends+Git"
     coverity_project_url_name: "device-monitoring-frontends-git"
-    sbom: true
+    sbom: false
