@@ -12,6 +12,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Display Configurations
+        shell: pwsh
         run: |
           # Read backend list (produced by previous Load Config step)
           $frontendRoot = Join-Path $env:GITHUB_WORKSPACE "Frontend"
