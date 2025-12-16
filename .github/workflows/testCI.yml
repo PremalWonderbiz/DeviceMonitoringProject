@@ -16,6 +16,7 @@ jobs:
         run: |
           # Read backend list (produced by previous Load Config step)
           $frontendRoot = Join-Path $env:GITHUB_WORKSPACE "Frontend"
+          $repoRoot = $env:GITHUB_WORKSPACE
 
           Get-ChildItem -Path $frontendRoot -Directory | ForEach-Object {
               $serviceDir = $_.FullName
