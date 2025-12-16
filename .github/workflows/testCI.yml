@@ -34,6 +34,7 @@ jobs:
               Write-Host "`n============ Frontend service: $relativeServiceDir ============"
 
               echo "Frontend Service Path: $relativeServiceDir"
+              echo "service dir Path: $serviceDir"
           }
 
         
