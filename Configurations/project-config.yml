@@ -1,11 +1,3 @@
-backendServices:
-  - name: DeviceMonitoringProject
-    path: Backend/DeviceMonitoringProject
-  - name: AlarmService
-    path: Backend/AlarmService
-  - name: GatewayService
-    path: Backend/GatewayService/GatewayService
-
 frontendProjects:
   - name: device_monitoring_frontend
     path: Frontend/device_monitoring_frontend
@@ -16,10 +8,10 @@ settings:
   backend:
     folder_path: Backend
     sonar: true
-    coverity: false
+    coverity: true
     coverity_project_name: "Device+Monitoring+Backends+Git"
     coverity_project_url_name: "device-monitoring-backends-git"
-    sbom: false
+    sbom: true
   frontend:
     folder_path: Frontend
     sonar: false
