@@ -1,18 +1,79 @@
-version: "3"
-services:
-  sonarqube:
-    image: sonarqube:community
-    container_name: sonarqube
-    ports:
-      - "9000:9000"
-    environment:
-      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
-    volumes:
-      - sonarqube_data:/opt/sonarqube/data
-      - sonarqube_extensions:/opt/sonarqube/extensions
-      - sonarqube_logs:/opt/sonarqube/logs
+version: "3.9"
 
+services:
+  # ====================================
+  # Device Monitoring Service (DB consumer)
+  # ====================================
+  device-service:
+    container_name: device-service
+    build:
+      context: .
+      dockerfile: Backend/DeviceMonitoringProject/Dockerfile
+    ports:
+      - "5001:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__Default: "Data Source=/data/DeviceMonitoring.db"
+    volumes:
+      - shared_db:/data
+    depends_on:
+      - alarm-service
+    restart: unless-stopped
+
+  # ====================================
+  # Alarm Service (DB OWNER + migrations)
+  # ====================================
+  alarm-service:
+    container_name: alarm-service
+    build:
+      context: .
+      dockerfile: Backend/AlarmService/Dockerfile
+    ports:
+      - "5002:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__Default: "Data Source=/data/DeviceMonitoring.db"
+    volumes:
+      - shared_db:/data
+    restart: unless-stopped
+
+  # ==========================
+  # Gateway Service (SignalR)
+  # ==========================
+  gateway-service:
+    container_name: gateway-service
+    build:
+      context: .
+      dockerfile: Backend/GatewayService/GatewayService/Dockerfile
+    ports:
+      - "5003:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    depends_on:
+      - device-service
+      - alarm-service
+    restart: unless-stopped
+
+  # ==========================
+  # Frontend UI (Next.js)
+  # ==========================
+  device-monitoring-ui:
+    container_name: device-monitoring-ui
+    build:
+      context: Frontend/device_monitoring_frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_DEVICE_API: "http://localhost:5001"
+      NEXT_PUBLIC_ALARM_API: "http://localhost:5002"
+      NEXT_PUBLIC_GATEWAY_API: "http://localhost:5003"
+    depends_on:
+      - gateway-service
+    restart: unless-stopped
+
+# ==========================
+# Shared SQLite Volume
+# ==========================
 volumes:
-  sonarqube_data:
-  sonarqube_extensions:
-  sonarqube_logs:
+  shared_db:

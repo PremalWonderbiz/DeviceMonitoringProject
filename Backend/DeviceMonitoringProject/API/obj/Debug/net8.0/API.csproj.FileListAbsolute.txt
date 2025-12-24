@@ -634,3 +634,15 @@ C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backe
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\ref\API.dll
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Data\AirConditioner.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Data\IpCamera.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Data\Laptop.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Data\LoadBalancer.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Data\Mobile.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Data\NAS.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Data\Printer.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Data\Projector.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Data\RasberryPi.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Data\SmartTv.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Data\Switch.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\API\bin\Debug\net8.0\Data\WifiRouter.json

@@ -28,9 +28,14 @@ builder.Services.AddControllers();
 //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 //);
 
-var dbPath = "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoring.db";
+//var dbPath = "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoring.db";
+//builder.Services.AddDbContext<DeviceDbContext>(options =>
+//    options.UseSqlite($"Data Source={dbPath};Cache=Shared;Pooling=True"));
+
+var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<DeviceDbContext>(options =>
-    options.UseSqlite($"Data Source={dbPath};Cache=Shared;Pooling=True"));
+    options.UseSqlite(connectionString));
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -42,9 +47,9 @@ builder.Services.AddScoped<IAlarmEvaluationService, AlarmEvaluationService>();
 builder.Services.AddHttpClient<IAlarmEvaluationService, AlarmEvaluationService>(client =>
 {
     //local
-    client.BaseAddress = new Uri("https://localhost:7154");
+    //client.BaseAddress = new Uri("https://localhost:7154");
     //docker
-    //client.BaseAddress = new Uri("http://alarmservice:7154"); // later configure it in appsettings
+    client.BaseAddress = new Uri("http://alarm-service:8080"); // later configure it in appsettings
 });
 
 builder.Services.AddHttpClient();
@@ -63,6 +68,13 @@ builder.Services.AddCors(options =>
 builder.Services.AddSingleton<DeviceStateCache>();
 builder.Services.AddSingleton<IAlarmToggleService, AlarmToggleService>();
 builder.Services.AddHostedService<DeviceStatePersistenceService>();
+
+//docker data directory
+var dataPath = "/data";
+if (!Directory.Exists(dataPath))
+{
+    Directory.CreateDirectory(dataPath);
+}
 
 var app = builder.Build();
 

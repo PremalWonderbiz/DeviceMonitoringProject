@@ -24,9 +24,13 @@ builder.Services.AddScoped<AlertService>();
 //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 //);
 
-var dbPath = "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoring.db";
+//var dbPath = "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoring.db";
+//builder.Services.AddDbContext<AlarmDbContext>(options =>
+//    options.UseSqlite($"Data Source={dbPath}"));
+
+var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<AlarmDbContext>(options =>
-    options.UseSqlite($"Data Source={dbPath}"));
+    options.UseSqlite(connectionString));
 
 builder.Services.AddCors(options =>
 {
@@ -42,6 +46,13 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient<AlertService>();
+
+//docker data directory
+var dataPath = "/data";
+if (!Directory.Exists(dataPath))
+{
+    Directory.CreateDirectory(dataPath);
+}
 
 var app = builder.Build();
 
