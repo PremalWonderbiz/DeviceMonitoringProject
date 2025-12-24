@@ -10,6 +10,7 @@ import ComboBox from "@/components/customcomponents/AlarmPanel/SelectDevicesComb
 import { AccordionStateProvider } from "./AccordionVisibilityContext";
 import { deepMerge } from "@/utils/propertypanelfunctions";
 import { DeviceDetailUpdate, DeviceNameMac, PropertyPanelData } from "@/models/propertyPanelInterfaces";
+import { useDeviceDetailSubscription } from "@/utils/customhooks/useDeviceDetailSubscription";
 
 
 const PropertyPanel = ({ setCurrentDeviceId, devicesNameMacList, setIsAlarmPanelOpen, setSelectedDevicePropertyPanel, currentDeviceId, activeTab, setActiveTab }: any) => {
@@ -53,7 +54,6 @@ const PropertyPanel = ({ setCurrentDeviceId, devicesNameMacList, setIsAlarmPanel
         };
     }, []);
 
-
     useEffect(() => {
         if (selectedDevices.length == 1) {
             const deviceId = selectedDevices[0].deviceMacId;
@@ -62,7 +62,9 @@ const PropertyPanel = ({ setCurrentDeviceId, devicesNameMacList, setIsAlarmPanel
         }
     }, [selectedDevices]);
 
-    useDeviceDetailSocket(currentDeviceId, handleUpdate, shouldConnectSignalR);
+    // useDeviceDetailSocket(currentDeviceId, handleUpdate, shouldConnectSignalR);
+    //Graphql version
+    useDeviceDetailSubscription(currentDeviceId, handleUpdate, shouldConnectSignalR);
 
     useEffect(() => {
         if (currentDeviceId) {

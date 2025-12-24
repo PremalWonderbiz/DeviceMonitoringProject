@@ -22,12 +22,14 @@ import { SortingState } from "@tanstack/react-table";
 import { Tooltip } from "@/components/ui/tooltip";
 import FileUploader from "@/components/customcomponents/FileUploader";
 import { Alarm, AlarmResponse, AppState, Device, DeviceFileNameMap, DeviceNameMac, DeviceUpdateMessage, UpdatedFieldsMap } from "@/models/allInterfaces";
-import { Button, Input, Popover, Portal, Text } from "@chakra-ui/react"
+import { Button, Input, Popover, Portal, Text } from "@chakra-ui/react";
 import * as go from "gojs";
 import { useImmer } from "use-immer";
 import { ReactDiagramWrapper } from "@/components/customcomponents/ReactDiagramWrapper";
 import { formatDateTime, getIcon } from "@/utils/helperfunctions";
 import Settings from "@/components/customcomponents/Settings";
+import { useDeviceAlertSubscription } from "@/utils/customhooks/useDeviceAlertSubscription";
+import { useDevicesTopDataSubscription } from "@/utils/customhooks/useDeviceTopDataSubscription";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,7 +60,7 @@ export default function Home() {
   const [isAlarmPanelOpen, setIsAlarmPanelOpen] = useState<boolean>(false);
   const [isAlarmPopOverOpen, setIsAlarmPopOverOpen] = useState<boolean>(false);
   const [isProfilePopOverOpen, setIsProfilePopOverOpen] = useState<boolean>(false);
-  const [latestAlarms, setLatestAlarms] = useState<Alarm[]>([]);
+  const [latestAlarms, setLatestAlarms] = useState<any[]>([]);
   const [totalAlarms, setTotalAlarms] = useState<number>(0);
   const [selectedDevicePropertyPanel, setSelectedDevicePropertyPanel] = useState<any>(null);
   const [totalCount, setTotalCount] = useState(0);
@@ -243,16 +245,20 @@ export default function Home() {
 
   const handleAlertUpdates = useCallback((msg: string) => {
     const incomingUpdates: AlarmResponse = JSON.parse(msg);
-
+    console.log("Alert Updates : ", incomingUpdates);
+    
     setLatestAlarms(incomingUpdates.alarms);
     setTotalAlarms(incomingUpdates.totalAlarms);
   }, []);
 
   // SignalR connection for devices top level data
-  useDevicesTopDataSocket(handleUpdate);
+  // useDevicesTopDataSocket(handleUpdate);
+  useDevicesTopDataSubscription(handleUpdate);
 
   //signalR for alarms data
-  useDeviceAlertSocket("sampleDeviceId", handleAlertUpdates, "ReceiveMainPageUpdates");
+  // useDeviceAlertSocket("sampleDeviceId", handleAlertUpdates, "ReceiveMainPageUpdates");
+  //graphql subscription for alarms data
+  useDeviceAlertSubscription(null,handleAlertUpdates,"mainPage");
 
   // Initial data fetch
   useEffect(() => {

@@ -1,10 +1,10 @@
 {
   "Name": "Main Load Balancer",
   "Type": "Networking Device",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "00:1D:7E:3A:9F:58",
   "Connectivity": "Low",
-  "LastUpdated": "2025-12-08T09:26:18.7322231Z",
+  "LastUpdated": "2025-12-24T07:05:38.1460839Z",
   "staticProperties": {
     "Hardware \u0026 Specs": {
       "Model": "F5 BIG-IP i5800",
@@ -57,43 +57,43 @@
   },
   "dynamicProperties": {
     "Current Usage": {
-      "Power State": "Off",
-      "Load Balancing Algorithm": "Round Robin",
-      "Total Active Connections": 1024,
-      "Total Requests Per Second": 601,
+      "Power State": "On",
+      "Load Balancing Algorithm": "IP Hash",
+      "Total Active Connections": 1800,
+      "Total Requests Per Second": 1382,
       "Health Checks Running": true,
-      "Backends Online": 1,
-      "Backends Offline": 11,
+      "Backends Online": 0,
+      "Backends Offline": 3,
       "SSL Offloading": true
     },
     "Network Activity": {
-      "IP Address": "192.168.185.184",
+      "IP Address": "192.168.170.4",
       "Connection Type": "Ethernet",
       "Data Usage": {
-        "Today": "7.0 GB",
-        "This Week": "7.9 GB",
-        "This Month": "7.1 GB"
+        "Today": "2.1 GB",
+        "This Week": "9.9 GB",
+        "This Month": "3.0 GB"
       },
-      "Packet Loss (%)": 2.64,
+      "Packet Loss (%)": 0.08,
       "Throughput": {
         "Inbound": "Unsupported Type",
         "Outbound": "Unsupported Type"
       },
-      "Last Online": "2025-12-08T09:26:16.1121266Z"
+      "Last Online": "2025-12-24T07:05:28.5356101Z"
     },
     "System Status": {
-      "Uptime": "1 days, 14 hrs",
-      "Last Reboot": "2025-12-08T09:26:16.1121300Z",
+      "Uptime": "0 days, 4 hrs",
+      "Last Reboot": "2025-12-24T07:05:28.5356150Z",
       "Software Update Available": true,
-      "Last Software Update": "2025-12-08T09:26:16.1121312Z",
+      "Last Software Update": "2025-12-24T07:05:28.5356173Z",
       "Temperature": {
-        "CPU": 20.79,
-        "Chassis": 54.76
+        "CPU": 88.83,
+        "Chassis": 30.04
       },
       "Storage Info": {
-        "Total Storage": "4.1 GB",
-        "Used": "0.0 GB",
-        "Free": "2.3 GB"
+        "Total Storage": "5.8 GB",
+        "Used": "5.3 GB",
+        "Free": "2.5 GB"
       }
     }
   },

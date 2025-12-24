@@ -76,8 +76,4 @@ export interface AppState {
   selectedDevice: Device | null;
 }
 
-
-
 // ***************************************************************************
-
-

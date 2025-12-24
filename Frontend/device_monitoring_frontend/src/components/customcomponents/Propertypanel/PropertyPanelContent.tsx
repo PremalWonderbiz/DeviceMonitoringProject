@@ -7,6 +7,7 @@ import { useAccordionState } from "@/components/customcomponents/Propertypanel/A
 import { renderKeyValueSection, renderObject } from "@/utils/propertypanelfunctions";
 import Badge from "@/components/customcomponents/Badge";
 import { Alarm, AlarmUpdateMessage } from "@/models/propertyPanelInterfaces";
+import { useDeviceAlertSubscription } from "@/utils/customhooks/useDeviceAlertSubscription";
 
 export const StaticTabContent = React.memo(({ staticProps }: { staticProps: any }) => {
   return (
@@ -34,7 +35,7 @@ export const HealthTabContent = React.memo(
     deviceMacId,
     dynamicProps,
   }: any) => {
-    const [alarm, setAlarm] = useState<Alarm | null>(null);
+    const [alarm, setAlarm] = useState<any | null>(null);
     const [totalAlarmsForDevice, setTotalAlarmsForDevice] = useState<number>(0);
     const accordionContext = useAccordionState();
 
@@ -58,7 +59,8 @@ export const HealthTabContent = React.memo(
       }
     };
 
-    useDeviceAlertSocket(deviceMacId, handleAlertUpdates, "ReceivePropertyPanelAlarmUpdates");
+    // useDeviceAlertSocket(deviceMacId, handleAlertUpdates, "ReceivePropertyPanelAlarmUpdates");
+    useDeviceAlertSubscription(deviceMacId,handleAlertUpdates,"propertyPanel");
 
     useEffect(() => {
       const fetchLatestAlarmData = async () => {

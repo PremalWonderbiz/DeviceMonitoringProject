@@ -29,10 +29,10 @@ namespace Infrastructure.Cache
     public class DeviceStateCache
     {
         //local
-        //private readonly string _dataDirectory = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory())!.FullName, "Infrastructure", "Data");
+        private readonly string _dataDirectory = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory())!.FullName, "Infrastructure", "Data");
 
         //docker
-        private readonly string _dataDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Data");
+        //private readonly string _dataDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Data");
         private readonly ILogger<DeviceStatePersistenceService> _logger;
         private readonly ConcurrentDictionary<string, DeviceState> _deviceMap = new();
         private readonly Dictionary<string, string> _fileMap = new();

@@ -3,8 +3,8 @@
   "Type": "Personal Device",
   "Status": "Offline",
   "MacId": "3C:5A:B4:91:22:AC",
-  "Connectivity": "High",
-  "LastUpdated": "2025-12-08T09:26:18.7512122Z",
+  "Connectivity": "Low",
+  "LastUpdated": "2025-12-24T07:05:38.1863584Z",
   "staticProperties": {
     "Hardware Details": {
       "Operating System": "Windows 11 Pro",
@@ -79,71 +79,71 @@
   "dynamicProperties": {
     "System Status": {
       "Battery": {
-        "Level": "55%",
-        "Charging Status": "Discharging",
+        "Level": "24%",
+        "Charging Status": "Full",
         "Health": "Fair",
         "Estimated Time Left": "Unsupported Type"
       },
-      "CPU Load": "8%",
+      "CPU Load": "19%",
       "RAM Usage": {
-        "Used": 8.47,
-        "Free": 15.44
+        "Used": 17.51,
+        "Free": 4.37
       },
       "GPU Usage": {
-        "Integrated": "87%",
-        "Dedicated": "90%"
+        "Integrated": "31%",
+        "Dedicated": "80%"
       },
       "Temperature": {
-        "CPU": 49.77,
-        "GPU": 58.03,
-        "Motherboard": 42.9
+        "CPU": 52.88,
+        "GPU": 47.32,
+        "Motherboard": 38.71
       },
-      "System Uptime": "0 days, 15 hrs"
+      "System Uptime": "7 days, 22 hrs"
     },
     "Network Activity": {
       "Current Wi-Fi": {
         "SSID": "Office_Network_5G",
-        "IP Address": "192.168.183.132",
-        "Signal Strength": "-41 dBm",
+        "IP Address": "192.168.217.147",
+        "Signal Strength": "-67 dBm",
         "Data Usage (Today)": {
-          "Download": "9.9 GB",
-          "Upload": "7.6 GB"
+          "Download": "9.8 GB",
+          "Upload": "3.2 GB"
         }
       },
       "VPN Status": {
-        "Connected": false,
-        "Provider": "NordLayer",
-        "IP": "192.168.242.210"
+        "Connected": true,
+        "Provider": "Zscaler",
+        "IP": "192.168.82.126"
       }
     },
     "Application Activity": {
       "Foreground Apps": [
         {
-          "App Name": "Figma",
-          "CPU": "17%",
-          "Memory": 0.75
+          "App Name": "Postman",
+          "CPU": "56%",
+          "Memory": 0.78
         },
         {
-          "App Name": "Visual Studio Code",
-          "CPU": "4%",
-          "Memory": 0.65
+          "App Name": "Postman",
+          "CPU": "29%",
+          "Memory": 1.78
         },
         {
-          "App Name": "Visual Studio Code",
-          "CPU": "74%",
-          "Memory": 2.27
+          "App Name": "Slack",
+          "CPU": "95%",
+          "Memory": 2.09
         },
         {
-          "App Name": "Zoom",
-          "CPU": "99%",
-          "Memory": 1.79
+          "App Name": "Edge Browser",
+          "CPU": "54%",
+          "Memory": 1.62
         }
       ],
-      "Background Processes": 57,
+      "Background Processes": 91,
       "Recent Apps Launched": [
+        "Jira",
         "Edge Browser",
-        "Figma",
-        "Spotify"
+        "Zoom"
       ]
     }
   },

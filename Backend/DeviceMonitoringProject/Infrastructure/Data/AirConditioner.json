@@ -3,8 +3,8 @@
   "Type": "Smart Appliance",
   "Status": "Offline",
   "MacId": "98:5F:D3:4B:22:AC",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-12-08T09:26:18.7392512Z",
+  "Connectivity": "Medium",
+  "LastUpdated": "2025-12-24T07:05:38.1583742Z",
   "staticProperties": {
     "Hardware Specifications": {
       "AC Type": "Split Inverter",
@@ -55,49 +55,49 @@
     "Current Status": {
       "Power State": "Off",
       "Mode": "Fan",
-      "Set Temperature": 18,
-      "Current Room Temperature": 16.22,
-      "Fan Speed": "Medium",
+      "Set Temperature": 22,
+      "Current Room Temperature": 24.3,
+      "Fan Speed": "Auto",
       "Swing Mode": {
         "Vertical Swing": "Off",
         "Horizontal Swing": "Auto"
       },
-      "Humidity Level": "45%",
+      "Humidity Level": "72%",
       "Sleep Mode": true
     },
     "Sensor Data": {
       "Temperature Sensors": [
-        47,
-        80
+        67,
+        95
       ],
       "Humidity Sensor": {
         "Sensor ID": "HS001",
-        "Reading": "62%"
+        "Reading": "93%"
       }
     },
     "Power Consumption Stats": {
-      "Today": 7.56,
-      "This Week": 59.65,
-      "This Month": 19.56,
-      "Power Saving Mode": "Disabled",
-      "Last Reset": "2025-12-08T09:26:16.1125570Z"
+      "Today": 7.5,
+      "This Week": 44.81,
+      "This Month": 39.08,
+      "Power Saving Mode": "Enabled",
+      "Last Reset": "2025-12-24T07:05:28.5367627Z"
     },
     "Network Activity": {
-      "IP Address": "192.168.130.15",
-      "Signal Strength": "-43 dBm",
-      "Last Connected": "2025-12-08T09:26:16.1125608Z",
+      "IP Address": "192.168.94.133",
+      "Signal Strength": "-54 dBm",
+      "Last Connected": "2025-12-24T07:05:28.5367764Z",
       "Control Access": [
-        8,
-        36
+        99,
+        33
       ]
     },
     "Service Logs": {
-      "Filter Status": "Clean",
+      "Filter Status": "Dirty",
       "Service History": [
-        63,
-        71
+        6,
+        68
       ],
-      "Next Scheduled Maintenance": "2025-12-08T09:26:16.1125654Z"
+      "Next Scheduled Maintenance": "2025-12-24T07:05:28.5367861Z"
     }
   },
   "topLevelObservables": {

@@ -1,0 +1,53 @@
+# ===============================
+# Investigate alarm
+# ===============================
+mutation InvestigateAlarm($id: UUID!) {
+  investigateAlarm(id: $id) {
+    id
+    sourceDeviceMacId
+    alarmState
+    isAcknowledged
+    acknowledgedFrom
+    acknowledgedAt
+    severity
+    message
+    raisedAt
+    alarmComment
+  }
+}
+
+# ===============================
+# Resolve alarm
+# ===============================
+mutation ResolveAlarm($id: UUID!, $comment: String!) {
+  resolveAlarm(id: $id, comment: $comment) {
+    id
+    sourceDeviceMacId
+    alarmState
+    isAcknowledged
+    acknowledgedFrom
+    acknowledgedAt
+    severity
+    message
+    raisedAt
+    alarmComment
+  }
+}
+
+# ===============================
+# Ignore alarm
+# ===============================
+mutation IgnoreAlarm($id: UUID!, $comment: String!) {
+  ignoreAlarm(id: $id, comment: $comment) {
+    id
+    sourceDeviceMacId
+    alarmState
+    isAcknowledged
+    acknowledgedFrom
+    acknowledgedAt
+    severity
+    message
+    raisedAt
+    alarmComment
+  }
+}

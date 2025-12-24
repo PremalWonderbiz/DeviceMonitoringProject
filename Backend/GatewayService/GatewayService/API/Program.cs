@@ -3,6 +3,7 @@
 //tesing for sonarqube and coverity in pipeline v2
 //tesing for generic pipeline pipeline v42
 using API.RealTime;
+using HotChocolate.Execution.Processing;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSignalR();
+
+builder.Services
+    .AddGraphQLServer()
+    .AddQueryType<API.GraphQL.Query>()
+    .AddSubscriptionType<API.GraphQL.Subscription>()
+    .AddInMemorySubscriptions();
 
 builder.Services.AddCors(options =>
 {
@@ -41,6 +48,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapHub<GatewayHub>("/ws/gateway"); // Central WebSocket endpoint
+app.UseWebSockets();
+app.MapGraphQL("/graphql");
 
 app.UseCors("CorsPolicy");
 

@@ -10,6 +10,10 @@ using Infrastructure.Persistence;
 using Infrastructure.RealTime;
 using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using API.GraphQL;
+using API.GraphQL.Inputs;
+using API.GraphQL.Types;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,13 +28,9 @@ builder.Services.AddScoped<AlertService>();
 //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 //);
 
-//var dbPath = "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoring.db";
-//builder.Services.AddDbContext<AlarmDbContext>(options =>
-//    options.UseSqlite($"Data Source={dbPath}"));
-
-var connectionString = builder.Configuration.GetConnectionString("Default");
+var dbPath = "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoring.db";
 builder.Services.AddDbContext<AlarmDbContext>(options =>
-    options.UseSqlite(connectionString));
+    options.UseSqlite($"Data Source={dbPath}"));
 
 builder.Services.AddCors(options =>
 {
@@ -42,17 +42,20 @@ builder.Services.AddCors(options =>
             .AllowCredentials());
 });
 
+//Graphql
+builder.Services
+    .AddGraphQLServer()
+    .AddQueryType<AlarmQueries>()
+    .AddMutationType<AlarmMutations>()
+    .AddType<AlarmFilterInputType>()
+    .AddType<LatestAlarmsType>()
+    .AddType<LatestAlarmForDeviceType>()
+    .AddType<AlarmStateType>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient<AlertService>();
-
-//docker data directory
-var dataPath = "/data";
-if (!Directory.Exists(dataPath))
-{
-    Directory.CreateDirectory(dataPath);
-}
 
 var app = builder.Build();
 
@@ -76,6 +79,9 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//Graphql
+app.MapGraphQL("/graphql");
 
 app.UseCors("CorsPolicy");
 

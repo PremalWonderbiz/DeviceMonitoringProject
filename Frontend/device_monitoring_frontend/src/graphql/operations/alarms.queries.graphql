@@ -1,0 +1,69 @@
+# ===============================
+# Get alarms (alarm panel)
+# ===============================
+query GetAlarms($filter: AlarmFilter!) {
+  alarms(filter: $filter) {
+    id
+    sourceDeviceMacId
+    severity
+    message
+    raisedAt
+    alarmState
+    acknowledgedFrom
+    isAcknowledged
+    acknowledgedAt
+    alarmComment
+  }
+}
+
+# ===============================
+# Latest alarms (global)
+# ===============================
+query GetLatestAlarms {
+  latestAlarms {
+    totalAlarms
+    alarms {
+      id
+      sourceDeviceMacId
+      severity
+      message
+      raisedAt
+      alarmState
+      acknowledgedFrom
+      isAcknowledged
+      acknowledgedAt
+      alarmComment
+    }
+  }
+}
+
+# ===============================
+# Latest alarm for device
+# ===============================
+query GetLatestAlarmForDevice($deviceMacId: String!) {
+  latestAlarmForDevice(deviceMacId: $deviceMacId) {
+    totalAlarms
+    alarm {
+      id
+      sourceDeviceMacId
+      severity
+      message
+      raisedAt
+      alarmState
+      acknowledgedFrom
+      isAcknowledged
+      acknowledgedAt
+      alarmComment
+    }
+  }
+}
+
+# ===============================
+# Alarm states
+# ===============================
+query GetAlarmStates {
+  alarmStates {
+    id
+    name
+  }
+}

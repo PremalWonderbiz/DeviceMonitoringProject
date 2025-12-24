@@ -1,16 +1,16 @@
 // components/AlarmPanel.tsx
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styles from "@/styles/scss/AlarmPanel.module.scss";
 import Badge from '../Badge';
 import Accordion from '../Accordion';
 import { getAlarmPanelData, ignoreAlarm, investigateAlarm, resolveAlarm } from '@/services/alarmservice';
-import { useDeviceAlertSocket } from '@/utils/customhooks/useDeviceAlertSocket';
 import SelectDevicesComboBox from '@/components/customcomponents/AlarmPanel/SelectDevicesComboBox';
 import { DateRangePicker } from 'rsuite';
 import { Badge as ChakraBadge, CloseButton, Wrap } from "@chakra-ui/react";
 import AlarmCard from './AlarmCard';
 import { Tooltip } from '@/components/ui/tooltip';
 import { ListX } from 'lucide-react';
+import { useDeviceAlertSubscription } from '@/utils/customhooks/useDeviceAlertSubscription';
 
 const priorityMap: any = {
   Critical: 0,
@@ -36,7 +36,8 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
   }, []);
 
   // SignalR connection for alarm panel data  
-  useDeviceAlertSocket("sampleDeviceId", handleAlertUpdates, "ReceiveAlarmPanelUpdates", shouldConnectSignalR);
+  // useDeviceAlertSocket("sampleDeviceId", handleAlertUpdates, "ReceiveAlarmPanelUpdates", shouldConnectSignalR);
+  useDeviceAlertSubscription(null, handleAlertUpdates, "alarmPanel", shouldConnectSignalR);
 
   const severityColors: Record<string, { bg: string; color: string }> = {
     Critical: { bg: 'criticalAlarm', color: 'light' },
@@ -155,11 +156,10 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
     }
   }
 
-  const removeunacknowledgedAlarm = async (alarmId: any, input:any) => {
-    const response = await ignoreAlarm(alarmId,input);
+  const removeunacknowledgedAlarm = async (alarmId: any, input: any) => {
+    const response = await ignoreAlarm(alarmId, input);
     if (!response)
       console.log("Network response was not ok");
-
     if (response && response.data) {
       const ackAlarm = unacknowledgedAlarms.find((a: any) => a.id == alarmId);
       ackAlarm.alarmState = response.data.alarmState;
@@ -179,11 +179,11 @@ const AlarmPanel = ({ devicesNameMacList, selectedDevicePropertyPanel, setSelect
     }
   }
 
-  const removeacknowledgedAlarm = async (alarmId: any, input:any) => {
-    const response = await ignoreAlarm(alarmId,input);
+  const removeacknowledgedAlarm = async (alarmId: any, input: any) => {
+    const response = await ignoreAlarm(alarmId, input);
+    const x = 10;
     if (!response)
       console.log("Network response was not ok");
-
     if (response && response.data) {
       const updatedAlarm = {
         ...acknowledgedAlarms.find((a: any) => a.id == alarmId),
