@@ -1,0 +1,17 @@
+# ===============================
+# Get alarms (alarm panel)
+# ===============================
+query GetAlarms($filter: AlarmFilter!) {
+  alarms(filter: $filter) {
+    id
+    sourceDeviceMacId
+    severity
+    message
+    raisedAt
+    alarmState
+    acknowledgedFrom
+    isAcknowledged
+    acknowledgedAt
+    alarmComment
+  }
+}

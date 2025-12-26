@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bu3fRK/7n7U=",
+  "dgSpecHash": "lG1ihxYe89k=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Premal Kadam\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Premal Kadam\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

@@ -6593,11 +6593,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\API.csproj",
+      "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\API.csproj",
       "packagesPath": "C:\\Users\\Premal Kadam\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\API\\obj\\",
+      "outputPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -6619,17 +6619,17 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Application.csproj": {
-              "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Application.csproj"
+            "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Application.csproj": {
+              "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Application.csproj"
             },
-            "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Common\\Common.csproj": {
-              "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Common\\Common.csproj"
+            "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Common\\Common.csproj": {
+              "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Common\\Common.csproj"
             },
-            "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj"
+            "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj"
             },
-            "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

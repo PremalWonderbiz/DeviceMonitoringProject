@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0w1dsEJJ1So=",
+  "dgSpecHash": "GWHoeZt4kqY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\GatewayService\\GatewayService\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Premal Kadam\\.nuget\\packages\\chillicream.nitro.app\\28.0.7\\chillicream.nitro.app.28.0.7.nupkg.sha512",
     "C:\\Users\\Premal Kadam\\.nuget\\packages\\greendonut\\15.1.11\\greendonut.15.1.11.nupkg.sha512",

@@ -5,9 +5,7 @@ import { execSync } from "child_process";
 const FRONTEND_ROOT = "Frontend";
 const LOG_FILE = "graphql-codegen.log";
 
-// --------------------------------------------------
 // Logger (overwrite file on every run)
-// --------------------------------------------------
 const logStream = fs.createWriteStream(LOG_FILE, { flags: "w" });
 
 function writeLog(message) {
@@ -23,11 +21,8 @@ function run(cmd, options = {}) {
   execSync(cmd, { stdio: "inherit", ...options });
 }
 
-// --------------------------------------------------
-// Helpers
-// --------------------------------------------------
 function hasCodegenConfig(appPath) {
-  return fs.existsSync(path.join(appPath, "codegen.yml"));
+  return fs.existsSync(path.join(appPath, "codegen.ts"));
 }
 
 function getFrontendApps() {
@@ -46,17 +41,7 @@ function hasGitChanges(targetPath) {
   }
 }
 
-function hasCodegenScript(appPath) {
-  const pkgPath = path.join(appPath, "package.json");
-  if (!fs.existsSync(pkgPath)) return false;
-
-  const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf-8"));
-  return Boolean(pkg.scripts?.codegen);
-}
-
-// --------------------------------------------------
 // Script start
-// --------------------------------------------------
 writeLog("GraphQL codegen hook started");
 
 const appsWithCodegen = getFrontendApps().filter(hasCodegenConfig);
@@ -71,15 +56,7 @@ appsWithCodegen.forEach((appPath) => {
   try {
     writeLog(`Running GraphQL codegen in ${appPath}`);
 
-    if (hasCodegenScript(appPath)) {
-      run("npm run codegen", { cwd: appPath });
-    } else {
-      writeLog(
-        `No codegen script found in ${appPath}, falling back to npx graphql-codegen`
-      );
-      run("npx graphql-codegen", { cwd: appPath });
-    }
-
+    run("npx graphql-codegen --config codegen.ts", { cwd: appPath });
     if (hasGitChanges(appPath)) {
       writeLog(`Staging generated GraphQL files in ${appPath}`);
       run(`git add ${appPath}`);

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj",
+      "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\Premal Kadam\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Domain\\obj\\",
+      "outputPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

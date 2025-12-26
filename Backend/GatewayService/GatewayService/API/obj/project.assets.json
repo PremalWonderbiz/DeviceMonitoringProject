@@ -3481,11 +3481,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\GatewayService\\GatewayService\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\API.csproj",
+      "projectPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\GatewayService\\GatewayService\\API\\API.csproj",
       "packagesPath": "C:\\Users\\Premal Kadam\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\GatewayService\\GatewayService\\API\\obj\\",
+      "outputPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\GatewayService\\GatewayService\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

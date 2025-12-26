@@ -1,0 +1,8 @@
+[2025-12-26T05:55:30.879Z] GraphQL codegen hook started
+[2025-12-26T05:55:30.882Z] Running GraphQL codegen in Frontend\device-monitoring-viz
+[2025-12-26T05:55:30.882Z] $ npx graphql-codegen --config codegen.ts
+[2025-12-26T05:55:33.787Z] No generated changes in Frontend\device-monitoring-viz
+[2025-12-26T05:55:33.787Z] Running GraphQL codegen in Frontend\device_monitoring_frontend
+[2025-12-26T05:55:33.787Z] $ npx graphql-codegen --config codegen.ts
+[2025-12-26T05:55:36.158Z] No generated changes in Frontend\device_monitoring_frontend
+[2025-12-26T05:55:36.159Z] GraphQL codegen completed successfully

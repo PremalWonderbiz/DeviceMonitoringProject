@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9HAu04uTnE0=",
+  "dgSpecHash": "SMOcqusqDFs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring\\Backend\\DeviceMonitoringProject\\Application\\Application.csproj",
+  "projectFilePath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\DeviceMonitoringProject\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Premal Kadam\\.nuget\\packages\\microsoft.aspnetcore.http\\2.3.0\\microsoft.aspnetcore.http.2.3.0.nupkg.sha512",
     "C:\\Users\\Premal Kadam\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.3.0\\microsoft.aspnetcore.http.abstractions.2.3.0.nupkg.sha512",

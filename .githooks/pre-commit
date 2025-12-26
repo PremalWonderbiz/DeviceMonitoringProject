@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "Running Git Pre-commit Hook: Generating GraphQL Code..."
+node scripts/run-graphql-codegen.js
