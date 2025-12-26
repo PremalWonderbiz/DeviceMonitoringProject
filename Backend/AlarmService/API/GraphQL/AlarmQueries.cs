@@ -1,6 +1,6 @@
 ﻿using Application.Dtos;
 using Domain.Interface;
-
+//cmt to verify codegen
 namespace API.GraphQL
 {
     public class AlarmQueries

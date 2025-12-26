@@ -15,3 +15,11 @@ query GetAlarms($filter: AlarmFilter!) {
     alarmComment
   }
 }
+
+query GetAlarmsV2($filter: AlarmFilter!) {
+  alarms(filter: $filter) {
+    id
+    sourceDeviceMacId
+    message
+  }
+}
