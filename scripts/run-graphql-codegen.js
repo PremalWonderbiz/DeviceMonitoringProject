@@ -1,18 +1,19 @@
 import fs from "fs";
 import path from "path";
 import { execSync } from "child_process";
+import { log } from "console";
 
 const FRONTEND_ROOT = "Frontend";
 const LOG_FILE = "graphql-codegen.log";
 
-// Logger (overwrite file on every run)
-const logStream = fs.createWriteStream(LOG_FILE, { flags: "w" });
-
+// Logger (sync file logging)
+fs.appendFileSync(
+  LOG_FILE,
+  `------------------------------------------- LOGS : [${new Date().toISOString()}] -----------------------------------------------------\n`
+);
 function writeLog(message) {
   const line = `[${new Date().toISOString()}] ${message}\n`;
-  logStream.write(line);
-
-  // Optional: also print to console
+  fs.appendFileSync(LOG_FILE, line);
   console.log(message);
 }
 
@@ -33,22 +34,52 @@ function getFrontendApps() {
 }
 
 function hasGitChanges(targetPath) {
+  const output = execSync(`git status --porcelain ${targetPath}`, {
+    encoding: "utf-8",
+  });
+  return output.trim().length > 0;
+}
+
+// GraphQL Change Detection
+function normalizePath(p) {
+  return p.replace(/\\/g, "/").toLowerCase();
+}
+
+function getGitChangedFiles() {
   try {
-    execSync(`git diff --quiet ${targetPath}`, { stdio: "ignore" });
-    return false;
+    const output = execSync("git diff --cached --name-only", {
+      encoding: "utf-8",
+    });
+
+    return output
+      .split("\n")
+      .map((f) => f.trim())
+      .filter(Boolean)
+      .map(normalizePath);
   } catch {
-    return true;
+    return [];
   }
 }
 
-// Script start
+// Matches **/graphql/**/*
+function hasAnyGraphQLFolderChanges(changedFiles) {
+  return changedFiles.some((file) => file.includes("/graphql/"));
+}
+
+//  Script start
 writeLog("GraphQL codegen hook started");
+
+const changedFiles = getGitChangedFiles();
+
+if (!hasAnyGraphQLFolderChanges(changedFiles)) {
+  writeLog("No GraphQL-related changes detected anywhere. Skipping codegen.");
+  process.exit(0);
+}
 
 const appsWithCodegen = getFrontendApps().filter(hasCodegenConfig);
 
 if (appsWithCodegen.length === 0) {
   writeLog("No frontend apps with GraphQL codegen found. Skipping.");
-  logStream.end();
   process.exit(0);
 }
 
@@ -56,7 +87,8 @@ appsWithCodegen.forEach((appPath) => {
   try {
     writeLog(`Running GraphQL codegen in ${appPath}`);
 
-    run("npx graphql-codegen --config codegen.ts", { cwd: appPath });
+    run("npx graphql-codegen", { cwd: appPath });
+
     if (hasGitChanges(appPath)) {
       writeLog(`Staging generated GraphQL files in ${appPath}`);
       run(`git add ${appPath}`);
@@ -65,10 +97,9 @@ appsWithCodegen.forEach((appPath) => {
     }
   } catch (error) {
     writeLog(`Codegen failed in ${appPath}`);
-    logStream.end();
+    writeLog(`Stopping commit process due to codegen failure`);
     process.exit(1);
   }
 });
 
 writeLog("GraphQL codegen completed successfully");
-logStream.end();

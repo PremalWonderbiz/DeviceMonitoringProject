@@ -16,15 +16,6 @@ query GetAlarms($filter: AlarmFilter!) {
   }
 }
 
-query GetAlarmsV2($filter: AlarmFilter!) {
-  alarms(filter: $filter) {
-    id
-    sourceDeviceMacId
-    severity
-    message
-  }
-}
-
 # ===============================
 # Latest alarms (global)
 # ===============================
