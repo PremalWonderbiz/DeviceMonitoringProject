@@ -1,20 +1,13 @@
-import { useEffect, useRef } from "react";
+import { DeviceUpdatesSubscription } from "@/graphql/generated/gatewayservice";
+import { DEVICE_UPDATES_SUB } from "@/services/apolloSubscriptions";
 import { useSubscription } from "@apollo/client/react";
-import { DEVICE_UPDATES_SUB } from "@/services/subscriptions";
-
-
-// Types
-interface DeviceUpdatesResult {
-  deviceUpdates: string;
-}
+import { useEffect, useRef } from "react";
 
 /* ================================
    Hook
 ================================ */
 
-export function useDevicesTopDataSubscription(
-  onUpdate: (data: any) => void
-) {
+export function useDevicesTopDataSubscription(onUpdate: (data: any) => void) {
   const onUpdateRef = useRef(onUpdate);
 
   // keep latest callback without resubscribing
@@ -22,9 +15,8 @@ export function useDevicesTopDataSubscription(
     onUpdateRef.current = onUpdate;
   }, [onUpdate]);
 
-  const { data } = useSubscription<DeviceUpdatesResult>(
-    DEVICE_UPDATES_SUB
-  );
+  const { data } =
+    useSubscription<DeviceUpdatesSubscription>(DEVICE_UPDATES_SUB);
 
   useEffect(() => {
     if (data?.deviceUpdates !== undefined) {

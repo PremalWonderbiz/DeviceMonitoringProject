@@ -4,7 +4,7 @@
   "Status": "Online",
   "MacId": "00:1D:7E:3A:9F:58",
   "Connectivity": "Low",
-  "LastUpdated": "2025-12-24T07:05:38.1460839Z",
+  "LastUpdated": "2025-12-26T12:09:24.5559957Z",
   "staticProperties": {
     "Hardware \u0026 Specs": {
       "Model": "F5 BIG-IP i5800",
@@ -57,43 +57,43 @@
   },
   "dynamicProperties": {
     "Current Usage": {
-      "Power State": "On",
-      "Load Balancing Algorithm": "IP Hash",
-      "Total Active Connections": 1800,
-      "Total Requests Per Second": 1382,
+      "Power State": "Off",
+      "Load Balancing Algorithm": "Least Connections",
+      "Total Active Connections": 838,
+      "Total Requests Per Second": 1318,
       "Health Checks Running": true,
-      "Backends Online": 0,
-      "Backends Offline": 3,
-      "SSL Offloading": true
+      "Backends Online": 10,
+      "Backends Offline": 5,
+      "SSL Offloading": false
     },
     "Network Activity": {
-      "IP Address": "192.168.170.4",
+      "IP Address": "192.168.160.26",
       "Connection Type": "Ethernet",
       "Data Usage": {
-        "Today": "2.1 GB",
-        "This Week": "9.9 GB",
-        "This Month": "3.0 GB"
+        "Today": "4.6 GB",
+        "This Week": "3.1 GB",
+        "This Month": "2.1 GB"
       },
-      "Packet Loss (%)": 0.08,
+      "Packet Loss (%)": 2.41,
       "Throughput": {
         "Inbound": "Unsupported Type",
         "Outbound": "Unsupported Type"
       },
-      "Last Online": "2025-12-24T07:05:28.5356101Z"
+      "Last Online": "2025-12-26T12:09:17.5442897Z"
     },
     "System Status": {
-      "Uptime": "0 days, 4 hrs",
-      "Last Reboot": "2025-12-24T07:05:28.5356150Z",
+      "Uptime": "1 days, 4 hrs",
+      "Last Reboot": "2025-12-26T12:09:17.5442910Z",
       "Software Update Available": true,
-      "Last Software Update": "2025-12-24T07:05:28.5356173Z",
+      "Last Software Update": "2025-12-26T12:09:17.5442918Z",
       "Temperature": {
-        "CPU": 88.83,
-        "Chassis": 30.04
+        "CPU": 41.66,
+        "Chassis": 54.6
       },
       "Storage Info": {
-        "Total Storage": "5.8 GB",
-        "Used": "5.3 GB",
-        "Free": "2.5 GB"
+        "Total Storage": "2.9 GB",
+        "Used": "6.3 GB",
+        "Free": "2.1 GB"
       }
     }
   },

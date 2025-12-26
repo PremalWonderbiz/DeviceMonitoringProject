@@ -5,8 +5,8 @@ import {
   IgnoreAlarmMutationVariables,
   InvestigateAlarmMutationVariables,
   ResolveAlarmMutationVariables,
-} from "@/graphql/generated";
-import { graphqlClient } from "./gqlClient";
+} from "@/graphql/generated/alarmService";
+import { graphqlClient } from "./graphqlClient";
 
 const sdk = getSdk(graphqlClient);
 

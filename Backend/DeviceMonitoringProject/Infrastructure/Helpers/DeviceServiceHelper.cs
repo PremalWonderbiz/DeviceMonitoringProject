@@ -73,7 +73,7 @@ namespace Infrastructure.Helpers
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 try
                 {
-                    await _httpClient.PostAsync($"https://localhost:7169/api/realtime/device-group-update/{macId}", content);
+                    await _httpClient.PostAsync($"http://localhost:5260/api/realtime/device-group-update/{macId}", content);
                 }
                 catch (HttpRequestException ex)
                 {
@@ -117,7 +117,7 @@ namespace Infrastructure.Helpers
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             try
             {
-                await _httpClient.PostAsync("https://localhost:7169/api/realtime/device-update", content);
+                await _httpClient.PostAsync("http://localhost:5260/api/realtime/device-update", content);
             }
             catch (HttpRequestException ex)
             {

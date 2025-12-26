@@ -3,8 +3,8 @@
   "Type": "Smart Appliance",
   "Status": "Offline",
   "MacId": "98:5F:D3:4B:22:AC",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-12-24T07:05:38.1583742Z",
+  "Connectivity": "High",
+  "LastUpdated": "2025-12-26T12:09:24.5754348Z",
   "staticProperties": {
     "Hardware Specifications": {
       "AC Type": "Split Inverter",
@@ -53,51 +53,51 @@
   },
   "dynamicProperties": {
     "Current Status": {
-      "Power State": "Off",
+      "Power State": "On",
       "Mode": "Fan",
-      "Set Temperature": 22,
-      "Current Room Temperature": 24.3,
-      "Fan Speed": "Auto",
+      "Set Temperature": 16,
+      "Current Room Temperature": 16.1,
+      "Fan Speed": "Low",
       "Swing Mode": {
-        "Vertical Swing": "Off",
-        "Horizontal Swing": "Auto"
+        "Vertical Swing": "Auto",
+        "Horizontal Swing": "Off"
       },
-      "Humidity Level": "72%",
+      "Humidity Level": "35%",
       "Sleep Mode": true
     },
     "Sensor Data": {
       "Temperature Sensors": [
-        67,
-        95
+        41,
+        6
       ],
       "Humidity Sensor": {
         "Sensor ID": "HS001",
-        "Reading": "93%"
+        "Reading": "69%"
       }
     },
     "Power Consumption Stats": {
-      "Today": 7.5,
-      "This Week": 44.81,
-      "This Month": 39.08,
-      "Power Saving Mode": "Enabled",
-      "Last Reset": "2025-12-24T07:05:28.5367627Z"
+      "Today": 3.65,
+      "This Week": 63.27,
+      "This Month": 186.58,
+      "Power Saving Mode": "Disabled",
+      "Last Reset": "2025-12-26T12:09:17.5445260Z"
     },
     "Network Activity": {
-      "IP Address": "192.168.94.133",
-      "Signal Strength": "-54 dBm",
-      "Last Connected": "2025-12-24T07:05:28.5367764Z",
+      "IP Address": "192.168.250.239",
+      "Signal Strength": "-59 dBm",
+      "Last Connected": "2025-12-26T12:09:17.5445281Z",
       "Control Access": [
-        99,
-        33
+        12,
+        9
       ]
     },
     "Service Logs": {
-      "Filter Status": "Dirty",
+      "Filter Status": "Needs Cleaning",
       "Service History": [
-        6,
-        68
+        48,
+        20
       ],
-      "Next Scheduled Maintenance": "2025-12-24T07:05:28.5367861Z"
+      "Next Scheduled Maintenance": "2025-12-26T12:09:17.5445329Z"
     }
   },
   "topLevelObservables": {

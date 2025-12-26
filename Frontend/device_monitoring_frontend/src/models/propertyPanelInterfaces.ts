@@ -29,7 +29,6 @@ export interface DeviceNameMac {
   deviceMacId?: string; // In ComboBox you seem to use `deviceMacId`
 }
 
-
 export interface Alarm {
   message: string;
   raisedAt: string;
@@ -39,5 +38,3 @@ export interface AlarmUpdateMessage {
   alarm: Alarm | null;
   totalAlarms: number;
 }
-
-

@@ -70,3 +70,35 @@ C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backe
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Data\SmartTv.json
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Data\Switch.json
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Data\WifiRouter.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Data\AirConditioner.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Data\IpCamera.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Data\Laptop.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Data\LoadBalancer.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Data\Mobile.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Data\NAS.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Data\Printer.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Data\Projector.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Data\RasberryPi.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Data\SmartTv.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Data\Switch.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Data\WifiRouter.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Infrastructure.runtimeconfig.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Application.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Domain.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Application.pdb
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\bin\Debug\net8.0\Domain.pdb
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\DeviceMonitoringProject\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll

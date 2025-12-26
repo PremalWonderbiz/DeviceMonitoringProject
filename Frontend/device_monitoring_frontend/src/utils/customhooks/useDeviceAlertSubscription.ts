@@ -1,30 +1,16 @@
-import { useEffect } from "react";
-import { useSubscription } from "@apollo/client/react";
+import {
+  AlarmPanelUpdatesSubscription,
+  AlarmUpdatesSubscription,
+  PropertyPanelAlarmUpdatesSubscription,
+  PropertyPanelAlarmUpdatesSubscriptionVariables,
+} from "@/graphql/generated/gatewayservice";
 import {
   ALARM_PANEL_SUB,
   ALARM_UPDATES_SUB,
   PROPERTY_PANEL_ALARM_SUB,
-} from "@/services/subscriptions";
-
-/* ================================
-   Typed subscription results
-================================ */
-
-interface AlarmPanelUpdatesResult {
-  alarmPanelUpdates: string;
-}
-
-interface PropertyPanelAlarmUpdatesResult {
-  propertyPanelAlarmUpdates: string;
-}
-
-interface AlarmUpdatesResult {
-  alarmUpdates: string;
-}
-
-interface DeviceIdVariables {
-  deviceId: string;
-}
+} from "@/services/apolloSubscriptions";
+import { useSubscription } from "@apollo/client/react";
+import { useEffect } from "react";
 
 /* ================================
    Hook
@@ -34,27 +20,27 @@ export const useDeviceAlertSubscription = (
   deviceId: string | null,
   onMessage: (msg: string) => void,
   type: "alarmPanel" | "propertyPanel" | "mainPage",
-  shouldConnect : boolean = true
-) => {  
+  shouldConnect: boolean = true
+) => {
   // Alarm panel subscription (no variables)
-  const alarmPanelSub = useSubscription<AlarmPanelUpdatesResult>(
+  const alarmPanelSub = useSubscription<AlarmPanelUpdatesSubscription>(
     ALARM_PANEL_SUB,
     {
       skip: type !== "alarmPanel" || !shouldConnect,
     }
   );
 
-  const mainPageSub = useSubscription<AlarmUpdatesResult>(
+  const mainPageSub = useSubscription<AlarmUpdatesSubscription>(
     ALARM_UPDATES_SUB,
     {
       skip: type !== "mainPage" || !shouldConnect,
     }
   );
-  
+
   // Property panel subscription (requires deviceId)
   const propertyPanelSub = useSubscription<
-    PropertyPanelAlarmUpdatesResult,
-    DeviceIdVariables
+    PropertyPanelAlarmUpdatesSubscription,
+    PropertyPanelAlarmUpdatesSubscriptionVariables
   >(PROPERTY_PANEL_ALARM_SUB, {
     variables: { deviceId: deviceId ?? "" }, // ✅ always present
     skip: type !== "propertyPanel" || !deviceId || !shouldConnect,
@@ -69,8 +55,7 @@ export const useDeviceAlertSubscription = (
     }
 
     if (type === "propertyPanel") {
-      const payload =
-        propertyPanelSub.data?.propertyPanelAlarmUpdates;
+      const payload = propertyPanelSub.data?.propertyPanelAlarmUpdates;
       if (payload !== undefined) {
         onMessage(payload);
       }
@@ -87,7 +72,7 @@ export const useDeviceAlertSubscription = (
     alarmPanelSub.data,
     propertyPanelSub.data,
     mainPageSub.data,
-    onMessage
+    onMessage,
   ]);
 
   // Handle subscription cleanup when shouldConnect changes

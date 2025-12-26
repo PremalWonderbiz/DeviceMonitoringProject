@@ -20,19 +20,19 @@ namespace Infrastructure.RealTime
         public async Task MainPageUpdates(string json)
         {
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            await _httpClient.PostAsync("https://localhost:7169/api/realtime/alarm-update", content);
+            await _httpClient.PostAsync("http://localhost:5260/api/realtime/alarm-update", content);
         }
 
         public async Task AlarmPanelUpdates(string json)
         {
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            await _httpClient.PostAsync("https://localhost:7169/api/realtime/alarmPanel-alarm-update", content);
+            await _httpClient.PostAsync("http://localhost:5260/api/realtime/alarmPanel-alarm-update", content);
         }
 
         public async Task PropertyPanelUpdates(string json, string deviceId)
         {
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            await _httpClient.PostAsync($"https://localhost:7169/api/realtime/propertyPanel-alarm-update/{deviceId}", content);
+            await _httpClient.PostAsync($"http://localhost:5260/api/realtime/propertyPanel-alarm-update/{deviceId}", content);
         }
     }
 }

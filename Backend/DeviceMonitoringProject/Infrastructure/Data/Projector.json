@@ -3,8 +3,8 @@
   "Type": "Entertainment Device",
   "Status": "Offline",
   "MacId": "D0:AB:C5:92:7E:F3",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-12-24T07:05:38.1405229Z",
+  "Connectivity": "High",
+  "LastUpdated": "2025-12-26T12:09:24.5527507Z",
   "staticProperties": {
     "Display \u0026 Hardware": {
       "Projection Type": "DLP",
@@ -74,46 +74,46 @@
       "Power State": "Standby",
       "Input Source": "VGA",
       "Current App": "Plex",
-      "Volume Level": 55,
+      "Volume Level": 73,
       "Mute": true,
-      "Picture Mode": "Vivid",
+      "Picture Mode": "Cinema",
       "Keystone Correction": "Manual",
-      "Lamp Hours Used": 4961
+      "Lamp Hours Used": 4944
     },
     "Streaming Activity": {
       "Watch History (Today)": [
-        25,
-        47
+        84,
+        90
       ],
       "Active App Sessions": [
-        77
+        70
       ],
       "AutoPlay Next Episode": true
     },
     "Network Activity": {
-      "IP Address": "192.168.34.104",
-      "Wi-Fi Signal Strength": "-71 dBm",
+      "IP Address": "192.168.33.78",
+      "Wi-Fi Signal Strength": "-60 dBm",
       "Connection Type": "Wi-Fi",
       "Data Usage": {
-        "Today": "6.8 GB",
-        "This Week": "3.4 GB",
-        "This Month": "6.7 GB"
+        "Today": "5.6 GB",
+        "This Week": "0.3 GB",
+        "This Month": "3.0 GB"
       },
-      "Last Online": "2025-12-24T07:05:28.5351831Z"
+      "Last Online": "2025-12-26T12:09:17.5441103Z"
     },
     "System Status": {
-      "Uptime": "7 days, 8 hrs",
-      "Last Reboot": "2025-12-24T07:05:28.5351887Z",
+      "Uptime": "0 days, 4 hrs",
+      "Last Reboot": "2025-12-26T12:09:17.5441127Z",
       "Software Update Available": true,
-      "Last Software Update": "2025-12-24T07:05:28.5351911Z",
+      "Last Software Update": "2025-12-26T12:09:17.5441135Z",
       "Storage Info": {
-        "Total Storage": "6.3 GB",
-        "Used": "2.9 GB",
-        "Free": "9.7 GB"
+        "Total Storage": "0.2 GB",
+        "Used": "0.9 GB",
+        "Free": "7.5 GB"
       },
       "Temperature": {
-        "Lamp": 54.63,
-        "Mainboard": 49.05
+        "Lamp": 80.47,
+        "Mainboard": 46.15
       }
     }
   },

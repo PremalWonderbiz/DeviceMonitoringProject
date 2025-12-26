@@ -1,0 +1,34 @@
+# ===============================
+# Alarm panel updates
+# ===============================
+subscription AlarmPanelUpdates {
+  alarmPanelUpdates
+}
+
+# ===============================
+# Main page alarm updates
+# ===============================
+subscription AlarmUpdates {
+  alarmUpdates
+}
+
+# ===============================
+# Property panel alarm updates
+# ===============================
+subscription PropertyPanelAlarmUpdates($deviceId: String!) {
+  propertyPanelAlarmUpdates(deviceId: $deviceId)
+}
+
+# ===============================
+# Device updates (if needed)
+# ===============================
+subscription DeviceUpdates {
+  deviceUpdates
+}
+
+# ===============================
+# Device detail updates
+# ===============================
+subscription DeviceDetailUpdates($deviceId: String!) {
+  deviceGroupUpdates(deviceId: $deviceId)
+}

@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { useSubscription } from "@apollo/client/react";
-import { DEVICE_DETAIL_SUB } from "@/services/subscriptions";
 import {
-  DeviceGroupUpdatesResult,
-  DeviceGroupUpdatesVariables
-} from "@/models/graphqlSubscriptions";
+  DeviceDetailUpdatesSubscription,
+  DeviceDetailUpdatesSubscriptionVariables,
+} from "@/graphql/generated/gatewayservice";
+import { DEVICE_DETAIL_SUB } from "@/services/apolloSubscriptions";
+import { useSubscription } from "@apollo/client/react";
+import { useEffect } from "react";
 
 export const useDeviceDetailSubscription = (
   deviceId: string | null,
@@ -12,13 +12,13 @@ export const useDeviceDetailSubscription = (
   enabled = true
 ) => {
   const { data } = useSubscription<
-    DeviceGroupUpdatesResult,
-    DeviceGroupUpdatesVariables
+    DeviceDetailUpdatesSubscription,
+    DeviceDetailUpdatesSubscriptionVariables
   >(DEVICE_DETAIL_SUB, {
     variables: {
-      deviceId: deviceId ?? "",   // ✅ always present
+      deviceId: deviceId ?? "", // always present
     },
-    skip: !enabled || !deviceId,  // ✅ prevents execution
+    skip: !enabled || !deviceId, // prevents execution
   });
 
   useEffect(() => {

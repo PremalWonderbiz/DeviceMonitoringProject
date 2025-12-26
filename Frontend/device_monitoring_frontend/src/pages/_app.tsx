@@ -5,15 +5,15 @@ import "@/styles/scss/utilities.scss";
 import 'rsuite/dist/rsuite-no-reset.min.css';
 import { CustomProvider } from 'rsuite';
 import { ApolloProvider } from "@apollo/client/react";
-import { apolloClient } from "@/services/graphqlClient";
+import { apolloClient } from "@/services/apolloClient";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <CustomProvider>
       <Provider>
-          <ApolloProvider client={apolloClient}>
-            <Component {...pageProps} />
-          </ApolloProvider>
+        <ApolloProvider client={apolloClient}>
+          <Component {...pageProps} />
+        </ApolloProvider>
       </Provider>
     </CustomProvider>
   );
