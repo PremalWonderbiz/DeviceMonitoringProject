@@ -88,3 +88,107 @@
 [2025-12-26T12:12:38.924Z] $ npx graphql-codegen
 [2025-12-26T12:12:41.576Z] Codegen failed in Frontend\device-monitoring-viz
 [2025-12-26T12:12:41.576Z] Stopping commit process due to codegen failure
+
+------------------------------------------- LOGS : [2025-12-26T12:15:03.823Z] -----------------------------------------------------
+[2025-12-26T12:15:03.834Z] GraphQL codegen hook started
+[2025-12-26T12:15:03.921Z] Running GraphQL codegen in Frontend\device-monitoring-viz
+[2025-12-26T12:15:03.922Z] $ npx graphql-codegen
+[2025-12-26T12:15:07.701Z] Staging generated GraphQL files in Frontend\device-monitoring-viz
+[2025-12-26T12:15:07.702Z] $ git add Frontend\device-monitoring-viz
+[2025-12-26T12:15:07.753Z] Running GraphQL codegen in Frontend\device_monitoring_frontend
+[2025-12-26T12:15:07.753Z] $ npx graphql-codegen
+[2025-12-26T12:15:11.055Z] Staging generated GraphQL files in Frontend\device_monitoring_frontend
+[2025-12-26T12:15:11.056Z] $ git add Frontend\device_monitoring_frontend
+[2025-12-26T12:15:11.129Z] GraphQL codegen completed successfully
+
+------------------------------------------- LOGS : [2025-12-29T05:13:53.438Z] -----------------------------------------------------
+[2025-12-29T05:13:53.441Z] GraphQL codegen hook started
+[2025-12-29T05:13:53.942Z] Running GraphQL codegen in Frontend\device-monitoring-viz
+[2025-12-29T05:13:53.954Z] $ npx graphql-codegen
+[2025-12-29T05:14:00.043Z] Codegen failed in Frontend\device-monitoring-viz
+[2025-12-29T05:14:00.044Z] Stopping commit process due to codegen failure
+
+------------------------------------------- LOGS : [2025-12-29T05:14:54.077Z] -----------------------------------------------------
+[2025-12-29T05:14:54.079Z] GraphQL codegen hook started
+[2025-12-29T05:14:54.194Z] Running GraphQL codegen in Frontend\device-monitoring-viz
+[2025-12-29T05:14:54.195Z] $ npx graphql-codegen
+[2025-12-29T05:15:00.327Z] No generated changes in Frontend\device-monitoring-viz
+[2025-12-29T05:15:00.328Z] Running GraphQL codegen in Frontend\device_monitoring_frontend
+[2025-12-29T05:15:00.329Z] $ npx graphql-codegen
+[2025-12-29T05:15:05.469Z] No generated changes in Frontend\device_monitoring_frontend
+[2025-12-29T05:15:05.470Z] GraphQL codegen completed successfully
+
+------------------------------------------- LOGS : [2025-12-29T05:22:22.779Z] -----------------------------------------------------
+[2025-12-29T05:22:22.780Z] GraphQL codegen hook started
+[2025-12-29T05:22:22.852Z] Running GraphQL codegen in Frontend\device-monitoring-viz
+[2025-12-29T05:22:22.853Z] $ npx graphql-codegen
+[2025-12-29T05:22:28.207Z] Staging generated GraphQL files in Frontend\device-monitoring-viz
+[2025-12-29T05:22:28.208Z] $ git add Frontend\device-monitoring-viz
+[2025-12-29T05:22:28.290Z] Running GraphQL codegen in Frontend\device_monitoring_frontend
+[2025-12-29T05:22:28.291Z] $ npx graphql-codegen
+[2025-12-29T05:22:31.501Z] Staging generated GraphQL files in Frontend\device_monitoring_frontend
+[2025-12-29T05:22:31.502Z] $ git add Frontend\device_monitoring_frontend
+[2025-12-29T05:22:31.565Z] GraphQL codegen completed successfully
+
+------------------------------------------- LOGS : [2025-12-29T06:03:54.653Z] -----------------------------------------------------
+[2025-12-29T06:03:54.654Z] GraphQL codegen hook started
+[2025-12-29T06:03:54.704Z] Running GraphQL codegen in Frontend\device-monitoring-viz
+[2025-12-29T06:03:54.705Z] $ npx graphql-codegen
+[2025-12-29T06:03:57.589Z] Staging generated GraphQL files in Frontend\device-monitoring-viz
+[2025-12-29T06:03:57.589Z] $ git add Frontend\device-monitoring-viz
+[2025-12-29T06:03:57.644Z] Running GraphQL codegen in Frontend\device_monitoring_frontend
+[2025-12-29T06:03:57.645Z] $ npx graphql-codegen
+
+------------------------------------------- LOGS : [2025-12-30T05:31:36.709Z] -----------------------------------------------------
+[2025-12-30T05:31:36.711Z] GraphQL codegen hook started
+[2025-12-30T05:31:36.767Z] Running GraphQL codegen in Frontend\device-monitoring-viz
+[2025-12-30T05:31:36.768Z] $ npx graphql-codegen
+[2025-12-30T05:31:39.009Z] Codegen failed in Frontend\device-monitoring-viz
+[2025-12-30T05:31:39.010Z] Stopping commit process due to codegen failure
+
+------------------------------------------- LOGS : [2025-12-30T09:19:14.678Z] -----------------------------------------------------
+[2025-12-30T09:19:14.683Z] GraphQL codegen hook started
+[2025-12-30T09:19:14.771Z] Running GraphQL codegen in Frontend\device-monitoring-viz
+[2025-12-30T09:19:14.772Z] $ npx graphql-codegen
+[2025-12-30T09:19:17.519Z] Codegen failed in Frontend\device-monitoring-viz
+[2025-12-30T09:19:17.520Z] Stopping commit process due to codegen failure
+
+------------------------------------------- LOGS : [2025-12-30T09:22:18.194Z] -----------------------------------------------------
+[2025-12-30T09:22:18.219Z] GraphQL codegen hook started
+[2025-12-30T09:22:18.313Z] Running GraphQL codegen in Frontend/device-monitoring-viz
+[2025-12-30T09:22:18.315Z] $ npx graphql-codegen
+[2025-12-30T09:23:15.838Z] Codegen failed in Frontend/device-monitoring-viz
+[2025-12-30T09:23:15.840Z] Stopping commit process due to codegen failure
+
+------------------------------------------- LOGS : [2025-12-30T09:26:09.807Z] -----------------------------------------------------
+[2025-12-30T09:26:09.809Z] GraphQL codegen hook started
+[2025-12-30T09:26:09.908Z] Running GraphQL codegen in Frontend/device-monitoring-viz
+[2025-12-30T09:26:09.910Z] $ npx graphql-codegen
+[2025-12-30T09:26:23.276Z] Codegen failed in Frontend/device-monitoring-viz
+[2025-12-30T09:26:23.279Z] Stopping commit process due to codegen failure
+
+------------------------------------------- LOGS : [2025-12-30T09:28:00.892Z] -----------------------------------------------------
+[2025-12-30T09:28:00.897Z] GraphQL codegen hook started
+[2025-12-30T09:28:01.009Z] Running GraphQL codegen in Frontend/device-monitoring-viz
+[2025-12-30T09:28:01.013Z] $ npx graphql-codegen
+[2025-12-30T09:28:18.352Z] Codegen failed in Frontend/device-monitoring-viz
+[2025-12-30T09:28:18.354Z] Stopping commit process due to codegen failure
+
+------------------------------------------- LOGS : [2025-12-30T09:28:54.164Z] -----------------------------------------------------
+[2025-12-30T09:28:54.167Z] GraphQL codegen hook started
+[2025-12-30T09:28:54.245Z] Running GraphQL codegen in Frontend/device-monitoring-viz
+[2025-12-30T09:28:54.246Z] $ npx graphql-codegen
+[2025-12-30T09:29:09.408Z] Codegen failed in Frontend/device-monitoring-viz
+[2025-12-30T09:29:09.410Z] Stopping commit process due to codegen failure
+
+------------------------------------------- LOGS : [2025-12-30T09:29:34.737Z] -----------------------------------------------------
+[2025-12-30T09:29:34.746Z] GraphQL codegen hook started
+[2025-12-30T09:29:34.847Z] Running GraphQL codegen in Frontend\device-monitoring-viz
+[2025-12-30T09:29:34.847Z] $ npx graphql-codegen
+[2025-12-30T09:29:38.252Z] Staging generated GraphQL files in Frontend\device-monitoring-viz
+[2025-12-30T09:29:38.253Z] $ git add Frontend\device-monitoring-viz
+[2025-12-30T09:29:38.313Z] Running GraphQL codegen in Frontend\device_monitoring_frontend
+[2025-12-30T09:29:38.313Z] $ npx graphql-codegen
+[2025-12-30T09:29:41.963Z] Staging generated GraphQL files in Frontend\device_monitoring_frontend
+[2025-12-30T09:29:41.964Z] $ git add Frontend\device_monitoring_frontend
+[2025-12-30T09:29:42.035Z] GraphQL codegen completed successfully

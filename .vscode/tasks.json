@@ -11,9 +11,9 @@
         "panel": "dedicated",
         "clear": true
       },
-      "runOptions": {
-        "runOn": "folderOpen"
-      },
+      // "runOptions": {
+      //   "runOn": "folderOpen"
+      // },
       "problemMatcher": []
     }
   ]

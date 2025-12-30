@@ -1,10 +1,10 @@
 {
   "Name": "NAS Server",
   "Type": "Server",
-  "Status": "Offline",
+  "Status": "Online",
   "MacId": "00:1B:44:11:3A:B7",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-12-26T12:09:24.5765133Z",
+  "Connectivity": "High",
+  "LastUpdated": "2025-12-29T06:09:44.8665943Z",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "Synology DSM 7.2",
@@ -124,79 +124,79 @@
   "dynamicProperties": {
     "System Health": {
       "CPU Usage": {
-        "Load Percentage": "59%",
+        "Load Percentage": "50%",
         "Core Usage": [
-          31,
-          94,
-          33,
-          11
+          77,
+          39,
+          28,
+          85
         ]
       },
       "RAM Usage": {
-        "Used": "6.8 GB",
-        "Free": "1.4 GB",
-        "Swap Used": "2.7 GB"
+        "Used": "2.8 GB",
+        "Free": "3.6 GB",
+        "Swap Used": "1.8 GB"
       },
       "System Temperature": {
-        "CPU": 75.28,
-        "System Board": 58,
+        "CPU": 40.25,
+        "System Board": 36.43,
         "Drive Bays": [
-          93,
-          72,
-          4,
-          4
+          85,
+          58,
+          77,
+          24
         ]
       },
       "System Load Average": {
-        "1m": 1.4,
-        "5m": 1.95,
-        "15m": 1.28
+        "1m": 0.89,
+        "5m": 1.08,
+        "15m": 0.67
       },
-      "Uptime": "9 days, 16 hrs"
+      "Uptime": "0 days, 19 hrs"
     },
     "Network Activity": {
-      "Primary IP": "192.168.178.137",
+      "Primary IP": "192.168.181.39",
       "Interfaces": [
-        14,
-        79
+        1,
+        47
       ],
       "Connected Clients": [
-        47,
-        31
+        40,
+        23
       ]
     },
     "Service Status": {
       "Running Services": [
+        "SMB",
         "Docker",
-        "NFS",
-        "SMB"
+        "Time Machine"
       ],
       "Service Health": {
-        "Docker": "Unhealthy",
+        "Docker": "Degraded",
         "Cloud Sync": "Healthy",
-        "Time Machine": "Healthy"
+        "Time Machine": "Unhealthy"
       },
       "Disk Health": {
         "Status": "Warning",
-        "Last Checked": "2025-12-26T12:09:17.5446353Z",
+        "Last Checked": "2025-12-29T06:09:38.9005974Z",
         "SMART Reports": [
-          28,
-          45
+          3,
+          41
         ]
       },
       "Fan Status": {
         "Fan 1": {
-          "Speed": 1172,
-          "Status": "High"
+          "Speed": 1057,
+          "Status": "Normal"
         },
         "Fan 2": {
-          "Speed": 1160,
-          "Status": "High"
+          "Speed": 1139,
+          "Status": "Critical"
         }
       },
       "Last Backup": {
-        "Status": "Success",
-        "Timestamp": "2025-12-26T12:09:17.5446402Z"
+        "Status": "Failed",
+        "Timestamp": "2025-12-29T06:09:38.9006023Z"
       }
     }
   },

@@ -70,6 +70,7 @@ export type AlarmQueries = {
   alarmStates: Array<AlarmState>;
   alarms: Array<Alarm>;
   alarmsByDeviceId: Array<Alarm>;
+  alarmsV2: Array<GetAlarmDtoV2>;
   latestAlarmForDevice: LatestAlarmForDevice;
   latestAlarms: LatestAlarms;
 };
@@ -85,6 +86,11 @@ export type AlarmQueriesAlarmsByDeviceIdArgs = {
 };
 
 
+export type AlarmQueriesAlarmsV2Args = {
+  filter: AlarmFilter;
+};
+
+
 export type AlarmQueriesLatestAlarmForDeviceArgs = {
   deviceMacId: Scalars['String']['input'];
 };
@@ -93,6 +99,13 @@ export type AlarmState = {
   __typename?: 'AlarmState';
   id: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+};
+
+export type GetAlarmDtoV2 = {
+  __typename?: 'GetAlarmDtoV2';
+  message: Scalars['String']['output'];
+  severity: Scalars['String']['output'];
+  sourceDeviceMacId: Scalars['String']['output'];
 };
 
 export type LatestAlarmForDevice = {
@@ -140,6 +153,13 @@ export type GetAlarmsQueryVariables = Exact<{
 
 
 export type GetAlarmsQuery = { __typename?: 'AlarmQueries', alarms: Array<{ __typename?: 'Alarm', id: any, sourceDeviceMacId: string, severity: string, message: string, raisedAt: any, alarmState: string, acknowledgedFrom?: string | null, isAcknowledged: boolean, acknowledgedAt?: any | null, alarmComment?: string | null }> };
+
+export type GetAlarmsV2QueryVariables = Exact<{
+  filter: AlarmFilter;
+}>;
+
+
+export type GetAlarmsV2Query = { __typename?: 'AlarmQueries', alarms: Array<{ __typename?: 'Alarm', sourceDeviceMacId: string, severity: string, message: string }> };
 
 export type GetLatestAlarmsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -223,6 +243,15 @@ export const GetAlarmsDocument = gql`
   }
 }
     `;
+export const GetAlarmsV2Document = gql`
+    query GetAlarmsV2($filter: AlarmFilter!) {
+  alarms(filter: $filter) {
+    sourceDeviceMacId
+    severity
+    message
+  }
+}
+    `;
 export const GetLatestAlarmsDocument = gql`
     query GetLatestAlarms {
   latestAlarms {
@@ -288,6 +317,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     GetAlarms(variables: GetAlarmsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetAlarmsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAlarmsQuery>({ document: GetAlarmsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetAlarms', 'query', variables);
+    },
+    GetAlarmsV2(variables: GetAlarmsV2QueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetAlarmsV2Query> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetAlarmsV2Query>({ document: GetAlarmsV2Document, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetAlarmsV2', 'query', variables);
     },
     GetLatestAlarms(variables?: GetLatestAlarmsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetLatestAlarmsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetLatestAlarmsQuery>({ document: GetLatestAlarmsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetLatestAlarms', 'query', variables);

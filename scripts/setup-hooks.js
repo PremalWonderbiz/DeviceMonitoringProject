@@ -1,53 +1,92 @@
 #!/usr/bin/env node
+/**
+ * Local-only Git hooks setup.
+ * Safe to run multiple times and must never break npm install.
+ */
+
 const { execSync } = require("child_process");
 const path = require("path");
 const fs = require("fs");
 
-console.log("Setting up Git Hooks...");
+const log = (msg) => console.log(`${msg}`);
+const warn = (msg) => console.warn(`${msg}`);
+
+const run = (cmd, options = {}) =>
+  execSync(cmd, { stdio: "ignore", ...options });
 
 try {
-  // Check if git is available
-  execSync("git --version", { stdio: "ignore" });
+  log("Initializing git hooks setup");
 
-  // Set hooks path (cross-platform)
-  execSync("git config core.hooksPath .githooks", { stdio: "inherit" });
-
-  // Make hooks executable (Unix-like systems only)
-  if (process.platform !== "win32") {
-    const hooksDir = path.join(__dirname, "..", ".githooks");
-
-    // Check if directory exists
-    if (!fs.existsSync(hooksDir)) {
-      throw new Error(".githooks directory not found");
-    }
-
-    // Read all files in the directory
-    const entries = fs.readdirSync(hooksDir, { withFileTypes: true });
-
-    // Filter only files (not directories)
-    const hookFiles = entries
-      .filter((entry) => entry.isFile())
-      .map((entry) => entry.name);
-
-    // Make each hook file executable
-    hookFiles.forEach((hook) => {
-      const hookPath = path.join(hooksDir, hook);
-      try {
-        fs.chmodSync(hookPath, "755");
-        console.log(`Made ${hook} executable`);
-      } catch (err) {
-        console.warn(`Could not make ${hook} executable:`, err.message);
-      }
-    });
-
-    console.log(`Made ${hookFiles.length} hook(s) executable`);
+  // Skip in CI – hooks are for local development only
+  if (process.env.CI) {
+    log("CI detected. Skipping hooks setup.");
+    process.exit(0);
   }
 
-  console.log("Git hooks installed successfully!");
-  console.log("\nTo bypass hooks: git commit --no-verify");
-} catch (error) {
-  console.error("Failed to setup git hooks:", error.message);
-  process.exit(1);
+  // Always operate from repo root
+  const repoRoot = path.resolve(__dirname, "..");
+  process.chdir(repoRoot);
+
+  // Git must be available
+  try {
+    run("git --version");
+  } catch {
+    warn("Git not found. Skipping hooks setup.");
+    process.exit(0);
+  }
+
+  // Skip if not a git repository
+  if (!fs.existsSync(path.join(repoRoot, ".git"))) {
+    warn("Not a git repository. Skipping hooks setup.");
+    process.exit(0);
+  }
+
+  const hooksDir = path.join(repoRoot, ".githooks");
+
+  // Hooks directory must exist
+  if (!fs.existsSync(hooksDir)) {
+    warn("`.githooks` directory missing. Skipping setup.");
+    process.exit(0);
+  }
+
+  // Configure hooks path only if needed
+  let currentHooksPath = "";
+  try {
+    currentHooksPath = execSync("git config --get core.hooksPath", {
+      encoding: "utf8",
+    }).trim();
+  } catch {}
+
+  if (currentHooksPath !== ".githooks") {
+    run("git config core.hooksPath .githooks", { stdio: "inherit" });
+    log("Git hooks path configured.");
+  } else {
+    log("Git hooks already configured.");
+  }
+
+  // Ensure hooks are executable on Unix systems
+  if (process.platform !== "win32") {
+    fs.readdirSync(hooksDir, { withFileTypes: true })
+      .filter((e) => e.isFile())
+      .forEach((e) => {
+        const file = path.join(hooksDir, e.name);
+        try {
+          const stat = fs.statSync(file);
+          if (!(stat.mode & 0o111)) fs.chmodSync(file, 0o755);
+        } catch {
+          warn(`Permission check failed for ${e.name}`);
+        }
+      });
+
+    log("Hook permissions verified.");
+  }
+
+  log("Git hooks setup completed.");
+  log("Bypass hooks with: git commit --no-verify");
+} catch (err) {
+  // Never block installation
+  warn(`Hooks setup skipped: ${err.message}`);
+  process.exit(0);
 }
 
 // to check if the hooksPath is set correctly

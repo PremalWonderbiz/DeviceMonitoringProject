@@ -70,6 +70,7 @@ export type AlarmQueries = {
   alarmStates: Array<AlarmState>;
   alarms: Array<Alarm>;
   alarmsByDeviceId: Array<Alarm>;
+  alarmsV2: Array<GetAlarmDtoV2>;
   latestAlarmForDevice: LatestAlarmForDevice;
   latestAlarms: LatestAlarms;
 };
@@ -85,6 +86,11 @@ export type AlarmQueriesAlarmsByDeviceIdArgs = {
 };
 
 
+export type AlarmQueriesAlarmsV2Args = {
+  filter: AlarmFilter;
+};
+
+
 export type AlarmQueriesLatestAlarmForDeviceArgs = {
   deviceMacId: Scalars['String']['input'];
 };
@@ -93,6 +99,13 @@ export type AlarmState = {
   __typename?: 'AlarmState';
   id: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+};
+
+export type GetAlarmDtoV2 = {
+  __typename?: 'GetAlarmDtoV2';
+  message: Scalars['String']['output'];
+  severity: Scalars['String']['output'];
+  sourceDeviceMacId: Scalars['String']['output'];
 };
 
 export type LatestAlarmForDevice = {

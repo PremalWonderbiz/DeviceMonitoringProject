@@ -202,12 +202,6 @@ C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graph
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\staticwebassets\msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\staticwebassets\msbuild.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\staticwebassets\msbuild.build.API.props
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.API.props
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.API.props
-C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\API.csproj.Up2Date
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\API.dll
@@ -215,3 +209,9 @@ C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graph
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\API.pdb
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\ref\API.dll
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\Premal Kadam\Documents\Device Monitoring Project\DeviceMonitoring Graphql\DeviceMonitoringProject\Backend\GatewayService\GatewayService\API\obj\Debug\net8.0\swae.build.ex.cache

@@ -10,7 +10,8 @@
     "lint": "next lint",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "codegen": "graphql-codegen --config codegen.ts"
+    "codegen": "graphql-codegen --config codegen.ts",
+    "postinstall": "node ../../scripts/setup-hooks.js"
   },
   "dependencies": {
     "@apollo/client": "^4.0.11",
