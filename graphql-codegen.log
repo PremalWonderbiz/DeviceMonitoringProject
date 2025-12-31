@@ -192,3 +192,10 @@
 [2025-12-30T09:29:41.963Z] Staging generated GraphQL files in Frontend\device_monitoring_frontend
 [2025-12-30T09:29:41.964Z] $ git add Frontend\device_monitoring_frontend
 [2025-12-30T09:29:42.035Z] GraphQL codegen completed successfully
+
+------------------------------------------- LOGS : [2025-12-30T10:16:10.448Z] -----------------------------------------------------
+[2025-12-30T10:16:10.450Z] GraphQL codegen hook started
+[2025-12-30T10:16:10.515Z] Running GraphQL codegen in Frontend\device-monitoring-viz
+[2025-12-30T10:16:10.516Z] $ npx graphql-codegen
+[2025-12-30T10:16:12.449Z] Codegen failed in Frontend\device-monitoring-viz
+[2025-12-30T10:16:12.450Z] Stopping commit process due to codegen failure
