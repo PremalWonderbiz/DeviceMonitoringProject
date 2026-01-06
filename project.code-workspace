@@ -30,6 +30,15 @@
         "source.sortImports": "explicit"
       }
     },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.codeActionsOnSave": {
+        "source.addMissingImports": "explicit",
+        "source.organizeImports": "explicit",
+        "source.removeUnusedImports": "explicit",
+        "source.sortImports": "explicit"
+      }
+    },
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit"
     },

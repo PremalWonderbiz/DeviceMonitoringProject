@@ -3,8 +3,8 @@
   "Type": "Microcomputer",
   "Status": "Offline",
   "MacId": "B8:27:EB:45:67:89",
-  "Connectivity": "Medium",
-  "LastUpdated": "2025-12-29T06:09:44.8788154Z",
+  "Connectivity": "Low",
+  "LastUpdated": "2026-01-05T09:33:09.8671051Z",
   "staticProperties": {
     "Hardware Information": {
       "Model": "Raspberry Pi 4 Model B",
@@ -60,49 +60,49 @@
   },
   "dynamicProperties": {
     "System Health": {
-      "CPU Usage": "2%",
+      "CPU Usage": "11%",
       "RAM Usage": {
-        "Used": "9.2 GB",
-        "Total": "7.7 GB"
+        "Used": "4.5 GB",
+        "Total": "2.1 GB"
       },
       "System Temperature": {
-        "CPU": 22.02,
-        "Board": 52.12
+        "CPU": 28.92,
+        "Board": 68.64
       },
-      "Uptime": "5 days, 7 hrs",
+      "Uptime": "2 days, 15 hrs",
       "System Load": [
-        17,
-        77,
-        78
+        43,
+        21,
+        53
       ]
     },
     "Network Activity": {
       "Interfaces": [
-        17
+        21
       ],
       "Total Data Usage": {
-        "Sent": "1.4 GB",
-        "Received": "4.6 GB"
+        "Sent": "8.8 GB",
+        "Received": "0.5 GB"
       },
       "Connected Clients (Media Server)": [
-        20
+        2
       ]
     },
     "Service Status": {
       "Running Services": [
-        "Docker",
-        "SSH",
-        "Node-RED"
+        "Node-RED",
+        "Kodi",
+        "Docker"
       ],
       "Service Health": [
-        24,
-        40
+        13,
+        54
       ],
-      "Last Reboot Reason": "Manual reboot",
+      "Last Reboot Reason": "Scheduled maintenance",
       "Firmware": {
         "Current Version": "Unsupported Type",
-        "Last Update": "2025-12-29T06:09:38.9008563Z",
-        "Update Available": true
+        "Last Update": "2026-01-05T09:33:02.0811493Z",
+        "Update Available": false
       }
     }
   },

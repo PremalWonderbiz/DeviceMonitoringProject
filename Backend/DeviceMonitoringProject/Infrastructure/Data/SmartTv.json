@@ -3,8 +3,8 @@
   "Type": "Entertainment Device",
   "Status": "Online",
   "MacId": "B8:27:EB:45:9A:CB",
-  "Connectivity": "High",
-  "LastUpdated": "2025-12-29T06:09:44.8587206Z",
+  "Connectivity": "Low",
+  "LastUpdated": "2026-01-05T09:33:09.837753Z",
   "staticProperties": {
     "Display \u0026 Hardware": {
       "Screen Size": "55 inches",
@@ -80,48 +80,48 @@
   "dynamicProperties": {
     "Current Usage": {
       "Power State": "Off",
-      "Input Source": "USB",
-      "Current App": "Zee5",
-      "Volume Level": 47,
+      "Input Source": "Screen Mirroring",
+      "Current App": "YouTube",
+      "Volume Level": 96,
       "Mute": false,
-      "Picture Mode": "Vivid",
-      "Audio Output": "Bluetooth",
-      "Ambient Light Sensor": true
+      "Picture Mode": "Standard",
+      "Audio Output": "TV Speakers",
+      "Ambient Light Sensor": false
     },
     "Streaming Activity": {
       "Watch History (Today)": [
-        41,
-        86
+        44,
+        56
       ],
       "Active App Sessions": [
-        48
+        80
       ],
       "AutoPlay Next Episode": true
     },
     "Network Activity": {
-      "IP Address": "192.168.169.119",
-      "Wi-Fi Signal Strength": "-44 dBm",
+      "IP Address": "192.168.16.55",
+      "Wi-Fi Signal Strength": "-77 dBm",
       "Connection Type": "Ethernet",
       "Data Usage": {
-        "Today": "0.5 GB",
-        "This Week": "7.2 GB",
-        "This Month": "1.7 GB"
+        "Today": "2.3 GB",
+        "This Week": "4.6 GB",
+        "This Month": "3.8 GB"
       },
-      "Last Online": "2025-12-29T06:09:38.9004293Z"
+      "Last Online": "2026-01-05T09:33:02.0789769Z"
     },
     "System Status": {
-      "Uptime": "1 days, 18 hrs",
-      "Last Reboot": "2025-12-29T06:09:38.9004306Z",
+      "Uptime": "8 days, 6 hrs",
+      "Last Reboot": "2026-01-05T09:33:02.0789829Z",
       "Software Update Available": true,
-      "Last Software Update": "2025-12-29T06:09:38.9004314Z",
+      "Last Software Update": "2026-01-05T09:33:02.0789871Z",
       "Storage Info": {
-        "Total Storage": "2.9 GB",
-        "Used": "8.6 GB",
-        "Free": "8.6 GB"
+        "Total Storage": "6.4 GB",
+        "Used": "7.9 GB",
+        "Free": "9.0 GB"
       },
       "Temperature": {
-        "Panel": 53.37,
-        "Mainboard": 36.28
+        "Panel": 39.36,
+        "Mainboard": 45.63
       }
     }
   },

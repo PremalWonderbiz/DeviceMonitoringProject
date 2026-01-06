@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from "react";
 import styles from "@/styles/scss/Table.module.scss";
 import { flexRender, Row } from "@tanstack/react-table";
+import React, { useEffect, useState } from "react";
 
 type Props = {
   row: Row<any>;
   setIsPropertyPanelOpen: (id: string) => void;
   updatedFieldsMap: { [macId: string]: string[] } | null;
   refreshDeviceDataKey?: any;
-  currentDeviceId : any;
+  currentDeviceId: any;
 };
 
 const TableRow = React.memo(
-  ({ currentDeviceId, refreshDeviceDataKey = undefined, updatedFieldsMap, row, setIsPropertyPanelOpen }: Props) => {
+  ({
+    currentDeviceId,
+    refreshDeviceDataKey = undefined,
+    updatedFieldsMap,
+    row,
+    setIsPropertyPanelOpen,
+  }: Props) => {
     const rowData = row.original;
     const macId = rowData.macId;
 
@@ -19,7 +25,7 @@ const TableRow = React.memo(
 
     useEffect(() => {
       const updatedFields = updatedFieldsMap?.[macId];
-      
+
       if (updatedFields && updatedFields.length > 0) {
         setLocalUpdatedFields(updatedFields);
 
@@ -28,30 +34,36 @@ const TableRow = React.memo(
         }, 3000);
 
         return () => clearTimeout(timer);
-      }else{
-        setLocalUpdatedFields([])
+      } else {
+        setLocalUpdatedFields([]);
       }
     }, [updatedFieldsMap?.[macId]]);
 
-    useEffect(() => {  
-      if (refreshDeviceDataKey)    
-        setLocalUpdatedFields([]);
+    useEffect(() => {
+      if (refreshDeviceDataKey) setLocalUpdatedFields([]);
     }, [refreshDeviceDataKey]);
 
     return (
       <tr
-        className={`${localUpdatedFields.length > 0 ? styles.highlightedRow : ""} ${styles.row} ${currentDeviceId && currentDeviceId == macId ? styles.rowSelected : ""}`}
+        className={`${
+          localUpdatedFields.length > 0 ? styles.highlightedRow : ""
+        } ${styles.row} ${
+          currentDeviceId && currentDeviceId == macId ? styles.rowSelected : ""
+        }`}
         key={macId}
         onClick={() => setIsPropertyPanelOpen(macId)}
       >
         {row.getVisibleCells().map((cell: any) => {
           const columnId = cell.column.id;
           const isUpdated = localUpdatedFields.includes(columnId);
-          
+
           return (
             <td
               key={cell.id}
-              className={`${styles.cell} ${isUpdated ? styles.highlightedCell : ""}`} >
+              className={`${styles.cell} ${
+                isUpdated ? styles.highlightedCell : ""
+              }`}
+            >
               {flexRender(cell.column.columnDef.cell, cell.getContext())}
             </td>
           );

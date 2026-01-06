@@ -1,18 +1,32 @@
-import React, { useRef, useState } from "react";
-import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from "lucide-react";
 import styles from "@/styles/scss/Pagination.module.scss";
+import {
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ChevronUp,
+} from "lucide-react";
+import React, { useRef, useState } from "react";
 
-const Pagination = ({ currentPage, totalPages, pageSize, pageSizeOptions, setCurrentPage, setPageSize, }: any) => {
+const Pagination = ({
+  currentPage,
+  totalPages,
+  pageSize,
+  pageSizeOptions,
+  setCurrentPage,
+  setPageSize,
+}: any) => {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const selectRef = useRef<HTMLSelectElement>(null);
   const handlePageClick = (page: any) => setCurrentPage(page);
   const handlePrev = () => currentPage > 1 && setCurrentPage(currentPage - 1);
-  const handleNext = () => currentPage < totalPages && setCurrentPage(currentPage + 1);
+  const handleNext = () =>
+    currentPage < totalPages && setCurrentPage(currentPage + 1);
 
   const handlePageSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setPageSize(Number(e.target.value));
+    setCurrentPage(1);
     selectRef.current?.blur();
-  }
+  };
 
   const renderPageNumbers = () => {
     const pages: (number | string)[] = [];
@@ -32,13 +46,16 @@ const Pagination = ({ currentPage, totalPages, pageSize, pageSizeOptions, setCur
 
     return pages.map((page, i) =>
       page === "..." ? (
-        <span key={`ellipsis-${i}`} className={styles.ellipsis}>...</span>
+        <span key={`ellipsis-${i}`} className={styles.ellipsis}>
+          ...
+        </span>
       ) : (
         <button
           key={page}
           onClick={() => handlePageClick(page)}
-          className={`${styles.paginationButton} ${currentPage === page ? styles.activeButton : ""
-            }`}
+          className={`${styles.paginationButton} ${
+            currentPage === page ? styles.activeButton : ""
+          }`}
         >
           {page}
         </button>
@@ -49,13 +66,23 @@ const Pagination = ({ currentPage, totalPages, pageSize, pageSizeOptions, setCur
   return (
     <div className={styles.paginationContainer}>
       <div className={styles.middleSection}>
-        <button data-testid="previous-button" onClick={handlePrev} disabled={currentPage === 1} className={styles.paginationButton}>
+        <button
+          data-testid="previous-button"
+          onClick={handlePrev}
+          disabled={currentPage === 1}
+          className={styles.paginationButton}
+        >
           <ChevronLeft size={16} />
         </button>
 
         {renderPageNumbers()}
 
-        <button data-testid="next-button" onClick={handleNext} disabled={currentPage === totalPages} className={styles.paginationButton}>
+        <button
+          data-testid="next-button"
+          onClick={handleNext}
+          disabled={currentPage === totalPages}
+          className={styles.paginationButton}
+        >
           <ChevronRight size={16} />
         </button>
 
@@ -77,7 +104,19 @@ const Pagination = ({ currentPage, totalPages, pageSize, pageSizeOptions, setCur
           </select>
 
           <span className={styles.selectIcon}>
-            {isSelectOpen ? <ChevronUp data-testid="pageSize-chevronup" size={18} strokeWidth={"2.5px"} /> : <ChevronDown data-testid="pageSize-chevrondown" size={18} strokeWidth={"2.5px"} />}
+            {isSelectOpen ? (
+              <ChevronUp
+                data-testid="pageSize-chevronup"
+                size={18}
+                strokeWidth={"2.5px"}
+              />
+            ) : (
+              <ChevronDown
+                data-testid="pageSize-chevrondown"
+                size={18}
+                strokeWidth={"2.5px"}
+              />
+            )}
           </span>
         </div>
       </div>

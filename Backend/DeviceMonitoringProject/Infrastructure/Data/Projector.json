@@ -3,8 +3,8 @@
   "Type": "Entertainment Device",
   "Status": "Offline",
   "MacId": "D0:AB:C5:92:7E:F3",
-  "Connectivity": "Low",
-  "LastUpdated": "2025-12-29T06:09:44.8517666Z",
+  "Connectivity": "Medium",
+  "LastUpdated": "2026-01-05T09:33:09.8297552Z",
   "staticProperties": {
     "Display \u0026 Hardware": {
       "Projection Type": "DLP",
@@ -71,49 +71,49 @@
   },
   "dynamicProperties": {
     "Current Usage": {
-      "Power State": "On",
+      "Power State": "Off",
       "Input Source": "VGA",
-      "Current App": "YouTube",
-      "Volume Level": 35,
-      "Mute": true,
-      "Picture Mode": "Cinema",
-      "Keystone Correction": "Auto",
-      "Lamp Hours Used": 3001
+      "Current App": "Netflix",
+      "Volume Level": 62,
+      "Mute": false,
+      "Picture Mode": "Vivid",
+      "Keystone Correction": "Manual",
+      "Lamp Hours Used": 1933
     },
     "Streaming Activity": {
       "Watch History (Today)": [
-        24,
-        63
+        30,
+        2
       ],
       "Active App Sessions": [
-        35
+        16
       ],
       "AutoPlay Next Episode": true
     },
     "Network Activity": {
-      "IP Address": "192.168.35.154",
-      "Wi-Fi Signal Strength": "-64 dBm",
+      "IP Address": "192.168.233.143",
+      "Wi-Fi Signal Strength": "-56 dBm",
       "Connection Type": "Wi-Fi",
       "Data Usage": {
-        "Today": "1.7 GB",
-        "This Week": "6.9 GB",
-        "This Month": "4.5 GB"
+        "Today": "8.6 GB",
+        "This Week": "7.5 GB",
+        "This Month": "7.3 GB"
       },
-      "Last Online": "2025-12-29T06:09:38.9000930Z"
+      "Last Online": "2026-01-05T09:33:02.0758936Z"
     },
     "System Status": {
-      "Uptime": "6 days, 19 hrs",
-      "Last Reboot": "2025-12-29T06:09:38.9000956Z",
+      "Uptime": "4 days, 10 hrs",
+      "Last Reboot": "2026-01-05T09:33:02.0759032Z",
       "Software Update Available": true,
-      "Last Software Update": "2025-12-29T06:09:38.9000965Z",
+      "Last Software Update": "2026-01-05T09:33:02.0759066Z",
       "Storage Info": {
-        "Total Storage": "2.0 GB",
-        "Used": "4.0 GB",
-        "Free": "7.5 GB"
+        "Total Storage": "3.5 GB",
+        "Used": "5.9 GB",
+        "Free": "0.3 GB"
       },
       "Temperature": {
-        "Lamp": 34.81,
-        "Mainboard": 60.54
+        "Lamp": 49.25,
+        "Mainboard": 55.44
       }
     }
   },

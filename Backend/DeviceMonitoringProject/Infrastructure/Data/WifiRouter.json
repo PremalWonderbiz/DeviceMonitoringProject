@@ -4,7 +4,7 @@
   "Status": "Online",
   "MacId": "84:C9:B2:3E:7F:A1",
   "Connectivity": "Medium",
-  "LastUpdated": "2025-12-29T06:09:44.8700702Z",
+  "LastUpdated": "2026-01-05T09:33:09.8489904Z",
   "staticProperties": {
     "Hardware Information": {
       "Operating System": "OpenWRT 21.02",
@@ -72,50 +72,50 @@
   },
   "dynamicProperties": {
     "System Status": {
-      "Uptime": "9 days, 9 hrs",
-      "CPU Usage": "93%",
+      "Uptime": "5 days, 10 hrs",
+      "CPU Usage": "59%",
       "Memory Usage": {
-        "Used": "2.6 GB",
-        "Total": "5.4 GB"
+        "Used": "1.0 GB",
+        "Total": "3.8 GB"
       },
       "Temperature": {
-        "CPU": 82.19,
-        "Board": 23.89
+        "CPU": 25.84,
+        "Board": 49.99
       },
       "System Load Average": [
-        34,
-        97,
-        62
+        43,
+        6,
+        45
       ]
     },
     "Network Activity": {
       "Interfaces": [
-        55,
-        45
+        15,
+        55
       ],
       "Connected Clients": [
-        91,
-        60
+        3,
+        93
       ],
       "Total Data Usage": {
-        "Sent": "5.5 GB",
-        "Received": "8.9 GB"
+        "Sent": "2.9 GB",
+        "Received": "7.8 GB"
       }
     },
     "Service Health": {
       "Services Running": [
-        15,
-        12,
-        15,
-        29
+        4,
+        43,
+        43,
+        64
       ],
       "Failed Services": [
-        23
+        82
       ],
-      "Last Reboot Reason": "Power Failure",
+      "Last Reboot Reason": "Crash Recovery",
       "Firmware": {
         "Current Version": "Unsupported Type",
-        "Last Updated": "2025-12-29T06:09:38.9006787Z",
+        "Last Updated": "2026-01-05T09:33:02.0803758Z",
         "Update Available": false
       }
     }

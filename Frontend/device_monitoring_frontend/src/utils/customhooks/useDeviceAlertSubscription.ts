@@ -9,8 +9,8 @@ import {
   ALARM_UPDATES_SUB,
   PROPERTY_PANEL_ALARM_SUB,
 } from "@/services/apolloSubscriptions";
-import { useSubscription } from "@apollo/client/react";
-import { useEffect } from "react";
+import { useApolloClient, useSubscription } from "@apollo/client/react";
+import { useEffect, useRef } from "react";
 
 /* ================================
    Hook
@@ -23,12 +23,18 @@ export const useDeviceAlertSubscription = (
   shouldConnect: boolean = true
 ) => {
   // Alarm panel subscription (no variables)
-  const alarmPanelSub = useSubscription<AlarmPanelUpdatesSubscription>(
-    ALARM_PANEL_SUB,
-    {
-      skip: type !== "alarmPanel" || !shouldConnect,
-    }
+  const client = useApolloClient();
+  // keep ref to manual subscription
+  const alarmPanelSubscriptionRef = useRef<ZenObservable.Subscription | null>(
+    null
   );
+
+  // const alarmPanelSub = useSubscription<AlarmPanelUpdatesSubscription>(
+  //   ALARM_PANEL_SUB,
+  //   {
+  //     skip: type !== "alarmPanel" || !shouldConnect,
+  //   }
+  // );
 
   const mainPageSub = useSubscription<AlarmUpdatesSubscription>(
     ALARM_UPDATES_SUB,
@@ -42,17 +48,48 @@ export const useDeviceAlertSubscription = (
     PropertyPanelAlarmUpdatesSubscription,
     PropertyPanelAlarmUpdatesSubscriptionVariables
   >(PROPERTY_PANEL_ALARM_SUB, {
-    variables: { deviceId: deviceId ?? "" }, // ✅ always present
+    variables: { deviceId: deviceId ?? "" },
     skip: type !== "propertyPanel" || !deviceId || !shouldConnect,
   });
 
   useEffect(() => {
-    if (type === "alarmPanel") {
-      const payload = alarmPanelSub.data?.alarmPanelUpdates;
-      if (payload !== undefined) {
-        onMessage(payload);
-      }
+    const shouldSubscribe = type === "alarmPanel" && shouldConnect;
+
+    if (shouldSubscribe && !alarmPanelSubscriptionRef.current) {
+      const observable = client.subscribe<AlarmPanelUpdatesSubscription>({
+        query: ALARM_PANEL_SUB,
+      });
+
+      alarmPanelSubscriptionRef.current = observable.subscribe({
+        next({ data }) {
+          if (!data) return;
+          console.log("testing : " + data.alarmPanelUpdates);
+          onMessage(data.alarmPanelUpdates);
+        },
+        error(err) {
+          console.error("Alarm Panel Subscription Error:", err);
+        },
+      });
     }
+
+    if (!shouldSubscribe && alarmPanelSubscriptionRef.current) {
+      alarmPanelSubscriptionRef.current.unsubscribe();
+      alarmPanelSubscriptionRef.current = null;
+    }
+
+    return () => {
+      alarmPanelSubscriptionRef.current?.unsubscribe();
+      alarmPanelSubscriptionRef.current = null;
+    };
+  }, [client, type, shouldConnect, onMessage]);
+
+  useEffect(() => {
+    // if (type === "alarmPanel") {
+    //   const payload = alarmPanelSub.data?.alarmPanelUpdates;
+    //   if (payload !== undefined) {
+    //     onMessage(payload);
+    //   }
+    // }
 
     if (type === "propertyPanel") {
       const payload = propertyPanelSub.data?.propertyPanelAlarmUpdates;
@@ -69,7 +106,7 @@ export const useDeviceAlertSubscription = (
     }
   }, [
     type,
-    alarmPanelSub.data,
+    // alarmPanelSub.data,
     propertyPanelSub.data,
     mainPageSub.data,
     onMessage,

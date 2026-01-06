@@ -1,0 +1,91 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\GatewayService\\GatewayService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FDC17397-881D-4577-B3BF-9EA02067CEF2}|API\\API.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring graphql\\devicemonitoringproject\\backend\\gatewayservice\\gatewayservice\\api\\controllers\\realtimecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDC17397-881D-4577-B3BF-9EA02067CEF2}|API\\API.csproj|solutionrelative:api\\controllers\\realtimecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDC17397-881D-4577-B3BF-9EA02067CEF2}|API\\API.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring graphql\\devicemonitoringproject\\backend\\gatewayservice\\gatewayservice\\api\\graphql\\subscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDC17397-881D-4577-B3BF-9EA02067CEF2}|API\\API.csproj|solutionrelative:api\\graphql\\subscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDC17397-881D-4577-B3BF-9EA02067CEF2}|API\\API.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring graphql\\devicemonitoringproject\\backend\\gatewayservice\\gatewayservice\\api\\graphql\\query.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDC17397-881D-4577-B3BF-9EA02067CEF2}|API\\API.csproj|solutionrelative:api\\graphql\\query.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDC17397-881D-4577-B3BF-9EA02067CEF2}|API\\API.csproj|c:\\users\\premal kadam\\documents\\device monitoring project\\devicemonitoring graphql\\devicemonitoringproject\\backend\\gatewayservice\\gatewayservice\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDC17397-881D-4577-B3BF-9EA02067CEF2}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RealtimeController.cs",
+              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\GatewayService\\GatewayService\\API\\Controllers\\RealtimeController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\RealtimeController.cs",
+              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\GatewayService\\GatewayService\\API\\Controllers\\RealtimeController.cs",
+              "RelativeToolTip": "API\\Controllers\\RealtimeController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwBwAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-05T06:43:09.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\GatewayService\\GatewayService\\API\\Program.cs",
+              "RelativeDocumentMoniker": "API\\Program.cs",
+              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\GatewayService\\GatewayService\\API\\Program.cs",
+              "RelativeToolTip": "API\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-31T10:59:34.196Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Query.cs",
+              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\GatewayService\\GatewayService\\API\\GraphQL\\Query.cs",
+              "RelativeDocumentMoniker": "API\\GraphQL\\Query.cs",
+              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\GatewayService\\GatewayService\\API\\GraphQL\\Query.cs",
+              "RelativeToolTip": "API\\GraphQL\\Query.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-31T10:29:12.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Subscription.cs",
+              "DocumentMoniker": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\GatewayService\\GatewayService\\API\\GraphQL\\Subscription.cs",
+              "RelativeDocumentMoniker": "API\\GraphQL\\Subscription.cs",
+              "ToolTip": "C:\\Users\\Premal Kadam\\Documents\\Device Monitoring Project\\DeviceMonitoring Graphql\\DeviceMonitoringProject\\Backend\\GatewayService\\GatewayService\\API\\GraphQL\\Subscription.cs",
+              "RelativeToolTip": "API\\GraphQL\\Subscription.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBUAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-31T09:37:40.137Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

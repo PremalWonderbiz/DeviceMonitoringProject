@@ -1,15 +1,15 @@
 settings:
   backend:
     folder_path: Backend
-    sonar: false
-    coverity: false
+    sonar: true
+    coverity: true
+    sbom: true
     coverity_project_name: "Device+Monitoring+Backends+Git"
     coverity_project_url_name: "device-monitoring-backends-git"
-    sbom: false
   frontend:
     folder_path: Frontend
     sonar: true
     coverity: true
+    sbom: true
     coverity_project_name: "Device+Monitoring+Frontends+Git"
     coverity_project_url_name: "device-monitoring-frontends-git"
-    sbom: true

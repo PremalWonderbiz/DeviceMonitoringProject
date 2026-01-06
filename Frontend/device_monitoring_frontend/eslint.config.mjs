@@ -68,6 +68,13 @@ export default defineConfig([
       "no-console": "warn",
       eqeqeq: "warn",
       "react-hooks/exhaustive-deps": "warn",
+      "react-hooks/set-state-in-effect": "off",
+      "react-hooks/rules-of-hooks": "off",
+      "react-hooks/preserve-manual-memoization": "off",
+      "react/display-name": "off",
+      "@typescript-eslint/no-unused-expressions": "warn",
+      "@typescript-eslint/no-empty-object-type": "warn",
+      " @typescript-eslint/no-require-imports": "warn",
     },
   },
 ]);

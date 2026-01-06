@@ -8,8 +8,8 @@ type AccordionProps = {
   children: ReactNode;
   defaultOpen?: boolean;
   bgColor?: string;
-  isTabList?:boolean;
-  keyPath? : any;
+  isTabList?: boolean;
+  keyPath?: any;
 };
 
 export default function Accordion({

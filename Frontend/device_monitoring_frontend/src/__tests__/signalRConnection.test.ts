@@ -16,7 +16,9 @@ mockWithAutomaticReconnect = jest.fn();
 mockBuild = jest.fn();
 
 jest.mock("@microsoft/signalr", () => {
-  mockWithUrl.mockReturnValue({ withAutomaticReconnect: mockWithAutomaticReconnect });
+  mockWithUrl.mockReturnValue({
+    withAutomaticReconnect: mockWithAutomaticReconnect,
+  });
   mockWithAutomaticReconnect.mockReturnValue({ build: mockBuild });
   mockBuild.mockReturnValue({ start: mockStart });
 
@@ -44,17 +46,23 @@ describe("getSignalRConnection", () => {
   it("should create and start a new SignalR connection", async () => {
     mockStart.mockResolvedValue();
 
-    const { getSignalRConnection } = await import("../sockets/signalRConnection");
+    const { getSignalRConnection } = await import(
+      "../sockets/signalRConnection"
+    );
     const conn = await getSignalRConnection();
 
     expect(conn.start).toBe(mockStart);
-    expect(mockConsole.log).toHaveBeenCalledWith("SignalR connected to GatewayHub.");
+    expect(mockConsole.log).toHaveBeenCalledWith(
+      "SignalR connected to GatewayHub."
+    );
   });
 
   it("should return cached connection if called twice", async () => {
     mockStart.mockResolvedValue();
 
-    const { getSignalRConnection } = await import("../sockets/signalRConnection");
+    const { getSignalRConnection } = await import(
+      "../sockets/signalRConnection"
+    );
     const first = await getSignalRConnection();
     const second = await getSignalRConnection();
 
@@ -65,9 +73,14 @@ describe("getSignalRConnection", () => {
     const error = new Error("failed");
     mockStart.mockRejectedValue(error);
 
-    const { getSignalRConnection } = await import("../sockets/signalRConnection");
+    const { getSignalRConnection } = await import(
+      "../sockets/signalRConnection"
+    );
     await getSignalRConnection();
 
-    expect(mockConsole.warn).toHaveBeenCalledWith("SignalR connection failed:", error);
+    expect(mockConsole.warn).toHaveBeenCalledWith(
+      "SignalR connection failed:",
+      error
+    );
   });
 });

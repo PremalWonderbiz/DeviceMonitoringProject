@@ -1,12 +1,31 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { useReactTable, getCoreRowModel, getSortedRowModel, flexRender, ColumnDef, SortingState, } from "@tanstack/react-table";
-import styles from "@/styles/scss/Table.module.scss";
 import TableRow from "@/components/customcomponents/Table/TableRow";
-import { ArrowDown, ArrowUp } from "lucide-react";
-import Pagination from "../Pagination";
+import styles from "@/styles/scss/Table.module.scss";
 import { capitalizeFirstLetter, formatDateTime } from "@/utils/helperfunctions";
+import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
+import { ArrowDown, ArrowUp } from "lucide-react";
+import { useMemo } from "react";
+import Pagination from "../Pagination";
 
-const TableComponent = ({ currentDeviceId, sorting, setSorting, refreshDeviceDataKey, updatedFieldsMap, currentPage, setCurrentPage, totalPages, pageSize, setPageSize, data, setIsPropertyPanelOpen }: any) => {
+const TableComponent = ({
+  currentDeviceId,
+  sorting,
+  setSorting,
+  refreshDeviceDataKey,
+  updatedFieldsMap,
+  currentPage,
+  setCurrentPage,
+  totalPages,
+  pageSize,
+  setPageSize,
+  data,
+  setIsPropertyPanelOpen,
+}: any) => {
   if (!data || data.length === 0)
     return <p className="px-2">No data available.</p>;
 
@@ -14,17 +33,19 @@ const TableComponent = ({ currentDeviceId, sorting, setSorting, refreshDeviceDat
   const columns = useMemo<ColumnDef<any, any>[]>(() => {
     // const excludedFields = ['lastUpdated'];
 
-    return Object.keys(data[0])
-      // .filter((key) => !excludedFields.includes(key))
-      .map((key) => ({
-        accessorKey: key,
-        header: () => capitalizeFirstLetter(key),
-        cell: (info) => {
-          const val = info.getValue();
-          return key === 'lastUpdated' ? formatDateTime(val) : val;
-        },
-        enableSorting: true,
-      }));
+    return (
+      Object.keys(data[0])
+        // .filter((key) => !excludedFields.includes(key))
+        .map((key) => ({
+          accessorKey: key,
+          header: () => capitalizeFirstLetter(key),
+          cell: (info) => {
+            const val = info.getValue();
+            return key === "lastUpdated" ? formatDateTime(val) : val;
+          },
+          enableSorting: true,
+        }))
+    );
   }, [data]);
 
   // Table instance
@@ -52,13 +73,26 @@ const TableComponent = ({ currentDeviceId, sorting, setSorting, refreshDeviceDat
                     const isSortable = header.column.getCanSort();
                     const sortDir = header.column.getIsSorted(); // false | 'asc' | 'desc'
                     return (
-                      <th key={header.id}
+                      <th
+                        key={header.id}
                         className={styles.header}
-                        onClick={isSortable ? header.column.getToggleSortingHandler() : undefined}
+                        onClick={
+                          isSortable
+                            ? header.column.getToggleSortingHandler()
+                            : undefined
+                        }
                       >
                         <div className={styles.sortIcon}>
-                          {flexRender(header.column.columnDef.header, header.getContext())}
-                          {isSortable && (sortDir === "asc" ? (<ArrowUp size={16} />) : sortDir === "desc" ? (<ArrowDown size={16} />) : null)}
+                          {flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                          {isSortable &&
+                            (sortDir === "asc" ? (
+                              <ArrowUp size={16} />
+                            ) : sortDir === "desc" ? (
+                              <ArrowDown size={16} />
+                            ) : null)}
                         </div>
                       </th>
                     );
@@ -72,12 +106,28 @@ const TableComponent = ({ currentDeviceId, sorting, setSorting, refreshDeviceDat
         <div className={styles.tableBody}>
           <table className={styles.table}>
             <tbody>
-              {table.getRowModel().rows.map((row) => (<TableRow currentDeviceId={currentDeviceId} refreshDeviceDataKey={refreshDeviceDataKey} updatedFieldsMap={updatedFieldsMap} key={row.id} row={row} setIsPropertyPanelOpen={setIsPropertyPanelOpen} />))}
+              {table.getRowModel().rows.map((row) => (
+                <TableRow
+                  currentDeviceId={currentDeviceId}
+                  refreshDeviceDataKey={refreshDeviceDataKey}
+                  updatedFieldsMap={updatedFieldsMap}
+                  key={row.id}
+                  row={row}
+                  setIsPropertyPanelOpen={setIsPropertyPanelOpen}
+                />
+              ))}
             </tbody>
           </table>
         </div>
       </div>
-      <Pagination setPageSize={setPageSize} currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} pageSize={pageSize} pageSizeOptions={[3, 5, 10]} />
+      <Pagination
+        setPageSize={setPageSize}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalPages={totalPages}
+        pageSize={pageSize}
+        pageSizeOptions={[3, 5, 10]}
+      />
     </>
   );
 };
